@@ -10,8 +10,8 @@ https://www.w3schools.com/
 
 4. 소스 빌드용 폴더 생성하기!
 
-5. 강의 동영상 백업 유튜브: 탐쌤코딩 프론트엔드 2022
-https://www.youtube.com/channel/UCZbKItP_V6tjCSpR7ywc5Lw
+5. 강의 동영상 백업 유튜브: 탐쌤코딩 프론트엔드 2024
+https://www.youtube.com/channel/UCX6SkJ-L1DHBubuQETdBxHw
 
 6. 소스 깃허브 : 탐쌤코딩 프론트엔드 2022
 https://github.com/tombap8/FED-RF-2nd-2024-TOM
@@ -44,6 +44,7 @@ https://desktop.github.com/
 예시)
 https://tombap8.github.io/FED-PJ-2022-tom/
 https://tombap8.github.io/KNG-FED211/index.html
+https://tombap8.github.io/FED-RF-2023-TOM/950.%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%B0%9C%ED%91%9C/main/index3rd.html
 
 10. UI/UX 참고자료
 
