@@ -13,7 +13,7 @@ https://www.w3schools.com/
 5. 강의 동영상 백업 유튜브: 탐쌤코딩 프론트엔드 2024
 https://www.youtube.com/channel/UCX6SkJ-L1DHBubuQETdBxHw
 
-6. 소스 깃허브 : 탐쌤코딩 프론트엔드 2022
+6. 소스 깃허브 : 탐쌤코딩 프론트엔드 2024
 https://github.com/tombap8/FED-RF-2nd-2024-TOM
 
 7. 사이트 벤치마킹 포털
