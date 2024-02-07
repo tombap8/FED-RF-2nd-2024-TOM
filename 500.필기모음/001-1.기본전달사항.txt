@@ -14,7 +14,7 @@ https://www.w3schools.com/
 https://www.youtube.com/channel/UCZbKItP_V6tjCSpR7ywc5Lw
 
 6. 소스 깃허브 : 탐쌤코딩 프론트엔드 2022
-https://github.com/tombap8/FED-RF-2023-TOM
+https://github.com/tombap8/FED-RF-2nd-2024-TOM
 
 7. 사이트 벤치마킹 포털
 
