@@ -17,7 +17,68 @@
             }
 
             -> 선택자는 요소명/클래스명/아이디명 등으로 사용
+
+            [ CSS 박스모델 ]
+            - 모든 html요소는 사각형으로 되어 있고
+            가로,세로,패딩,마진,보더의 속성으로 구성됨
+            width/height/padding/margin/border
+            -> 기본박스 디자인은 가로,세로크기를 줄경우
+            패딩과 보더는 박스 크기에 포함되지 않는다!
+            ->>> 이런박스를 컨텐트박스라고함!
+
+
         */
+
+        /* 공통 디자인 : 클래스를 주로 사용함! */
+        .part{
+            /* 박스모델 5가지 셋팅 */
+            /* 가로크기-기본값 auto
+            블록의 기본값은 부모박스 채우기
+            인라인의 기본값은 내용물만큼 */
+            width: 750px;
+            /* 세로크기-기본값 auto 
+            모든 요소에서 기본값은 내용물만큼
+            안주면 기본값 auto로 설정됨 */
+            /* height: 300px; */
+            /* height: auto; */
+            border: 1px solid #000;
+            /* 패딩 
+                padding: 수치;
+                (4방향모두)
+                padding: 수치 수치;
+                (위아래 양쪽)
+                padding: 수치 수치 수치;
+                (위 양쪽 아래)
+                padding: 수치 수치 수치 수치;
+                (위 오른 아래 왼)
+            */
+            padding: 50px;
+
+            /* 박스가 패딩,보더를 포함하는 설정 */
+            box-sizing: border-box;
+
+            /* content-box가 기본값임 */
+            /* box-sizing: content-box; */
+
+            /* 마진 
+                margin: 수치;
+                (4방향모두)
+                margin: 수치 수치;
+                (위아래 양쪽)
+                margin: 수치 수치 수치;
+                (위 양쪽 아래)
+                margin: 수치 수치 수치 수치;
+                (위 오른 아래 왼)
+
+                [블록박스 가로방향 중앙정렬 마진설정]
+                마영오~!
+                margin: 0 auto;
+                
+            */
+            margin: 20px auto;
+
+
+        }
 
         /* 메인 이미지 크기 변경하기 */
         main#main-area img{
@@ -49,7 +110,14 @@
     </main>
 
     <!-- 3. 하단영역 : 회사정보 -->
-    <footer id="info-area" class="part"></footer>
+    <footer id="info-area" class="part">
+        <!-- address : 주소, 전화번호, 대표자 등을 포함하는 시멘틱 태그 -->
+        <address>
+            서울시 강남구 역삼동 119 대호B 8F <br>
+            대표: Tom Brace Parker <br>
+            전화: 010-7777-8888
+        </address>
+    </footer>
 
     <!-- 
 
