@@ -6,6 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 탭에 출력되는 타이틀 -->
     <title>네이버 요약뉴스</title>
+    <!-- CSS 인터널방식 코드 -->
+    <style>
+        /* CSS코딩구역 */
+        /* 
+            CSS 설정 코딩방식
+
+            선택자{
+                속성:값;
+            }
+
+            -> 선택자는 요소명/클래스명/아이디명 등으로 사용
+        */
+
+        /* 메인 이미지 크기 변경하기 */
+        main#main-area img{
+            width: 100%;
+        }
+    </style>
   </head>
   <body>
     <!-- 1. 상단영역 : 제목, 메뉴 -->
@@ -15,7 +33,8 @@
       <!-- 1-2. 메뉴 -->
       <div class="menu">
         <a href="#">
-            <img src="./images/logo.png" alt="네이버로고">
+            <img src="./images/logo.png" alt="네이버로고" style="width: 50px; vertical-align: middle;">
+            <!-- style속성으로 개별요소에 CSS를 설정할 수 있다! 이런방식을 인라인방식이라고 함 -->
         </a>
         <a href="">정치</a>
         <a href="">경제</a>
