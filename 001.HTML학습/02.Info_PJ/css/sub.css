@@ -83,6 +83,26 @@ h2.sub-title{
 
 }
 /* 경제 */
-/* 정치 */
-/* 정치 */
-/* 정치 */
+.economics{
+    /* 배경이미지 : bgi -> 개별적으로줌! */
+    background-image: url(../images/titbg2.jpg);
+
+}
+/* 사회 */
+.social{
+    /* 배경이미지 : bgi -> 개별적으로줌! */
+    background-image: url(../images/titbg3.jpg);
+
+}
+/* IT/과학 */
+.it{
+    /* 배경이미지 : bgi -> 개별적으로줌! */
+    background-image: url(../images/titbg4.jpg);
+
+}
+/* TV/연예 */
+.tv{
+    /* 배경이미지 : bgi -> 개별적으로줌! */
+    background-image: url(../images/titbg5.jpg);
+
+}
