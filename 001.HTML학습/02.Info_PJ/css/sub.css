@@ -9,7 +9,80 @@
     html의 랜더링 속도가 향상된다!
 */
 
-.sub-title{
-    font-size: 50px;
-    color: red;
+/* 서브페이지 타이틀 */
+h2.sub-title{
+    /* 글자색 : color (c) */
+    color: #0c9f27;
+    /* color: #08b10ba0;
+    color: rgb(8 177 11 / 0.626);
+    color: rgba(8,177,11,0.626); */
+
+    /* 글자크기 : font-size (fz) */
+    font-size: 38px;
+
+    /* 글자두께 : font-weight (fw) */
+    font-weight: normal;
+    /* font-weight: bold; *//* fwb */
+
+    /* 글자체 : font-family
+    - 콤마로 구분된 글자체는 대체체임
+    앞의 글자체가 없으면 뒤의 글자체가 적용됨. 만약 모두 없으면 브라우저 기본체가 적용됨! */
+    /* font-family: '맑은 고딕','궁서','글림','돋음'; */
+    font-family: 'Bagel Fat One', system-ui;
+
+    /* 텍스트 정렬 - text-align:center (tac:중앙정렬) */
+    text-align: center;
+
+    /* 글자 그림자 : text-shadow */
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.35);
+
+    /* 박스 테두리 - border:두께 종류 색상 (bd) 
+        - 두께 : 선두께
+        - 종류 : 선종류(solid실선,dotted점선,dashed데쉬선 등)
+        - 색상 : 테두리색상
+    */
+    border: 2px solid darkorchid;
+
+    /* 둥근모서리 - border-radius (brad) */
+    border-radius: 20px;
+
+    /* 패딩 - p */
+    padding: 20px;
+
+    /* 배경색 : background-color (bgc) */
+    background-color: #fff;
+
+    /* 배경이미지 : bgi -> 개별적으로줌! */
+    /* background-image: url(../images/titbg4.jpg); */
+
+    /* 배경반복여부 */
+    background-repeat: no-repeat;
+
+    /* 배경고정 */
+
+    /* 배경위치 
+    background-position(bgp) */
+    background-position: center;
+
+    /* 배경크기 
+    background-size (bgz)
+    - cover 는 박스를 빈틈없이 비율유지하여 채움! */
+    background-size: cover;
+
+    /* 외부CSS에서 이미지 경로 주의!!!
+    html파일이 아닌 CSS파일 위치에서 상대경로를
+    잡아야 이미지가 나온다!!! */
+
+
+    
 }
+/* 정치 */
+.politics{
+    /* 배경이미지 : bgi -> 개별적으로줌! */
+    background-image: url(../images/titbg1.jpg);
+
+}
+/* 경제 */
+/* 정치 */
+/* 정치 */
+/* 정치 */
