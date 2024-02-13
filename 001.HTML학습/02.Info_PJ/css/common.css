@@ -1,0 +1,150 @@
+/* Info PJ 공통 CSS - common.css */
+
+/* 웹폰트 구글CDN(Content Delivery Network) */
+@import url("https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Diphylleia&family=Orbit&display=swap");
+
+/* 
+    font-family: 'Bagel Fat One', system-ui;
+    font-family: 'Diphylleia', serif;
+    font-family: 'Orbit', sans-serif;
+*/
+
+/* CSS코딩구역 */
+/* 
+    CSS 설정 코딩방식
+
+    선택자{
+        속성:값;
+    }
+
+    -> 선택자는 요소명/클래스명/아이디명 등으로 사용
+
+    [ CSS 박스모델 ]
+    - 모든 html요소는 사각형으로 되어 있고
+    가로,세로,패딩,마진,보더의 속성으로 구성됨
+    width/height/padding/margin/border
+    -> 기본박스 디자인은 가로,세로크기를 줄경우
+    패딩과 보더는 박스 크기에 포함되지 않는다!
+    ->>> 이런박스를 컨텐트박스라고함!
+
+
+*/
+
+/* 공통 디자인 : 클래스를 주로 사용함! */
+.part {
+  /* 박스모델 5가지 셋팅 */
+  /* 가로크기-기본값 auto
+    블록의 기본값은 부모박스 채우기
+    인라인의 기본값은 내용물만큼 */
+  width: 750px;
+  /* 세로크기-기본값 auto 
+    모든 요소에서 기본값은 내용물만큼
+    안주면 기본값 auto로 설정됨 */
+  /* height: 300px; */
+  /* height: auto; */
+  border: 4px double lightseagreen;
+  /* 보더 모서리 둥글게 */
+  border-radius: 20px;
+  /* 패딩 
+        padding: 수치;
+        (4방향모두)
+        padding: 수치 수치;
+        (위아래 양쪽)
+        padding: 수치 수치 수치;
+        (위 양쪽 아래)
+        padding: 수치 수치 수치 수치;
+        (위 오른 아래 왼)
+    */
+  padding: 50px;
+
+  /* 박스가 패딩,보더를 포함하는 설정 */
+  box-sizing: border-box;
+
+  /* content-box가 기본값임 */
+  /* box-sizing: content-box; */
+
+  /* 마진 
+        margin: 수치;
+        (4방향모두)
+        margin: 수치 수치;
+        (위아래 양쪽)
+        margin: 수치 수치 수치;
+        (위 양쪽 아래)
+        margin: 수치 수치 수치 수치;
+        (위 오른 아래 왼)
+
+        [블록박스 가로방향 중앙정렬 마진설정]
+        마영오~!
+        margin: 0 auto;
+        
+    */
+  margin: 20px auto;
+}
+
+/* 메인 이미지 크기 변경하기 */
+main#main-area > img {
+  width: 100%;
+}
+
+/* 상단영역,하단영역공통 
+- 콤마(,)는 그룹선택자 */
+header.part,
+footer.part {
+  text-align: center;
+  /* color: red; */
+}
+
+/* 상단영역 */
+#top-area {
+  background-color: #c7ffd4;
+}
+/* 하단영역 */
+#info-area {
+  /* 배경색 : bgc */
+  background-color: #e6e6e6;
+  /* 글자체 : ff */
+  font-family: "Bagel Fat One", system-ui;
+}
+/* 주소요소 */
+#info-area address {
+  /* 이탤릭해제 : fsn */
+  font-style: normal;
+  color: darkgreen;
+}
+
+/* 타이틀 */
+.tit {
+  font-family: "Diphylleia", serif;
+}
+/* 메뉴 */
+.menu {
+  font-family: "Orbit", sans-serif;
+}
+/* 메뉴링크 */
+.menu a {
+  /* 글자색 */
+  color: #222;
+  /* 글자밑줄없앰 */
+  text-decoration: none;
+  /* 글자크기 */
+  font-size: 24px;
+}
+/* 메뉴링크 오버시
+:hover는 가상클래스(마우스 오버시) */
+.menu a + a:hover {
+  text-decoration: overline;
+  text-decoration-style: wavy;
+  color: hotpink;
+}
+
+/* 
+    [ 선택자들 ]
+    1. 타입선택자 : 태그명
+    2. 아이디/클래스 선택자 : 요소이름
+    3. 종속선택자 : 요소명+이름 (h1#my)
+    4. 자손 선택자 : 띄어쓰기
+    5. 직계자식 선택자 : 꺽쇠(>)
+    6. 그룹 선택자 : 콤마(,) 
+    7. 형제 선택자 : 플러스(+)
+        예) a+a -> 앞에 a요소가 있는 a요소선택
+*/
