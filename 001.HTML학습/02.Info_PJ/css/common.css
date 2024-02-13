@@ -81,11 +81,6 @@
   margin: 20px auto;
 }
 
-/* 메인 이미지 크기 변경하기 */
-main#main-area > img {
-  width: 100%;
-}
-
 /* 상단영역,하단영역공통 
 - 콤마(,)는 그룹선택자 */
 header.part,
