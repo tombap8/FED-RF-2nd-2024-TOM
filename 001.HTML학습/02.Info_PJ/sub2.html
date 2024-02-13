@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <!-- 뷰포트: 모바일 기기에서 실제 픽셀을 맞춰주는 메타설정 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 탭에 출력되는 타이틀 -->
+    <title>네이버 요약뉴스 - 경제 뉴스</title>
+    <!-- CSS 인터널방식 코드 -->
+    <style></style>
+    <!-- CSS 익스터널방식 코드 -->
+    <link rel="stylesheet" href="./css/sub.css">
+  </head>
+  <body>
+    <!-- 1. 상단영역 : 제목, 메뉴 -->
+    <header id="top-area" class="part">
+      <!-- 1-1. 타이틀 -->
+      <h1 class="tit">네이버 요약뉴스</h1>
+      <!-- 1-2. 메뉴 -->
+      <nav class="menu">
+        <a href="index.html">
+          <img
+            src="./images/logo.png"
+            alt="네이버로고"
+            style="width: 50px; vertical-align: middle"
+          />
+          <!-- style속성으로 개별요소에 CSS를 설정할 수 있다! 이런방식을 인라인방식이라고 함 -->
+        </a>
+        <a href="sub1.html">정치</a> | 
+        <a href="sub2.html">경제</a> | 
+        <a href="sub3.html">사회</a> |
+        <a href="sub4.html">IT/과학</a> |
+        <a href="sub5.html">TV/연예</a>
+      </nav>
+    </header>
+    <!-- 2. 메인영역: 컨텐츠 -->
+    <main id="main-area" class="part">
+      <!-- 2-1. 서브 타이틀 -->
+      <h2 class="sub-title">경제 뉴스</h2>
+    </main>
+
+    <!-- 3. 하단영역 : 회사정보 -->
+    <footer id="info-area" class="part">
+      <!-- address : 주소, 전화번호, 대표자 등을 포함하는 시멘틱 태그 -->
+      <address>
+        서울시 강남구 역삼동 119 대호B 8F <br />
+        대표: Tom Brace Parker <br />
+        전화: 010-7777-8888
+      </address>
+    </footer>
+
+    <!-- 
+
+        [ 이름규칙 ]
+        1. 파스칼 케이스 : JS에서
+            PascalCase -> 단어마다 대문자
+        2. 캐믈 케이스 : JS에서
+            camelCase -> 첫단어빼고 단어마다 대문자
+        3. 스네이크 케이스 : 파일명/폴더명
+            snake_case -> 모두소문자고 단어사이 언더바
+        4. 케밥 케이스 : 요소명
+            kebab-case -> 모두소문자고 단어사이 데쉬
+
+
+        [ 요소 명명법 ]
+        1. 아이디는 #, 클래스는 . (약어로만들기)
+        2. 이름은 구체적으로 만들고
+        단어마다 데쉬(-)를 사용함(케밥케이스)
+        3. 아이디는 유일함, 클래스는 다중적용가능
+        예) <div class="aa bb cc" id="ee"></div>
+
+        [ 태그 구성도 ]
+        - 시작태그와 끝태그로 구성
+        <태그명 속성명="속성값"></태그명>
+        - 속성은 필수속성과 선택속성이 있음
+
+        [ img 요소 ]
+        - img 는 이미지를 불러오는 요소
+        - 필수속성
+            1) src : 이미지경로
+            2) alt : 대체텍스트(웹접근성 필수)
+            -> alternative text
+
+        [ 웹접근성 참조 ]
+        https://www.wah.or.kr
+
+        [ 웹표준이란? ]
+        - 모든 브라우저에서 하나의 소스로
+        동일한 디스플레이 및 기능이 작동하도록
+        정한 웹 코딩의 표준안이다!
+
+        [ 웹접근성이란? ]
+        - 평등의 원칙! 즉, 장애인 차별금지법에 따라
+        이미지(alt속성), 동영상(자막) 등에 설명을
+        추가하여 정보제공에 차별이 없도록 하는것!
+
+        [ 레이아웃을 위한 블록요소 ]
+        div : 영역을 나누고 묶어주는 요소
+        (divide/division - 블록요소)
+
+        [ HTML5에서 등장한 div 친구들 ]
+        - div에 내용을 구분하는 이름을 지어줌
+        - 의미가 있는요소를 시멘틱(sementic)태그라고 함!
+        1. header : 머릿부분
+        2. footer : 아랫부분
+        3. main : 메인부분(한번만 사용가능!)
+        4. nav : 네비게이션 부분
+        5. aside : 부가정보
+        6. section : 내용구분파트
+        7. article : 독립된 내용구분파트
+        ( section/article 내부에 h1~h6 태그사용권고)
+
+        참고) 요소와 태그는 무엇이 다른가?
+        요소(element)는 공통적인 성질을 이를때 사용
+        태그(tag)는 구체적인요소를 사용할때 지칭하는말
+
+        [ 한 페이지에서 한번만쓰는 요소 ]
+        html / head / body / main
+
+        [ 닫는 태그 없이 홀로쓰는 요소 ]
+        br / img 
+
+        [ 웹에서 경로 지정하기 ]
+        1. 상대경로 : 현재파일 위치에서 파악되는 경로
+        1) ./ - 현재위치(또는 쓰지 않고 바로)
+        2) ../ - 상위폴더로 이동
+
+        2. 절대경로 : http부터 쓰는 웹경로
+
+        3. 절대상대경로 : 웹 사이트 루트부터의 경로
+        -> 슬래쉬(/)부터 씀
+
+        -> 주의 : 절대상대경로는 서버 루트폴더가
+        같이 않으면 경로가 모두 깨짐! 또는 
+        로컬에서 직접 웹 페이지를 열어도 깨짐!
+
+        
+
+     -->
+  </body>
+</html>
