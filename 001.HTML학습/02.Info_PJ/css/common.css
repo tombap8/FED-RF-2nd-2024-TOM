@@ -1,3 +1,4 @@
+@charset "utf-8";
 /* Info PJ 공통 CSS - common.css */
 
 /* 웹폰트 구글CDN(Content Delivery Network) */
@@ -111,6 +112,11 @@ footer.part {
 /* 타이틀 */
 .tit {
   font-family: "Diphylleia", serif;
+  font-size: 45px;
+  color: darkblue;
+  text-shadow: 3px 3px 2px #999;
+  margin: 0;
+  margin-bottom: 34px;
 }
 /* 메뉴 */
 .menu {
