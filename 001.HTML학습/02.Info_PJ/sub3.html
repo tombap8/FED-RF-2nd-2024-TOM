@@ -9,7 +9,7 @@
     <!-- CSS 인터널방식 코드 -->
     <style></style>
     <!-- CSS 익스터널방식 코드 -->
-    <link rel="stylesheet" href="./css/sub.css">
+    <link rel="stylesheet" href="./css/sub.css" />
   </head>
   <body>
     <!-- 1. 상단영역 : 제목, 메뉴 -->
@@ -26,10 +26,8 @@
           />
           <!-- style속성으로 개별요소에 CSS를 설정할 수 있다! 이런방식을 인라인방식이라고 함 -->
         </a>
-        <a href="sub1.html">정치</a> | 
-        <a href="sub2.html">경제</a> | 
-        <a href="sub3.html">사회</a> |
-        <a href="sub4.html">IT/과학</a> |
+        <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+        <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
         <a href="sub5.html">TV/연예</a>
       </nav>
     </header>
@@ -39,16 +37,22 @@
       <h2 class="sub-title social">사회 뉴스</h2>
 
       <!-- 2-2. 언론사로고 -->
-      <div class="press-logo"></div>
+      <div class="press-logo">
+        <img src="./images/press_logo3.png" alt="서울경제" />
+      </div>
 
       <!-- 2-3. 기사제목 -->
-      <h3 class="article-title"></h3>
+      <h3 class="article-title">
+        “대기업 대신 의대 갈래”…의대 열풍에 연고대 첨단분야 계약학과 등록포기
+        급증
+      </h3>
 
       <!-- 2-4. 기사사진 -->
       <figure class="article-picture">
         <!-- 이미지 -->
+        <img src="./images/article_picture3.png" alt="사회뉴스사진" />
         <!-- 이미지설명 -->
-        <figcaption></figcaption>
+        <figcaption><small>연세대학교 캠퍼스. 연합뉴스</small></figcaption>
       </figure>
       <!-- 
         [ figure 요소 ]
@@ -58,23 +62,50 @@
        -->
 
       <!-- 2-5.기사내용 -->
-      <section class="contents"></section>
+      <section class="contents">
+        <p>
+          올해 대입 정시에서 대기업 취업이 보장되는 연세대·고려대 첨단분야
+          계약학과 미등록률이 급증한 것으로 나타났다. 의대에 중복 합격한
+          학생들이 등록을 포기하면서 이 같은 결과가 나온 것이라는 분석이 나온다.
+        </p>
+
+        <p>
+          14일 종로학원에 따르면 2024학년도 대입 정시모집에서 삼성전자
+          계약학과인 연세대 시스템반도체공학과의 정시 최초합격자 중 미등록
+          비율은 92.0%로 지난해(70.0%)보다 22.0%포인트 높아졌다. 또 다른
+          삼성전자 계약학과인 고려대 차세대통신학과는 최초 합격자 10명 중 7명이
+          등록을 포기해 미등록률이 70%를 기록했다. 이는 지난해(16.7%)보다 4배
+          이상 오른 수치이다. 다른 계약학과의 상황도 마찬가지다. 현대자동차 연계
+          계약학과인 고려대 스마트모빌리티학부는 최초합격자 20명 중
+          13명(65.0%)이 등록을 포기했다. 이 역시 지난해 등록 포기율(36.4%)의
+          배에 달한다. SK하이닉스 연계 계약학과인 고려대 반도체공학과는 10명 중
+          5명(50.0%)이 등록을 하지 않았다. 지난해(18.2%) 등록 포기 비율보다
+          3배가량 높았다. 계약학과는 대학이 기업과 계약을 맺고 기업이 요구하는
+          특정 분야를 전공으로 개설한 학과를 말한다. 졸업 후 취업이 보장된다.
+        </p>
+
+        <p>
+          임성호 종로학원 대표는 “연고대 이공계열 합격생은 의대·서울대 등에 동시
+          합격해 빠져나갔을 것”이라고 분석했다.
+        </p>
+      </section>
       <!-- 
         [ p 요소 : 문단(Paragraph) ]
         - 문단을 구분하기 위한 요소
         - 주의 : 내부에 div와 같은 block요소를 넣을 수 없다!
        -->
 
+      <!-- 2-6. 기자정보 -->
+      <div class="reporter">박성규 기자(exculpate2@sedaily.com)</div>
 
-       <!-- 2-6. 기자정보 -->
-       <div class="reporter"></div>
-
-        <!-- 2-7. 기사원문 -->
-        <h5 class="article-link">
-          <a href="https://n.news.naver.com/mnews/article/011/0004299388" target="_blank">기사원문</a>
-        </h5>
-    
-    
+      <!-- 2-7. 기사원문 -->
+      <h5 class="article-link">
+        <a
+          href="https://n.news.naver.com/mnews/article/011/0004299388"
+          target="_blank"
+          >기사원문</a
+        >
+      </h5>
     </main>
 
     <!-- 3. 하단영역 : 회사정보 -->

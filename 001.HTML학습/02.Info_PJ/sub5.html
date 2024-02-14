@@ -9,7 +9,7 @@
     <!-- CSS 인터널방식 코드 -->
     <style></style>
     <!-- CSS 익스터널방식 코드 -->
-    <link rel="stylesheet" href="./css/sub.css">
+    <link rel="stylesheet" href="./css/sub.css" />
   </head>
   <body>
     <!-- 1. 상단영역 : 제목, 메뉴 -->
@@ -26,10 +26,8 @@
           />
           <!-- style속성으로 개별요소에 CSS를 설정할 수 있다! 이런방식을 인라인방식이라고 함 -->
         </a>
-        <a href="sub1.html">정치</a> | 
-        <a href="sub2.html">경제</a> | 
-        <a href="sub3.html">사회</a> |
-        <a href="sub4.html">IT/과학</a> |
+        <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+        <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
         <a href="sub5.html">TV/연예</a>
       </nav>
     </header>
@@ -39,16 +37,26 @@
       <h2 class="sub-title tv">TV/연예 뉴스</h2>
 
       <!-- 2-2. 언론사로고 -->
-      <div class="press-logo"></div>
+      <div class="press-logo">
+        <img src="./images/press_logo5.gif" alt="이데일리" />
+      </div>
 
       <!-- 2-3. 기사제목 -->
-      <h3 class="article-title"></h3>
+      <h3 class="article-title">
+        '유퀴즈' 최민식, 12년만 예능 "소속사 없이 직접 운전·출연료 협상"
+      </h3>
 
       <!-- 2-4. 기사사진 -->
       <figure class="article-picture">
         <!-- 이미지 -->
+        <img src="./images/article_picture5.jpg" alt="연예뉴스사진" />
         <!-- 이미지설명 -->
-        <figcaption></figcaption>
+        <figcaption>
+          <small>
+            [이데일리 스타in 최희재 기자] 배우 최민식이 ‘유 퀴즈 온 더 블럭’에
+            출연해 입담을 자랑한다.
+          </small>
+        </figcaption>
       </figure>
       <!-- 
         [ figure 요소 ]
@@ -58,23 +66,68 @@
        -->
 
       <!-- 2-5.기사내용 -->
-      <section class="contents"></section>
+      <section class="contents">
+        <p>
+          14일 방송되는 ‘유 퀴즈 온 더 블럭’(이하 ‘유퀴즈’) 231회에서는 ‘인생은
+          고고싱’ 특집이 펼쳐진다. 배우 최민식, 순대골목 테스트를 통과한 귀여운
+          안내견들의 훈련사 신규돌 자기님이 출연해 유재석, 조세호와 풍성한
+          토크를 나눈다.
+        </p>
+
+        <p>
+          30년간 시각장애인의 세상을 넓혀주고 새로운 가족을 선물한 안내견 훈련사
+          신규돌 자기님이 ‘유퀴즈’를 방문한다. 그동안 285마리의 안내견을 배출한
+          이야기, 10마리 중 단 3마리만 최종 합격한다는 훈련견 선발 과정,
+          순대골목의 유혹을 이기는 이색적인 훈련들을 소개한다.
+        </p>
+
+        <p>
+          한국 영화계의 레전드 최민식이 약 12년 만에 예능 나들이에 나선다.
+          지난해 열린 ‘제2회 청룡시리즈어워즈’에서 유재석이 자기님을 향해
+          “민식이 형 사랑해요”라며 팬심을 드러낸던 바. 이날은 최민식이 유재석과
+          조세호의 팬임을 밝히며 분위기를 끌어올린다.
+        </p>
+
+        <p>
+          이어 영화 ‘올드보이’, ‘범죄와의 전쟁’, ‘악마를 보았다’, ‘명량’ 등
+          자기님이 활약한 굵직한 명작들과 작품 속 명대사를 짚어본다. 칸 영화제
+          심사위원 대상을 수상한 ‘올드보이’ 촬영 비하인드는 물론, 모든 장르를
+          아우르는 자기님이 배역에 몰두하기 위한 노력과 연기 철학을 허심탄회하게
+          전한다.
+        </p>
+
+        <p>
+          자기님의 유쾌한 입담도 이목을 사로잡을 전망이다. 그는 배우 한석규,
+          김상중과 동문이자 절친이라고 전하며 깜짝 개인기를 보여준다. 또 “무서운
+          영화를 안 좋아한다”며 공개한 반전 영화 취향, 소속사 없이 직접 운전도
+          하고 출연료도 협상한다는 에피소드 등 흥미진진한 이야기로 눈길을 끈다.
+        </p>
+
+        <p>
+          최민식은 신인이던 유재석과 영화 현장에서 만났던 추억, ‘유퀴즈’ 회식
+          합류 뒷 이야기까지 전하며 예능감을 뽐낸다. 이에 더해 최민식의 연기
+          인생을 생생히 증언해줄 박찬욱 감독의 인터뷰도 준비돼 기대감을 높인다.
+        </p>
+
+        <p>‘유퀴즈’는 매주 수요일 오후 8시 45분에 방송된다.</p>
+      </section>
       <!-- 
         [ p 요소 : 문단(Paragraph) ]
         - 문단을 구분하기 위한 요소
         - 주의 : 내부에 div와 같은 block요소를 넣을 수 없다!
        -->
 
+      <!-- 2-6. 기자정보 -->
+      <div class="reporter">최희재(jupiter@edaily.co.kr)</div>
 
-       <!-- 2-6. 기자정보 -->
-       <div class="reporter"></div>
-
-        <!-- 2-7. 기사원문 -->
-        <h5 class="article-link">
-          <a href="https://entertain.naver.com/ranking/read?oid=018&aid=0005672957" target="_blank">기사원문</a>
-        </h5>
-    
-    
+      <!-- 2-7. 기사원문 -->
+      <h5 class="article-link">
+        <a
+          href="https://entertain.naver.com/ranking/read?oid=018&aid=0005672957"
+          target="_blank"
+          >기사원문</a
+        >
+      </h5>
     </main>
 
     <!-- 3. 하단영역 : 회사정보 -->
