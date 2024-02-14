@@ -138,13 +138,41 @@ h2.sub-title{
 /* 기사 타이틀 */
 .article-title{
     font-size: 30px;
+    color: #111;
 }
 
 /* 기사 이미지박스 */
 .article-picture{
-    margin: 0;
+    margin: 20px 0;
 }
 /* 기사 이미지 */
 .article-picture img{
     width: 100%;
+    padding-bottom: 15px;
+}
+/* 기사 이미지 설명 */
+.article-picture figcaption{
+    /* tac - 글자중앙정렬 */
+    text-align: center;
+    padding: 0 5px;
+}
+/* 기사 이미지 설명 글자크기변경 */
+.article-picture figcaption small{
+    font-size: 15px;
+    /* small에 글자크기가 지정되어 있으므로
+    여기에서 글자크기를 변경해야 반영된다! */
+}
+
+/* 기사내용 */
+.contents p{
+    /* 글자크기 : fz */
+    font-size: 17px;
+    /* 줄간격 : lh 
+        line-height 줄간격은 글자의 중앙에서
+        위아래 높이값을 말하며 글자는 중앙에 흐른다.
+        단위는 없을 경우 글자크기의 배수로 셋팅됨
+    */
+    line-height: 1.56;
+    /* 글자색 */
+    color: #333;
 }
