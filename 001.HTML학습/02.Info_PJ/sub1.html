@@ -5,11 +5,11 @@
     <!-- 뷰포트: 모바일 기기에서 실제 픽셀을 맞춰주는 메타설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- 탭에 출력되는 타이틀 -->
-    <title>네이버 요약뉴스 - 정치뉴스  </title>
+    <title>네이버 요약뉴스 - 정치뉴스</title>
     <!-- CSS 인터널방식 코드 -->
     <style></style>
     <!-- CSS 익스터널방식 코드 -->
-    <link rel="stylesheet" href="./css/sub.css">
+    <link rel="stylesheet" href="./css/sub.css" />
   </head>
   <body>
     <!-- 1. 상단영역 : 제목, 메뉴 -->
@@ -26,10 +26,8 @@
           />
           <!-- style속성으로 개별요소에 CSS를 설정할 수 있다! 이런방식을 인라인방식이라고 함 -->
         </a>
-        <a href="sub1.html">정치</a> | 
-        <a href="sub2.html">경제</a> | 
-        <a href="sub3.html">사회</a> |
-        <a href="sub4.html">IT/과학</a> |
+        <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+        <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
         <a href="sub5.html">TV/연예</a>
       </nav>
     </header>
@@ -39,16 +37,27 @@
       <h2 class="sub-title politics">정치 뉴스</h2>
 
       <!-- 2-2. 언론사로고 -->
-      <div class="press-logo"></div>
+      <div class="press-logo">
+        <img src="./images/press_logo1.jpg" alt="newsis" />
+      </div>
 
       <!-- 2-3. 기사제목 -->
-      <h3 class="article-title"></h3>
+      <h3 class="article-title">
+        북한, 불법 사이트 韓에 팔아 외화벌이…한국인 개인정보 탈취도
+      </h3>
 
       <!-- 2-4. 기사사진 -->
       <figure class="article-picture">
         <!-- 이미지 -->
+        <img src="./images/article_picture1.jpg" alt="정치뉴스사진" />
         <!-- 이미지설명 -->
-        <figcaption></figcaption>
+        <figcaption>
+          <small>
+            [서울=뉴시스] 변해정 기자 = 국가정보원이 수조원대 국내 불법 사이버
+            도박 범죄에 개입한 북한 IT 조직원들의 신상을 처음 공개했다. 한국인
+            범죄 조직에 대해서는 경찰과 실체를 규명 중이다.
+          </small>
+        </figcaption>
       </figure>
       <!-- 
         [ figure 요소 ]
@@ -58,22 +67,57 @@
        -->
 
       <!-- 2-5.기사내용 -->
-      <section class="contents"></section>
+      <section class="contents">
+        국정원은 북한 노동당 39호실 산하의 '경흥정보기술교류사(경흥)' 조직원들의
+        신원을 비롯해 개발·판매·운영 실태 전반을 파악하고 관련 사진과 동영상
+        등을 입수했다고 14일 밝혔다.
+
+        <p>
+          경흥은 김정은 북한 국무위원장의 개인 비자금을 조달하는 노동당 39호실
+          산하의 조직이다.
+        </p>
+
+        <p>
+          소속 조직원들은 대남 공작 업무를 담당하는 정찰총국 소속으로 39호실에
+          파견된 이들로, 김광명 단장 아래 정류성, 전권욱 등 15명이 조선족 대북
+          사업가가 소유·운영하는 중국 단둥 펑청 소재 '금봉항 복식유한공사'라는
+          의류 공장의 기숙사에 근거를 두고 활동했다.
+        </p>
+
+        <p>
+          경흥은 중국인 개발자로 위장한 뒤 IT업계 종사자의 경력증명서를
+          위조·도용하는 방식으로 불법 도박 사이트 제작 일감을 수주해 한국인 범죄
+          조직에 판매했다.
+        </p>
+
+        <p>
+          불법 도박 사이트 제작에 1건당 5000달러, 유지·보수 명목으로 매월
+          3000달러를 챙겼다. 사이트 운영자들의 취향에 맞는 사이트 디자인을
+          만들어 구매를 유도하기도 했다.
+        </p>
+
+        <p>
+          이용자가 늘어나면 매월 2000~5000달러를 추가로 받기도 했다고 국정원은
+          전했다.
+        </p>
+      </section>
       <!-- 
         [ p 요소 : 문단(Paragraph) ]
         - 문단을 구분하기 위한 요소
         - 주의 : 내부에 div와 같은 block요소를 넣을 수 없다!
        -->
 
+      <!-- 2-6. 기자정보 -->
+      <div class="reporter"></div>
 
-       <!-- 2-6. 기자정보 -->
-       <div class="reporter"></div>
-
-        <!-- 2-7. 기사원문 -->
-        <h5 class="article-link">
-          <a href="" target="_blank">기사원문</a>
-        </h5>
-    
+      <!-- 2-7. 기사원문 -->
+      <h5 class="article-link">
+        <a
+          href="https://n.news.naver.com/mnews/article/003/0012372092"
+          target="_blank"
+          >기사원문</a
+        >
+      </h5>
     </main>
 
     <!-- 3. 하단영역 : 회사정보 -->

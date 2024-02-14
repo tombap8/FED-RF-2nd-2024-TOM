@@ -9,7 +9,7 @@
     <!-- CSS 인터널방식 코드 -->
     <style></style>
     <!-- CSS 익스터널방식 코드 -->
-    <link rel="stylesheet" href="./css/sub.css">
+    <link rel="stylesheet" href="./css/sub.css" />
   </head>
   <body>
     <!-- 1. 상단영역 : 제목, 메뉴 -->
@@ -26,10 +26,8 @@
           />
           <!-- style속성으로 개별요소에 CSS를 설정할 수 있다! 이런방식을 인라인방식이라고 함 -->
         </a>
-        <a href="sub1.html">정치</a> | 
-        <a href="sub2.html">경제</a> | 
-        <a href="sub3.html">사회</a> |
-        <a href="sub4.html">IT/과학</a> |
+        <a href="sub1.html">정치</a> | <a href="sub2.html">경제</a> |
+        <a href="sub3.html">사회</a> | <a href="sub4.html">IT/과학</a> |
         <a href="sub5.html">TV/연예</a>
       </nav>
     </header>
@@ -37,18 +35,25 @@
     <main id="main-area" class="part">
       <!-- 2-1. 서브 타이틀 -->
       <h2 class="sub-title economics">경제 뉴스</h2>
-      
+
       <!-- 2-2. 언론사로고 -->
-      <div class="press-logo"></div>
+      <div class="press-logo">
+        <img src="./images/press_logo2.png" alt="아시아경제" />
+      </div>
 
       <!-- 2-3. 기사제목 -->
-      <h3 class="article-title"></h3>
+      <h3 class="article-title">
+        고물가에 '가성비' 찾는다…지난해 PB 시장 12%↑
+      </h3>
 
       <!-- 2-4. 기사사진 -->
       <figure class="article-picture">
         <!-- 이미지 -->
+        <img src="./images/article_picture2.jpg" alt="경제이미지" />
         <!-- 이미지설명 -->
-        <figcaption></figcaption>
+        <figcaption>
+          <small>PB 상품 성장률. [제공=대한상의]</small>
+        </figcaption>
       </figure>
       <!-- 
         [ figure 요소 ]
@@ -58,23 +63,49 @@
        -->
 
       <!-- 2-5.기사내용 -->
-      <section class="contents"></section>
+      <section class="contents">
+        <p>
+          경기침체와 고물가 영향에 지난해 자체 브랜드인 PB(Private Brand) 상품
+          매출이 크게 상승한 것으로 조사됐다.
+        </p>
+
+        <p>
+          대한상공회의소는 14일 글로벌 시장조사기관 닐슨아이큐(NIQ)가 조사한
+          '유통업체 PB 상품 매출' 분석 결과, 최근 1년간(2022년 4분기~2023년
+          3분기) 국내 PB 상품 시장 규모가 전년 대비 11.8% 성장했다고 밝혔다.
+          같은 기간 전체 소비재 시장은 1.9% 성장에 그쳐 약 6배 차이가 났다.
+        </p>
+
+        <p>
+          PB는 유통업체가 제조업체와 협력해 생산한 뒤 자체 브랜드로 내놓은
+          상품으로 이마트 노브랜드, 롯데 온리프라이스, GS25 유어스 등이 있다.
+          마케팅 및 유통 비용을 줄이고 소비자 가격을 낮춰 고물가 시대에 각광받고
+          있다.
+        </p>
+
+        <p>
+          대한상의는 "지난해 소비자 물가가 가파르게 상승하면서 가격에 민감해진
+          소비자들이 품질 대비 저렴한 자체브랜드 상품 구입량을 늘렸기
+          때문"이라고 분석했다.
+        </p>
+      </section>
       <!-- 
         [ p 요소 : 문단(Paragraph) ]
         - 문단을 구분하기 위한 요소
         - 주의 : 내부에 div와 같은 block요소를 넣을 수 없다!
        -->
 
+      <!-- 2-6. 기자정보 -->
+      <div class="reporter">한예주 기자 dpwngks@asiae.co.kr</div>
 
-       <!-- 2-6. 기자정보 -->
-       <div class="reporter"></div>
-
-        <!-- 2-7. 기사원문 -->
-        <h5 class="article-link">
-          <a href="" target="_blank">기사원문</a>
-        </h5>
-    
-    
+      <!-- 2-7. 기사원문 -->
+      <h5 class="article-link">
+        <a
+          href="https://n.news.naver.com/mnews/article/277/0005379319"
+          target="_blank"
+          >기사원문</a
+        >
+      </h5>
     </main>
 
     <!-- 3. 하단영역 : 회사정보 -->
