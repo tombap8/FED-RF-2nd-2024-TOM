@@ -12,7 +12,7 @@
 /* 서브페이지 타이틀 */
 h2.sub-title{
     /* 글자색 : color (c) */
-    color: #0c9f27;
+    /* color: #0c9f27; */
     /* color: #08b10ba0;
     color: rgb(8 177 11 / 0.626);
     color: rgba(8,177,11,0.626); */
@@ -78,30 +78,40 @@ h2.sub-title{
 }
 /* 정치 */
 .politics{
+    /* 글자색 */
+    color: #fde162;
     /* 배경이미지 : bgi -> 개별적으로줌! */
     background-image: url(../images/titbg1.jpg);
 
 }
 /* 경제 */
 .economics{
+    /* 글자색 */
+    color: #feab48;
     /* 배경이미지 : bgi -> 개별적으로줌! */
     background-image: url(../images/titbg2.jpg);
 
 }
 /* 사회 */
 .social{
+    /* 글자색 */
+    color: #fa8cf1;
     /* 배경이미지 : bgi -> 개별적으로줌! */
     background-image: url(../images/titbg3.jpg);
 
 }
 /* IT/과학 */
 .it{
+    /* 글자색 */
+    color: #2874ff;
     /* 배경이미지 : bgi -> 개별적으로줌! */
     background-image: url(../images/titbg4.jpg);
 
 }
 /* TV/연예 */
 .tv{
+    /* 글자색 */
+    color: #49ffea;
     /* 배경이미지 : bgi -> 개별적으로줌! */
     background-image: url(../images/titbg5.jpg);
 
