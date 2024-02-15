@@ -212,6 +212,7 @@ h2.sub-title{
     border-top: 2px dashed #ccc;
     border-bottom: 2px dashed #ccc;
     margin: 20px 0;
+    padding: 15px 0;
 }
 /* 인용구 제목 */
 .quote-box h4{
@@ -237,6 +238,9 @@ h2.sub-title{
     */
     /* box-shadow: 4px 4px 5px 10px #888; */
     box-shadow: inset 0 0 20px #888;
+
+    /* 기본마진없앰 */
+    margin: 0;
 }
 /* 블록인용박스 */
 .quote-box blockquote{
@@ -251,6 +255,11 @@ h2.sub-title{
     이것을 해결하기 위한 한가지 방법으로 넘치는 요소 숨기기
     속성을 셋팅하면 된다! */
     overflow: hidden;/* oh */
+
+    /* 넘치는 자식요소 숨기는 설정때문에
+    그림자가 잘리므로 이를 패딩으로 처리함 */
+    padding: 5px;
+    padding-left: 0;
 }
 /* 블록인용 이미지 */
 .quote-box img{
@@ -264,6 +273,8 @@ h2.sub-title{
     float: right;
     /* 이미지 옆에 공간주기 */
     margin-left: 10px;
+    /* 상단여백으로 이미지 이동 */
+    margin-top: 11px;
     /* 둥근모서리 */
     border-radius: 10px;
     /* 박스그림자 */
