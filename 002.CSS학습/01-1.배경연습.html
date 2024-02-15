@@ -41,9 +41,64 @@
         -> 기본적으로 반복됨! */
         background-image: url(./imgs/bg_logo_a_01.png);
 
-        /* 3. 배경 반복여부 */
+        /* 3. 배경 반복여부 : bgr 
+            값 : 
+            repeat-x : x축반복
+            repeat-y : y축반복
+            repeat : 모든축반복(기본값)
+            no-repeat : 반복안함
+        */
+        background-repeat: no-repeat;
 
+        /* 4. 화면고정 : bga
+        배경고정값은 fixed
+        고정의 의미는 스크롤시
+        보이는 화면 기준으로 배경을 고정함 */
+        background-attachment: fixed;
+
+        /* 5. 배경위치 : bgp
+        값: 가로 세로
+        1. 가로방향 : left, center, right
+        2. 세로방향 : top, center, bottom
+        - 수치값 : px, %, em 등 여러단위 사용가능
+        -> %는 기준점이 이미지의 중앙이다!(50%는 정중앙)
+
+        -> 방향별 개별속성은?
+        background-position-x: 값;
+        background-position-y: 값;
+        
+        */
+        background-position: right bottom;
+        /* background-position: center; */
+        /* background-position: 100px 200px; */
+        /* background-position: 50% 60%; */
+
+        /* 6. 배경이미지 크기 : bgz -> 가로 세로
+            정해진값 :
+            1. contain  - 이미지가 화면을 채우고 모두보임
+            2. cover - 이미지가 박스를 모두 채움
+                        (잘리는 부분이 있을 수 있음)
+            3. 수치값 - 가로, 세로 중 하나만 주면 이미지가 비율유지함            
+        */
+        /* background-size: contain; */
+        /* background-size: cover; */
+        background-size: 200px;
+        /* background-size: 200px auto; */
+        /* background-size: auto 500px; */
+        /* background-size: 100px 400px; */
+
+        /* 
+            [ 배경 한꺼번에 쓰기 ]
+            background : 배경색 이미지 반복 고정 위치/크기
+            background : 색 이 반 고 윙/크
+
+            -> 주의사항!
+            위에서 개별배경 셋팅을 하고
+            아래쪽에서 한꺼번에 셋팅하는 배경속성을 쓰면
+            위에서 개별셋팅한 배경속성이 초기화된다!
+        */
       }
+      /*  */
     </style>
   </head>
   <body>
