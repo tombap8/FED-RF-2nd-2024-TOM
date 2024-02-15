@@ -166,13 +166,43 @@ h2.sub-title{
 /* 기사내용 */
 .contents p{
     /* 글자크기 : fz */
-    font-size: 17px;
+    font-size: 18px;
     /* 줄간격 : lh 
         line-height 줄간격은 글자의 중앙에서
         위아래 높이값을 말하며 글자는 중앙에 흐른다.
         단위는 없을 경우 글자크기의 배수로 셋팅됨
     */
-    line-height: 1.56;
+    line-height: 1.7;
     /* 글자색 */
     color: #333;
+}
+
+/* 인라인 인용구 디자인 변경 */
+.contents q{
+    font-weight: bold;
+}
+
+/* mark요소 디자인 변경 */
+.contents mark{
+    display: block;
+    /* 크기요소는 인라인일때 적용안됨! */
+    width: 65%;
+    /* 크기를 가진 블록요소 중앙정렬
+    - 마영오! margin: 0 auto */
+    margin: 15px auto;
+    /* 글자중앙정렬 : tac */
+    text-align: center;
+
+    /* 박스디자인 변경 */
+    padding: 20px 50px;
+    border-top: 2px solid gray;
+    border-bottom: 2px solid gray;
+
+    /* 배경색 */
+    background-color: #e9e9e9;
+    /* 글자색 */
+    color: darkorange;
+    /* 글자체 : 웹폰트 */
+    font-family: 'Diphylleia', serif;
+    font-weight: bold;
 }
