@@ -206,3 +206,66 @@ h2.sub-title{
     font-family: 'Diphylleia', serif;
     font-weight: bold;
 }
+
+/* 인용구박스 */
+.quote-box{
+    border-top: 2px dashed #ccc;
+    border-bottom: 2px dashed #ccc;
+    margin: 20px 0;
+}
+/* 인용구 제목 */
+.quote-box h4{
+    /* 기본 display가 block 이어서
+    글씨만큼 크기를 가지려면 inline-block로 바꿔야한다! */
+    display: inline-block;
+    font-size: 20px;
+    border: 1px solid #454545;
+    border-radius: 30px;
+    /* width: 250px; */
+    text-align: center;
+    padding: 15px;
+    /* 박스 그림자 
+        box-shadow: x축 y축 blur spread 색
+        1.x축 - 가로축 이동
+        2.y축 - 세로축 이동
+        3.blur - 경계선 흐림
+        4.spread - 그림자 기존크기 보다 더한크기
+        5.색 - 그림자 색
+        ->> 내부 그림자일 경우 inset 키워드를 앞에씀
+        box-shadow: inset x축 y축 blur spread 색
+        ->> spread는 필요시에 작성함
+    */
+    /* box-shadow: 4px 4px 5px 10px #888; */
+    box-shadow: inset 0 0 20px #888;
+}
+/* 블록인용박스 */
+.quote-box blockquote{
+    /* 기본마진 없애기 */
+    margin: 0;
+    font-size: 15px;
+    line-height: 2.1;
+    /* 양쪽정렬 : taj */
+    text-align: justify;
+    /* 자식요소인 이미지에 float 속성을 사용할 경우
+    부모박스에서 자식요소를 인식하지 못하는 경우가 발생함
+    이것을 해결하기 위한 한가지 방법으로 넘치는 요소 숨기기
+    속성을 셋팅하면 된다! */
+    overflow: hidden;/* oh */
+}
+/* 블록인용 이미지 */
+.quote-box img{
+    /* 기본적으로 이미지는 인라인요소이며
+    글자가 왼쪽으로 한줄 하단에 나열됨
+    글자가 옆에 올라와서 흘러가게 하려면
+    float속성을 사용해야한다!
+        float: left 이미지는 왼쪽에 글자는 오른쪽
+        float: right 이미지는 오른쪽에 글자는 왼쪽
+    */
+    float: right;
+    /* 이미지 옆에 공간주기 */
+    margin-left: 10px;
+    /* 둥근모서리 */
+    border-radius: 10px;
+    /* 박스그림자 */
+    box-shadow: 0 0 4px #555;
+}
