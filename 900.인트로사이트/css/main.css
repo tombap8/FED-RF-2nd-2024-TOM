@@ -1,14 +1,20 @@
 @charset "utf-8";
 /* 인트로 사이트 메인 CSS - main.css */
 
-
-html,body{
+/* 마진,패딩 초기화 */
+html,body,h1,h2,h3,p{
     margin: 0;
-    padding: 0;
+    padding: 0;    
+}
+
+html,body,.page{
+    /* 높이값 보이는 화면 기준 채우기 */
     height: 100%;
 }
+
 body{
-    background: url(../images/worksbg.jpg) no-repeat center/cover;
+    background: 
+    url(../images/worksbg.jpg) no-repeat center/cover;
 
     /* background-image: 
     linear-gradient(to bottom,rgb(205, 255, 227),rgb(247, 206, 255)); */
