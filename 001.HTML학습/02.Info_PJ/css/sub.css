@@ -303,3 +303,39 @@ h2.sub-title{
     height: 100%;
 }
 
+/* 기사원문 */
+.article-link{
+    text-align: right;
+}
+/* 기사원문 a요소 */
+.article-link a {
+    /* 부모박스 인라인 정렬도 적용되고
+    크기 디자인도 적용되는 display는? inline-block */
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border: 1px solid darkcyan;
+    border-radius: 50%;/* 정원 */
+    /* 글자가로 중앙 */
+    text-align: center;
+    /* 줄간격을 높이값과 같이 주면 세로중앙됨! */
+    line-height: 100px;
+    font-size: 20px;
+    
+    /* a요소 기본 글자색변경, 밑줄없앰 */
+    color: #222;
+    text-decoration: none;
+    
+    /* 배경색 */
+    background-color: #ccc;
+}
+
+/* 기사원문 a요소 마우스 오버시 */
+.article-link a:hover {
+    color: hotpink;
+    background-color: aquamarine;
+    box-shadow: 0 0 10px 5px darkblue;
+    /* box-shadow: x y blur (spread) color; */
+}
+
+
