@@ -2,13 +2,14 @@
 /* Info PJ 공통 CSS - common.css */
 
 /* 웹폰트 구글CDN(Content Delivery Network) */
-@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Bagel+Fat+One&family=Diphylleia&family=Orbit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Noto+Sans+KR:wght@100..900&family=Bagel+Fat+One&family=Diphylleia&family=Orbit&display=swap");
 
 /* 
   기사본문용 font-family: "Noto Sans KR", sans-serif;
   서브타이틀용 font-family: 'Bagel Fat One', system-ui;
     font-family: 'Diphylleia', serif;
     font-family: 'Orbit', sans-serif;
+    font-family: "Black And White Picture", system-ui;
 */
 
 /* CSS코딩구역 */

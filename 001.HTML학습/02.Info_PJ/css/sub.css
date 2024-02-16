@@ -338,4 +338,29 @@ h2.sub-title{
     /* box-shadow: x y blur (spread) color; */
 }
 
+/* 오늘의 작품 & 느낌 */
+.work{
+    /* 글자크기, 글자정렬은 자식요소로 상속됨 */
+    text-align: center;
+    /* 그라데이션 
+        [ 선형 그라데이션 : linear-gradient ]
+        linear-gradient(방향,색1,색2,...);
+        linear-gradient(방향,색1 몇%,색2 몇%,...);
+        linear-gradient(각도,색1 몇%,색2 몇%,...);
+        - 옵션 : 
+        1. 방향: to top, to bottom, to left, to right
+        2. 각도: 각도deg
+        3. 콤마로 나열된 색상 뒤에 %수치를 쓰면 비율조정가능
+    */
+    background-image: linear-gradient(to right,red,blue,yellow);
+}
+/* 작품 타이틀 */
+.work h4{
+    font-family: "Black And White Picture", system-ui;
+    font-weight: normal;
+    font-size: 28px;
+    color: #333;
+
+}
+
 
