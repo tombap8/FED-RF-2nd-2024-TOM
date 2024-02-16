@@ -207,15 +207,15 @@ h2.sub-title{
     font-weight: bold;
 }
 
-/* 인용구박스 */
-.quote-box{
+/* 구분박스 공통 */
+.bd-box{
     border-top: 2px dashed #ccc;
     border-bottom: 2px dashed #ccc;
     margin: 20px 0;
     padding: 15px 0;
 }
-/* 인용구 제목 */
-.quote-box h4{
+/* 구분박스 제목 */
+.bd-box h4{
     /* 기본 display가 block 이어서
     글씨만큼 크기를 가지려면 inline-block로 바꿔야한다! */
     display: inline-block;
