@@ -357,7 +357,8 @@ h2.sub-title{
     linear-gradient(46deg,#f8abff 10%,#b3ffd7 60%,#8a9cff 80%);
 
     /* padding */
-    padding: 1px;
+    padding: 20px;    
+    border: 13px dotted blue;
     /* 
         부모박스에 패딩이 없는 상태에서
         첫번째 자식 블록박스의 마진은
@@ -369,6 +370,24 @@ h2.sub-title{
         -> 패딩을 주는 순간 자식의 마진은
         패딩의 내부공간을 밀게된다!
     */
+    /* 
+        [ 배경관련 표시 영역지정 : background-clip ]
+            값 : border-box 보더 영역까지표시(기본값)
+            값 : padding-box 패딩 영역까지표시
+            값 : content-box 내용 영역까지표시
+    */
+    background-clip: border-box;
+    /* 
+        [ 배경관련 시작 영역지정 : background-origin ]
+            값 : border-box 보더 영역부터시작
+            값 : padding-box 패딩 영역부터시작(기본값)
+            값 : content-box 내용 영역부터시작
+    
+    */
+    background-origin: padding-box;
+
+    /* 배경 반복 제거 */
+    background-repeat: no-repeat;
 }
 /* 작품 타이틀 */
 .work h4{
