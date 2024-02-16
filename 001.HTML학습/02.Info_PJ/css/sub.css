@@ -356,6 +356,8 @@ h2.sub-title{
     background-image: 
     linear-gradient(46deg,#f8abff 10%,#b3ffd7 60%,#8a9cff 80%);
 
+    /* background-color: pink; */
+
     /* padding */
     padding: 20px;    
     border: 13px dotted blue;
@@ -388,6 +390,8 @@ h2.sub-title{
 
     /* 배경 반복 제거 */
     background-repeat: no-repeat;
+    /* 박스 내부 그림자 */
+    box-shadow: inset 0 0 10px #333;
 }
 /* 작품 타이틀 */
 .work h4{
@@ -402,6 +406,25 @@ h2.sub-title{
     참고) 마지막 자식블록요소도
     부모 박스 하단 마진은 바깥으로 나감! */
 
+}
+
+/* 작품 이미지 */
+.work img{
+    border: 12px ridge goldenrod;
+}
+
+/* 작품명 */
+.work figcaption{
+    font-family: "Gugi", sans-serif;
+    font-size: 20px;
+    margin-top: 20px;
+}
+/* 작품명 인용구 */
+.work cite{
+    /* 이탤릭해제 */
+    font-style: normal;
+    /* 글자색 */
+    color: darkmagenta;
 }
 
 

@@ -2,7 +2,7 @@
 /* Info PJ 공통 CSS - common.css */
 
 /* 웹폰트 구글CDN(Content Delivery Network) */
-@import url("https://fonts.googleapis.com/css2?family=Black+And+White+Picture&family=Noto+Sans+KR:wght@100..900&family=Bagel+Fat+One&family=Diphylleia&family=Orbit&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Gugi&family=Black+And+White+Picture&family=Noto+Sans+KR:wght@100..900&family=Bagel+Fat+One&family=Diphylleia&family=Orbit&display=swap");
 
 /* 
   기사본문용 font-family: "Noto Sans KR", sans-serif;
@@ -10,6 +10,7 @@
     font-family: 'Diphylleia', serif;
     font-family: 'Orbit', sans-serif;
     font-family: "Black And White Picture", system-ui;
+    font-family: "Gugi", sans-serif;
 */
 
 /* CSS코딩구역 */
