@@ -97,6 +97,49 @@
                 참고) 인라인요소의 위,아래간격은
                 line-height로 설정함!
 
+                [ 예외 인라인 요소 : img ]
+                -> 이미지는 인라인 요소지만
+                width, height, margin, padding, border
+                모두 적용되고 실제로 다른요소에 영향을 미침
+                (이미지는 기본적으로 자체비율을 가지고 
+                있어서 한쪽크기만 주면 나머지는 자동으로 
+                설정됨!)
+
+                [ display 를 숨기는 방법 ]
+                display: none; (dn)
+                -> 태그는 그대로 있고 화면 출력만 안됨!
+
+                ___________________________________
+
+                [ 초기화나 변경셋팅이 필요없는 순수태그 ]
+                1. 블록 대표주자 : div
+                2. 인라인 대표주자 : span
+
+
+                _____________________________________
+
+                3. inline-block 요소
+
+                (1) 표현법 : 
+                    display: inline-block; (dib)
+                
+                (2) 기본적으로 inline-block 인 요소들
+                    button, input 등
+                
+                (3) 특징 : 
+                    1) 인라인처럼 한줄에 온다
+                    2) 블록처럼 박스모델속성이 적용된다!
+                    참고) button 요소인 경우
+                    box-sizing: border-box 가 기본 적용됨!
+
+                ___________________________________
+
+                [ 기타 display ]
+                1. table : 테이블 요소
+                2. flex : 유동적인 레이아웃 요소
+                3. grid : 그리드 레이아웃 요소
+
+
                 
 
 
@@ -120,6 +163,9 @@
         <img src="./imgs/blogo.png" alt="로고" title="나는 img다!">
         <span>나는 span이다!</span>
         <b>나는 b다!</b>
+        <button>
+            나는 button이다! 나는 인라인인가?
+        </button>
         <i>나는 i다!</i>
         <em>나는 em이다!</em>
         <strong>나는 strong이다!</strong>
