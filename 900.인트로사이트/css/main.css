@@ -14,7 +14,7 @@ html,body,.page{
 
 body{
     background: 
-    url(../images/worksbg.jpg) no-repeat center/cover;
+    url(../images/worksbg.jpg) no-repeat fixed center/cover;
 
     /* background-image: 
     linear-gradient(to bottom,rgb(205, 255, 227),rgb(247, 206, 255)); */
@@ -26,7 +26,21 @@ body{
         to top, to left, to right, to bottom
     */
 }
-.wrap{
+
+/* 메뉴박스 */
+.menu{
+    width: 700px;
+    margin: 0 auto;
+    background-color: rgba(135, 206, 250, 0.696);
+    padding: 15px;
+}
+/* 메뉴 하위 h1,h2 옆으로 흐르게 display변경하기 */
+.menu>*{
+    display: inline-block;
+}
+
+/* 컨텐츠박스 */
+.link-box{
     border: 2px dashed darkblue;
     border-radius: 20px;
     width: 600px;
