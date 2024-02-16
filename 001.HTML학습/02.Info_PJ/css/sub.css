@@ -352,7 +352,23 @@ h2.sub-title{
         2. 각도: 각도deg
         3. 콤마로 나열된 색상 뒤에 %수치를 쓰면 비율조정가능
     */
-    background-image: linear-gradient(to right,red,blue,yellow);
+    /* background-image: linear-gradient(-45deg,red 5%,blue 20%,blue 80%,yellow); */
+    background-image: 
+    linear-gradient(46deg,#f8abff 10%,#b3ffd7 60%,#8a9cff 80%);
+
+    /* padding */
+    padding: 1px;
+    /* 
+        부모박스에 패딩이 없는 상태에서
+        첫번째 자식 블록박스의 마진은
+        부모 바깥쪽으로 나가서 셋팅된다!
+        이유는 마진은 바깥쪽으로 셋팅하는 개념이고
+        부모가 이를 셋팅하지 않았다면
+        첫번째 블록박스에서 마진을 셋팅할 수 있도록
+        기본 설계 되어 있다!
+        -> 패딩을 주는 순간 자식의 마진은
+        패딩의 내부공간을 밀게된다!
+    */
 }
 /* 작품 타이틀 */
 .work h4{
@@ -360,6 +376,12 @@ h2.sub-title{
     font-weight: normal;
     font-size: 28px;
     color: #333;
+
+    margin: 0;
+    /* 부모에 패딩없는 상태에서 
+    첫번째 자식마진은 부모바깥으로 나감!
+    참고) 마지막 자식블록요소도
+    부모 박스 하단 마진은 바깥으로 나감! */
 
 }
 
