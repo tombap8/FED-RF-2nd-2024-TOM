@@ -1,6 +1,13 @@
 @charset "utf-8";
 /* 인트로 사이트 메인 CSS - main.css */
 
+/* 스크롤 애니메이션 셋팅 */
+html{
+    scroll-behavior: smooth;
+    /* html 즉, Root에 부드러운 스크롤 설정을 하면
+    이동시 스크롤 애니메이션이 연출된다! */
+}
+
 /* 마진,패딩 초기화 */
 html,body,h1,h2,h3,p{
     margin: 0;
