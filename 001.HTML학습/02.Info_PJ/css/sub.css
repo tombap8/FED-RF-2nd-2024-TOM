@@ -360,7 +360,7 @@ h2.sub-title{
 
     /* padding */
     padding: 20px;    
-    border: 13px dotted blue;
+    border: 13px dotted rgb(206, 206, 206);
     /* 
         부모박스에 패딩이 없는 상태에서
         첫번째 자식 블록박스의 마진은
@@ -410,6 +410,7 @@ h2.sub-title{
 
 /* 작품 이미지 */
 .work img{
+    /* 액자틀모양 보더 */
     border: 12px ridge goldenrod;
 }
 
