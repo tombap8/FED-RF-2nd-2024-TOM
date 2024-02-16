@@ -5,7 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>02. 블록과 인라인</title>
     <style>
-        
+        /* 타이틀 */
+        .tit{
+            text-align: center;
+            border: 5px dotted orange;
+            background-color: lightblue;
+        }
+        /* 
+            선택자에 별(*)은 모든의 의미!
+            그래서 모든 요소를 선택함!
+            .ele * 클래스 ele 하위 모든 요소들 선택
+        */
+        .ele * {
+            /* 박스모델의 기본속성 디자인주기 */
+            width: 200px;
+            height: 150px;
+            border: 10px solid blue;
+            margin: 20px;
+            padding: 20px;
+        }
     </style>
 </head>
 <body>
