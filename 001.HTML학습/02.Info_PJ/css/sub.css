@@ -571,3 +571,81 @@ h2.sub-title{
 .sec-news dd+dt{
     margin-top: 40px;
 }
+
+/* 사진뉴스 박스 */
+ /* 타이틀 변경하기 */
+ .photo-news h3{
+    /* 배경 그라데이션 없애기 */
+    background-image: none;
+    /* 중앙정렬 */
+    text-align: center;
+ }
+ /* 타이틀 앞 가상요소 아이콘넣기 */
+ .photo-news h3::before{
+    content: '📷';
+    font-size: 32px;
+    margin-right: 8px;
+    vertical-align: -2px;
+ }
+ /* 타이틀 뒤 가상요소 아이콘넣기 */
+ .photo-news h3::after{
+    content: '📺';
+    font-size: 33px;
+    margin-left: 8px;
+    vertical-align: 1px;
+ }
+
+ /* 사진 뉴스 테이블
+ - 테이블은 기본적으로 내용만큼 가로크기를
+ 가지며 부모박스의 크기가 작아질 경우 그
+ 크기에 맞춰진다! */
+ .photo-news table{
+    max-width: 500px;
+    /* 최대width 지정시 부모박스가
+    이 크기 보다 작아질때 auto로 전환됨 */
+
+    /* 테이블 중앙 - 마영오!
+    (블록,테이블 모두 공통) */
+    margin: 0 auto;
+
+    /* 테두리 */
+    border: 2px solid #ccc;
+
+    /* 테이블 기본 간격없앰(정확한 수치화를 위해) */
+    border-collapse: collapse;
+    /* separate 기본값(사이간격있음)
+    -> table태그에 border='1' 로 확인가능! */
+
+ }
+
+ /* tr이나 td에 child 선택자 사용가능!
+ 왜? table tr td 정해짐! 같은 종류의 형제요소들만 올 수 있음! */
+
+ /* 첫번째 td - 숫자부분 */
+ .photo-news td:first-child{
+    /* 가로크기 */
+    width: 50px;
+    /* 세로크기 */
+    height: 84px;
+ }
+
+ /* 두번째 td - 기사제목링크 */
+ .photo-news td:nth-child(2){
+    /* 배경색: bgc */
+    background-color: #e4e4e4;
+    /* 패딩양쪽 */
+    padding: 0 20px;
+}
+
+/* 세번째 td */
+.photo-news td:last-child{
+     /* 배경색: bgc */
+     background-color: #e4e4e4;
+ }
+
+ /* 사진뉴스 이미지 */
+ .photo-news img{
+    height: 70px;
+    /* 이미지 높이값만 주면 가로크기는 자동! */
+    vertical-align: middle;
+ }
