@@ -627,6 +627,10 @@ h2.sub-title{
     width: 50px;
     /* 세로크기 */
     height: 84px;
+    /* 글자중앙 */
+    text-align: center;
+    /* 배경색 */
+    background-color: #ccc;
  }
 
  /* 두번째 td - 기사제목링크 */
