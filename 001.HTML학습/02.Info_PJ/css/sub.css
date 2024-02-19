@@ -481,7 +481,7 @@ h2.sub-title{
 }
 
 /* 주요뉴스 ul 변경하기 */
-.main-news ul{
+.news-box ul,.news-box ol{
     /* 기본리스트 숨기기 */
     list-style: none;
     /* 기본 마진,패딩없애기 */
