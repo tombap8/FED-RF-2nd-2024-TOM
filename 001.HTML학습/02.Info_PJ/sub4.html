@@ -320,6 +320,47 @@
             </dl>
           </article>
 
+          <!-- 
+            [ 테이블 요소 : table ]
+            table > tbody > tr > td
+
+            -> tbody는 안쓰고 tr부터 구현해도
+            브라우저가 자동으로 그려준다!
+
+            주의) table > tr 로 직계선택하게 되면
+            위와 같은 구조적인 이유로 선택되지 않는다!
+
+            _______________________________
+
+            ((간단한 테이블 작성시 필수요소 3가지!))
+            table : 테이블 박스 부모요소
+            tr : 테이블 행요소(table row)
+            td : 테이블 데이터요소(table data)
+           -->
+
+           <!-- 사진 뉴스 : table -->
+           <article class="photo-news news-box">
+            <h3>사진뉴스</h3>
+            <!-- 3행3열 테이블 구성하기 -->
+            <table>
+              <tr>
+                <td>1</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td></td>
+                <td></td>
+              </tr>
+            </table>
+           </article>
+
 
 
 

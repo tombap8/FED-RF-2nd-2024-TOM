@@ -452,8 +452,8 @@ h2.sub-title{
     text-shadow: 1px 1px 1px #000;
 }
 
-/* 뉴스 공통 말줄임표시 넣기 */
-.news-box li {
+/* 뉴스 공통 말줄임표시 넣기 + 분야별뉴스도 추가 */
+.news-box li, .sec-news dd {
     /* 기본적으로 블록박스는 내용이 넘치면
     줄바꿈이 되는 랩핑박스가 기본이다!
     줄바꿈 방지하는 속성은 
@@ -559,4 +559,15 @@ h2.sub-title{
     color: blue;
     background-color: lightcoral;
     border-color: darkmagenta;
+}
+/* TV/연예 */
+.sec-news dt:last-of-type{
+    color: green;
+    background-color: lightskyblue;
+    border-color: darkorchid;
+}
+
+/* 첫번째 dt를 제외한 나머지 dt의 마진탑 주기 */
+.sec-news dd+dt{
+    margin-top: 40px;
 }
