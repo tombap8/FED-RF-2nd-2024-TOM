@@ -452,6 +452,23 @@ h2.sub-title{
     text-shadow: 1px 1px 1px #000;
 }
 
+/* 뉴스 공통 말줄임표시 넣기 */
+.news-box li {
+    /* 기본적으로 블록박스는 내용이 넘치면
+    줄바꿈이 되는 랩핑박스가 기본이다!
+    줄바꿈 방지하는 속성은 
+    white-space:nowrap;
+    (기본값은 normal)
+     */
+     /* 1. 줄바꿈방지 */
+     white-space: nowrap;/* whs */
+     /* 2. 넘치는내용 숨기기 */
+     overflow: hidden;/* oh */
+     /* 3. 넘치는 텍스트 말줄임표(입.립스...) */
+     text-overflow: ellipsis;/* tov */
+
+}
+
 /* 뉴스 타이틀 공통 */
 .news-box h3{
     font-family: "Black And White Picture", system-ui;
