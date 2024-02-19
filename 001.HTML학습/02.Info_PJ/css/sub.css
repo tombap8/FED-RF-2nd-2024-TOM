@@ -540,3 +540,23 @@ h2.sub-title{
 .sec-news dd::before{
     content: '🏳‍🌈';
 }
+/* 분야별 뉴스 dt의 가상클래스를 사용한 선택법
+    [ 2가지 이상의 종류의 자식요소가 있을 경우선택법 ]
+    :first-of-type -> 같은 타입(요소) 중 첫번째
+    :last-of-type -> 같은 타입(요소) 중 마지막째
+    :nth-of-type(n) -> 같은 타입(요소) 중 n번째(n은 1부터)
+*/
+
+/* 분야별뉴스 dt별 글자색, 배경색 변경하기 */
+/* 경제 */
+.sec-news dt:first-of-type{
+    color: red;
+    background-color: lightgreen;
+    border-color: yellowgreen;
+}
+/* 사회 */
+.sec-news dt:nth-of-type(2){
+    color: blue;
+    background-color: lightcoral;
+    border-color: darkmagenta;
+}
