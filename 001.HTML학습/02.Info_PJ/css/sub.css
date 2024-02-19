@@ -506,3 +506,17 @@ h2.sub-title{
     - 필수속성 : content
     - 이미지는 content 속성값으로 url() 사용!
 */
+
+/* 분야별 뉴스 dl */
+.sec-news dl{
+    margin: 0;
+}
+/* 분야별 뉴스 dt */
+.sec-news dt{
+    font-family: "Gugi", sans-serif;
+    font-size: 20px;
+    border: 4px dashed darkcyan;
+    padding: 10px;
+    display: inline-block;
+    border-radius: 50%;
+}
