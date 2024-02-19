@@ -429,3 +429,36 @@ h2.sub-title{
 }
 
 
+/* 뉴스파트 공통 클래스 */
+.news-box{
+    border-top: 2px dashed #ccc;
+    margin: 20px 0;/* 마진 위아래 양쪽 */
+    padding: 20px 0;/* 패딩 위아래 양쪽 */
+}
+/* 뉴스파트 공통a요소 */
+.news-box a{
+    /* 글자크기 : fz */
+    font-size: 17px;
+    /* 줄간격 : lh */
+    line-height: 2.5;
+    /* 글자색 : c */
+    color: #222;
+    /* 밑줄없앰 : tdn */
+    text-decoration: none;
+}
+/*  공통 a요소 오버시 */
+.news-box a:hover{
+    color: yellowgreen;
+    text-shadow: 1px 1px 1px #000;
+}
+
+/* 뉴스 타이틀 공통 */
+.news-box h3{
+    font-family: "Black And White Picture", system-ui;
+    font-weight: normal;/* fwn */
+    font-size: 30px;/* fz30 */
+    background-image: 
+    linear-gradient(to right,lightblue,transparent);
+    /* 색상명을 transparent 로 쓰면 투명색 */
+    padding: 10px;
+}
