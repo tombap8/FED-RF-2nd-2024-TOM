@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>03. absolute 포지션</title>
+    <style>
+        .bx{
+            width: 300px;
+            height: 300px;
+            border: 2px solid blue;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;/* fwb */
+            /* 글자세로중앙 */
+            line-height: 300px;
+        }
+
+        /* 첫번째 앱솔루트 박스 */
+        #a1{
+            position: absolute;/* poa */
+            /*******************************************
+                [ 3. absolute 포지션 ] 
+                - 절대적인 부모를 기준하여 위치를 잡는 포지션
+                - 부모자격을 따져서 기준을 삼는다!
+                (단, 위치속성값을 쓴 경우에만!!!)
+
+                1. absolute포지션은 위치이동값을 쓰기전과
+                쓴 후로 나눌 수 있다!
+
+                (1) 위치이동값을 쓰지 않은 경우
+
+                - 자기보다 위에 있는 static한 요소를 존중하여
+                그 아래에 위치함!!!
+                ->>>> 젠틀앱솔루트!!!
+
+                + 어떤 요소의 자식요소로 앱솔루트가 셋팅된 경우
+                그 부모박스에 부모자격이 없을 지라도
+                그 위치를 그대로 유지한다!
+                ->>>>> 젠틀앱솔루트!!!
+
+                -> 앱솔루트 요소보다 아랫쪽에 위치하고 있는
+                static한 요소는 앱솔루트를 인식하지 못하여
+                같은 자리에 올라와 자리를 차지한다!
+
+                (2) 위치이동값을 사용한 경우
+
+                - 위치이동값값을 사용한 부분에 대해서만!!!
+                앱솔루트가 위치를 잡을때 기준이 되는
+                부모는? static이 아닌요소가 부모다!
+
+                -> static이 아닌 포지션이란?
+                relative / abslolute / fixed / sticky
+                
+                
+            *******************************************/
+                background: url(./images/ab1.jpg) no-repeat center/cover;
+            }
+            
+            /* 두번째 앱솔루트 박스 */
+            #a2{
+                position: absolute;
+                bottom: 0;
+                right: 0;
+                /* 부모는? 위의 요소중 부모가 없으므로
+                보이는 화면이 부모가 된다! */
+                
+                background: url(./images/ab1.jpg) no-repeat center/cover;
+        }
+
+
+
+        #r1{
+            position: relative;/* por */
+
+            /* 위치이동값 */
+            top: 100px;
+            left: 100px;            
+
+            background: url(./images/ab5.jpg) no-repeat center/cover;
+        }
+        #r2{
+            position: relative;/* por */
+
+            background: url(./images/ab4.jpg) no-repeat center/cover;
+        }
+        #s1{
+            background-color: lightcoral;
+        }
+        #s2{
+            background-color: lightblue;
+        }
+
+        
+
+        /* 부모를 찾는 앱솔루트! */
+        .bx2{
+            border: 2px dotted orangered;
+            padding: 50px;
+            font-size: 24px;
+            text-align: center;
+        }
+        /* 각 부모박스 */
+        .s5{
+            position: relative;
+            background-color: lightblue;
+        }
+        .s6{
+            position: relative;
+            background-color: lightcoral;
+        }
+        .s7{
+            position: relative;
+            background-color: lightgreen;
+        }
+        .s8{
+            position: relative;
+            background-color: lightsalmon;
+        }
+
+        /* 부모를 찾는 앱솔루트 박스 */
+        .abs{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            color: #fff;
+            background: url(./images/ab1.jpg) no-repeat center/cover;
+        }
+
+
+    </style>
+</head>
+<body>
+   <div class="bx" id="r1">r1</div>
+   <div class="bx" id="s1">s1</div>
+   <div class="bx" id="a1" title="나는 젠틀앱솔루트다!">a1</div>
+   <div class="bx" id="r2">r2</div>
+   <div class="bx" id="s2">s2</div>
+   <div class="bx" id="a2">a2</div>
+
+   <!-- 부모를 찾는 앱솔루트! -->
+   <div class="bx2 s5">s5
+    <div class="bx2 s6">s6
+        <div class="bx2 s7">s7
+            <div class="bx2 s8">s8
+                <div class="abs a3" 
+                title="나는 젠틀앱솔루트다!">a3</div>
+                <div class="abs a4" 
+                title="나는 부모찾아 올라간다!">a4</div>
+                <span class="spabs" title="자동블록전환!!!">
+                    나는 span앱솔루트다!
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- 
+        [ 젠코딩(에밋코딩) ]
+
+        .bx#s${s$}*3
+        ____________________
+        . : 클래스
+        # : 아이디
+        $ : 증가숫자자리
+        *숫자 : 반복생성횟수
+        {} : 데이터출력(꺽쇠사이값)
+        [] : 속성셋팅값
+        > : 하위직계 자식요소
+        + : 형제요소
+        () : 요소구분하기
+
+     -->
+    
+</body>
+</html>
