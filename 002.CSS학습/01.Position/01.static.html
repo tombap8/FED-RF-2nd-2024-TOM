@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01. static 포지션</title>
+    <style>
+        .bx{
+            width: 300px;
+            height: 300px;
+            border: 2px solid blue;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;/* fwb */
+            /* 글자세로중앙 */
+            line-height: 300px;
+        }
+
+        /* 첫번째 박스에 포지션 체크 */
+        #s1{
+            position: static;
+
+            /* 위치 이동속성 적용안됨! */
+            top: 100px;
+            left: 100px;
+
+            margin-top: 50px;
+            margin-left: 50px;
+            /* 
+                [ CSS 포지션이 뭐지? ]
+                - 위치를 효과적으로 배치하기 위한
+                코딩법을 제공하는 속성
+
+                [ 1. static 포지션 ]
+                1. 설정하지 않아도 기본값
+                2. 위치이동속성(top,left,bottom,right)이
+                적용되지 않는다!
+                3. 위치이동은 margin 속성을 사용함!
+                특징: 마진위치이동을 하면
+                아래 또는 옆의 다른 static 요소에
+                영향을 미쳐서 같이 이동됨!
+
+                [ 위치이동속성 ]
+                - 선택요소의 위치를 이동시켜주는 설정 속성
+                - 포지션에 따라서 다르게 적용됨
+                - 종류 : 4가지
+                    top, bottom, left, right
+            */
+           
+
+
+            background-color: lightgreen;
+        }
+        #s2{
+            background-color: lightcoral;
+        }
+        #s3{
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+   <div class="bx" id="s1">s1</div>
+   <div class="bx" id="s2">s2</div>
+   <div class="bx" id="s3">s3</div>
+
+    <!-- 
+        [ 젠코딩(에밋코딩) ]
+
+        .bx#s${s$}*3
+        ____________________
+        . : 클래스
+        # : 아이디
+        $ : 증가숫자자리
+        *숫자 : 반복생성횟수
+        {} : 데이터출력(꺽쇠사이값)
+        [] : 속성셋팅값
+        > : 하위직계 자식요소
+        + : 형제요소
+        () : 요소구분하기
+
+     -->
+    
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>01. static 포지션</title>
+    <style>
+        .bx{
+            width: 300px;
+            height: 300px;
+            border: 2px solid blue;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;/* fwb */
+            /* 글자세로중앙 */
+            line-height: 300px;
+        }
+
+        /* 첫번째 박스에 포지션 체크 */
+        #r1{
+            position: relative;/* por */
+
+            /* 위치이동값 */
+            top: 100px;
+            left: 100px;
+
+            /*******************************************
+                [ 2. relative 포지션 ] 
+                - 렐러티브! 라고 읽어주세요~!
+
+                1. 위치이동 속성이 적용된다!
+
+                2. 위치이동의 기준은 원래있던 위치임!
+                (그래서 상대적인 즉, relative라는 단어를 사용함!)
+
+                3. 이동시 다른 요소에 영향이 없이 겹쳐질 수 있다!
+                (static요소보다는 위, 
+                다른 포지션요소는 나중것이 위)
+
+                4. 원래있던 위치는 그대로 보존된다!
+                (의미: 기존위치가 보존되기 때문에 
+                본래의 디자인이 망가지지 않는다!)
+
+
+
+            
+            *******************************************/
+
+            background: url(./images/ab5.jpg) no-repeat center/cover;
+        }
+        #r2{
+            position: relative;/* por */
+
+            background: url(./images/ab4.jpg) no-repeat center/cover;
+        }
+        #s1{
+            background-color: lightcoral;
+        }
+        #s2{
+            background-color: lightblue;
+        }
+
+    </style>
+</head>
+<body>
+   <div class="bx" id="r1">r1</div>
+   <div class="bx" id="s1">s1</div>
+   <div class="bx" id="r2">r2</div>
+   <div class="bx" id="s2">s2</div>
+
+    <!-- 
+        [ 젠코딩(에밋코딩) ]
+
+        .bx#s${s$}*3
+        ____________________
+        . : 클래스
+        # : 아이디
+        $ : 증가숫자자리
+        *숫자 : 반복생성횟수
+        {} : 데이터출력(꺽쇠사이값)
+        [] : 속성셋팅값
+        > : 하위직계 자식요소
+        + : 형제요소
+        () : 요소구분하기
+
+     -->
+    
+</body>
+</html>
