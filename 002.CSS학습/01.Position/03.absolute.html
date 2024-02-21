@@ -173,6 +173,21 @@
             */
         }
 
+        /* 블록박스내에 단독 이미지 
+        하단 공백 4px 무엇인가? */
+        .a5 img{
+            vertical-align: top;
+            /* 
+                박스에 단일한 이미지를 넣은 경우
+                하단에 자연스런 간극이 존재한다(4px)
+                이것을 없애려면 vertical-align
+                인라인요소간 세로정렬 속성의 값으로
+                top/bottom/middle 중 하나로 셋팅하면
+                하단 간극이 사라진다!
+                (baseline 값을 적용안됨!)
+            */
+        }
+
     </style>
 </head>
 <body>
@@ -186,6 +201,12 @@
    <!-- 앱솔루트 : 판타롱스타킹! -->
    <div class="a5" title="앱솔루트 판타롱스타킹~!">
     <img src="./images/ab2.jpg" alt="타노스">
+   </div>
+
+   <!-- 앱솔루트끼리는 서로 겹친다! -->
+   <div class="absimg">
+    <img src="./images/ab3.jpg" alt="토르">
+    <img src="./images/ab4.jpg" alt="닥스">
    </div>
 
    <!-- 부모를 찾는 앱솔루트! -->
