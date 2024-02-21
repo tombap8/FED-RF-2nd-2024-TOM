@@ -80,7 +80,8 @@
         }
         #r2{
             position: relative;/* por */
-
+            top: 170px;
+            left: 170px;
             background: url(./images/ab4.jpg) no-repeat center/cover;
         }
         #s1{
@@ -126,6 +127,18 @@
             background: url(./images/ab1.jpg) no-repeat center/cover;
         }
 
+        /* 
+            .a3는 위치 이동값이 없으므로
+            젠틀하다!!! -> 싸고 있는 박스안에 패딩과 글자 다음에
+            위치하여 가만히 있는다!
+        */
+
+        /* .a4는 위치이동값을 사용하자! -> 부모찾아 삼만리! */
+        .a4{
+            top: 0;
+            left: 0;
+            /* 나의 부모는?  */
+        }
 
     </style>
 </head>
@@ -144,8 +157,10 @@
             <div class="bx2 s8">s8
                 <div class="abs a3" 
                 title="나는 젠틀앱솔루트다!">a3</div>
+
                 <div class="abs a4" 
                 title="나는 부모찾아 올라간다!">a4</div>
+
                 <span class="spabs" title="자동블록전환!!!">
                     나는 span앱솔루트다!
                 </span>
