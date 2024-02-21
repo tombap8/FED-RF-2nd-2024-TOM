@@ -137,7 +137,40 @@
         .a4{
             top: 0;
             left: 0;
-            /* 나의 부모는?  */
+            /* 나의 부모는? .s8 */
+
+            width: 25%;
+            height: 40%;
+            /* 앱솔루트요소 크기를 %로 주면
+            부모자격박스를 기준한다! */
+        }
+
+        /* span을 앱솔루트로 만들경우! */
+        .spabs{
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            /* 나의 부모는? .s7 */
+            border: 4px dotted red;
+        }
+
+        /* 앱솔루트 : 판타롱스타킹! */
+        .a5{
+            position: absolute;
+            /* 박스크기를 안준 앱솔루트는 그 크기가
+            내용만큼 늘어남! width,height 모두!!! */
+            top: 20%;
+            right: 10%;
+            /* 부모는? 보이는 화면! */
+
+            outline: 2px solid red;
+            /* 
+                outline은 보더와 유사하지만
+                보더는 박스 크기에 영향을 주는
+                필수 구성요소지만 다른영향이 전혀없는
+                외곽선만 표시하는 속성이다!
+                outline: 두께 종류 색상 (보더와 같다!)
+            */
         }
 
     </style>
@@ -149,6 +182,11 @@
    <div class="bx" id="r2">r2</div>
    <div class="bx" id="s2">s2</div>
    <div class="bx" id="a2">a2</div>
+
+   <!-- 앱솔루트 : 판타롱스타킹! -->
+   <div class="a5" title="앱솔루트 판타롱스타킹~!">
+    <img src="./images/ab2.jpg" alt="타노스">
+   </div>
 
    <!-- 부모를 찾는 앱솔루트! -->
    <div class="bx2 s5">s5
