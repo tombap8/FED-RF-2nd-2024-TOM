@@ -9,9 +9,13 @@ html{
 }
 
 /* 마진,패딩 초기화 */
-html,body,h1,h2,h3,p{
+html,body,h1,h2,h3,p,ul,ol{
     margin: 0;
     padding: 0;    
+}
+ul,ol{
+    list-style: none;
+    /* 리스트 스타일 없앰 */
 }
 
 html,body,.page{
@@ -19,7 +23,7 @@ html,body,.page{
     height: 100%;
 }
 
-body{
+#pg1{
     background: 
     url(../images/worksbg.jpg) no-repeat fixed center/cover;
 
@@ -33,21 +37,68 @@ body{
         to top, to left, to right, to bottom
     */
 }
+#pg2{
+    background: 
+    url(../images/sunset.jpg) no-repeat fixed center/cover;
+
+}
+
+/* 상단영역 */
+.top-area{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #ffffff78;
+    /* 패딩 : 위아래만 */
+    padding: 20px 0;
+    /* 상단박스 맨위! */
+    z-index: 999;
+}
+/* 로고박스 */
+.logo{
+    text-align: center;
+}
+
 
 /* 메뉴박스 */
 .menu{
     width: 700px;
     margin: 0 auto;
-    background-color: rgba(135, 206, 250, 0.696);
+    /* background-color: rgba(135, 206, 250, 0.696); */
     padding: 15px;
 }
-/* 메뉴 하위 h1,h2 옆으로 흐르게 display변경하기 */
-.menu>*{
-    display: inline-block;
+/* clear설정 */
+.menu ul::after{
+    content: '';
+    display: block;
+    clear: both;
 }
+/* 각 리스트 */
+.menu li{
+    /* 블록요소 옆으로 흐르게 */
+    float: left;
+    width: 50%;
+    text-align: center;
+    font-size: 30px;
+}
+/* 메뉴 a요소 : 글자색변경, 밑줄없앰 */
+.menu a{
+    color: #222;
+    text-decoration: none;
+}
+/* 메뉴 오버시 */
+.menu a:hover{
+    color: hotpink;
+    text-decoration: overline;
+    text-decoration-style: wavy;
+}
+
 
 /* 컨텐츠박스 */
 .link-box{
+    position: relative;
+    top: 40%;
+    
     border: 2px dashed darkblue;
     border-radius: 20px;
     width: 600px;
