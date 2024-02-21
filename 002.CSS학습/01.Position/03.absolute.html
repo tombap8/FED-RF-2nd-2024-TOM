@@ -188,6 +188,34 @@
             */
         }
 
+        /* 앱솔루트끼리는 서로 겹친다! */
+        .absimg{
+            /* 자식요소가 모두 앱솔루트면 스스로 박스크기를
+            지정해야한다! */
+            width: 92px;
+            height: 115px;
+            border: 10px ridge goldenrod;
+            margin: 100px auto;
+
+            /* 원형 : 50% */
+            border-radius: 50%;
+            /* 사각형 이미지가 바깥으로 나가 보이는것
+            숨기기 위해 hidden설정 주었지만 효과없음!
+            왜? 숨기기는 원래 앱솔루트의 부모자격이 있는
+            요소에서만 가능하다! */
+            overflow: hidden;
+
+            /* 이미지가 젠틀하지만 hidden적용을 위해
+            포지션을 준다! */
+            position: relative;
+
+        }
+        /* 이미지 앱솔루트 */
+        .absimg img{
+            position: absolute;
+        }
+        
+
     </style>
 </head>
 <body>
