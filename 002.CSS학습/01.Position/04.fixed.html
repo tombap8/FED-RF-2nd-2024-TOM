@@ -19,10 +19,46 @@
         /* 첫번째 fixed 요소 */
         #f1{
             position: fixed;/* pof */
+            /**************************************
+                [ 4. fixed 포지션 ] 
+
+                1. 보이는 화면을 기준한 포지션이다!
+                -> 대부분의 속성은 absolute와 같으나
+                부모만 다르다고 보면 된다!
+
+                2. 스크롤이 내려갈때 요소가 그대로 화면에 멈춰있다!
+
+                3. 위치속성값을 설정하지 않으면 젠틀하다!
+                -> 젠틀픽스드!!! (젠틀앱솔루트와 같음!)
+
+                4. 크기설정을 하지 않으면 내용만큼 자동크기설정됨!
+                -> 픽스드 판타롱스타킹!!! (앱솔루트와 같음)
+
+                5. 인라인요소도 fixed를 주면 block으로 자동전환됨!
+
+                6. 부모요소가 아무리 많이 싸여있어도 fixed를 주면
+                화면을 기준하여 위치를 잡는다!
+
+                7. 이미 부모가 fixed이면 자손요소는 fixed를 
+                할 필요가 없다!
+
+                8. 활용도
+                1) 스크롤에 관계없이 화면고정시
+                2) 화면바깥에 숨겼다가 나타나기를 할때
+                3) 보이는 화면을 기준하는 구현의 모든경우
+
+                (유의: 배경고정과는 다르다! 배경고정은
+                보이는 화면을 기준한 박스의 배경이미지를
+                고정해 주는 것! 박스가 움직이면 배경이미지도
+                안보이게됨! 반명  fixed포지션은 요소를 고정함!)
+            
+            **************************************/
             width: 800px;
             height: 200px;
             background-color: yellow;
             line-height: 200px;
+            /* 기존 포지션 보다 위 */
+            z-index: 1;
         }
 
 
@@ -220,6 +256,47 @@
             opacity: 1;
         }
 
+        /* 포스터 보기 fixed적용박스 */
+        .fixed-poster{
+            position: fixed;
+            top: 250px;
+            right: 0;
+            z-index: 999;
+        }
+        /* 글자 span */
+        .fixed-poster span{
+            position: absolute;
+            top: 0;
+            left: -50px;
+            /* 부모는? .fixed-poster */
+            width: 50px;
+            height: 300px;
+            background-color: lightblue;
+
+            /* 글자 세로모드 */
+            writing-mode: vertical-lr;
+            /* vertical-lr
+            세로방향 왼쪽에서 오른쪽으로 */
+            font-size: 25px;
+            text-align: center;
+            padding-left: 20px;
+            /* 자간 ls */
+            letter-spacing: 10px;
+
+            /* 둥근 모서리보더 방향별주기 
+            border-radius: 왼위 오른위 오른아래 왼아래;
+            왼쪽위부터 시계방향*/
+            border-radius: 15px 0 0 15px;
+
+        }
+
+        /* 포스터 이미지 */
+        .fixed-poster img{
+            height: 300px;
+            /* 하단간극 없앰 vam */
+            vertical-align: middle;
+        }
+
     </style>
 </head>
 <body>
@@ -230,6 +307,12 @@
    <div class="bx" id="r2">r2</div>
    <div class="bx" id="s2">s2</div>
    <div class="bx" id="a2" title="나는 보이는 화면이 기준이다! 부모가 없어서 ㅠ.ㅠ">a2</div>
+
+   <!-- 포스터 보기 fixed적용박스 -->
+   <div class="fixed-poster">
+    <img src="./images/ab0.jpg" alt="포스터">
+    <span>포스터보기</span>
+   </div>
 
    <!-- 앱솔루트 : 판타롱스타킹! -->
    <div class="a5" title="앱솔루트 판타롱스타킹~!">
