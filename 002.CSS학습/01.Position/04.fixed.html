@@ -260,8 +260,14 @@
         .fixed-poster{
             position: fixed;
             top: 250px;
-            right: 0;
+            right: -190px;
             z-index: 999;
+            /* 트랜지션 : trs */
+            transition: 0.3s;
+        }
+        /* 오버시 보이기 */
+        .fixed-poster:hover{
+            right: 0;
         }
         /* 글자 span */
         .fixed-poster span{
