@@ -214,7 +214,34 @@
         .absimg img{
             position: absolute;
         }
-        
+
+        /* 두번째 이미지 투명하게 만들기 */
+        .absimg img:last-child{
+            opacity: 0;
+            /* filter: opacity(); - 이전방식투명도 */
+            /* 
+                [ opacity 속성 : 투명도 ]
+                - 실제로 요소가 위치하고 있지만
+                화면에 투명하게 보이게하는 속성
+                - 값 : 0 - 완전투명
+                        1 - 불투명
+                        0.몇 - 중간 투명도
+            */
+
+            /* 트랜지션 : 두 상태간 애니메이션 효과속성
+                transition : 속성 시간 이징 지연시간
+                transition: 속시이지;
+                간단하게는 애니메이션 시간만 쓰면
+                모든 변화가 애니메이션 된다!
+                -> 시간은 초단위(s)
+            */
+            transition: 1.2s;
+        }
+
+        /* 박스에 마우스 오버시 두번째 이미지 나타나기 */
+        .absimg:hover img:last-child{
+            opacity: 1;
+        }
 
     </style>
 </head>
