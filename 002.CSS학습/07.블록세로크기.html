@@ -61,6 +61,61 @@
         .bx2{
             max-height: 600px;/* mah600 */
         }
+
+        /* 3. 최소높이 700px
+            - 최소높이 설정값 보다 내용이 적을 경우에도
+            최소높이를 유지함!
+            - 디자인상 박스의 최소 높이를 유지하며
+            내용이 유동적이어서 너무 내용이 없을 때를 
+            대비하여 줄 수 있다!
+        */
+        .bx3{
+            min-height: 700px;/* mh700 */
+        }
+        /* 4. 최대 800px, 최소 700px 높이값 */
+        .bx4{
+            max-height: 800px;/* mah800 */
+            min-height: 700px;/* mh700 */
+        }
+
+        /* 
+            [ overflow 속성이란? ]
+            - 블록박스 내용요소가 넘칠때 보이는 옵션을
+            설정하는 속성
+            - 기본값 : visible -> 넘치는 내용 보임!
+            - 세부속성:
+                가로축 -> overflow-x
+                세로축 -> overflow-y
+        */
+        /* 1. overflow: visible */
+        .ov1{
+            overflow: visible;
+            /* 설정값 안줘도 기본값임! */
+        }
+        /* 2. overflow: hidden */
+        .ov2{
+            overflow: hidden;
+            /* 추가로 넘치는 자식만 숨기는게 아니고
+            자식요소 블록박스 중 첫번째와 마지막 자식의
+            마진값을 포함시킬때도 사용할 수 있다!
+             */
+        }
+        /* 3. overflow-y: scroll; */
+        .ov3{
+            /* overflow: scroll; 
+                - 전체설정에 주면 x,y축 스크롤바트랙이 
+                모두 생성됨. 따라서 y축만 따로 준다!
+                - 스크롤바 트랙은 내용이 적어도 나타나있음!
+            */
+            overflow-y: scroll;
+        }
+        /* 4. overflow: auto (ova) 
+            - 내용이 박스보다 많아지면 자동으로 세로방향
+            스크롤바 트랙이 표시된다!(방향별 셋팅 불필요!)
+        */
+        .ov4{
+            overflow: auto;            
+        }
     </style>
 </head>
 <body>
