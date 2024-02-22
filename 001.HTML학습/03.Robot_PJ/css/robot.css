@@ -191,7 +191,7 @@ body * {
     width: 70px;
     height: 200px;
 }
-/* 팔하단공통 */
+/* 다리하단공통 */
 .leg span{
     position: absolute;
     /* 부모는? .leg */
@@ -200,11 +200,11 @@ body * {
     width: 80%;
     height: 80%;
 }
-/* 왼팔 */
+/* 왼다리 */
 .leg1{
     left: 0px;
 }
-/* 오른팔 */
+/* 오른다리 */
 .leg2{
     right: 0px;
 }
