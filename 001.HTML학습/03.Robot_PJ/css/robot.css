@@ -137,7 +137,78 @@ body * {
     /* 마.영.오! */
     margin: 0 auto;
     margin-top: 50px;
+    /* 배경이미지 조정 */
+    background-repeat: repeat;
+    background-size: 50%;
 }
+/* 목 */
+.neck{
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px/2);
+    /* 
+        [ 가로/세로 중앙보내기 계산법 ]
+        top : calc(50% - 크기/2)
+        left : calc(50% - 크기/2)
+        -> 크기는 left일 경우 width이고
+        top일 경우 height값이다!
+    */
+    width: 50px;
+    height: 50px;
+}
+
+/* 팔공통 */
+.arm{
+    position: absolute;
+    top: 0;
+    /* 부모는? .body */
+    width: 50px;
+    height: 180px;
+}
+/* 팔하단공통 */
+.arm span{
+    position: absolute;
+    /* 부모는? .arm */
+    top: 100%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+}
+/* 왼팔 */
+.arm1{
+    left: -50px;
+}
+/* 오른팔 */
+.arm2{
+    right: -50px;
+}
+
+/* 다리공통 */
+.leg{
+    position: absolute;
+    top: 100%;
+    /* 부모는? .body */
+    width: 70px;
+    height: 200px;
+}
+/* 팔하단공통 */
+.leg span{
+    position: absolute;
+    /* 부모는? .leg */
+    top: 100%;
+    left: 10%;
+    width: 80%;
+    height: 80%;
+}
+/* 왼팔 */
+.leg1{
+    left: 0px;
+}
+/* 오른팔 */
+.leg2{
+    right: 0px;
+}
+
 
 
 /**************** 3.하단영역 ****************/
