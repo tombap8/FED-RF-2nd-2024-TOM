@@ -1,0 +1,43 @@
+@charset "utf-8";
+
+/* 어벤저스 : 리셋 CSS - reset.css */
+/* 기본 초기화 셋팅 */
+
+/* 기본 초기화 */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ul,
+ol,
+dl,
+dt,
+dd,
+p,
+figure,
+figcaption {
+    margin: 0;
+    padding: 0;
+}
+
+/* ul,ol 순번,블릿없앰 */
+ul,ol{
+    list-style: none;
+}
+
+/* a요소 리셋 */
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+/* heading 요소 글자크기 */
+h1,h2,h3,h4,h5,h6{
+    font-size: 100%;
+    /* 박스 디자인시 글자크기로 인한
+    영향을 없애기 위한 초기화! */
+}
