@@ -11,3 +11,14 @@
     font-family: 'Chakra Petch', sans-serif;
     font-family: 'Orbitron', sans-serif;
 */
+
+
+/* 초기화 : 마진0,패딩0 */
+html,body,h1,h2,h3,ul,ol{
+    margin: 0;
+    padding: 0;
+}
+/* 전체 배경이미지 */
+body{
+    background: url(../images/bg.jpg) no-repeat fixed top/cover;
+}
