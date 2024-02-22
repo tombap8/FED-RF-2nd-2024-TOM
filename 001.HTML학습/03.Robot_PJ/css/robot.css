@@ -128,6 +128,17 @@ body * {
     border-radius: 0 20px 20px 0;
 }
 
+/* 2-1-2.몸통 */
+.body{
+    position: relative;
+    /* 부모자격 - 하위직계 자식 div들 */
+    width: 220px;
+    height: 400px;
+    /* 마.영.오! */
+    margin: 0 auto;
+    margin-top: 50px;
+}
+
 
 /**************** 3.하단영역 ****************/
 
