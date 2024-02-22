@@ -51,24 +51,81 @@ body * {
     /* 부모자격 - .eye의 부모 */
     width: 250px;
     height: 250px;
+    /*  특정크기를 가지는 블록요소를
+    가로중앙으로 이동하기 - 마영오~! */
+    margin: 0 auto;
+
+    /* 모서리 라운드처리
+    왼쪽위부터 시계방향 수치입력 */
+    border-radius: 90px 90px 30px 30px;
 }
 /* 눈공통 */
 .eye{
     position: absolute;
+    /* 부모는? .head */
+    top: 50px;
     /* 크기공통 */
     width: 50px;
     height: 50px;
     /* 배경공통 */
     background-repeat: no-repeat;
     background-size: 100% 100%;
+    background-color: #fff;
+
+    /* 둥근눈 */
+    border-radius: 50%;
+    /* 이중테두리 */
+    border: 4px double #000;
 }
 /* 왼눈 */
 .eye1{
+    left: 50px;
     background-image: url(../images/e1.jpg);
 }
 /* 오른눈 */
 .eye2{
+    right: 50px;
     background-image: url(../images/e2.jpg);
+}
+
+/* 코 */
+.nose{
+    position: absolute;
+    top: 101px;
+    left: 101px;
+    width: 50px;
+    height: 70px;
+    background: url(../images/nose.jpg) no-repeat -7px/cover;
+    border-radius: 20px;
+}
+/* 입 */
+.mouth{
+    position: absolute;
+    top: 184px;
+    left: 70px;
+    width: 112px;
+    height: 48px;
+    background: url(../images/mouth.png) no-repeat 0/100% 100%;
+}
+
+/* 귀공통 */
+.ear{
+    position: absolute;
+    top: 70px;
+    width: 58px;
+    height: 90px;
+}
+/* 왼귀 */
+.ear1{
+    left: -58px;
+    /* 라운드처리 */
+    border-radius: 20px 0 0 20px;
+}
+/* 오른귀 */
+.ear2{
+    right: -58px;
+    /* 라운드 처리 */
+    border-radius: 0 20px 20px 0;
 }
 
 
