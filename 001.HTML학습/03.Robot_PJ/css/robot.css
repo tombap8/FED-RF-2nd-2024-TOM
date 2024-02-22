@@ -22,3 +22,56 @@ html,body,h1,h2,h3,ul,ol{
 body{
     background: url(../images/bg.jpg) no-repeat fixed top/cover;
 }
+
+/* 공사중 표시 */
+body * {
+    outline: 2px dashed yellow;
+}
+
+/**************** 공통 클래스 ****************/
+/* 메탈배경 클래스 */
+.metal1{
+    background: url(../images/metal01.jpg) no-repeat center/cover;
+}
+.metal2{
+    background: url(../images/metal02.jpg) no-repeat center/cover;
+}
+
+/**************** 1.상단영역 ****************/
+
+
+/**************** 2.메인영역 ****************/
+/* 2-1.로봇박스 */
+.robot-box{
+
+}
+/* 2-1-1.로봇머리 */
+.head{
+    position: relative;
+    /* 부모자격 - .eye의 부모 */
+    width: 250px;
+    height: 250px;
+}
+/* 눈공통 */
+.eye{
+    position: absolute;
+    /* 크기공통 */
+    width: 50px;
+    height: 50px;
+    /* 배경공통 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+/* 왼눈 */
+.eye1{
+    background-image: url(../images/e1.jpg);
+}
+/* 오른눈 */
+.eye2{
+    background-image: url(../images/e2.jpg);
+}
+
+
+/**************** 3.하단영역 ****************/
+
+
