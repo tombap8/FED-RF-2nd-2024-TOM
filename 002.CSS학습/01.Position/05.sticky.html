@@ -33,6 +33,21 @@
                  사라지지 않도록 변경한다!
 
                 3. sticky 적용구간
+                -> 싸고 있는 박스가 기준이된다!
+                주의사항)
+                1) 전체 스크롤시 적용요소가
+                body 바로 아래 자식요소로 있어야함
+
+                2) 부모요소를 만들고 그 부모요소들중
+                overflow: auto / hidden / scroll
+                이 적용된 경우 스티키가 작동안함!
+
+                3) 특정박스 하위요소인 경우 스티키는
+                박스 내부에서만 보이는 화면기준으로 작동하기
+                때문에 반드시 height값이 셋팅되어야함!
+                height:auto 또는 height값이 없으면 
+                스티키 작동안함! 
+                (높이값을 기준으로 작동하기 때문임!!!)
 
             **************************************/
 
@@ -338,16 +353,40 @@
             z-index: 99999;
         }
 
+        /* 스티키 적용 구간 부모박스 */
+        .wrap-stk{
+            padding: 15px;
+            border: 5px dotted red;
+            height: 500px;
+            /* 스티키 구간적용을 위한 높이값 필수! */
+            /* overflow: hidden/auto/scroll;
+            구간박스에 순수 높이값 셋팅을 방해하는
+            설정을 하면 스티키가 적용안됨! */
+        }
+        /* 스티키를 포함하는 부모박스 */
+        .wrap{
+            padding: 15px;
+            border: 5px dotted blue;
+            /* overflow: hidden/auto/scroll;
+            조상들 중 박스에 순수 높이값 셋팅을 방해하는
+            설정을 하면 스티키가 적용안됨! */
+        }
+
+
     </style>
 </head>
 <body>
    <div class="bx" id="r1">r1</div>
    <div class="bx" id="s1">s1</div>
 
-   <div class="wrap-stk">
-       <!-- 스티키 포지션 박스 -->
-       <div class="stkbx">
-        나는 sticky다! 사라지지 않아!
+   <!-- 스티키를 포함하는 부모박스 -->
+   <div class="wrap">
+        <!-- 스티키 구간적용 박스 -->
+       <div class="wrap-stk">
+           <!-- 스티키 포지션 박스 -->
+           <div class="stkbx">
+            나는 sticky다! 사라지지 않아!
+           </div>
        </div>
    </div>
    <div class="bx" id="f1">나는 젠틀픽스드다!</div>
