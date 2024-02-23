@@ -270,6 +270,23 @@ body * {
     width: 80%;
     height: 80%;
 }
+/* 다리하단 가상요소 부츠만들기 공통 */
+/* 부츠상단 */
+.leg span::before{
+    content: '';
+    position: absolute;
+    /* 부모는? span */
+    top: 60%;
+    left: -10%;
+    width: 120%;
+    height: 120%;
+    /* 배경 그라데이션 */
+    background-image: 
+    linear-gradient(to right, #ccc, #222);
+    border: 5px solid #000;
+    /* 보더,패딩 포함박스 */  box-sizing: border-box;
+
+}
 /* 왼다리 */
 .leg1{
     left: 0px;
