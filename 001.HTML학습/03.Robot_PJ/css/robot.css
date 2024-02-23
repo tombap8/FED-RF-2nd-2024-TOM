@@ -133,7 +133,7 @@ body * {
     position: relative;
     /* 부모자격 - 하위직계 자식 div들 */
     width: 220px;
-    height: 400px;
+    height: 320px;
     /* 마.영.오! */
     margin: 0 auto;
     margin-top: 50px;
@@ -284,8 +284,8 @@ body * {
     background-image: 
     linear-gradient(to right, #ccc, #222);
     border: 5px solid #000;
+    border-top-width: 20px;
     /* 보더,패딩 포함박스 */  box-sizing: border-box;
-
 }
 /* 부츠하단 */
 .leg span::after{
@@ -295,14 +295,15 @@ body * {
     top: 160%;
     left: -30%;
     width: 160%;
-    height: 30%;
+    height: 40%;
     /* 배경 그라데이션 */
     background-image: 
     linear-gradient(85deg, #ccc, #222);
     border: 5px solid #000;
+    border-bottom-width: 20px;
     border-radius: 40px 40px 0 0;
-    /* 보더,패딩 포함박스 */  box-sizing: border-box;
-
+    /* 보더,패딩 포함박스 */  
+    box-sizing: border-box;
 }
 /* 왼다리 */
 .leg1{
