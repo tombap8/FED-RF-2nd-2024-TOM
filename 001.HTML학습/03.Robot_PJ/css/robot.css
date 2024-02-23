@@ -174,6 +174,31 @@ body * {
     width: 80%;
     height: 80%;
 }
+/* 팔하단 가상요소 손만들기 공통 */
+.arm span::after{
+    content: '';
+    position: absolute;
+    /* 부모는? span */
+    top: 100%;
+    width: 80px;
+    height: 110px;
+    outline: 2px dotted lime;
+    /* 배경공통 */
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+/* 왼손 */
+.arm1 span::after{
+    /* 배경이미지경로 */
+    background-image: 
+    url(../images/hand_left.png);
+    /* left위치값 */
+}
+/* 오른손 */
+.arm2 span::after{
+
+}
+
 /* 왼팔 */
 .arm1{
     left: -50px;
@@ -230,11 +255,33 @@ body * {
 /* TV */
 .tv{
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 120px;
-    height: 70px;
+    top: 22px;
+    left: 22px;
+    width: 178px;
+    height: 136px;
     background: url(../images/tv.jpg) no-repeat 0/100% 100%;
+}
+/* 스크린 */
+.screen{
+    position: absolute;
+    /* 부모는? .tv */
+    top: 16px;
+    left: 10px;
+    width: 122px;
+    height: 90px;
+    /* border: 2px dashed blue; */
+    border-radius: 10px;
+    /* 자식유튜브 아이프레임 넘치는부분 숨기기 */
+    overflow: hidden;
+}
+/* 유튭 아이프레임 */
+.screen iframe{
+    position: absolute;
+    /* 부모는? .screen */
+    top: -5px;
+    left: -29px;
+    width: 182px;
+    height: 101px;
 }
 
 
