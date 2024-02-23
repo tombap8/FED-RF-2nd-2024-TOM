@@ -166,17 +166,43 @@ body * {
     height: 180px;
 }
 /* 팔 원형관절 가상요소 공통 */
+/* 큰원 */
 .arm::before{
     content: '';
     position: absolute;
     /* 부모는? .arm */
-    top: 100%;
+    top: calc(100% - 50px/2);
     left: 0;
     width: 50px;
     height: 50px;
+    z-index: 1;
+
     border-radius: 50%;
     border: 2px solid #000;
     background-color: #ccc;
+    /* 보더때문에 박스가 커지므로
+    패딩,보더 포함박스설정하기 */
+    box-sizing: border-box;
+}
+/* 작은원 */
+.arm::after{
+    content: '';
+    position: absolute;
+    /* 부모는? .arm */
+    top: calc(100% - 40px/2);
+    /* 부모박스 바깥으로 모두 밀고 원크기 절반 빼기 */
+    left: calc(50% - 40px/2);
+    /* 부모박스 절반만큼 밀고 원크기 절반 빼기(가로중앙) */
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+
+    border-radius: 50%;
+    /* 그라데이션 배경 */
+    background-image: 
+    linear-gradient(to bottom,#ccc,#222);
+    /* 박스 내부그림자 : bsh -> inset 키워드(내부그림자) */
+    box-shadow: inset 0 0 5px #222;
 }
 
 /* 팔하단공통 */
