@@ -15,6 +15,11 @@ html,body,h1,h2,ul,ol{
     margin: 0;
     padding: 0;
 }
+/* 리스트 초기화 */
+ul,ol{
+    /* 블릿,숫자 없앰 : lin */
+    list-style: none;
+}
 body{
     background-color: #000;
 }
@@ -70,6 +75,35 @@ body * {
     height: 100%;
     /* 기본 프레임보더 없앰 */
     border: none;
+}
+/* 2-2.포스터 메뉴 */
+.poster-menu{
+    position: absolute;
+    bottom: 50px;
+    left: 215px;
+    /* 부모는? .main-area */
+    /* 한번에 메인영역 하단으로
+    위치이동 포지셔닝을 하기위한
+    최적의 포지션은 absolute다! */
+}
+/* 포스터 ul 가상요소 clear */
+.poster-menu ul::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+/* 포스터 리스트 */
+.poster-menu li{
+    /* 블록요소 옆으로 흐르게 */
+    float: left;
+}
+/* li리스트 사이간격 */
+.poster-menu li+li{
+    margin-left: 15px;
+}
+/* 포스터 이미지 */
+.poster-menu img{
+    height: 170px;
 }
 /************ 3. 하단영역 ************/
 .footer-area{
