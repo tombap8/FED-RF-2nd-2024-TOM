@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>트랜스폼 기본 사용법</title>
+        <style>
+            body {
+                background: url(./images/bg-main.jpg) no-repeat fixed center top/cover;
+            }
+            /* 타이틀 */
+            .tit {
+                /* 박스셋팅 */
+                border-radius: 50px;
+                background-color: rgba(0, 0, 0, 0.478);
+                text-align: center;
+
+                /* 글자셋팅 */
+                color: #fff;
+                font-size: 50px;
+                line-height: 100px;
+                /* 글자그림자로 테두리주기 */
+                text-shadow: 2px 0 #000, -2px 0 #000, 0 2px #000, 0 -2px #000;
+            }
+
+            /* 전체부모박스 */
+            .cont {
+                /* 박스셋팅 */
+                max-width: 1500px;
+                border: 10px solid lime;
+                border-radius: 20px;
+                padding: 20px;
+                margin: 100px auto;
+                box-sizing: border-box;
+            }
+
+            /* 가상요소로 clear셋팅 */
+            .cont::after {
+                content: "";
+                display: block;
+                clear: both;
+            }
+
+            /* 캐릭터 공통 div */
+            .cont > div {
+                /* 옆으로 흐르게 */
+                float: left;
+                /* 5등분 가로크기 */
+                width: 20%;
+                text-align: center;
+                margin-bottom: 50px;
+            }
+            /* 이미지를 원형으로! */
+            .cont > div > img {
+                width: 200px;
+                height: 200px;
+                border-radius: 50%;
+                /* 트랜지션: 속시이지 */
+                transition: transform 0.6s;
+            }
+
+            /* 
+                [ Transform 효과주기 ]
+                - 선택요소의 크기, 회전, 이동, 기울임
+                 등 변형을 하기위한 속성
+                - 2D, 3D 지원됨
+
+                1. rotateY(각도deg) - Y축회전
+                - deg 는 각도의 단위(도:degree)
+            */
+            #trans1:hover img {
+                
+                
+            }
+
+            /* 
+                2. rotateX(각도deg) - X축회전
+                - deg 는 각도의 단위(도:degree)
+            */
+            #trans2 img {
+               
+            }
+            #trans2:hover img {
+                
+                
+            }
+
+            /* 
+                3. translateX(거리) - X축이동
+                - 단위 : px, % 등
+                - 현재 위치로부터 이동
+                - 기준점은 요소의 왼쪽
+                - % 단위를 쓸경우 기준은 요소의 width값
+                - 이동방향: + 오른쪽, -는 왼쪽
+            */
+            #trans3:hover img {
+                
+            }
+            /* 
+                4. translateY(거리) - Y축이동
+                - 단위 : px, % 등
+                - 현재 위치로부터 이동
+                - 기준점은 요소의 윗쪽
+                - % 단위를 쓸경우 기준은 요소의 height값
+                - 이동방향: + 아랫쪽, -는 윗쪽
+            */
+            #trans4:hover img {
+                
+            }
+            /* 
+                5. translate(x축거리,y축거리) - X,Y축이동
+                - 단위 : px, % 등
+                - 현재 위치로부터 이동
+                - 기준점은 요소의 윗쪽, 왼쪽선
+                - % 단위를 쓸경우 기준은 요소의 
+                    width,height값
+                - 이동방향: + 오른쪽/아랫쪽, -는 왼쪽/윗쪽
+            */
+            #trans5:hover img {
+                
+            }
+
+            /* 
+                6. rotate(각도deg) - 원형회전
+                - 각도의 숫자가 양수이면 시계방향
+                음수는 반시계방향
+                - 기본회전축은 정중앙
+                (변경가능: transform-origin)
+            */
+            #trans6:hover img {
+                
+            }
+
+            /* 회전축 변경하기 */
+            #trans6 img {
+                /* 
+                [ 트랜스폼 회전축 변경속성 ]
+                transform-origin: 가로 세로;
+                - 가로값 : left, right, center, 몇px,몇%
+                - 세로값 : top, bottom, center, 몇px,몇%
+                - 기본값 : 가로, 세로 center임! */
+            }
+
+            /* 
+                7. skew - x,y축 기울임
+                - skewX(각도deg), skewY(각도deg)
+                - skew(x축,y축)
+                - 각도가 양수/음수에 따라 기울임 방향이 달라짐
+            */
+            #trans7:hover img {
+                
+            }
+
+            /* 
+                8. scale(x축배수, y축배수)
+                - 값을 하나만쓰면 양방향 같은 값 셋팅
+                - 배수가 1보다 크면 확대, 작으면 축소
+                - scaleX(배수), scaleY(배수) - x,y별셋팅
+                - 값이 0이면 사라짐
+                -> 가끔 크기가 정해진 요소를 일정크기로
+                축소, 확대해서 크기를 맞출때도 용이함!
+            */
+            #trans8:hover img {
+                /* 트랜스폼 스케일 tf:s */
+                
+                
+            }
+            /* 초기배율설정 */
+            #trans8 img {
+                   
+            }
+
+            /* 
+                9. 복합적용하기
+                transform: 속성1 속성2 속성3 ....; 
+            */
+
+            #trans9:hover img {
+                
+            }
+
+            /* 
+                10. 앞뒤로 있는 이미지 뒤집기
+                - 셋팅: 한 박스 안에 이미지가 2장 있고 이것을
+                겹치게 셋팅한다-> 앱솔루트로 셋팅!
+                - 순서는 나중 것이 위에 온다!
+                - 적절한 트랜스폼, 트랜지션을 이용한다!
+            */
+            
+
+        </style>
+    </head>
+    <body>
+        <!-- 타이틀 -->
+        <h1 class="tit">트랜스폼 연습</h1>
+        <!-- 내용박스 -->
+        <div class="cont">
+            <div id="trans1">
+                <img src="images/cast01.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans2">
+                <img src="images/cast02.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans3">
+                <img src="images/cast03.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans4">
+                <img src="images/cast04.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans5">
+                <img src="images/cast05.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans6">
+                <img src="images/cast01.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans7">
+                <img src="images/cast02.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans8">
+                <img src="images/cast03.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans9">
+                <img src="images/cast04.jpg" alt="캐릭터" />
+            </div>
+            <div id="trans10">
+                <img src="images/cast02.jpg" alt="캐릭터" />
+                <img src="images/cast03.jpg" alt="캐릭터" />
+            </div>
+        </div>
+    </body>
+</html>
