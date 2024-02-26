@@ -225,6 +225,41 @@
                 - 순서는 나중 것이 위에 온다!
                 - 적절한 트랜스폼, 트랜지션을 이용한다!
             */
+            #trans10{
+                width: 200px;
+                height: 200px;
+            }
+            #trans10 img{
+                position: absolute;
+            }
+            /* 유정이 원본 회전하여 숨기기 */
+            #trans10 img:first-child{
+                transform: rotateY(90deg);
+                transition: .4s ease-in;
+                /* 오버시 바로 0.4초 애니 
+                처음에만 천천히*/
+            }
+            /* 유정이 오버시 회전하여 보이기 */
+            #trans10:hover img:first-child{
+                transform: rotateY(0deg);
+                transition: .4s ease-out .4s;
+                /* 오버시 0.4초 기다린후 0.4초 애니
+                나중에만 천천히 */
+            }
+            /* 보거미 원본 회전하기 */
+            #trans10 img:last-child{
+                transform: rotateY(0deg);
+                transition: .4s ease-out .4s;
+                /* 오버시 0.4초 기다린후 0.4초 애니
+                나중에만 천천히 */
+            }
+            /* 보거미 오버시 회전하기 */
+            #trans10:hover img:last-child{
+                transform: rotateY(90deg);
+                transition: .4s ease-in;
+                /* 오버시 바로 0.4초 애니
+                이때 처음에만 천천히 */
+            }
             
 
         </style>
