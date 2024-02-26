@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>클래스 다중적용</title>
+    <style>
+      h1 {
+        text-align: center;
+      }
+      /* ul셋팅 */
+      .bx {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        /* 블릿없앰 */
+      }
+      /* 가상요소로 플롯해제 */
+      .bx::after {
+        content: "";
+        display: block;
+        clear: both;
+      }
+      .bx li {
+        width: 33.333%;
+        /* 가로크기 3등분 */
+        float: left;
+        /* 블록요소 옆으로 흐르게 
+                - 나는 왼쪽, 너는 오른쪽*/
+        height: 100px;
+        /* 높이값이 auto일때 float하면
+                블록요소 중간에 높이값이 더 높은
+                요소가 올경우 다음줄에 내려갈
+                박스가 걸려서 중간부터 나오는 경우가
+                생긴다. 이런 경우 같은 줄에 오는
+                요소에 높이값을 주어서 해결한다! */
+
+        border: 5px solid #000;
+        padding: 15px;
+        box-sizing: border-box;
+        /* 보더,패딩을 내부로 포함함 
+                - 보더나 패딩때문에 박스가 커지면 안될경우 사용
+                - 33.333% 3등분했는데 커저서 하나가 떨어져 보이므로
+                이를 사용하였다*/
+        text-align: center;
+      }
+
+      /* 글자관련 클래스 */
+      /* 클래스명은 숫자를 뒤에 쓸 수 있으나
+            숫자로 시작할 수 없다(숫자로 시작하면 적용안됨!) */
+      .fcls1 {
+        font-weight: bold;
+        color: red;
+        font-size: 24px;
+      }
+      .fcls2 {
+        font-size: 32px;
+        color: blue;
+        font-style: italic;
+      }
+      .fcls3 {
+        font-size: 12px;
+        color: green;
+        text-decoration: underline;
+      }
+
+      /* 보더관련 클래스 */
+      .bd1 {
+        border: 10px dotted pink;
+      }
+      .bd3 {
+        border: 20px ridge darkorchid;
+      }
+      .bd2 {
+        border: 5px dashed darkcyan;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>클래스 다중적용</h1>
+    <ul class="bx">
+      <li class="fcls1">클래스적용1</li>
+      <li class="fcls2">클래스적용2</li>
+      <li class="fcls3">클래스적용3</li>
+      <li class="fcls1">클래스적용4</li>
+      <li class="fcls2">클래스적용5</li>
+      <li class="fcls3">클래스적용6</li>
+      <li class="fcls1">클래스적용7</li>
+      <li class="fcls2">클래스적용8</li>
+      <li class="fcls3">클래스적용9</li>
+    </ul>
+
+    <!--  하단컨텐츠박스 -->
+    <div
+      class="mybx"
+      style="
+        height: 200px;
+        background: pink;
+        border: 10px dotted darkmagenta;
+        font-size: 40px;
+        text-align: center;
+        line-height: 200px;
+      "
+    >
+      내가누구게???
+    </div>
+  </body>
+</html>
