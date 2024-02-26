@@ -68,8 +68,19 @@
                 - deg 는 각도의 단위(도:degree)
             */
             #trans1:hover img {
-                
-                
+                /* tfry */
+                transform: rotateY(180deg);   
+                   
+                /* 흑백변경 */
+                filter: grayscale(100%);
+                /* CSS 필터 적용하기
+                    : 필터속성은 흑백,흐림,세피아,명암,
+                    채도 등 출력이미지를 변경하고자 할때
+                    사용하는 속성
+                    (참고)
+                    https://www.w3schools.com/cssref/playit.php?filename=playcss_filter&preval=blur(5px)
+                */
+
             }
 
             /* 
@@ -77,11 +88,17 @@
                 - deg 는 각도의 단위(도:degree)
             */
             #trans2 img {
+                /* 트랜스폼 x축 회전 : tfrx */
+                transform: rotateX(180deg);
+                /* 필터블러 */
+                filter: blur(2px);
                
             }
             #trans2:hover img {
-                
-                
+                /* 트랜스폼 x축 회전 : tfrx */
+                transform: rotateX(0deg);
+                /* 필터블러 */
+                filter: blur(0px); 
             }
 
             /* 
@@ -93,7 +110,8 @@
                 - 이동방향: + 오른쪽, -는 왼쪽
             */
             #trans3:hover img {
-                
+                /* tftx */
+                transform: translateX(-50%);
             }
             /* 
                 4. translateY(거리) - Y축이동
@@ -104,7 +122,8 @@
                 - 이동방향: + 아랫쪽, -는 윗쪽
             */
             #trans4:hover img {
-                
+                /* tfty */
+                transform: translateY(200%);
             }
             /* 
                 5. translate(x축거리,y축거리) - X,Y축이동
@@ -116,7 +135,8 @@
                 - 이동방향: + 오른쪽/아랫쪽, -는 왼쪽/윗쪽
             */
             #trans5:hover img {
-                
+                /* tft */
+                transform: translate(-100px, 150px);
             }
 
             /* 
@@ -127,11 +147,28 @@
                 (변경가능: transform-origin)
             */
             #trans6:hover img {
-                
+                /* tfr */
+                transform: rotate(8796deg);
+                /* 트랜지션 시간 늘리기 */
+                transition-duration: 20s;
+                /* 
+                transition: 속시이지
+                개별 설정이 가능함!
+
+                1. 속성 : 
+                    transition-property
+                2. 시간 :
+                    transition-duration
+                3. 이징(가속도) :
+                    transition-timing-function
+                4. 지연시간 :
+                    transition-delay
+                */
             }
 
             /* 회전축 변경하기 */
             #trans6 img {
+                transform-origin: 40% 40%;
                 /* 
                 [ 트랜스폼 회전축 변경속성 ]
                 transform-origin: 가로 세로;
@@ -147,7 +184,7 @@
                 - 각도가 양수/음수에 따라 기울임 방향이 달라짐
             */
             #trans7:hover img {
-                
+                transform: skewY(30deg);
             }
 
             /* 
@@ -161,12 +198,12 @@
             */
             #trans8:hover img {
                 /* 트랜스폼 스케일 tf:s */
-                
+                transform: scale(4);
                 
             }
             /* 초기배율설정 */
             #trans8 img {
-                   
+                transform: scale(.2);
             }
 
             /* 
@@ -175,7 +212,10 @@
             */
 
             #trans9:hover img {
-                
+                transform: scale(5) translate(-200%,-100%) rotateX(1200deg) skewX(50deg) rotate(5300deg);
+
+                /* 트랜지션 시간 늘리기 */
+                transition-duration: 30s;
             }
 
             /* 
