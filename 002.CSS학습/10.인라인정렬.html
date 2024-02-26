@@ -72,9 +72,9 @@
                 height: 300px;
                 
                 /* 이미지도 텍스트 정렬이 동일하게 적용됨! */
-                
+                text-align: center;
                 /* 300px + 이미지높이값 36px의 절반인 18px */
-                
+                line-height: calc(300px + 36px/2);
                 /* 
                     이미지 세로중앙정렬은 이미지 높이값의 절반을
                     line-height에 더하여 셋팅한다!
@@ -86,11 +86,9 @@
             }
             .bx6 strong{
                 /* 마진: 위 오른 아래 왼 */
-               
+               margin: 1000px 50px 2000px 80px;
                 /* 인라인요소의 위아래 마진은 적용되지 않는다! 그래서 1000px은 적용안된다! */
-            }
-
-            
+            }            
 
         </style>
     </head>
@@ -116,17 +114,7 @@
         <div class="bx bx4">
             나는 김수현이 너무너무너무 좋다! 
         </div>
-
-        <h2>동적인 높이의 박스의 글자가 정중앙에 오기</h2>
-        <div class="bx bx7">
-            <span>나는 공유가 더 좋다! </span>
-        </div>
-
-        <h2>동적인 높이가 vh단위인 박스의 글자가 정중앙에 오기</h2>
-        <div class="bx bx8">
-            나는 김유정이 더 좋다! 
-        </div>
-
+        
         <h2>박스안의 이미지가 박스의 정중앙에 오기</h2>
         <div class="bx bx5">
             <img src="imgs/blogo.png" alt="로고">
