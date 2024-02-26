@@ -1,0 +1,39 @@
+@charset "utf-8";
+/* 레이아웃 유형1 */
+
+/* 초기화 */
+html,body,h1,h2,ul,ol{
+    margin: 0;
+    padding: 0;
+}
+
+/* 공사중표시 */
+body * {
+    outline: 2px dashed red;
+}
+
+/* 공통클래스 */
+/* 중앙속박스 */
+.part{
+    /* 최대가로크기 */
+    max-width: 1200px;
+    /* 블록박스 중앙정렬 -> 마.영.오! */
+    margin: 0 auto;
+    
+}
+/************* 1.상단영역 *************/
+.top-area{
+    height: 100px;
+}
+/************* 2.배너영역 *************/
+.ban-area{
+    height: 300px;
+}
+/************* 3.컨텐츠영역 *************/
+.cont-area{
+    height: 200px;
+}
+/************* 4.하단영역 *************/
+.footer-area{
+    height: 100px;
+}
