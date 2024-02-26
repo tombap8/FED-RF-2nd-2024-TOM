@@ -6,62 +6,68 @@
     <title>트랜지션</title>
     <style>
         /*************************************************** 
-                [ 트랜지션으로 애니메이션 설정하기 ]
+        [ 트랜지션으로 애니메이션 설정하기 ]
 
-                - 트랜지션이란? CSS 속성값이 변경되는 과정을
-                애니메이션으로 보여주는 속성
-                - 마우스 오버시 혹은 미리 셋팅된 클래스에 설정하여
-                JS로 클래스를 요소에 부여해도 적용할 수 있다!
+        - 트랜지션이란? CSS 속성값이 변경되는 과정을
+        애니메이션으로 보여주는 속성
+        - 마우스 오버시 혹은 미리 셋팅된 클래스에 설정하여
+        JS로 클래스를 요소에 부여해도 적용할 수 있다!
 
-                - 형식 :
-                transition: 속성명 시간 이징 지연시간
-                -> 속시이지!
+        - 형식 :
+        transition: 속성명 시간 이징 지연시간
+        -> 속시이지!
 
-                - 설정값 :
-                 1) 속성명 - 애니메이션 지정 대상속성
-                 예컨데 height 값을 쓰면
-                 height에 대한 애니메이션만 나옴!
-                 -> all 이라고 쓰면 모든 CSS 변화과정이 
-                 애니메이션으로 연출됨!(또는 all생략!)
+        - 트랜지션 개별속성명
+        transition-property (속성명)
+        transition-duration (시간)
+        transition-timing-function (이징)
+        transition-delay (지연시간)
 
-                 2) 시간 - 애니메이션 작동시간
-                    -> 초단위로 표시, 뒤에 s라는 단위씀
-                    -> 초단위에 0.5s 이런식의 0.소수일 경우
-                    앞에 0을 생략하여 .5s 이런식으로 사용하기도함!
+        - 설정값 :
+            1) 속성명 - 애니메이션 지정 대상속성
+            예컨데 height 값을 쓰면
+            height에 대한 애니메이션만 나옴!
+            -> all 이라고 쓰면 모든 CSS 변화과정이 
+            애니메이션으로 연출됨!(또는 all생략!)
 
-                3) 이징(easing) - 애니메이션 가속도
-                    ease-in : 시작할때 천천히
-                    ease-out : 끝날때 천천히
-                    ease-in-out : 시작과 끝에 천천히
-                    linear : 등속도
-                    ease : 약한정도로 시작과 끝에 천천히(기본값)
+            2) 시간 - 애니메이션 작동시간
+            -> 초단위로 표시, 뒤에 s라는 단위씀
+            -> 초단위에 0.5s 이런식의 0.소수일 경우
+            앞에 0을 생략하여 .5s 이런식으로 사용하기도함!
 
-                    -> 그 밖에 다양한 수치로 가속도를 설정가능함!
-                    (베지어곡선)
+        3) 이징(easing) - 애니메이션 가속도
+            ease-in : 시작할때 천천히
+            ease-out : 끝날때 천천히
+            ease-in-out : 시작과 끝에 천천히
+            linear : 등속도
+            ease : 약한정도로 시작과 끝에 천천히(기본값)
 
-                4) 지연시간 - 애니메이션 시간전 대기시간
-                    -초단위 뒤에 s사용
+            -> 그 밖에 다양한 수치로 가속도를 설정가능함!
+            (베지어곡선)
 
-                -> 왜 속성값을 쓰게 했나?
-                속시이지 순서대로 속성별 설정을 모두 다르게
-                여러개를 설정할 수 있음!!! 아주 효과가 좋음!
+        4) 지연시간 - 애니메이션 시간전 대기시간
+            -초단위 뒤에 s사용
 
-                예) transition : width .3s ease-in,
-                                height .5s ease-out .5s;
-                    -> 가로크기는 0.3초간 처음에 천천히,
-                    -> 세로크기는 0.5초간 0.5초있다가 끝에 천천히
+        -> 왜 속성값을 쓰게 했나?
+        속시이지 순서대로 속성별 설정을 모두 다르게
+        여러개를 설정할 수 있음!!! 아주 효과가 좋음!
 
-                
-                ->>> 트랜지션을 마우스 오버시 양방향 동일하게
-                셋팅하려면 원본에 트랜지션을 주면된다!
+        예) transition : width .3s ease-in,
+                        height .5s ease-out .5s;
+            -> 가로크기는 0.3초간 처음에 천천히,
+            -> 세로크기는 0.5초간 0.5초있다가 끝에 천천히
 
-                ->>> 기존 트랜지션을 없애는 설정은?
-                    transition : none;
+        
+        ->>> 트랜지션을 마우스 오버시 양방향 동일하게
+        셋팅하려면 원본에 트랜지션을 주면된다!
 
-                
+        ->>> 기존 트랜지션을 없애는 설정은?
+            transition : none;
+
+        
             ***************************************************/
         body{
-            padding-bottom: 400px;
+            padding-bottom: 400px;            
         }
         h1 {
             text-align: center;
@@ -89,7 +95,118 @@
             border-radius: 50%;
         }
         
+        /*  #tr1에 트랜지션 적용 */
+        /* 트랜지션을 hover가 아닌 원래 요소에 주면
+        양방향(오버시포함) 모두 적용된다! */
+        #tr1 span{
+            /* transition: all 2s; */
+            transition: 2s;
+            /* 앞에 속성을 생략하거나 all이라고 쓰면
+             모든 속성이 변경될때 애니메이션됨! */
+        }
+        /* 오버시 변경 */
+        #tr1:hover span{
+            /* 위치이동 */
+            left: 50%;
+            /* 배경색 변경 */
+            background-color: darkorchid;
+            /* 다시 사각형으로 */
+            border-radius: 0;
+        }
 
+        /* #tr2에 트랜지션 설정하지 않음! */
+        #tr2 span{
+            width: 100px;
+            height: 100px;
+        }
+        /* 오버시에만 트랜지션을 주면 오버시에만 적용 */
+    #tr2:hover span{
+        left: 70%;
+        width: 300px;
+        height: 300px;
+        background-color: aquamarine;
+        /* 오버시 트랜지션 */
+        transition: 3s;
+    }
+
+    /* #tr3에 트랜지션 설정 */
+    #tr3 span{
+        /* 위치이동 */
+        left: -2%;
+        /* 크기변경 */
+        width: 50px;
+        height: 50px;
+        /* 배경색변경 */
+        background-color: palevioletred;
+        /* 트랜지션 원본(양방향/돌아올때) */
+        transition: 
+        all 2s 1s,
+        /* 전체는 1초후 2초간 애니 */
+        top 1s;
+        /* top만 바로 1초간 애니 */
+    }
+    /* 마우스 오버시 트랜지션설정 */
+    #tr3:hover span{
+        /* 위치이동 */
+        top: -200px;
+        left: 70%;
+        /* 크기변경 */
+        width: 400px;
+        height: 400px;
+        /* 배경색변경 */
+        background-color: lightgreen;
+        /* 트랜지션 오버시 */
+        transition: 5s, 
+        /* 전체는 5초간 애니 */
+        top 1s 5s;
+        /* top만 5초후 1초간 애니 */
+    }
+
+    /* #tr4에 트랜지션 설정하기 */
+    /* 
+        여러가지 속성을 별도로 트랜지션 주고자 할때
+        속시이지 순으로 셋팅하고 콤마로 구분한다!
+    */
+    #tr4 span{
+        left: 10%;
+        width: 10px;
+        height: 10px;
+        background-color: royalblue;
+
+        /* 트랜지션 돌아올때 */
+        transition: 
+        left 3s ease-in-out 7s,
+        /* left는 3초간 처음과 끝에 천천히 7초 기다림 */
+        width 2s ease-out 5s,
+        /* width는 2초간 끝에 천천히 5초 기다림 */
+        height 1s ease-in 4s,
+        /* height는 1초간 처음에 천천히 4초 기다림 */
+        background-color 3s linear 1s;
+        /* 배경색은 3초간 등속도로 1초 기다림 */
+    }
+    /* 체크박스가 체크되면 그 다음 형제요소를 변경하여
+    클릭시 변경된것 같은 효과로 작동시킨다!
+     */
+     #chkbx:checked + span{
+        left: 70%;
+        width: 500px;
+        height: 300px;
+        background-color: hotpink;
+
+        /* 트랜지션(진행할때) */
+        transition: 
+        left 3s ease-in-out 1s,
+        /* left는 3초간 처음과 끝에 천천히 1초 기다림 */
+        width 2s ease-out 4s,
+        /* width는 2초간 끝에 천천히 4초 기다림 */
+        height 1s ease-in 6s,
+        /* height는 1초간 처음에 천천히 6초 기다림 */
+        background-color 3s linear 7s;
+        /* 배경색은 3초간 등속도로 7초 기다림 */
+
+
+
+     }
 
         
         
