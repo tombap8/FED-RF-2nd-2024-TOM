@@ -63,27 +63,65 @@
         text-decoration: underline;
       }
 
+      /* 클래스만으로 보더 속성만들기 */
+      .bd6{
+        border: 10px dotted hotpink !important;
+      }
+
+      /* 아이디로 보더 속성만들기 */
+      #bd4{
+        border: 10px dotted darkgreen;
+      }
+      #bd5{
+        border: 15px dotted red;
+      }
       /* 보더관련 클래스 */
-      .bd1 {
+      .bx .bd1 {
         border: 10px dotted pink;
       }
-      .bd3 {
+      .bx .bd3 {
         border: 20px ridge darkorchid;
       }
-      .bd2 {
+      .bx .bd2 {
         border: 5px dashed darkcyan;
       }
+
+      /* 
+        [ 클래스 다중적용 가이드 ]
+        - 의미 : 클래스는 한 요소에 띄어쓰기로
+        여러 클래스를 적용할 수 있다!
+
+        1. 디자인 분야별 별도로 작성된 클래스를 조합할때 사용함
+
+        2. 클래스를 다중 적용할때 같은 레벨이라면
+        나중에 쓴 것이 먼저쓴 클래스보다 우선한다!
+        (CSS 에서 코딩의 순서가 중요함!)
+
+        3. 상위 레벨에 같은 속성이 셋팅되어 있으면
+        상위레벨 셋팅이 하위 레벨 셋팅에 우선한다!
+        (호가호위: 호랑이가 쎄니까 여우가 쎄보인다!)
+
+        4. 일반적으로 아래와 같은 순서로 적용이 우선한다!
+
+        type < class < id < inline < !important
+
+        ※ 주의 : !important 는 inline CSS보다 
+        우선하므로 JS적용시에도 우선권을 가진다!
+        따라서 이 키워드는 조심해서 사용해야한다!!!
+
+
+      */
     </style>
   </head>
   <body>
     <h1>클래스 다중적용</h1>
     <ul class="bx">
-      <li class="fcls1">클래스적용1</li>
-      <li class="fcls2">클래스적용2</li>
-      <li class="fcls3">클래스적용3</li>
-      <li class="fcls1">클래스적용4</li>
-      <li class="fcls2">클래스적용5</li>
-      <li class="fcls3">클래스적용6</li>
+      <li class="fcls1 bd1">클래스적용1</li>
+      <li class="fcls2 bd2">클래스적용2</li>
+      <li class="fcls3 bd3">클래스적용3</li>
+      <li class="fcls1 bd1 bd6" id="bd5" style="border: 5px dashed greenyellow;">클래스적용4</li>
+      <li class="fcls2 bd2" id="bd4">클래스적용5</li>
+      <li class="fcls3 bd3 bd2">클래스적용6</li>
       <li class="fcls1">클래스적용7</li>
       <li class="fcls2">클래스적용8</li>
       <li class="fcls3">클래스적용9</li>
