@@ -14,12 +14,17 @@ body * {
 
 /* 공통클래스 */
 /* 중앙속박스 */
-.part{
+.inbox{
     /* 최대가로크기 */
     max-width: 1200px;
     /* 블록박스 중앙정렬 -> 마.영.오! */
     margin: 0 auto;
     
+}
+/* 임시 타이틀 */
+.temp-tit{
+    position: absolute;   
+    color: #888; 
 }
 /************* 1.상단영역 *************/
 .top-area{
