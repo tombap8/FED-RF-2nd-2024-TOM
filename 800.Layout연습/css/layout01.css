@@ -1,6 +1,9 @@
 @charset "utf-8";
 /* 레이아웃 유형1 */
 
+/* 12 그리드 불러오기 */
+@import url(./grid_12_float.css);
+
 /* 초기화 */
 html,body,h1,h2,ul,ol{
     margin: 0;

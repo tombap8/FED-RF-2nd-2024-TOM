@@ -13,9 +13,13 @@
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
 
-/* 컨텐트 박스 */
-.cont-box{
-    box-sizing: border-box;
+/* 파티션 비율박스 공통 */
+[class*='col-']{
+    float: left;
     height: 100%;
     padding: 10px;
+    box-sizing: border-box;
 }
+
+/* 컨텐트 박스 */
+/* .cont-box{} */
