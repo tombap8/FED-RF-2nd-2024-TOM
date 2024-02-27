@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JS1. 자바스크립트 기본 + DOM선택법</title>
     <!-- 자바스크립트 코딩구역(인터널방식) -->
     <script>
-        // 한줄주석
-        /* 여러줄주석 */
-        /*******************************************
+      // 한줄주석
+      /* 여러줄주석 */
+      /*******************************************
             [자바스크립트란?] 
             - 고정적인 html 구조와 CSS로 디자인된
             웹문서의 디자인 혹은 기능적으로 구현된 것을
@@ -135,116 +135,106 @@
         
         *******************************************/
 
-        // 출력1
-        // 전체문서는 document
-        // document.write(
-        //     '<h1>나는 프론트엔드 개발자다!</h1>');
+      // 출력1
+      // 전체문서는 document
+      // document.write(
+      //     '<h1>나는 프론트엔드 개발자다!</h1>');
 
-        // 출력2
-        // // window.alert('너도 개발자냐?');
+      // 출력2
+      // // window.alert('너도 개발자냐?');
 
-        // 출력3
-        // // console.log('진짜개발은 지금부터다!');
+      // 출력3
+      // // console.log('진짜개발은 지금부터다!');
 
+      function 김비서() {
+        // 1. 호출확인
+        console.log("보여줘호출!");
 
-        function 김비서(){
+        // 2. HTML 넣기 /////////////
+        // 변경대상 : #name
+        // 선택요소에 html넣기 : innerHTML속성에 할당
+        // 전체문서.가져와아이디요소(아이디명).html넣기
+        document.getElementById("name").innerHTML =
+          '<img src="./images/kim.png" alt="김비서가 왜 그럴까">';
 
-            // 1. 호출확인
-            console.log('보여줘호출!');
+        // 3. CSS 변경하기 ////////////
+        // 변경대상 : .pbox
+        // CSS변경 객체 : style.속성명
+        // - 모든 속성명은 변수형으로 정의됨!
+        // 예) font-size -> fontSize (캐믈케이스)
+        // -(데쉬)빼고 중간단어 대문자 시작
 
-            // 2. HTML 넣기 /////////////
-            // 변경대상 : #name
-            // 선택요소에 html넣기 : innerHTML속성에 할당
-            // 전체문서.가져와아이디요소(아이디명).html넣기
-            document.getElementById('name').innerHTML =
-            '<img src="./images/kim.png" alt="김비서가 왜 그럴까">';
+        // 콘솔에 선택요소 찍기
+        console.log(document.getElementsByClassName("pbox"));
 
-            // 3. CSS 변경하기 ////////////
-            // 변경대상 : .pbox
-            // CSS변경 객체 : style.속성명
-            // - 모든 속성명은 변수형으로 정의됨!
-            // 예) font-size -> fontSize (캐믈케이스)
-            // -(데쉬)빼고 중간단어 대문자 시작
+        // 구체적인 클래스 요소 선택하기 : item(n)
+        // 반복적으로 사용되는 요소는 특정 공간에
+        // 저장하여 사용하면 메모리 사용관리가
+        // 효율적으로 운영된다!
+        // 특정메모리공간은 바로 '변수'라고 하며
+        // 선언과 동시에 할당행위를 통해 값을 저장한다!
+        // 변수는 여기를 '봐!' var 로 선언
+        // var 변수명 = 값
+        var 피박스 = document.getElementsByClassName("pbox").item(0);
 
-            // 콘솔에 선택요소 찍기
-            console.log(
-                document.getElementsByClassName('pbox')
-            );
-            
-            // 구체적인 클래스 요소 선택하기 : item(n)
-            // 반복적으로 사용되는 요소는 특정 공간에
-            // 저장하여 사용하면 메모리 사용관리가
-            // 효율적으로 운영된다!
-            // 특정메모리공간은 바로 '변수'라고 하며
-            // 선언과 동시에 할당행위를 통해 값을 저장한다!
-            // 변수는 여기를 '봐!' var 로 선언
-            // var 변수명 = 값
-            var 피박스 = 
-            document.getElementsByClassName('pbox')
-            .item(0);
+        // 변수를 사용하는 이유?
+        // - 변수는 재사용
+        // - 변수는 저장 메모리공간 주소
+        // - 변수는 따옴표 안쓴 문자
+        // - 변수는 띄어쓰기 없음
+        // - 변수는 호출시 값 출력
+        // - 변수는 재할당시 다른값 덮어씀
+        // - 선언은 한번만 var(let/const)로 한다!
+        // - var는 variable(변수)라는 단어에서 나온말!
 
-            // 변수를 사용하는 이유?
-            // - 변수는 재사용
-            // - 변수는 저장 메모리공간 주소
-            // - 변수는 따옴표 안쓴 문자
-            // - 변수는 띄어쓰기 없음
-            // - 변수는 호출시 값 출력
-            // - 변수는 재할당시 다른값 덮어씀
-            // - 선언은 한번만 var(let/const)로 한다!
-            // - var는 variable(변수)라는 단어에서 나온말!
+        // 3-1. 배경이미지 넣기
+        피박스.style.background =
+          "url(./images/kimbs.jpg) no-repeat center/cover";
 
-            // 3-1. 배경이미지 넣기
-            피박스.style.background = 
-            'url(./images/kimbs.jpg) no-repeat center/cover';
+        // 3-2. 글자색 변경하기
+        피박스.style.color = "lime";
 
-            // 3-2. 글자색 변경하기
-            피박스.style.color = 'lime';
+        // 3-3. 글자크기 변경 : 40px
+        피박스.style.fontSize = "40px";
 
-            // 3-3. 글자크기 변경 : 40px
-            피박스.style.fontSize = '40px';
+        // 3-4. 글자그림자 : textShadow
+        피박스.style.textShadow = "2px 2px 2px #000";
 
-            // 3-4. 글자그림자 : textShadow
-            피박스.style.textShadow = '2px 2px 2px #000';
+        // 3-5. 가로,세로 크기변경 : 600px X 600px
+        피박스.style.width = "600px";
+        피박스.style.height = "600px";
 
-            // 3-5. 가로,세로 크기변경 : 600px X 600px
-            피박스.style.width = '600px';
-            피박스.style.height = '600px';
+        // 3-6. 줄간격 : lineHeight
+        피박스.style.lineHeight = "100px";
 
-            // 3-6. 줄간격 : lineHeight
-            피박스.style.lineHeight = '100px';
-
-            // 3-7. 트랜지션 : transition
-            피박스.style.transition = 
-                `2s, 
+        // 3-7. 트랜지션 : transition
+        피박스.style.transition = `2s, 
                 top 4s 2s, 
                 left 2s 2s, 
                 transform 1s 2s`;
 
-            // 3-8. 원만들기 : borderRadius
-            피박스.style.borderRadius = '50%';            
+        // 3-8. 원만들기 : borderRadius
+        피박스.style.borderRadius = "50%";
 
-            // 3-9. 중앙이동을 위한 top,left 변경
-            피박스.style.top = '50%';
-            피박스.style.left = '50%';
+        // 3-9. 중앙이동을 위한 top,left 변경
+        피박스.style.top = "50%";
+        피박스.style.left = "50%";
 
-            // 3-10. 트랜스폼 변경 : 
-            // 중앙이동, 360도 회전, 크기변경
-            피박스.style.transform =
-            `translate(-50%,-50%) 
+        // 3-10. 트랜스폼 변경 :
+        // 중앙이동, 360도 회전, 크기변경
+        피박스.style.transform = `translate(-50%,-50%) 
             rotate(360deg) 
             scale(1.3)`;
 
-            // 3-11. 전체 배경색 바꾸기
-            // 대상: body
-            // JS에서 body는 특별히 취급하여
-            // document.body
-            var 바디 = document.body;
-            바디.style.backgroundColor = 'lightgreen';
-            바디.style.transition = '5s 3s';
-            
-            
+        // 3-11. 전체 배경색 바꾸기
+        // 대상: body
+        // JS에서 body는 특별히 취급하여
+        // document.body
+        var 바디 = document.body;
+        바디.style.backgroundColor = "lightgreen";
+        바디.style.transition = "5s 3s";
 
-            /*************************************** 
+        /*************************************** 
                 [ JS의 요소 선택 메서드 ]
 
                 1. id 선택 메서드 : getElementById
@@ -282,75 +272,64 @@
             https://www.w3schools.com/js/js_htmldom_collections.asp
 
             ***************************************/
-
-
-
-        } //////// 김비서 함수 ////////////
-
-
-    
-
+      } //////// 김비서 함수 ////////////
     </script>
     <style>
-        html,body{
-            margin: 0;
-            padding: 0;
-            height: 100%;
-            /* 보이는 화면에 채우기 */
-        }
-        body{
-            overflow: hidden;
-        }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        /* 보이는 화면에 채우기 */
+      }
+      body {
+        overflow: hidden;
+      }
 
+      .pbox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        /* 부모는? window(보이는화면) */
+        margin: 0;
+        padding: 0;
 
-        .pbox{
-            position: absolute;
-            top: 0;
-            left: 0;
-            /* 부모는? window(보이는화면) */
-            margin: 0;
-            padding: 0;
+        width: 500px;
+        height: 500px;
+        padding-top: 200px;
 
-            width: 500px;
-            height: 500px;
-            padding-top: 200px;
+        /* 글자 */
+        line-height: 50px;
+        font-size: 30px;
+        text-align: center;
+        /* 줄바꿈방지 */
+        white-space: nowrap;
 
-            /* 글자 */
-            line-height: 50px;
-            font-size: 30px;
-            text-align: center;
-            /* 줄바꿈방지 */
-            white-space: nowrap;
+        border: 4px solid purple;
+        /* 보더박스:보더,패딩포함 */
+        box-sizing: border-box;
 
-            border: 4px solid purple;
-            /* 보더박스:보더,패딩포함 */
-            box-sizing: border-box;
+        /* 사용자 텍스트 영역 선택방지 */
+        user-select: none;
 
-            /* 사용자 텍스트 영역 선택방지 */
-            user-select: none;
-
-            /* background: url(./images/kimbs.jpg) no-repeat center/cover; */
-
-        }
-        p.pbox{
-            z-index: 1;
-        }
+        /* background: url(./images/kimbs.jpg) no-repeat center/cover; */
+      }
+      p.pbox {
+        z-index: 1;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 드라마 소개박스 -->
     <p class="pbox" onclick="김비서()">
-        나는 요즘 매일 생각한다! <br>
-        도대체 
-        <span id="name">
-            
-        </span>
+      나는 요즘 매일 생각한다! <br />
+      도대체
+      <span id="name"> </span>
     </p>
 
     <!-- <div class="pbox"></div>
     <a href="" class="pbox"></a>
     <em class="pbox"></em>
     <section class="pbox"></section> -->
-    
-</body>
+  </body>
 </html>
