@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 
+        [ 가상클래스란? ]
+        - Pseudo-class 슈도클래스 라고도함
+        - 의미: 마치 클래스를 준것 처럼
+        선택하여 디자인을 변경할 수 있다
+        ___________________________________
+
+        1. 자식선택 가상클래스
+        - 조건: 한 부모요소 아래에 같은 종류의
+        태그로 구성되어 있어야함!
+        예) ul>li 이와 같이 ul아래 li로만 구성됨
+            div>div 같은 종류의 직계자식으로만
+            구성되어야함
+        - 선택방법:
+            요소:first-child 첫번째자식
+            요소:last-child 마지막자식
+            요소:nth-child(n) n번째자식
+                            - n은 1부터
+
+        *******************************
+
+        2. 종류가 다른 자식선택 가상클래스
+        - 한 가지가 아닌 여러 종류의 자식요소
+        로 구성된 경우 자식을 선택하는 방법
+        - 선택방법:
+        요소:first-of-type
+            - 같은타입(요소)중 첫번째
+        요소:last-of-type
+            - 같은타입(요소)중 마지막
+        요소:nth-of-type(n)
+            - 같은타입(요소)중 n번째
+                            - n은 1부터
+
+        ********************************
+
+        3. 마우스 오버시 요소 변경 가상클래스
+        - 마우스가 요소에 오버되면 자기자신 또는
+        자손요손 요소의 디자인을 변경할 수 있다
+        - 선택방법:
+        요소:hover
+
+        ************************************
+
+        4. a요소 관련 가상클래스
+        - a:hover 오버시
+        - a:link 링크시
+        - a:visited 방문후 표시
+        - a:active 마우스를 누르고 있을때 
+
+        5. 포커스 가상클래스
+        - 요소명:focus{}
+        - 포커스란 어떤 요소가 마우스로 클릭되거나
+        터치되었을때 그요소에 촛점이 가게 되는데
+        이런 상태를 포커스상태라고 한다!
+        - 이 상태에 대한 디자인을 별도로 줄 수 있다
+        - 입력폼요소에 많이 사용된다!
+        - 오해하지말자! 클릭이벤트와 다르다!
+        클릭이벤트는 클릭한 순간 이벤트가 사라지지만
+        포커스는 요소가 클릭되어 활성화된 상태를 유지함
+        - 포커스를 없애고 싶으면 다른요소를 클릭하면 됨
+        - 포커스가 없어지는 상태를 blur(블러)라고함
+
+        참고) 탭키를 눌러서 a요소의 포커스를 이동시킬 수 있음
+        */
+
+      h1,
+      h2 {
+        text-align: center;
+      }
+
+      /* a 요소 가상클래스 */
+      /* 처음 링크 :link */
+      h2 a:link {
+        color: hotpink;
+        text-decoration: none;
+      }
+      /* 방문후 :visited */
+      h2 a:visited {
+        /* color: lime;             */
+      }
+      /* 마우스 오버시 :hover */
+      h2 a:hover {
+        color: red;
+        /* 텍스트 데코레이션에 스타일은
+            뒤에 띄어쓰기로 추가해서 쓸 수 있음 */
+        text-decoration: overline wavy;
+        /* text-decoration-style: wavy; */
+      }
+      /* 마우스를 누르고 있는 상태 :active */
+      h2 a:active {
+        color: lightseagreen;
+        text-decoration: underline double red;
+      }
+
+      /* 요즘은 a요소를 바로 선택하여
+        셋팅하고 :hover 정도만 변경한다! */
+      h2 a {
+        color: darkorange;
+      }
+
+      /* 포커스 가상클래스 :focus */
+      h2 a:focus {
+        outline: 10px dotted darkcyan;
+      }
+
+      /* 시인이름 */
+      h3 {
+        /* 가로크기 */
+        width: 800px;
+        /* 부모박스보다 작은 크기를 가지는
+            블록요소에 적용된다 -> 마.영.오! */
+        margin: 0 auto;
+        /* 내부 인라인요소 오른쪽정렬 */
+        text-align: right;
+
+        /* outline: 1px solid red; */
+        padding: 20px;
+        box-sizing: border-box;
+      }
+
+      /* 
+            요소명.클래스명 / 요소명#아이디명
+
+            [ 종속 선택자를 쓰는 경우 ]
+            1. 개발자가 요소를 밝히고 싶을때
+            2. 같은 클래스를 다르게 셋팅할때
+        */
+
+      /* ul / ol 요소 기본초기화! */
+      ul,
+      ol {
+        /* 3가지 없애기! 3無! */
+        margin: 0; /* m0 */
+        padding: 0; /* p0 */
+        list-style: none; /* lin */
+      }
+
+      /* 부모박스 셋팅 */
+      ul.part1,
+      div.part2 {
+        width: 800px;
+        margin: 30px auto;
+        padding: 20px;
+        border: 2px solid #ccc;
+        /* 둥근모서리 */
+        border-radius: 20px;
+        /* 보더,패딩 설정크기 내부로
+            포함시키는 속성은? 
+            box-sizing:border-box 
+            bxb */
+        box-sizing: border-box;
+        /* 글자중앙 */
+        text-align: center;
+      }
+
+      /* 
+            [ font 한번에 셋팅하기! ]
+            font : 스타일 두께 크기/줄간격 글자체
+            font : 스두크/줄체
+            ->>> font 한번에 쓰기에서 글자체는 필수!
+            ->>> 2개이상 셋팅필수
+        */
+      /* 모든 li에 오버서 손가락모양 */
+      .part1 li {
+        /* pointer 손가락모양 */
+        cursor: pointer;
+      }
+
+      .part1 li:first-child{
+        font: 40px '궁서';
+        color: red;
+      }
+      .part1 li:first-child:hover{
+        font-style: italic;
+      }
+
+      .part1 li:nth-child(2){
+        font: 35px '굴림';
+        color: skyblue;
+      }
+      .part1 li:nth-child(2):hover{
+        font-weight: bold;
+      }
+      .part1 li:nth-child(3){
+        font: 25px '돋움';
+        color: darkkhaki;
+      }
+      .part1 li:nth-child(3):hover{
+        /* 단어간격 : ws숫자 */
+        word-spacing: 20px;
+        /* 자간 : ls숫자 */
+        letter-spacing: 10px;
+      }
+
+      .part1 li:nth-child(4){
+          font: 42px '맑은 고딕';
+          color: darkmagenta;
+        }
+        /* 한글이 있는 b요소만 숨기기 */
+        .part1 li:nth-child(4) b{
+            display: none;
+        }
+        /* 오버시 한자(span)숨기고 한글(b)보이기 */
+        .part1 li:nth-child(4):hover b{
+            display: inline;
+        }
+        .part1 li:nth-child(4):hover span{
+            display: none;
+        }
+
+        /* 4번째 li이후 모든 li를 전부 선택하기
+            틸드(~)는 다중형제선택자
+            선택요소~요소명
+            -> 선택요소 뒤에 있는
+            모든 형제 요소를 선택함! 
+        */
+        .part1 li:nth-child(4)~li{
+            font-size: 24px;
+            color: darkgoldenrod;
+        }
+
+      
+    </style>
+  </head>
+  <body>
+    <h1>004.가상클래스</h1>
+
+    <h2>
+      <a href="#">진달래꽃</a>
+    </h2>
+
+    <h3>김소월</h3>
+
+    <ul class="part1">
+      <li>나 보기가 역겨워</li>
+      <li>가실 때에는</li>
+      <li>말없이 고이 보내 드리우리다</li>
+      <li><b>영변</b><span>寧邊</span>에 <b>약산</b><span>藥山</span></li>
+      <li>진달래꽃</li>
+      <li>아름 따다 가실 길에 뿌리우리다</li>
+      <li>가시는 걸음 걸음</li>
+      <li>놓인 그 꽃을</li>
+      <li>사뿐히 즈려밟고 가시옵소서</li>
+      <li>나 보기가 역겨워</li>
+      <li>가실 때에는</li>
+      <li>죽어도 아니 눈물 흘리우리다</li>
+    </ul>
+
+    <div class="part2">
+      <div>나 보기가 역겨워</div>
+      <em>가실 때에는</em>
+      <div>말없이 고이 보내 드리우리다</div>
+      <em>영변에 약산</em>
+      <div>진달래꽃</div>
+      <i>아름 따다 가실 길에 뿌리우리다</i>
+      <div>가시는 걸음 걸음</div>
+      <i>놓인 그 꽃을</i>
+      <div>사뿐히 즈려밟고 가시옵소서</div>
+      <i>나 보기가 역겨워</i>
+      <div>가실 때에는</div>
+      <span>죽어도 아니 눈물 흘리우리다</span>
+    </div>
+  </body>
+</html>
