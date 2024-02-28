@@ -297,8 +297,18 @@
 
         // 2. 대상선정 : .박스야 .원이야
         var 멍청이 = 
-        document.getElementsByClassName('박스야').item(0)
-        .getElementsByClassName('원이야');
+        document.querySelectorAll('.박스야 .원이야');
+        // 주의: 따옴표 안은 CSS선택자 문법을 써야함!
+
+        // 기존 기본 선택방식이 너무 길다!
+        // 따라서 간단하 CSS 선택자 선택법이 있다!
+        // 1. querySelector(CSS선택자) - 하나만 바로 선택
+        // 2. querySelectorAll(CSS선택자) - 컬렉션에 담는다
+        // -> 2번방식은 .item(순번)/[순번]으로 세부선택
+        // -> length로 컬렉션 길이도 알 수 있음
+
+        // document.getElementsByClassName('박스야').item(0)
+        // .getElementsByClassName('원이야');
 
         console.log(멍청이);
 
