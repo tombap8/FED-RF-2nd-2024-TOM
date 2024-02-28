@@ -157,6 +157,11 @@
         document.getElementById("name").innerHTML =
           '<img src="./images/kim.png" alt="김비서가 왜 그럴까">';
 
+        // 콘솔에 아이디요소 찍기
+        console.log(document.getElementById("name"));
+        // 아이디 요소는 한번에 요소를 선택함
+
+
         // 3. CSS 변경하기 ////////////
         // 변경대상 : .pbox
         // CSS변경 객체 : style.속성명
@@ -166,6 +171,10 @@
 
         // 콘솔에 선택요소 찍기
         console.log(document.getElementsByClassName("pbox"));
+        // 여러개를 만들 수 있는 클래스,태그 선택은
+        // HTML Collection에 담는다!
+        // 그래서 구체적인 요소를 선택할때는 item(순번)/[순번]
+        // 를 사용하여 선택함!
 
         // 구체적인 클래스 요소 선택하기 : item(n)
         // 반복적으로 사용되는 요소는 특정 공간에
@@ -175,7 +184,9 @@
         // 선언과 동시에 할당행위를 통해 값을 저장한다!
         // 변수는 여기를 '봐!' var 로 선언
         // var 변수명 = 값
-        var 피박스 = document.getElementsByClassName("pbox").item(0);
+        var 피박스 = 
+        document.getElementsByClassName("pbox")[0];
+        // document.getElementsByClassName("pbox").item(0);
 
         // 변수를 사용하는 이유?
         // - 변수는 재사용
