@@ -328,6 +328,34 @@
       p.pbox {
         z-index: 1;
       }
+
+      /* 원모양 */
+      .원이야{
+        position: absolute;
+        top: 0;
+        right: 0;
+        /* 부모는? window */
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        /* 배경공통 */
+        background-repeat: no-repeat;
+        background-size: cover;
+        /* 보더박스 : 보더,패딩포함박스 */
+        box-sizing: border-box;
+      }
+      /* 원모양 개별셋팅 */
+      .원이야:nth-child(1){
+        right: 400px;
+        background-image: url(./images/01.png);
+      }
+      .원이야:nth-child(2){
+        right: 200px;
+        background-image: url(./images/02.png);
+      }
+      .원이야:nth-child(3){
+        background-image: url(./images/03.png);
+      }
     </style>
   </head>
   <body>
@@ -337,6 +365,16 @@
       도대체
       <span id="name"> </span>
     </p>
+
+    <!-- 원모양 박스 -->
+    <div class="박스야">
+      <!-- 원모양 -->
+      <div class="원이야"></div>
+      <div class="원이야"></div>
+      <div class="원이야"></div>
+    </div>
+
+
 
     <!-- <div class="pbox"></div>
     <a href="" class="pbox"></a>
