@@ -53,12 +53,33 @@
              */
         /* h2요소 맨앞에 이미지 넣기 */
        h2::before{
-            
+        content: url(./imgs/blogo.png);
+        width: 20px;
+        height: 10px;
+        /* 이미지는 원본을 그대로
+        사용할 경우 url로 호출하여 사용!
+        가로,세로 크기 변경 불가! */
+
+        /* 마진적용 */
+        margin-right: 20px;
+        /* 인라인요소간 세로정렬 */
+        vertical-align: -10px;
        }
         
 
         /* 맨뒤 추가요소 ::after */
         h2::after{
+            /* 이미지크기 조절하려면
+            박스를 만들고 배경이미지로 넣는다! */
+            content: '';
+            display: inline-block;
+            /* 디자인적용위해 인라인블록 */
+            width: 40px;
+            height: 60px;
+            border: 2px solid gray;
+            border-radius: 5px;
+
+            background: url(./imgs/bg_logo_a_01.png) no-repeat center/80%;
             
         }
         
