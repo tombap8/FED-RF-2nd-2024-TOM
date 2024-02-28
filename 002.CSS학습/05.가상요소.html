@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
+  <head>
+    <meta charset="utf-8" />
     <title>CSS 가상요소</title>
     <style>
-        /* 
+      /* 
             [ 가상요소란? ]
             - Pseudo-element:슈도엘러먼트
             : 데이터를 담을 수 있는 요소일 경우
@@ -51,8 +50,8 @@
 
 
              */
-        /* h2요소 맨앞에 이미지 넣기 */
-       h2::before{
+      /* h2요소 맨앞에 이미지 넣기 */
+      h2::before {
         content: url(./imgs/blogo.png);
         width: 20px;
         height: 10px;
@@ -64,138 +63,141 @@
         margin-right: 20px;
         /* 인라인요소간 세로정렬 */
         vertical-align: -10px;
-       }
-        
+      }
 
-        /* 맨뒤 추가요소 ::after */
-        h2::after{
-            /* 이미지크기 조절하려면
+      /* 맨뒤 추가요소 ::after */
+      h2::after {
+        /* 이미지크기 조절하려면
             박스를 만들고 배경이미지로 넣는다! */
-            content: '';
-            display: inline-block;
-            /* 디자인적용위해 인라인블록 */
-            width: 40px;
-            height: 60px;
-            border: 2px solid gray;
-            border-radius: 5px;
+        content: "";
+        display: inline-block;
+        /* 디자인적용위해 인라인블록 */
+        width: 40px;
+        height: 60px;
+        border: 2px solid gray;
+        border-radius: 5px;
 
-            background: url(./imgs/bg_logo_a_01.png) no-repeat center/80%;
+        background: url(./imgs/bg_logo_a_01.png) no-repeat center/80%;
 
-            /* 박스 그림자 여러개주기
+        /* 박스 그림자 여러개주기
             x y blur spread 색... 을 
             콤마로 연결하면 여러개 사용가능 */
-            box-shadow: 
-            0 0 10px purple,
-            10px 10px 5px 2px #0000ff6e;
-            
-        }
-        
-        
+        box-shadow: 0 0 10px purple, 10px 10px 5px 2px #0000ff6e;
 
+        /* 간격,위치조정 */
+        vertical-align: middle;
+        margin-left: 20px;
+      }
 
-        /* dl요소 디자인 */
-        dl {
-            width: 800px;
-            max-width: 90%;
-            /* 설정 크기보다 화면이 작아지면 90%적용 */
-            font-size: 24px;
-            margin-left: 50px;
-        }
+      /* dl요소 디자인 */
+      dl {
+        width: 800px;
+        max-width: 90%;
+        /* 설정 크기보다 화면이 작아지면 90%적용 */
+        font-size: 24px;
+        margin-left: 50px;
+      }
 
-        dt{
-            /* 마진: 위 양쪽 아래 */
-            margin: 25px 0 15px;
-        }
+      dt {
+        /* 마진: 위 양쪽 아래 */
+        margin: 25px 0 15px;
+      }
 
-        /* 반복되는 요소의 앞에 아이콘 가상요소로 넣기 */
-        
+      /* 반복되는 요소의 앞에 아이콘 가상요소로 넣기 */
+      dt::before{
+        content: '🛕★';
+        font-size: 30px;
+        vertical-align: 2px;
+        color: red;
+      }
 
-        /* dd전체 before적용하기 */
-               
+      /* dd전체 before적용하기 */
+      dd::before{
+        content: '👨‍🦰';
+        font-size: 28px;
+        margin-right: 15px;
+      }
+      /* 여자인 경우 이모지 변경 */
+      dd:nth-of-type(3):before,
+      dd:nth-of-type(4):before,
+      dd:nth-of-type(8):before,
+      dd:nth-of-type(9):before,
+      dd:nth-of-type(11):before,
+      dd:nth-of-type(12):before      
+      {
+        content: '👩‍🦰';
+      }
+      dd:nth-of-type(13):before      
+      {
+        content: '👨‍🦰👩‍🦰';
+      }
 
+      
+      /* 스토리의 dd는 가상요소 없애기 */
+      dd:nth-of-type(14)::before{
+        display: none;
+      }
 
-        /* 출연배우의 dd부터 아이콘변경 */
-       
-        
-        /* 아티스트의 dd부터 아이콘변경 */
-        
+      /* 스토리의 dd 아래 h3 이모지넣기 */
+      dd.story h3::before{
+        content: '🎥';
+        margin-right: 20px;
+      }
 
-        /* 스토리의 dd는 가상요소 없애기 */
-        
-        
-        /* 스토리의 dd 아래 h3 이모지넣기 */
-        
-        
-        
+      /* .story의 첫번째 p태그의 첫번째 글자 디자인 변경하기 */
 
-        /* .story의 첫번째 p태그의 첫번째 글자 디자인 변경하기 */
-        
-        
-        
-        /* .story의 첫번째 p태그의 첫번째줄 디자인 변경하기 */
-        
-        
+      /* .story의 첫번째 p태그의 첫번째줄 디자인 변경하기 */
 
-
-
-        /* 두번째 p태그는 태그로 
+      /* 두번째 p태그는 태그로 
         첫번째 글자(b태그), 첫번째 줄(span)변경 */
-        
-        
 
-        
+      /* 기타 가상요소 ::selection */
+      /* 드래그 선택시 글자색 배경색 설정변경! */
 
-        /* 기타 가상요소 ::selection */
-        /* 드래그 선택시 글자색 배경색 설정변경! */
-        
-        
-        /* ::selection만쓰면 전체가 다 적용됨! 
+      /* ::selection만쓰면 전체가 다 적용됨! 
         특정선택자::selection 으로 쓰면 자식태그로 싸지 않은 글자만 적용됨!*/
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>CSS 가상요소</h1>
 
-    <h2>
-        [ 드라마 "도깨비" 제작발표회 ]</h2>
+    <h2>[ 드라마 "도깨비" 제작발표회 ]</h2>
     <dl>
-        <dt>등장인물</dt>
-        <dd>김신</dd>
-        <dd>저승사자</dd>
-        <dd>지은탁</dd>
-        <dd>써니</dd>
-        <dd>유덕화</dd>
+      <dt>등장인물</dt>
+      <dd>김신</dd>
+      <dd>저승사자</dd>
+      <dd>지은탁</dd>
+      <dd>써니</dd>
+      <dd>유덕화</dd>
 
-        <dt>출연배우</dt>
-        <dd>공유</dd>
-        <dd>이동욱</dd>
-        <dd>김고은</dd>
-        <dd>유인나</dd>
-        <dd>육성재</dd>
+      <dt>출연배우</dt>
+      <dd>공유</dd>
+      <dd>이동욱</dd>
+      <dd>김고은</dd>
+      <dd>유인나</dd>
+      <dd>육성재</dd>
 
-        <dt>아티스트</dt>
-        <dd>헤이즈</dd>
-        <dd>마마무</dd>
-        <dd>찬열,펀치</dd>
+      <dt>아티스트</dt>
+      <dd>헤이즈</dd>
+      <dd>마마무</dd>
+      <dd>찬열,펀치</dd>
 
-        <dt>스토리</dt>
-        <dd class="story">
-            <h3>시놉시스</h3>
-            <p>
-                불멸의 삶을 끝내기 위해 인간 신부가 필요한 도깨비, 그와 기묘한 동거를 시작한 기억상실증 저승사자. 그런 그들 앞에 '도깨비 신부'라 주장하는 '죽었어야 할 운명'의 소녀가 나타나며
-                벌어지는 신비로운 낭만 설화
-            </p>
-            <p>
-                <b>불</b><span>멸의 삶을 끝내기 위해 인간 신부가</span> <br> 필요한 도깨비, 그와 기묘한 동거를 시작한 기억상실증 저승사자. 그런 그들 앞에 '도깨비 신부'라
-                주장하는
-                '죽었어야 할 운명'의 소녀가 나타나며
-                벌어지는 신비로운 낭만 설화
-            </p>
-
-        </dd>
-
+      <dt>스토리</dt>
+      <dd class="story">
+        <h3>시놉시스</h3>
+        <p>
+          불멸의 삶을 끝내기 위해 인간 신부가 필요한 도깨비, 그와 기묘한 동거를
+          시작한 기억상실증 저승사자. 그런 그들 앞에 '도깨비 신부'라 주장하는
+          '죽었어야 할 운명'의 소녀가 나타나며 벌어지는 신비로운 낭만 설화
+        </p>
+        <p>
+          <b>불</b><span>멸의 삶을 끝내기 위해 인간 신부가</span> <br />
+          필요한 도깨비, 그와 기묘한 동거를 시작한 기억상실증 저승사자. 그런
+          그들 앞에 '도깨비 신부'라 주장하는 '죽었어야 할 운명'의 소녀가
+          나타나며 벌어지는 신비로운 낭만 설화
+        </p>
+      </dd>
     </dl>
-</body>
-
+  </body>
 </html>
