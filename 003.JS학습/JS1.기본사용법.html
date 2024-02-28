@@ -380,6 +380,18 @@
           padding: 0;
         `;
 
+        // 5. .원이야 클래스 on 제거하여 회전애니 없애기
+        // 대상: .원이야(해당순번)
+        멍청이.classList.remove('on');
+        // 멍청이.classList.add('on'); -> 넣기
+        // 멍청이.classList.toggle('on'); -> 넣기/빼기
+        /* 
+          [ JS의 클래스 제어 객체 : classList ]
+          1. 클래스 넣기 : add(클래스명)
+          2. 클래스 빼기 : remove(클래스명)
+          3. 클래스 넣기/빼기 : toggle(클래스명)
+        */
+
      } ///////// 맘대로해라 함수 ///////////////
     </script>
     <style>
