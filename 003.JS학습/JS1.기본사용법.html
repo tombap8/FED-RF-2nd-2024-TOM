@@ -161,7 +161,6 @@
         console.log(document.getElementById("name"));
         // 아이디 요소는 한번에 요소를 선택함
 
-
         // 3. CSS 변경하기 ////////////
         // 변경대상 : .pbox
         // CSS변경 객체 : style.속성명
@@ -184,8 +183,7 @@
         // 선언과 동시에 할당행위를 통해 값을 저장한다!
         // 변수는 여기를 '봐!' var 로 선언
         // var 변수명 = 값
-        var 피박스 = 
-        document.getElementsByClassName("pbox")[0];
+        var 피박스 = document.getElementsByClassName("pbox")[0];
         // document.getElementsByClassName("pbox").item(0);
 
         // 변수를 사용하는 이유?
@@ -289,15 +287,14 @@
         함수명 : 맘대로해라
         기능 : 선택요소의 style과 html을 변경함
       ****************************************/
-     function 맘대로해라(헐,헉스){
+      function 맘대로해라(헐, 헉스) {
         // 헐 - .원이야 순번 / 헉스 - 그림제목
 
         // 1. 함수호출확인
-        console.log("니맘대로하세요~!",헐,헉스);
+        console.log("니맘대로하세요~!", 헐, 헉스);
 
         // 2. 대상선정 : .박스야 .원이야
-        var 멍청이 = 
-        document.querySelectorAll('.박스야 .원이야');
+        var 멍청이 = document.querySelectorAll(".박스야 .원이야");
         // 주의: 따옴표 안은 CSS선택자 문법을 써야함!
 
         // 기존 기본 선택방식이 너무 길다!
@@ -310,7 +307,7 @@
         // document.getElementsByClassName('박스야').item(0)
         // .getElementsByClassName('원이야');
 
-        console.log(멍청이,멍청이.length);
+        console.log(멍청이, 멍청이.length);
 
         // 3. 변경내용 : 트랜지션으로 화면 왼쪽하단으로
         // 나열 되도록 위치를 바꾸고 모양을 변경하고
@@ -322,19 +319,16 @@
         멍청이 = 멍청이.item(헐);
 
         // 3-1. 트랜지션
-        멍청이.style.transition = 
-        `1s ease-out,
+        멍청이.style.transition = `1s ease-out,
         border-radius .5s ease-in-out 1s
         `;
 
         // 3-2. 위치이동 : top, right
-        멍청이.style.top = 
-        'calc(100% - 200px)';
-        멍청이.style.right = 
-        'calc(100% - 200px - '+헐+'*200px)';
+        멍청이.style.top = "calc(100% - 200px)";
+        멍청이.style.right = "calc(100% - 200px - " + 헐 + "*200px)";
 
-        console.log('calc(100% - 200px - '+헐+'*200px)');
-        console.log('calc(100% - 200px - 헐*200px)');
+        console.log("calc(100% - 200px - " + 헐 + "*200px)");
+        console.log("calc(100% - 200px - 헐*200px)");
 
         /* 
           [ 문자 데이터와 변수 합치기 ]
@@ -351,16 +345,16 @@
         */
 
         // 3-3. 원형을 사각형으로 변경
-        멍청이.style.borderRadius = '0';
+        멍청이.style.borderRadius = "0";
 
         // 3-4. 액자 보더 넣기
-        멍청이.style.border = '10px ridge goldenrod';
+        멍청이.style.border = "10px ridge goldenrod";
 
         // 4-1. html 넣기 : 그림제목
-        멍청이.innerHTML = '<h4>고흐<br>'+헉스+'</h4>';
+        멍청이.innerHTML = "<h4>고흐<br>" + 헉스 + "</h4>";
 
         // 만들어진 h4태그 확인하기
-        console.log('<h4>고흐<br>'+헉스+'</h4>');
+        console.log("<h4>고흐<br>" + 헉스 + "</h4>");
 
         // 4-2. 넣은 h4요소에 CSS 한번에 넣기
         // 한번에 CSS를 셋팅하는 방법 : style.cssText 속성
@@ -368,8 +362,7 @@
         // 한번에 셋팅된 CSS로 모두 덮어써진다!
         // 백틱(`)을 사용하여 엔터를 허용한 문자표시법을
         // 사용하여 셋팅한다!
-        멍청이.querySelector('h4').style.cssText =
-        `
+        멍청이.querySelector("h4").style.cssText = `
           position: absolute;
           bottom: 10px;
           width: 100%;
@@ -382,7 +375,7 @@
 
         // 5. .원이야 클래스 on 제거하여 회전애니 없애기
         // 대상: .원이야(해당순번)
-        멍청이.classList.remove('on');
+        멍청이.classList.remove("on");
         // 멍청이.classList.add('on'); -> 넣기
         // 멍청이.classList.toggle('on'); -> 넣기/빼기
         /* 
@@ -391,8 +384,50 @@
           2. 클래스 빼기 : remove(클래스명)
           3. 클래스 넣기/빼기 : toggle(클래스명)
         */
+      } ///////// 맘대로해라 함수 ///////////////
 
-     } ///////// 맘대로해라 함수 ///////////////
+      /****************************************** 
+        함수명 : 사각사각
+        기능 : 전체가 사각형으로 화면을
+              채우며 애니메이션 됨!
+      ******************************************/
+     function 사각사각(){
+        // 1. 함수호출확인
+        console.log("사각사각하세요~!");
+
+        // 2. 대상선정 : .넌뭐냐
+        var 나야나 = document.querySelector('.넌뭐냐');
+
+        // 선택요소 확인
+        console.log(나야나);
+
+        // 3. 변경내용 : top, 트랜지션, width, height
+        나야나.style.top = '0';
+        나야나.style.borderRadius = '0';
+        나야나.style.width = '100%';
+        나야나.style.height = '100%';
+        나야나.style.transition = '3s 1s, top 1s 0s';
+        나야나.style.zIndex = 100;
+        /* top값 부터 1초간 작동함! */
+
+        // 4. 추가변경 : 글자넣기
+        // innerText = 글자내용 
+        // -> 태그없는 글자 데이터 넣기!
+        나야나.innerText = 'JS입문을 환영합니다!';
+
+        // 5. 글자 관련 CSS넣기
+        나야나.style.fontSize = '70px';
+        나야나.style.color = 'aqua';
+        나야나.style.fontWeight = 'bold';
+        나야나.style.textShadow = '5px 5px 3px #000';
+        나야나.style.lineHeight = 
+        window.innerHeight + 'px';
+        // window.innerHeight - 현재 화면의 높이값을 리턴
+
+        // 화면높이값
+        console.log('화면높이값:',window.innerHeight);
+
+     } ////////////// 사각사각 함수 ////////////////
     </script>
     <style>
       html,
@@ -439,7 +474,7 @@
       }
 
       /* 원모양 */
-      .원이야{
+      .원이야 {
         position: absolute;
         top: 0;
         right: 0;
@@ -454,18 +489,17 @@
         box-sizing: border-box;
       }
       /* 원모양 개별셋팅 */
-      .원이야:nth-child(1){
+      .원이야:nth-child(1) {
         right: 400px;
         background-image: url(./images/01.png);
       }
-      .원이야:nth-child(2){
+      .원이야:nth-child(2) {
         right: 200px;
         background-image: url(./images/02.png);
       }
-      .원이야:nth-child(3){
+      .원이야:nth-child(3) {
         background-image: url(./images/03.png);
       }
-
 
       /* .원이야.on 일 경우 애니적용하기! */
       .원이야.on {
@@ -476,12 +510,25 @@
       /* .원이야 회전 키프레임
       애니메이션을 위한 장면연출 구역을 키프레임이라고함 */
       @keyframes rotate-ani {
-        to{/* css나중 상태 */
+        to {
+          /* css나중 상태 */
           transform: rotate(360deg);
         }
       }
 
-
+      /* 전체 사각형으로 변할 원 */
+      .넌뭐냐 {
+        position: absolute;
+        top: 40%;
+        right: 0;
+        width: 200px;
+        height: 200px;
+        text-align: center;
+        line-height: 200px;
+        white-space: nowrap;
+        border-radius: 50%;
+        background: #bbd3b3 url(./images/prog.jpg) no-repeat center/auto 100%;
+      }
     </style>
   </head>
   <body>
@@ -495,15 +542,20 @@
     <!-- 원모양 박스 -->
     <div class="박스야">
       <!-- 원모양 -->
-      <div class="원이야 on" 
-      onmouseover="맘대로해라(0,'별이 빛나는 밤')"></div>
-      <div class="원이야 on" 
-      onmouseover="맘대로해라(1,'론강의 별이 빛나는 밤')"></div>
-      <div class="원이야 on" 
-      onmouseover="맘대로해라(2,'밤의 카페 테라스')"></div>
+      <div class="원이야 on" onmouseover="맘대로해라(0,'별이 빛나는 밤')"></div>
+      <div
+        class="원이야 on"
+        onmouseover="맘대로해라(1,'론강의 별이 빛나는 밤')"
+      ></div>
+      <div
+        class="원이야 on"
+        onmouseover="맘대로해라(2,'밤의 카페 테라스')"
+      ></div>
     </div>
 
-
+    <!-- 사각형으로 변할 전체 마무리 원박스 -->
+    <div class="넌뭐냐" title="더블클릭해주세요!"
+    ondblclick="사각사각()"></div>
 
     <!-- <div class="pbox"></div>
     <a href="" class="pbox"></a>
