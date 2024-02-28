@@ -322,7 +322,10 @@
         멍청이 = 멍청이.item(헐);
 
         // 3-1. 트랜지션
-        멍청이.style.transition = '1s ease-out';
+        멍청이.style.transition = 
+        `1s ease-out,
+        border-radius .5s ease-in-out 1s
+        `;
 
         // 3-2. 위치이동 : top, right
         멍청이.style.top = 
@@ -349,6 +352,33 @@
 
         // 3-3. 원형을 사각형으로 변경
         멍청이.style.borderRadius = '0';
+
+        // 3-4. 액자 보더 넣기
+        멍청이.style.border = '10px ridge goldenrod';
+
+        // 4-1. html 넣기 : 그림제목
+        멍청이.innerHTML = '<h4>고흐<br>'+헉스+'</h4>';
+
+        // 만들어진 h4태그 확인하기
+        console.log('<h4>고흐<br>'+헉스+'</h4>');
+
+        // 4-2. 넣은 h4요소에 CSS 한번에 넣기
+        // 한번에 CSS를 셋팅하는 방법 : style.cssText 속성
+        // 주의: 상단에서 셋팅된 style.속성명 이 있다면
+        // 한번에 셋팅된 CSS로 모두 덮어써진다!
+        // 백틱(`)을 사용하여 엔터를 허용한 문자표시법을
+        // 사용하여 셋팅한다!
+        멍청이.querySelector('h4').style.cssText =
+        `
+          position: absolute;
+          bottom: 10px;
+          width: 100%;
+          color: #fff;
+          font-size: 14px;
+          text-align: center;
+          margin: 0;
+          padding: 0;
+        `;
 
      } ///////// 맘대로해라 함수 ///////////////
     </script>
