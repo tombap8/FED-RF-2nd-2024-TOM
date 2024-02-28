@@ -453,6 +453,23 @@
       .원이야:nth-child(3){
         background-image: url(./images/03.png);
       }
+
+
+      /* .원이야.on 일 경우 애니적용하기! */
+      .원이야.on {
+        /* 애니메이션 키프레임 호출은 animation속성으로! */
+        animation: rotate-ani 5s linear infinite;
+        /* animation: 키프레임이름 시간 가속도 반복횟수; */
+      }
+      /* .원이야 회전 키프레임
+      애니메이션을 위한 장면연출 구역을 키프레임이라고함 */
+      @keyframes rotate-ani {
+        to{/* css나중 상태 */
+          transform: rotate(360deg);
+        }
+      }
+
+
     </style>
   </head>
   <body>
@@ -466,11 +483,11 @@
     <!-- 원모양 박스 -->
     <div class="박스야">
       <!-- 원모양 -->
-      <div class="원이야" 
+      <div class="원이야 on" 
       onmouseover="맘대로해라(0,'별이 빛나는 밤')"></div>
-      <div class="원이야" 
+      <div class="원이야 on" 
       onmouseover="맘대로해라(1,'론강의 별이 빛나는 밤')"></div>
-      <div class="원이야" 
+      <div class="원이야 on" 
       onmouseover="맘대로해라(2,'밤의 카페 테라스')"></div>
     </div>
 
