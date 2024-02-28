@@ -48,6 +48,9 @@
             무조건 첫번째 줄에 온 글자만 적용된다!
             - 단, 블록요소에만 적용(인라인요소를 블록화하여도 됨)
 
+            참고)
+            https://www.w3schools.com/css/css_pseudo_elements.asp
+
 
              */
       /* h2요소 맨앞에 이미지 넣기 */
@@ -182,6 +185,11 @@
 
       /* 기타 가상요소 ::selection */
       /* 드래그 선택시 글자색 배경색 설정변경! */
+      /* p::selection { */
+      ::selection {
+        color: rgb(52, 255, 154);
+        background-color: hotpink;
+      }
 
       /* ::selection만쓰면 전체가 다 적용됨! 
         특정선택자::selection 으로 쓰면 자식태그로 싸지 않은 글자만 적용됨!*/
