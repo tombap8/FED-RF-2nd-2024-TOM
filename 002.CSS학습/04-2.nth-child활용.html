@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004-2.nth-child 활용</title>
+    <style>
+        h1{
+            text-align: center;
+        }
+
+        /* 체크박스 숨기기 */
+        
+
+        /* 라벨요소 */
+        label{
+            display: inline-block;
+            line-height: 1.5;
+            font-size: 25px;
+            margin: 10px;
+        }
+        /* 라디오 버튼 체크시 라벨변경
+        체크된 라디오버튼의 다음 형제 라벨요소선택 */
+        
+
+        ul.ball{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        .ball li{
+            float: left;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 5px solid orangered;
+            text-align: center;
+            line-height: 50px;
+            font-size: 25px;
+            color: darkred;
+            margin: 5px;
+        }
+
+        /* 라디오버튼 체크시
+        하단 형제요소인 ul>li 변경하기 */
+        /* 체크박스/라디오버튼 체크시
+        가상클래스는 :checked */
+
+        /* 1. 짝수번째
+        nth-child(even) -> 짝수번째 */
+        
+
+      
+        /* 2. 홀수번째
+        nth-child(odd) -> 홀수번째 */
+        
+
+        /* 3. 3의배수번째
+        nth-child(3n) -> 3의배수번째
+        n에 0부터 대입된 결과임! */
+        
+      
+
+        /* 4. 2의배수+1번째
+        nth-child(2n+1) -> 2의배수+1번째
+        n에 0부터 대입된 결과임! */
+        
+
+        /* 5. 1부터 20번째 :nth-child(-n+20)
+        nth-child(-n+20) 
+        -> 1부터 20번째 :nth-child(-n+20)
+        n에 0부터 대입된 결과임! 
+        -n이므로 뒤에서부터 선택되어 첫번째까지
+        선택됨 -> (20-n)라고 쓰면 문법오류임! */
+        
+
+        /* 6. 21부터 37번째 
+        li:nth-child(20) ~ li:nth-child(-n+37)
+        -> 출발은 20번째 요소 뒤인 21번부터 출발
+        n에 0부터 대입된 결과임! 끝에서부터 거꾸로
+        번호를 선택함!*/
+        
+
+    </style>
+</head>
+<body>
+    <h1>nth-child 활용</h1>
+
+    <!-- [라디오버튼활용] 
+        input요소 중 type="radio"
+        name속성을 같은 이름으로 설정
+        하면 라디오버튼 선택이
+        하나만 되고 나머지는 해제됨!
+
+        [ label 요소 ]
+        for속성에 input요소의 아이디명을
+        써서 클릭시 포커스가 해당 아이디
+        input요소로 들어간다!
+    -->
+
+    <input type="radio" id="rdo1" name="rdo">
+    <label for="rdo1">
+        1. 짝수번째 :nth-child(even)
+    </label> <br>
+
+    <input type="radio" id="rdo2" name="rdo">
+    <label for="rdo2">
+        2. 홀수번째 :nth-child(odd)
+    </label> <br>
+
+    <input type="radio" id="rdo3" name="rdo">
+    <label for="rdo3">
+        3. 3의배수번째 :nth-child(3n)
+    </label> <br>
+
+    <input type="radio" id="rdo4" name="rdo">
+    <label for="rdo4">
+        4. 2의배수+1번째 :nth-child(2n+1)
+    </label> <br>
+
+    <input type="radio" id="rdo5" name="rdo">
+    <label for="rdo5">
+        5. 1부터 20번째 :nth-child(-n+20)
+    </label> <br>
+
+    <input type="radio" id="rdo6" name="rdo">
+    <label for="rdo6">
+        6. 21부터 37번째 
+        li:nth-child(20) ~ li:nth-child(-n+37)
+    </label> <br><br>
+
+    <ul class="ball">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+        <li>9</li>
+        <li>10</li>
+        <li>11</li>
+        <li>12</li>
+        <li>13</li>
+        <li>14</li>
+        <li>15</li>
+        <li>16</li>
+        <li>17</li>
+        <li>18</li>
+        <li>19</li>
+        <li>20</li>
+        <li>21</li>
+        <li>22</li>
+        <li>23</li>
+        <li>24</li>
+        <li>25</li>
+        <li>26</li>
+        <li>27</li>
+        <li>28</li>
+        <li>29</li>
+        <li>30</li>
+        <li>31</li>
+        <li>32</li>
+        <li>33</li>
+        <li>34</li>
+        <li>35</li>
+        <li>36</li>
+        <li>37</li>
+        <li>38</li>
+        <li>39</li>
+        <li>40</li>
+        <li>41</li>
+        <li>42</li>
+        <li>43</li>
+        <li>44</li>
+        <li>45</li>
+        <li>46</li>
+        <li>47</li>
+        <li>48</li>
+        <li>49</li>
+        <li>50</li>
+    </ul>
+</body>
+</html>
