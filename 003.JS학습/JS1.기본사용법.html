@@ -291,8 +291,16 @@
       ****************************************/
      function 맘대로해라(헐,헉스){
         // 헐 - .원이야 순번 / 헉스 - 그림제목
+
         // 1. 함수호출확인
         console.log("니맘대로하세요~!",헐,헉스);
+
+        // 2. 대상선정 : .박스야 .원이야
+        var 멍청이 = 
+        document.getElementsByClassName('박스야').item(0)
+        .getElementsByClassName('원이야');
+
+        console.log(멍청이);
 
      } ///////// 맘대로해라 함수 ///////////////
     </script>
