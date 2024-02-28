@@ -310,7 +310,25 @@
         // document.getElementsByClassName('박스야').item(0)
         // .getElementsByClassName('원이야');
 
-        console.log(멍청이);
+        console.log(멍청이,멍청이.length);
+
+        // 3. 변경내용 : 트랜지션으로 화면 왼쪽하단으로
+        // 나열 되도록 위치를 바꾸고 모양을 변경하고
+        // 작품명을 하단에 나오게 한다!
+
+        // 한번에 3개가 컬렉션에 있으므로
+        // 구체적인 순번으로 선택해 준다!
+        // 헐 전달변수는 순번값이 있다!
+        멍청이 = 멍청이.item(헐);
+
+        // 3-1. 트랜지션
+        멍청이.style.transition = '1s ease-out';
+
+        // 3-2. 위치이동 : top, right
+        멍청이.style.top = 
+        'calc(100% - 200px)';
+        멍청이.style.right = 
+        'calc(100% - 200px - '+헐+'*200px)';
 
      } ///////// 맘대로해라 함수 ///////////////
     </script>
