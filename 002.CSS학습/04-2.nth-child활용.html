@@ -10,6 +10,10 @@
         }
 
         /* 체크박스 숨기기 */
+        input[type=radio] {
+            display: none;
+            /* input요소를 숨겨도 작동은됨! */
+        }
         
 
         /* 라벨요소 */
@@ -21,6 +25,9 @@
         }
         /* 라디오 버튼 체크시 라벨변경
         체크된 라디오버튼의 다음 형제 라벨요소선택 */
+        input:checked + label {
+            outline: 10px dotted orangered;
+        }
         
 
         ul.ball{
@@ -44,26 +51,44 @@
         /* 라디오버튼 체크시
         하단 형제요소인 ul>li 변경하기 */
         /* 체크박스/라디오버튼 체크시
-        가상클래스는 :checked */
+        가상클래스는 :checked 
+        -> 틸드(~) 선택자는 형제요소들을 모두
+        찾아 해당 요소를 선택함!
+        */
+
+
 
         /* 1. 짝수번째
         nth-child(even) -> 짝수번째 */
-        
+        #rdo1:checked ~ ul li:nth-child(even){
+            background-color: lightgreen;
+        }
 
       
         /* 2. 홀수번째
         nth-child(odd) -> 홀수번째 */
+        #rdo2:checked ~ ul li:nth-child(odd){
+            background-color: lightcoral;
+        }
+
         
 
         /* 3. 3의배수번째
         nth-child(3n) -> 3의배수번째
         n에 0부터 대입된 결과임! */
+        #rdo3:checked ~ ul li:nth-child(3n){
+            background-color: lightseagreen;
+        }
+
         
       
 
         /* 4. 2의배수+1번째
         nth-child(2n+1) -> 2의배수+1번째
         n에 0부터 대입된 결과임! */
+        #rdo4:checked ~ ul li:nth-child(2n+1){
+            background-color: lightskyblue;
+        }
         
 
         /* 5. 1부터 20번째 :nth-child(-n+20)
@@ -72,6 +97,9 @@
         n에 0부터 대입된 결과임! 
         -n이므로 뒤에서부터 선택되어 첫번째까지
         선택됨 -> (20-n)라고 쓰면 문법오류임! */
+        #rdo5:checked ~ ul li:nth-child(-n+20){
+            background-color: limegreen;
+        }        
         
 
         /* 6. 21부터 37번째 
@@ -79,7 +107,12 @@
         -> 출발은 20번째 요소 뒤인 21번부터 출발
         n에 0부터 대입된 결과임! 끝에서부터 거꾸로
         번호를 선택함!*/
-        
+        #rdo6:checked ~ 
+        ul li:nth-child(20) ~
+        li:nth-child(-n+37)
+        {
+            background-color: aqua;
+        }  
 
     </style>
 </head>
