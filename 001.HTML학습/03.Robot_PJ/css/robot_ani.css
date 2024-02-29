@@ -78,7 +78,11 @@
 
 /* 1. 로고애니 */
 .logo{
-    animation: logo-ani 2s ease-in-out 1s  alternate forwards;
+    animation: 
+    logo-ani 2s ease-in-out 1s  forwards;
+    /* 
+    animation: 
+    logo-ani 2s ease-in-out 1s 3 alternate forwards; */
 }
 
 @keyframes logo-ani {
