@@ -48,7 +48,7 @@ body * {
 /* 2-1.로봇박스 */
 .robot-box {
   padding-top: 200px;
-  margin-bottom: 900px;
+  margin-bottom: 560px;
 }
 /* 2-1-1.로봇머리 */
 .head {
@@ -155,8 +155,8 @@ body * {
   margin: 0 auto;
   margin-top: 50px;
   /* 배경이미지 조정 */
-  background-repeat: repeat;
-  background-size: 50%;
+  /* background-repeat: repeat; */
+  background-size: 80%;
 }
 /* 몸통 가상요소로 상의 만들기 */
 .body::before {
@@ -168,7 +168,7 @@ body * {
   width: 110%;
   height: 55%;
   background-image: linear-gradient(to bottom, #7dffad, #05a31c);
-  border-radius: 10px;
+  border-radius: 10px 10px 30% 30%;
 }
 /* 몸통 가상요소로 하의 만들기 */
 .body::after {
@@ -180,7 +180,7 @@ body * {
   width: 110%;
   height: 35%;
   background-image: linear-gradient(to bottom, #ff93f8, #a30583);
-  border-radius: 10px;
+  border-radius: 10px 10px 30% 30%;
 }
 /* 목 */
 .neck {
