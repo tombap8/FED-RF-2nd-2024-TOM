@@ -146,3 +146,25 @@
         transform: scale(1) rotate(-30deg);
     }
 }
+
+/* 2. 로봇이동애니 */
+.robot-box{
+    /* 애니메이션: 이시이지반방마 
+    - 4초후 4초간 한번만 끝상태유지 */
+    animation: move-robot 4s ease-in-out 4s forwards;
+}
+
+@keyframes move-robot {
+    to{
+        transform: translate(-50%, 0%) scale(0.7);
+    }
+}
+
+
+/* 3. 로봇다리작동 애니 */
+
+@keyframes leg-ani {
+    to{
+        top: 76%;
+    }
+}

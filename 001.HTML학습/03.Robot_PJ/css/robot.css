@@ -30,6 +30,7 @@ html{
 }
 /* 전체 배경이미지 */
 body {
+  padding-top: 100vh;
   background: url(../images/bg.jpg) no-repeat fixed top/cover;
 }
 
@@ -73,7 +74,11 @@ h1.logo{
 /**************** 2.메인영역 ****************/
 /* 2-1.로봇박스 */
 .robot-box {
-  padding-top: 200px;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(124%, -10%) scale(0.3);
+  /* padding-top: 200px; */
   margin-bottom: 560px;
 }
 /* 2-1-1.로봇머리 */
