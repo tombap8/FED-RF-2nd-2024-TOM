@@ -18,11 +18,21 @@
 */
 
 /********* 공통 클래스 *********/
+/* 임시표시타이틀 */
+.temp-tit{
+    position: absolute;
+    font-size: 2vw;
+    color: #ccc;
+}
 /* 중앙속박스 */
 .inbox{
     /* 최대가로크기 */
     max-width: 1360px;
     /* 블록박스 중앙정렬 -> 마.영.오! */
     margin: 0 auto;    
+}
+/* 컨텐츠 박스 */
+.cont-box{
+    height: 100%;
 }
 
