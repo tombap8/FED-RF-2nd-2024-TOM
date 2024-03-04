@@ -683,10 +683,33 @@
     // 결과변수
     var result;
     console.log('할당안한 변수값은?',result);
+    // 할당안한 변수는 기본적으로 undefined가 셋팅됨! 이것도 데이터임!
+
+    // 함수에 담아서 변수값을 변경해 본다!
+    var showAction = function(){
+        today === '비' ? 
+        result = '집에 있어요!' : result='놀이동산가요!';
+    
+        document.write(`
+            <h1>7. 조건연산자(삼항연산자) : </h1>
+            오늘의 날씨는 어떤가요? ${today} <br>
+            오늘 집에 있을까요? 놀러갈까요? ${result}
+            <br><br>
+        `);
+
+    }; /////////// showAction 함수 /////////////
+    
+    // 결과함수 처음호출
+    showAction();
+
+    // today 변수값을 변경하여 다시 호출
+    today = '해';
+    showAction();
+    
+    
 
 
 
-      document.write(``);
 
     </script>
   </head>
