@@ -86,8 +86,34 @@
 }
 
 @keyframes logo-ani {
-    to{
-        top: 3vw;
-        left: 3vw;
+    /* 정가운데 출발 */
+    0%{
+        top: calc(50% + 10vw);
+        left: calc(50% + 10vw);
+    }
+    /* 처음위치이동 : 왼쪽위 */
+    20%{
+        top: calc(0% + 5vw);
+        left: calc(0% + 5vw);
+    }
+    /* 두번째위치이동 : 오른쪽위 */
+    40%{
+        top: calc(0% + 5vw);
+        left: calc(100% - 25vw);
+    }
+    /* 세번째위치이동 : 오른쪽아래 */
+    60%{
+        top: calc(100% - 25vw);
+        left: calc(100% - 25vw);
+    }
+    /* 네번째위치이동 : 왼쪽아래 */
+    80%{
+        top: calc(100% - 25vw);
+        left: calc(0% + 5vw);
+    }
+    /* 처음위치로 돌아옴! : 왼쪽위 */
+    100%{
+        top: calc(0% + 5vw);
+        left: calc(0% + 5vw);
     }
 }
