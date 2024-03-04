@@ -69,7 +69,7 @@
         - 대체경로 설정하기 : alternate : 시작->끝,끝->시작
         - 대체경로는 반복횟수가 2이상 또는 infinite 이여야함
     7) 마지막상태(animation-fill-mode) : 애니메이션이 끝났을때
-        - 처음상태로 돌아가는 것이 기본!
+        - 처음상태로 돌아가는 것이 기본!(backwards)
         - 마지막 상태를 유지하고 싶을때 forwards(앞쪽에...즉,애니끝장면)
 
 
@@ -78,8 +78,14 @@
 
 /* 1. 로고애니 */
 .logo{
+    /* 처음출발 크기지정 */
+    transform: scale(2);
+
     animation: 
-    logo-ani 2s ease-in-out 1s  forwards;
+    /* 1초후 3초간 이동애니 셋팅 */
+    logo-ani 3s linear 1s alternate forwards,
+    /* 4초후 스윙애니 영원히 셋팅 */
+    swing-ani .4s ease-in-out 4s infinite alternate;
     /* 
     animation: 
     logo-ani 2s ease-in-out 1s 3 alternate forwards; */
@@ -88,32 +94,55 @@
 @keyframes logo-ani {
     /* 정가운데 출발 */
     0%{
-        top: calc(50% + 10vw);
-        left: calc(50% + 10vw);
+        top: calc(50% - 10vw);
+        left: calc(50% - 10vw);
+        transform: scale(2);
+
     }
     /* 처음위치이동 : 왼쪽위 */
     20%{
         top: calc(0% + 5vw);
         left: calc(0% + 5vw);
+        transform: scale(.5);
     }
     /* 두번째위치이동 : 오른쪽위 */
     40%{
         top: calc(0% + 5vw);
         left: calc(100% - 25vw);
+        transform: scale(.5);
     }
     /* 세번째위치이동 : 오른쪽아래 */
     60%{
         top: calc(100% - 25vw);
         left: calc(100% - 25vw);
+        transform: scale(.5);
     }
     /* 네번째위치이동 : 왼쪽아래 */
     80%{
         top: calc(100% - 25vw);
         left: calc(0% + 5vw);
+        transform: scale(.5);
     }
     /* 처음위치로 돌아옴! : 왼쪽위 */
+    90%{
+        top: calc(0% + 5vw);
+        left: calc(0% + 5vw);
+        transform: scale(1);
+    }
+    /* 각도 돌리기:다음 스윙애니 출발각도로 변경! */
     100%{
         top: calc(0% + 5vw);
         left: calc(0% + 5vw);
+        transform: scale(1) rotate(30deg);
+    }
+}
+
+/* 제자리 스윙 애니 */
+@keyframes swing-ani {
+    from{
+        transform: scale(1) rotate(30deg);
+    }
+    to{
+        transform: scale(1) rotate(-30deg);
     }
 }
