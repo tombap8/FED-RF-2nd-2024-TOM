@@ -42,3 +42,9 @@ ul::after,ol::after,.clb::after{
     margin: 0 auto;
     outline: 2px dashed lime;
 }
+/* GNB 메뉴 */
+.gnb li{
+    float: left;
+    line-height: 78px;
+    padding: 0 32px;
+}
