@@ -1,39 +1,170 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>JS3-1. 제어문 - if문, switch case문, for문, while문</title>
-        <!-- JS코드구역 -->
-        <script>
-</script>
-        <style>
-            h1 {
-                font-size: 4vw;
-            }
-            h2 {
-                font-size: 3vw;
-            }
-            body,
-            h3,
-            input,
-            button,
-            select {
-                font-size: 2vw;
-            }
-            .tit {
-                text-align: center;
-                background-image: linear-gradient(to bottom, lightgreen, lightsalmon);
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS3-1. 제어문 - if문, switch case문, for문, while문</title>
+    <!-- JS코드구역 -->
+    <script>
+      /***************************************
+            함수명 : showJumsu
+            설명 : 점수에 따른 평가출력하기
+                1. 점수에 따른 메시지 출력
+                2. 점수에 따른 메시지 글자색 변경
+                3. 점수에 따른 칭찬스티커 보이기
+        ***************************************/
+      function showJumsu() {
+        // 1. 함수호출확인!
+        // console.log('점수함보자!');
+
+        // 2. 대상선정 /////////
+        // 2-1. 점수입력요소 : input#jumsu
+        var jumsu = document.querySelector("#jumsu");
+
+        // 2-2.출력요소 : #jexp
+        var jexp = document.querySelector(".jexp");
+
+        // console.log('선택요소들:',
+        // jumsu,jexp);
+
+        // 3. 입력값 읽어오기 ////////
+        var score = jumsu.value;
+        // value 속성 - 입력된 값을 읽기/쓰기
+        console.log("입력된값:", score);
+
+        // 4. 입력된값 필터링처리
+
+        // 5. 출력 메시지 만들기
+        // ((점수별 메시지))
+        // 90점 이상 : 매우잘함
+        // 80점 이상 : 잘함
+        // 70점 이상 : 보통
+        // 60점 이상 : 노력요함
+        // 60점 미만 : 재시험
+        // -> 점수가 담긴 score변수를 검사함!
+      } /////////// showJumsu 함수 ////////////
+
+      // if문 튜닝~~~!
+      if (true) {
+        console.log("조건통과!!!");
+      }
+
+      if (false) {
+        console.log("조건통과!!!");
+      }
+      else{
+        console.log('불통과!!!');
+      }
+
+      // 변수를 사용한 불린값체크
+      var condition;
+      console.log('할당안된변수값:',condition);
+      
+      if(condition){
+        console.log('통과!');
+      }
+      else{
+        console.log('undefined는 false처리됨!');
+      }
+
+      /*************************************** 
+       [ if문 ]
+        - 조건문을 검사하여 true이면
+        중괄호안의 코드가 실행되는 제어문
+
+        - 조건문이란 
+        결과가 true / false 로 나오는 구문
+        (조건문: 비교연산자, 논리연산자)
+
+        ((구문))
+        ____________________________
+
+        if(조건문){
+            실행코드
+        }
+        else if(조건문){
+            실행코드
+        }
+        ...
+        else{
+            실행코드
+        }
+        ______________________________
+
+        ((구문해석))
+        1. if문은 단독으로 따로 사용가능
+
+        2. else if문은 if문 뒤에 또는 else if문 뒤에
+        만 사용가능함!(else if로 시작못함!)
+        -> 하나의 조건에 걸리면 다른 조건문엔 안들어감!
+        -> 단독으로 else if문 사용불가!
+
+        3. else문은 모든 조건에 해당없을때
+        무조건 실행할 코드가 있을 경우 사용한다!
+        -> if문 가장 끝에 사용한다!
+        -> 단독으로 else문만 사용불가!
+
+        ※ 참고 : if문의 실행문이 하나이면 중괄호생략가능
+        예) 
+            if(aa>10){
+                my = "ㅎㅎㅎ";
             }
 
-            body{
-                text-align: center;
-            }
+            -> 위와 같음
 
-           
-        </style>
-    </head>
-    <body>
-        <h1 class="tit">JS 제어문</h1>
-    </body>
+            if(aa>10) my = "ㅎㅎㅎ";
+       ***************************************/
+    </script>
+    <!-- CSS코드구역 -->
+    <style>
+      h1 {
+        font-size: 4vw;
+      }
+      h2 {
+        font-size: 3vw;
+      }
+      body,
+      h3,
+      input,
+      button,
+      select {
+        font-size: 2vw;
+      }
+      .tit {
+        text-align: center;
+        background-image: linear-gradient(to bottom, lightgreen, lightsalmon);
+      }
+
+      body {
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 class="tit">JS 제어문</h1>
+    <hr />
+    <!-- if문 연습 -->
+    <div class="bx-if">
+      <h2 class="tit">if문 연습</h2>
+      <h3 class="jexp">평가출력</h3>
+      <label for="jumsu">점수입력:</label>
+      <input
+        type="text"
+        id="jumsu"
+        placeholder="점수를 입력하세요!"
+        maxlength="3"
+      />
+      <!-- 
+            [ label요소 ]
+            input요소의 설명라벨요소
+            - for속성 : 클릭시 아이디 input요소로 포커스이동
+    
+            [ input 요소 : 입력요소 ]
+            - type = "text" -> 글자입력창
+            - placeholder  -> 안내문구출력
+            - maxlength -> 최대입력 글자수 제한
+         -->
+      <button class="sbtn" onclick="showJumsu()">평가하기</button>
+    </div>
+  </body>
 </html>
