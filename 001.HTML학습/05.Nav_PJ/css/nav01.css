@@ -169,6 +169,36 @@ ul::after,ol::after,.clb::after{
     transition-delay: .5s;
 }
 
+/* 가상요소 밑줄을 위한 부모자격 */
+.gnb ul>li>a{
+    position: relative;
+}
+/* GNB 상위메뉴 오버시 밑줄애니 */
+.gnb ul>li>a::after{
+    content: '';
+    position: absolute;
+    /* 앱솔루트는 자동블록됨! */
+    top: 53px;
+    /* 마우스 나갈때 left값 밀기 */
+    left: 100%;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    /* 아웃시 트랜지션 */
+    transition: .3s;
+}
+/* 오버시 밑줄박스 애니 */
+.gnb ul>li:hover>a::after{
+    left: 0;
+    width: 100%;
+    /* 오버시 트랜지션 
+    ->>> left 는 트랜지션 적용말것!!! */
+    transition: width .3s;
+}
+
+
+
+
 
 /* 메인영역 */
 .main-area {
