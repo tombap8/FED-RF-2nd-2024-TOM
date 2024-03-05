@@ -13,3 +13,32 @@ h1.tit {
     text-align: center;
     padding: 20px;
 }
+
+/* 전체 body */
+body{
+    color: #fff;
+    background: #0a134d url(../images/nav1bg.png) no-repeat fixed center/cover;
+}
+/* ul,ol 초기화 : 3無 */
+ul,ol{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/* a요소공통 */
+a{
+    color: #fff;
+    text-decoration: none;
+}
+/* 공통클래스 : 클리어설정 */
+ul::after,ol::after,.clb::after{
+    content: '';
+    display: block;
+    clear: both;
+}
+/* 중앙속박스 */
+.inbox{
+    max-width: 1650px;
+    margin: 0 auto;
+    outline: 2px dashed lime;
+}
