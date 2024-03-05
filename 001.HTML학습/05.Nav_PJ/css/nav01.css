@@ -45,13 +45,57 @@ ul::after,ol::after,.clb::after{
     outline: 2px dashed lime;
 }
 
-
+/* 로고박스 */
+.logo{    
+    padding: 13px 0;
+}
 
 /* GNB 메뉴 */
-.gnb li{
+.gnb{
+    margin-left: 63px;
+}
+/* 상위메뉴만 적용하기 
+직계자식(>)선택으로 상위메뉴만 선택함 */
+.gnb ul > li{
+    position: relative;
+    /* 부모자격 - .smenu의 left값 */
     float: left;
-    line-height: 78px;
     padding: 0 32px;
+    line-height: 78px;
+    font-weight: bold;
+    /* 글자관련셋팅은
+    하위요소로 모두 상속됨! */
+}
+/* 서브메뉴 */
+.smenu{
+    position: absolute;
+    left: 50%;
+    /* x축 중앙이동 */
+    transform: translateX(-50%);
+
+    width: 200px;
+    background-color: pink;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 38px;
+    /* 패딩이 있으면 높이값0
+    숨기기가 안됨! 그래서
+    하위 요소인 ol태그에 패딩줌 */
+    /* padding: 10px; */
+
+    /* 숨기기장치 */
+    height: 0;
+    overflow: hidden;
+
+    /* 트랜지션 */
+    transition: height .4s;
+}
+/* 상위li오버시 서브메뉴 보이기 */
+.gnb ul>li:hover .smenu{
+    height: 210px;
+}
+.smenu ol{
+    padding: 10px;
 }
 
 
