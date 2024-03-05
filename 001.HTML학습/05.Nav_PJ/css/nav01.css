@@ -143,6 +143,7 @@ ul::after,ol::after,.clb::after{
 .gnb ul>li .smenu li:hover{
     opacity: 1;
     font-weight: bold;
+    transition-delay: 0;
 }
 /* 오버시 li순서별 트랜지션 delay주기 */
 .gnb ul>li:hover .smenu li:nth-child(2){
