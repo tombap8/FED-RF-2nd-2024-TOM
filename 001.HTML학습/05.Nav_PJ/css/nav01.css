@@ -86,15 +86,26 @@ ul::after,ol::after,.clb::after{
     /* padding: 10px; */
 
     /* 숨기기장치 */
-    height: 0;
+    /* height: 0; */
+    max-height: 0;
     overflow: hidden;
 
-    /* 트랜지션 */
-    transition: height .4s;
+    /* 트랜지션 : height -> max-height 속성변경 */
+    transition: max-height .4s;
 }
 /* 상위li오버시 서브메뉴 보이기 */
 .gnb ul>li:hover .smenu{
-    height: 210px;
+    max-height: 210px;
+    /* max-height로 셋팅하는 원리:
+    최대높이값은 컨텐츠내용이 적을때 auto하게
+    내용물 만큼만 높이값이 셋팅된다!
+    따라서 셋팅높이값은 최대로로 셋팅해야하는
+    높이값으로 셋팅하면 더 작은 높이값은
+    자동으로 셋팅된다!
+    (단, 작은 크기는 시간이 짧게 표현됨) */
+
+    /* height: 210px; */
+    /* height: auto; */
     /* 
         높이값변경 트랜지션 주의사항
         -> auto로 셋팅하면 특정 크기로 변경할때만
@@ -106,13 +117,39 @@ ul::after,ol::after,.clb::after{
 }
 
 /* 예시로 5번째 높이값 개별셋팅 */
-.gnb ul>li:nth-child(5):hover .smenu{
+/* .gnb ul>li:nth-child(5):hover .smenu{
     height: 58px;
-}
+} */
 
 .smenu ol{
     padding: 10px;
 }
+
+/* 서브메뉴 li 순서대로 나타나기 */
+.smenu li{
+    /* 투명하게 */
+    opacity: 0;
+    /* 트랜지션 */
+    transition: opacity .4s;
+}
+/* 오버시 */
+.gnb ul>li:hover .smenu li{
+    opacity: 1;
+}
+/* 오버시 li순서별 트랜지션 delay주기 */
+.gnb ul>li:hover .smenu li:nth-child(2){
+    transition-delay: .2s;
+}
+.gnb ul>li:hover .smenu li:nth-child(3){
+    transition-delay: .3s;
+}
+.gnb ul>li:hover .smenu li:nth-child(4){
+    transition-delay: .4s;
+}
+.gnb ul>li:hover .smenu li:nth-child(5){
+    transition-delay: .5s;
+}
+
 
 /* 메인영역 */
 .main-area {
