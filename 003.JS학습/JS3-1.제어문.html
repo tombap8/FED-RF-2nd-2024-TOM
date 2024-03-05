@@ -58,14 +58,46 @@
 
       // 변수를 사용한 불린값체크
       var condition;
-      console.log('할당안된변수값:',condition);
-      
-      if(condition){
-        console.log('통과!');
-      }
-      else{
-        console.log('undefined는 false처리됨!');
-      }
+    //   console.log('할당안된변수값:',condition);
+
+    // if문처리결과 찍기 함수 ///////////
+    var showResult = function(){
+        if(condition){
+          console.log(condition,'통과!');
+        }
+        else{
+          console.log(condition,'는 false처리됨!');
+        }
+    }; //////////// showResult 함수 /////////////
+
+    // 테스트 1 : undefined
+    // 선언후 할당되지 않은 변수값은 undefined임!
+    showResult();
+
+    // 테스트 2 : 숫자
+    // -> 0은 false, 이외의 모든수는 true
+    // true는 1, false는 0과 1:1매칭됨!
+    condition = 1;
+    showResult();
+    condition = 0;
+    showResult();
+    condition = -5456476.33;
+    showResult();
+
+    // 테스트 3 : null 
+    // -> '빈값'을 의미하는 데이터
+    condition = null;
+    showResult();
+
+    // 테스트 4 : 비교연산자
+    // 비교연산자는 결과로 true/false가 나옴
+    condition = 34<1;
+    showResult();
+
+    // 테스트 5 : 선언된적이 없는 변수
+    // -> 선언안된 변수를 사용하면 에러처리됨!
+    // condition = mymy;
+    // showResult();
 
       /*************************************** 
        [ if문 ]
