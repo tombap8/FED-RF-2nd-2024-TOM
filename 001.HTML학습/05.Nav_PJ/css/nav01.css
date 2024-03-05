@@ -74,8 +74,10 @@ ul::after,ol::after,.clb::after{
     transform: translateX(-50%);
 
     width: 200px;
-    background-color: pink;
+    background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
+    box-shadow: inset 0 0 10px lightskyblue;
+
     text-align: center;
     line-height: 38px;
     /* 패딩이 있으면 높이값0
@@ -93,7 +95,21 @@ ul::after,ol::after,.clb::after{
 /* 상위li오버시 서브메뉴 보이기 */
 .gnb ul>li:hover .smenu{
     height: 210px;
+    /* 
+        높이값변경 트랜지션 주의사항
+        -> auto로 셋팅하면 특정 크기로 변경할때만
+        적용되는 트랜지션이 적용되지 않음!(바로나옴)
+        height셋팅시에는 변할 실제 크기를 셋팅해야함!
+        -> 각 상위 li별로 높이값을 각각 셋팅해야하는
+        번거로움이 있다!
+    */
 }
+
+/* 예시로 5번째 높이값 개별셋팅 */
+.gnb ul>li:nth-child(5):hover .smenu{
+    height: 58px;
+}
+
 .smenu ol{
     padding: 10px;
 }
