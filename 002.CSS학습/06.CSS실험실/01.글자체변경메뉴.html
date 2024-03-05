@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01.글자체변경메뉴</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap')
       /*
             원본참고사이트
             https://www.joinflowparty.com/on-demand
@@ -35,7 +36,8 @@
         .menu li{
             overflow: hidden;
             height: 50px;
-            outline: 2px dashed red;
+            /* outline: 2px dashed red; */
+            border-bottom: 2px solid #ccc;
         }
         /* 메뉴 span */
         .menu span{
@@ -45,7 +47,18 @@
         /* 두번째 메뉴만 글씨체변경 */
         .menu span:last-child{
             font-style: italic;
+            font-family: "Dancing Script", cursive;
+            line-height: 60px;
         }
+        /* 첫번째 span의 마진탑
+        마이너스값으로 애니메이션 */
+        .menu span:first-child{
+            transition: .3s;
+        }
+        .menu li:hover span:first-child{
+            margin-top: -60px;
+        }
+
 
     </style>
   </head>
