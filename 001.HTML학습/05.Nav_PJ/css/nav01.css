@@ -80,6 +80,9 @@ ul::after,ol::after,.clb::after{
 
     text-align: center;
     line-height: 38px;
+    /* 상속된 두꺼운체 노멀체로 변경 */
+    font-weight: normal;
+
     /* 패딩이 있으면 높이값0
     숨기기가 안됨! 그래서
     하위 요소인 ol태그에 패딩줌 */
@@ -130,11 +133,16 @@ ul::after,ol::after,.clb::after{
     /* 투명하게 */
     opacity: 0;
     /* 트랜지션 */
-    transition: opacity .4s;
+    transition: all .4s;
 }
-/* 오버시 */
+/* 상위메뉴 오버시 */
 .gnb ul>li:hover .smenu li{
+    opacity: .7;
+}
+/* 하위메뉴 오버시 */
+.gnb ul>li .smenu li:hover{
     opacity: 1;
+    font-weight: bold;
 }
 /* 오버시 li순서별 트랜지션 delay주기 */
 .gnb ul>li:hover .smenu li:nth-child(2){
