@@ -1,0 +1,15 @@
+@charset "utf-8";
+
+/* 네비게이션 유형1 CSS - nav01.css */
+
+
+html,
+body,
+h1 {
+    margin: 0;
+    padding: 0;
+}
+h1.tit {
+    text-align: center;
+    padding: 20px;
+}
