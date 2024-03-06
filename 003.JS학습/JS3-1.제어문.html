@@ -32,7 +32,45 @@
         // value 속성 - 입력된 값을 읽기/쓰기
         console.log("입력된값:", score);
 
-        // 4. 입력된값 필터링처리
+        // 숫자인지 여부
+        console.log('숫자가 아니니?',isNaN(score));
+
+        // 4. 입력된값 필터링처리 ////////////
+        // 4-1. 빈값 여부 : 공백제거후 검사
+        // 스페이스바도 문자로 취급하므로
+        // 공백제거함수인 trim() 을 사용한다!
+        if(score.trim() == ""){
+          // 메시지 #jexp에 넣기
+          jexp.innerHTML = "값을 꼭 입력하세요!";
+
+          console.log('값을 꼭 입력하세요!');
+          // 기존값 지우기
+          jumsu.value = "";
+          // 포커스넣기 : focus() 내장함수
+          jumsu.focus();
+          // if문에서 끝나면 아래쪽 함수의
+          // 코드를 실행하지 않으려면
+          // 리턴(return)문을 쓰면
+          // 리턴을 만나는 순간 함수를 나간다!
+          // return 값 -> 값을 생략가능
+          return;
+        }
+        // 4-2. 숫자 여부 : isNaN() 내장함수로 검사
+        // isNaN -> is Not a Number?
+        // 숫자가 아니니? -> 응(true) / 아니(false)
+        else if(isNaN(score)){
+          // isNaN(변수) -> 결과가 true이면 숫자아님!
+          // 메시지 넣기
+          jexp.innerHTML = "숫자만 입력하세요!";
+          // 기존값 지우기
+          jumsu.value = "";
+          // 포커스넣기 : focus() 내장함수
+          jumsu.focus();
+          // 리턴문(함수나가기!)
+          return;
+
+        }
+        // 4-3. 범위 여부 : 조건문 검사
 
         // 5. 출력 메시지 만들기
         // ((점수별 메시지))
@@ -81,7 +119,7 @@
 
         // 6. 화면출력하기 ///////
         // innerText 는 텍스트 출력
-        jexp.innerText = msg;
+        jexp.innerText = "평가결과는 " + msg;
         // 글자색 처리하기
         jexp.style.color = fcolor;
 
@@ -91,14 +129,14 @@
 
       // if문 튜닝~~~!
       if (true) {
-        console.log("조건통과!!!");
+        // console.log("조건통과!!!");
       }
 
       if (false) {
-        console.log("조건통과!!!");
+        // console.log("조건통과!!!");
       }
       else{
-        console.log('불통과!!!');
+        // console.log('불통과!!!');
       }
 
       // 변수를 사용한 불린값체크
@@ -117,27 +155,27 @@
 
     // 테스트 1 : undefined
     // 선언후 할당되지 않은 변수값은 undefined임!
-    showResult();
+    // showResult();
 
     // 테스트 2 : 숫자
     // -> 0은 false, 이외의 모든수는 true
     // true는 1, false는 0과 1:1매칭됨!
     condition = 1;
-    showResult();
+    // showResult();
     condition = 0;
-    showResult();
+    // showResult();
     condition = -5456476.33;
-    showResult();
+    // showResult();
 
     // 테스트 3 : null 
     // -> '빈값'을 의미하는 데이터
     condition = null;
-    showResult();
+    // showResult();
 
     // 테스트 4 : 비교연산자
     // 비교연산자는 결과로 true/false가 나옴
     condition = 34<1;
-    showResult();
+    // showResult();
 
     // 테스트 5 : 선언된적이 없는 변수
     // -> 선언안된 변수를 사용하면 에러처리됨!
