@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>플렉스 디스플레이</title>
+    <style>
+      /*
+          [ 플렉스 디스플레이 박스 ]
+        flex 란? - flexible(유연한-에서 나온말)
+
+        - 가변적인 자식요소를 컨트롤하기 위해
+        CSS3에서 새롭게 선보인 display 기술
+
+        [ 플렉스 셋팅법 ]
+        1. 대상: 컨트롤할 요소들의 직계부모요소
+        2. 등분할셋팅:
+            - 자식요소를 같은 비율로 채울 때
+            자식요소에 flex속성값을 1로 쓰면 된다!
+        3. 일반적인 셋팅:
+            - 특정크기나 내용이 있는 블록요소인 자식을
+            옆으로 흐르게 한다(flex셋팅 일단 불필요!)
+
+        ____________________________________________
+
+            [ flex 속성 : 플렉스 자식요소에 주는 속성 ]
+            -> flex : 한번에 아래 3가지 속성을 줌
+
+            flex: 1 숫자하나만 쓰면 
+            flex: 1 1 0 과 동일
+            해석) 
+            커질래? 응(1), 작아질래? 응(1), 가로크기 0 (설정없음)
+
+            따로 설정시 아래와 같다!
+            flex-grow: 1;
+            flex-shrink: 1;
+            flex-basis: 0;
+
+            1) flex-grow: 1 | 0 -> 커질래? 1 응 | 0 아니
+            2) flex-shrink: 1 | 0 -> 작아질래? 1 응 | 0 아니
+            3) flex-basis: 설정값(px,%,em,rem,vw등)
+            -> width 가로크기를 설정하는 속성
+            -> 만약 0을 쓰면 속성값 없음!
+
+        */
+
+      /* 초기화 */
+      html,
+      body,
+      h1,
+      h2,
+      ol,
+      ul {
+        margin: 0;
+        padding: 0;
+      }
+      ol,
+      ul {
+        list-style: none;
+      }
+
+      /* 전체 랩핑박스 */
+      .wrap {
+        height: 100vh;
+        /* 보이는 화면채우기 */
+      }
+      /* 등분할 flex적용박스 */
+      .flex-box {
+        /* 플렉스박스 설정 */
+        display: flex;
+        /* 자식요소 정렬,순서속성들 */
+        /* flex-direction: column; */
+
+        height: 100%;
+      }
+
+      .flex-box li {
+        /* 자식 플렉스설정 */
+        flex: 1;
+        /* 
+            flex값으로 1을 쓰면 등분할됨
+            (크기는 부모박스의 크기에 반응하여
+            커지거나 작아지면서 등분할 채우기를 함!)
+
+            만약...
+            여기에 1말고 다른 숫자를 주면
+            배수의 의미가 생기게 됨
+            예컨데 하나만 2를 주면 다른 1설정된 것의
+            2배라는 의미다!
+            예) flex: 2;
+          */
+
+        /***** 기존방식 *****/
+        /* float: left; */
+        /* float : left설정은
+        가로크기가 내용만큼만 생기므로
+        등분할은 계산하여 %를 준다.
+        그리고 세로 크기도 채우기를 하려면
+        100% 를 셋팅해야한다! */
+        /* width: calc(100%/5);
+        height: 100%; */
+      }
+
+      /* 
+            [ float속성을 이용한 가로방향 정렬 ]
+            1. 옆으로보낼 블록박스에 float:left설정
+            2. 부모박스에 맞추려면 height값 100%
+            3. 등분할 하려면 width값을 100%/나눌수
+            4. 부모박스에 가상요소로 clear:both설정
+        */
+
+      /* 등분할 박스 li 개별셋팅 */
+      .flex-box li:nth-child(1) {
+        background: url(./images/m01_bg.jpg) no-repeat center/cover;
+      }
+      .flex-box li:nth-child(2) {
+        background: url(./images/m02_bg.jpg) no-repeat center/cover;
+      }
+      .flex-box li:nth-child(3) {
+        background: url(./images/m03_bg.jpg) no-repeat center/cover;
+      }
+      .flex-box li:nth-child(4) {
+        background: url(./images/m04_bg.jpg) no-repeat center/cover;
+      }
+      .flex-box li:nth-child(5) {
+        background: url(./images/m05_bg.jpg) no-repeat center/cover;
+      }
+
+      /* 타이틀 공통 */
+      .tit {
+        position: absolute;
+        top: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+        /* 가로방향 중앙이동 */
+
+        width: 500px;
+        height: 100px;
+        border: 5px double #fff;
+      }
+
+      /* 타이틀 하위 li 공통 */
+      .tit > li {
+        width: 50px;
+        height: 50px;
+        border: 3px solid #fff;
+        border-radius: 50%;
+        background-color: #f00;
+        text-align: center;
+        font: bold 14px/50px Verdana;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 전체 랩핑박스 -->
+    <div class="wrap">
+      <!-- 등분할 파티션박스 -->
+      <ul class="flex-box">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+
+    <!-- 타이틀박스 1 -->
+    <ol class="tit t1">
+      <li>L</li>
+      <li>O</li>
+      <li>T</li>
+      <li>T</li>
+      <li>E</li>
+    </ol>
+  </body>
+</html>
