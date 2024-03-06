@@ -42,6 +42,8 @@
         if(score.trim() == ""){
           // 메시지 #jexp에 넣기
           jexp.innerHTML = "값을 꼭 입력하세요!";
+          // 메시지 글자색 복원하기(변경가능성있음)
+          jexp.style.color = 'black';
 
           console.log('값을 꼭 입력하세요!');
           // 기존값 지우기
@@ -62,6 +64,8 @@
           // isNaN(변수) -> 결과가 true이면 숫자아님!
           // 메시지 넣기
           jexp.innerHTML = "숫자만 입력하세요!";
+          // 메시지 글자색 복원하기(변경가능성있음)
+          jexp.style.color = 'black';
           // 기존값 지우기
           jumsu.value = "";
           // 포커스넣기 : focus() 내장함수
@@ -71,6 +75,22 @@
 
         }
         // 4-3. 범위 여부 : 조건문 검사
+        // 조건 : score가 0미만 이거나 100초과일때
+        // 바로 위의 else if조건에 숫자여부를 검사했으므로
+        // 숫자여부 검사는 다시 할 필요가 없다!
+        else if(score < 0 || score > 100){
+          // 메시지 넣기
+          jexp.innerHTML = 
+          "0~100 사이의 숫자만 입력하세요!";
+          // 메시지 글자색 복원하기(변경가능성있음)
+          jexp.style.color = 'black';
+          // 기존값 지우기
+          jumsu.value = "";
+          // 포커스넣기 : focus() 내장함수
+          jumsu.focus();
+          // 리턴문(함수나가기!)
+          return;
+        }
 
         // 5. 출력 메시지 만들기
         // ((점수별 메시지))
