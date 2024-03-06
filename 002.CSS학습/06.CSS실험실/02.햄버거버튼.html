@@ -30,15 +30,38 @@
         /* 2번 바 */
         .hambtn span:nth-child(2){
             top: 100px;
+            left: 0;
+            /* left초기값 있어야
+            애니메이션 됨(기본값 auto) */
         }
         /* 3번 바 */
         .hambtn span:nth-child(3){
             top: 200px;
         }
+
+        /* 상위 메뉴에 클래스 on 줄경우 닫기버튼으로 변경 */
+        /* 1번 바 */
+        .hambtn.on span:nth-child(1){
+            top: 100px;
+            transform: rotate(45deg);
+            transition: 
+            top .3s,transform .3s .3s;
+        }
+        /* 2번 바 */
+        .hambtn.on span:nth-child(2){
+            top: 100px;
+            width: 0%;
+            left: 50%;
+        }
+        /* 3번 바 */
+        .hambtn.on span:nth-child(3){
+            top: 100px;
+            transform: rotate(-45deg);
+        }
     </style>
 </head>
 <body>
-    <div class="hambtn">
+    <div class="hambtn on">
         <span></span>
         <span></span>
         <span></span>
