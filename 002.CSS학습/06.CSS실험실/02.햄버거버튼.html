@@ -1,98 +1,120 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>02.햄버거버튼 애니메이션</title>
     <style>
-        .hambtn{
-            position: relative;
-            /* 부모자격: span */
-            width: 400px;
-            height: 250px;
-            margin: 50px auto;
-            outline: 5px dotted lightpink;
-            /* 손가락보이기 */
-            cursor: pointer;
-        }
-        /* 햄버거 바 공통 */
-        .hambtn span{
-            position: absolute;
-            width: 100%;
-            height: 50px;
-            background-color: #333;
-            border-radius: 25px;
-        }
-        /* 1번 바 */
-        .hambtn span:nth-child(1){
-            top: 0;
-            /* 트랜지션 개별설정 : 햄버거 복귀 */
-            transition: 
-            top .3s .3s,transform .3s;
-            /* top값은 0.3초대기후 0.3초애니,
+      .hambtn {
+        position: relative;
+        /* 부모자격: span */
+        width: 400px;
+        height: 250px;
+        margin: 50px auto;
+        outline: 5px dotted lightpink;
+        /* 손가락보이기 */
+        cursor: pointer;
+      }
+      /* 햄버거 바 공통 */
+      .hambtn span {
+        position: absolute;
+        width: 100%;
+        height: 50px;
+        background-color: #333;
+        border-radius: 25px;
+      }
+      /* 1번 바 */
+      .hambtn span:nth-child(1) {
+        top: 0;
+        /* 트랜지션 개별설정 : 햄버거 복귀 */
+        transition: top 0.3s 0.3s, transform 0.3s;
+        /* top값은 0.3초대기후 0.3초애니,
             transfrom은 바로 0.3초 애니 
             회전후 중앙이동함! */
-        }
-        /* 2번 바 */
-        .hambtn span:nth-child(2){
-            top: 100px;
-            left: 0;
-            /* left초기값 있어야
+      }
+      /* 2번 바 */
+      .hambtn span:nth-child(2) {
+        top: 100px;
+        left: 0;
+        /* left초기값 있어야
             애니메이션 됨(기본값 auto) */
-            /* 트랜지션 : 0.3초후 0.1초애니 */
-            transition: .1s .3s;
-        }
-        /* 3번 바 */
-        .hambtn span:nth-child(3){
-            top: 200px;
-            /* 트랜지션 개별설정 : 햄버거 복귀 */
-            transition: 
-            top .3s .3s,transform .3s;
-            /* top값은 0.3초대기후 0.3초애니,
+        /* 트랜지션 : 0.3초후 0.1초애니 */
+        transition: 0.1s 0.3s;
+      }
+      /* 3번 바 */
+      .hambtn span:nth-child(3) {
+        top: 200px;
+        /* 트랜지션 개별설정 : 햄버거 복귀 */
+        transition: top 0.3s 0.3s, transform 0.3s;
+        /* top값은 0.3초대기후 0.3초애니,
             transfrom은 바로 0.3초 애니 
             회전후 중앙이동함! */
-        }
+      }
 
-        /* 상위 메뉴에 클래스 on 줄경우 닫기버튼으로 변경 */
-        /* 1번 바 */
-        .hambtn.on span:nth-child(1){
-            top: 100px;
-            transform: rotate(45deg);
-            /* 트랜지션 개별설정 */
-            transition: 
-            top .3s,transform .3s .3s;
-            /* top값은 바로 0.3초애니,
+      /* 상위 메뉴에 클래스 on 줄경우 닫기버튼으로 변경 */
+      /* 1번 바 */
+      .hambtn.on span:nth-child(1) {
+        top: 100px;
+        transform: rotate(45deg);
+        /* 트랜지션 개별설정 */
+        transition: top 0.3s, transform 0.3s 0.3s;
+        /* top값은 바로 0.3초애니,
             transfrom은 0.3초대기후 0.3초 애니 
             중앙이동후 회전함! */
-        }
-        /* 2번 바 */
-        .hambtn.on span:nth-child(2){
-            top: 100px;
-            width: 0%;
-            left: 50%;
-            /* 트랜지션 : 0.3초후 0.1초애니 */
-            transition: .1s .3s;
-        }
-        /* 3번 바 */
-        .hambtn.on span:nth-child(3){
-            top: 100px;
-            transform: rotate(-45deg);
-            /* 트랜지션 개별설정 */
-            transition: 
-            top .3s,transform .3s .3s;
-            /* top값은 바로 0.3초애니,
+      }
+      /* 2번 바 */
+      .hambtn.on span:nth-child(2) {
+        top: 100px;
+        width: 0%;
+        left: 50%;
+        /* 트랜지션 : 0.3초후 0.1초애니 */
+        transition: 0.1s 0.3s;
+      }
+      /* 3번 바 */
+      .hambtn.on span:nth-child(3) {
+        top: 100px;
+        transform: rotate(-45deg);
+        /* 트랜지션 개별설정 */
+        transition: top 0.3s, transform 0.3s 0.3s;
+        /* top값은 바로 0.3초애니,
             transfrom은 0.3초대기후 0.3초 애니 
             중앙이동후 회전함! */
-        }
+      }
+
+      /* 두번째 카피 햄버거 버튼 크기/위치이동 */
+      .hambtn2 {
+        position: absolute;
+        top: 2vw;
+        right: 3vw;
+        transform: scale(0.1);
+        transform-origin: right top;
+      }
     </style>
-</head>
-<body>
-    <div class="hambtn on">
-        <span></span>
-        <span></span>
-        <span></span>
+  </head>
+  <body>
+    <div class="hambtn" 
+    onclick="this.classList.toggle('on')">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
 
-    
-</body>
+    <div class="hambtn hambtn2" 
+    onclick="this.classList.toggle('on')">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <!-- 
+        this.classList.toggle('on')
+        _____________________________
+
+        1. this 
+        -> 햄버거버튼 자신(.hambtn)
+        2. classList 
+        -> 클래스를 제어하는 객체
+        3. toggle(클래스명) 
+        -> 설정한 클래스가 없으면 넣고 있으면 빼는 메서드
+     -->
+  </body>
 </html>
