@@ -27,6 +27,8 @@ ol {
 html{
   font-size: 10px;
   /* rem단위 글자계산 편위위해 */
+  scroll-behavior: smooth;
+  /* 부드러운 스크롤 애니이동 */
 }
 /* 전체 배경이미지 */
 body {

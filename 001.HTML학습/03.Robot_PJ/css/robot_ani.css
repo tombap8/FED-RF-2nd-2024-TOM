@@ -267,6 +267,6 @@
 @keyframes show-tooltip {
     to{
         transform: 
-        translateX(200px) scale(.8);
+        translateX(200px) scale(1);
     }
 }
