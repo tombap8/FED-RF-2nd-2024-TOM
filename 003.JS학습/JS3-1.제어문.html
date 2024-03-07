@@ -251,6 +251,49 @@
 
             if(aa>10) my = "ㅎㅎㅎ";
        ***************************************/
+
+       /********************************************* 
+            함수명 : showLocal
+            기능 : 지역명을 입력하면 지역국번을 안내한다
+       *********************************************/
+      function showLocal(){
+        // 1. 함수호출확인
+        // console.log('지역국번이 뭐야?');
+
+        // 2. 대상선정 : 변경대상
+        // 2-1. 입력요소 : input#local
+        var local = document.querySelector('#local');
+        // 2-2. 출력요소 : h3#info
+        var info = document.querySelector('#info');
+
+        // console.log('대상선정:',local,info);
+
+        // 3. 입력된 값 읽어오기
+        var txt = local.value;
+        // input요소의 값은 value속성으로 읽어온다!
+
+        // console.log('입력값:',txt);
+
+        // 4. 빈값 걸러내기 //////////
+        // trim() 문자열 앞뒤공백 제거 메서드
+        if(txt.trim()==""){
+          // 경고창 띄우기
+          alert('값을 입력후 조회하세요~!');
+          // 입력창 데이터 초기화
+          local.value = "";
+          // 입력창에 포커스
+          local.focus();
+          // 함수나감!
+          return; // 리턴안하면 함수 하단이 실행됨!
+        } /// if ///
+
+        // 5. 지역명을 switch case문으로 분류하여 메시지 넣기
+
+
+      } ////////////// showLocal 함수 ////////////////
+      ///////////////////////////////////////////////
+
+
     </script>
     <!-- CSS코드구역 -->
     <style>
@@ -296,8 +339,8 @@
         transition: background-position 1s;
       }
       /* 가상요소로 글자넣기 */
-      .jshow::before{
-        content: '칭찬스티커';
+      .jshow::before {
+        content: "칭찬스티커";
         position: relative;
         z-index: -1;
         /* 글자를 배경보다 아래로 
@@ -307,11 +350,10 @@
         font-size: 2vw;
         color: lightseagreen;
         font-weight: bold;
-
       }
       /* 가상요소 하트 */
-      .jshow::after{
-        content: '♥';
+      .jshow::after {
+        content: "♥";
         position: absolute;
         top: 2%;
         left: 50%;
@@ -372,5 +414,25 @@
       <!-- 칭찬스티커 박스 -->
       <div class="jshow"></div>
     </div>
+
+    <br /><br />
+    <hr />
+
+    <!-- switch case문 연습 -->
+    <h2 class="tit">switch case문 연습</h2>
+    <h3 id="info">국번안내</h3>
+    <label for="local">지역명 입력:</label>
+    <input
+      type="text"
+      id="local"
+      placeholder="지역명을 '도'를 빼고 쓰세요!"
+      maxlength="10"
+      onkeypress="if(event.keyCode==13)showLocal()"
+    />
+    <button class="sbtn" 
+    onclick="showLocal()">국번문의</button>
+
+    <br /><br />
+    <hr />
   </body>
 </html>
