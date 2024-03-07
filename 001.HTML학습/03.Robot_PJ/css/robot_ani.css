@@ -214,3 +214,24 @@
     transform: rotate(70deg);
   }
 }
+
+/* 5. 로봇 오른쪽팔 손흔들기 */
+.arm2 {
+  animation:     
+    /* 팔올리기 */ 
+    right-arm-ani1 0.4s 9s forwards,
+    /* 팔흔들기 : 팔올린다음(지연9.4초) */ 
+    right-arm-ani2 0.4s ease-in-out 9.4s infinite alternate;
+}
+/* 팔올리기 키프레임 */
+@keyframes right-arm-ani1 {
+  to {
+    transform: rotate(-150deg);
+  }
+}
+/* 팔흔들기 키프레임 */
+@keyframes right-arm-ani2 {
+  to {
+    transform: rotate(-135deg);
+  }
+}
