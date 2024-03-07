@@ -351,11 +351,39 @@
           case "제주":
             message = "064";
             break;
+          case "나성":
+            message = 
+            "나성에 가면 편지를 전해줘요~!";
+            break;
           default:
-            message = "esc";
+            message = "etc";
         } /// switch case /////
 
         console.log("스위치결과:", message);
+
+        // 6. 메시지 만들기 ////////////
+        // message 변수에 최종 출력내용을 다시 담아서 저장한 후 출력한다!
+        if(message == 'etc'){ // 미등록메시지
+          message = '등록되지 않은 지역입니다!';
+        } /// if ///
+        else{ // 등록지역 메시지
+          message = 
+          `${txt}의 지역번호는 
+          <span 
+          style="
+          color:hotpink;
+          font-size:50px">
+          ${message}</span>입니다!`;
+        } /// else ///
+
+        // 7. 화면출력하기 /////////
+        // 출력대상: #info -> info변수
+        info.innerHTML = message;
+        // 선택요소.innerText 
+        // -> 요소의 문자데이터 넣기
+        // -> html태그를 넣을때는 innerHTML 사용!
+
+
       } ////////////// showLocal 함수 ////////////////
       ///////////////////////////////////////////////
 
