@@ -24,6 +24,9 @@
         // 2-2.출력요소 : #jexp
         var jexp = document.querySelector(".jexp");
 
+        // 2-3.칭찬스티커요소 : #jshow
+        var jshow = document.querySelector(".jshow");
+
         // console.log('선택요소들:',
         // jumsu,jexp);
 
@@ -97,11 +100,14 @@
         var msg;
         // 글자색 변수
         var fcolor;
+        // 배경위치 변수
+        var bgPos;
 
         // 90점이상일때
         if (score >= 90) {
           msg = "매우잘함";
           fcolor = "blue";
+          bgPos = "100% 50%";
         }
 
         // if(score >= 80 && score < 90){
@@ -112,28 +118,34 @@
         else if (score >= 80) {
           msg = "잘함";
           fcolor = "green";
+          bgPos = "0% 100%";
         }
         // 70점이상일때
         else if (score >= 70) {
           msg = "보통";
           fcolor = "purple";
+          bgPos = "50% 50%";
         }
         // 60점이상일때
         else if (score >= 60) {
           msg = "노력요함";
           fcolor = "orange";
+          bgPos = "100% 100%";
         }
         // 60점 미만(그밖의 모든경우->else)
         else {
           msg = "재시험";
           fcolor = "red";
+          bgPos = "100% 0%";
         }
 
         // 6. 화면출력하기 ///////
-        // innerText 는 텍스트 출력
+        // 6-1. innerText 는 텍스트 출력
         jexp.innerText = "평가결과는 " + msg;
-        // 글자색 처리하기
+        // 6-2. 글자색 처리하기
         jexp.style.color = fcolor;
+        // 6-3. 칭찬스티커 배경위치 변경하기 //
+        jshow.style.backgroundPosition = bgPos;
       } /////////// showJumsu 함수 ////////////
 
       // if문 튜닝~~~!
@@ -260,6 +272,26 @@
       body {
         text-align: center;
       }
+
+      /* 칭찬스티커박스 */
+      .jshow {
+        position: absolute;
+        top: 18vw;
+        left: 74vw;
+        /* 부모는? .bx-if */
+        width: 15vw;
+        height: 15vw;
+        outline: 5px dotted lightgreen;
+        border-radius: 50%;
+        background: url(./images/ifshow.jpg) no-repeat;
+        /* 배경위치 : 처음에 안보임 */
+        background-position: -50% 0%;
+        /* 배경크기 */
+        background-size: 300%;
+
+        /* 트랜지션 : 배경위치만! */
+        transition: background-position 1s;
+      }
     </style>
   </head>
   <body>
@@ -304,6 +336,8 @@
             - maxlength -> 최대입력 글자수 제한
          -->
       <button class="sbtn" onclick="showJumsu()">평가하기</button>
+      <!-- 칭찬스티커 박스 -->
+      <div class="jshow"></div>
     </div>
   </body>
 </html>
