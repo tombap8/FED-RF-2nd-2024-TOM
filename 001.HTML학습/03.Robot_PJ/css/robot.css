@@ -84,10 +84,13 @@ h1.logo{
 /* 2-1-0. 로봇 말풍선 */
 .link-title{
   position: absolute;
-  top: -5vw;
+  top: -7vw;
   left: 50%;
   /* 로봇머리로 부터 위치 일정하게 */
-  transform: translateX(200px);
+  transform: translateX(200px) scale(0);
+  /* 로봇쪽에서 커지게 하기위해
+  트랜스폼 기준 변경(왼쪽아래) */
+  transform-origin: left bottom;
   width: 40vw;
   height: 20vw;
 
@@ -104,6 +107,24 @@ h1.logo{
   box-sizing: border-box;
 
 }
+/* 가상요소로 삼각형 만들기 */
+.link-title::after{
+  content: '';
+  position: absolute;
+  top: 62.7%;
+  left: -9%;
+  /* 왜%인가? 유동적인 부모를 기준한 위치값이다! */
+  transform: rotate(43deg);
+  /* 가로,세로 크기 0 */
+  width: 0;
+  height: 0;
+  /* 보더탑 크기+색 설정 */
+  border-top: 11vw solid orangered;
+  /* 양쪽보더 크기+투명색 설정 */
+  border-left: 1.5vw solid transparent;
+  border-right: 1.5vw solid transparent;
+}
+
 /* 2-1-1.로봇머리 */
 .head {
   position: relative;
