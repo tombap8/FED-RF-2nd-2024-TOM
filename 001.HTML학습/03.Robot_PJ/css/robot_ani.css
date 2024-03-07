@@ -262,10 +262,11 @@
 
 /* 6. 말풍선 나타나기 애니 */
 .link-title{
-    
+    animation: show-tooltip .6s ease-in 10s forwards;
 }
 @keyframes show-tooltip {
     to{
-        transform: translateX(200px) scale(1);
+        transform: 
+        translateX(200px) scale(.8);
     }
 }
