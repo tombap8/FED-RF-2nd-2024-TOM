@@ -86,9 +86,11 @@ h1.logo{
   position: absolute;
   top: -5vw;
   left: 50%;
+  /* 로봇머리로 부터 위치 일정하게 */
   transform: translateX(200px);
   width: 40vw;
   height: 20vw;
+
   border-radius: 50%;
   background-color: #fff;
   text-align: center;
