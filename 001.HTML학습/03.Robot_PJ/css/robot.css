@@ -81,6 +81,27 @@ h1.logo{
   /* padding-top: 200px; */
   margin-bottom: 560px;
 }
+/* 2-1-0. 로봇 말풍선 */
+.link-title{
+  position: absolute;
+  top: -5vw;
+  left: 50%;
+  transform: translateX(200px);
+  width: 40vw;
+  height: 20vw;
+  border-radius: 50%;
+  background-color: #fff;
+  text-align: center;
+  line-height: 20vw;
+
+  text-decoration: none;
+  color: orangered;
+  font-size: 5vw;
+
+  border: 10px dashed orangered;
+  box-sizing: border-box;
+
+}
 /* 2-1-1.로봇머리 */
 .head {
   position: relative;
