@@ -261,3 +261,11 @@
   }
 
 /* 6. 말풍선 나타나기 애니 */
+.link-title{
+    
+}
+@keyframes show-tooltip {
+    to{
+        transform: translateX(200px) scale(1);
+    }
+}
