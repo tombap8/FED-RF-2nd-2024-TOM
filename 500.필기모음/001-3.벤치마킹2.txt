@@ -30,3 +30,8 @@ https://grabandgo.pt/?awwwards=true
 
 (1) 3D 회전 스크롤반응 글자 (해보자!)
 (2) 스크롤반응 컵 애니(함 해보자!)
+
+4. 프랑스 여행소개 사이트
+https://netflix-en-france.fr/guides-de-voyages
+-> 첫페이지 사진 나열 스크롤/스와이프/드래그 이동
+(우리예제 아이스크림 대신 이것으로 비슷하게 해보자!)
