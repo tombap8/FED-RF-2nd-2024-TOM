@@ -1,0 +1,272 @@
+@charset "utf-8";
+
+/* Robot PJ - 애니메이션 CSS */
+
+/****************************************** 
+    [ CSS 애니메이션 ]
+    - CSS 속성 변화를 장면으로 구성하여
+    애니메이션을 화면에 연출해주는 속성
+
+    [ 애니메이션 키프레임 ]
+    - 애니메이션 속성변화를 지정하는 코딩영역
+
+    [ 2장면 코딩법 ]
+
+    @keyframes 키프레임명 {
+        from{시작CSS}
+        to{끝CSS}
+    } 
+
+    또는
+
+    @keyframes 키프레임명 {
+        0%{시작CSS}
+        100%{끝CSS}
+    }
+    
+    __________________________________
+
+    [ 여러장면 코딩법 ]
+    
+    @keyframes 키프레임명 {
+        0%{시작CSS}
+        10%{중간CSS}
+        20%{중간CSS}
+        ...
+        70%{중간CSS}
+        90%{중간CSS}
+        100%{끝CSS}
+    }
+
+    -> 만약 첫장면이 이미 CSS에 설정되어 있으면
+    from 또는 0% 를 생략할 수 있다!
+
+    __________________________________
+
+    [ 애니메이션 연출 시간 계산법 ]
+
+    - 내가 지정한 %의 장면은 언제 등장하는가?
+
+    전체시간(초) * 몇% / 100 = 알고싶은시간
+
+    예) 60초 * 50%/100% = 30초
+    __________________________________
+
+
+    [ 설정된 키프레임 호출하는 방법 ]
+
+    animation : 이시이지반방마
+    (이름 시간 이징 지연 반복 방향 마지막상태)
+
+    1) 이름(animation-name) : keyframe 이름
+    2) 시간(animation-duration) : 애니메이션 동작시간(초단위:s)
+    3) 이징(animation-timing-function) : easing 가속도
+    4) 지연(animation-delay) : 애니메이션 시작지연시간(초단위:s)
+    5) 반복여부(animation-iteration-count) : 애니메이션 반복횟수
+        - 기본값 1, 숫자를 쓰면 반복횟수
+        - 영원히는 infinite(인피니트)
+    6) 방향(animation-direction) : 시작->끝
+        - 대체경로 설정하기 : alternate : 시작->끝,끝->시작
+        - 대체경로는 반복횟수가 2이상 또는 infinite 이여야함
+    7) 마지막상태(animation-fill-mode) : 애니메이션이 끝났을때
+        - 처음상태로 돌아가는 것이 기본!(backwards)
+        - 마지막 상태를 유지하고 싶을때 forwards(앞쪽에...즉,애니끝장면)
+
+
+
+******************************************/
+
+/* 1. 로고애니 */
+.logo {
+  /* 처음출발 크기지정 */
+  transform: scale(2);
+
+  animation: 
+    /* 1초후 3초간 이동애니 셋팅 */ logo-ani 3s linear 1s alternate
+      forwards,
+    /* 4초후 스윙애니 영원히 셋팅 */ swing-ani 0.4s ease-in-out 4s infinite
+      alternate;
+  /* 
+    animation: 
+    logo-ani 2s ease-in-out 1s 3 alternate forwards; */
+}
+
+@keyframes logo-ani {
+  /* 정가운데 출발 */
+  0% {
+    top: calc(50% - 10vw);
+    left: calc(50% - 10vw);
+    transform: scale(2);
+  }
+  /* 처음위치이동 : 왼쪽위 */
+  20% {
+    top: calc(0% + 5vw);
+    left: calc(0% + 5vw);
+    transform: scale(0.5);
+  }
+  /* 두번째위치이동 : 오른쪽위 */
+  40% {
+    top: calc(0% + 5vw);
+    left: calc(100% - 25vw);
+    transform: scale(0.5);
+  }
+  /* 세번째위치이동 : 오른쪽아래 */
+  60% {
+    top: calc(100% - 25vw);
+    left: calc(100% - 25vw);
+    transform: scale(0.5);
+  }
+  /* 네번째위치이동 : 왼쪽아래 */
+  80% {
+    top: calc(100% - 25vw);
+    left: calc(0% + 5vw);
+    transform: scale(0.5);
+  }
+  /* 처음위치로 돌아옴! : 왼쪽위 */
+  90% {
+    top: calc(0% + 5vw);
+    left: calc(0% + 5vw);
+    transform: scale(1);
+  }
+  /* 각도 돌리기:다음 스윙애니 출발각도로 변경! */
+  100% {
+    top: calc(0% + 5vw);
+    left: calc(0% + 5vw);
+    transform: scale(1) rotate(30deg);
+  }
+}
+
+/* 제자리 스윙 애니 */
+@keyframes swing-ani {
+  from {
+    transform: scale(1) rotate(30deg);
+  }
+  to {
+    transform: scale(1) rotate(-30deg);
+  }
+}
+
+/* 2. 로봇이동애니 */
+.robot-box {
+  /* 애니메이션: 이시이지반방마 
+    - 4초후 4초간 한번만 끝상태유지 */
+  animation: move-robot 4s ease-in-out 4s forwards;
+}
+
+@keyframes move-robot {
+  to {
+    transform: translate(-50%, 0%) scale(0.7);
+  }
+}
+
+/* 3. 로봇다리작동 애니 */
+
+.leg {
+  animation: leg-ani 0.3s ease-in-out 4s 12 alternate;
+  /* 0.3초 애니시간으로 4초후에 12번작동
+    alternate때문에 반대로 작동하는 횟수가
+    더해짐. from->to(6회), to->from(6회) */
+}
+/* 한쪽다리는 올라간 다음 올라가야하므로
+애니 시작지연시간을 준다! */
+.leg2 {
+  /* 한방향이 0.3초이므로 0.3초기다리면됨!
+    + 전체기다림 시간 4초를 더함 */
+  animation-delay: 4.3s;
+}
+
+@keyframes leg-ani {
+  to {
+    top: 76%;
+  }
+}
+
+/* 팔공통 트랜스폼 세로축 기준 top으로 변경 */
+.arm,
+.arm span,
+.arm span::after {
+  transform-origin: top;
+}
+/* 4. 로봇 왼쪽팔 허리에 올리기 */
+.arm1 {
+  animation: left-arm-ani1 0.4s 8s forwards;
+}
+@keyframes left-arm-ani1 {
+  to {
+    transform: rotate(34deg);
+  }
+}
+/* 왼쪽팔 하단 애니 */
+.arm1 span {
+  animation: left-arm-ani2 0.4s 8s forwards;
+}
+@keyframes left-arm-ani2 {
+  to {
+    transform: rotate(-90deg);
+  }
+}
+/* 왼쪽팔 손 애니 */
+.arm1 span::after {
+  animation: left-arm-ani3 0.4s 8s forwards;
+}
+@keyframes left-arm-ani3 {
+  to {
+    transform: rotate(70deg);
+  }
+}
+
+/* 5. 로봇 오른쪽팔 손흔들기 */
+.arm2 {
+  animation:     
+    /* 팔올리기 */ 
+    right-arm-ani1 0.4s 9s forwards,
+    /* 팔흔들기 : 팔올린다음(지연9.4초) */ 
+    right-arm-ani2 0.4s ease-in-out 9.4s infinite alternate;
+}
+/* 팔올리기 키프레임 */
+@keyframes right-arm-ani1 {
+  to {
+    transform: rotate(-150deg);
+  }
+}
+/* 팔흔들기 키프레임 */
+@keyframes right-arm-ani2 {
+  to {
+    transform: rotate(-135deg);
+  }
+}
+
+/* 오른손 팔꿈치 살짝 움직이기 */
+.arm2 span{
+    animation: right-arm-ani3 0.4s ease-in-out 9.8s infinite alternate;
+}
+
+/* 오른손 팔꿈치 키프레임 */
+@keyframes right-arm-ani3 {
+    to {
+      transform: rotate(-15deg);
+    }
+  }
+/* 오른손 Y축회전 */
+.arm2 span::after{
+    animation: right-arm-ani4 0.2s 9s forwards;
+}
+
+/* 오른손 Y축회전 키프레임 */
+@keyframes right-arm-ani4 {
+    to {
+      transform: rotateY(180deg);
+      left: -13px;
+    }
+  }
+
+/* 6. 말풍선 나타나기 애니 */
+.link-title{
+    animation: show-tooltip .6s ease-in 10s forwards;
+}
+@keyframes show-tooltip {
+    to{
+        transform: 
+        translateX(200px) scale(1);
+    }
+}

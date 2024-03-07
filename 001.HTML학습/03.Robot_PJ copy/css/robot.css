@@ -32,8 +32,21 @@ html{
 }
 /* 전체 배경이미지 */
 body {
+  position: relative;
+  /* 부모자격 */
   padding-top: 100vh;
   background: url(../images/bg.jpg) no-repeat fixed top/cover;
+}
+
+.tbtn-area{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 12vw;
+
+  z-index: 999;
+  outline: 2px dashed yellow;
 }
 
 /* 공사중 표시 */
