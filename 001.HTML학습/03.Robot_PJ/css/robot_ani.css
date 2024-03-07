@@ -235,3 +235,26 @@
     transform: rotate(-135deg);
   }
 }
+
+/* 오른손 팔꿈치 살짝 움직이기 */
+.arm2 span{
+    animation: right-arm-ani3 0.4s ease-in-out 9.8s infinite alternate;
+}
+
+/* 오른손 팔꿈치 키프레임 */
+@keyframes right-arm-ani3 {
+    to {
+      transform: rotate(-15deg);
+    }
+  }
+/* 오른손 Y축회전 */
+.arm2 span::after{
+    animation: right-arm-ani4 0.2s 8s forwards;
+}
+
+/* 오른손 Y축회전 키프레임 */
+@keyframes right-arm-ani4 {
+    to {
+      transform: rotateY(180deg);
+    }
+  }
