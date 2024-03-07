@@ -295,6 +295,36 @@
         /* 트랜지션 : 배경위치만! */
         transition: background-position 1s;
       }
+      /* 가상요소로 글자넣기 */
+      .jshow::before{
+        content: '칭찬스티커';
+        position: relative;
+        z-index: -1;
+        /* 글자를 배경보다 아래로 
+        하려면 z-index -1주면됨
+        이때 포지션 있어야함! */
+        line-height: 15vw;
+        font-size: 2vw;
+        color: lightseagreen;
+        font-weight: bold;
+
+      }
+      /* 가상요소 하트 */
+      .jshow::after{
+        content: '♥';
+        position: absolute;
+        top: 2%;
+        left: 50%;
+        /* 하트중앙이동 */
+        transform: translateX(-50%);
+        z-index: -1;
+        /* 글자를 배경보다 아래로 
+        하려면 z-index -1주면됨
+        이때 포지션 있어야함! */
+        font-size: 4vw;
+        color: red;
+        font-weight: bold;
+      }
     </style>
   </head>
   <body>
