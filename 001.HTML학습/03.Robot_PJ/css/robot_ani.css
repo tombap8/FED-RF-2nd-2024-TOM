@@ -249,12 +249,13 @@
   }
 /* 오른손 Y축회전 */
 .arm2 span::after{
-    animation: right-arm-ani4 0.2s 8s forwards;
+    animation: right-arm-ani4 0.2s 9s forwards;
 }
 
 /* 오른손 Y축회전 키프레임 */
 @keyframes right-arm-ani4 {
     to {
       transform: rotateY(180deg);
+      left: -13px;
     }
   }
