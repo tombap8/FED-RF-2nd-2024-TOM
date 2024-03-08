@@ -185,3 +185,40 @@ body *{
         translateX(300px) -> 위치이동
         rotate(-360deg); -> 이동된요소의 회전
 */
+
+/* 목성 */
+#jupiter{
+    position: absolute;
+    /* 목성 중앙이동 : calc(50% - 크기절반) */
+    top: calc(50% - var(--jupiter-size)/2);
+    left: calc(50% - var(--jupiter-size)/2);
+    /* 부모는? #solar */
+
+    width: var(--jupiter-size);
+    height: var(--jupiter-size);
+
+    border-radius: 50%;
+
+    /* 배경이미지 */
+    background: 
+    url(../images/jupiter.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: jupiter-ani 30s linear infinite;
+}
+
+/* 목성회전 키프레임 */
+@keyframes jupiter-ani {
+    from{
+        transform: 
+        rotate(0deg) 
+        translateX(var(--jupiter-trans-size))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg) 
+        translateX(var(--jupiter-trans-size))
+        rotate(-360deg);
+    }
+}
