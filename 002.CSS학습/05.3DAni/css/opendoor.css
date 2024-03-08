@@ -144,8 +144,26 @@ body{
 #elsa img{
     margin-top: 110px;
     margin-left: 331px;
+    /* 엘사회전축 하단으로 변경 */
     transform-origin: bottom;
-    transform: rotate(351deg);
+    transform: rotate(0deg);
+
+    /* 애니메이션 */
+    animation: 
+    elsa-ani 1s ease-in-out infinite alternate;
+    /* 애니 멈춤상태 */
+    animation-play-state: paused;
+}
+/* 오버시 애니작동 */
+.cont:hover #elsa img{
+    animation-play-state: running;
+}
+
+/* 엘사 애니 키프레임 */
+@keyframes elsa-ani {
+    to{
+        transform: rotate(-10deg);
+    }
 }
 
 
