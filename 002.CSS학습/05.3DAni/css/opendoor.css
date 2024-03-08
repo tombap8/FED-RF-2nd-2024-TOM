@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* Open Door CSS - opendoor.css */
+
+/* 웹폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap");
+/* font-family: 'Comfortaa', cursive; */
+
+/* 초기화 */
+html,body,h1{
+    margin: 0;
+    padding: 0;
+}
+
+/* 공사중 표시 */
+body * {
+    outline: 2px dashed red;
+}
+
+body{
+    background-color: #9c0;
+}
+
+/* 전체 타이틀 */
+.tit{
+    /* height: 50px;
+    -> auto로 유동적인 글자크기만큼만
+    사이즈 주지 말자! */
+    font-family: 'Comfortaa', cursive;
+    /* 최대글자크기 지정 */
+    font-size: min(5vw,42px);
+    margin: 5vh 0;
+    text-align: center;
+    color: #fff;
+    text-shadow: 2px 2px 2px #222;
+    overflow: hidden;
+}
+
+/* 전체 랩핑박스 */
+.wrap{
+    padding: 50px 0;
+}
+/* 전체 문부모 */
+.cont{
+    width: 400px;
+    height: 600px;
+    margin: 0 auto;  
+    background-color: #900;  
+}
+/* 문프레임 */
+.frame{
+    position: relative;
+    top: 18px;
+    width: 350px;
+    height: 580px;
+    margin: 0 auto;
+
+    background: url(../images/seashore.jpg) no-repeat center/auto 100%;
+}
+/* 문짝 */
+
+
