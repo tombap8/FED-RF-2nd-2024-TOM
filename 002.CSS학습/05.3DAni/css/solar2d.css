@@ -14,15 +14,20 @@
             --변수명1 : 값1;
             --변수명2 : 값2;
         }
+
     2. 변수 호출하기
         var(--변수명)
     
     3. 변수는 언제 사용하나?
+
     (1) 같은 값이 여러부분에서 사용될때
+    
     (2) 미디어쿼리에서 변경이 필요한 경우
     변수값만 변경하면 복잡한 값 변경이 불필요하게됨
+
     (3) 전역적으로 지정된 색상 또는 지정된 값 등
     프로젝트내의 공유되는 값을 변수로 셋팅한다!
+
 ****************************************************/
 
 /* 변수설정구역 */
@@ -33,6 +38,18 @@
     --earth-size: 80px;
     /* 3. 지구거리 */
     --earth-trans-size: -250px;
+    /* 4. 목성크기 */
+    --jupiter-size: 150px;
+    /* 5. 목성거리 */
+    --jupiter-trans-size: 400px;
+    /* 6. 토성크기 */
+    --saturn-size: 160px;
+    /* 7. 토성거리 */
+    --saturn-trans-size: -460px;
+    /* 8. 명왕성크기 */
+    --pluto-size: 50px;
+    /* 9. 명왕성거리 */
+    --pluto-trans-size: 650px;
 }
 
 /* 초기화 */
@@ -134,7 +151,37 @@ body *{
 
     width: var(--earth-size);
     height: var(--earth-size);
+
+    border-radius: 50%;
+
     /* 배경이미지 */
     background: 
     url(../images/earth.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: earth-ani 10s linear infinite;
 }
+
+/* 지구회전 키프레임 */
+@keyframes earth-ani {
+    from{
+        transform: 
+        rotate(0deg) 
+        translateX(var(--earth-trans-size))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg) 
+        translateX(var(--earth-trans-size))
+        rotate(-360deg);
+    }
+}
+
+/* 
+    [ 키프레임 회전시 2번째 회전의 의미는? ]
+    transform: 
+        rotate(360deg) -> 중앙회전
+        translateX(300px) -> 위치이동
+        rotate(-360deg); -> 이동된요소의 회전
+*/
