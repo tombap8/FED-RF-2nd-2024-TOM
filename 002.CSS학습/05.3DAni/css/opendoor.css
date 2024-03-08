@@ -55,7 +55,46 @@ body{
     margin: 0 auto;
 
     background: url(../images/seashore.jpg) no-repeat center/auto 100%;
+
+    /*********************************** 
+        [ 3D 원근설정 ]
+        1. 셋팅위치:
+        3D원근 설정을 할 대상의 부모요소
+        2. 설정방법:
+        perspective: 수치
+        -> 수치는 px단위 또는 구체적인
+        상대단위(em,rem,vw,vh등)로 설정.
+        -> 기준축으로 부터 소실점까지의 거리
+        -> 이값이 커지면 원근각도가 완만해짐
+    ***********************************/
+    perspective: 480px;
 }
 /* 문짝 */
+.door{
+    position: relative;
+    width: 350px;
+    height: 580px;
+    background-color: #c90;
+
+    /* Y축 회전 */
+    transform: rotateY(0deg);
+
+    /* 회전축 왼쪽으로 변경 */
+    transform-origin: left;
+
+    /* 애니메이션 */
+    animation: 
+    open-door-ani 1s ease-in-out infinite alternate;
+}
+
+/* 문여닫기 키프레임 */
+@keyframes open-door-ani {
+    0%{
+        transform: rotateY(-60deg);
+    }
+    100%{
+        transform: rotateY(60deg);
+    }
+}
 
 
