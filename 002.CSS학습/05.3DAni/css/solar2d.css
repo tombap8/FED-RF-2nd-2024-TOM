@@ -144,6 +144,21 @@ body *{
 /* #sun:hover img{
     transform: scale(1.5);
 } */
+/* 행성공통 - 애니메이션 멈춤설정
+    [애니메이션 2가지 상태]
+    1. 실행상태(기본값)
+    animation-play-state: running;
+    2. 멈춤상태
+    animation-play-state: paused;
+*/
+.planet:hover {
+    /* 기존 애니메이션이 id로 셋팅되어서
+    기본값 running이 더 우선됨!
+    !important로 우선순위 높임! */
+    animation-play-state: paused !important;
+    /* 손가락모양 */
+    cursor: pointer;
+}
 
 /* 지구 */
 #earth{
