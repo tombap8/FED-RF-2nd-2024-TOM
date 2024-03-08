@@ -141,7 +141,7 @@ body{
     overflow: hidden;
 }
 /* 엘사 이미지 */
-#elsa img{
+#elsa img.elsa{
     margin-top: 110px;
     margin-left: 331px;
     /* 엘사회전축 하단으로 변경 */
@@ -155,7 +155,7 @@ body{
     animation-play-state: paused;
 }
 /* 오버시 애니작동 */
-.cont:hover #elsa img{
+.cont:hover #elsa img.elsa{
     animation-play-state: running;
 }
 
@@ -165,5 +165,38 @@ body{
         transform: rotate(-10deg);
     }
 }
+
+/* 올라프 이미지 */
+#elsa img.olaf{
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    height: 40%;
+    z-index: -1;
+
+    /* 애니메이션 */
+    animation: 
+    olaf-ani 3s ease-in-out infinite alternate;
+    /* 애니 멈춤상태 */
+    animation-play-state: paused;
+}
+/* 오버시 애니작동 */
+.cont:hover #elsa img.olaf{
+    animation-play-state: running;
+}
+
+/* 올라프 애니 키프레임 */
+@keyframes olaf-ani {
+    from{
+        top: -50%;
+        transform: scale(.1);
+    }
+    to{
+        top: 50%;
+        transform: scale(1);
+    }
+}
+
+
 
 
