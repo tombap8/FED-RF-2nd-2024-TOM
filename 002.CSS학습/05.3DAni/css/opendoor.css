@@ -17,6 +17,8 @@ body * {
 }
 
 body{
+    height: 100vh;
+    overflow: hidden;
     background-color: #9c0;
 }
 
@@ -84,17 +86,48 @@ body{
 
     /* 애니메이션 */
     animation: 
-    open-door-ani 1s ease-in-out infinite alternate;
+    /* 처음에 1초간 바깥쪽으로 열기(끝상태유지) */
+    first-open-ani 1s ease-in-out forwards,
+    /* 1초간 열기까지 기다렸다가 영원히 여닫기 */
+    open-door-ani 2s ease-in-out 1s infinite alternate;
+
+    /* 처음에 멈춤상태로 애니메이션 셋팅 */
+    animation-play-state: paused;
+}
+/* .cont에 마우스 오버시 문여닫기 애니작동 */
+.cont:hover .door{
+    animation-play-state: running;
+}
+
+/* 처음 문열기 키프레임 */
+@keyframes first-open-ani {
+    100%{
+        transform: rotateY(50deg);
+    }
 }
 
 /* 문여닫기 키프레임 */
 @keyframes open-door-ani {
     0%{
-        transform: rotateY(-60deg);
+        transform: rotateY(50deg);
     }
     100%{
-        transform: rotateY(60deg);
+        transform: rotateY(-50deg);
     }
 }
+
+
+
+/* 손잡이 */
+.handle{
+    position: absolute;
+    top: calc(50% - 50px/2);
+    right: 2%;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: blue;
+}
+
 
 
