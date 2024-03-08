@@ -12,9 +12,9 @@ html,body,h1{
 }
 
 /* 공사중 표시 */
-body * {
+/* body * {
     outline: 2px dashed red;
-}
+} */
 
 body{
     height: 100vh;
@@ -69,7 +69,7 @@ body{
         -> 기준축으로 부터 소실점까지의 거리
         -> 이값이 커지면 원근각도가 완만해짐
     ***********************************/
-    perspective: 480px;
+    perspective: 1000px;
 }
 /* 문짝 */
 .door{
