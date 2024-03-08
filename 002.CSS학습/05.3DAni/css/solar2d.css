@@ -50,6 +50,10 @@
     --pluto-size: 50px;
     /* 9. 명왕성거리 */
     --pluto-trans-size: 650px;
+    /* 10. 달크기 */
+    --moon-size: 40px;
+    /* 11. 달거리 */
+    --moon-trans-size: 80px;
 }
 
 /* 초기화 */
@@ -185,6 +189,43 @@ body *{
         translateX(300px) -> 위치이동
         rotate(-360deg); -> 이동된요소의 회전
 */
+
+/* 달 */
+#moon{
+    position: absolute;
+    /* 달 중앙이동 : calc(50% - 크기절반) */
+    top: calc(50% - var(--moon-size)/2);
+    left: calc(50% - var(--moon-size)/2);
+    /* 부모는? #solar */
+
+    width: var(--moon-size);
+    height: var(--moon-size);
+
+    border-radius: 50%;
+
+    /* 배경이미지 */
+    background: 
+    url(../images/moon.png) no-repeat 0/100% 100%;
+
+    /* 애니메이션 호출 */
+    animation: moon-ani 4s linear infinite;
+}
+
+/* 달회전 키프레임 */
+@keyframes moon-ani {
+    from{
+        transform: 
+        rotate(0deg) 
+        translateX(var(--moon-trans-size))
+        rotate(0deg);
+    }
+    to{
+        transform: 
+        rotate(360deg) 
+        translateX(var(--moon-trans-size))
+        rotate(-360deg);
+    }
+}
 
 /* 목성 */
 #jupiter{
