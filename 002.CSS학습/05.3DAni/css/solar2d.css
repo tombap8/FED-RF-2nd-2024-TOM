@@ -162,6 +162,7 @@ body{
     cursor: pointer;
     /* 다른행성보다 위 */
     z-index: 1;
+    transform: scale(2);
 }
 /* 행성 설명박스 공통 */
 .info{
@@ -173,13 +174,16 @@ body{
     /* 내부패딩이 없어야 완벽하게 숨겨짐! */
     overflow: hidden;
     /* 트랜지션: 아웃시
-    max-height먼저보이고 width는 나중에 */
+    max-height 먼저 사라지고
+    하단보더도 먼저 사라지고 
+    width는 나중에 */
     transition: 
     width .4s .4s,
+    border-bottom-color .4s,
     max-height .4s;
     
     border-top: 2px solid lawngreen;
-    border-bottom: 2px solid lawngreen;
+    border-bottom: 2px solid transparent;
 
     color: aquamarine;
     font-size: 12px;
@@ -203,10 +207,14 @@ body{
     width: 200px;
     /* 최대높이값은 컨텐츠중 가장 큰 사이즈를 준다! */
     max-height: 300px;
+    border-bottom-color: lawngreen;
     /* 트랜지션: 오버시
-    width먼저보이고 max-height는 나중에 */
+    width먼저보이고 
+    하단보더색은 나중에
+    max-height도 나중에 */
     transition: 
     width .4s,
+    border-bottom-color .4s .4s,
     max-height .4s .4s;
 }
 
@@ -427,4 +435,36 @@ body{
         translateY(var(--pluto-trans-size))
         rotate(-360deg);
     }
+}
+
+/* 행성 경로 원그리기 공통 */
+.path-way div{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    opacity: 0.5;
+    z-index: -1;
+}
+/* 지구 경로크기 */
+.path-way div.earth{
+    width: calc(var(--earth-trans-size)*-2);
+    height: calc(var(--earth-trans-size)*-2);
+}
+/* 목성 경로크기 */
+.path-way div.jupiter{
+    width: calc(var(--jupiter-trans-size)*2);
+    height: calc(var(--jupiter-trans-size)*2);
+}
+/* 토성 경로크기 */
+.path-way div.saturn{
+    width: calc(var(--saturn-trans-size)*-2);
+    height: calc(var(--saturn-trans-size)*-2);
+}
+/* 명왕성 경로크기 */
+.path-way div.pluto{
+    width: calc(var(--pluto-trans-size)*2);
+    height: calc(var(--pluto-trans-size)*2);
 }
