@@ -56,9 +56,28 @@ body *{
     left: 0;
     width: 250px;
     height: 250px;
+    /* 둥근박스 */
+    border-radius: 50%;
+
+    /* 넘치는 태양이미지 숨기기 */
+    overflow: hidden;
 }
 /* 태양이미지 */
 #sun img{
     width: 100%;
     height: 100%;
+    /* 애니메이션 호출 */
+    animation: 
+    flame-ani 20s linear infinite alternate;
+    /* 20초간 등속도로 영원히 왔다갔다함 */
 }
+/* 태양이 이글거리는 애니메이션 키프레임 */
+@keyframes flame-ani {
+    to{
+        transform: scale(1.5);
+    }
+}
+
+/* #sun:hover img{
+    transform: scale(1.5);
+} */
