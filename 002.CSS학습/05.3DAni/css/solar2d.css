@@ -42,6 +42,19 @@ html,body{
     width: 100vw;
     height: 100vh;
 }
+/* 공통CSS */
+/* 배경이미지 설명숨기기
+Image replacement - 배경이미지에 설명을 넣고
+그 글자는 숨긴다!(웹접근성) */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    /* display:none으로 숨기면
+    화면리더기가 못읽는다! */
+}
+
 /* body셋팅 */
 body{
     background: url(../images/space.jpg) no-repeat center/cover;
@@ -110,3 +123,18 @@ body *{
 /* #sun:hover img{
     transform: scale(1.5);
 } */
+
+/* 지구 */
+#earth{
+    position: absolute;
+    /* 지구 중앙이동 : calc(50% - 크기절반) */
+    top: calc(50% - var(--earth-size)/2);
+    left: calc(50% - var(--earth-size)/2);
+    /* 부모는? #solar */
+
+    width: var(--earth-size);
+    height: var(--earth-size);
+    /* 배경이미지 */
+    background: 
+    url(../images/earth.png) no-repeat 0/100% 100%;
+}
