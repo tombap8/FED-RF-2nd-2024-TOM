@@ -95,9 +95,9 @@ body{
 }
 
 /* 공사중표시 */
-body *{
+/* body *{
     outline: 2px dashed #ccc;
-}
+} */
 
 /* 태양계박스 */
 #solar{
@@ -121,6 +121,8 @@ body *{
     height: var(--sun-size);
     /* 둥근박스 */
     border-radius: 50%;
+    /* 박스 글로우효과(박스그림자) */
+    box-shadow: 0 0 50px 5px yellow;
 
     /* 넘치는 태양이미지 숨기기 */
     overflow: hidden;
@@ -158,7 +160,55 @@ body *{
     animation-play-state: paused !important;
     /* 손가락모양 */
     cursor: pointer;
+    /* 다른행성보다 위 */
+    z-index: 1;
 }
+/* 행성 설명박스 공통 */
+.info{
+    position: absolute;
+    top: 0;
+    left: 100%;
+    width: 0;
+    max-height: 2px;
+    /* 내부패딩이 없어야 완벽하게 숨겨짐! */
+    overflow: hidden;
+    /* 트랜지션: 아웃시
+    max-height먼저보이고 width는 나중에 */
+    transition: 
+    width .4s .4s,
+    max-height .4s;
+    
+    border-top: 2px solid lawngreen;
+    border-bottom: 2px solid lawngreen;
+
+    color: aquamarine;
+    font-size: 12px;
+    line-height: 1.8;
+    font-weight: bold;
+
+    /* 백드롭필터 */
+    backdrop-filter: blur(3px);
+}
+/* 정보제목, 내용 */
+.info h2,.info p{
+    margin: 0;
+    padding: 10px;
+    width: 200px;
+    box-sizing: border-box;
+}
+/* 행성에 마우스 오버시 정보 보이기애니 */
+.planet:hover .info{
+    width: 200px;
+    /* 최대높이값은 컨텐츠중 가장 큰 사이즈를 준다! */
+    max-height: 300px;
+    /* 트랜지션: 오버시
+    width먼저보이고 max-height는 나중에 */
+    transition: 
+    width .4s,
+    max-height .4s .4s;
+}
+
+
 
 /* 지구 */
 #earth{
