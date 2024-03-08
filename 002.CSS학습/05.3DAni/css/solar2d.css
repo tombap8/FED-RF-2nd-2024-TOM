@@ -1,0 +1,32 @@
+@charset "utf-8";
+/* 태양계 2D 애니메이션 CSS - solar2d.css */
+
+/* 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Text:wght@900&display=swap');
+
+/* font-family: 'Big Shoulders Stencil Text', cursive; */
+
+/* 초기화 */
+html,body{
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+}
+/* body셋팅 */
+body{
+    background: url(../images/space.jpg) no-repeat center/cover;
+    /* 스크롤바 없앰 */
+    overflow: hidden;
+}
+
+/* 타이틀 */
+.tit{
+    margin: 0;
+    padding: 0;
+    font-family: 'Big Shoulders Stencil Text', cursive;
+    color: #fff;
+    font-size: 80px;
+    text-align: center;
+    padding-top: 20px;
+}
