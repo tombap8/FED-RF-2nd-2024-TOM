@@ -220,6 +220,18 @@ ul::after,ol::after,.clb::after{
     transition: width .3s;
 }
 
+/* 다국어 메뉴파트 */
+.multi-lang ul{
+    display: flex;
+}
+.multi-lang ul li{
+    padding: 27px 10px;
+}
+/* 2번째li 이후 가상요소 after 지우기 */
+.multi-lang ul li:nth-child(2)~li a::after{
+    display: none;
+}
+
 
 
 
