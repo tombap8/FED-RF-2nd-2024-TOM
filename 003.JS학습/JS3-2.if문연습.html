@@ -59,21 +59,30 @@
             }
           </style>
 
+          <!-- 외부JS호출하기
+        -> defer키워드로 html코드 로딩후 실행가능 -->
+          <script src="./js/JS3-2.if문연습.js" defer></script>
+
         <!-- JS코드구역 -->
-        <script>
+        <script>            
 
-            /****************************** 
-                함수명: changeImg
-                기능 : 버튼별 스틸컷 변경
-            ******************************/
-           function changeImg(){
-                // 1. 함수호출확인
-                console.log('나야나!');
+        // html요소를 수집하려면 html요소 코드가
+        // 그려진 후 수집해야만 한다!
+        // [로딩후 수집방법 3가지]
+        // 1. script구역을 body 최하단에 위치함
+        // 2. load 이벤트 함수 구역을 만들고
+        //  그 안에 수집코드를 쓴다
+        // 3. 외부JS로 만들때 defer 키워드를 쓴다
 
-           } ///////// changeImg 함수 /////////
-           ///////////////////////////////////
+        // 로드구역 예시 /////
+        // window.onload = function(){
+        //     console.log('로딩완료!');
+        //     // 이벤트 설정하기
+        //        var btns = 
+        //        document.querySelectorAll('.btns');
+        //        console.log('버튼들:',btns);
 
-
+        // }; ////// 로드구역 //////////
            
         </script>
         
@@ -97,10 +106,7 @@
             <button class="btns">장면3</button>
         </div>
         <script>
-            // 이벤트 설정하기
-           var btns = 
-           document.querySelectorAll('.btns');
-           console.log('버튼들:',btns);
+            
 
         </script>
     </body>
