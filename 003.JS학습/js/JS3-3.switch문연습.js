@@ -14,24 +14,34 @@ function changeImg() {
   // 0. this키워드를 활용하여 전달된 요소의
   // 버튼 텍스트 읽어오기(구분하기위해)
   var btnTxt = this.innerText;
-  // innerText를 이퀄 오른쪽에 쓰면 
+  // innerText를 이퀄 오른쪽에 쓰면
   // 요소의 문자데이터를 읽어옴
-  // 반면 innerText를 왼쪽에 쓰고 
+  // 반면 innerText를 왼쪽에 쓰고
   // 오른쪽에 값을 할당하면 값설정이 됨!
   // innerHTML도 마찬가지임!(태그처리만 다름)
 
   // 1. 함수호출확인
-  console.log("나야나!",btnTxt);
+  console.log("나야나!", btnTxt);
 
   // 2. 버튼별 src이미지 경로 만들기
   // src변수
   var isrc;
 
   // switch문으로 변경하기!
-  
-
-
-
+  switch (btnTxt) {
+    case "포스터":
+      isrc = "./images/ala1.jpg";
+      break;
+    case "장면1":
+      isrc = "./images/ala4.jpg";
+      break;
+    case "장면2":
+      isrc = "./images/ala2.jpg";
+      break;
+    case "장면3":
+      isrc = "./images/ala3.jpg";
+      break;
+  }
 
   // if(btnTxt == "포스터"){
   //   isrc = "./images/ala1.jpg";
@@ -49,7 +59,6 @@ function changeImg() {
   // 3. 변경대상 : #scene -> scene 변수
   // 4. 변경내용 : src속성값 바꾸기
   scene.src = isrc;
-
 } ///////// changeImg 함수 /////////
 ///////////////////////////////////
 
@@ -63,7 +72,7 @@ var scene = document.querySelector("#scene");
 console.log("대상:", btns, scene);
 
 // 2. 이벤트 속성 셋팅하기 : 이벤트와 함수 연결!
-// 이벤트 종류 : click 
+// 이벤트 종류 : click
 // 이벤트 속성 : onclick
 // 함수를 할당할때 소괄호없는 함수명만 사용하여 할당함!
 // 소괄호가 있으면 바로 실행되므로 쓰지 않는다!
@@ -71,5 +80,3 @@ btns.item(0).onclick = changeImg;
 btns.item(1).onclick = changeImg;
 btns.item(2).onclick = changeImg;
 btns.item(3).onclick = changeImg;
-
-
