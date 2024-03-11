@@ -1,4 +1,4 @@
-// JS3-2.if문연습 JS ///////
+// JS3-3.switch문연습 JS ///////
 
 /****************************** 
     1.함수명: changeImg
@@ -26,18 +26,25 @@ function changeImg() {
   // 2. 버튼별 src이미지 경로 만들기
   // src변수
   var isrc;
-  if(btnTxt == "포스터"){
-    isrc = "./images/ala1.jpg";
-  } //// if ///
-  else if(btnTxt == "장면1"){
-    isrc = "./images/ala4.jpg";
-  } //// else if ///
-  else if(btnTxt == "장면2"){
-    isrc = "./images/ala2.jpg";
-  } //// else if ///
-  else if(btnTxt == "장면3"){
-    isrc = "./images/ala3.jpg";
-  } //// else if ///
+
+  // switch문으로 변경하기!
+  
+
+
+
+
+  // if(btnTxt == "포스터"){
+  //   isrc = "./images/ala1.jpg";
+  // } //// if ///
+  // else if(btnTxt == "장면1"){
+  //   isrc = "./images/ala4.jpg";
+  // } //// else if ///
+  // else if(btnTxt == "장면2"){
+  //   isrc = "./images/ala2.jpg";
+  // } //// else if ///
+  // else if(btnTxt == "장면3"){
+  //   isrc = "./images/ala3.jpg";
+  // } //// else if ///
 
   // 3. 변경대상 : #scene -> scene 변수
   // 4. 변경내용 : src속성값 바꾸기

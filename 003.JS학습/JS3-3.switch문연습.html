@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>switch문 연습</title>
+        <!-- 웹폰트 CDN -->
+        <link href="https://fonts.googleapis.com/css?family=Audiowide&amp;display=swap" rel="stylesheet" />
+        <style>
+            /* 타이틀 */
+            .tit {
+              text-align: center;
+              font: bold 72px/100px "Audiowide";
+            }
+      
+            /* 스틸컷장면박스 */
+            .photo {
+              text-align: center;
+              /* 인라인요소 가로중앙정렬 */
+              background-color: skyblue;
+              padding: 20px;
+              margin-bottom: 50px;
+              height: 50vh;
+              overflow: hidden;
+            }
+            .photo img.off {
+              position: relative;
+              left: -100%;
+              opacity: 0;
+            }
+            .photo img {
+              position: relative;
+              left: 0;
+              opacity: 1;
+              transition: .5s ease-out;
+            }
+            .photo img.on {
+              position: relative;
+              left: 100%;
+              opacity: 0;
+            }
+      
+            /* 메인이미지 */
+            #scene {
+              height: 100%;
+              /* width는 비율에 맞게 자동임! */
+            }
+      
+            /* 선택버튼박스 */
+            .btnbx {
+              text-align: center;
+              /* 버튼요소는 인라인블록이지만 
+                  인라인특성이 있으므로 글자중앙정렬적용됨! */
+            }
+      
+            /* 버튼공통 */
+            .btns {
+              font-size: 42px;
+            }
+          </style>
+
+          <!-- 외부JS호출하기
+        -> defer키워드로 html코드 로딩후 실행가능 -->
+          <script src="./js/JS3-3.switch문연습.js" defer></script>
+
+        <!-- JS코드구역 -->
+        <script>            
+
+        // html요소를 수집하려면 html요소 코드가
+        // 그려진 후 수집해야만 한다!
+        // [로딩후 수집방법 3가지]
+        // 1. script구역을 body 최하단에 위치함
+        // 2. load 이벤트 함수 구역을 만들고
+        //  그 안에 수집코드를 쓴다
+        // 3. 외부JS로 만들때 defer 키워드를 쓴다
+
+        // 로드구역 예시 /////
+        // window.onload = function(){
+        //     console.log('로딩완료!');
+        //     // 이벤트 설정하기
+        //        var btns = 
+        //        document.querySelectorAll('.btns');
+        //        console.log('버튼들:',btns);
+
+        // }; ////// 로드구역 //////////
+           
+        </script>
+        
+        
+    </head>
+
+    <body>
+        <!-- 전체 타이틀 -->
+        <h1 class="tit">All New Aladin</h1>
+
+        <!-- 스틸컷장면박스 -->
+        <div class="photo">
+            <img id="scene" src="./images/ala1.jpg" alt="알라딘스틸컷" />
+        </div>
+
+        <!-- 선택버튼박스 -->
+        <div class="btnbx">
+            <button class="btns">포스터</button>
+            <button class="btns">장면1</button>
+            <button class="btns">장면2</button>
+            <button class="btns">장면3</button>
+        </div>
+        <script>
+            
+
+        </script>
+    </body>
+</html>
