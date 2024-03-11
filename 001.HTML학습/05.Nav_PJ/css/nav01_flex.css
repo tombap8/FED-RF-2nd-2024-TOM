@@ -67,7 +67,7 @@ ul::after,ol::after,.clb::after{
     display: flex;
     /* 진행방향 오른쪽끝정렬 */
     justify-content: flex-end;
-    
+
     /* 메뉴 글자 줄바꿈방지 */
     white-space: nowrap;
 }
@@ -77,8 +77,9 @@ ul::after,ol::after,.clb::after{
     position: relative;
     /* 부모자격 - .smenu의 left값 */
     /* float: left; ->flex로 전환! */
-    padding: 0 32px;
-    line-height: 78px;
+    padding: 27px 32px;
+    /* line-height: 78px;
+    ->블록가상요소 밑줄이 아래로 밀려서 주석 */
     font-weight: bold;
     /* 글자관련셋팅은
     하위요소로 모두 상속됨! */
@@ -180,18 +181,20 @@ ul::after,ol::after,.clb::after{
     transition-delay: .5s;
 }
 
-/* 가상요소 밑줄을 위한 부모자격 */
-.gnb ul>li>a{
+/* 가상요소 밑줄을 위한 부모자격 - 불필요! */
+/* .gnb ul>li>a{
     position: relative;
-}
+} */
 /* GNB 상위메뉴 오버시 밑줄애니 */
 .gnb ul>li>a::after{
     content: '';
-    position: absolute;
-    /* 앱솔루트는 자동블록됨! */
-    top: 53px;
-    /* 마우스 나갈때 left값 밀기 */
-    left: 100%;
+    /* 디자인 적용위해 block */
+    display: block;
+    /* position: absolute; */
+    /* 앱솔루트는 자동블록됨! -> 안씀! */
+    /* top: 53px; */
+    /* 마우스 나갈때 margin-left값 밀기 */
+    margin-left: 100%;
     width: 0;
     height: 2px;
     background-color: #fff;
