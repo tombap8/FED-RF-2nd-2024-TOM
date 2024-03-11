@@ -91,6 +91,10 @@ ul::after,ol::after,.clb::after{
     /* x축 중앙이동 */
     transform: translateX(-50%);
 
+    /* top을 쓰지 않고 마진탑으로 이동한 이유는
+    젠틀앱솔루트의 위치에서 부터 이동하려고! */
+    margin-top: 26px;
+
     width: 200px;
     background-color: rgba(0, 0, 0, 0.7);
     border-radius: 10px;
@@ -185,8 +189,12 @@ ul::after,ol::after,.clb::after{
 /* .gnb ul>li>a{
     position: relative;
 } */
-/* GNB 상위메뉴 오버시 밑줄애니 */
-.gnb ul>li>a::after{
+
+/* 다른 같은 구조의 요소에도 모두 적용위해
+클래스를 주고 셋팅되도록 만든다!!!
+->>> .uline 이라는 클래스를 주면 됨! */
+/* 상위메뉴 오버시 밑줄애니 */
+.uline ul>li>a::after{
     content: '';
     /* 디자인 적용위해 block */
     display: block;
@@ -195,6 +203,8 @@ ul::after,ol::after,.clb::after{
     /* top: 53px; */
     /* 마우스 나갈때 margin-left값 밀기 */
     margin-left: 100%;
+    /* 글자와의 간격조정은 마진탑으로! */
+    margin-top: 2px;
     width: 0;
     height: 2px;
     background-color: #fff;
@@ -202,7 +212,7 @@ ul::after,ol::after,.clb::after{
     transition: .3s;
 }
 /* 오버시 밑줄박스 애니 */
-.gnb ul>li:hover>a::after{
+.uline ul>li:hover>a::after{
     margin-left: 0;
     width: 100%;
     /* 오버시 트랜지션 
