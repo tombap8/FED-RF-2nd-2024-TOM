@@ -203,10 +203,10 @@ ul::after,ol::after,.clb::after{
 }
 /* 오버시 밑줄박스 애니 */
 .gnb ul>li:hover>a::after{
-    left: 0;
+    margin-left: 0;
     width: 100%;
     /* 오버시 트랜지션 
-    ->>> left 는 트랜지션 적용말것!!! */
+    ->>> margin-left 는 트랜지션 적용말것!!! */
     transition: width .3s;
 }
 
