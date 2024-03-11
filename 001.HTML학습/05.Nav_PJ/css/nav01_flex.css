@@ -225,11 +225,15 @@ ul::after,ol::after,.clb::after{
     display: flex;
 }
 .multi-lang ul li{
-    padding: 27px 10px;
+    padding: 27px 5px;
 }
 /* 2번째li 이후 가상요소 after 지우기 */
 .multi-lang ul li:nth-child(2)~li a::after{
     display: none;
+}
+/* 2번째li 이후 오버시 색상변경 */
+.multi-lang ul li:nth-child(2)~li a:hover{
+    color: aquamarine;
 }
 
 
