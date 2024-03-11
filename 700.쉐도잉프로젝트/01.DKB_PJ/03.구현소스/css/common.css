@@ -8,5 +8,44 @@
 .mlogo img{    
     margin-top: 39px;
 }
+/* Top 메뉴 */
+.top-menu ul {
+    display: flex;
+    justify-content: flex-end;
+}
+/* Top 리스트 */
+.top-menu ul li {
+    padding: 0 10px;
+}
+/* Top a링크 */
+.top-menu ul a {
+    font-size: 1.4rem;
+    line-height: 40px;
+    font-weight: bold;
+}
+
+/* GNB 메뉴 */
+.gnb ul {
+    display: flex;
+    justify-content: flex-end;
+}
+/* GNB 리스트 */
+/* .gnb ul li {
+} */
+
+/* GNB a링크 */
+.gnb ul a {
+    display: block;
+    padding: 0 13px;
+
+    font-size: 1.7rem;
+    line-height: 60px;
+    font-weight: bold;
+}
+/* GNB a링크 오버시 */
+.gnb ul a:hover {
+    color: red;
+}
+
 /************ 2. 메인영역 ************/
 /************* 3. 하단영역 *************/
