@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* 그리드 시스템 12그리드적용 - 가로비율 */
+.col-1 {flex-basis: 8.33%;}
+.col-2 {flex-basis: 16.66%;}
+.col-3 {flex-basis: 25%;}
+.col-4 {flex-basis: 33.33%;}
+.col-5 {flex-basis: 41.66%;}
+.col-6 {flex-basis: 50%;}
+.col-7 {flex-basis: 58.33%;}
+.col-8 {flex-basis: 66.66%;}
+.col-9 {flex-basis: 75%;}
+.col-10 {flex-basis: 83.33%;}
+.col-11 {flex-basis: 91.66%;}
+.col-12 {flex-basis: 100%;}
+
+/* 파티션 비율박스 공통 */
+[class*='col-']{
+    padding: 10px;
+    box-sizing: border-box;
+    /* 원래는 높이값 100%로 부모박스 채우기를
+    해야하지만 flex의 자식요소는 자동으로
+    부모를 채우도록 설정되어 있다! */
+}
+
+/* 컨텐트 박스 
+-> 플렉스 박스는 싸고 있는 부모를 설정함! */
+.cont-box{
+    display: flex;
+    height: 100%;
+}
