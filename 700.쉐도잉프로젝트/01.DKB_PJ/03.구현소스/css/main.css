@@ -6,7 +6,7 @@
 @import url(./core.css);
 @import url(./common.css);
 /* 그리드 12 불러오기 */
-@import url(./grid_12_float.css);
+@import url(./grid_12_flex.css);
 
 /* 공사중 표시 */
 body * {
