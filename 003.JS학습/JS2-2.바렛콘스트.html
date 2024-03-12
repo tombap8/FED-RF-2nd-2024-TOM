@@ -128,36 +128,36 @@
       //// 2. if문에서 중괄호 var /////////////////
       if (true) {
         var who = "누구?";
-        // console.log("if문안 who:", who);
+        console.log("if문안 who:", who);
       } ///////// if문 ////////////
 
-      // console.log("if문밖 who:", who);
+      console.log("if문밖 who:", who);
       // if문의 중괄호 안에서 변수를 선언하면
       // 즉 중괄호가 지역역할을 못함!
 
       //// 2. if문에서 중괄호 : let 비교 ////
       if (true) {
         let what = "뭣이?";
-        // console.log("if문안 what:", what);
+        console.log("if문안 what:", what);
       } ///////// if문 ////////////
 
-      // console.log("if문밖 what:", what);
+    //   console.log("if문밖 what:", what);
       // if문 중괄호 안의 let은 지역변수이므로 바깥에서 못씀!
 
       /// 3. for문 중괄호 var //////////////
       for (var i = 3; i > 0; i--) {
-        // console.log("for문안 i:", i);
+        console.log("for문안 i:", i);
       } //////// for문 /////////
 
-      // console.log("for문밖 i:", i);
+      console.log("for문밖 i:", i);
       // for문의 중괄호도 지역변수 역할을 못함!
 
       /// 3. for문 중괄호 : let비교 //////////////
       for (let j = 3; j > 0; j--) {
-        // console.log("for문안 j:", j);
+        console.log("for문안 j:", j);
       } //////// for문 /////////
 
-      // console.log("for문밖 j:", j);
+    //   console.log("for문밖 j:", j);
       // for문의 소괄호안의 셋팅은 중괄호 안으로 들어가므로
       // let 변수 선언시 for중괄호 안에 선언으로 처리된다!
       // 따라서 지역변수로 처리된다는말!!!
@@ -178,8 +178,8 @@
       /**********************************************/
       {
         // 블록영역 내부에서 전역변수 찍기 앞
-        // console.log('블록영역 내부에서 전역변수 찍기 앞');
-        // console.log('seoul:',seoul);
+        console.log('블록영역 내부에서 전역변수 찍기 앞');
+        console.log('seoul:',seoul);
 
         // console.log('toktok:',toktok);
         // -> 지역변수가 되면 변수 호이스팅 금지!에러!!!
@@ -201,12 +201,12 @@
 
         let jeju = "마라도";
         // 아래쪽에서 지역변수 jeju가 사용가능!
-        // console.log('jeju:',jeju);
+        console.log('jeju:',jeju);
 
         // 전역변수에 let으로 선언된 같은 이름의 변수만들기
         let toktok = "라인";
         // 지역변수가 됨!
-        // console.log('toktok:',toktok);
+        console.log('toktok:',toktok);
 
         // let으로 선언된 전역변수 sport를
         // 중괄호 안에서 var로 다시 선언하면?
@@ -218,16 +218,16 @@
         // let은 중복선언 금지 되므로 에러발생함!
 
         // 블록영역 내부에서 전역변수 찍기 뒤
-        // console.log('블록영역 내부에서 전역변수 찍기 뒤');
-        // console.log('seoul:',seoul);
+        console.log('블록영역 내부에서 전역변수 찍기 뒤');
+        console.log('seoul:',seoul);
       }
       /**********************************************/
 
       // 블록바깥에서 전역변수 찍기!
-      // console.log('블록영역 바깥에서 전역변수 찍기');
-      // console.log('seoul:',seoul);
-      // console.log('jeju:',jeju);
-      // console.log('toktok:',toktok);
+      console.log('블록영역 바깥에서 전역변수 찍기');
+      console.log('seoul:',seoul);
+      console.log('jeju:',jeju);
+      console.log('toktok:',toktok);
 
       //////////////////////////////////////////////
 
@@ -235,7 +235,7 @@
       //// 변수 호이스팅(Variable Hoisting) /////
 
       cat = "고양이"; // 변수할당 먼저
-      // console.log("cat:", cat);
+      console.log("cat:", cat);
       var cat; // 변수선언 나중
       // 위에서 변수에 uk의 경우와 마찬가지임!!!
       // 변수선언을 아래서 하는 허용은 var에서만 가능
@@ -244,30 +244,30 @@
       /// let은 변수 호이스팅을 허용하는가? ////
       let dog;
       dog = "강아지";
-      // console.log("dog:", dog);
-      // let dog;
+      console.log("dog:", dog);
+    //   let dog;
       // let은 변수 호이스팅을 금지한다!
       // 에러메세지: Uncaught ReferenceError: Cannot access 'dog' before initialization
       // -> 변수의 선언과 할당에 대한 철저한 순서를 지킬수 있음
       // -> var를 사용하지 않는 중요한 이유중 하나임!!!
 
       var cat = "먼치킨";
-      // console.log("cat:", cat);
+      console.log("cat:", cat);
       // var는 재선언가능함
 
-      // let dog = "시바견";
+    //   let dog = "시바견";
       // let은 재선언못함 -> let을 쓰는 이유중 하나!!!
 
       //////////// 상수 테스트 /////////////
 
-      // const fish;
-      // fish = "고등어";
+    //   const fish;
+    //   fish = "고등어";
 
       const fish = "고등어";
-      // console.log("상수 fish:", fish);
+      console.log("상수 fish:", fish);
       // 원칙1 : 상수는 선언과 동시에 할당해야함!
 
-      // fish = "참치";
+    //   fish = "참치";
       // 원칙2 : 상수는 재할당 불가!
       // 에러메시지: Uncaught TypeError: Assignment to constant variable.
 
@@ -279,7 +279,7 @@
 
       // [1. 배열 ] //////////////////
 
-      // [2. 객체]
+      // [2. 객체] ///////////////////
 
       // [3. 함수] ////////////////////
     </script>
