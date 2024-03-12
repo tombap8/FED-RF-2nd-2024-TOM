@@ -428,7 +428,60 @@
       // 로드구역 설정하기 //////
       // 대상: window
       // 이벤트: load (또는 DOMContentLoaded)
-      window.addEventListener('load',function(){});
+      // load이벤트는 모든 컨텐츠를 로딩하면 발생
+      // DOMContentLoaded 이벤트는 태그만 그려지면 발생
+      // 익명함수는 function(){코드}
+      // 화살표함수는 ()=>{코드}
+
+      // window.addEventListener('load',function(){});
+      window.addEventListener('DOMContentLoaded',
+      ()=>{
+        console.log('로딩완료!');
+
+        // for문 연습 선택박스 이벤트 연결하기
+        // 대상: select#sel
+        let sel = document.querySelector('#sel');
+        console.log('선택박스:',sel);
+        // change이벤트로 showGugu함수와 연결하기
+
+        // [이벤트 등록방법1]
+        // sel.onchange = showGugu;
+
+        // [이벤트 등록방법2]
+        sel.addEventListener('change',showGugu);
+
+        /* 
+          [ 이벤트와 함수 연결방법 2가지 ]
+
+          1. 이벤트속성에 함수할당하기
+          선택요소.on이벤트명 = 함수
+          예) 
+          document.querySelector('.my')
+          .onclick = myFunction;
+
+          2. 이벤트 등록 메서드 사용하기
+          선택요소.addEventListener(이벤트명,함수)
+          예)
+          document.querySelector('.my')
+          .addEventListener('click',myFunction);
+
+        */
+        
+      }); //////////// 로드구역 /////////////////
+
+      /******************************************* 
+        함수명 : showGugu
+        기능 : 선택박스 변경시 해당 구구단을 보여줌
+        이벤트 : change 이벤트
+            (선택박스변경,체크박스 변경 등 경우에 발생)
+        이벤트연결 : addEventListener()로 연결
+      *******************************************/
+     function showGugu(){
+        // 1. 함수호출확인!
+        console.log('구구단을 외자!!!');
+
+     } ///////////// showGugu 함수 ////////////////
+     //////////////////////////////////////////////
 
 
 
