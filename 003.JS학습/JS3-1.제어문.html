@@ -434,13 +434,12 @@
       // 화살표함수는 ()=>{코드}
 
       // window.addEventListener('load',function(){});
-      window.addEventListener('DOMContentLoaded',
-      ()=>{
-        console.log('로딩완료!');
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("로딩완료!");
 
         // for문 연습 선택박스 이벤트 연결하기
         // 대상: select#sel
-        let sel = document.querySelector('#sel');
+        let sel = document.querySelector("#sel");
         // console.log('선택박스:',sel);
         // change이벤트로 showGugu함수와 연결하기
 
@@ -448,7 +447,7 @@
         // sel.onchange = showGugu;
 
         // [이벤트 등록방법2]
-        sel.addEventListener('change',showGugu);
+        sel.addEventListener("change", showGugu);
 
         /* 
           [ 이벤트와 함수 연결방법 2가지 ]
@@ -468,7 +467,14 @@
           .addEventListener('click',myFunction);
 
         */
-        
+
+        // while문 연습 이벤트 연결하기
+        let sel2 = document.querySelector('#sel2');
+
+        sel2.addEventListener('change', showGugu2);
+
+
+
       }); //////////// 로드구역 /////////////////
 
       /******************************************* 
@@ -478,34 +484,34 @@
             (선택박스변경,체크박스 변경 등 경우에 발생)
         이벤트연결 : addEventListener()로 연결
       *******************************************/
-     function showGugu(){
+      function showGugu() {
         // 이함수와 연결된 요소 자신은? this
         // 선택박스의 선택된 값은 value속성으로 읽음!
         let optVal = this.value;
 
         // 1. 함수호출확인!
-        console.log('구구단을 외자!!!',optVal);
+        console.log("구구단을 외자!!!", optVal);
 
         // 2. 선택메시지 출력을 선택시 함수나가기!
         // 함수를 나갈땐 돌아가! return!
-        if(optVal == 1) return;
+        if (optVal == 1) return;
 
         // 3. 구구단 구성하기
         // html 데이터 변수
         let hcode = `<h2>${optVal}단</h2>`;
 
-        // 구구단 계산식 만들기
-        hcode += `${optVal} × 1 ＝ ${optVal*1}<br>`;
+        // 구구단 계산식 만들기 : for문사용하기!
+        // for(시;한;증){코드}
+        for (let i = 1; i <= 9; i++) {
+          hcode += `${optVal} × ${i} ＝ ${optVal * i}<br>`;
+        } ////// for ////////
 
         // 4. 화면출력 : 대상 - .g1
-        document.querySelector('.g1')
-        .innerHTML = hcode;
+        document.querySelector(".g1").innerHTML = hcode;
+      } ///////////// showGugu 함수 ////////////////
+      //////////////////////////////////////////////
 
-     } ///////////// showGugu 함수 ////////////////
-     //////////////////////////////////////////////
-
-
-     /***************************************** 
+      /***************************************** 
        [ for문 ]
         - 어떤 실행문을 순서대로 여러번 반복
         실행할 경우 사용하는 제어문
@@ -532,14 +538,86 @@
             for문을 빠져나온다!
        *****************************************/
 
+       /******************************************* 
+        함수명 : showGugu2
+        기능 : 선택박스 변경시 해당 구구단을 보여줌
+        이벤트 : change 이벤트
+            (선택박스변경,체크박스 변경 등 경우에 발생)
+        이벤트연결 : addEventListener()로 연결
+      *******************************************/
+      function showGugu2() {
+        // 이함수와 연결된 요소 자신은? this
+        // 선택박스의 선택된 값은 value속성으로 읽음!
+        let optVal = this.value;
+
+        // 1. 함수호출확인!
+        console.log("구구단을 외자!!!while!!", optVal);
+
+        // 2. 선택메시지 출력을 선택시 함수나가기!
+        // 함수를 나갈땐 돌아가! return!
+        if (optVal == 1) return;
+
+        // 3. 구구단 구성하기
+        // html 데이터 변수
+        let hcode = `<h2>${optVal}단</h2>`;
+
+        // 구구단 계산식 만들기 : while문사용하기!
+        // 시작값
+        let i = 1;
+
+        while(i <= 9){ // 한계값
+          hcode += 
+          `${optVal} × ${i} ＝ ${optVal * i}<br>`;
+
+          // 증감필수!(없으면 무한루프!)
+          i++;
+        } ///// while문 ////////
 
 
 
+        // for(시;한;증){코드}
+        // for (let i = 1; i <= 9; i++) {
+        //   hcode += `${optVal} × ${i} ＝ ${optVal * i}<br>`;
+        // } ////// for ////////
 
+        // 4. 화면출력 : 대상 - .g2
+        document.querySelector(".g2").innerHTML = hcode;
+      } ///////////// showGugu2 함수 ////////////////
+      //////////////////////////////////////////////
 
+      /********************************************* 
+       [ while문 ]
+
+        - 반복실행코드를 위한 조건으로 만드는 제어문
+
+        ((구문구조))
+        ______________________________
+        시작값;
+
+        while(한계값){
+            실행코드;
+            증감;
+        }
+        ______________________________
+
+        ((구문해석))
+
+        - for문과 유사하나 시작값이 while문 윗쪽에 나옴
+        - 한계값은 while문 소괄호 안에 씀
+        - 증감은 while 실행코드 내부에 씀
+        (주의: 증감을 안쓰면 무한루프에 빠짐!)
+
+        - >>>>> while문과 for문은 무엇이 다른가?
+
+        시작값과 증감없이 단지 조건에 의해서
+        반복실행이 필요한 경우 사용할 수 있다!
+
+        while(조건){코드}
+
+        -> 예) 중복숫자 피하기, 직전값 피하기 등
+       *********************************************/
 
     </script>
-
 
     <!-- CSS코드구역 -->
     <style>
@@ -747,5 +825,33 @@
 
     <br /><br />
     <hr />
+
+    <!-- while문 연습 -->
+    <h2 class="tit">while문 연습</h2>
+    <h3>구구단 출력하기</h3>
+    <select name="sel2" id="sel2">
+      <option value="1">구구단을 선택하세요!</option>
+      <option value="2">2단</option>
+      <option value="3">3단</option>
+      <option value="4">4단</option>
+      <option value="5">5단</option>
+      <option value="6">6단</option>
+      <option value="7">7단</option>
+      <option value="8">8단</option>
+      <option value="9">9단</option>
+      <option value="10">10단</option>
+      <option value="11">11단</option>
+      <option value="12">12단</option>
+      <option value="13">13단</option>
+      <option value="14">14단</option>
+      <option value="15">15단</option>
+      <option value="16">16단</option>
+      <option value="17">17단</option>
+      <option value="18">18단</option>
+      <option value="19">19단</option>
+      <option value="20">20단</option>
+    </select>
+    <!-- 구구단 출력박스 -->
+    <div class="gugu g2"></div>
   </body>
 </html>
