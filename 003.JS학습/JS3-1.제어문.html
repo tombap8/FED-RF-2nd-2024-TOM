@@ -352,8 +352,7 @@
             message = "064";
             break;
           case "나성":
-            message = 
-            "나성에 가면 편지를 전해줘요~!";
+            message = "나성에 가면 편지를 전해줘요~!";
             break;
           default:
             message = "etc";
@@ -363,12 +362,13 @@
 
         // 6. 메시지 만들기 ////////////
         // message 변수에 최종 출력내용을 다시 담아서 저장한 후 출력한다!
-        if(message == 'etc'){ // 미등록메시지
-          message = '등록되지 않은 지역입니다!';
+        if (message == "etc") {
+          // 미등록메시지
+          message = "등록되지 않은 지역입니다!";
         } /// if ///
-        else{ // 등록지역 메시지
-          message = 
-          `${txt}의 지역번호는 
+        else {
+          // 등록지역 메시지
+          message = `${txt}의 지역번호는 
           <span 
           style="
           color:hotpink;
@@ -379,11 +379,9 @@
         // 7. 화면출력하기 /////////
         // 출력대상: #info -> info변수
         info.innerHTML = message;
-        // 선택요소.innerText 
+        // 선택요소.innerText
         // -> 요소의 문자데이터 넣기
         // -> html태그를 넣을때는 innerHTML 사용!
-
-
       } ////////////// showLocal 함수 ////////////////
       ///////////////////////////////////////////////
 
@@ -416,7 +414,31 @@
       없으면 이 부분이 실행됨(단, 필요시 사용)
       -> default문에는 break를 쓰지 않는다!
   **********************************************/
+
+      // 이벤트 코드 분리하기! ////////
+      // - 직접 요소의 이벤트속성에 작성하지 않고
+      // JS코드 구역에서 이벤트 속성을 작성하는것!
+
+      ////////////////////////////////////////////////
+      // [ JS 이벤트설정 메서드 : addEventListener() ]
+      // 사용법: 선택요소.addEventListener(이벤트명,함수)
+      // 기능: 등록된 이벤트 발생시 함수를 실행함!
+      /////////////////////////////////////////////////
+
+      // 로드구역 설정하기 //////
+      // 대상: window
+      // 이벤트: load (또는 DOMContentLoaded)
+      window.addEventListener('load',function(){});
+
+
+
+
+
+
+
     </script>
+
+
     <!-- CSS코드구역 -->
     <style>
       h1 {
@@ -489,6 +511,22 @@
         color: red;
         font-weight: bold;
       }
+
+      /* 구구단 출력박스 */
+      .gugu {
+        width: 40vw;
+        height: 40vw;
+        border: 2px dashed blue;
+        text-align: center;
+        margin: 3vh auto;
+        /* 박스 y축 스크롤 : 박스보다 내용 많으면
+        스크롤바생김(스크롤바 트랙나와있음) */
+        overflow-y: scroll;
+        font-size: 2.5vw;
+      }
+      .gugu h2 {
+        font-size: 3vw;
+      }
     </style>
   </head>
   <body>
@@ -552,6 +590,58 @@
       onkeypress="if(event.keyCode==13)showLocal()"
     />
     <button class="sbtn" onclick="showLocal()">국번문의</button>
+
+    <br /><br />
+    <hr />
+
+    <!-- for문 연습 -->
+    <h2 class="tit">for문 연습</h2>
+    <h3>구구단 출력하기</h3>
+    <select name="sel" id="sel">
+      <option value="1">구구단을 선택하세요!</option>
+      <option value="2">2단</option>
+      <option value="3">3단</option>
+      <option value="4">4단</option>
+      <option value="5">5단</option>
+      <option value="6">6단</option>
+      <option value="7">7단</option>
+      <option value="8">8단</option>
+      <option value="9">9단</option>
+      <option value="10">10단</option>
+      <option value="11">11단</option>
+      <option value="12">12단</option>
+      <option value="13">13단</option>
+      <option value="14">14단</option>
+      <option value="15">15단</option>
+      <option value="16">16단</option>
+      <option value="17">17단</option>
+      <option value="18">18단</option>
+      <option value="19">19단</option>
+      <option value="20">20단</option>
+    </select>
+    <!-- 
+        [ select 요소 ]
+
+        1. 보통 정해진 선택값을 나열하여 선택입력을
+        할 수 있는 입력요소
+
+        2. form요소 내부에 주로 사용되고 데이터를
+        DB에 전송하는 목적을 많이 이용됨!
+
+        3. id를 설정할때 name속성을 같이 셋팅할 경우가
+        많은데 이는 post방식 데이터 전송시 서버사이드에서
+        name으로 데이터를 읽어가기 때문에 일반적으로 씀.
+        보통 id명과 동일하게 이름짓는다
+
+        4. 필수하위 요소 : option
+            -> 속성으로 value를 쓰고 값을 사용하면
+                JS등 프로그래밍에서 이 값을 읽어감!
+            -> value속성을 셋팅하지 않으면
+                option의 데이터를 읽어감!
+
+     -->
+    <!-- 구구단 출력박스 -->
+    <div class="gugu g1"></div>
 
     <br /><br />
     <hr />
