@@ -28,3 +28,8 @@ body *{
     max-width: 1200px;
     margin: 0 auto;
 }
+/* 컨텐츠 박스 */
+.cont-box{
+    display: flex;
+    /* 직계자식요소가 옆으로 흐름! */
+}
