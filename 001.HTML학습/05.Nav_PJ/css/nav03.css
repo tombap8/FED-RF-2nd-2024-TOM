@@ -1,0 +1,30 @@
+@charset "utf-8";
+/* 3. 가로네비 서브 전체 드롭다운 전체창 CSS */
+
+/* 초기화 CSS 불러오기 */
+@import url(./reset.css);
+
+/* 웹폰트 CDN */
+@import url("https://fonts.googleapis.com/css2?family=Maven+Pro&family=Noto+Sans+KR&display=swap");
+
+/* 
+    font-family: 'Maven Pro', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif; 
+*/
+
+/* 전체배경 */
+body{
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/nav03/main_intro_banner_1_ksr.jpg) no-repeat center/cover;
+}
+
+body *{
+    outline: 2px dashed #ccc;
+}
+
+/* 중앙속박스 */
+.inbox{
+    max-width: 1200px;
+    margin: 0 auto;
+}
