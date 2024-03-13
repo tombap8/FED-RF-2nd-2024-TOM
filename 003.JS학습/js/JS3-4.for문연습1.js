@@ -39,57 +39,65 @@
 // 1. 대상선정 //////////////////
 // 1-1.이벤트 대상
 // (1) 미니언즈버튼(3개)
-const mini = document.querySelectorAll('.mini');
+const mini = document.querySelectorAll(".mini");
 // (2) 리셋버튼
-const rbtn = document.querySelector('.rbtn');
+const rbtn = document.querySelector(".rbtn");
 
 // 1-2.변경대상
 // (1) 파란박스(미니언즈 내부박스)
-const Bcase = document.querySelector('.mini-space');
+const Bcase = document.querySelector(".mini-space");
 // (2) 개수출력박스
-const stxt = document.querySelector('.stxt span');
+const stxt = document.querySelector(".stxt span");
 
 // console.log('대상:', mini,rbtn,Bcase,stxt);
 
-// 2. 이벤트 속성 셋팅하기
+// 2. 이벤트 속성 셋팅하기 /////////////////////////
 // 이벤트 대상에게 click이벤트와 함수를 연결한다!
 // (1) 미니언즈 넣기 : 버튼이 3이므로 for문으로 셋팅한다!
 // 0부터 시작하여 미니언즈 개수보다 작을때까지 반복한다!
 // 왜0부터인가? HTML컬렉션이 0부터 시작함(유사배열)
 // mini.length 는 HTML컬렉션의 개수를 리턴함!
-for(let i=0; i<mini.length; i++){
-    // 대상 : mini.item(순번) 또는 mini[순번]
-    mini[i].onclick = insertMini;
+for (let i = 0; i < mini.length; i++) {
+  // 대상 : mini.item(순번) 또는 mini[순번]
+  mini[i].onclick = insertMini;
 
-    // 이벤트리스너를 사용한 방법도 있음!
-    // mini[i].addEventListener('click', insertMini);
+  // 이벤트리스너를 사용한 방법도 있음!
+  // mini[i].addEventListener('click', insertMini);
 
-    // console.log(`
-    //     for문 내부에 전달된 i변수값: ${i}
-    //     \n
-    //     순서대로 미니언즈 대상확인: ${mini[i]}
-    // `);
-    
-
+  // console.log(`
+  //     for문 내부에 전달된 i변수값: ${i}
+  //     \n
+  //     순서대로 미니언즈 대상확인: ${mini[i]}
+  // `);
 } //// for 문 ////////
 
-
+// 3. 기능구현 함수 만들기 ////////////////////////
 
 /****************************************** 
     함수명: insertMini
     기능: 미니언즈 이미지를 박스안에 추가한다!
 ******************************************/
-function insertMini(){
-    // 1. 함수호출확인!
-    console.log('미니언즈 드루와~~~!');
+function insertMini() {
+  // this키워드는 함수에 연결된 요소 자신!(.mini)
 
-    // 2. 변경대상선정 : .mini-space -> Bcase변수
-    // 3. 변경내용 적용하기 : html 넣기
-    // += 대입연산자로 기존값에 더함!!!
+  // 0. 이미지에 셋팅된 'data-num' 속성값 가져오기
+  let num = this.getAttribute("data-num");
+  // getAttribute(속성명) -> 속성값 읽어오기 내장함수
+  // setAttribute(속성명,값) -> 속성값 넣기 내장함수
+
+  // 1. 함수호출확인!
+  console.log("미니언즈 드루와~~~!", num);
+
+  // 2. 변경대상선정 : .mini-space -> Bcase변수
+
+  // 3. 변경내용 적용하기 : html 넣기
+  // += 대입연산자로 기존값에 더함!!!
+  // for문으로 전달될 개수만큼 반복하여 이미지를 넣는다!
+  for (let i = 0; i < num; i++) {
     Bcase.innerHTML += `
-        <img src="./images/Minions.png" 
-        alt="미니언즈">
-    `;
-
+            <img src="./images/Minions.png" 
+            alt="미니언즈">
+        `;
+  } //////// for문 ////////////
 } ////////// insertMini 함수 /////////////
 //////////////////////////////////////////
