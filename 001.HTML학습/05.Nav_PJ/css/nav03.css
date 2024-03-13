@@ -180,30 +180,52 @@ body{
     height: 30px;
 }
 /* 미션: 오버시 이미지변경 + 글자색변경 */
+
+/* 대상요소는 li중 첫번째 다음(~틸드) 
+li 형제요소들을 선택함
+.lang li:nth-child(1)~li
+2,3번째 li 하위 이미지 모두 안보이게함! */
 .lang li:nth-child(1)~li img{
     display: none;
 }
+/* 대상 이미지중 첫번째 보이게함 */
 .lang li:nth-child(1)~li img:nth-child(1){
     display: inline;
 }
+/* 최상위 박스 오버시 첫번째 이미지 숨기기 */
 #top-area:hover .lang li:nth-child(1)~li img:nth-child(1){
     display: none;
 }
+/* 최상위 박스 오버시 두번째 이미지 보이기 */
 #top-area:hover .lang li:nth-child(1)~li img:nth-child(2){
     display: inline;
 }
+/* 최상위 박스 오버시, 동시에 a요소 오버시 
+두번째 이미지 숨기기 */
 #top-area:hover .lang li:nth-child(1)~li a:hover img:nth-child(2){
     display: none;
 }
+/* 최상위 박스 오버시, 동시에 a요소 오버시 
+세번째 이미지 보이기 */
 #top-area:hover .lang li:nth-child(1)~li a:hover img:nth-child(3){
     display: inline;
 }
 
-/* 오버시 글자색 */
+/* 최상위 오버시 글자색 회색 */
 #top-area:hover .lang a{
     color: #222;
 }
+/* 최상위 오버시 동시에 a오버시 글자색 빨강 */
 #top-area:hover .lang a:hover{
     color: red;
 }
 
+
+/* 타이틀 글자 */
+.tit{
+    position: fixed;
+    left: 5vw;
+    top: 20vw;
+    font-size: 4vw;
+    color: #fff;
+}
