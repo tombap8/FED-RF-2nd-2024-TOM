@@ -21,9 +21,9 @@ body{
     background: url(../images/nav03/main_intro_banner_1_ksr.jpg) no-repeat center/cover;
 }
 
-body *{
+/* body *{
     outline: 2px dashed #ccc;
-}
+} */
 
 /* 중앙속박스 */
 .inbox{
@@ -144,4 +144,66 @@ body *{
 }
 
 
+
 /********* 1-3.기타파트 *********/
+/* 랭귀지 등 포함 박스 */
+.lang{
+    display: flex;
+    padding-top: 40px;
+}
+/* 박스 리스트 */
+.lang li{    
+    padding: 0 10px;
+}
+.lang a{
+    /* 글자색 흰색 */
+    color: #fff;
+}
+/* 두번째 li의 KOR글자 가상요소로 a에 넣기 */
+.lang li:nth-child(2) a::after{
+    content: 'KOR';
+    font-size: 13px;
+    display: block;
+    margin-top: -15px;
+    margin-left: 17px;
+}
+/* 세번째 li의 STORE글자 가상요소로 a에 넣기 */
+.lang li:nth-child(3) a::after{
+    content: 'STORE';
+    font-size: 13px;
+    display: block;
+    margin-top: -15px;
+    margin-left: 17px;
+}
+/* 박스 이미지 */
+.lang img{
+    height: 30px;
+}
+/* 미션: 오버시 이미지변경 + 글자색변경 */
+.lang li:nth-child(1)~li img{
+    display: none;
+}
+.lang li:nth-child(1)~li img:nth-child(1){
+    display: inline;
+}
+#top-area:hover .lang li:nth-child(1)~li img:nth-child(1){
+    display: none;
+}
+#top-area:hover .lang li:nth-child(1)~li img:nth-child(2){
+    display: inline;
+}
+#top-area:hover .lang li:nth-child(1)~li a:hover img:nth-child(2){
+    display: none;
+}
+#top-area:hover .lang li:nth-child(1)~li a:hover img:nth-child(3){
+    display: inline;
+}
+
+/* 오버시 글자색 */
+#top-area:hover .lang a{
+    color: #222;
+}
+#top-area:hover .lang a:hover{
+    color: red;
+}
+
