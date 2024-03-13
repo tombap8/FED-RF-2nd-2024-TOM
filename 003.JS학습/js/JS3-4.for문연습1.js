@@ -135,5 +135,9 @@ function resetMini() {
   Bcase.innerHTML = "";
   // innerHTML에 빈문자값을 할당하여 지운다!
 
+  // 4. 추가변경대상 : .stxt span -> stxt변수
+  // 5. 추가변경내용 : 0으로 초기화
+  stxt.innerText = 0;
+
 } //////////// resetMini 함수 //////////////////
 ////////////////////////////////////////////////
