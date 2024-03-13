@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>for문 연습1 - 파란상자에 미니언즈 집어넣기</title>
+        <style>
+            /* 미니언즈 이미지 */
+            .mini {
+                cursor: pointer;
+                /* 손가락모양 */
+                border: 5px dotted #fff;
+            }
+
+            /* 마우스오버시 보더색 변경 */
+            .mini:hover {
+                border-color: red;
+            }
+
+            /* 파란색 가방 */
+            .Bcase {
+                position: relative;
+                /* 부모자격 */
+                border: 20px ridge blue;
+                min-height: 30vh;
+                /* 최소높이를 주면 설정높이를 유지하다가
+            내용이 많아지면 높이값이 늘어남! */
+                border-radius: 20px;
+                width: 80vw;
+                margin: 10vh auto;
+            }
+            /* 가상요소로 손잡이 */
+            .Bcase::after{
+                content: '';
+                position: absolute;
+                top: -100px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 20vw;
+                height: 100px;
+                border: 30px ridge blue;
+                border-radius: 50px;
+                clip-path: 
+                polygon(0 0,100% 0,100% 50%,0 50%);
+            }
+
+            .Bcase img {
+                width: 150px;
+                /* 크기줄임 */
+            }
+            /* 미니언즈 박스 */
+            h1,.mini-box{
+                text-align: center;
+            }
+
+            /* 미니언즈 정보박스 */
+            .info-box{
+                position: absolute;
+                background-color: rgba(0, 0, 255, 0.512);
+                padding: 15px;
+                border-radius: 0 0 30px 0;
+                font-size: 1.2vw;
+                color: #fff;
+            }
+            /* 리셋버튼 */
+            .rbtn{
+                background-color: #000;
+                color: #fff;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                font-weight: bold;
+            }
+        </style>
+    </head>
+
+    <body>
+        <h1>for문 연습1 - 파란상자에 미니언즈 집어넣기</h1>
+        <!-- data-cnt는 각 미니언즈를 몇개씩 넣을지에 대한 정보값임 -->
+        <div class="mini-box">
+            <img
+                src="./images/Minions.png"
+                alt="미니언즈"
+                class="mini"
+                title="나를 클릭하면 한개씩 가방에 들어갈꼬얌~!"
+            />
+            <img
+                src="./images/Minions.png"
+                alt="미니언즈"
+                class="mini"
+                title="나를 클릭하면 다섯개씩 가방에 들어갈꼬얌~!"
+            />
+            <img
+                src="./images/Minions.png"
+                alt="미니언즈"
+                class="mini"
+                title="나를 클릭하면 열개씩 가방에 들어갈꼬얌~!"
+            />
+        </div>
+
+
+     
+     <!-- 파란상자 -->
+     <div class="Bcase">
+         <!-- 가방정보 및 리셋버튼 박스 -->
+         <div class="info-box">
+                <!-- 현재 미니언즈 개수표시 -->
+                <h2 class="stxt">미니언즈수 : <span>0</span>개</h2>
+           
+                <!-- 리셋을 한다면 이렇게...! -->
+                <button class="rbtn">리셋</button>
+
+            </div>
+            <!-- 미니언즈 들어가는 박스 -->
+            <div class="mini-space">
+
+            </div>
+        </div>
+    </body>
+</html>
