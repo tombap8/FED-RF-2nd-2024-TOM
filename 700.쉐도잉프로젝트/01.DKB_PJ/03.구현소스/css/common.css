@@ -5,29 +5,29 @@
 
 /************* 1. 상단영역 *************/
 /* 메인로고 */
-.mlogo img{    
-    margin-top: 39px;
+.mlogo img {
+  margin-top: 39px;
 }
 /* Top 메뉴 */
 .top-menu ul {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 /* Top 리스트 */
 .top-menu ul li {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 /* Top a링크 */
 .top-menu ul a {
-    font-size: 1.4rem;
-    line-height: 40px;
-    font-weight: bold;
+  font-size: 1.4rem;
+  line-height: 40px;
+  font-weight: bold;
 }
 
 /* GNB 메뉴 */
 .gnb ul {
-    display: flex;
-    justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 /* GNB 리스트 */
 /* .gnb ul li {
@@ -35,66 +35,77 @@
 
 /* GNB a링크 */
 .gnb ul a {
-    display: block;
-    padding: 0 13px;
+  display: block;
+  padding: 0 13px;
 
-    font-size: 1.7rem;
-    line-height: 60px;
-    font-weight: bold;
+  font-size: 1.7rem;
+  line-height: 60px;
+  font-weight: bold;
 }
 /* GNB a링크 오버시 */
 .gnb ul a:hover {
-    color: red;
+  color: red;
 }
 
-/* 서브가 있는 리스트 선택하기
+/* 상위메뉴 서브가 있는 리스트 선택하기
 4~6까지 */
 /* a요소 오버시 커서 변경 */
-.gnb ul li:nth-child(3) ~ 
-li:nth-child(-n+6) a{
-    /* 손가락표시 변경하기 */
-    cursor: default;
-    /* 커서는 오버시 커서모양을 변경하는 속성 */
+.gnb ul > li:nth-child(3) ~ li:nth-child(-n + 6) > a {
+  /* 손가락표시 변경하기 */
+  cursor: default;
+  /* 커서는 오버시 커서모양을 변경하는 속성 */
 }
 /* 가상요소로 아래쪽 화살표넣기 */
-.gnb ul li:nth-child(3) ~ 
-li:nth-child(-n+6) a::after{
-    content: '∨';
-    display: inline-block;
-    /* 트랜스폼은 inline에서는 적용안됨! */
-    font-size: 7px;
-    margin-left: 8px;
-    vertical-align: 3px;
-    transform: scaleX(2);
+.gnb ul > li:nth-child(3) ~ li:nth-child(-n + 6) > a::after {
+  content: "∨";
+  display: inline-block;
+  /* 트랜스폼은 inline에서는 적용안됨! */
+  font-size: 7px;
+  margin-left: 8px;
+  vertical-align: 3px;
+  transform: scaleX(2);
 }
 
 /* 서브메뉴 */
-.smenu{
-    position: absolute;
-    left: 0;
-    /* 부모는? 보이는 화면 */
-    width: 100%;
+.smenu {
+  position: absolute;
+  left: 0;
+  /* 부모는? 보이는 화면 */
+  width: 100%;
+
+  /* 최대높이값 0 */
+  max-height: 0;
+  /* 서브메뉴숨기기 */
+  overflow: hidden;
+  /* 트랜지션 */
+  transition: .4s;
+}
+/* 상위메뉴 오버시 서브메뉴 보이기 */
+.gnb>ul>li:hover .smenu {
+    max-height: 50vh;
 }
 /* 서브 속박스 */
-.swrap{
-    width: 60vw;
-    margin: 0 auto;
-    padding: 4rem;
-    white-space: nowrap;
+.swrap {
+  width: 60vw;
+  margin: 0 auto;
+  padding: 4.9rem 12.8rem 6rem;
+  white-space: nowrap;
 }
 /* ol리스트 */
-.smenu ol{
-    /* 플렉스박스 */
-    display: flex;
-    /* 플렉스 랩핑박스 */
-    flex-wrap: wrap;
-    /* justify-content: center; */
+.smenu ol {
+  /* 플렉스박스 */
+  display: flex;
+  /* 플렉스 랩핑박스 */
+  flex-wrap: wrap;
+  /* justify-content: center; */
+  /* 플렉스박스 간격 속성 : 
+  gap(위아래,양쪽) -> 하나의 값만쓰면 모두셋팅 */
+  gap: 1rem 2vw;
 }
 /* 서브타이틀 */
-.smenu h2{
-    font-size: 3rem;
+.smenu h2 {
+  font-size: 3rem;
 }
-
 
 /************ 2. 메인영역 ************/
 /************* 3. 하단영역 *************/
