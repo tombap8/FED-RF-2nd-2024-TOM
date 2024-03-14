@@ -27,10 +27,10 @@
       // 로딩구역 /////////////
       window.addEventListener("load", loadFn);
 
-      // 로딩후 실행함수 /////////      
+      // 로딩후 실행함수 /////////
       function loadFn() {
         // 1. 함수호출확인!
-        console.log('로딩완료!');
+        console.log("로딩완료!");
 
         // 2. 요구사항
         // button태그를 클릭하면 같은 박스의
@@ -39,18 +39,17 @@
 
         // 3. 대상선정
         // 3-1. 이벤트대상 : button (click이벤트)
-        const btns = document.querySelectorAll('button');
+        const btns = document.querySelectorAll("button");
         // 3-2. 변경대상 : .forCls
         // -> 변경함수에서 대상을 선택하도록 한다!
 
-        console.log('버튼대상:',btns);
+        console.log("버튼대상:", btns);
 
         // 4. 이벤트설정하기
         // 버튼의 개수만큼 for문을 돌려서 이벤트 걸어주기
-        for(let i=0; i<btns.length; i++) {
-            btns[i].onclick = insertNum;
+        for (let i = 0; i < btns.length; i++) {
+          btns[i].onclick = insertNum;
         } /////////// for문 ///////////
-
       } ////// loadFn 함수 ///////////
       ///////////////////////////////
 
@@ -58,20 +57,19 @@
         함수명 : insertNum
         기능 : 박스에 숫자이미지 넣기
       *************************************/
-     function insertNum(){
+      function insertNum() {
         // 0.버튼 텍스트 읽어오기(분기문에서 사용)
         let btxt = this.innerText;
         // 1. 함수호출확인
-        console.log('나야나!',this,btxt);
+        console.log("나야나!", this, btxt);
 
         // 2. 변경대상 : 현재 같은 부모 아래에 있는 .forCls
         // 클릭된 버튼의 부모요소는?
         // DOM 요소 선택법 중 부모요소 선태은
         // parentElement -> 부모요소
-        let target = 
-        this.parentElement.querySelector('.forCls');
+        let target = this.parentElement.querySelector(".forCls");
 
-        console.log('타겟:',target);
+        console.log("타겟:", target);
 
         // 3. 변경내용
         // 변경대상박스에 이미지 넣기
@@ -79,42 +77,46 @@
         // 이때 for문 전달변수 숫자를 활용하여 이미지를
         // 1~10까지 순서대로 변경하여 출력한다!
         // for(시;한;증){}
-        for(let i=1;i<=10;i++){
+        for (let i = 1; i <= 10; i++) {
+          // 필터링 코드 ///////
 
-            // 필터링 코드 ///////
+          // 1. 4와 7번을 제외하고 돌기
+          // [ continue 예약어 ]
+          // continue 키워드를 for문 사용하면
+          // 해당 순번은 하단코드를 생략하고
+          // 다시 상단으로 가서 다음순번을 실행함!
 
-            // 1. 4와 7번을 제외하고 돌기
-            // [ continue 예약어 ]
-            // continue 키워드를 for문 사용하면
-            // 해당 순번은 하단코드를 생략하고
-            // 다시 상단으로 가서 다음순번을 실행함!
+          // 조건: 버튼명이'for문옵션1'이고 i가 4또는7일때
+          if (btxt == "for문옵션1" && (i == 4 || i == 7)) {
+            continue;
+            // 아래코드를 안내려가고
+            // for문 증감으로감!
+          } /// if ///
 
-            // 조건: 버튼명이'for문옵션1'이고 i가 4또는7일때
-            if(btxt == 'for문옵션1' && (i==4||i==7)){
-                continue;
-                // 아래코드를 안내려가고 
-                // for문 증감으로감!
-            } /// if ///
+          // 2. 5번까지만 출력하기
+          // [ break 예약어 ]
+          // for문에서 break 키워드를 사용하면
+          // 조건에 해당시 만나는순간
+          // for문을 빠져나간다!(for문 실행끝!)
+          if (btxt == "for문옵션2" && i == 6) {
+            break;
+            // 여기서 제어문을 나간다!
+          } /// if ////
 
-            // 2. 5번까지만 출력하기
-            // [ break 예약어 ]
-            // for문에서 break 키워드를 사용하면
-            // 조건에 해당시 만나는순간
-            // for문을 빠져나간다!(for문 실행끝!)
-            if(btxt == 'for문옵션2' && i == 6){
-                break;
-                // 여기서 제어문을 나간다!
-            } /// if ////
+          // 3. 2~4,9 빼고 돌리기
+          // 조건: 버튼명이'for문옵션연습1'이고 i가 2이상이고 4이하 또는 9일때
+          if (btxt == "for문옵션연습1" && 
+          ((i >= 2 && i <= 4) || i == 9)) {
+            continue;
+            // 아래코드를 안내려가고
+            // for문 증감으로감!
+          } /// if ///
 
-
-            // 출력코드 ////////
-            target.innerHTML += 
-            `<img src="./images/num/num_0${i}.png" alt="숫자">`;
-
+          // 출력코드 ////////
+          target.innerHTML += `<img src="./images/num/num_0${i}.png" alt="숫자">`;
         } //// for문 ////////////
-
-     } ////////////// insertNum 함수 ////////////
-     ////////////////////////////////////////////
+      } ////////////// insertNum 함수 ////////////
+      ////////////////////////////////////////////
     </script>
   </head>
 
