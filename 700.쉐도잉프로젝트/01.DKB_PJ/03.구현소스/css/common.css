@@ -72,17 +72,18 @@
   left: 0;
   /* 부모는? 보이는 화면 */
   width: 100%;
+  background-color: #fff;
 
   /* 최대높이값 0 */
   max-height: 0;
   /* 서브메뉴숨기기 */
   overflow: hidden;
   /* 트랜지션 */
-  transition: .4s;
+  transition: 0.4s;
 }
 /* 상위메뉴 오버시 서브메뉴 보이기 */
-.gnb>ul>li:hover .smenu {
-    max-height: 50vh;
+.gnb > ul > li:hover .smenu {
+  max-height: 50vh;
 }
 /* 서브 속박스 */
 .swrap {
@@ -108,4 +109,23 @@
 }
 
 /************ 2. 메인영역 ************/
+/* 2-1. 배너영역 */
+
+/* 슬라이드 박스 */
+.slide-box{
+    width: 100%;
+    height: 100%;
+}
+/* 슬라이더 */
+.slider{
+    position: relative;
+    display: flex;
+    /* 하위 li를 옆으로 흐르게함 */
+    width: 100%;
+    height: 100%;
+}
+.slider li{
+    flex-basis: 100%;
+}
+
 /************* 3. 하단영역 *************/
