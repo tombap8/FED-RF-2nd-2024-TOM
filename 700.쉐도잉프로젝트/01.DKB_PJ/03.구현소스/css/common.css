@@ -72,6 +72,7 @@
   left: 0;
   /* 부모는? 보이는 화면 */
   width: 100%;
+z-index: 999;
   background-color: #fff;
 
   /* 최대높이값 0 */
@@ -115,10 +116,13 @@
 .slide-box{
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 /* 슬라이더 */
 .slider{
     position: relative;
+    /* 슬라이드 위치이동 초기값 */
+    left: 0;
     display: flex;
     /* 하위 li를 옆으로 흐르게함 */
     width: 100%;
@@ -126,6 +130,26 @@
 }
 .slider li{
     flex-basis: 100%;
+    flex-shrink: 0;
+    /* 부모크기만큼 옆으로 나가게 하려면
+    flex-shrink 기본값 1을 0으로 변경한다!
+    1의 의미는 자동으로 부모크기에 맞추어 줄어듬
+    0의 의미는 설정된 크기만큼 늘어남! */
+
+    /* 공통배경설정 */
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+}
+/* 슬라이드 01 */
+.snum-01 {
+    background-image: url(../images/bg_mainvisual2.jpg);
+}
+.snum-02 {
+    background-image: url(../images/bg_main_02.jpg);
+}
+.snum-03 {
+    background-image: url(../images/bg_main_03.jpg);
 }
 
 /************* 3. 하단영역 *************/

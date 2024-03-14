@@ -15,7 +15,7 @@
 
 /* 파티션 비율박스 공통 */
 [class*='col-']{
-    padding: 10px;
+    /* padding: 10px; */
     box-sizing: border-box;
     /* 원래는 높이값 100%로 부모박스 채우기를
     해야하지만 flex의 자식요소는 자동으로
