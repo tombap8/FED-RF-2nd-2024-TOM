@@ -68,6 +68,33 @@ li:nth-child(-n+6) a::after{
     transform: scaleX(2);
 }
 
+/* 서브메뉴 */
+.smenu{
+    position: absolute;
+    left: 0;
+    /* 부모는? 보이는 화면 */
+    width: 100%;
+}
+/* 서브 속박스 */
+.swrap{
+    width: 60vw;
+    margin: 0 auto;
+    padding: 4rem;
+    white-space: nowrap;
+}
+/* ol리스트 */
+.smenu ol{
+    /* 플렉스박스 */
+    display: flex;
+    /* 플렉스 랩핑박스 */
+    flex-wrap: wrap;
+    /* justify-content: center; */
+}
+/* 서브타이틀 */
+.smenu h2{
+    font-size: 3rem;
+}
+
 
 /************ 2. 메인영역 ************/
 /************* 3. 하단영역 *************/
