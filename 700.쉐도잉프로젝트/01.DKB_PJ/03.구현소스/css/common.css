@@ -3,6 +3,26 @@
 /* 도깨비 PJ : 공통 모듈 CSS - common.css */
 /* 공유기능 요소 셋팅 */
 
+/* 0. 전체 레이아웃 영역별 셋팅 */
+/* 1. 상단영역 */
+.top-area{
+  height: 120px;
+}
+/* 2. 배너영역 */
+.ban-area{
+  position: relative;
+  /* 부모자격 - .cat-box */
+  height: 680px;
+}
+/* 2.5.서브파트메뉴 */
+.spart-menu{
+  height: 68px;
+}
+/* 8. 하단영역 */
+.footer-area{
+  height: 371px;
+}
+
 /************* 1. 상단영역 *************/
 /* 메인로고 */
 .mlogo img {
@@ -150,6 +170,19 @@ z-index: 999;
 }
 .snum-03 {
     background-image: url(../images/bg_main_03.jpg);
+}
+
+/* 캐릭터 박스 */
+.cat-box{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 0;
+  /* 부모는? .ban-area */
+  width: 1360px;
+  height: 300px;
+  outline-color: red;
+
 }
 
 /************* 3. 하단영역 *************/
