@@ -11,12 +11,24 @@ body {
   height: 100vh;
 }
 
-/* CSS 변수셋팅 */
+/* CSS 변수셋팅
+    :root 의미는? -> html:root
+    html 요소가 생략되어 표현된것!
+    -> 변수값 변경 애니가 필요한경우
+    이점을 활용한다!
+    html.클래스명:root{변수값셋팅}
+    -> 변수값이 특정 클래스로 변경가능!
+*/
 :root {
   /* 큐브공통크기 */
   --cube-size: 300px;
   /* Z축 거리 나눔수 */
   --divide-num: 2;
+}
+/* root인 html요소에 클래스를 부여하여
+변수값을 변경한다! */
+html.on:root{
+    --divide-num: 1.5;
 }
 
 /* 작동버튼 */
@@ -78,6 +90,8 @@ body {
   box-sizing: border-box;
 
   /* outline: 2px dotted blue; */
+  /* Z축거리 변경에 대한 트랜지션 애니설정 */
+  transition: .5s;
 }
 /* 1. 앞면 */
 .cube span:nth-child(1) {
