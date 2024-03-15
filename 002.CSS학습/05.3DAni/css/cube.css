@@ -72,7 +72,7 @@ body{
 /* 2. 오른쪽면 */
 .cube span:nth-child(2){
     /* 배경이미지 넣기 */
-    background: url(../images/newyorkCity.jpg) no-repeat center/cover;
+    background: url(../images/newyorkCity.jpg) no-repeat right/auto 105%;
 
     /* Y축회전 + Z축이동 : 순서중요! */
     transform: rotateY(90deg)
