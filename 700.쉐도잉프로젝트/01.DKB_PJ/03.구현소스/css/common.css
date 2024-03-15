@@ -209,6 +209,11 @@ z-index: 999;
 /* 캐릭터 이름이미지 박스 */
 .iname{
   display: block;
+  margin-top: -19%;
+  /* 앱솔루트없이 마진으로
+  상단이미지와 겹치게하기!
+  %의 기준은 마진주기전 박스의
+  세로 크기를 기준한다! */
   text-align: center;
 }
 /* 캐릭터 이름이미지 */
@@ -220,6 +225,14 @@ z-index: 999;
   display: none;
 }
 /* 오버시 두번째 이미지 보이기 */
+.cat-inbox article:hover 
+.iname img:last-child{
+  display: inline;
+}
 /* 오버시 첫번째 이미지 숨기기 */
+.cat-inbox article:hover 
+.iname img:first-child{
+  display: none;
+}
 
 /************* 3. 하단영역 *************/
