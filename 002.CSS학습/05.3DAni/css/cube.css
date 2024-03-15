@@ -15,6 +15,23 @@ body{
 :root{
     /* 큐브공통크기 */
     --cube-size: 300px;
+    /* Z축 거리 나눔수 */
+    --divide-num: 2;
+}
+
+/* 작동버튼 */
+.btngo{
+    position: fixed;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 40px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+/* 버튼 오버시 */
+.btngo:hover{
+    background-color: lime;
 }
 
 /* 큐브 */
@@ -28,7 +45,7 @@ body{
     width: var(--cube-size);
     height: var(--cube-size);
 
-    outline: 2px solid red;
+    /* outline: 2px solid red; */
     /******************************************* 
         [ 입체로 설정하기 ]
         - 입체로 설절할 요소의 부모박스에
@@ -53,8 +70,14 @@ body{
 
     /* 투명도 */
     opacity: 0.8;
+
+    /* 테두리 */
+    border: 2px solid #ccc;
+
+    /* 보더,패딩 포함박스 */
+    box-sizing: border-box;
     
-    outline: 2px dotted blue;
+    /* outline: 2px dotted blue; */
 }
 /* 1. 앞면 */
 .cube span:nth-child(1){
@@ -65,7 +88,7 @@ body{
     translateZ 속성을 사용
     양의 값은 앞쪽, 음의 값은 뒷쪽 */
     transform: 
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(calc(var(--cube-size)/var(--divide-num)));
     /* 큐브의 이동은 큐브 크기의 절반임! */
 }
 
@@ -76,7 +99,7 @@ body{
 
     /* Y축회전 + Z축이동 : 순서중요! */
     transform: rotateY(90deg)
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(calc(var(--cube-size)/var(--divide-num)));
     /* 큐브의 이동은 큐브 크기의 절반임! */
 }
 /* 3. 뒷면 */
@@ -86,7 +109,7 @@ body{
 
     /* Y축회전 + Z축이동 : 순서중요! */
     transform: rotateY(180deg)
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(calc(var(--cube-size)/var(--divide-num)));
     /* 큐브의 이동은 큐브 크기의 절반임! */
 }
 /* 4. 왼쪽면 */
@@ -96,7 +119,7 @@ body{
 
     /* Y축회전 + Z축이동 : 순서중요! */
     transform: rotateY(-90deg)
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(calc(var(--cube-size)/var(--divide-num)));
     /* 큐브의 이동은 큐브 크기의 절반임! */
 }
 /* 5. 윗면 */
@@ -106,7 +129,7 @@ body{
 
     /* X축회전 + Z축이동 : 순서중요! */
     transform: rotateX(90deg)
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(calc(var(--cube-size)/var(--divide-num)));
     /* 큐브의 이동은 큐브 크기의 절반임! */
 }
 /* 6. 아랫면 */
@@ -116,6 +139,32 @@ body{
 
     /* X축회전 + Z축이동 : 순서중요! */
     transform: rotateX(-90deg)
-    translateZ(calc(var(--cube-size)/2));
+    translateZ(calc(var(--cube-size)/var(--divide-num)));
     /* 큐브의 이동은 큐브 크기의 절반임! */
 }
+
+/* 큐브 애니메이션 클래스 */
+.rotate-cube{
+    /* 애니메이션: 이시이지반방마 */
+    animation: cube-ani 3s linear infinite;
+    /* 처음에 멈춰있음 */
+    animation-play-state: paused;
+    /* paused (멈춤상태) 
+    running(작동상태-기본값) */
+}
+/* 큐브 애니메이션 키프레임 */
+@keyframes cube-ani {
+    to{
+        transform: rotateX(370deg) rotateY(390deg);
+        /* 
+            x축 양의 방향으로 10도에서 출발
+            양의 방향 360도+10도=370도
+            음의 방향 -360도+10도=-350도
+            ____________________________
+
+            y축 양의 방향으로 30도에서 출발
+            양의 방향 360도+30도=390도
+            음의 방향 -360도+30도=-330도
+        */
+    }
+}/* 키프레임 */
