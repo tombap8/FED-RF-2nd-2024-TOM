@@ -195,6 +195,8 @@ z-index: 999;
   max-width: 1360px;
   /* 가로중앙정렬 */
   margin: 0 auto;
+  /* 양쪽패딩 */
+  padding: 0 1vw;
 }
 /* 캐릭터 개별박스 등분할 */
 .cat-inbox article{
@@ -204,5 +206,20 @@ z-index: 999;
 .imbx img{
   width: 100%;
 }
+/* 캐릭터 이름이미지 박스 */
+.iname{
+  display: block;
+  text-align: center;
+}
+/* 캐릭터 이름이미지 */
+.iname img{
+  width: 40%;
+}
+/* 두번째 이미지 숨기기 */
+.iname img:last-child{
+  display: none;
+}
+/* 오버시 두번째 이미지 보이기 */
+/* 오버시 첫번째 이미지 숨기기 */
 
 /************* 3. 하단영역 *************/
