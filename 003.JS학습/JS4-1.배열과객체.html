@@ -138,12 +138,22 @@
             1919,
             function(){
                 alert('대한독립만세!!!');
+                console.log('this는 누구?',this);
+                // this 는 호출한 요소 자신!
+                 this.style.background = 'url(https://blog.kakaocdn.net/dn/H4k8p/btqUUqx7TLT/VAMfjsV79wqyKIfOGXn5P0/img.jpg) repeat-x 0/auto 100%';
+                 // 트랜스폼 변경하기
+                this.style.transform = 'scale(1.5) rotate(720deg)';
+                // 트랜지션
+                this.style.transition = '2s ease-in-out';
             },
         ];
         // 배열끝의 콤마는 원래는 쓰면 에러나지만
         // 최신브라우저에서 에러안나도록 처리됨!
         // 요즘은 추가 배열데이터를 위해 마지막콤마를
         // 쓰는것이 일반적임!
+
+        // function (){} 익명함수 -  이름없고 코드만 저장
+        // -> 배열값으로 문자,숫자,배열,객체,함수 등 사용가능!
 
         console.log('arr2는 배열인가?',
         Array.isArray(arr2));
@@ -161,6 +171,17 @@
 
         // 배열의 함수를 클릭이벤트에 연결하기
         target[1].onclick = arr2[3];
+
+        // 3-3.  배열을 미리 생성하여 각각 할당하기
+        // 배열변수명 = [] -> 배열리터럴!
+        // 배열변수명.length = 숫자 -> 숫자만큼 배열이 생성됨
+        // 배열변수명.length 는 배열개수를 읽기/쓰기 모두 가능함!
+
+        const arr3 = [];
+        // const 상수로 리터럴 선언, 할당후
+        // 배열값 변경은 자유롭다~!
+        // 그러나 배열형을 변경할 수 없다! 재할당불가!
+        // 그래서 상수임!(코드보안상,안전상 이유로 많이씀)
 
       } /////////// loadFn 함수 //////////
       ////////////////////////////////////
