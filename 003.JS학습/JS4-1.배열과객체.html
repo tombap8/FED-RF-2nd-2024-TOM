@@ -288,11 +288,13 @@
           팬레터: function () {
             // 변경대상.style
             let mycss = this.style;
+            console.log("석구형 메서드 this:", this);
 
             // 1. 메시지 띄우기
-            alert('상남자 오빠! 지금뭐해?');
+            alert("상남자 오빠! 지금뭐해?");
             // 2. 배경이미지
-            mycss.background = "url(https://file.mk.co.kr/meet/neds/2022/05/image_readtop_2022_456627_16533579475052374.jpeg) repeat-x top/auto 100%";
+            mycss.background =
+              "url(https://file.mk.co.kr/meet/neds/2022/05/image_readtop_2022_456627_16533579475052374.jpeg) repeat-x top/auto 100%";
             // 3. 글자색
             mycss.color = "#fff";
             // 4. 글자그림자
@@ -306,10 +308,10 @@
             // 8. 트랜지션
             mycss.transition = "1s ease-out 1s";
           },
-        }); 
+        });
 
         // 객체확인
-        console.log('석구객체:',SSG);
+        console.log("석구객체:", SSG);
 
         // 객체출력하기
         // 출력대상: target[3]
@@ -332,7 +334,6 @@
 
         // 배열의 함수를 클릭이벤트에 연결하기
         target[3].onclick = SSG["팬레터"];
-
 
         /*************************************** 
         [ new 키워드 없이 바로 객체 생성하기 ] 
@@ -371,28 +372,28 @@
             obj["하하하"] 또는 obj.하하하
 
     ***************************************/
-    
-    // 객체 생성하기 - 객체리터럴!!!
-    const GU = {
-        name:"공유",
-        tall:"184cm",
-        weight:"74kg",
-        com:"매니지먼트숲",
-        work:"도깨비,부산행",
-        msgFn: function(txt){
+
+        // 객체 생성하기 - 객체리터럴!!!
+        const GU = {
+          name: "공유",
+          tall: "184cm",
+          weight: "74kg",
+          com: "매니지먼트숲",
+          work: "도깨비,부산행",
+          msgFn: function (txt) {
             // txt - 팬레터 내용
             // 1. 메시지 띄우기
-            alert("팬레터:"+txt);
+            alert("팬레터:" + txt);
             // 주의: alert에는 콤마사용불가!
-        }, /// msgFn메서드 ///
-        // 객체내부의 함수를 "메서드"로 부른다!
-    }; ////// GU객체 //////
+          }, /// msgFn메서드 ///
+          // 객체내부의 함수를 "메서드"로 부른다!
+        }; ////// GU객체 //////
 
-    // 객체확인
-    console.log("GU객체:",GU);
+        // 객체확인
+        console.log("GU객체:", GU);
 
-    // 내용출력 : 대상 - target[4]
-    target[4].innerHTML = `
+        // 내용출력 : 대상 - target[4]
+        target[4].innerHTML = `
         저는 ${GU.name}입니다.
         몸무게는 비밀인데요 그래도 말씀드리자면
         ${GU.weight}입니다. ㅎㅎㅎ <br>
@@ -401,11 +402,29 @@
         ${GU.com}입니다. 빠이빠이~!
     `;
 
-    // 줄간격 변경
-    target[4].style.lineHeight = "24px";
+        // 줄간격 변경
+        target[4].style.lineHeight = "24px";
 
+        // 툴팁 띄우기
+        target[4].title = 
+        `여기를 클릭하여 ${GU.name}팬레터를 확인하세요!`;
 
+        // 손가락모양 커서
+        target[4].style.cursor = "pointer";
 
+        // 배열의 함수를 클릭이벤트에 연결하기
+        target[4].onclick = function(){
+            // 익명함수구역의 명령문은
+            // 바로 실행되지않고 이벤트가 
+            // 발생했을때 실행된다!
+            // 따라서 함수에 값을 보내려고
+            // 소괄호에 메시지를 보내는 함수호출도
+            // 바로실행되지 않고 이벤트와 함께
+            // 실행된다!
+            GU.msgFn('공유오빠, 오징어게임 싸다구 멋쪘어요!\n차기작도 기대해요! 화이팅!!!');
+        };
+        
+        
       } /////////// loadFn 함수 //////////
       ////////////////////////////////////
     </script>
