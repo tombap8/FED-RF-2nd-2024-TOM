@@ -380,11 +380,49 @@
           weight: "74kg",
           com: "매니지먼트숲",
           work: "도깨비,부산행",
-          msgFn: function (txt) {
+          msgFn: function (txt,ele) {
             // txt - 팬레터 내용
+            // ele - 이벤트요소(this를 보냄)
             // 1. 메시지 띄우기
             alert("팬레터:" + txt);
             // 주의: alert에는 콤마사용불가!
+
+            console.log('공유 메서드 this:',this);
+            console.log('공유 메서드 전달값:',
+            txt,ele);
+
+            // this 의 의미는 메서드를 간접호출한
+            // 경우 호출한 요소 자신이 되지 못하고
+            // 현재 메서드가 속한 객체 자신을
+            // 의미하게 됨!
+            // 이럴때는 this 를 사용할 수 없으므로
+            // 호출시 this 를 보내준다!
+
+            // 2. CSS변경하기
+            let mycss = ele.style;
+
+            // 2-1.배경이미지넣기
+            mycss.background = "url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Gong_Yoo_%28Sep_2016%29.png/250px-Gong_Yoo_%28Sep_2016%29.png) repeat-x top/auto 100%";
+
+            //2-2. 글자색
+            mycss.color = "#fff";
+
+            //2-3. 글자그림자
+            mycss.textShadow = "0 0 5px #000";
+
+            //2-4. 줄간격
+            mycss.lineHeight = "30px";
+
+            //2-5. 높이값 변경
+            mycss.height = "100px";
+
+            //2-6. 상단패딩
+            mycss.paddingTop = "100px";
+
+            //2-7. 트랜지션
+            mycss.transition = "2s ease-in-out .5s";
+
+
           }, /// msgFn메서드 ///
           // 객체내부의 함수를 "메서드"로 부른다!
         }; ////// GU객체 //////
@@ -414,6 +452,12 @@
 
         // 배열의 함수를 클릭이벤트에 연결하기
         target[4].onclick = function(){
+            // 여기서 this 의 의미는?
+            console.log('이벤트속성에 할당된 익명함수 내부에서의 this:',this);
+
+            // 메시지변수
+            let msg = '공유오빠, 오징어게임 싸다구 멋쪘어요!\n차기작도 기대해요! 화이팅!!!';
+
             // 익명함수구역의 명령문은
             // 바로 실행되지않고 이벤트가 
             // 발생했을때 실행된다!
@@ -421,7 +465,9 @@
             // 소괄호에 메시지를 보내는 함수호출도
             // 바로실행되지 않고 이벤트와 함께
             // 실행된다!
-            GU.msgFn('공유오빠, 오징어게임 싸다구 멋쪘어요!\n차기작도 기대해요! 화이팅!!!');
+            GU.msgFn(msg,this);
+            // GU.msgFn(메시지,자기자신)
+            // -> 2가지를 함수에 보내준다!
         };
         
         
