@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <!-- 
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- 
         [ 뷰포트(viewport)란? ]
         - 모바일 기기에서 볼때 모바일 기기의 랜더링 화면사이즈를
         일반적인 물리적 크기의 픽셀로 변환해 주는 메타태그임
@@ -21,9 +21,9 @@
             디스플레이할때는 1080px로 보여진다!
             이때 viewport를 쓰면 414px로 변환해서 보여준다!
      -->
-        <title>미디어쿼리 기본개념 연습</title>
-        <style>
-            /* 
+    <title>미디어쿼리 기본개념 연습</title>
+    <style>
+      /* 
             [ 미디어쿼리(Media Query)란? ]
 
                 - 디바이스의 가로 사이즈에 대해 계속된
@@ -127,69 +127,69 @@
                 </head>
 
         */
-            /* 초기화 */
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                /* 스크롤바 없앰 */
-            }
+      /* 초기화 */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        /* 스크롤바 없앰 */
+      }
 
-            body {
-                background-color: #000;
-            }
+      body {
+        background-color: #000;
+      }
 
-            /* 전체박스 */
-            .bx {
-                height: 1000px;
-                background: url(./images/oldTVON.png) no-repeat center/auto 100%;
-            }
+      /* 전체박스 */
+      .bx {
+        height: 1000px;
+        background: url(./images/oldTVON.png) no-repeat center/auto 100%;
+      }
 
-            /* 타이틀 */
-            .tit {
-                text-align: center;
-                margin: 0;
-                padding: 50px 0;
-                color: #fff;
-            }
-            /* 타이틀에 가상요소로 서브제목 넣기 */
-            .tit::after {
-                content: "나야나!";
-                display: block;
-                /* div와 유사함 - 안쓰면 span과 유사 */
-                font-size: 30px;
-                line-height: 3;
-                color: cyan;
-                text-shadow: 0 0 5px #000;
-            }
-            /* 스크린 */
-            .screen {
-                position: absolute;
-                top: 307px;
-                left: 50%;
-                transform: translateX(-59%);
-                /* 자기크기(width)절반 왼쪽이동!
+      /* 타이틀 */
+      .tit {
+        text-align: center;
+        margin: 0;
+        padding: 50px 0;
+        color: #fff;
+      }
+      /* 타이틀에 가상요소로 서브제목 넣기 */
+      .tit::after {
+        content: "나야나!";
+        display: block;
+        /* div와 유사함 - 안쓰면 span과 유사 */
+        font-size: 30px;
+        line-height: 3;
+        color: cyan;
+        text-shadow: 0 0 5px #000;
+      }
+      /* 스크린 */
+      .screen {
+        position: absolute;
+        top: 307px;
+        left: 50%;
+        transform: translateX(-59%);
+        /* 자기크기(width)절반 왼쪽이동!
             (중앙쪽으로 이동) */
-                z-index: -1;
-                /* -1은 부모박스보다 아래! */
+        z-index: -1;
+        /* -1은 부모박스보다 아래! */
 
-                width: 345px;
-                height: 258px;
-            }
-            /* 화면이미지 */
-            .screen img {
-                width: 100%;
-                height: 100%;
-                display: none;
-            }
-            /* 첫번째 이미지만 보이기 */
-            .screen img:first-child {
-                display: inline;
-            }
+        width: 345px;
+        height: 258px;
+      }
+      /* 화면이미지 */
+      .screen img {
+        width: 100%;
+        height: 100%;
+        display: none;
+      }
+      /* 첫번째 이미지만 보이기 */
+      .screen img:first-child {
+        display: inline;
+      }
 
-            /************* 미디어쿼리 적용하기 *************/
-            /* 주의: 
+      /************* 미디어쿼리 적용하기 *************/
+      /* 주의: 
             1. max-width만 사용할 경우 큰 사이즈 부터
             작은 사이즈 순으로 코딩해야 의도대로 적용된다! 
 
@@ -201,43 +201,160 @@
             표시되지 않는다!) -> [ctrl+0 -> 100%보기]
             */
 
-            /* 1200px 이하 미디어쿼리 시작 */
-            
-            /* 1200px 이하 미디어쿼리 끝 */
+      /* 1200px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 1200px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 1200px이하";
+          color: pink;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:first-child {
+          display: none;
+        }
+        .screen img:nth-child(2) {
+          display: inline;
+        }
+      }
+      /* 1200px 이하 미디어쿼리 끝 */
 
-            /* 1100px 이하 미디어쿼리 시작 */
-            
-            /* 1100px 이하 미디어쿼리 끝 */
+      /* 1100px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 1100px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 1100px이하";
+          color: lime;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(2) {
+          display: none;
+        }
+        .screen img:nth-child(3) {
+          display: inline;
+        }
+      }
+      /* 1100px 이하 미디어쿼리 끝 */
 
-            /* 1000px 이하 미디어쿼리 시작 */
-            
-            /* 1000px 이하 미디어쿼리 끝 */
+      /* 1000px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 1000px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 1000px이하";
+          color: darkmagenta;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(3) {
+          display: none;
+        }
+        .screen img:nth-child(4) {
+          display: inline;
+        }
+      }
+      /* 1000px 이하 미디어쿼리 끝 */
 
-            /* 900px 이하 미디어쿼리 시작 */
-            
-            /* 900px 이하 미디어쿼리 끝 */
+      /* 900px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 900px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 900px이하";
+          color: darkorange;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(4) {
+          display: none;
+        }
+        .screen img:nth-child(5) {
+          display: inline;
+        }
+      }
+      /* 900px 이하 미디어쿼리 끝 */
 
-            /* 850px 이하 미디어쿼리 시작 */
-            
-            /* 850px 이하 미디어쿼리 끝 */
+      /* 850px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 850px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 850px이하";
+          color: darkseagreen;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(5) {
+          display: none;
+        }
+        .screen img:nth-child(6) {
+          display: inline;
+        }
+      }
+      /* 850px 이하 미디어쿼리 끝 */
 
-            /* 830px 이하 미디어쿼리 시작 */
-            
-            /* 830px 이하 미디어쿼리 끝 */
+      /* 830px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 830px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 830px이하";
+          color: darkkhaki;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(6) {
+          display: none;
+        }
+        .screen img:nth-child(7) {
+          display: inline;
+        }
+      }
+      /* 830px 이하 미디어쿼리 끝 */
 
-            /* 810px 이하 미디어쿼리 시작 */
-            
-            /* 810px 이하 미디어쿼리 끝 */
+      /* 810px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 810px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 810px이하";
+          color: darkred;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(7) {
+          display: none;
+        }
+        .screen img:nth-child(8) {
+          display: inline;
+        }
+      }
+      /* 810px 이하 미디어쿼리 끝 */
 
-            /* 790px 이하 미디어쿼리 시작 */
-            
-            /* 790px 이하 미디어쿼리 끝 */
+      /* 790px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 790px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 790px이하";
+          color: lawngreen;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(8) {
+          display: none;
+        }
+        .screen img:nth-child(9) {
+          display: inline;
+        }
+      }
+      /* 790px 이하 미디어쿼리 끝 */
 
-            /* 770px 이하 미디어쿼리 시작 */
-            
-            /* 770px 이하 미디어쿼리 끝 */
+      /* 770px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 770px) {
+        /* 변경요소 1 : .tit가상요소 글자,글자색 */
+        .tit::after {
+          content: "최대 770px이하";
+          color: darkgoldenrod;
+        }
+        /* 변경요소 2 : .screen img - display */
+        .screen img:nth-child(9) {
+          display: none;
+        }
+        .screen img:nth-child(10) {
+          display: inline;
+        }
+      }
+      /* 770px 이하 미디어쿼리 끝 */
 
-            /***************************************** 
+      /***************************************** 
                 가로모드와 세로모드 변경코드!!!
                 -> 가로/세로 모드는 그 길이가 더 긴것을
                 기준한다! 모바일 전용이 아니다!
@@ -249,58 +366,43 @@
                 (max-width:1000px){ CSS코드 }
             *****************************************/
 
-            /* 세로모드 시작 */
-            @media screen and (orientation: portrait) and (max-width: 1000px) {
-                /* tv화면 박스 배경변경 */
-                .bx {
-                    background-position-y: top;
-                    background-size: auto 60%;
-                }
-                /* 스크린 위치변경 */
-                .screen {
-                    top: 130px;
-                }
-            }
-            /* 세로모드 끝 */
+      /* 세로모드 시작 */
+      @media screen and (orientation: portrait) and (max-width: 770px) {
+        .bx {
+          background-size: auto 72%;
+        }
+      }
+      /* 세로모드 끝 */
 
-            /* 가로모드 시작 */
-            @media screen and 
-            (orientation: landscape) and (max-width: 1000px) {
-                /* 타이틀 */
-                .tit {
-                    text-align: left;
-                    text-indent: 15px;
-                }
-                /* tv화면 박스 배경변경 */
-                .bx {
-                    background-position: center -11%;
-                    background-size: auto 54%;
-                }
-                /* 스크린 위치변경 */
-                .screen {
-                    top: 25%;
-                    transform: translateX(-57%);
-                }
-            }
+      /* 가로모드 시작 */
+      @media screen and (orientation: landscape) and (max-width: 1000px) {
+        .screen{
+            top: 74px;
+        }
+        .bx {
+          background-position: center -107%;
+          background-size: auto 83%;
+        }
+      }
 
-            /* 가로모드 끝 */
-        </style>
-    </head>
-    <body>
-        <div class="bx">
-            <h1 class="tit">이정재 컬렉션</h1>
-            <div class="screen">
-                <img src="./images/sc_noise.png" alt="노이즈화면" />
-                <img src="./images/jeong1.jpg" alt="이정재1" />
-                <img src="./images/jeong2.jpg" alt="이정재2" />
-                <img src="./images/jeong3.jpg" alt="이정재3" />
-                <img src="./images/jeong4.jpg" alt="이정재4" />
-                <img src="./images/jeong5.jpg" alt="이정재5" />
-                <img src="./images/jeong6.jpg" alt="이정재6" />
-                <img src="./images/jeong7.jpg" alt="이정재7" />
-                <img src="./images/jeong8.jpg" alt="이정재8" />
-                <img src="./images/jeong9.jpg" alt="이정재9" />
-            </div>
-        </div>
-    </body>
+      /* 가로모드 끝 */
+    </style>
+  </head>
+  <body>
+    <div class="bx">
+      <h1 class="tit">이정재 컬렉션</h1>
+      <div class="screen">
+        <img src="./images/sc_noise.png" alt="노이즈화면" />
+        <img src="./images/jeong1.jpg" alt="이정재1" />
+        <img src="./images/jeong2.jpg" alt="이정재2" />
+        <img src="./images/jeong3.jpg" alt="이정재3" />
+        <img src="./images/jeong4.jpg" alt="이정재4" />
+        <img src="./images/jeong5.jpg" alt="이정재5" />
+        <img src="./images/jeong6.jpg" alt="이정재6" />
+        <img src="./images/jeong7.jpg" alt="이정재7" />
+        <img src="./images/jeong8.jpg" alt="이정재8" />
+        <img src="./images/jeong9.jpg" alt="이정재9" />
+      </div>
+    </div>
+  </body>
 </html>
