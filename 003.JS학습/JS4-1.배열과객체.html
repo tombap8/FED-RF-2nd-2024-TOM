@@ -285,7 +285,27 @@
           대표작: "나의 해방일지,범죄도시2",
           소속사: " 셋별당엔터",
           비밀번호: 7777,
-          팬레터: function () {},
+          팬레터: function () {
+            // 변경대상.style
+            let mycss = this.style;
+
+            // 1. 메시지 띄우기
+            alert('상남자 오빠! 지금뭐해?');
+            // 2. 배경이미지
+            mycss.background = "url(https://file.mk.co.kr/meet/neds/2022/05/image_readtop_2022_456627_16533579475052374.jpeg) repeat-x top/auto 100%";
+            // 3. 글자색
+            mycss.color = "#fff";
+            // 4. 글자그림자
+            mycss.textShadow = "0 0 5px #000";
+            // 5. 글자내용변경
+            this.innerText = "손석구 최고 멋쨍이! 승승장구! 화이팅!!!";
+            // 6. 줄간격변경
+            mycss.lineHeight = "84px";
+            // 7. 박스크게하기
+            mycss.transform = "scale(1.2)";
+            // 8. 트랜지션
+            mycss.transition = "1s ease-out 1s";
+          },
         }); 
 
         // 객체확인
