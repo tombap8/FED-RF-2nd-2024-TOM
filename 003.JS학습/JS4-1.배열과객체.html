@@ -572,12 +572,34 @@
       css.height = "450px";
       css.backgroundColor = "#000";
 
-      // 아이프레임 CSS설정
+      // 4. 아이프레임 CSS설정
       let ifr = mv.querySelector('iframe');
       let ifrcss = ifr.style;
       ifrcss.border = "none";
       ifrcss.width = "100%";
       ifrcss.height = "100%";
+
+      // 5. 닫기버튼  CSS셋팅하기
+      let cbtn = mv.querySelector('.cbtn');
+      // style.cssText 로 셋팅하자!
+      // 개별셋팅과 차이점은 이 설정은 모든 style속성의 
+      // CSS 설정을 덮어씀! 주의!!!
+      // 반면 한 속성씩 셋팅하는 것은 한껀씩 개별 업데이트됨!
+      cbtn.style.cssText = `
+        position : absolute;
+        top : 0;
+        right : -70px;
+        width : 50px;
+        height : 50px;
+        border : none;
+        color : #fff;
+        background-color : blue;
+        font-size : 40px;
+        font-weight : bold;
+        border-radius: 50%;
+        cursor : pointer;
+        line-height : 50px;
+      `;
 
      } ///////////// playMovie 함수 ///////////
      ///////////////////////////////////////////
