@@ -14,7 +14,7 @@ mjObj.actor = "김민희,김태리";
 // 4. 장르
 mjObj.genre = "드라마";
 // 5. 관람가
-mjObj.rating = "19세";
+mjObj.ratings = "19세";
 // 6. 예고편
 mjObj.trailer = function () {
   console.log("예고편:영화아이디");
@@ -59,7 +59,7 @@ dyObj.actor = "안소니 곤잘레스, 가엘 가르시아 베르날";
 // 4. 장르
 dyObj.genre = "애니메이션, 모험, 코미디";
 //5. 관람가
-dyObj.rating = "전체관람가";
+dyObj.ratings = "전체관람가";
 // 6. 예고편
 dyObj.trailer = function () {
   console.log("예고편:영화아이디");
@@ -80,7 +80,7 @@ jaeObj.actor = "마동석,손석구";
 // 4. 장르
 jaeObj.genre = "범죄";
 // 5. 관람가
-jaeObj.rating = "19세";
+jaeObj.ratings = "19세";
 // 6. 예고편
 jaeObj.trailer = function () {
   console.log("예고편:영화아이디");
@@ -166,7 +166,7 @@ yjObj.director = "장재현";
 // 3. 배우
 yjObj.actor = "최민식,김고은,유해진,이도현";
 // 4. 장르
-(yjObj.genre = 미스터리), 스릴러, 오컬트;
+yjObj.genre = "미스터리, 스릴러, 오컬트";
 // 5. 관람가
 yjObj.ratings = "15세";
 // 6. 예고편
@@ -286,3 +286,25 @@ jjyObj.trailer = function () {
   // 예고편 플레이 함수호출
   playMovie("_bm91mlFaJI");
 }; ////// trailer 함수 //////
+
+// 현우의 오브젝트!
+// 자신만의 오브젝트! -> 변경가능하게 let으로 선언한다!
+let koObj = {};
+// 오브젝트 형만 만들고 객체내용은 아래에서!
+
+// 1. 영화 제목
+koObj.title = "악마를 보았다";
+// 2. 감독
+koObj.director = "김지운";
+// 3. 배우
+koObj.actor = "이병헌,최민식";
+// 4. 장르
+koObj.genre = "범죄";
+// 5. 관람가
+koObj.ratings = "19세";
+// 6. 예고편
+koObj.trailer = function () {
+  console.log("예고편:영화아이디");
+  // 예고편 플레이 함수 호출!
+  playMovie("xwWgp1bqVwE");
+}; /////////// trailer 메서드 ///////////
