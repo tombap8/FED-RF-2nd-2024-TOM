@@ -206,10 +206,10 @@ let jjob = {};
 //1. 영화제목
 jjob.title = "7광구";
 //2. 감독
-jjob.drector = "김지훈";
+jjob.director = "김지훈";
 //3. 배우
 jjob.actor = "하지원,안성기";
-jjob.ganre = "SF";
+jjob.genre = "SF";
 jjob.ratings = "15세";
 jjob.trailer = function () {
   console.log("예고편:영화아이디");
