@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01.스티키레이아웃</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        /* 스티키 레이아웃 페이지 */
+        .page{
+            position: sticky;
+            /* top: 0; */
+            top: 80px;/* 상단영역 겹침방지고려 */
+            /* width는 블록auto이므로
+            별도로 셋팅하지 않는다! */
+            /* height: 100vh; */
+            /* 높이값은 화면채우기 */
+            height: calc(100vh - 80px);
+            /* 상단영역만큼 빼기 */
+        }
+        /* 개별 페이지 배경설정 */
+        .pg1{
+            background: url(./imgs/pic1.png) no-repeat center/cover;
+        }
+        .pg2{
+            background: url(./imgs/pic2.png) no-repeat center/cover;
+        }
+        /* 화면보다 긴 스티키 페이지1 */
+        .pg3{
+            /* 페이지 길이에서 보이는 화면크기를뺀
+            길이 만큼 마이너스 top값을 설정한다!
+                250vh - 100vh = 150vh
+            */
+            top: -150vh;
+            height: 250vh;
+            background: url(./imgs/pic3.png) no-repeat center/cover;
+        }
+        .pg4{
+            background: url(./imgs/pic4.png) no-repeat center/cover;
+        }
+        
+        /* 화면보다 긴 스티키 페이지2 */
+        .pg5{
+            /* 보이는 높이값을 뺀 마이너스 top값 */
+            top: -207vh;
+            height: 307vh;
+            background: url(./imgs/pic5.png) no-repeat center/cover;
+        }
+        .pg6{
+            background: url(./imgs/pic6.png) no-repeat center/cover;
+        }
+        .pg7{
+            background: url(./imgs/pic7.png) no-repeat center/cover;
+        }
+
+        /* 상단영역 */
+        .top-area{
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 80px;
+            z-index: 999;
+            background-color: #00ffffae;
+        }
+        /* 상단영역부분이 겹치는것을 방지하기 위해\
+        body에 padding-top을 상단영역높이값과
+        같이 준다! */
+        body{
+            padding-top: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="top-area"></div>
+
+    <div class="page pg1"></div>
+    <div class="page pg2"></div>
+    <div class="page pg3"></div>
+    <div class="page pg4"></div>
+    <div class="page pg5"></div>
+    <div class="page pg6"></div>
+    <div class="page pg7"></div>
+    
+</body>
+</html>
