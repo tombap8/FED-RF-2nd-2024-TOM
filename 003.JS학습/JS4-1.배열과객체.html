@@ -467,8 +467,102 @@
           // GU.msgFn(메시지,자기자신)
           // -> 2가지를 함수에 보내준다!
         };
+
+        /**************************************** 
+          [ 미션 :  내가 만든 객체 활용하기 ]
+          1. 주제 : 영화정보
+          2. 조건 : 객체의 변수명을 자신만의 이름으로
+          작성함. 단, 속성명을 동일하게 작성할것!
+          (속성명을 샘플에서 정해줄 예정)
+          3.  객체를 쌤과 모두에게 공유하기!(톡업!)
+        ****************************************/
+
+        // 자신만의 오브젝트! 
+        // -> 변경가능하게 let으로 선언한다!
+        let tomObj = {};
+        // 오브젝트 형만 만들고 객체내용은 아래에서!
+
+        // 1. 영화제목
+        tomObj.title = "럭키";
+        // 2. 감독
+        tomObj.director = "이계벽";
+        // 3. 배우
+        tomObj.actor = "유해진,조윤희";
+        // 4. 장르
+        tomObj.genre = "코미디";
+        // 5. 관람가
+        tomObj.ratings = "15세";
+        // 6. 예고편
+        tomObj.trailer = function(){
+          console.log('예고편:영화아이디');
+          // 예고편 플레이 함수호출!
+        }; ////// trailer 메서드 ////////
+
+        // 객체확인
+        console.log('나의객체:',tomObj);
+
+        // 화면에 정보를 보여주는 함수
+        const showMovieInfo = function(){
+          // 함수호출 확인
+          console.log('영화정보!!!');
+
+          // 1. 출력대상: target[5]
+          // 2. 내용넣기
+          target[5].innerHTML = `
+            ♣ 영화명 : ${tomObj.title}
+            ♣ 감독 : ${tomObj.director} <br>
+            ♣ 배우 : ${tomObj.actor}
+            ♣ 장르 : ${tomObj.genre}
+            ♣ 등급 : ${tomObj.ratings}
+          `;
+
+          // 툴팁 보이기
+          target[5].title = 
+          `클릭하시면 ${tomObj.title}예고편을 보실 수 있습니다!`;
+
+          // 예고편 메서드 호출
+          target[5].onclick =  tomObj.trailer;
+        }; ////// showMovieInfo 함수 //////////
+
+        // 출력박스 CSS조정하기
+        target[5].style.lineHeight = "34px";
+        target[5].style.cursor = "pointer";
+        target[5].style.fontSize = "14px";
+
+        // 할당형 함수는 바로 호출시 하단에서 해야함!
+        showMovieInfo();
+
+
+
       } /////////// loadFn 함수 //////////
       ////////////////////////////////////
+
+      /***************************************** 
+        함수명 : playMovie
+        기능 : 영화예고편 화면 띄우기
+      *****************************************/
+     function playMovie(mcode){
+      // mcode 영화아이디
+      // 함수호출 및 전달값 확인
+      console.log('예고편상영이요~~!',mcode);
+
+      // 1. 대상선정 : #mvbox
+      let mvbox = document.querySelector('#mvbox');
+
+      // 2. 영화박스에 아이프레임 넣기
+      mvbox.innerHTML = `
+        <div id="mv">
+          <!-- 유튜브 아이프레임 -->
+          
+          <!-- 닫기버튼 -->
+          <button class="cbtn">×</button>
+        </div>
+      `;
+
+     } ///////////// playMovie 함수 ///////////
+     ///////////////////////////////////////////
+
+
     </script>
   </head>
 
@@ -481,5 +575,9 @@
     <div class="cont"></div>
     <div class="cont"></div>
     <div class="cont"></div>
+
+
+    <!-- 영화예고편용 박스 -->
+    <aside id="mvbox"></aside>
   </body>
 </html>
