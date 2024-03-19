@@ -531,6 +531,63 @@
 
         // 할당형 함수는 바로 호출시 하단에서 해야함!
         showMovieInfo();
+
+        //////////////////////////////////
+        // 초이스 파트 버튼 만들기 ////////
+        //////////////////////////////////
+        // 버튼에 사용할 이름 배열만들기
+        const choiceName = [
+          "탐쌤",
+          "민지",
+          "이지영",
+          "도연",
+          "재윤",
+          "유지영",
+          "노영",
+          "우진",
+          "영진",
+          "은경",
+          "지현",
+          "수진",
+          "윤철",
+          "정윤",
+        ];
+
+        // 배열확인
+        console.log("버튼배열:", choiceName);
+
+        // 버튼을 넣을 대상 : target[6]
+
+        // 버튼을 어떻게 넣지?
+        // 대답: 버튼이름 배열의 수만큼 버튼을 넣는다
+        // -> for문 사용 : for(시;한;증){코드}
+        // -> 배열의 개수 : 배열변수.length
+        // (1) 시작값 : let i = 0 (배열주소 0부터)
+        // (2) 한계값 : i < choiceName.length
+        // (3) 증감 : i++
+
+        // 배열의 개수를 미리구하여 변수에 할당
+        let cnt = choiceName.length;
+
+        for (let i = 0; i < cnt; i++) {
+          target[6].innerHTML +=
+          `<button 
+          style="margin-left:5px"
+          >
+            ${choiceName[i]}초이스</button>`;
+
+          // 줄바꿈태그는 5번째,10번째에서 넣기
+          if(i==4||i==9){
+            target[6].innerHTML += '<br>';
+          } /// if ///
+        } /////////// for문 ////////
+
+        // 초이스 박스 줄간격조정
+        target[6].style.lineHeight = "30px";
+        target[6].style.height = "auto";
+        target[6].style.padding = "10px 0";
+
+
       } /////////// loadFn 함수 //////////
       ////////////////////////////////////
 
@@ -623,6 +680,8 @@
     <div class="cont"></div>
     <div class="cont"></div>
     <div class="cont"></div>
+    <div class="cont"></div>
+    <!-- 영화초이스박스 -->
     <div class="cont"></div>
 
     <!-- 영화예고편용 박스 -->
