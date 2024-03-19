@@ -19,7 +19,7 @@ mjObj.rating = "19세";
 mjObj.trailer = function () {
   console.log("예고편:영화아이디");
   // 예고편 플레이 함수 호출!
-  platMovie("whldChqCsYk");
+  playMovie("whldChqCsYk");
 }; /////////// trailer 메서드 ///////////
 
 //이지영의 오브젝트 -> 변경 가능하게 let으로
