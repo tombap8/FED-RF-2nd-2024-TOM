@@ -11,8 +11,8 @@
           기본적으로 body가 보이는 화면을 유지하다가
           컨텐츠가 많아져서 스크롤 생성시 body도 늘어남! */
 
-        background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564)
-          no-repeat fixed center/cover;
+        /* background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564)
+          no-repeat fixed center/cover; */
       }
       /* 배경박스 */
       .bgbox {
@@ -313,7 +313,7 @@
       //////////////////////////////////
 
       // 선언적함수보다 위에서 이 함수를 호출! //
-      // callMe("함수위에서 호출!");
+      callMe("함수위에서 호출!");
       // 호출됨! 어떻게? -> 미리로딩되었다는 증거!
       // 코드위에서 호출되므로 이것을 함수호출 호이스팅(Hoisting)
       // 이라고 부른다!
@@ -338,7 +338,7 @@
       }; /////// myHome 함수 ////////////////
 
       // 할당형 익명함수를 코드 아래에서 호출!
-      // myHome("익명함수 아래에서 호출!");
+      myHome("익명함수 아래에서 호출!");
       // 만약 함수를 처음부터 호출하는 경우라면 할당형 익명함수는
       // 반드시 생성후 아랫쪽에서 호출해야한다!
 
@@ -423,6 +423,54 @@
 
      } ////////// showFireworks 함수 ////////////
      ////////////////////////////////////////////
+
+     // 로딩시 호출설정 ///////////////
+     window.addEventListener('load', loadFn);
+
+     /*****************************************
+      * 함수명 : loadFn
+      * 기능 : 페이지 로딩후 실행함수
+     *****************************************/
+    function loadFn(){
+      // 함수호출확인
+      console.log('로딩완료!');
+
+      // [배경박스에 ul>li를 넣고 배경이미지 셋팅하기]
+      // 1.대상선정 : .bgbox
+      const bgbox = document.querySelector('.bgbox');
+
+      // 2.html 넣기 : 기준은 scene 배열변수 만큼 넣기
+      // 2-1.배열개수구하기
+      let cntScene = scene.length;
+      console.log('배열개수:',cntScene);
+
+      // 2-2.배열개수만큼 for문 돌려서 li 만들기
+      // html 코드를 담을 변수
+      let hcode = '<ul>';
+
+      // 배열개수만큼 li 만들어서 hcode변수에 할당
+      // li에 배경css넣기
+      for(let i=0;i<cntScene;i++){
+        hcode += `
+        <li
+          style="background:url(${
+            scene[i]
+          }) no-repeat center/cover"
+        ></li>`;
+      } ////// for /////
+
+      // 닫는 ul 넣기
+      hcode += '</ul>';
+
+      // 코드확인
+      console.log('hcode:',hcode);
+
+      // 2-3.대상에 html넣기
+      bgbox.innerHTML = hcode;
+
+
+    } /////////// loadFn 함수 /////////////////
+    //////////////////////////////////////////
 
     </script>
   </head>
