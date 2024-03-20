@@ -8,8 +8,8 @@
         margin: 0;
         min-height: 100vh;
         /* 최소 높이로 보이는 화면크기만큼 지정하면
-                기본적으로 body가 보이는 화면을 유지하다가
-                컨텐츠가 많아져서 스크롤 생성시 body도 늘어남! */
+          기본적으로 body가 보이는 화면을 유지하다가
+          컨텐츠가 많아져서 스크롤 생성시 body도 늘어남! */
 
         background: url(https://images.adsttc.com/media/images/5f73/76e0/63c0/17bc/c900/04e8/large_jpg/HK_1_N3.jpg?1601402564)
           no-repeat fixed center/cover;
@@ -23,7 +23,7 @@
         height: 100vh;
         z-index: -1;
         /* body가 투명하므로 아래쪽에 내려가 있어도
-                배경은 보인다! -> 배경처리시 이렇게 하면됨! */
+          배경은 보인다! -> 배경처리시 이렇게 하면됨! */
       }
       .bgbox ul {
         margin: 0;
@@ -229,6 +229,7 @@
         */ ////////////////////////////////
       function Korea(txt) {
         // 1.함수호출,전달값 확인
+        alert(txt);
         // 2. 다른함수호출
         // 3. 리턴값 찍기
         // 4. 리턴값 보내기! -> 호출한 곳으로!
@@ -358,6 +359,8 @@
     <div class="bgbox"></div>
 
     <!-- 프로젝트 버튼 -->
-    <button>우리나라 대한민국 만세 프로젝트 시작!</button>
+    <button
+      onclick="Korea('우')"
+    >우리나라 대한민국 만세 프로젝트 시작!</button>
   </body>
 </html>
