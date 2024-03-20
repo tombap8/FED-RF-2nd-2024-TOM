@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>017.비율유지박스(Ratio Box)</title>
+        <style>
+            html,
+            body {
+                margin: 0;
+                padding: 0;
+                /* height: 100%; 
+                    뷰포트 단위없이 보이는 화면에 대한 자식요소 %높이값을
+                    셋팅할때 html은 보이는 화면(window)을 기준하여 100%
+                    body는 html을 기준하여 100% 높이값을 설정함!
+                    이때 하위 박스가 높이값 %를 설정할때 body를 기준하게됨!
+                    ->>> 뷰포트 단위는 이 셋팅이 불필요하다!!!(완전편함^^)
+                */
+            }
+            h1,
+            h2 {
+                margin: 0;
+                padding: 20px;
+                text-align: center;
+            }
+            /* 박스공통 */
+            .bx {
+                /* 부모가로크기에 대한 비율 50% */
+                width: 50%;
+                margin: 0 auto;
+                border: 10px ridge goldenrod;
+                background: url(./images/mobum.jpg) no-repeat center/cover;
+            }
+            /* 1. 크기유지박스 */
+            .bx1 {
+                height: 400px;
+            }
+            /* 2. 화면에 대한 비율박스 */
+            .bx2 {
+
+                /* 뷰포트 단위가 나온후엔 아래의 셋팅이 없어도
+                보이는 화면에 대한 % 셋팅이 가능하다! */
+                height: 40vh;
+
+                /* height: 40%; */
+                /* %단위를 사용하면 싸고 있는 html,body에 기준값인
+                보이는 화면 100%채우기 설정이 필요하다!
+                -> 근본적으로는 싸고있는 박스에 구체적인 height크기가
+                셋팅되어야함! */
+            }
+            /* 3. 비율유지박스 
+            -> 정의: 박스가 자체적인 비율을 가지고 있는 경우의 박스 */
+            .bx3 {
+                /* 1. height값 없이 높이값 만들기
+                -> 위아래패딩으로 높이값을 만들 수 있다! */
+                /* padding-top: 400px; */
+
+                /* 2. 가로에대한 비율이 변경되는 셋팅은?
+                -> 위아래패딩을 %로 셋팅함 */
+                /* padding-top: 50%; */
+
+
+                /* 하단마진 */
+                /* margin-bottom: 200px; */
+            }
+
+            /* 하단공간확보 */
+            body{
+                padding-bottom: 200px;
+            }
+
+
+
+            /* 하위 직계 블록박스에 패딩탑을 %로 주면?
+            100%일 경우 가로,세로 비가 1:1인 박스를 만들 수 있다! */
+            .bx3>.test{
+                
+            }
+            /* 직접 블록 자식요소를 넣는 대신 가상요소를 넣고
+            블록화하여 패딩탑을 %로 셋팅한다!!! */
+            .bx3::before{
+                content: '';
+                display: block;
+                
+                /* 
+                    [ 비율을 만들어 보자! 비례식법 ]
+                    예) 16 : 9 = 100 : x
+                    x = 9 * 100 / 16
+                      = 56.25
+
+                */
+            }
+
+            /* 4.비율유지박스 시스템화 */
+            /* rbx -> ratio box */
+            .rbx{
+                position: relative;
+                /* 부모자격 필수!!! */
+            }
+            .rbx::before{
+                
+                /* 
+                    [ 비율을 만들어 보자! calc()사용법 ]
+
+                    calc(100% / 가로비율 * 세로비율)
+
+                    예) 16 : 9 비율일 경우
+                    padding-top: calc(100% / 16 * 9)
+                */
+            }
+            /* 비율유지 속박스
+            - 겉박스 밀착 앱솔루트 속박스
+            -> 전체조건: rbx가 최소한 relative
+            -> 목적: 내용요소를 비율유지박스안에 
+            넣을 공간을 확보해 준다! */
+            .rbxIn{
+                position: absolute;
+                top: 0;
+                left: 0;
+                bottom: 0;
+                right: 0;
+            }
+
+            /* 내용셋팅 */
+            .cat{
+                position: absolute;
+                bottom: 2%;
+                left: 5%;
+                margin: 0;
+                padding: 0;
+                color: #fff;
+                font-size: min(1.5vw,20px);
+                font-weight: bold;
+                line-height: 2;
+                text-shadow: 2px 2px 2px #000;
+            }
+
+            /************************************************ 
+                [ 비율유지 박스를 만드는 원리 ]
+                
+                1. 가로크기는 %에 준하는 유동적인 셋팅
+                2. 높이값은 셋팅하지 않는다!(auto)
+                3. 가상요소를 블록화하여 패딩탑을 %로 셋팅
+                4. 앱솔루트 속박스를 만들어 컨텐츠 공간확보
+                (단, 비율유지박스에 부모자격필수!)
+            ************************************************/
+
+            /* 5.비율유지박스 :aspect-ratio 속성사용 */
+            .arbx{
+                
+                /* 
+                    [ aspect-ratio 속성 사용하기 ]
+                    aspect-ratio: 가로비 / 세로비;
+
+                    -> width값은 셋팅하고 height값은 auto임!
+                    -> 값을 하나만 쓰면 가로비만 세로를 1로볼때
+                    설정됨!
+
+                    예) 
+                    1:1 비율
+                    aspect-ratio: 1 / 1;
+                    aspect-ratio: 1;
+
+                    16:9 비율
+                    aspect-ratio: 16 / 9;
+
+                    세로에 대한 가로 80% 비율
+                    aspect-ratio: .8;
+
+                    세로에 대한 가로 200% 비율
+                    aspect-ratio: 2;
+
+                    w3c 참고)
+                    https://www.w3schools.com/cssref/css_pr_aspect-ratio.php
+                */
+            }
+
+
+        </style>
+    </head>
+    <body>
+        <h1>017.비율유지박스(Ratio Box)</h1>
+
+        <h2>1. 크기유지박스</h2>
+        <div class="bx bx1"></div>
+
+        <h2>2. 화면에 대한 비율박스</h2>
+        <div class="bx bx2"></div>
+
+        <h2>3. 비율유지박스</h2>
+        <div class="bx bx3">
+            <!-- <div class="test"></div> -->
+        </div>
+        
+        <h2>4.비율유지박스 시스템화</h2>
+        <div class="bx rbx">
+            <!-- 비율유지속박스 -->
+            <div class="rbxIn">
+                <!-- 컨텐츠 넣기 -->
+                <dl class="cat">
+                   <dt>출연진</dt>
+                   <dd>이제훈(김도기역)</dd>
+                   <dd>이솜(강하나역)</dd>
+                   <dd>김의성(장성철역)</dd>
+               </dl>
+                
+            </div>
+        </div>
+
+
+        <h2>5.비율유지박스 :aspect-ratio 속성사용</h2>
+        <div class="bx arbx">
+            <!-- 컨텐츠 넣기 -->
+             <dl class="cat">
+                <dt>출연진</dt>
+                <dd>이제훈(김도기역)</dd>
+                <dd>이솜(강하나역)</dd>
+                <dd>김의성(장성철역)</dd>
+            </dl>
+        </div>
+    </body>
+</html>
