@@ -360,6 +360,10 @@
         예) setTimeout(function(){코드},800)
             -> 0.8초후 코드 한번만 실행!
 
+        ((인터발함수/타임아웃함수를 지우는 함수는?))
+        1. 인터발함수 : clearInterval(인터발변수)
+        2. 타임아웃함수 : clearTimeout(타임아웃변수)
+
         ->>> 함수가 외부에 있을 경우 그 함수명만 써서
         함수를 등록하거나 외부함수가 전달값이 있을 경우
         익명함수 구역 안에서 코드를 작성한다!
@@ -368,7 +372,10 @@
             function hahaha(){코드}
             _________________________
 
-            setInterval(function(){hahaha("넌누구냐?");},2000);
+            setInterval(
+              function(){
+                hahaha("넌누구냐?");},2000);
+
             function hahaha(txt){코드}
 
 
@@ -404,9 +411,12 @@
       let fireworks = 
       document.querySelector('.fireworks');
       console.log(fireworks);
-      
+
       // 3.변경 적용하기 : 보이게하기
       fireworks.style.display = 'block';
+
+      // 4. 3초후 다시 안보이게 처리하기
+      // setTimeout(함수,시간)
 
      } ////////// showFireworks 함수 ////////////
      ////////////////////////////////////////////
