@@ -1,5 +1,27 @@
 // 나의 영화 초이스 객체 JS
 
+// 탐쌤의 오브젝트!
+// -> 변경가능하게 let으로 선언한다!
+let myObj = {};
+// 오브젝트 형만 만들고 객체내용은 아래에서!
+
+// 1. 영화제목
+myObj.title = "외계+인 2부";
+// 2. 감독
+myObj.director = "최동훈";
+// 3. 배우
+myObj.actor = "류준열, 김태리, 김우빈";
+// 4. 장르
+myObj.genre = " 액션,다크 판타지,코미디";
+// 5. 관람가
+myObj.ratings = "12세";
+// 6. 예고편
+myObj.trailer = function () {
+  console.log("예고편:영화아이디");
+  // 예고편 플레이 함수호출!
+  playMovie("4uSn4Dem9i0");
+}; ////// trailer 메서드 ////////
+
 // 민지의 오브젝트!
 // 자신만의 오브젝트! -> 변경가능하게 let으로 선언한다!
 let mjObj = {};

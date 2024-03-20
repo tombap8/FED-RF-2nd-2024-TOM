@@ -50,25 +50,25 @@
 
     <!-- 인터널 JS 코딩구역 -->
     <script>
-        // 로딩구역 ///////////////////
-        // DOMContentLoaded 는 HTML 태그로딩후
-        // 발생하는 이벤트임(load 이벤트와 비교)
-        window.addEventListener("DOMContentLoaded", loadFn);
+      // 로딩구역 ///////////////////
+      // DOMContentLoaded 는 HTML 태그로딩후
+      // 발생하는 이벤트임(load 이벤트와 비교)
+      window.addEventListener("DOMContentLoaded", loadFn);
 
-        /**********************************
+      /**********************************
                    함수명 : loadFn
                    기능 :  로딩후 실행함수
               **********************************/
-        function loadFn() {
-          // 1. 함수호출확인!
-          console.log("로딩완료");
+      function loadFn() {
+        // 1. 함수호출확인!
+        console.log("로딩완료");
 
-          // 2. 출력대상 :  .cont
-          const target = document.querySelectorAll(".cont");
+        // 2. 출력대상 :  .cont
+        const target = document.querySelectorAll(".cont");
 
-          console.log("타겟:", target);
+        console.log("타겟:", target);
 
-          /**********************************************
+        /**********************************************
                   [ 배열(Array) 변수란? ]
 
                   - 여러개의 데이터를 묶음으로 변수하나에 저장함
@@ -97,134 +97,134 @@
 
               **********************************************/
 
-          // 3. 내용출력하기 /////
-          // 3-1. new 키워드와 함깨 배열선언,할당하기
-          const arr1 = new Array(
-            "1993년 10월 12일",
-            "183cm",
-            "65kg",
-            "너도 인간이니?,치인트",
-            4528,
-            "서강준"
-          );
+        // 3. 내용출력하기 /////
+        // 3-1. new 키워드와 함깨 배열선언,할당하기
+        const arr1 = new Array(
+          "1993년 10월 12일",
+          "183cm",
+          "65kg",
+          "너도 인간이니?,치인트",
+          4528,
+          "서강준"
+        );
 
-          // new  키워드로 선언과 할당을 동시에 할 수 있다!
-          // 소괄호안에 콤마로 값을 구분하여 사용함
+        // new  키워드로 선언과 할당을 동시에 할 수 있다!
+        // 소괄호안에 콤마로 값을 구분하여 사용함
 
-          // 배열변수에 할당한 데이터 불러오기
-          // 호출방법 : 배열변수명[순번] -> 순번은 0부터
+        // 배열변수에 할당한 데이터 불러오기
+        // 호출방법 : 배열변수명[순번] -> 순번은 0부터
 
-          console.log("arr1:", arr1, typeof arr1);
-          console.log("arr1은 배열인가?:", Array.isArray(arr1));
-          // typeof(변수) / typeof 변수 -> 데이터형 출력
-          // ->숫자는 number/문자는 string/배열,객체는 object 라고 찍힘
-          // 배열일 경우 object 라고 출력됨.
-          // 객체일 경우도 object 라고 출력되기때문에
-          // 배열인지 알고자 할 경우 Array.isArray(변수)
-          // 를 사용하여 변수여부확인 가능!
+        console.log("arr1:", arr1, typeof arr1);
+        console.log("arr1은 배열인가?:", Array.isArray(arr1));
+        // typeof(변수) / typeof 변수 -> 데이터형 출력
+        // ->숫자는 number/문자는 string/배열,객체는 object 라고 찍힘
+        // 배열일 경우 object 라고 출력됨.
+        // 객체일 경우도 object 라고 출력되기때문에
+        // 배열인지 알고자 할 경우 Array.isArray(변수)
+        // 를 사용하여 변수여부확인 가능!
 
-          // 출력대상 : target[0]
-          target[0].innerHTML = `
+        // 출력대상 : target[0]
+        target[0].innerHTML = `
               이름:${arr1[5]} /
               키:${arr1[1]} /
               몸무게:${arr1[2]} /
               대표작:${arr1[3]}
           `;
 
-          // 3-2. 배열리터럴 방식의 선언과 할당
-          // 배열변수명 = [값1,값2,값3,...]
-          // new 키워드 없이 바로 쓸 수 있는 객체임
-          // 이런 배열과 같은 객체를 정적객체(Static Object)라고 함!
+        // 3-2. 배열리터럴 방식의 선언과 할당
+        // 배열변수명 = [값1,값2,값3,...]
+        // new 키워드 없이 바로 쓸 수 있는 객체임
+        // 이런 배열과 같은 객체를 정적객체(Static Object)라고 함!
 
-          const arr2 = [
-            "삼일절",
-            "태극기",
-            1919,
-            function () {
-              alert("대한독립만세!!!");
-              console.log("this는 누구?", this);
-              // this 는 호출한 요소 자신!
-              this.style.background =
-                "url(https://blog.kakaocdn.net/dn/H4k8p/btqUUqx7TLT/VAMfjsV79wqyKIfOGXn5P0/img.jpg) repeat-x 0/auto 100%";
-              // 트랜스폼 변경하기
-              this.style.transform = "scale(1.5) rotate(720deg)";
-              // 트랜지션
-              this.style.transition = "2s ease-in-out";
-            },
-          ];
-          // 배열끝의 콤마는 원래는 쓰면 에러나지만
-          // 최신브라우저에서 에러안나도록 처리됨!
-          // 요즘은 추가 배열데이터를 위해 마지막콤마를
-          // 쓰는것이 일반적임!
+        const arr2 = [
+          "삼일절",
+          "태극기",
+          1919,
+          function () {
+            alert("대한독립만세!!!");
+            console.log("this는 누구?", this);
+            // this 는 호출한 요소 자신!
+            this.style.background =
+              "url(https://blog.kakaocdn.net/dn/H4k8p/btqUUqx7TLT/VAMfjsV79wqyKIfOGXn5P0/img.jpg) repeat-x 0/auto 100%";
+            // 트랜스폼 변경하기
+            this.style.transform = "scale(1.5) rotate(720deg)";
+            // 트랜지션
+            this.style.transition = "2s ease-in-out";
+          },
+        ];
+        // 배열끝의 콤마는 원래는 쓰면 에러나지만
+        // 최신브라우저에서 에러안나도록 처리됨!
+        // 요즘은 추가 배열데이터를 위해 마지막콤마를
+        // 쓰는것이 일반적임!
 
-          // function (){} 익명함수 -  이름없고 코드만 저장
-          // -> 배열값으로 문자,숫자,배열,객체,함수 등 사용가능!
+        // function (){} 익명함수 -  이름없고 코드만 저장
+        // -> 배열값으로 문자,숫자,배열,객체,함수 등 사용가능!
 
-          console.log("arr2는 배열인가?", Array.isArray(arr2));
+        console.log("arr2는 배열인가?", Array.isArray(arr2));
 
-          // 출력대상 : target[1]
-          target[1].innerHTML = `
+        // 출력대상 : target[1]
+        target[1].innerHTML = `
               ${arr2[0]}은 ${arr2[2]}년에 일제에 항거하여 ${arr2[1]}를 들고 일어난 민중봉기를 기념하는 날이다!
           `;
 
-          // 툴팁 띄우기
-          target[1].title = "만세를 하시려면 클릭하세요!";
+        // 툴팁 띄우기
+        target[1].title = "만세를 하시려면 클릭하세요!";
 
-          // 손가락모양 커서
-          target[1].style.cursor = "pointer";
+        // 손가락모양 커서
+        target[1].style.cursor = "pointer";
 
-          // 배열의 함수를 클릭이벤트에 연결하기
-          target[1].onclick = arr2[3];
+        // 배열의 함수를 클릭이벤트에 연결하기
+        target[1].onclick = arr2[3];
 
-          // 3-3.  배열을 미리 생성하여 각각 할당하기
-          // 배열변수명 = [] -> 배열리터럴!
-          // 배열변수명.length = 숫자 -> 숫자만큼 배열이 생성됨
-          // 배열변수명.length 는 배열개수를 읽기/쓰기 모두 가능함!
+        // 3-3.  배열을 미리 생성하여 각각 할당하기
+        // 배열변수명 = [] -> 배열리터럴!
+        // 배열변수명.length = 숫자 -> 숫자만큼 배열이 생성됨
+        // 배열변수명.length 는 배열개수를 읽기/쓰기 모두 가능함!
 
-          const arr3 = [];
-          // const 상수로 리터럴 선언, 할당후
-          // 배열값 변경은 자유롭다~!
-          // 그러나 배열형을 변경할 수 없다! 재할당불가!
-          // 그래서 상수임!(코드보안상,안전상 이유로 많이씀)
+        const arr3 = [];
+        // const 상수로 리터럴 선언, 할당후
+        // 배열값 변경은 자유롭다~!
+        // 그러나 배열형을 변경할 수 없다! 재할당불가!
+        // 그래서 상수임!(코드보안상,안전상 이유로 많이씀)
 
-          // 배열개수 미리 셋팅하기
-          arr3.length = 8;
-          // 중요: 배열개수를 미리 셋팅했어도 더 추가가
-          // 얼마든지 가능하다!
+        // 배열개수 미리 셋팅하기
+        arr3.length = 8;
+        // 중요: 배열개수를 미리 셋팅했어도 더 추가가
+        // 얼마든지 가능하다!
 
-          console.log("arr3 배열개수:", arr3);
+        console.log("arr3 배열개수:", arr3);
 
-          // 각 배열주소에 값을 할당하기!
-          arr3[0] = "산";
-          arr3[1] = "할아버지";
-          arr3[2] = "구름모자";
-          arr3[3] = "썼네~!";
-          arr3[4] = "나비같이";
-          arr3[5] = "훨훨";
-          arr3[6] = "훠얼훨";
-          arr3[7] = "날아서~!";
+        // 각 배열주소에 값을 할당하기!
+        arr3[0] = "산";
+        arr3[1] = "할아버지";
+        arr3[2] = "구름모자";
+        arr3[3] = "썼네~!";
+        arr3[4] = "나비같이";
+        arr3[5] = "훨훨";
+        arr3[6] = "훠얼훨";
+        arr3[7] = "날아서~!";
 
-          // 배열값 전체찍기 : valueOf()
-          console.log("arr3배열전체값:", arr3.valueOf());
-          console.log("arr3배열전체값:", arr3);
-          // 참고로 변수만 찍어도 브라우저가 valueOf()를 찍어줌!
+        // 배열값 전체찍기 : valueOf()
+        console.log("arr3배열전체값:", arr3.valueOf());
+        console.log("arr3배열전체값:", arr3);
+        // 참고로 변수만 찍어도 브라우저가 valueOf()를 찍어줌!
 
-          // 변수값 사이에 구분자를 넣고 문자형으로
-          // 배열값을 변경하기!
-          // join(구분자) -> 구분자를 넣고 문자값생성
-          console.log("arr3배열 구분자로 문자찍기:", arr3.join("^"));
+        // 변수값 사이에 구분자를 넣고 문자형으로
+        // 배열값을 변경하기!
+        // join(구분자) -> 구분자를 넣고 문자값생성
+        console.log("arr3배열 구분자로 문자찍기:", arr3.join("^"));
 
-          // 배열값 맨뒤에 동적으로 배열값 추가하기
-          // push(값) -> 배열맨뒤에 값을 추가하는 메서드
-          arr3.push("김창완작사");
+        // 배열값 맨뒤에 동적으로 배열값 추가하기
+        // push(값) -> 배열맨뒤에 값을 추가하는 메서드
+        arr3.push("김창완작사");
 
-          // 배열값 사이에 별(★)을 넣어서 출력하기
-          // 출력대상 : target[2]
-          target[2].innerHTML = arr3.join("★");
+        // 배열값 사이에 별(★)을 넣어서 출력하기
+        // 출력대상 : target[2]
+        target[2].innerHTML = arr3.join("★");
 
-          // -> 배열메서드는 중요하므로 별도로 훈련함!
+        // -> 배열메서드는 중요하므로 별도로 훈련함!
 
-          /********************************************
+        /********************************************
                   [ 객체(Object) 란? ]
 
           - 일반적으로 JS에서 객체란 속성과 메서드를
@@ -274,52 +274,52 @@
 
       ********************************************/
 
-          // 4. 객체를 선언하여 생성해 보자!
-          // new Object()를 사용하여 생성
-          // 배열과 마찬가지로 객체는 형식이
-          // 변경되지 않도록 let보다는 const를 많이씀!
+        // 4. 객체를 선언하여 생성해 보자!
+        // new Object()를 사용하여 생성
+        // 배열과 마찬가지로 객체는 형식이
+        // 변경되지 않도록 let보다는 const를 많이씀!
 
-          const SSG = new Object({
-            "너의 이름은?": "손석구",
-            생일: "1983년 2월 7일",
-            키: "178cm",
-            몸무게: "80kg",
-            혈액형: "C형",
-            성별: "남성",
-            대표작: "나의 해방일지,범죄도시2",
-            소속사: " 셋별당엔터",
-            비밀번호: 7777,
-            팬레터: function () {
-              // 변경대상.style
-              let mycss = this.style;
-              console.log("석구형 메서드 this:", this);
+        const SSG = new Object({
+          "너의 이름은?": "손석구",
+          생일: "1983년 2월 7일",
+          키: "178cm",
+          몸무게: "80kg",
+          혈액형: "C형",
+          성별: "남성",
+          대표작: "나의 해방일지,범죄도시2",
+          소속사: " 셋별당엔터",
+          비밀번호: 7777,
+          팬레터: function () {
+            // 변경대상.style
+            let mycss = this.style;
+            console.log("석구형 메서드 this:", this);
 
-              // 1. 메시지 띄우기
-              alert("상남자 오빠! 지금뭐해?");
-              // 2. 배경이미지
-              mycss.background =
-                "url(https://file.mk.co.kr/meet/neds/2022/05/image_readtop_2022_456627_16533579475052374.jpeg) repeat-x top/auto 100%";
-              // 3. 글자색
-              mycss.color = "#fff";
-              // 4. 글자그림자
-              mycss.textShadow = "0 0 5px #000";
-              // 5. 글자내용변경
-              this.innerText = "손석구 최고 멋쨍이! 승승장구! 화이팅!!!";
-              // 6. 줄간격변경
-              mycss.lineHeight = "84px";
-              // 7. 박스크게하기
-              mycss.transform = "scale(1.2)";
-              // 8. 트랜지션
-              mycss.transition = "1s ease-out 1s";
-            },
-          });
+            // 1. 메시지 띄우기
+            alert("상남자 오빠! 지금뭐해?");
+            // 2. 배경이미지
+            mycss.background =
+              "url(https://file.mk.co.kr/meet/neds/2022/05/image_readtop_2022_456627_16533579475052374.jpeg) repeat-x top/auto 100%";
+            // 3. 글자색
+            mycss.color = "#fff";
+            // 4. 글자그림자
+            mycss.textShadow = "0 0 5px #000";
+            // 5. 글자내용변경
+            this.innerText = "손석구 최고 멋쨍이! 승승장구! 화이팅!!!";
+            // 6. 줄간격변경
+            mycss.lineHeight = "84px";
+            // 7. 박스크게하기
+            mycss.transform = "scale(1.2)";
+            // 8. 트랜지션
+            mycss.transition = "1s ease-out 1s";
+          },
+        });
 
-          // 객체확인
-          console.log("석구객체:", SSG);
+        // 객체확인
+        console.log("석구객체:", SSG);
 
-          // 객체출력하기
-          // 출력대상: target[3]
-          target[3].innerHTML = `
+        // 객체출력하기
+        // 출력대상: target[3]
+        target[3].innerHTML = `
               당신이 좋아하는 남자배우는?
               ${SSG["너의 이름은?"]}
               / 몸무게를 아세요? ${SSG.몸무게} <br>
@@ -327,19 +327,19 @@
               / 대표작은? ${SSG["대표작"]}
           `;
 
-          // 2줄이니까 줄간격 조정
-          target[3].style.lineHeight = "40px";
+        // 2줄이니까 줄간격 조정
+        target[3].style.lineHeight = "40px";
 
-          // 툴팁 띄우기
-          target[3].title = `여기를 클릭하여 ${SSG["너의 이름은?"]}팬레터를 확인하세요!`;
+        // 툴팁 띄우기
+        target[3].title = `여기를 클릭하여 ${SSG["너의 이름은?"]}팬레터를 확인하세요!`;
 
-          // 손가락모양 커서
-          target[3].style.cursor = "pointer";
+        // 손가락모양 커서
+        target[3].style.cursor = "pointer";
 
-          // 배열의 함수를 클릭이벤트에 연결하기
-          target[3].onclick = SSG["팬레터"];
+        // 배열의 함수를 클릭이벤트에 연결하기
+        target[3].onclick = SSG["팬레터"];
 
-          /***************************************
+        /***************************************
           [ new 키워드 없이 바로 객체 생성하기 ]
           -> 객체 리터럴 (추천방식!)
 
@@ -377,63 +377,63 @@
 
       ***************************************/
 
-          // 객체 생성하기 - 객체리터럴!!!
-          const GU = {
-            name: "공유",
-            tall: "184cm",
-            weight: "74kg",
-            com: "매니지먼트숲",
-            work: "도깨비,부산행",
-            msgFn: function (txt, ele) {
-              // txt - 팬레터 내용
-              // ele - 이벤트요소(this를 보냄)
-              // 1. 메시지 띄우기
-              alert("팬레터:" + txt);
-              // 주의: alert에는 콤마사용불가!
+        // 객체 생성하기 - 객체리터럴!!!
+        const GU = {
+          name: "공유",
+          tall: "184cm",
+          weight: "74kg",
+          com: "매니지먼트숲",
+          work: "도깨비,부산행",
+          msgFn: function (txt, ele) {
+            // txt - 팬레터 내용
+            // ele - 이벤트요소(this를 보냄)
+            // 1. 메시지 띄우기
+            alert("팬레터:" + txt);
+            // 주의: alert에는 콤마사용불가!
 
-              console.log("공유 메서드 this:", this);
-              console.log("공유 메서드 전달값:", txt, ele);
+            console.log("공유 메서드 this:", this);
+            console.log("공유 메서드 전달값:", txt, ele);
 
-              // this 의 의미는 메서드를 간접호출한
-              // 경우 호출한 요소 자신이 되지 못하고
-              // 현재 메서드가 속한 객체 자신을
-              // 의미하게 됨!
-              // 이럴때는 this 를 사용할 수 없으므로
-              // 호출시 this 를 보내준다!
+            // this 의 의미는 메서드를 간접호출한
+            // 경우 호출한 요소 자신이 되지 못하고
+            // 현재 메서드가 속한 객체 자신을
+            // 의미하게 됨!
+            // 이럴때는 this 를 사용할 수 없으므로
+            // 호출시 this 를 보내준다!
 
-              // 2. CSS변경하기
-              let mycss = ele.style;
+            // 2. CSS변경하기
+            let mycss = ele.style;
 
-              // 2-1.배경이미지넣기
-              mycss.background =
-                "url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Gong_Yoo_%28Sep_2016%29.png/250px-Gong_Yoo_%28Sep_2016%29.png) repeat-x top/auto 100%";
+            // 2-1.배경이미지넣기
+            mycss.background =
+              "url(https://upload.wikimedia.org/wikipedia/commons/thumb/4/41/Gong_Yoo_%28Sep_2016%29.png/250px-Gong_Yoo_%28Sep_2016%29.png) repeat-x top/auto 100%";
 
-              //2-2. 글자색
-              mycss.color = "#fff";
+            //2-2. 글자색
+            mycss.color = "#fff";
 
-              //2-3. 글자그림자
-              mycss.textShadow = "0 0 5px #000";
+            //2-3. 글자그림자
+            mycss.textShadow = "0 0 5px #000";
 
-              //2-4. 줄간격
-              mycss.lineHeight = "30px";
+            //2-4. 줄간격
+            mycss.lineHeight = "30px";
 
-              //2-5. 높이값 변경
-              mycss.height = "100px";
+            //2-5. 높이값 변경
+            mycss.height = "100px";
 
-              //2-6. 상단패딩
-              mycss.paddingTop = "100px";
+            //2-6. 상단패딩
+            mycss.paddingTop = "100px";
 
-              //2-7. 트랜지션
-              mycss.transition = "2s ease-in-out .5s";
-            }, /// msgFn메서드 ///
-            // 객체내부의 함수를 "메서드"로 부른다!
-          }; ////// GU객체 //////
+            //2-7. 트랜지션
+            mycss.transition = "2s ease-in-out .5s";
+          }, /// msgFn메서드 ///
+          // 객체내부의 함수를 "메서드"로 부른다!
+        }; ////// GU객체 //////
 
-          // 객체확인
-          console.log("GU객체:", GU);
+        // 객체확인
+        console.log("GU객체:", GU);
 
-          // 내용출력 : 대상 - target[4]
-          target[4].innerHTML = `
+        // 내용출력 : 대상 - target[4]
+        target[4].innerHTML = `
           저는 ${GU.name}입니다.
           몸무게는 비밀인데요 그래도 말씀드리자면
           ${GU.weight}입니다. ㅎㅎㅎ <br>
@@ -442,37 +442,37 @@
           ${GU.com}입니다. 빠이빠이~!
       `;
 
-          // 줄간격 변경
-          target[4].style.lineHeight = "24px";
+        // 줄간격 변경
+        target[4].style.lineHeight = "24px";
 
-          // 툴팁 띄우기
-          target[4].title = `여기를 클릭하여 ${GU.name}팬레터를 확인하세요!`;
+        // 툴팁 띄우기
+        target[4].title = `여기를 클릭하여 ${GU.name}팬레터를 확인하세요!`;
 
-          // 손가락모양 커서
-          target[4].style.cursor = "pointer";
+        // 손가락모양 커서
+        target[4].style.cursor = "pointer";
 
-          // 배열의 함수를 클릭이벤트에 연결하기
-          target[4].onclick = function () {
-            // 여기서 this 의 의미는?
-            console.log("이벤트속성에 할당된 익명함수 내부에서의 this:", this);
+        // 배열의 함수를 클릭이벤트에 연결하기
+        target[4].onclick = function () {
+          // 여기서 this 의 의미는?
+          console.log("이벤트속성에 할당된 익명함수 내부에서의 this:", this);
 
-            // 메시지변수
-            let msg =
-              "공유오빠, 오징어게임 싸다구 멋쪘어요!\n차기작도 기대해요! 화이팅!!!";
+          // 메시지변수
+          let msg =
+            "공유오빠, 오징어게임 싸다구 멋쪘어요!\n차기작도 기대해요! 화이팅!!!";
 
-            // 익명함수구역의 명령문은
-            // 바로 실행되지않고 이벤트가
-            // 발생했을때 실행된다!
-            // 따라서 함수에 값을 보내려고
-            // 소괄호에 메시지를 보내는 함수호출도
-            // 바로실행되지 않고 이벤트와 함께
-            // 실행된다!
-            GU.msgFn(msg, this);
-            // GU.msgFn(메시지,자기자신)
-            // -> 2가지를 함수에 보내준다!
-          };
+          // 익명함수구역의 명령문은
+          // 바로 실행되지않고 이벤트가
+          // 발생했을때 실행된다!
+          // 따라서 함수에 값을 보내려고
+          // 소괄호에 메시지를 보내는 함수호출도
+          // 바로실행되지 않고 이벤트와 함께
+          // 실행된다!
+          GU.msgFn(msg, this);
+          // GU.msgFn(메시지,자기자신)
+          // -> 2가지를 함수에 보내준다!
+        };
 
-          /****************************************
+        /****************************************
             [ 미션 :  내가 만든 객체 활용하기 ]
             1. 주제 : 영화정보
             2. 조건 : 객체의 변수명을 자신만의 이름으로
@@ -481,39 +481,39 @@
             3.  객체를 쌤과 모두에게 공유하기!(톡업!)
           ****************************************/
 
-          // 탐쌤의 오브젝트!
-          // -> 변경가능하게 let으로 선언한다!
-          let tomObj = {};
-          // 오브젝트 형만 만들고 객체내용은 아래에서!
+        // 탐쌤의 오브젝트!
+        // -> 변경가능하게 let으로 선언한다!
+        let tomObj = {};
+        // 오브젝트 형만 만들고 객체내용은 아래에서!
 
-          // 1. 영화제목
-          tomObj.title = "외계+인 2부";
-          // 2. 감독
-          tomObj.director = "최동훈";
-          // 3. 배우
-          tomObj.actor = "류준열, 김태리, 김우빈";
-          // 4. 장르
-          tomObj.genre = " 액션,다크 판타지,코미디";
-          // 5. 관람가
-          tomObj.ratings = "12세";
-          // 6. 예고편
-          tomObj.trailer = function () {
-            console.log("예고편:영화아이디");
-            // 예고편 플레이 함수호출!
-            playMovie("4uSn4Dem9i0");
-          }; ////// trailer 메서드 ////////
+        // 1. 영화제목
+        tomObj.title = "외계+인 2부";
+        // 2. 감독
+        tomObj.director = "최동훈";
+        // 3. 배우
+        tomObj.actor = "류준열, 김태리, 김우빈";
+        // 4. 장르
+        tomObj.genre = " 액션,다크 판타지,코미디";
+        // 5. 관람가
+        tomObj.ratings = "12세";
+        // 6. 예고편
+        tomObj.trailer = function () {
+          console.log("예고편:영화아이디");
+          // 예고편 플레이 함수호출!
+          playMovie("4uSn4Dem9i0");
+        }; ////// trailer 메서드 ////////
 
-          // 객체확인
-          console.log("나의객체:", tomObj);
+        // 객체확인
+        console.log("나의객체:", tomObj);
 
-          // 화면에 정보를 보여주는 함수
-          const showMovieInfo = function () {
-            // 함수호출 확인
-            console.log("영화정보!!!");
+        // 화면에 정보를 보여주는 함수
+        const showMovieInfo = function () {
+          // 함수호출 확인
+          console.log("영화정보!!!");
 
-            // 1. 출력대상: target[5]
-            // 2. 내용넣기
-            target[5].innerHTML = `
+          // 1. 출력대상: target[5]
+          // 2. 내용넣기
+          target[5].innerHTML = `
               ♣ 영화명 : ${tomObj.title}
               ♣ 감독 : ${tomObj.director} <br>
               ♣ 배우 : ${tomObj.actor}
@@ -521,204 +521,213 @@
               ♣ 등급 : ${tomObj.ratings}
             `;
 
-            // 툴팁 보이기
-            target[5].title = `클릭하시면 ${tomObj.title}예고편을 보실 수 있습니다!`;
+          // 툴팁 보이기
+          target[5].title = `클릭하시면 ${tomObj.title}예고편을 보실 수 있습니다!`;
 
-            // 예고편 메서드 호출
-            target[5].onclick = tomObj.trailer;
-          }; ////// showMovieInfo 함수 //////////
+          // 예고편 메서드 호출
+          target[5].onclick = tomObj.trailer;
+        }; ////// showMovieInfo 함수 //////////
 
-          // 출력박스 CSS조정하기
-          target[5].style.lineHeight = "34px";
-          target[5].style.cursor = "pointer";
-          target[5].style.fontSize = "14px";
+        // 출력박스 CSS조정하기
+        target[5].style.lineHeight = "34px";
+        target[5].style.cursor = "pointer";
+        target[5].style.fontSize = "14px";
 
-          // 할당형 함수는 바로 호출시 하단에서 해야함!
-          showMovieInfo();
+        // 할당형 함수는 바로 호출시 하단에서 해야함!
+        showMovieInfo();
 
-          //////////////////////////////////
-          // 초이스 파트 버튼 만들기 ////////
-          //////////////////////////////////
-          // 버튼에 사용할 이름 배열만들기
-          const choiceName = [
-            "탐쌤",
-            "민지",
-            "이지영",
-            "도연",
-            "재윤",
-            "유지영",
-            "노영",
-            "우진",
-            "영진",
-            "은경",
-            "지현",
-            "수진",
-            "윤철",
-            "정윤",
-            "현우",
-          ];
+        //////////////////////////////////
+        // 초이스 파트 버튼 만들기 ////////
+        //////////////////////////////////
+        // 버튼에 사용할 이름 배열만들기
+        const choiceName = [
+          "탐쌤",
+          "민지",
+          "이지영",
+          "도연",
+          "재윤",
+          "유지영",
+          "노영",
+          "우진",
+          "영진",
+          "은경",
+          "지현",
+          "수진",
+          "윤철",
+          "정윤",
+          "현우",
+        ];
 
-          // 배열확인
-          console.log("버튼배열:", choiceName);
+        // 배열확인
+        console.log("버튼배열:", choiceName);
 
-          // 버튼을 넣을 대상 : target[6]
+        // 버튼을 넣을 대상 : target[6]
 
-          // 버튼을 어떻게 넣지?
-          // 대답: 버튼이름 배열의 수만큼 버튼을 넣는다
-          // -> for문 사용 : for(시;한;증){코드}
-          // -> 배열의 개수 : 배열변수.length
-          // (1) 시작값 : let i = 0 (배열주소 0부터)
-          // (2) 한계값 : i < choiceName.length
-          // (3) 증감 : i++
+        // 버튼을 어떻게 넣지?
+        // 대답: 버튼이름 배열의 수만큼 버튼을 넣는다
+        // -> for문 사용 : for(시;한;증){코드}
+        // -> 배열의 개수 : 배열변수.length
+        // (1) 시작값 : let i = 0 (배열주소 0부터)
+        // (2) 한계값 : i < choiceName.length
+        // (3) 증감 : i++
 
-          // 배열의 개수를 미리구하여 변수에 할당
-          let cnt = choiceName.length;
+        // 배열의 개수를 미리구하여 변수에 할당
+        let cnt = choiceName.length;
 
-          // 첫번째 버튼에 선택표시 클래스 on을
-          // 넣기 위해 for문 순회시 i값이 0일 경우
-          // 그자리에 클래스 설정코드를 넣으려면
-          // 삼항연산자를 사용하면 된다!
-          // ->식: i==0?'class="on"':''
-          // ->해석: i가0인가? true면 앞에것 출력
-          // false 면 뒤엣것 출력
+        // 첫번째 버튼에 선택표시 클래스 on을
+        // 넣기 위해 for문 순회시 i값이 0일 경우
+        // 그자리에 클래스 설정코드를 넣으려면
+        // 삼항연산자를 사용하면 된다!
+        // ->식: i==0?'class="on"':''
+        // ->해석: i가0인가? true면 앞에것 출력
+        // false 면 뒤엣것 출력
 
-          for (let i = 0; i < cnt; i++) {
-            target[6].innerHTML +=
-            `<button
-            ${i==0?'class="on"':''}
+        for (let i = 0; i < cnt; i++) {
+          target[6].innerHTML += `<button
+            ${i == 0 ? 'class="on"' : ""}
             style="margin-left:5px"
             >
               ${choiceName[i]}초이스</button>`;
 
-            // 줄바꿈태그는 5번째,10번째에서 넣기
-            if(i==4||i==9){
-              target[6].innerHTML += '<br>';
-            } /// if ///
-          } /////////// for문 ////////
+          // 줄바꿈태그는 5번째,10번째에서 넣기
+          if (i == 4 || i == 9) {
+            target[6].innerHTML += "<br>";
+          } /// if ///
+        } /////////// for문 ////////
 
-          // 초이스 박스 줄간격조정
-          target[6].style.lineHeight = "30px";
-          target[6].style.height = "auto";
-          target[6].style.padding = "10px 0";
+        // 초이스 박스 줄간격조정
+        target[6].style.lineHeight = "30px";
+        target[6].style.height = "auto";
+        target[6].style.padding = "10px 0";
 
-          //////////////////////////////
-          // 위에서 넣은 버튼을 순회하며
-          // 클릭이벤트 함수를 설정해 준다!
-          ///////////////////////////////
-          // 이벤트 대상: target[6]하위 button
-          let choiceBtn =
-          target[6].querySelectorAll('button');
+        //////////////////////////////
+        // 위에서 넣은 버튼을 순회하며
+        // 클릭이벤트 함수를 설정해 준다!
+        ///////////////////////////////
+        // 이벤트 대상: target[6]하위 button
+        let choiceBtn = target[6].querySelectorAll("button");
 
-          // 버튼 개수 구하기
-          let cntBtn = choiceBtn.length;
+        // 버튼 개수 구하기
+        let cntBtn = choiceBtn.length;
 
-          console.log(
-            '초이스버튼들:',choiceBtn,cntBtn,'개');
+        console.log("초이스버튼들:", choiceBtn, cntBtn, "개");
 
-          /// 버튼 개수만큼 순회하며 onclick속성에
-          // 익명함수 할당하기(기능구현)
-          for(let i=0; i<cntBtn; i++){
-            // 대상: choiceBtn 변수에 할당된 button요소
-            choiceBtn[i].onclick=function(){
-              // this는 이벤트할당된 요소자신!
-              // 버튼데이터 읽기
-              let btnTxt = this.innerText;
-              // 함수호출 확인
-              console.log('내가 누구게?',btnTxt);
+        /// 버튼 개수만큼 순회하며 onclick속성에
+        // 익명함수 할당하기(기능구현)
+        for (let i = 0; i < cntBtn; i++) {
+          // 대상: choiceBtn 변수에 할당된 button요소
+          choiceBtn[i].onclick = function () {
+            // this는 이벤트할당된 요소자신!
+            // 버튼데이터 읽기
+            let btnTxt = this.innerText;
+            // 함수호출 확인
+            console.log("내가 누구게?", btnTxt);
 
-              // 영화정보 변경전 찍어보기
-              // 각자 자기의 변수를 찍는다!
-              console.log('변경전영화객체',tomObj);
+            // 영화정보 변경전 찍어보기
+            // 각자 자기의 변수를 찍는다!
+            console.log("변경전영화객체", tomObj);
 
-              switch(btnTxt){
-                case '민지초이스':
+            switch (btnTxt) {
+              // 자기자신 오브젝트
+              case "탐쌤초이스":
                 // 객체의 내용을 덮어쓰기 변경함
+                tomObj = myObj;
+                break;
+
+              case "민지초이스":
                 tomObj = mjObj;
                 break;
 
-                case '이지영초이스': 
+              case "이지영초이스":
                 tomObj = jyObj;
                 break;
 
-                case '도연초이스': 
+              case "도연초이스":
                 tomObj = dyObj;
                 break;
 
-                case '재윤초이스': 
+              case "재윤초이스":
                 tomObj = jaeObj;
                 break;
 
-                case '유지영초이스': 
+              case "유지영초이스":
                 tomObj = JYObj;
                 break;
 
-                case '노영초이스': 
+              case "노영초이스":
                 tomObj = nyObj;
                 break;
 
-                case '우진초이스': 
+              case "우진초이스":
                 tomObj = wjObj;
                 break;
 
-                case '영진초이스': 
+              case "영진초이스":
                 tomObj = yjObj;
                 break;
 
-                case '은경초이스': 
+              case "은경초이스":
                 tomObj = lekObj;
                 break;
 
-                case '지현초이스': 
+              case "지현초이스":
                 tomObj = jjob;
                 break;
 
-                case '수진초이스': 
+              case "수진초이스":
                 tomObj = suObj;
                 break;
 
-                case '윤철초이스': 
+              case "윤철초이스":
                 tomObj = ironObj;
                 break;
 
-                case '정윤초이스': 
+              case "정윤초이스":
                 tomObj = jjyObj;
                 break;
 
-                case '현우초이스': 
+              case "현우초이스":
                 tomObj = koObj;
                 break;
-              }
+            }
 
-              console.log('변경후영화객체',tomObj);
+            console.log("변경후영화객체", tomObj);
 
-              // 변경데이터 확인 후 바로위박스
-              // 영화정보 업데이트 함수를 호출한다!
-              showMovieInfo();
+            // 변경데이터 확인 후 바로위박스
+            // 영화정보 업데이트 함수를 호출한다!
+            showMovieInfo();
 
-            }; ////// click 이벤트 함수 /////
-            // console.log(choiceBtn[i]);
-          } ////////// for문 ////////////
+            // JS클래스 내장객체: classList
+            // add() / remove() 메서드사용!
 
+            // 버튼에 클래스 on 모두 빼기
+            for(let i=0;i<cntBtn;i++){
+              choiceBtn[i].classList.remove('on');
+            } ////// for문 ///
+            // 클릭된 버튼에 클래스 on넣기
+            // 클릭된 버튼 자신은 this!
+            this.classList.add('on');
+            
+          }; ////// click 이벤트 함수 /////
+          // console.log(choiceBtn[i]);
+        } ////////// for문 ////////////
+      } /////////// loadFn 함수 //////////
+      ////////////////////////////////////
 
-
-
-        } /////////// loadFn 함수 //////////
-        ////////////////////////////////////
-
-        /*****************************************
+      /*****************************************
           함수명 : playMovie
           기능 : 영화예고편 화면 띄우기
         *****************************************/
-        function playMovie(mcode) {
-          // mcode 영화아이디
-          // 함수호출 및 전달값 확인
-          console.log("예고편상영이요~~!", mcode);
+      function playMovie(mcode) {
+        // mcode 영화아이디
+        // 함수호출 및 전달값 확인
+        console.log("예고편상영이요~~!", mcode);
 
-          // 1. 대상선정 : #mvbox
-          let mvbox = document.querySelector("#mvbox");
+        // 1. 대상선정 : #mvbox
+        let mvbox = document.querySelector("#mvbox");
 
-          // 2. 영화박스에 아이프레임 넣기
-          mvbox.innerHTML = `
+        // 2. 영화박스에 아이프레임 넣기
+        mvbox.innerHTML = `
           <div id="mv">
             <!-- 유튜브 아이프레임 -->
             <iframe src="https://www.youtube.com/embed/${mcode}?autoplay=1" allow="autoplay"></iframe>
@@ -727,32 +736,32 @@
           </div>
         `;
 
-          // 3. 삽입된 동영상 박스 CSS설정하기
-          let mv = document.querySelector("#mv");
-          let css = mv.style;
+        // 3. 삽입된 동영상 박스 CSS설정하기
+        let mv = document.querySelector("#mv");
+        let css = mv.style;
 
-          css.position = "fixed";
-          css.top = "50%";
-          css.left = "50%";
-          css.transform = "translate(-50%, -50%)";
-          css.width = "700px";
-          css.height = "450px";
-          css.backgroundColor = "#000";
+        css.position = "fixed";
+        css.top = "50%";
+        css.left = "50%";
+        css.transform = "translate(-50%, -50%)";
+        css.width = "700px";
+        css.height = "450px";
+        css.backgroundColor = "#000";
 
-          // 4. 아이프레임 CSS설정
-          let ifr = mv.querySelector("iframe");
-          let ifrcss = ifr.style;
-          ifrcss.border = "none";
-          ifrcss.width = "100%";
-          ifrcss.height = "100%";
+        // 4. 아이프레임 CSS설정
+        let ifr = mv.querySelector("iframe");
+        let ifrcss = ifr.style;
+        ifrcss.border = "none";
+        ifrcss.width = "100%";
+        ifrcss.height = "100%";
 
-          // 5. 닫기버튼  CSS셋팅하기
-          let cbtn = mv.querySelector(".cbtn");
-          // style.cssText 로 셋팅하자!
-          // 개별셋팅과 차이점은 이 설정은 모든 style속성의
-          // CSS 설정을 덮어씀! 주의!!!
-          // 반면 한 속성씩 셋팅하는 것은 한껀씩 개별 업데이트됨!
-          cbtn.style.cssText = `
+        // 5. 닫기버튼  CSS셋팅하기
+        let cbtn = mv.querySelector(".cbtn");
+        // style.cssText 로 셋팅하자!
+        // 개별셋팅과 차이점은 이 설정은 모든 style속성의
+        // CSS 설정을 덮어씀! 주의!!!
+        // 반면 한 속성씩 셋팅하는 것은 한껀씩 개별 업데이트됨!
+        cbtn.style.cssText = `
           position : absolute;
           top : 0;
           right : -70px;
@@ -768,21 +777,21 @@
           line-height : 50px;
         `;
 
-          // 6. 닫기버튼 클릭시 #mv 제거하기
-          cbtn.onclick = function () {
-            mv.remove();
-            // remove() 는 DOM 메서드임!
-            // 선택요소를 제거함!
+        // 6. 닫기버튼 클릭시 #mv 제거하기
+        cbtn.onclick = function () {
+          mv.remove();
+          // remove() 는 DOM 메서드임!
+          // 선택요소를 제거함!
 
-            // body 암전효과 클래스 on 제거하기
-            document.body.classList.remove("on");
-          }; //////// 닫기버튼 이벤트함수 ///////
+          // body 암전효과 클래스 on 제거하기
+          document.body.classList.remove("on");
+        }; //////// 닫기버튼 이벤트함수 ///////
 
-          // 7. body 요소에 클래스 on주기
-          // 동영상 배경 암전효과
-          document.body.classList.add("on");
-        } ///////////// playMovie 함수 ///////////
-        ///////////////////////////////////////////
+        // 7. body 요소에 클래스 on주기
+        // 동영상 배경 암전효과
+        document.body.classList.add("on");
+      } ///////////// playMovie 함수 ///////////
+      ///////////////////////////////////////////
     </script>
   </head>
 
