@@ -1,89 +1,140 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>018.클리핑과 마스킹 기법</title>
     <style>
-        html,body{
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-        }
-        body{
-            background-image: linear-gradient(to bottom, rgb(223, 219, 255),rgb(255, 204, 247), skyblue);
-        }
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+      }
+      body {
+        background-image: linear-gradient(
+          to bottom,
+          rgb(223, 219, 255),
+          rgb(255, 204, 247),
+          skyblue
+        );
+      }
 
-        /* 
+      /* 
             [ CSS Clipping ]
             - 이미지의 일부영역을 지정하여 부분만 보이게하는
              display기법
         */
-        /* 1. 정원클리핑 
+      /* 1. 정원클리핑 
             clip-path: circle(반지름 at x좌표 y좌표);
             -> 소괄호안의 값을 안쓰면 이미지를 채우는 중심원이 나옴
         */
-        .clip-circle{
-           /* clip-path: 
+      .clip-circle {
+        /* clip-path: 
            circle(123px at 123px 143px); */
-        }
-        /* 2. 타원클리핑 
+        clip-path: circle(30% at 40% 50%);
+      }
+      /* 2. 타원클리핑 
             clip-path: 
             ellipse(가로축 세로축 at x좌표 y좌표)
             -> 소괄호안의 값을 안쓰면 이미지를 채우는 타원이 나옴
         */
-        .clip-ellipse{
-            /* clip-path: 
+      .clip-ellipse {
+        /* clip-path: 
             ellipse(176px 72px at 182px 154px); */
-        }
-        /* 3. 다각형클리핑 
+        clip-path: ellipse(41% 29% at 42% 53%);
+      }
+      /* 3. 다각형클리핑 
             clip-path: polygon(x1 y1,x2 y2,...)
             -> 소괄호안을 비울 수 없다!
             -> 각 좌표값은 px,%모두 가능
         */
-        .clip-polygon{
-        }
+      .clip-polygon {
+        clip-path: polygon(
+          63% 0%,
+          74% 0%,
+          79% 25%,
+          67% 23%,
+          67% 36%,
+          74% 50%,
+          74% 81%,
+          56% 90%,
+          61% 100%,
+          30% 100%,
+          2% 58%,
+          47% 35%
+        );
+      }
 
-        /* 4. svg클리핑 
+      /* 4. svg클리핑 
             clip-path: url(#아이디명)
             - 미리 만들어진 아이디명의 svg 요소를 지정하여 
             그 모양만큼만 이미지가 보임
         */
-        .clip-svg{
-        }
+      .clip-svg {
+        clip-path: url(#myClip);
+      }
+      .clip-svg2 {
+        clip-path: url(#myClip2);
+      }
 
-        /* 
-            [ CSS Masking ] - 아직 웹표준기술아님!
+      /* 
+            [ CSS Masking ] - 2023-12 웹표준기술됨!
             - 이미지의 일부를 자연스럽게 감추는 기법
             - 검정색부분은 보이는 영역, 투명색은 숨기는 영역
             - 셋팅법이 배경이미지 셋팅과 유사
                 linear-gradient와 같은 그라데이션
                 CSS함수를 이용하여 셋팅함
+            - 이미지가 검정색에서 투명으로 바뀌는 것을
+            url()로 호출하여 사용하면 마스킹효과가 적용됨!
         */
-        .masking1{
-
-        }
-
-
+      .masking1 {
+        mask-image: 
+        linear-gradient(to right,black 30%,transparent 80%);
+      }
+      .masking2 {
+        /* 배경설정과 유사한 셋팅으로 설정함! */
+        mask-image: url(./images/letter.png);
+        mask-repeat: no-repeat;
+        mask-position: center;
+        mask-size: 700px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <!-- 클리핑효과주기 -->
-    <img src="images/img2.jpg" alt="image" class="clip-circle">
-    <img src="images/img1.jpg" alt="image" class="clip-ellipse">
-    <img src="images/img3.jpg" alt="image" class="clip-polygon">
-    <img src="images/img5.jpg" alt="image" class="clip-svg">
+    <img src="images/img2.jpg" alt="image" class="clip-circle" />
+    <img src="images/img1.jpg" alt="image" class="clip-ellipse" />
+    <img src="images/img3.jpg" alt="image" class="clip-polygon" />
+    <img src="images/img5.jpg" alt="image" class="clip-svg" />
+    <img src="images/img5.jpg" alt="image" class="clip-svg2" />
+
+    <!-- 마스킹효과주기1 -->
+    <img src="images/img4.jpg" alt="image" class="masking1" />
+    <!-- 마스킹효과주기2 -->
+    <img src="images/img4.jpg" alt="image" class="masking2" />
+    
     <svg>
-        <defs>
-            <clippath id="myClip">
-                <circle cx="90" cy="100" r="40"></circle>
-                <circle cx="90" cy="200" r="70"></circle>
-            </clippath>
-        </defs>
+      <defs>
+        <clippath id="myClip">
+          <circle cx="90" cy="100" r="40"></circle>
+          <circle cx="90" cy="200" r="70"></circle>
+        </clippath>
+      </defs>
     </svg>
 
-    <!-- 마스킹효과주기 -->
-    <img src="images/img4.jpg" alt="image" class="masking1">
-</body>
+    <!-- 추가SVG -->
+    <svg viewBox="0 0 400 300">
+      <defs>
+        <clippath id="myClip2">
+          <polygon
+            points="295.51,243.67 210.09,221.63 143.51,279.5 138.08,191.45 62.47,146.01 144.53,113.63 164.38,27.68 220.53,95.72 
+	308.41,88.04 261.05,162.47 "
+          />
+        </clippath>
+      </defs>
+    </svg>
+
+  </body>
 </html>
