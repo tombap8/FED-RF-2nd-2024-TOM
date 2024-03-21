@@ -102,6 +102,11 @@
         // 할당형 함수를 연결할 경우 위에서 만들고 아래서
         // 할당해야 연결가능함!
 
+        // -> 위의 이벤트설정은 
+        // 모두 그대로 쓸경우 아래와 같다!
+        // document.querySelector('a')
+        // .addEventListener('click',sonFn);
+
 
 
 
@@ -122,6 +127,7 @@
 
         // 2. 엄마집
         qs('p').onclick = () => {
+            // 자기자신 배경색 변경
             event.currentTarget.style
             .backgroundColor = 'yellow';
             // 이벤트 로그찍기
@@ -130,14 +136,20 @@
 
         // 3. 친척네집
         qs('div').onclick = () => {
+            // 자기자신 배경색 변경
             event.currentTarget.style
             .backgroundColor = 'green';
+
+            // 친척네집에서 target의 글자크기 변경하기            
+            event.target.style.fontSize = "80px";
+
             // 이벤트 로그찍기
             showLog('친척네집');
         };
 
         // 4. 대한민국 전체
         qs('body').onclick = () => {
+            // 자기자신 배경색 변경
             event.currentTarget.style
             .backgroundColor = 'blue';
             // 이벤트 로그찍기
