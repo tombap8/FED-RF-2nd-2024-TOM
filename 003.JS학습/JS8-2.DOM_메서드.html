@@ -78,7 +78,7 @@
         // 2. 이벤트 설정하기
         for (let i = 0; i < cntSmenu; i++) {
 
-            smenu[i].onmouseover = ()=>{
+            smenu[i].onmouseenter = ()=>{
                 // 변경대상 : .smenu div
                 let target = qsEl(smenu[i],'div');
                 // 높이값 대상: .smenu ol
@@ -91,7 +91,7 @@
 
             }; ///// mouseover 이벤트 함수 //////
 
-            smenu[i].onmouseout = ()=>{
+            smenu[i].onmouseleave = ()=>{
                 // 변경대상 : .smenu div
                 let target = qsEl(smenu[i],'div');
                 // 변경내용 : 높이값
