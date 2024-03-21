@@ -72,11 +72,14 @@
         // 배경색 변경하기 기능구현
         // 대상들 : body, div, p, a
 
-        // 1. 아들방
+        // 1. 아들방 ////////////////////////
+
+        // (1)클릭이벤트 속성에 함수를 할당하여 이벤트처리함
         qs('a').onclick = (e) => {
             // 이벤트 버블링 막기
-            e.stopPropagation();
+            // e.stopPropagation();
             // event.stopPropagation();
+
             // 배경색 변경하기
             // event.currentTarget.style
             e.currentTarget.style
@@ -84,7 +87,26 @@
 
             // 이벤트 로그찍기
             showLog('아들방');
-        };
+        }; //////// click 이벤트 함수 //////
+
+        // ->>> 추가 이벤트 기능을 구현한 함수 만들기!
+        const sonFn = e => {
+            // 아웃라인 넣기
+            e.currentTarget.style.outline =
+            '20px dotted hotpink';
+
+        }; /////////// sonFn 함수 //////////////
+
+        // (2) 아들방에 추가 이벤트 설정하기!
+        addEvt(qs('a'),'click',sonFn);
+        // 할당형 함수를 연결할 경우 위에서 만들고 아래서
+        // 할당해야 연결가능함!
+
+
+
+
+
+
 
         // event 객체를 사용한 경우와
         // 이벤트 함수 내부에 전달되는
@@ -102,18 +124,24 @@
         qs('p').onclick = () => {
             event.currentTarget.style
             .backgroundColor = 'yellow';
+            // 이벤트 로그찍기
+            showLog('엄마집');
         };
 
         // 3. 친척네집
         qs('div').onclick = () => {
             event.currentTarget.style
             .backgroundColor = 'green';
+            // 이벤트 로그찍기
+            showLog('친척네집');
         };
 
         // 4. 대한민국 전체
         qs('body').onclick = () => {
             event.currentTarget.style
             .backgroundColor = 'blue';
+            // 이벤트 로그찍기
+            showLog('대한민국 전체');
         };
 
      } ////////////// loadFn 함수 ////////////////////
