@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <title>JS8-2. DOM 메서드</title>
+        <style>
+            .wrap {
+                display: flex;
+                width: 600px;
+                min-height: 600px;
+                margin: 0 auto;
+                padding: 15px;
+                border: 4px dotted lightseagreen;
+            }
+            .wrap > div {
+                outline: 1px solid red;
+                width: 300px;
+            }
+
+            div img {
+                width: 50px;
+            }
+
+            /*서브메뉴 숨기기*/
+            .smenu > div {
+                height: 0;
+                overflow: hidden;
+            }
+
+            #div02 {
+                width: 600px;
+                padding: 10px;
+            }
+
+            #div02 ul {
+                display: flex;
+                /* 플렉스 박스 */
+                flex-wrap: wrap;
+
+                margin: 0;
+                padding: 10px;
+                list-style: none;
+                text-align: center;
+            }
+
+            #div02 ul li {
+                padding: 10px;
+            }
+        </style>
+        
+    </head>
+
+    <body>
+        <div class="wrap">
+            <div id="div01">
+                마우스오버시 <br />
+                1. 서브메뉴 보이기 <br />
+                2. 링크이동하기
+                <ul>
+                    <li class="smenu">
+                        <a href="#">검색포털사이트</a>
+                        <div>
+                            <ol>
+                                <li><a href="#">Google</a></li>
+                                <li><a href="#">Naver</a></li>
+                                <li><a href="#">Daum</a></li>
+                                <li><a href="#">Nate</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li class="smenu">
+                        <a href="#">통신사사이트</a>
+                        <div>
+                            <ol>
+                                <li><a href="#">SK</a></li>
+                                <li><a href="#">KT</a></li>
+                                <li><a href="#">Uplus</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li class="smenu">
+                        <a href="#">영화관사이트</a>
+                        <div>
+                            <ol>
+                                <li><a href="#">CGV</a></li>
+                                <li><a href="#">MEGABOX</a></li>
+                                <li><a href="#">LOTTE CINEMA</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li class="smenu">
+                        <a href="#">쇼핑몰사이트</a>
+                        <div>
+                            <ol>
+                                <li><a href="#">GMARKET</a></li>
+                                <li><a href="#">11번가</a></li>
+                                <li><a href="#">Auction</a></li>
+                                <li><a href="#">스토어팜</a></li>
+                                <li><a href="#">인터파크</a></li>
+                                <li><a href="#">쿠팡</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li class="smenu">
+                        <a href="#">스마트폰사이트</a>
+                        <div>
+                            <ol>
+                                <li><a href="#">Apple</a></li>
+                                <li><a href="#">Samsung</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                    <li class="smenu">
+                        <a href="#">게임사이트</a>
+                        <div>
+                            <ol>
+                                <li><a href="#">넷마블</a></li>
+                                <li><a href="#">넥슨</a></li>
+                                <li><a href="#">IMC</a></li>
+                            </ol>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="div02">
+                <h2>요소의 생성,삭제,이동하기</h2>
+                <button class="nbt">새리스트생성</button> <br /><br />
+                <button class="mvl">맨뒤이동</button> <br /><br />
+                <button class="mvf">맨앞이동</button>
+                <ul>
+                    <li>
+                        <img src="images/ab1.jpg" alt="아이언맨" title="아이언맨" />
+                    </li>
+                    <li>
+                        <img src="images/ab2.jpg" alt="딱딱이" title="딱딱이" />
+                    </li>
+                    <li><img src="images/ab3.jpg" alt="토르" title="토르" /></li>
+                    <li><img src="images/ab4.jpg" alt="닥스" title="닥스" /></li>
+                    <li>
+                        <img src="images/ab5.jpg" alt="스타로드" title="스타로드" />
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </body>
+</html>
