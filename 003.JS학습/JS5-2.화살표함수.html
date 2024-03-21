@@ -82,6 +82,89 @@
 
       // 함수호출하기
       console.log("z(400,20) 함수호출:", z(400, 20));
+
+      // 일반적인 할당형 함수 /////
+      const my = function (x) {
+        return `나는 ${x}다!`;
+      }; /////// my함수 ////////
+
+      // 함수호출하기
+      console.log(my('프론트엔드 개발자'));
+
+
+      // 화살표 함수 완전축약형! /////
+      const we = x => `우리는 ${x}다!`;
+      /////// we함수 ////////
+
+      // 함수호출하기
+      console.log(we('프론트엔드 개발자'));
+
+      ////////////////////////////////////
+
+      // querySelector 함수 짧게 만들기! ////
+      const qs = x => document.querySelector(x);
+      const qsa = x => document.querySelectorAll(x);
+
+      // addEventListener 함수 짧게 만들기! ////
+      const addEvt = 
+      (ele,evt,fn) => ele.addEventListener(evt,fn);
+
+      /// 화면에 출력된 버튼에 이벤트 걸기 /////
+      // 로드구역 만들기 : addEvt()
+      addEvt(window,'load',()=>{
+        // 함수호출확인
+        console.log('로딩완료!');
+
+        // 1. 대상선정 : .btn
+        let btn = qsa('.btn');
+        console.log('버튼들:',btn);
+
+        // 2. 변경 반영하기
+        // 2-1. 버튼요소 클릭시 글자바꾸기 (익명함수)
+        btn[0].onclick = function(){
+          console.log('익명함수에서 this',this);
+          // 글자변경을 this키워드를 사용하여 변경
+          this.innerText = '올드익명함수다!';
+        }; ////////// click이벤트 함수 ///////
+
+        // 2-2. 버튼요소 클릭시 글자바꾸기 (화살표함수)
+        btn[1].onclick = () => {
+          console.log('화살표함수에서 this',this);
+          // 화살표함수의 this는 이벤트발생하는
+          // 자기자신이 아니다!!! 일반적으로 window임!
+          // 이벤트객체를 사용하여 현재 발생하는
+          // 요소 자신을 찾도록 한다!
+          console.log('화살표함수 이벤트발생자신:',
+          event.currentTarget);
+          // event 는 브라우저 이벤트관련 객체임!
+          // currentTarget은 이벤트가 발생한 요소임!
+          event.currentTarget.innerText = 
+          '나는 화살표함수다!';
+        }; ////////// click이벤트 함수 ///////
+
+
+      }); ////////// 로드구역 함수 ///////////
+
+      /************************************ 
+          화살표함수를 사용할때
+          this 키워드의 의미는 다르다!!!
+
+          화살표함수에서 this는 window객체를 의미!
+          (자신을 생성한 객체를 가리킨다!
+          즉, 여기서는 window로딩구역안에 생성되어서
+          window객체를 가리키고 만약 이것이 어떤
+          Object안에 메서드라면 그 Object를 가리킴!)
+          -> JS this키워드를 자세히 알아볼것임!!!
+
+          this 키워드 대신
+          event.currentTarget 을 사용하여
+          현재요소 자신을 의미하도록
+          코딩해야함!
+
+      ************************************/
+
+
+
     </script>
   </head>
 
