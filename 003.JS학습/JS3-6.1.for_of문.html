@@ -194,13 +194,38 @@
             // 위치값 기준은 document 문서전체이며
             // x축은 왼쪽끝, y축은 상단끝이 기준임
             // 숫자는 단위표시없는 px값
-            console.log(
-                'x:',e.pageX,'\ny:',e.pageY);
+            
+            // console.log(
+            //     'x:',e.pageX,'\ny:',e.pageY);
 
         // 변경대상의 top,left 값을 변경한다!
         moving.style.top = e.pageY+'px';
         moving.style.left = e.pageX+'px';
        }; //////// mousemove이벤트함수 //////
+
+       // [.wrap에 마우스엔터시 포스터 보이기]
+       wrap.onmouseenter = ()=>{
+        console.log('삼항연산결과:',
+        minfo[0].innerText==''?
+            "기본":minfo[0].innerText);
+        // 포스터 박스 배경이미지 초기셋팅하기
+        // 영화제목박스가 비어있으면 "기본"포스터
+        // 아니면 영화제목과 같은 포스터를 출력
+        // 비 ? 집 : 놀이동산
+        // 첫번째입력박스비었냐 ? "기본" : 포스터명
+        // minfo[0]가 첫번째 입력박스임!
+        moving.style.backgroundImage = 
+        `url(${img_src[
+            minfo[0].innerText==''?
+            "기본":minfo[0].innerText
+        ]})`;
+        moving.style.display = 'block';
+       }; //// mouseenter ////
+
+       // [.wrap에 마우스리브시 포스터 숨기기]
+       wrap.onmouseleave = ()=>{
+        moving.style.display = 'none';
+       }; ///// mouseleave ////
 
 
 
@@ -311,6 +336,14 @@
 
         border: 4px dashed hotpink;
         border-radius: 20px;
+
+        /* 처음에 안보이게 하기 */
+        display: none;
+
+        /* 트랜지션 설정하기
+        - 처음이동시 빨리움직이고 나중에 천천히
+        ease-out 이 가장 자연스럽다! */
+        transition: .3s ease-out;
       }
     </style>
   </head>
