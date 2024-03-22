@@ -77,11 +77,25 @@ function loadFn() {
   // abtn[0].onclick = ()=>{
   // };
 
+  // 광클 금지변수
+  let prot = false;
+
   /****************************************** 
      함수명: goSlide
      기능: 슬라이드 이동
      ******************************************/
   function goSlide() {
+
+    // 광클금지 설정하기 ///////////
+    // 클릭신호를 막아서 못들어오게 하고
+    // 일정시간후 다시 열어준다!
+    if(prot) return; // 돌아가!(함수나감!)
+    prot=true; // 잠금! (뒤의호출막기!)
+    setTimeout(() => {
+        prot=false; // 0.6초후 해제!
+    }, 600);
+    /////////////////////////////////////
+
     // 1.오른쪽 버튼인 .ab2인가?
     let isRbtn = this.classList.contains("ab2");
     // [classList 객체의 contains() 메서드]
@@ -92,21 +106,22 @@ function loadFn() {
     console.log("나 슬라이드야~!", this, isRbtn);
     // this는 호출한 버튼 자신
 
-    // 오른쪽 버튼일 경우 ////
+    // 2. 버튼별 분기하기 //////
+    // 2-1.오른쪽 버튼일 경우 ////
     if (isRbtn) {
-      // 먼저 왼쪽을 이동하기
+      // (1)먼저 왼쪽으로 이동하기
       slide.style.left = "-100%";
       slide.style.transition = ".6s ease-in-out";
 
-      // 이동하는 시간 0.6초간 기다림!
+      // (2)이동하는 시간 0.6초간 기다림!
       setTimeout(() => {
-        // 맨앞 li 맨뒤로 이동
+        // (2-1) 맨앞 li 맨뒤로 이동
         slide.appendChild(
             slide.querySelectorAll("li")[0]);
         // 슬라이드 left 값이 -100% 이므로
-        // left값을 0으로 변경
+        // (2-2) left값을 0으로 변경
         slide.style.left = '0';
-        // left 트랜지션 없애기
+        // (2-3) left 트랜지션 없애기
         slide.style.transition = 'none';
       }, 600);
 
@@ -117,6 +132,48 @@ function loadFn() {
       // 맨뒤로 이동함
       // 맨앞요소를 선택하여 맨뒤로 보냄
     } //// if ////
+
+    // 2-2.왼쪽 버튼일 경우 ////
+    else{
+        // 하위 li수집
+        let list = slide.querySelectorAll('li');
+        // (1)맨뒤 li 맨앞으로 이동하기
+        // 놈놈놈 시리즈!
+        // insertBefore(넣을놈,넣을놈전놈)
+        // insertBefore(맨뒤li,맨앞li)
+        slide.insertBefore(
+            list[list.length-1],list[0]);
+        
+        // (2) left 값을 -100%로 변경하여
+        // 맨뒤 li가 맨앞으로 온것을 숨긴다!
+        // 왼쪽에서 슬라이드 들어올 준비!!!
+        slide.style.left = '-100%';
+        // 트랜지션이 한번 버튼클릭후 생기므로 없애줌
+        slide.style.transition = 'none';
+
+        //////////////////////////////////
+        // 같은 left 값을 변경하기 때문에
+        // 코드 처리구역을 분리하여준다!
+        // 이때 사용되는 메서드는  setTimeout()!
+        // 시간차는 어쪄죠? 0을 줘도 코드를
+        // 분리하여 처리하므로 동시처리가 아니고
+        // 비동기처리하기 때문에 코드가 잘 작동한다!
+        setTimeout(() => {
+            // (3) left 값을 0으로 트랜지션하여 들어옴
+            slide.style.left = '0';
+            slide.style.transition = 
+            ".6s ease-in-out";
+            
+        }, 0);
+
+
+
+
+    } /// else ///
+
+
+
+
   } ///////////// goSlide 함수 ////////////////
   /////////////////////////////////////////////
 } //////////////// loadFn 함수 ///////////////
