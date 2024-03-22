@@ -70,11 +70,18 @@ function loadFn() {
      기능: 슬라이드 이동
      ******************************************/
     function goSlide(){
-        // 함수호출확인
-        console.log('나 슬라이드야~!',this);
+        // 1.오른쪽 버튼인 .ab2인가?
+        let isRbtn = this.classList.contains('ab2');
 
-       // 슬라이드 순번 증가
-       snum++;
+        // 함수호출확인
+        console.log('나 슬라이드야~!',this,isRbtn);
+        // this는 호출한 버튼 자신
+        
+        // 2. 오른쪽버튼이면 ++, 아니면 --
+        // 슬라이드 순번 증감
+        isRbtn? snum++ : snum--;
+        
+
        console.log('이동%:',(-100*snum)+'%');
     
        slide.style.left = (-100*snum)+'%';
