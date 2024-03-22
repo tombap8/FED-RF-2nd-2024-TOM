@@ -50,7 +50,7 @@ function loadFn() {
     const slide = qs('#slide');
     // console.log(abtn,slide);
 
-    // 오른쪽 버튼 처음에 숨기기
+    // 왼쪽 버튼 처음에 숨기기
     abtn[0].style.display = 'none';
 
     // 슬라이드 순번 전역변수

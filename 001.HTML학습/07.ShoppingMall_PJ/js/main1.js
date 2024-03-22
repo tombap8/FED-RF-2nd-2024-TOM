@@ -6,11 +6,10 @@ const qsa = (x) => document.querySelectorAll(x);
 
 // addEvent 함수
 // ele - 요소, evt - 이벤트, fn - 함수
-const addEvt = 
-(ele, evt, fn) => ele.addEventListener(evt, fn);
+const addEvt = (ele, evt, fn) => ele.addEventListener(evt, fn);
 
 // HTML태그 로딩후 loadFn함수 호출! ///
-addEvt(window,"DOMContentLoaded", loadFn);
+addEvt(window, "DOMContentLoaded", loadFn);
 
 /***************************************************** 
     [ 슬라이드 이동 기능정의 ]
@@ -54,7 +53,71 @@ addEvt(window,"DOMContentLoaded", loadFn);
     기능: 로딩 후 버튼 이벤트 및 기능구현
 ******************************************/
 function loadFn() {
-    console.log("로딩완료!");
+  console.log("로딩완료!");
 
+  // 이동버튼 대상:  .abtn
+  const abtn = qsa(".abtn");
+  // 변경대상 : #slide
+  const slide = qs("#slide");
+  // console.log(abtn,slide);
+
+  // 슬라이드 순번 전역변수
+  let snum = 0;
+
+  // 2. 버튼을 모두 이벤트 설정하기
+  for (let x of abtn) {
+    x.onclick = goSlide;
+  } /// for of ///
+
+  // 2. 오른쪽 버튼 클릭시 기능구현
+  // abtn[1].onclick = ()=>{
+  // };
+
+  // 3. 왼쪽 버튼 클릭시 기능구현
+  // abtn[0].onclick = ()=>{
+  // };
+
+  /****************************************** 
+     함수명: goSlide
+     기능: 슬라이드 이동
+     ******************************************/
+  function goSlide() {
+    // 1.오른쪽 버튼인 .ab2인가?
+    let isRbtn = this.classList.contains("ab2");
+    // [classList 객체의 contains() 메서드]
+    // -> 해당요소의 특정 클래스인지 여부를 리턴함
+    // 해당클래스가 있으면 true, 없으면 false
+
+    // 함수호출확인
+    console.log("나 슬라이드야~!", this, isRbtn);
+    // this는 호출한 버튼 자신
+
+    // 오른쪽 버튼일 경우 ////
+    if (isRbtn) {
+      // 먼저 왼쪽을 이동하기
+      slide.style.left = "-100%";
+      slide.style.transition = ".6s ease-in-out";
+
+      // 이동하는 시간 0.6초간 기다림!
+      setTimeout(() => {
+        // 맨앞 li 맨뒤로 이동
+        slide.appendChild(
+            slide.querySelectorAll("li")[0]);
+        // 슬라이드 left 값이 -100% 이므로
+        // left값을 0으로 변경
+        slide.style.left = '0';
+        // left 트랜지션 없애기
+        slide.style.transition = 'none';
+      }, 600);
+
+      // 맨 앞li 맨뒤로 이동하기
+      // appendChild(요소)
+      // -> 원래 뒤에 요소추가기능임
+      // -> 기존있는 요소를 선택시
+      // 맨뒤로 이동함
+      // 맨앞요소를 선택하여 맨뒤로 보냄
+    } //// if ////
+  } ///////////// goSlide 함수 ////////////////
+  /////////////////////////////////////////////
 } //////////////// loadFn 함수 ///////////////
 /////////////////////////////////////////////
