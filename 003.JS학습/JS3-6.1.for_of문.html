@@ -101,7 +101,7 @@
         const btngo = document.querySelectorAll(".btngo");
         // 1-2. 변경 대상 : 데이터표시 박스 .minfo
         const minfo = document.querySelectorAll(".minfo");
-        // console.log(btngo,minfo);
+        console.log(btngo, minfo);
 
         // 2. 이벤트 설정하기
         // .btngo 버튼들에게 모두 click이벤트를 걸어준다!
@@ -170,65 +170,59 @@
           }; ////// click 이벤트 함수 ///
         } //////////// for of ///////////
 
-
         /************************************* 
             추가기능 : .wrap 박스에 마우스 무브시
                 포스터박스 포인터 따라다니기
         *************************************/
-       // 1. 대상선정
-       // 1-1.이벤트 대상 : .wrap
-       const wrap = 
-       document.querySelector('.wrap');
-       // 1-2.변경대상 :  .flying-poster
-       const moving = 
-       document.querySelector('.flying-poster');
+        // 1. 대상선정
+        // 1-1.이벤트 대상 : .wrap
+        const wrap = document.querySelector(".wrap");
+        // 1-2.변경대상 :  .flying-poster
+        const moving = document.querySelector(".flying-poster");
 
-       console.log(wrap, moving);
+        console.log(wrap, moving);
 
-       // 2. 이벤트 설정 + 기능구현
-       // mousemove이벤트 : 요소위에 마우스 움직일때 계속 발생함
-       wrap.onmousemove = (e) => {//e-이벤트전달변수
-            // 이벤트 객체로 부터 x,y 포인터 위치값
-            // event.pageX ->  x축좌표
-            // event.pageY ->  x축좌표
-            // 위치값 기준은 document 문서전체이며
-            // x축은 왼쪽끝, y축은 상단끝이 기준임
-            // 숫자는 단위표시없는 px값
-            
-            // console.log(
-            //     'x:',e.pageX,'\ny:',e.pageY);
+        // 2. 이벤트 설정 + 기능구현
+        // mousemove이벤트 : 요소위에 마우스 움직일때 계속 발생함
+        wrap.onmousemove = (e) => {
+          //e-이벤트전달변수
+          // 이벤트 객체로 부터 x,y 포인터 위치값
+          // event.pageX ->  x축좌표
+          // event.pageY ->  x축좌표
+          // 위치값 기준은 document 문서전체이며
+          // x축은 왼쪽끝, y축은 상단끝이 기준임
+          // 숫자는 단위표시없는 px값
 
-        // 변경대상의 top,left 값을 변경한다!
-        moving.style.top = e.pageY+'px';
-        moving.style.left = e.pageX+'px';
-       }; //////// mousemove이벤트함수 //////
+          // console.log(
+          //     'x:',e.pageX,'\ny:',e.pageY);
 
-       // [.wrap에 마우스엔터시 포스터 보이기]
-       wrap.onmouseenter = ()=>{
-        console.log('삼항연산결과:',
-        minfo[0].innerText==''?
-            "기본":minfo[0].innerText);
-        // 포스터 박스 배경이미지 초기셋팅하기
-        // 영화제목박스가 비어있으면 "기본"포스터
-        // 아니면 영화제목과 같은 포스터를 출력
-        // 비 ? 집 : 놀이동산
-        // 첫번째입력박스비었냐 ? "기본" : 포스터명
-        // minfo[0]가 첫번째 입력박스임!
-        moving.style.backgroundImage = 
-        `url(${img_src[
-            minfo[0].innerText==''?
-            "기본":minfo[0].innerText
-        ]})`;
-        moving.style.display = 'block';
-       }; //// mouseenter ////
+          // 변경대상의 top,left 값을 변경한다!
+          moving.style.top = e.pageY + "px";
+          moving.style.left = e.pageX + "px";
+        }; //////// mousemove이벤트함수 //////
 
-       // [.wrap에 마우스리브시 포스터 숨기기]
-       wrap.onmouseleave = ()=>{
-        moving.style.display = 'none';
-       }; ///// mouseleave ////
+        // [.wrap에 마우스엔터시 포스터 보이기]
+        wrap.onmouseenter = () => {
+          console.log(
+            "삼항연산결과:",
+            minfo[0].innerText == "" ? "기본" : minfo[0].innerText
+          );
+          // 포스터 박스 배경이미지 초기셋팅하기
+          // 영화제목박스가 비어있으면 "기본"포스터
+          // 아니면 영화제목과 같은 포스터를 출력
+          // 비 ? 집 : 놀이동산
+          // 첫번째입력박스비었냐 ? "기본" : 포스터명
+          // minfo[0]가 첫번째 입력박스임!
+          moving.style.backgroundImage = `url(${
+            img_src[minfo[0].innerText == "" ? "기본" : minfo[0].innerText]
+          })`;
+          moving.style.display = "block";
+        }; //// mouseenter ////
 
-
-
+        // [.wrap에 마우스리브시 포스터 숨기기]
+        wrap.onmouseleave = () => {
+          moving.style.display = "none";
+        }; ///// mouseleave ////
       } //////////// loadFn 함수 ///////////
       //////////////////////////////////////
 
@@ -322,9 +316,9 @@
         background: url(./images/ala1.jpg) no-repeat center/cover;
 
         /* 포인터위치에서 정중앙이동 */
-        transform: translate(-50%, -50%); 
+        transform: translate(-50%, -50%);
 
-        pointer-events: none;        
+        pointer-events: none;
         /************************************** 
             [ 포인터 이벤트 속성 ]  
             pointer-events : auto;
@@ -343,7 +337,7 @@
         /* 트랜지션 설정하기
         - 처음이동시 빨리움직이고 나중에 천천히
         ease-out 이 가장 자연스럽다! */
-        transition: .3s ease-out;
+        transition: 0.3s ease-out;
       }
     </style>
   </head>
