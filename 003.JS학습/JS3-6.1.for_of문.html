@@ -96,13 +96,66 @@
       // 로딩함수
       function loadFn() {
         console.log("로딩완료!");
-        // 1. 이벤트 대상 : 버튼들 .btngo
+        // 1. 대상선정
+        // 1-1. 이벤트 대상 : 버튼들 .btngo
         const btngo = document.querySelectorAll(".btngo");
-        // 2. 변경 대상 : 데이터표시 박스 .minfo
+        // 1-2. 변경 대상 : 데이터표시 박스 .minfo
         const minfo = document.querySelectorAll(".minfo");
-        console.log(btngo,minfo);
+        // console.log(btngo,minfo);
 
+        // 2. 이벤트 설정하기
+        // .btngo 버튼들에게 모두 click이벤트를 걸어준다!
+        // 오리지널 for문으로 구성한다면...
+        // for(let i=0; i<btngo.length; i++) {
+        //     btngo[i].onclick = ()=>{};
+        // }
 
+        // for of문은 (시;한;증) 설정이 필요없다!
+        // -> 변수에 처음부터 btngo[i]와 같은 순번
+        // 요소를 직접 제공한다!
+        // 구문 : for(변수 of 배열/컬렉션){}
+        // -> 여기에서 변수는 배열값 또는 각 요소임!
+        for (let x of btngo) {
+          // x는 각 버튼요소 자신!
+          // console.log('for of돌아!',x);
+          x.onclick = () => {
+            // 1. 클릭된 버튼텍스트
+            let btxt = x.innerText;
+            console.log(btxt);
+            // 2. 버튼명과 배열변수와 매칭하기
+            // 정보변수
+            let mvInfo;
+            switch (btxt) {
+              case "조제":
+                mvInfo = mv1;
+                break;
+              case "원더 우먼 1984":
+                mvInfo = mv2;
+                break;
+              case "도굴":
+                mvInfo = mv3;
+                break;
+              case "공조2: 인터내셔날":
+                mvInfo = mv4;
+                break;
+              case "육사오(6/45)":
+                mvInfo = mv5;
+                break;
+              case "더 퍼스트 슬램덩크":
+                mvInfo = mv6;
+                break;
+              case "바빌론":
+                mvInfo = mv7;
+                break;
+              case "무빙":
+                mvInfo = mv8;
+                break;
+            } /// switch case ////
+
+            console.log('선택데이터:',mvInfo);
+
+          };
+        } //////////// for of ///////////
       } //////////// loadFn 함수 ///////////
       //////////////////////////////////////
 
