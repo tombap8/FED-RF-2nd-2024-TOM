@@ -52,25 +52,36 @@ function loadFn() {
     // 슬라이드 순번 전역변수
     let snum = 0;
 
-    // 2. 오른쪽 버튼 클릭시 기능구현
-    abtn[1].onclick = ()=>{
-        // 슬라이드 순번 증가
-        snum++;
-        console.log('이동%:',(-100*snum)+'%');
+    // 2. 버튼을 모두 이벤트 설정하기
+    for(let x of abtn){
+        x.onclick = goSlide;
+    } /// for of ///
 
-        slide.style.left = (-100*snum)+'%';
-        slide.style.transition = '.6s ease-in-out';
-    };
+    // 2. 오른쪽 버튼 클릭시 기능구현
+    // abtn[1].onclick = ()=>{
+    // };
 
     // 3. 왼쪽 버튼 클릭시 기능구현
-    abtn[0].onclick = ()=>{
-        // 슬라이드 순번 증가
-        snum--;
-        console.log('이동%:',(-100*snum)+'%');
+    // abtn[0].onclick = ()=>{
+    // };
+    
+    /****************************************** 
+     함수명: goSlide
+     기능: 슬라이드 이동
+     ******************************************/
+    function goSlide(){
+        // 함수호출확인
+        console.log('나 슬라이드야~!',this);
 
-        slide.style.left = (-100*snum)+'%';
-        slide.style.transition = '.6s ease-in-out';
-    };
+       // 슬라이드 순번 증가
+       snum++;
+       console.log('이동%:',(-100*snum)+'%');
+    
+       slide.style.left = (-100*snum)+'%';
+       slide.style.transition = '.6s ease-in-out';
+
+   } ///////////// goSlide 함수 ////////////////
+   /////////////////////////////////////////////
 
     
 } //////////////// loadFn 함수 ///////////////
