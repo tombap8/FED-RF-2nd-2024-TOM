@@ -185,6 +185,23 @@
 
        console.log(wrap, moving);
 
+       // 2. 이벤트 설정 + 기능구현
+       // mousemove이벤트 : 요소위에 마우스 움직일때 계속 발생함
+       wrap.onmousemove = (e) => {//e-이벤트전달변수
+            // 이벤트 객체로 부터 x,y 포인터 위치값
+            // event.pageX ->  x축좌표
+            // event.pageY ->  x축좌표
+            // 위치값 기준은 document 문서전체이며
+            // x축은 왼쪽끝, y축은 상단끝이 기준임
+            // 숫자는 단위표시없는 px값
+            console.log(
+                'x:',e.pageX,'\ny:',e.pageY);
+
+        // 변경대상의 top,left 값을 변경한다!
+        moving.style.top = e.pageY+'px';
+        moving.style.left = e.pageX+'px';
+       }; //////// mousemove이벤트함수 //////
+
 
 
       } //////////// loadFn 함수 ///////////
@@ -278,6 +295,19 @@
         width: 200px;
         height: 300px;
         background: url(./images/ala1.jpg) no-repeat center/cover;
+
+        /* 포인터위치에서 정중앙이동 */
+        transform: translate(-50%, -50%); 
+
+        pointer-events: none;        
+        /************************************** 
+            [ 포인터 이벤트 속성 ]  
+            pointer-events : auto;
+            -> 기본값 : 대상 요소에 이벤트 발생함
+            pointer-events : none;
+            -> none : 대상 요소에 이벤트 무시함
+            -> 아래쪽 요소의 이벤트가 발생함!
+        **************************************/
 
         border: 4px dashed hotpink;
         border-radius: 20px;
