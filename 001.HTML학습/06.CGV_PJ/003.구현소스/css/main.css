@@ -82,6 +82,7 @@ body * {
     width: 65%;
     bottom: 5%;
     left: 50%;
+    /* 가로방향 중앙이동 */
     transform: translateX(-50%);
     /* 부모는? .main-area */
     /* 한번에 메인영역 하단으로
@@ -102,10 +103,13 @@ body * {
     /* 하위 요소 사이간격 */
     gap: 0 15px;
 }
-/* li리스트 사이간격 */
-/* .poster-menu li+li{
-    margin-left: 15px;
-} */
+/* 상위 ul>li 리스트 */
+.poster-menu>ul>li{
+    position: relative;
+    /* 부모자격 - 영화정보박스 */
+    overflow: hidden;
+    /* 자식요소인 영화정보박스 숨기기 */
+}
 
 /* 포스터 이미지 */
 .poster-menu img{
@@ -115,7 +119,39 @@ body * {
 /* 영화정보박스 : 오버시 올라올 박스 */
 .mv-info{
     position: absolute;
+    top: 100%;/* 아랫쪽에 나가있음 */
+    /* 부모는? .poster-menu>ul>li */
+    width: 100%;
+    height: 100%;
     color: #fff;
+    text-align: center;
+    /* 트랜지션 */
+    transition: .3s ease-in-out;
+}
+/* 부모li에 오버시 영화정보 박스 올라오기 */
+.poster-menu>ul>li:hover .mv-info{
+    top: 0;
+}
+/* 영화정보박스 하위 ol */
+.mv-info ol{
+    /* 플렉스 박스
+    -> 옆으로 흘러가지 않아도
+    구성요소의 흐름을 제어할목적으로 줌! */
+    display: flex;
+    /* 플렉스 진행방향 */
+    flex-direction: column;
+    /* 진행방향 정렬 */
+    justify-content: center;
+    /* 부모박스 채우기 */
+    height: 100%;
+    /* 줄바꿈 방지 */
+    white-space: nowrap;
+    /* 글자크기 */
+    font-size: 12px;
+    /* 줄간격 */
+    line-height: 2.5;
+    /* 반투명배경 */
+    background-color: #00000096;
 }
 
 /************ 3. 하단영역 ************/
