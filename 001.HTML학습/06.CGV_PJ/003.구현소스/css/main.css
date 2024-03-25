@@ -93,17 +93,25 @@ body * {
     clear: both;
 }
 /* 포스터 리스트 */
-.poster-menu li{
-    /* 블록요소 옆으로 흐르게 */
-    float: left;
+.poster-menu ul{
+    /* 플렉스박스 */
+    display: flex;
+    /* 하위 요소 사이간격 */
+    gap: 0 15px;
 }
 /* li리스트 사이간격 */
-.poster-menu li+li{
+/* .poster-menu li+li{
     margin-left: 15px;
-}
+} */
+
 /* 포스터 이미지 */
 .poster-menu img{
     height: 170px;
+}
+/* 영화정보박스 : 오버시 올라올 박스 */
+.mv-info{
+    position: absolute;
+    color: #fff;
 }
 /************ 3. 하단영역 ************/
 .footer-area{
