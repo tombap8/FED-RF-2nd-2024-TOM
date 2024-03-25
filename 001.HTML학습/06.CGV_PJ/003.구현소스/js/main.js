@@ -25,7 +25,11 @@ console.log('대상:',pMenu,ifr);
 // 포스터 버튼에 forEach()메서드로 순회한다!
 pMenu.forEach((ele)=>{
     ele.onclick = ()=>{
-        console.log('나클릭!',ele);
+        // 1.클릭된 a요소를 구분하기 위해
+        // 하위 img 포스터의 alt 속성 읽어오기
+        // 속성읽기 내장함수 : getAttribute(속성명)
+        let txt = ele.querySelector('img').getAttribute('alt');
+        console.log('나클릭!',txt);
     }; /// click함수 ////
 }); //// forEach /////
 
