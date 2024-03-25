@@ -235,4 +235,46 @@ z-index: 999;
   display: none;
 }
 
+/* 캐릭터 설명박스 */
+.descbx{
+  height: 0;
+  overflow: auto;
+  /* 넘치는 자식요소 auto일 경우
+  정해진 크기 보다 넘치는 세로 스크롤만 생김! */
+  background: url(../images/eachBG.jpg) no-repeat bottom/cover;
+  /* 트랜지션 */
+  transition: .4s ease-in-out;
+}
+/* 상위 캐릭터 개별박스에 오버시 설명박스 보이기 */
+.cat-inbox article:hover .descbx {
+  height: 200px;
+}
+/* 상위 캐릭터 개별박스에 오버시 이미지박스 트랜지션
+설명박스와 동일하게 설정하기 */
+.cat-inbox article .imbx {
+  transition: .4s ease-in-out;
+}
+/* 상위 캐릭터 개별박스에 오버시 이미지박스 마이너스
+마진으로 위로 올리기 */
+.cat-inbox article:hover .imbx {
+  margin-top: -200px;
+}
+/* 캐릭터 타이틀 */
+.descbx h3{
+  font-family: 'Gugi';
+  font-size: 2.4rem;
+  font-weight: normal;
+  padding: 15px 10px 5px;
+  letter-spacing: -1px;
+}
+.descbx p{
+  font-family: 'Single Day','ZCOOL KuaiLe';
+  font-size: 1.8rem;
+  line-height: 1.6;
+  padding: 1.5rem;
+  /* 양쪽정렬 */
+  text-align: justify;
+}
+
+
 /************* 3. 하단영역 *************/
