@@ -21,7 +21,17 @@ const ifr = document.querySelector('#ifr');
 
 console.log('대상:',pMenu,ifr);
 
-// 2. 이벤트 설정 및 기능구현
+// 2. 영화아이디 정보 객체로 구성하기
+const movieId = {
+    "파묘":"rjW9E1BR_30",
+    "이프온리":"WGFapljXfnU",
+    "웡카":"Bldf9SWRPFM",
+    "시민덕희":"Qwhmn6Dimsg",
+    "소풍":"7VHsScXQyw0",
+    "듄:파트2":"4JElrZ1WB40",
+}
+
+// 3. 이벤트 설정 및 기능구현
 // 포스터 버튼에 forEach()메서드로 순회한다!
 pMenu.forEach((ele)=>{
     ele.onclick = ()=>{
@@ -30,6 +40,14 @@ pMenu.forEach((ele)=>{
         // 속성읽기 내장함수 : getAttribute(속성명)
         let txt = ele.querySelector('img').getAttribute('alt');
         console.log('나클릭!',txt);
+
+        // 2. 아이프레임 src변경하기
+        // 속성변경 JS내장함수
+        // -> setAttribute(속성명,값)
+        // 대상: 아이프레임 (#ifr->ifr변수)
+        ifr.setAttribute('src',
+        `https://www.youtube.com/embed/${movieId[txt]}?autoplay=1`);
+
     }; /// click함수 ////
 }); //// forEach /////
 
