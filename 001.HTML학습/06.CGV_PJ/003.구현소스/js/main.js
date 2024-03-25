@@ -9,7 +9,23 @@
 
     2. 이때 자동재생 옵션을 추가하여
     src 변경시 바로 동영상이 재생되게함!
-    
+
     3. 영상이 끝나면 다시 처음부터 재생되게
     옵션을 추가해 준다!
 ***********************************/
+// 1. 대상선정
+// 1-1. 이벤트 대상 : .poster-menu a
+const pMenu = document.querySelectorAll('.poster-menu a');
+// 1-2. 변경 대상 : #ifr
+const ifr = document.querySelector('#ifr');
+
+console.log('대상:',pMenu,ifr);
+
+// 2. 이벤트 설정 및 기능구현
+// 포스터 버튼에 forEach()메서드로 순회한다!
+pMenu.forEach((ele)=>{
+    ele.onclick = ()=>{
+        console.log('나클릭!',ele);
+    }; /// click함수 ////
+}); //// forEach /////
+
