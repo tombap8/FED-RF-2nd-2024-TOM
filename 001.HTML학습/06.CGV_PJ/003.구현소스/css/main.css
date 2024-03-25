@@ -79,19 +79,22 @@ body * {
 /* 2-2.포스터 메뉴 */
 .poster-menu{
     position: absolute;
-    bottom: 50px;
-    left: 215px;
+    width: 65%;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
     /* 부모는? .main-area */
     /* 한번에 메인영역 하단으로
     위치이동 포지셔닝을 하기위한
     최적의 포지션은 absolute다! */
 }
 /* 포스터 ul 가상요소 clear */
-.poster-menu ul::after{
+/* .poster-menu ul::after{
     content: '';
     display: block;
     clear: both;
 }
+ */
 /* 포스터 리스트 */
 .poster-menu ul{
     /* 플렉스박스 */
@@ -106,13 +109,15 @@ body * {
 
 /* 포스터 이미지 */
 .poster-menu img{
-    height: 170px;
+    width: 100%;
+    /* height: 170px; */
 }
 /* 영화정보박스 : 오버시 올라올 박스 */
 .mv-info{
     position: absolute;
     color: #fff;
 }
+
 /************ 3. 하단영역 ************/
 .footer-area{
     height: 100px;
