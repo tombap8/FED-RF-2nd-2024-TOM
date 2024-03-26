@@ -113,6 +113,14 @@
     </style>
     <script>
       // 자바스크립트 구역
+      window.addEventListener('load',()=>{
+        document.querySelectorAll('.pg')
+        .forEach(ele=>{
+          ele.onclick = ()=>{
+            ele.classList.toggle('on');
+          }; /// click ///
+        }); /// forEach ////
+      }); //// load 구역 ////
     </script>
   </head>
   <body>
