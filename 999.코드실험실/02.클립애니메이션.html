@@ -48,8 +48,56 @@
 
       /* 페이지별 배경이미지 */
       .pg1 {
+        /* 원형 클립패스
+          clip-path: 
+          circle(반지름 at x축위치 y축위치)
+
+          ((퍼센트기준:))
+          - 반지름은 장축기준
+          - x축위치는 가로길이기준
+          - y축위치는 세로길이기준
+        */
+        clip-path: 
+        circle(10% at 10% 20%);
+        /* 배경이미지 */
         background-image: url(https://images.unsplash.com/photo-1503614472-8c93d56e92ce?q=80&w=2911&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
       }
+
+      /* 애니메이션 호출은 클래스 on 을 줄때 작동 */
+      .pg1.on{
+        animation: 
+        circle-ani 10s ease-in-out 1s forwards;
+        /* 10초간 1초후 마지막상태유지 */
+      }
+
+      /* 애니메이션 키프레임 만들기 */
+      @keyframes circle-ani {
+        /* 1.왼쪽위 */
+        0%{
+          clip-path: circle(10% at 10% 20%);
+        }
+        /* 2.오른쪽위 */
+        20%{
+          clip-path: circle(10% at 90% 20%);
+        }
+        /* 3.오른쪽아래 */
+        40%{
+          clip-path: circle(10% at 90% 80%);
+        }
+        /* 4.왼쪽아래 */
+        60%{
+          clip-path: circle(10% at 10% 80%);
+        }
+        /* 5.중앙 */
+        80%{
+          clip-path: circle(10% at 50% 50%);
+        }
+        /* 6.중앙에서 확대 */
+        100%{
+          clip-path: circle(100% at 50% 50%);
+        }
+      } /* circle-ani */
+
       .pg2 {
         background-image: url(https://images.unsplash.com/photo-1503424886307-b090341d25d1?q=80&w=2952&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
       }
