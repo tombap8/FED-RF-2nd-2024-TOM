@@ -88,7 +88,7 @@ function loadFn() {
   indic = document.querySelectorAll('.indic li');
 
   // 슬라이드 순번 전역변수
-  let snum = 0;
+  // let snum = 0; -> 불필요!
 
   // 2. 버튼을 모두 이벤트 설정하기
   for (let x of abtn) {
