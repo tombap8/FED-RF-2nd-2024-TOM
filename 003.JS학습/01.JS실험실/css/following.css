@@ -81,7 +81,7 @@ body {
 
   /* 트랜스폼 중앙이동 */
   transform: translate(-50%,-50%);
-
+  
   /* 처음에 안보임 */
   opacity: 0;
 }
