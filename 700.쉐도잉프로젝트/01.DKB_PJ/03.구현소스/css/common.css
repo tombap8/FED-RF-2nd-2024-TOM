@@ -247,7 +247,7 @@ z-index: 999;
 }
 /* 상위 캐릭터 개별박스에 오버시 설명박스 보이기 */
 .cat-inbox article:hover .descbx {
-  height: 200px;
+  padding-top: 55%;
 }
 /* 상위 캐릭터 개별박스에 오버시 이미지박스 트랜지션
 설명박스와 동일하게 설정하기 */
@@ -255,17 +255,21 @@ z-index: 999;
   transition: .4s ease-in-out;
 }
 /* 상위 캐릭터 개별박스에 오버시 이미지박스 마이너스
-마진으로 위로 올리기 */
-.cat-inbox article:hover .imbx {
-  margin-top: -200px;
+마진으로 위로 올리기 + 캐릭터 타이틀 마진탑도! */
+.cat-inbox article:hover .imbx,
+.cat-inbox article:hover .descbx h3 {
+  margin-top: -55%;
 }
 /* 캐릭터 타이틀 */
 .descbx h3{
+  margin-top: 0;
   font-family: 'Gugi';
   font-size: 2.4rem;
   font-weight: normal;
   padding: 15px 10px 5px;
   letter-spacing: -1px;
+  /* 트랜지션 */
+  transition: .4s ease-in-out;
 }
 .descbx p{
   font-family: 'Single Day','ZCOOL KuaiLe';
