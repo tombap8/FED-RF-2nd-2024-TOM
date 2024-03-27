@@ -53,8 +53,8 @@ body {
 
 /* 따라다니는 원 */
 .mover {
-  position: absolute;
-  /* position: fixed; -> JS에서 clientY사용 */
+  /* position: absolute; */
+  position: fixed; /* -> JS에서 clientY사용 */
   top: 0;
   left: 0;
   width: var(--mover-size);

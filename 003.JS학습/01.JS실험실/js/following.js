@@ -41,7 +41,10 @@ myBody.onmousemove = (e) => {
 
   // 2. 무버에 위치값 적용하기
   // -> 무버에는 트랜지션이 적용되어 있음!
-  mover.style.top = e.pageY + 'px';
+//   mover.style.top = e.pageY + 'px';
+// mover가 fixed이면 Y축은 보이는 화면 기준해야함!
+// -> 그래서 clientY를 사용함!
+  mover.style.top = e.clientY + 'px';
   mover.style.left = e.pageX + 'px';
 
 //   console.log('pageX:',e.pageX,'/pageY:',e.pageY);
