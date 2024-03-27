@@ -249,6 +249,8 @@ function loadFn() {
 
   // 인터발용 변수(지울목적)
   let autoI;
+  // 타임아웃용 변수(지울목적)
+  let autoT;
   // 자동넘김호출함수 최초호출하기
   autoSlide();
 
@@ -273,7 +275,14 @@ function loadFn() {
   function clearAuto() {
     // 지우기 확인!
     console.log('인터발 지워!');
+    // 1.인터발 지우기
     clearInterval(autoI);
+    // 2.타임아웃 지우기 : 실행쓰나미 방지!!!
+    clearTimeout(autoT);
+    // 3.5초후 아무작동도 안하면 다시 인터발호출
+    autoT = setTimeout(() => {
+      autoSlide();
+    }, 5000);
 
   } ////////// clearAuto ////////////
 
