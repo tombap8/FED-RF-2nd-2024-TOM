@@ -23,6 +23,7 @@ body {
 .cont-box > div > img {
   width: 100%;
   height: 100%;
+  /* 실제 이미지를 배경처럼 화면채우기함! */
   object-fit: cover;
 }
 /* 링크 설정 */
@@ -47,7 +48,7 @@ body {
 
 /* 변수셋팅 */
 :root {
-  --mover-size: 50px;
+  --mover-size: 100px;
 }
 
 /* 따라다니는 원 */
@@ -77,6 +78,9 @@ body {
 
   /* 트랜지션 : 이징은 ease-out */
   transition: 0.4s ease-out;
+
+  /* 트랜스폼 중앙이동 */
+  transform: translate(-50%,-50%);
 
   /* 처음에 안보임 */
   opacity: 0;
