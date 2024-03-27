@@ -264,16 +264,18 @@ z-index: 999;
 .descbx h3{
   margin-top: 0;
   font-family: 'Gugi';
-  font-size: 2.4rem;
+  /* 글자크기 최대 2.4rem, 기타는 2vw */
+  font-size: min(2.4rem, 2vw);
   font-weight: normal;
   padding: 15px 10px 5px;
   letter-spacing: -1px;
   /* 트랜지션 */
-  transition: .4s ease-in-out;
+  transition: margin-top .4s ease-in-out;
 }
 .descbx p{
   font-family: 'Single Day','ZCOOL KuaiLe';
-  font-size: 1.8rem;
+  /* 글자크기 최대 1.8rem, 기타는 1.3vw */
+  font-size: min(1.8rem, 1.3vw);
   line-height: 1.6;
   padding: 1.5rem;
   /* 양쪽정렬 */
