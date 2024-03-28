@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS3-8. 객체의 배열화</title>
+    <style>
+      h1,
+      .btns,
+      .show {
+        text-align: center;
+      }
+      button {
+        font-size: 30px;
+      }
+
+      .minfo {
+        display: flex;
+        /* 자식요소 박스 옆으로 흐르게! */
+        /* outline: 1px solid red; */
+        width: 500px;
+        margin: 0 auto;
+      }
+
+      .wrap {
+        /* 플렉스박스 */
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 20px;
+      }
+      .cbx {
+        margin: 10px;
+        padding: 10px;
+        border: 4px double gray;
+        border-radius: 10px;
+      }
+
+      .photo img {
+        height: 200px;
+        margin-right: 20px;
+      }
+
+      /* 영화한마디 글자박스 */
+      .showtit {
+        /* display: none; */
+        text-align: center;
+      }
+
+      .show span {
+        display: inline-block;
+        /* 가로,세로 등 디자인 적용+한줄에 나옴 */
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        /* 원 */
+        border: 2px solid #d30000;
+        background-color: #00f;
+        font-size: 20px;
+        color: #fff;
+
+        /* 동그라미 박스 정중앙 */
+        text-align: center;
+        line-height: 30px;
+        text-align: center;
+      }
+    </style>
+    <script>
+      /********************************************* 
+        [ 객체의 배열화! ]
+        - 프론트엔드에서 다루어지는 데이터 중 객체로
+        구성된 데이터가 많다! 
+        - 개발자가 이 데이터를 순회하여 화면에 태그를
+        구성할때 객체의 값만 순회하여 사용하는 경우가
+        많다! 내가 변경하기 어려운 객체 데이터를 배열
+        데이터로 변경하면 배열 메서드를 쉽게 사용할 수
+        있다!
+        _______________________________
+
+        객체{key:value,key:value,...}
+        - 속성들 keys() 메서드 -> 배열화!
+        - 값들 values() 메서드 -> 배열화!
+
+        [1] 객체의 속성을 배열로 만들기
+
+        Object는 객체를 만드는 최상위 객체
+        Object.keys(객체) -> 속성명으로 된 배열
+
+        [2] 객체의 속성값을 배열로 만들기
+
+        Object는 객체를 만드는 최상위 객체
+        Object.values(객체) -> 속성값으로 된 배열
+
+        _________________________________
+
+        [3] 배열화하여 사용하는 방법
+        객체의 속성 또는 값 중에 원하는 부분을
+        배열화하여 변수에 담고 이를 배열 메서드를
+        사용한 코드로 변환작업을 해 준다!
+      *********************************************/
+      /// 영화정보 객체 ////
+      const mvi = {
+        조제: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+          제목: "조제",
+          개요: "멜로/로맨스, 드라마",
+          감독: "김종관",
+          출연: "한지민, 남주혁",
+          문구: "조제 보러 오세요",
+        },
+        이웃사촌: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20201111_193/1605056611896fc6Ef_JPEG/movie_image.jpg?type=m99_141_2",
+          제목: "이웃사촌",
+          개요: "드라마, 코미디",
+          감독: "이환경",
+          출연: "정우, 김희원",
+          문구: "이웃을 사랑합시다",
+        },
+        도굴: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20201104_45/160445535053439akc_JPEG/movie_image.jpg?type=m99_141_2",
+          제목: "도굴",
+          개요: "범죄",
+          감독: "박정배",
+          출연: "이제훈, 조우진, 신혜선, 임원희",
+          문구: "도굴은 범죄예요",
+        },
+        "앤트맨과 와스프: 퀀텀매니아": {
+          포스터:
+            "https://movie-phinf.pstatic.net/20230216_8/16765083584990ol68_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "앤트맨과 와스프: 퀀텀매니아",
+          개요: "액션",
+          감독: "페이튼 리드",
+          출연: "폴 러드(스캇), 에반젤린 릴리(호프)",
+          문구: "사랑해 땅콩",
+        },
+        "아바타: 물의 길": {
+          포스터:
+            "https://movie-phinf.pstatic.net/20221215_185/1671091761840XXpCR_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "아바타: 물의 길",
+          개요: "액션, 모험, SF, 스릴러",
+          감독: "제임스 카메론",
+          출연: "조 샐다나(네이티리), 샘 워싱턴(제이크 설리),",
+          문구: "아들엔 아들이야",
+        },
+        바빌론: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20230201_261/1675215429987qQVon_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "바빌론",
+          개요: "드라마",
+          감독: "데이미언 셔젤",
+          출연: "브래드 피트, 마고 로비",
+          문구: "당신 시대가 끝난거예요",
+        },
+        영웅: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "영웅",
+          개요: "드라마, 뮤지컬",
+          감독: "윤제균",
+          출연: "정성화, 김고은",
+          문구: "누가 죄인인가",
+        },
+        교섭: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20221227_112/16721270739480lDiS_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "교섭",
+          개요: "드라마",
+          감독: "임순례",
+          출연: "황정민(정재호), 현빈(박대식)",
+          문구: "아쌀라말라이쿰",
+        },
+        "다음 소희": {
+          포스터:
+            "https://movie-phinf.pstatic.net/20230112_63/1673489515726qkQ2t_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "다음 소희",
+          개요: "드라마",
+          감독: "정주리",
+          출연: "배두나, 김시은",
+          문구: "그런 일이나 한다고 더 무시해",
+        },
+        타이타닉: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20230209_198/1675907886242jMQ8S_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "타이타닉",
+          개요: "멜로/로맨스, 드라마",
+          감독: "제임스 카메론",
+          출연: "레오나르도 디카프리오, 케이트 윈슬렛",
+          문구: "그는 내 기억속에만 존재해요",
+        },
+        상견니: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20230120_87/1674192544285inSFU_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "상견니",
+          개요: "드라마, 판타지, 멜로/로맨스",
+          감독: "황천인",
+          출연: "가가연, 허광한, 시백우",
+          문구: "회전목타는 탈 수 있어",
+        },
+        유령: {
+          포스터:
+            "https://movie-phinf.pstatic.net/20221221_213/1671610586374HUJ35_JPEG/movie_image.jpg?type=m203_290_2",
+          제목: "유령",
+          개요: "액션",
+          감독: "이해영",
+          출연: "설경구, 이하늬",
+          문구: "나라 되찾으면 담배 끊을까?",
+        },
+      }; ///////////////// mvi 객체 //////////////////////
+
+      /// 로드구역 /////////////////
+      window.addEventListener('load',()=>{
+        console.log('로딩완료');
+
+        // [구현내용]
+        // -> .wrap박스에 객체 데이터를 순회하여
+        // 영화정보를 구조화한 태그로 생성하여
+        // 반복적인 코드를 화면에 보여준다!
+
+        // 1. 대상: .wrap
+        const wrap = document.querySelector('.wrap');
+
+        console.log(wrap);
+
+        // 2. 이벤트설정 : 로딩후 바로 실행
+        makeList();
+
+      /********************************************* 
+        * 함수명 : makeList
+        * 기능 : 구조화된 html코드에 객체 데이터를
+        매칭하여 반복 코드를 생성한후 화면에 보여준다!
+      *********************************************/
+     function makeList(){
+      // 호출확인
+      console.log('리스트만들어!');
+
+      // 1. 문구처리함수 //////////////////
+      const wrapping = (x) => {
+        // 전달받은 문자(x)를 for of로 잘라서
+        // span태그로 싼후 리턴한다!
+        // 결과값 변수 res;
+        let res = '';        
+        for(let y of x){
+          // 스페이스바일 경우 공백특수문자넣기
+          if(y === ' '){
+            res += '&nbsp;&nbsp;';
+          } /// if ///
+          else{
+            res += `<span>${y}</span>`;
+          } /// else ///
+        } ///// for of /////////
+
+        // nbsp; -> 줄바꿈없는 공백 특수문자처리
+        // no break space의 줄임말
+
+        // 결과값 호출한 곳으로 리턴하기
+        return res;
+      }; //////// wrapping 함수 ///////
+
+      // 2. 객체 데이터 순회하기
+      // for in문 사용!!!
+      // for(변수 in 객체){코드}
+      // -> for of 문이나 forEach메서드는
+      // 배열/유사배열만 사용가능하기 때문에
+      // 객체의 순회는 for in 문을 사용한다!
+      // -> 대상객체 : mvi
+      // -> 코드를 담을 변수 hcode
+      let hcode = ''; // string 리터럴
+
+      for(let x in mvi){
+        // x는 객체의 속성명
+        // 객체의 값은 객체[속성명] 으로 가져옴!
+
+        // 선택객체값 변수에 담기
+        let data = mvi[x];
+
+        // 변수에 데이터 대입연산자로
+        // 템플릿 리터럴을 사용하여 코드를 구성함!
+        hcode += `
+        <section class="cbx">
+          <div class="minfo">
+              <!-- 1. 포스터 -->
+              <div class="photo">
+                  <img 
+                  src="${data.포스터}" 
+                  alt="${data.제목}의 포스터">  
+              </div>
+              <div class="cont">
+                  <!-- 2. 제목 -->
+                  <h2 class="tit">
+                      ${data.제목}</h2>
+                  <!-- 3. 개요 -->
+                  <h3 class="sum">
+                    ${'★장르 : ' + data.개요}
+                  </h3>
+                  <!-- 4. 감독 -->
+                  <h3 class="dir">
+                    ${'★감독 : ' + data.감독}
+                  </h3>
+                  <!-- 5. 출연 -->
+                  <h3 class="act">
+                    ${'★배우 : ' + data.출연}
+                  </h3>
+              </div>
+          </div>
+
+          <!-- 영화 한마디 -->
+          <h2 class="showtit">♥ 영화한마디!</h2>
+          <!-- 6. 문구 -->
+          <div class="show">
+              ${
+                // 인터폴레이션 구역에는
+                // 표현식만 쓸 수 있다!
+                // 표현식은 그자리에 값이
+                // 출력되는 식을 말한다!
+                // 따라서 제어문은 쓸 수 없다!
+                // 수식,삼항연산자,리턴있는함수
+                // 이런것들을 쓸 수 있다!
+                wrapping(data.문구)
+              }
+          </div>
+      </section>
+      `;
+
+        // console.log('for in 변수x:',x);
+        // console.log('객체의 값:',mvi[x]);
+        // console.log('출연값:',mvi[x].출연);
+      } //////// for in문 ////////////
+
+      // 데이터확인
+      // console.log(hcode);
+
+      // .wrap에 출력하기
+      wrap.innerHTML = hcode;
+
+     } ///////////// makeList 함수 //////////////
+     ////////////////////////////////////////////
+     
+
+    }); //////////////// 로드구역 /////////////////
+
+     /************************************************* 
+        [ 객체를 위한 for in 문 ]
+
+        - 구문: 
+        for(변수 in 객체){코드}
+
+        - 작동원리:
+        객체의 개수만큼 순서대로 속성명과 속성값을 가져옴
+
+        - 변수는 객체의 속성명이다!
+
+        - 객체의 값을 사용하려면 for in 문 안에
+            객체[변수] 로 쓰면됨!
+      _________________________________________
+
+       [ for of문의 부가기능 ]
+        문자데이터를 넣으면 한글자씩 돌아줌! 
+        for(변수 of 문자데이터변수) {실행문}
+        -> 한글자씩 태그로 싸줄때 편리함!
+
+    *************************************************/
+
+
+    </script>
+  </head>
+
+  <body>
+    <h1 style="text-align: center">객체를 위한 for in문</h1>
+    <main class="cont ibx">
+      <h2 style="text-align: center">무비차트</h2>
+      <!-- 영화정보박스 -->
+      <div class="wrap"></div>
+    </main>
+  </body>
+</html>
