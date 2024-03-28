@@ -6,6 +6,17 @@
     <title>쓸쓸하고 찬란하神 도깨비 드라마 소개</title>
     <link rel="shortcut icon" href="./images/pavicon_tvN.png" />
     <link rel="stylesheet" href="./css/main.css" />
+    <!-- 메인JS 불러오기 : 모듈로 불러오기 -->
+    <script type="module" src="./js/main.js"></script>
+    <!-- 
+      type="module"로 JS를 호출하면 모듈 문법이 적용된다!
+      다른 JS외부파일을 모듈로 호출한 파일에서 부를수 있다!
+      기본적으로 모듈을 사용하는 호출은 defer처리된다!
+      즉, html요소 로딩후 호출하게 된다!
+      주의사항: 반드시 서버형 호출을 해야 본 문법을 사용가능
+      로컬에서 바로 열기하면 JS는 호출되지 않는다!
+      그래서 서버에 올리거나 가상서버로 열어야함!
+     -->
   </head>
   <body class="scbar">
     <!-- 1. 상단영역 -->
