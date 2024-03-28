@@ -69,7 +69,8 @@
       /// 영화정보 객체 ////
       const mvi = {
         조제: {
-          포스터: "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+          포스터:
+            "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
           제목: "조제",
           개요: "멜로/로맨스, 드라마",
           감독: "김종관",
@@ -177,14 +178,45 @@
         },
       }; ///////////////// mvi 객체 //////////////////////
 
-     
+      /// 로드구역 /////////////////
+      window.addEventListener('load',()=>{
+        console.log('로딩완료');
+
+        // [구현내용]
+        // -> .wrap박스에 객체 데이터를 순회하여
+        // 영화정보를 구조화한 태그로 생성하여
+        // 반복적인 코드를 화면에 보여준다!
+
+        // 1. 대상: .wrap
+        const wrap = document.querySelector('.wrap');
+
+        console.log(wrap);
+
+        // 2. 이벤트설정 : 로딩후 바로 실행
+        makeList();
+
+      }); //////////////// 로드구역 /////////////////
+
+      /********************************************* 
+        * 함수명 : makeList
+        * 기능 : 구조화된 html코드에 객체 데이터를
+        매칭하여 반복 코드를 생성한후 화면에 보여준다!
+      *********************************************/
+     function makeList(){
+      // 호출확인
+      console.log('리스트만들어!');
+
+     } ///////////// makeList 함수 //////////////
+     ////////////////////////////////////////////
+
+
     </script>
   </head>
 
   <body>
-    <h1 style="text-align: center;">객체를 위한 for in문</h1>
+    <h1 style="text-align: center">객체를 위한 for in문</h1>
     <main class="cont ibx">
-      <h2 style="text-align: center;">무비차트</h2>
+      <h2 style="text-align: center">무비차트</h2>
       <!-- 영화정보박스 -->
       <div class="wrap"></div>
     </main>
