@@ -134,9 +134,36 @@ z-index: 999;
 
 /* 슬라이드 박스 */
 .slide-box{
+  position: relative;
+  /* 부모자격 - 이벤트 커버박스 */
     width: 100%;
     height: 100%;
     overflow: hidden;
+}
+/* 이벤트 커버박스 */
+.evt-cover{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: flex;
+}
+/* 양분박스 aside */
+.evt-cover aside{
+  flex: 1;
+}
+/* 버튼요소 */
+.abtn{
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 5px #000;
+  z-index: 99;
+  display: none;/* 처음에 숨기기 */
 }
 /* 슬라이더 */
 .slider{
