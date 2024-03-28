@@ -211,8 +211,8 @@
       }; ///////////////// mvi 객체 //////////////////////
 
       /// 로드구역 /////////////////
-      window.addEventListener('load',()=>{
-        console.log('로딩완료');
+      window.addEventListener("load", () => {
+        console.log("로딩완료");
 
         // [구현내용]
         // -> .wrap박스에 객체 데이터를 순회하여
@@ -220,7 +220,7 @@
         // 반복적인 코드를 화면에 보여준다!
 
         // 1. 대상: .wrap
-        const wrap = document.querySelector('.wrap');
+        const wrap = document.querySelector(".wrap");
 
         console.log(wrap);
 
@@ -228,10 +228,8 @@
         // 객체값의 배열화로 변수에 할당하기
         const newMvi = Object.values(mvi);
 
-        console.log('mvi객체 속성배열화:',
-        Object.keys(mvi));
-        console.log('mvi객체 값배열화:',
-        Object.values(mvi));
+        console.log("mvi객체 속성배열화:", Object.keys(mvi));
+        console.log("mvi객체 값배열화:", Object.values(mvi));
 
         // 3. 이벤트설정 : 로딩후 바로 실행
         makeList();
@@ -240,50 +238,49 @@
         // -> 에러메시지:mvi.forEach is not a function
         // mvi.forEach(v=>console.log(v));
 
-
-      /********************************************* 
+        /********************************************* 
         * 함수명 : makeList
         * 기능 : 구조화된 html코드에 객체 데이터를
         매칭하여 반복 코드를 생성한후 화면에 보여준다!
       *********************************************/
-     function makeList(){
-      // 호출확인
-      console.log('리스트만들어!');
+        function makeList() {
+          // 호출확인
+          console.log("리스트만들어!");
 
-      // 1. 문구처리함수 //////////////////
-      const wrapping = (x) => {
-        // 전달받은 문자(x)를 for of로 잘라서
-        // span태그로 싼후 리턴한다!
-        // 결과값 변수 res;
-        let res = '';        
-        for(let y of x){
-          // 스페이스바일 경우 공백특수문자넣기
-          if(y === ' '){
-            res += '&nbsp;&nbsp;';
-          } /// if ///
-          else{
-            res += `<span>${y}</span>`;
-          } /// else ///
-        } ///// for of /////////
+          // 1. 문구처리함수 //////////////////
+          const wrapping = (x) => {
+            // 전달받은 문자(x)를 for of로 잘라서
+            // span태그로 싼후 리턴한다!
+            // 결과값 변수 res;
+            let res = "";
+            for (let y of x) {
+              // 스페이스바일 경우 공백특수문자넣기
+              if (y === " ") {
+                res += "&nbsp;&nbsp;";
+              } /// if ///
+              else {
+                res += `<span>${y}</span>`;
+              } /// else ///
+            } ///// for of /////////
 
-        // nbsp; -> 줄바꿈없는 공백 특수문자처리
-        // no break space의 줄임말
+            // nbsp; -> 줄바꿈없는 공백 특수문자처리
+            // no break space의 줄임말
 
-        // 결과값 호출한 곳으로 리턴하기
-        return res;
-      }; //////// wrapping 함수 ///////
+            // 결과값 호출한 곳으로 리턴하기
+            return res;
+          }; //////// wrapping 함수 ///////
 
-      // 2. 배열화한 객체 데이터 순회하기
-      let hcode = ''; // string 리터럴
+          // 2. 배열화한 객체 데이터 순회하기
+          let hcode = ""; // string 리터럴
 
-      // 배열이 되었으므로 forEach사용가능!
+          // 배열이 되었으므로 forEach사용가능!
 
-      newMvi.forEach(data=>{
-        // data는 배열값
+          newMvi.forEach((data) => {
+            // data는 배열값
 
-        // 변수에 데이터 대입연산자로
-        // 템플릿 리터럴을 사용하여 코드를 구성함!
-        hcode += `
+            // 변수에 데이터 대입연산자로
+            // 템플릿 리터럴을 사용하여 코드를 구성함!
+            hcode += `
         <section class="cbx">
           <div class="minfo">
               <!-- 1. 포스터 -->
@@ -298,15 +295,15 @@
                       ${data.제목}</h2>
                   <!-- 3. 개요 -->
                   <h3 class="sum">
-                    ${'★장르 : ' + data.개요}
+                    ${"★장르 : " + data.개요}
                   </h3>
                   <!-- 4. 감독 -->
                   <h3 class="dir">
-                    ${'★감독 : ' + data.감독}
+                    ${"★감독 : " + data.감독}
                   </h3>
                   <!-- 5. 출연 -->
                   <h3 class="act">
-                    ${'★배우 : ' + data.출연}
+                    ${"★배우 : " + data.출연}
                   </h3>
               </div>
           </div>
@@ -328,23 +325,18 @@
           </div>
       </section>
       `;
+          }); ////// forEach ////////////////
 
-      }); ////// forEach ////////////////
-      
+          // 데이터확인
+          // console.log(hcode);
 
-      // 데이터확인
-      // console.log(hcode);
+          // .wrap에 출력하기
+          wrap.innerHTML = hcode;
+        } ///////////// makeList 함수 //////////////
+        ////////////////////////////////////////////
+      }); //////////////// 로드구역 /////////////////
 
-      // .wrap에 출력하기
-      wrap.innerHTML = hcode;
-
-     } ///////////// makeList 함수 //////////////
-     ////////////////////////////////////////////
-     
-
-    }); //////////////// 로드구역 /////////////////
-
-     /************************************************* 
+      /************************************************* 
         [ 객체를 위한 for in 문 ]
 
         - 구문: 
@@ -365,8 +357,6 @@
         -> 한글자씩 태그로 싸줄때 편리함!
 
     *************************************************/
-
-
     </script>
   </head>
 
