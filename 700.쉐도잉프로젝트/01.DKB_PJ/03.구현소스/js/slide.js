@@ -297,12 +297,15 @@ export default function slideFn() {
       ele.onmouseout = ()=>{
         abtn[idx].style.display = 'none';
       }; /// mouseout ///
-      
+
       // 이벤트 셋팅하기3 : mousemove - 버튼따라오기
       ele.onmousemove = (e)=>{
         abtn[idx].style.top = e.pageY+'px';
         abtn[idx].style.left = e.pageX+'px';
       }; /// mousemove ///
+
+      // 이벤트 셋팅하기4 : click - 이동함수 호출!
+      ele.onclick = goSlide;
     }); ///// forEach /////////////////
 
 
