@@ -12,7 +12,8 @@ export default function slideFn() {
 
   // addEvent 함수
   // ele - 요소, evt - 이벤트, fn - 함수
-  const addEvt = (ele, evt, fn) => ele.addEventListener(evt, fn);
+  const addEvt = (ele, evt, fn) => 
+  ele.addEventListener(evt, fn);
 
   // HTML태그 로딩후 loadFn함수 호출! ///
   addEvt(window, "DOMContentLoaded", loadFn);
@@ -64,28 +65,21 @@ export default function slideFn() {
     // 이동버튼 대상:  .abtn
     const abtn = qsa(".abtn");
     // 변경대상 : #slide
-    const slide = qs("#slide");
+    const slide = qs(".slider");
     // 블릿버튼 : .indic
     let indic = document.querySelector(".indic");
     // console.log(abtn,slide);
 
     //////////// 초기셋팅하기 ////////
     // 5개의 슬라이드와 블릿을 만들어준다!
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < 3; i++) {
       // 슬라이드 넣기
       slide.innerHTML += `
-    <li data-seq="${i}">
-        <img 
-        src="images/slide0${i + 1}.jpg"         
-        alt="slide">
-    </li>    
+    <li data-seq="${i}" class="snum-0${i+1}"></li>    
     `;
       // 블릿 넣기
       indic.innerHTML += `
-    <li ${i === 0 ? 'class="on"' : ""}>
-        <img src="images/dot1.png" alt="흰색">
-        <img src="images/dot2.png" alt="회색">
-    </li>
+    <li ${i === 0 ? 'class="on"' : ""}></li>
     `;
     } ////// for ////////
 
