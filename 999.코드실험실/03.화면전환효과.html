@@ -42,11 +42,16 @@
             transform: translateX(-50%);
             font-size: 30px;
             font-weight: bold;
+            line-height: 50px;
             z-index: 99;
         }
         .gnb a{
             color: #222;
             text-decoration: none;
+        }
+        .gnb a:hover{
+            color: red;
+            text-decoration: overline;
         }
 
 
@@ -70,12 +75,42 @@
     <!-- JS코드구역 -->
     <script>
         window.addEventListener('load',()=>{
-            console.log('1단계작동!');
             // 대상: body
             let tg = document.body;
+            
+            // 전환효과 함수
+            const chgEffect = (e)=>{
+                // a요소 기본이동기능 막기
+                e.preventDefault();
 
-            // 1. 1단계 on넣기
-            tg.classList.add('on');
+                console.log('호출');
+                setTimeout(() => {
+                    // 1단계 on넣기
+                    console.log('1단계작동!');
+                    tg.classList.add('on');                    
+                }, 500);
+                setTimeout(() => {
+                    // 2단계 go넣기
+                    console.log('2단계작동!');
+                    tg.classList.add('go');                    
+                }, 2000);
+                setTimeout(() => {
+                    // 3단계 on/go넣기
+                    console.log('3단계작동!');
+                    tg.classList.remove('on');                    
+                    tg.classList.remove('go');                    
+                }, 3000);
+            }; ////// chgEffect 함수 ///////
+
+// console.log(document.querySelectorAll('.gnb a'));
+
+            // GNB 이벤트 걸기 ///
+            document.querySelectorAll('.gnb a')
+            .forEach(ele=>{
+                console.log(ele);
+                ele.onclick = chgEffect;
+            });
+
 
 
 
@@ -85,13 +120,13 @@
 </head>
 <body>
     <nav class="gnb">
-        <a href="">HOME</a> | 
-        <a href="">WORK</a> | 
-        <a href="">CONTACT</a>
+        <a href="#">HOME</a> | 
+        <a href="#">WORK</a> | 
+        <a href="#">CONTACT</a>
     </nav>
     <div class="wrap">
         <div class="pg">
-            <h1>This is First One!</h1>
+            <h1>This is HOME Page!</h1>
         </div>
         <div class="pg">
             <h1>This is Second One!</h1>
