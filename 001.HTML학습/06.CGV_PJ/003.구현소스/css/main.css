@@ -156,16 +156,64 @@ body * {
 }
 .cam img{
     width: 50px;
+    transform: rotate(30deg);
+    /* 트랜지션 : 돌아올때 지연있음 */
+    transition: .3s .3s;
+}
+/* 오버시 영사기 이미지 회전 */
+.gnb:hover .cam img{
+    transform: rotate(0deg);
+    /* 트랜지션 : 오버시 지연없음 */
+    transition: .3s;
+}
+/* 오버시 빔박스 보이기 */
+.gnb:hover .beam{
+    width: 200px;
+    /* 트랜지션 : 오버시 지연있음 */
+    transition: width .3s .3s;
+    /* 애니메이션 */
+    animation: beam-ani .05s linear infinite alternate;
+}
+/* 빔떨림 애니 */
+@keyframes beam-ani {
+    to{
+        opacity: 0.5;
+    }
 }
 /* 빔박스 */
 .beam{
     position: absolute;
-    top: 1px;
-    right: 1px;
-    width: 200px;
+    top: -16px;
+    right: 13px;
+    width: 0;
     height: 70px;
-    outline: 2px dashed yellow;
-    background: url(../images/bim.png) no-repeat right/auto 100%;
+    /* outline: 2px dashed yellow; */
+    background: 
+    url(../images/bim.png) no-repeat right/auto 100%;
+    /* 메뉴보다 아래(카메라보다아래) */
+    z-index: -1;
+    /* 트랜지션 : 돌아올때 지연없음 */
+    transition: width .3s;
+}
+/* 가상요소로 스크린 만들기 */
+.cam::after{
+    content: '';
+    position: absolute;
+    top: -15px;
+    right: 120px;
+    width: 129px;
+    height: 66px;
+    background: url(../images/screen.gif) no-repeat -50% center/auto 80%;
+    z-index: -2;
+    opacity: 0;
+    /* 트랜지션 */
+    transition: opacity .3s;
+}
+/* 오버시 스크린 보이기 */
+.gnb:hover .cam::after{
+    opacity: 1;
+    /* 트랜지션 */
+    transition: opacity .3s .6s;
 }
 
 /************ 2. 메인영역 ************/
