@@ -9,24 +9,16 @@
     font-family: 'Cute Font', cursive;
     font-family: 'Jua', sans-serif;
 */
+/* 리셋CSS 불러오기 */
+@import url(./reset.css);
 
-/* 초기화 */
-html,body,h1,h2,ul,ol{
-    margin: 0;
-    padding: 0;
-}
-/* 리스트 초기화 */
-ul,ol{
-    /* 블릿,숫자 없앰 : lin */
-    list-style: none;
-}
 body{
     background-color: #000;
 }
 
 /* 공사중 표시 */
 body * {
-    outline: 2px dashed yellow;
+    /* outline: 2px dashed yellow; */
     /* outline: 두 종 색; */
 }
 /* 공통 클래스 */
@@ -39,6 +31,8 @@ body * {
 
 /************ 1. 상단영역 ************/
 .top-area{
+    position: relative;
+    /* 부모자격 - .gnb */
     height: 80px;
     /* 배경이미지 */
     background: url(../images/curtain.jpg) repeat-x;
@@ -50,6 +44,19 @@ body * {
     color: aquamarine;
     line-height: 80px;
     text-align: center;
+}
+/* 1-2. GNB메뉴 */
+.gnb{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.gnb ul{
+    /* 플렉스박스 */
+    display: flex;
+    gap: 0 1.5rem;
+    font-family: 'Jua', sans-serif;
+    font-size: 2rem;
 }
 /************ 2. 메인영역 ************/
 .main-area{
