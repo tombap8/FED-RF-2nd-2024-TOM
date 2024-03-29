@@ -321,5 +321,25 @@ body * {
 
 /************ 3. 하단영역 ************/
 .footer-area{
+    /* 플렉스 박스 */
+    display: flex;
     height: 100px;
+}
+/* 3-1.하단로고 */
+/* 3-2.회사정보 */
+.co-info address{
+    font-family: 'cute font';
+    font-size: 1.6rem;
+    color: #fff;
+    /* 이탤릭해제 */
+    font-style: normal;
+}
+/* 3-3.SNS */
+.sns-box ol{
+    /* 플렉스박스 */
+    display: flex;
+}
+.sns-box a{
+    font-size: 4rem;
+    color: #fff;
 }
