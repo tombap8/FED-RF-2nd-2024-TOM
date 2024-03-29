@@ -223,7 +223,7 @@ z-index: 999;
 .indic li{
   width: 150px;
   height: 5px;
-  background-color: #ffffff94;
+  background-color: #ffffff66;
 }
 /* 가상요소바 */
 .indic li::before{
