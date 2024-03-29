@@ -67,16 +67,69 @@ body * {
 /* 서브메뉴 */
 .smenu{
     position: absolute;
+    top: 35px;
     left: 50%;
     transform: translateX(-50%);
-    width: 140px;
-    outline: 2px solid yellow;
+    width: 147px;
+    /* outline: 2px solid yellow; */
+    /* box-shadow: 0 0 5px #fff; */
+    /* 모든 외곽선에 그림자(글로우)효과를 주려면 filter 드랍쉐도우를 사용함! */
+    filter: drop-shadow(0 0 5px #fff);
     border-radius: 5px;
     font-size: 1.7rem;
     line-height: 1.6;
     padding: 3px;
     background: url(../images/bg_smenu.png) no-repeat center/cover;
 }
+/* 가상요소로 삼각형 만들기 */
+.smenu::before{
+    content: '';
+    position: absolute;
+    top: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 20px;
+    height: 15px;
+    background-color: #303030;
+    /* 클립패쓰로 자르기 */
+    clip-path: polygon(0 100%, 50% 0,100% 100%);
+}
+/* 서브메뉴 ol */
+.smenu ol{
+    border: 1px solid #ccc;
+    padding: 10px;
+    white-space: nowrap;
+}
+/* 사이구분선 클래스 */
+.bd-top{
+    border-top: 1px solid #ccc;
+}
+/* 서브메뉴 오버시 글자색 */
+.smenu li:hover a{
+    color: red;
+}
+/* 서브메뉴 오버시 아이콘 */
+.smenu li:hover a::after{
+    content: '🧛‍♂️';
+    /* 오른쪽 끝에 위치 */
+    float: right;
+}
+/* 예매 */
+.gnb ul>li:nth-child(2) 
+.smenu li:hover a::after{
+    content: '🍋';
+}
+/* 극장 */
+.gnb ul>li:nth-child(3) 
+.smenu li:hover a::after{
+    content: '🌞';
+}
+/* 이벤트&컬처 */
+.gnb ul>li:nth-child(4) 
+.smenu li:hover a::after{
+    content: '📣';
+}
+
 /************ 2. 메인영역 ************/
 .main-area{
     position: relative;
