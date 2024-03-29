@@ -1,137 +1,153 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>03.화면전환효과</title>
     <style>
-        html,body,h1{
-            margin: 0;
-            padding: 0;
-        }
+      html,
+      body,
+      h1 {
+        margin: 0;
+        padding: 0;
+      }
 
-        /* 페이지 전환효과용 가림막 */
-        body::after{
-            content: '';
-            display: block;
-            position: fixed;
-            z-index: 9999;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 0;/* 변경요소 */
-            background-color: lightseagreen;
-            /* 트랜지션: 속시이지 */
-            transition: all .8s ease-in-out;
-        }
-        /* 1단계:body.on일때 가상요소 after적용 */
-        body.on::after{
-            height: 100vh;
-        }
-        /* 2단계:body.on.go일때 가상요소 after적용 */
-        body.on.go::after{
-            top: 100%;
-            height: 0;
-        }
+      /* 페이지 전환효과용 가림막 */
+      body::after {
+        content: "";
+        display: block;
+        position: fixed;
+        z-index: 9999;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 0; /* 변경요소 */
+        background-color: lightseagreen;
+        /* 트랜지션: 속시이지 */
+        transition: all 0.8s ease-in-out;
+      }
+      /* 1단계:body.on일때 가상요소 after적용 */
+      body.on::after {
+        height: 100vh;
+      }
+      /* 2단계:body.on.go일때 가상요소 after적용 */
+      body.on.go::after {
+        top: 100%;
+        height: 0;
+      }
 
-        /* GNB */
-        .gnb{
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 30px;
-            font-weight: bold;
-            line-height: 50px;
-            z-index: 99;
-        }
-        .gnb a{
-            color: #222;
-            text-decoration: none;
-        }
-        .gnb a:hover{
-            color: red;
-            text-decoration: overline;
-        }
+      /* GNB */
+      .gnb {
+        position: fixed;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 30px;
+        font-weight: bold;
+        line-height: 50px;
+        z-index: 99;
+      }
+      .gnb a {
+        color: #222;
+        text-decoration: none;
+      }
+      .gnb a:hover {
+        color: red;
+        text-decoration: overline;
+      }
 
-
-        .pg{
-            /* width: 100%; 
+      .pg {
+        /* width: 100%; 
             -> 100vw로 잡을 경우 DT에서 가로스크롤이
             약간 생김. 이유는 스크롤바 트랙을 포함하기때문임. 모바일에서는 스크롤바 트랙이 없기때문임
             설정시 100%나 안주면 auto이므로 안줘도 되면 안주는게 좋다! */
-            height: 100vh;
-        }
+        height: 100vh;
+      }
 
-        .pg h1{
-            position: relative;
-            top: 50%;
-            transform: translateY(-50%);
-            text-align: center;
-            font-size: 8vw;
-        }
-
+      .pg h1 {
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+        text-align: center;
+        font-size: 8vw;
+      }
     </style>
     <!-- JS코드구역 -->
     <script>
-        window.addEventListener('load',()=>{
-            // 대상: body
-            let tg = document.body;
-            
-            // 전환효과 함수
-            const chgEffect = (e)=>{
-                // a요소 기본이동기능 막기
-                e.preventDefault();
+      window.addEventListener("load", () => {
+        // 대상: body
+        let tg = document.body;
 
-                console.log('호출');
-                setTimeout(() => {
-                    // 1단계 on넣기
-                    console.log('1단계작동!');
-                    tg.classList.add('on');                    
-                }, 500);
-                setTimeout(() => {
-                    // 2단계 go넣기
-                    console.log('2단계작동!');
-                    tg.classList.add('go');                    
-                }, 2000);
-                setTimeout(() => {
-                    // 3단계 on/go넣기
-                    console.log('3단계작동!');
-                    tg.classList.remove('on');                    
-                    tg.classList.remove('go');                    
-                }, 3000);
-            }; ////// chgEffect 함수 ///////
+        // 전환효과 함수
+        const chgEffect = (e) => {
+          // a요소 기본이동기능 막기
+          e.preventDefault();
 
-// console.log(document.querySelectorAll('.gnb a'));
+          console.log("호출");
 
-            // GNB 이벤트 걸기 ///
-            document.querySelectorAll('.gnb a')
-            .forEach(ele=>{
-                console.log(ele);
-                ele.onclick = chgEffect;
-            });
+          setTimeout(() => {
+            // 1단계 on넣기
+            console.log("1단계작동!");
+            tg.classList.add("on");
+          }, 500);
 
+          setTimeout(() => {
+            // 2단계 go넣기
+            console.log("2단계작동!");
+            tg.classList.add("go");
+            // 내용바꾸기함수를 여기서 호출!
+            chgText();
+          }, 2000);
 
+          setTimeout(() => {
+            // 3단계 on/go넣기
+            console.log("3단계작동!");
+            tg.classList.remove("on");
+            tg.classList.remove("go");
+          }, 3000);
 
+          // 클릭이벤트가 발생한 메뉴의 글자 읽어오기
+          const cTxt = e.currentTarget.innerText;
+          // 이미지 경로 객체
+          const isrc = {
+            HOME: "https://t4.ftcdn.net/jpg/02/96/64/61/360_F_296646140_btnypVWa1CHefYgC3EgoRLzO2Qh79ITa.jpg",
+            WORK: "https://fjwp.s3.amazonaws.com/blog/wp-content/uploads/2021/02/25083908/How-to-Find-Online-Jobs-Work-From-Home-Jobs-That-Require-Little-or-No-Work-Experience.jpg",
+            CONTACT:
+              "https://images.unsplash.com/photo-1423666639041-f56000c27a9a?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29udGFjdHxlbnwwfHwwfHx8MA%3D%3D",
+          };
 
-        });//// load //////////////////
-        
+          // 메인 .pg중 첫번째것의 h1내용과 배경이미지 변경함수
+          const chgText = () => {
+            document.querySelector(".pg h1").innerText = cTxt;
+            document.querySelector(".pg h1").style.color = "#fff";
+            document.querySelector(
+              ".pg"
+            ).style.background = `url(${isrc[cTxt]}) no-repeat center/cover`;
+          };
+        }; ////// chgEffect 함수 ///////
+
+        // console.log(document.querySelectorAll('.gnb a'));
+
+        // GNB 이벤트 걸기 ///
+        document.querySelectorAll(".gnb a").forEach((ele) => {
+          console.log(ele);
+          ele.onclick = chgEffect;
+        });
+      }); //// load //////////////////
     </script>
-</head>
-<body>
+  </head>
+  <body>
     <nav class="gnb">
-        <a href="#">HOME</a> | 
-        <a href="#">WORK</a> | 
-        <a href="#">CONTACT</a>
+      <a href="#">HOME</a> | <a href="#">WORK</a> |
+      <a href="#">CONTACT</a>
     </nav>
     <div class="wrap">
-        <div class="pg">
-            <h1>This is HOME Page!</h1>
-        </div>
-        <div class="pg">
-            <h1>This is Second One!</h1>
-        </div>
+      <div class="pg">
+        <h1>This is HOME Page!</h1>
+      </div>
+      <div class="pg">
+        <h1>This is Second One!</h1>
+      </div>
     </div>
-    
-</body>
+  </body>
 </html>
