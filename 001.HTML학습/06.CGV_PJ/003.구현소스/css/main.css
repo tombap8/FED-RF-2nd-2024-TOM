@@ -44,6 +44,16 @@ body * {
     color: aquamarine;
     line-height: 80px;
     text-align: center;
+    /* 글자 글로우 효과 */
+    text-shadow: 0 0 4px aquamarine;
+    /* 애니메이션 */
+    animation: tit-ani .5s ease-in infinite alternate;
+}
+/* 타이틀 애니 키프레임 */
+@keyframes tit-ani {
+    to{
+        text-shadow: 0 0 12px aquamarine;
+    }
 }
 /* 1-2. GNB메뉴 */
 .gnb{
