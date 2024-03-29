@@ -323,7 +323,12 @@ body * {
 .footer-area{
     /* 플렉스 박스 */
     display: flex;
-    height: 100px;
+    /* 진행방향 수직정렬(한줄) */
+    align-items: center;
+    gap: 0 20px;
+    padding: 30px;
+
+    /* height: 100px; */
 }
 /* 3-1.하단로고 */
 /* 3-2.회사정보 */
@@ -335,9 +340,15 @@ body * {
     font-style: normal;
 }
 /* 3-3.SNS */
+.sns-box{
+    /* 플렉스 자식에서 왼쪽마진을
+    auto로 주면 오른쪽 끝으로 이동함 */
+    margin-left: auto;
+}
 .sns-box ol{
     /* 플렉스박스 */
     display: flex;
+    gap: 0 10px;
 }
 .sns-box a{
     font-size: 4rem;
