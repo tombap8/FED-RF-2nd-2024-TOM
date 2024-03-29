@@ -34,6 +34,21 @@
             height: 0;
         }
 
+        /* GNB */
+        .gnb{
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 30px;
+            font-weight: bold;
+            z-index: 99;
+        }
+        .gnb a{
+            color: #222;
+            text-decoration: none;
+        }
+
 
         .pg{
             /* width: 100%; 
@@ -54,10 +69,26 @@
     </style>
     <!-- JS코드구역 -->
     <script>
+        window.addEventListener('load',()=>{
+            console.log('1단계작동!');
+            // 대상: body
+            let tg = document.body;
+
+            // 1. 1단계 on넣기
+            tg.classList.add('on');
+
+
+
+        });//// load //////////////////
         
     </script>
 </head>
 <body>
+    <nav class="gnb">
+        <a href="">HOME</a> | 
+        <a href="">WORK</a> | 
+        <a href="">CONTACT</a>
+    </nav>
     <div class="wrap">
         <div class="pg">
             <h1>This is First One!</h1>
