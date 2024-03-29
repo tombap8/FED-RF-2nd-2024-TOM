@@ -207,6 +207,40 @@ z-index: 999;
 .snum-03 {
     background-image: url(../images/bg_main_03.jpg);
 }
+/* 블릿박스 */
+.indic-box{
+  position: absolute;
+  top: 20px;
+  left: 30px;
+  width: 450px;
+  height: 5px;
+  z-index: 1;
+}
+.indic{
+  display: flex;
+  gap: 0 15px;
+}
+.indic li{
+  width: 150px;
+  height: 5px;
+  background-color: #ffffff94;
+}
+/* 가상요소바 */
+.indic li::before{
+  content: '';
+  display: block;
+  width: 0;
+  height: 5px;
+  background-color: #fff;
+}
+/* li.on일 경우 가상요소 width변경 */
+.indic li.on::before{
+  width: 100%;
+  transition: width 3s linear;
+}
+
+
+
 
 /* 캐릭터 박스
 -> 캐릭터 속박스가 있는 공간을 확보해준다! */
