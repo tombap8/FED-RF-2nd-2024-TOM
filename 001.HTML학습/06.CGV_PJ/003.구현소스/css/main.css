@@ -63,6 +63,9 @@ body * {
 .gnb>ul>li{
     position: relative;
     /* 부모자격 - .smenu */
+    padding-bottom: 10px;
+    /* 하위메뉴와 연결되게 함!
+    오버 이벤트가 끊어지지 않게함 */
 }
 /* 서브메뉴 */
 .smenu{
@@ -80,6 +83,12 @@ body * {
     line-height: 1.6;
     padding: 3px;
     background: url(../images/bg_smenu.png) no-repeat center/cover;
+    /* 처음에 안보임 */
+    display: none;
+}
+/* 상위메뉴 오버시 서브보이기 */
+.gnb ul>li:hover .smenu{
+    display: block;
 }
 /* 가상요소로 삼각형 만들기 */
 .smenu::before{
