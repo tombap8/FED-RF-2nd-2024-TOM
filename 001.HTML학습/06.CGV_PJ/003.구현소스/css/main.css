@@ -286,12 +286,15 @@ body * {
     /* 기본회전축 하단변경 */
     transform-origin: bottom;
     /* 트랜지션 */
-    transition: .3s ease-in-out;
+    transition: transform .3s ease-in-out;
 }
-/* li에 오버시 일어나기 */
+/* li에 오버시 일어나기 + .on 줄때 일어나기 */
+.poster-menu>ul>li.on,
 .poster-menu>ul>li:hover{
     /* X축회전 */
     transform: rotateX(0deg);
+    /* 아웃라인 */
+    outline: 1px solid aqua;
     /* 오버요소 항상위 */
     z-index: 1;
 }
