@@ -77,6 +77,19 @@ body{
     text-align: center;
     font-family: 'Audiowide';
     font-size: 3.4rem;
+    transition: .4s ease-out .4s;
+}
+/* 엔터박스 오버시 글자 스케일 변경 */
+#enter:hover span{
+    transform: scale(2);
+}
+/* CGV 로고 이미지 */
+#enter img{
+    transition: .4s ease-out;
+}
+/* 엔터박스 오버시 로고 이미지 애니적용하기 */
+#enter:hover img{
+    transform: scale(1.5) rotate(-15deg);
 }
 
 
