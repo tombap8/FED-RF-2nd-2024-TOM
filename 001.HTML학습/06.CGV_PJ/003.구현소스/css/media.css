@@ -52,6 +52,19 @@
 
 /********** 810px 이하 미디어쿼리 시작 **********/
 @media screen and (max-width: 810px) {
+  /* 메인영역 - 비율변경, 배경조정 */
+  .main-area {
+    aspect-ratio: 1/1.25;
+    /* 극장이미지 배경 */
+    background: url(../images/bg.jpg) no-repeat center -37%/148%;
+  }
+  /* 2-1.스크린 - 크기,위치조정 */
+  .screen {
+    top: 5.1%;
+    left: 7.6%;
+    width: 86.6%;
+    height: 39.3%;
+  }
   /* 하단영역 박스 */
   .footer-area {
     gap: 20px;
@@ -65,11 +78,21 @@
   /* 포스터 리스트 */
   .poster-menu ul {
     flex-wrap: wrap;
+    /* 가로방향 사이갭이 가로폭의 2%로 변경 */
+    gap: 0 2%;
   }
   /* 상위 ul>li 리스트 */
   .poster-menu > ul > li {
-    flex-basis: calc(100% / 3 - 15px * 2);
-    /* 100%를 3등분에 사이값 15px 2개를 빼줌! */
+    flex-basis: calc(100% / 3 - 1.4%);
+    /* 100%를 3등분에 갭값 2%에서 오른쪽에 남는
+    갭을 등분할한 적당한 수치인 1.4%를 빼줌! */
+  }
+  /* 포스터 영화정보 글자크기 */
+  .mv-info ol {
+    font-size: 3vw;
+  }
+  .mv-info ol li:first-child {
+    font-size: 3.3vw;
   }
 }
 /********** 810px 이하 미디어쿼리 종료 **********/
