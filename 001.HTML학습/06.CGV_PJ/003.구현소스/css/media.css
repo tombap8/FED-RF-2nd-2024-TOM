@@ -24,17 +24,17 @@
     right: 17px;
   }
   .gnb ul {
-      flex-direction: column;
-      align-items: flex-end;
-      /* 높이값을 이용한 메뉴 숨기기 */
-      height: 0;
-      overflow: hidden;
-      transition: height .4s ease-in-out;
-    }
-    /* gnb오버시 ul보이기 */
-    .gnb:hover ul {
-        height: 127px;
-    }
+    flex-direction: column;
+    align-items: flex-end;
+    /* 높이값을 이용한 메뉴 숨기기 */
+    height: 0;
+    overflow: hidden;
+    transition: height 0.4s ease-in-out;
+  }
+  /* gnb오버시 ul보이기 */
+  .gnb:hover ul {
+    height: 127px;
+  }
 
   /* 서브메뉴 오버시 숨기기 */
   .gnb ul > li:hover .smenu {
@@ -49,3 +49,32 @@
   }
 }
 /********** 1024px 이하 미디어쿼리 종료 **********/
+
+/********** 810px 이하 미디어쿼리 시작 **********/
+@media screen and (max-width: 810px) {
+  /* 하단영역 박스 */
+  .footer-area {
+    gap: 20px;
+    flex-direction: column;
+  }
+  /* SNS */
+  .sns-box {
+    margin-left: 0;
+  }
+
+  /* 포스터 리스트 */
+  .poster-menu ul {
+    flex-wrap: wrap;
+  }
+  /* 상위 ul>li 리스트 */
+  .poster-menu > ul > li {
+    flex-basis: calc(100% / 3 - 15px * 2);
+    /* 100%를 3등분에 사이값 15px 2개를 빼줌! */
+  }
+}
+/********** 810px 이하 미디어쿼리 종료 **********/
+
+/********** 810px 이하 미디어쿼리 시작 **********/
+@media screen and (max-width: 810px) {
+}
+/********** 810px 이하 미디어쿼리 종료 **********/
