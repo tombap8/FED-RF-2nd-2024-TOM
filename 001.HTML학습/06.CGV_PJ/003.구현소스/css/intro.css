@@ -3,4 +3,82 @@
 
 /* 초기화 CSS호출 */
 @import url(./reset.css);
+@import url(./core.css);
+
+/* body 전체 페이지 채우기 */
+body{
+    height: 100vh;
+    /* 스크롤바 없앰 */
+    overflow: hidden;
+}
+
+/* 1.비디오 */
+#myvid{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* 필터 명도값 조정하여 어두워보이게함 */
+    filter: brightness(.5);
+    /* 1~0사이 소수값 또는 0%~몇% 값으로 셋팅 */
+
+    /* 
+        [용어체크]
+        1) 오버레이효과(overlay) - 어둡게처리
+        2) 트렌스페런트효과(transparent) - 밝게처리
+    */
+
+}
+
+/* 
+[ object-fit 속성 ]
+-> img, video 요쇼에 사용하는 맞춤속성
+
+- 부모요소 크기를 채우는 방식을 결정함!
+- contain 기본값
+- 특히 이미지일 경우 배경이미지로 넣어야
+빈공간 없이 비율을 유지하면 채울 수 있다고
+생각하는데 이 속성을 사용하면 마치 배경이미지처럼
+이미지를 채우고 나가는 부분을 처리함
+
+1. cover : 이미지나 동영상 비율유지하며
+            부모박스를 빈공간 없이 채움
+            (잘리는 부분이 있을 수 있음)
+2. fill : 이미지나 t
+            부모박스를 빈공간 없이 채움
+            (잘리는 부분이 없다)
+3. contain : 이미지나 동영상이 모두 보이며
+            비율을 유지함
+            (잘리는 부분이 없으나 빈 공간 생김)
+
+[ object-position 속성 ]
+- object-fit을 사용한 설정에서 위치를 이동할때 사용
+- 이미지나 동영상의 기준값을 변경 적용할 수 있다!
+- 설정법:
+    object-position : 가로값 세로값;
+    1) 가로값 - left, center, right, 수치(px,% 등)
+    2) 세로값 - top, center, bottom, 수치(px,% 등)
+    -> 기본값은 가로값,세로값 모두 center임!
+
+*/
+
+/* 2. 들어가기버튼 */
+#enter{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    outline: 4px dotted lime;
+}
+/* Click Here 글자 */
+#enter span{
+    display: block;
+    text-align: center;
+    font-family: 'Audiowide';
+    font-size: 3.4rem;
+}
+
+
+
 

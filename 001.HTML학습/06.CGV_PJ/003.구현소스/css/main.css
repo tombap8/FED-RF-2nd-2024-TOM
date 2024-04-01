@@ -1,16 +1,10 @@
 @charset "utf-8";
 /* CGV PJ 메인 페이지 CSS - main.css */
 
-/*********** 1. 웹폰트 : CDN ***********/
-/* Cute Font, Jua, Audiowide 체 */
-@import url('https://fonts.googleapis.com/css2?family=Audiowide&family=Cute+Font&family=Jua&display=swap');
-/* 
-    font-family: 'Audiowide', cursive;
-    font-family: 'Cute Font', cursive;
-    font-family: 'Jua', sans-serif;
-*/
+
 /* 리셋CSS 불러오기 */
 @import url(./reset.css);
+@import url(./core.css);
 
 body{
     background-color: #000;
