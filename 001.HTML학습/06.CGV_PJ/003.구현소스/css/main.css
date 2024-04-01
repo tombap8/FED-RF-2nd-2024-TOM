@@ -271,6 +271,8 @@ body * {
     display: flex;
     /* 하위 요소 사이간격 */
     gap: 0 15px;
+    /* 원근설정 : 하위li에 적용! */
+    perspective: 100vh;
 }
 /* 상위 ul>li 리스트 */
 .poster-menu>ul>li{
@@ -278,7 +280,22 @@ body * {
     /* 부모자격 - 영화정보박스 */
     overflow: hidden;
     /* 자식요소인 영화정보박스 숨기기 */
+    
+    /* X축회전 */
+    transform: rotateX(40deg);
+    /* 기본회전축 하단변경 */
+    transform-origin: bottom;
+    /* 트랜지션 */
+    transition: .3s ease-in-out;
 }
+/* li에 오버시 일어나기 */
+.poster-menu>ul>li:hover{
+    /* X축회전 */
+    transform: rotateX(0deg);
+    /* 오버요소 항상위 */
+    z-index: 1;
+}
+
 
 /* 포스터 이미지 */
 .poster-menu img{
