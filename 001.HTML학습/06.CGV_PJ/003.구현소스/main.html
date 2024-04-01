@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CGV에 오신것을 환영합니다!</title>
+    <!-- 폰트어썸 아이콘 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="./css/main.css" />
+    <!-- 메인 JS 불러오기
+    defer 속성을 넣어서 html로딩후 실행함! -->
+    <script src="./js/main.js" defer></script>
+    <!-- 자바스크립트 코드구역 -->
+    <script>
+      // JS 코드구역
+      // alert('나는 누구? 여긴어디?');
+      // JS코드는 만나자만자 바로실행됨!
+      // 그래서 함수라는 코드저장소를 만들고
+      // 호출시에만 실행되도록 한다!
+
+      // JS함수 -> function 함수명(){코드}
+      // function 멍멍이(먹이) {
+      //   alert(먹이);
+      //   document.getElementById("ifr").src =
+      //     "https://www.youtube.com/embed/"+먹이;
+      // } ////////// 멍멍이 함수구역 ////////
+    </script>
+  </head>
+  <body>
+    <!-- 1. 상단영역 -->
+    <header class="top-area part">
+      <!-- 1-1.타이틀 -->
+      <h1 class="tit">CGV 예고편 상영관</h1>
+      <!-- 1-2. GNB -->
+      <nav class="gnb">
+        <ul>
+          <li>
+            <a href="#">영화</a>
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <ol>
+                <li><a href="#">무비차트</a></li>
+                <li><a href="#">HD 트레일러</a></li>
+                <li><a href="#">무비파인더</a></li>
+                <li class="bd-top"><a href="#">CGV아트하우스</a></li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <a href="#">예매</a>
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <ol>
+                <li>
+                  <a href="#">빠른예매</a>
+                </li>
+                <li>
+                  <a href="#">상영시간표</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <a href="#">극장</a>
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <ol>
+                <li>
+                  <a href="#">CGV 극장</a>
+                </li>
+                <li>
+                  <a href="#">특별관</a>
+                </li>
+                <li class="bd-top">
+                  <a href="#">CLUB 서비스</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+          <li>
+            <a href="#">이벤트&amp;컬처</a>
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <ol>
+                <li>
+                  <a href="#">이벤트</a>
+                </li>
+                <li>
+                  <a href="#">기프트샵</a>
+                </li>
+                <li>
+                  <a href="#">매거진</a>
+                </li>
+              </ol>
+            </div>
+          </li>
+        </ul>
+        <!-- 영사기 박스 -->
+        <aside class="cam">
+          <!-- 영사기 이미지 -->
+          <img src="./images/gnb.png" alt="영사기" />
+          <!-- 빔박스 -->
+          <div class="beam"></div>
+        </aside>
+      </nav>
+    </header>
+    <!-- 2. 메인영역 -->
+    <main class="main-area part">
+      <!-- 2-1.스크린 -->
+      <div class="screen">
+        <!-- 유튜브 아이프레임 -->
+        <iframe
+          id="ifr"
+          src="https://www.youtube.com/embed/vteD1f-SV5I?autoplay=1&mute=1&loop=1&playlist=vteD1f-SV5I"
+          allow="autoplay"
+        ></iframe>
+      </div>
+      <!-- 2-2.포스터메뉴 -->
+      <nav class="poster-menu">
+        <ul>
+          <li>
+            <a href="#">
+              <img src="./images/m1.jpg" alt="파묘" />
+
+              <!-- 영화정보박스 -->
+              <div class="mv-info">
+                <ol>
+                  <li>파묘</li>
+                  <li>최민식, 김고은</li>
+                  <li>미스터리</li>
+                </ol>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./images/m2.jpg" alt="이프온리" />
+
+              <!-- 영화정보박스 -->
+              <div class="mv-info">
+                <ol>
+                  <li>이프온리</li>
+                  <li>제니퍼 러브 휴잇</li>
+                  <li>멜로/로맨스</li>
+                </ol>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./images/m3.jpg" alt="웡카" />
+
+              <!-- 영화정보박스 -->
+              <div class="mv-info">
+                <ol>
+                  <li>웡카</li>
+                  <li>티모시 샬라메</li>
+                  <li>판타지, 드라마</li>
+                </ol>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#" onclick="멍멍이('dW8klYbV5t0')">
+              <img src="./images/m4.jpg" alt="시민덕희" />
+
+              <!-- 영화정보박스 -->
+              <div class="mv-info">
+                <ol>
+                  <li>시민덕희</li>
+                  <li>라미란, 공명</li>
+                  <li>드라마</li>
+                </ol>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./images/m5.jpg" alt="소풍" />
+
+              <!-- 영화정보박스 -->
+              <div class="mv-info">
+                <ol>
+                  <li>소풍</li>
+                  <li>나문희, 김영옥</li>
+                  <li>드라마</li>
+                </ol>
+              </div>
+            </a>
+          </li>
+          <li>
+            <a href="#">
+              <img src="./images/m6.jpg" alt="듄:파트2" />
+
+              <!-- 영화정보박스 -->
+              <div class="mv-info">
+                <ol>
+                  <li>듄:파트2</li>
+                  <li>티모시 샬라메</li>
+                  <li>액션</li>
+                </ol>
+              </div>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </main>
+    <!-- 3. 하단영역 -->
+    <footer class="footer-area part">
+      <!-- 3-1.하단로고 -->
+      <div class="logo">
+        <img src="./images/blogo.png" alt="하단로고" />
+      </div>
+      <!-- 3-2.회사정보 -->
+      <div class="co-info">
+        <address>
+          (04377)서울특별시 용산구 한강대로 23길 55, 아이파크몰 6층(한강로동)
+          <br />
+          대표이사 : 최병환사업자등록번호 : 104-81-45690통신판매업신고번호 :
+          2017-서울용산-0662 <br />
+          개인정보보호 책임자 : 정종민대표이메일 : cjcgvmaster@cj.netCGV고객센터
+          : 1544-1122
+        </address>
+      </div>
+      <!-- 3-3.SNS -->
+      <div class="sns-box">
+        <ol>
+          <!-- 페이스북 -->
+          <li>
+            <a class="fa-brands fa-square-facebook" href="#"></a>
+          </li>
+          <!-- 트위터X -->
+          <li>
+            <a class="fa-brands fa-square-x-twitter" href="#"></a>
+          </li>
+          <!-- 인스타그램 -->
+          <li>
+            <a class="fa-brands fa-square-instagram" href="#"></a>
+          </li>
+          <!-- 유튜브 -->
+          <li>
+            <a class="fa-brands fa-square-youtube" href="#"></a>
+          </li>
+        </ol>
+      </div>
+    </footer>
+  </body>
+</html>
