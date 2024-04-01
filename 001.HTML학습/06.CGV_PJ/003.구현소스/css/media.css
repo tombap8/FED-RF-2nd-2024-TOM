@@ -1,0 +1,51 @@
+@charset "utf-8";
+/* CGV PJ 미디어쿼리 CSS - media.css */
+
+/* max-width를 사용한 미디어쿼리를
+큰 사이즈 부터 작은 사이즈 순으로 셋팅함! */
+
+/********** 1350px 이하 미디어쿼리 시작 **********/
+@media screen and (max-width: 1350px) {
+  /* GNB 위치이동 */
+  .gnb {
+    right: 70px;
+  }
+}
+/********** 1350px 이하 미디어쿼리 종료 **********/
+
+/********** 1024px 이하 미디어쿼리 시작 **********/
+@media screen and (max-width: 1024px) {
+  /* GNB메뉴 위치 및 배치 변경하기 */
+  .gnb {
+    bottom: auto;
+    /* 기존 위치기준을 auto로 초기화함! */
+    top: 81px;
+    /* 새로운 기준인 top을 사용함! */
+    right: 17px;
+  }
+  .gnb ul {
+      flex-direction: column;
+      align-items: flex-end;
+      /* 높이값을 이용한 메뉴 숨기기 */
+      height: 0;
+      overflow: hidden;
+      transition: height .4s ease-in-out;
+    }
+    /* gnb오버시 ul보이기 */
+    .gnb:hover ul {
+        height: 127px;
+    }
+
+  /* 서브메뉴 오버시 숨기기 */
+  .gnb ul > li:hover .smenu {
+    display: none;
+  }
+  /* 영사기 위치변경 */
+  .cam {
+    top: -62px;
+    right: -12px;
+    padding-bottom: 10px;
+    /* 하단 gnb와 오버시 연결필요! */
+  }
+}
+/********** 1024px 이하 미디어쿼리 종료 **********/
