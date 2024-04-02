@@ -54,7 +54,7 @@ function loadFn() {
 
   // 광클금지변수
   let stop = false;
-  
+
   // 슬라이드 순번 전역변수
   let snum = 0;
 
@@ -84,7 +84,6 @@ function loadFn() {
   // (2) 블릿의 li까지 수집! indic 변수
   indic = qsa(".indic li");
 
-
   // 1. 이벤트 연결 설정하기 //////
   // 대상: .abtn
   abtn.forEach((ele) => {
@@ -106,15 +105,13 @@ function loadFn() {
   // -> 버튼 클릭시 인터발 지우기
   // -> 일정시간뒤 다시 인터발 작동
   function goSlide() {
-
     ///// 광클 금지 설정 /////
-    if(stop) return; // 막기!
+    if (stop) return; // 막기!
     stop = true; // 잠금!
     setTimeout(() => {
       stop = false; // 해제!
     }, SLIDE_TRANS_TIME);
     //////////////////////////
-
 
     // 1.오른쪽버튼 여부
     let isRbtn = this.classList.contains("ab2");
@@ -132,29 +129,25 @@ function loadFn() {
     console.log("snum: " + snum);
 
     // 3. 슬라이드 순번 클래스 제어함수 호출하기
-    setClass(slide,'on',snum);
+    setClass(slide, "on", snum);
 
     // 4. 블릿 순번 클래스 제어함수 호출하기
-    setClass(indic,'on',snum);
+    setClass(indic, "on", snum);
   } /////////// goSlide 함수 /////////////
 
   // 3. 클래스 제어함수 만들기 /////////
-  function setClass(target,className,seq) {
+  function setClass(target, className, seq) {
     // target - 변경할 요소대상
     // className - 변경할 클래스명
     // seq - 클래스가 들어갈 순번
-    console.log('대상:',target,
-    '/클래스명:',className,'/순번:',seq);
+    console.log("대상:", target, "/클래스명:", className, "/순번:", seq);
 
     // 1. 타겟은 HTML 컬렉션이므로 forEach메서드로 순회함!
-    target.forEach((ele,idx)=>{
+    target.forEach((ele, idx) => {
       // 1-1. seq와 idx가 일치할 경우 클래스넣기
-      if(seq===idx) ele.classList.add(className);
+      if (seq === idx) ele.classList.add(className);
       // 1-2. 기타의 경우 클래스 제거하기
       else ele.classList.remove(className);
     }); /////// forEach /////////////////
-
   } /////////// setClass 함수 //////////////
-
-
 } /////////////// loadFn 함수 //////////////
