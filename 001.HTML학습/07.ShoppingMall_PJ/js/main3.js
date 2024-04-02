@@ -37,4 +37,39 @@ addEvt(window, "DOMContentLoaded", loadFn);
 function loadFn() {
   console.log("로딩완료!");
 
+  // 이동버튼 대상:  .abtn
+  const abtn = qsa(".abtn");
+  // 변경대상 : #slide
+  const slide = qs("#slide");
+  // 블릿버튼 : .indic
+  let indic = document.querySelector(".indic");
+  // console.log(abtn,slide);
+
+  //////////// 초기셋팅하기 ////////
+  // 5개의 슬라이드와 블릿을 만들어준다!
+  for (let i = 0; i < 5; i++) {
+    // 슬라이드 넣기
+    slide.innerHTML += `
+    <li data-seq="${i}">
+        <img 
+        src="images/slide0${i + 1}.jpg"         
+        alt="slide">
+    </li>    
+    `;
+    // 블릿 넣기
+    indic.innerHTML += `
+    <li ${i === 0 ? 'class="on"' : ""}>
+        <img src="images/dot1.png" alt="흰색">
+        <img src="images/dot2.png" alt="회색">
+    </li>
+    `;
+  } ////// for ////////
+
+  // li를 생성한 후 그 li다시 수집한다!
+  // 블릿의 li까지 수집! indic 변수
+  indic = document.querySelectorAll('.indic li');
+
+  // 슬라이드 순번 전역변수
+  let snum = 0;
+
 } /////////////// loadFn 함수 //////////////
