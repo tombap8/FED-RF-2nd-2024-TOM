@@ -143,7 +143,7 @@ function loadFn() {
     // target - 변경할 요소대상
     // className - 변경할 클래스명
     // seq - 클래스가 들어갈 순번
-    console.log("대상:", target, "/클래스명:", className, "/순번:", seq);
+    // console.log("대상:", target, "/클래스명:", className, "/순번:", seq);
 
     // 1. 타겟은 HTML 컬렉션이므로 forEach메서드로 순회함!
     target.forEach((ele, idx) => {
@@ -153,6 +153,27 @@ function loadFn() {
       else ele.classList.remove(className);
     }); /////// forEach /////////////////
   } /////////// setClass 함수 //////////////
+
+  /// [ 블릿클릭 이벤트 셋팅 구역 ] ///////////
+  // 대상: .indic li -> indic변수
+  // 1. 이벤트 설정하기 : forEach메서드 사용
+  indic.forEach((ele, idx) => {
+    // ele - 요소 / idx - 순번
+    addEvt(ele, "click", () => indicSlide(idx));
+  }); //// forEach //////////
+
+  // 2. 이벤트 처리함수 만들기
+  function indicSlide(seq) {
+    // seq - 변경할 순번
+    console.log("블릿클릭!", seq);
+
+    // 1.현재 슬라이드 순번 블릿순번으로 업데이트
+    snum = seq;
+    // 2.슬라이드 순번 클래스 제어함수 호출
+    setClass(slide, "on", snum);
+    // 3.블릿 순번 클래스 제어함수 호출
+    setClass(indic, "on", snum);
+  } ////////////// indicSlide 함수 ////////////
 
   // [ 자동넘김 셋팅 구역 ] //////////////
   // 인터발용 변수(지울목적)
