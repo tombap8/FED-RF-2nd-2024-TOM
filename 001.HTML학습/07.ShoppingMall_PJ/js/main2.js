@@ -155,7 +155,7 @@ function loadFn() {
       // 2-1.오른쪽 버튼일 경우 ////
       if (isRbtn) {
         // (1)먼저 왼쪽으로 이동하기
-        slide.style.left = "-100%";
+        slide.style.top = "-100%";
         slide.style.transition = ".6s ease-in-out";
   
         // (2)이동하는 시간 0.6초간 기다림!
@@ -164,7 +164,7 @@ function loadFn() {
           slide.appendChild(slide.querySelectorAll("li")[0]);
           // 슬라이드 left 값이 -100% 이므로
           // (2-2) left값을 0으로 변경
-          slide.style.left = "0";
+          slide.style.top = "0";
           // (2-3) left 트랜지션 없애기
           slide.style.transition = "none";
         }, 600);
@@ -190,7 +190,7 @@ function loadFn() {
         // (2) left 값을 -100%로 변경하여
         // 맨뒤 li가 맨앞으로 온것을 숨긴다!
         // 왼쪽에서 슬라이드 들어올 준비!!!
-        slide.style.left = "-100%";
+        slide.style.top = "-100%";
         // 트랜지션이 한번 버튼클릭후 생기므로 없애줌
         slide.style.transition = "none";
   
@@ -203,7 +203,7 @@ function loadFn() {
         // 비동기처리하기 때문에 코드가 잘 작동한다!
         setTimeout(() => {
           // (3) left 값을 0으로 트랜지션하여 들어옴
-          slide.style.left = "0";
+          slide.style.top = "0";
           slide.style.transition = ".6s ease-in-out";
         }, 0);
       } /// else ///
