@@ -113,6 +113,9 @@ function loadFn() {
     }, SLIDE_TRANS_TIME);
     //////////////////////////
 
+    // 0. 인터발지우기 함수 호출!
+    clearAuto();
+
     // 1.오른쪽버튼 여부
     let isRbtn = this.classList.contains("ab2");
     // 호출확인
@@ -150,4 +153,42 @@ function loadFn() {
       else ele.classList.remove(className);
     }); /////// forEach /////////////////
   } /////////// setClass 함수 //////////////
+
+  // [ 자동넘김 셋팅 구역 ] //////////////
+  // 인터발용 변수(지울목적)
+  let autoI;
+  // 타임아웃용 변수(지울목적)
+  let autoT;
+  // 자동넘김호출함수 최초호출하기
+  autoSlide();
+
+  // [ 자동넘김호출함수 ] /////
+  function autoSlide() {
+    // setInterval(함수,시간)
+    // - 일정시간간격으로 함수를 호출
+    // clearInterval(인터발변수)
+    // - 변수에 담긴 인터발을 지움(멈춤)
+    autoI = setInterval(() => {
+      // 1.현재 슬라이드 순번 증가
+      snum === SLIDE_CNT - 1 ? (snum = 0) : snum++;
+      // 2.슬라이드 순번 클래스 제어함수 호출
+      setClass(slide, "on", snum);
+      // 3.블릿 순번 클래스 제어함수 호출
+      setClass(indic, "on", snum);
+    }, 3000);
+  } /////// autoSlide 함수 /////////////
+
+  /// [ 인터발 지우기함수 : 버튼조작시호출함! ] ///////
+  function clearAuto() {
+    // 지우기 확인!
+    console.log("인터발 지워!");
+    // 1.인터발 지우기
+    clearInterval(autoI);
+    // 2.타임아웃 지우기 : 실행쓰나미 방지!!!
+    clearTimeout(autoT);
+    // 3.5초후 아무작동도 안하면 다시 인터발호출
+    autoT = setTimeout(() => {
+      autoSlide();
+    }, 5000);
+  } ////////// clearAuto ////////////
 } /////////////// loadFn 함수 //////////////
