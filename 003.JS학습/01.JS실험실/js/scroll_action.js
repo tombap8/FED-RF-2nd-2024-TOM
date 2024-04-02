@@ -10,6 +10,8 @@ const myFn = {
 
   // 이벤트셋팅함수
   addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
+  // 바운딩함수
+  getBCR: ele => ele.getBoundingClientRect().top,
 }; /////// myFn 객체 /////////////
 
 /**************************************************** 
@@ -37,6 +39,20 @@ const myFn = {
     -> 윈도우화면 전체: window.innerHeight
     예) 화면의 3/2는 window.innerHeight/3*2
     예) 화면의 4/3는 window.innerHeight/4*3
+
+    ((메서드명 조어 분석))
+    getBoundingClientRect()
+    get 가져와라
+    Bounding 경계선 (->바운딩박스 - 경계선을 가지는 직사각형박스)
+    Client 보이는 화면
+    Rect 사각형
+
+    ->>> BouningClientRect 
+    -> 보이는 화면 사각형 경계선으로 부터의 거리를
+     리턴해주는 메서드
+     -> 상단으로 부터의 거리는 top속성
+     -> 왼쪽으로 부터의 거리는 left속성
+     공통적으로 경계선 아래쪽은 양수, 윗쪽은 음수
 
   ****************************************************/
 
