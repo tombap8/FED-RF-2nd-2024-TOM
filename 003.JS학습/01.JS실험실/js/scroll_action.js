@@ -12,6 +12,8 @@ const myFn = {
   addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
   // 바운딩함수
   getBCR: ele => ele.getBoundingClientRect().top,
+  // 옵셋탑값 반환함수
+  getOT: ele => ele.offsetTop,
 }; /////// myFn 객체 /////////////
 
 /**************************************************** 
@@ -150,4 +152,40 @@ function showLetters() {
   setTimeout(() => {
     stage.classList.add("on");
   }, 2000);
+
+  //////// 글자 스크롤 이벤트 셋팅하기 ///////
+  // 이벤트 대상: window
+  myFn.addEvt(window,'scroll',moveTit);
+
+  // 기준이 되는 포스터 박스 위치 구하기
+  const posTop = [];
+
+  scAct.forEach((ele,idx)=>{
+    posTop[idx] = myFn.getOT(ele);
+  }); //// forEach //////
+
+  console.log('포스터위치:',posTop);
+
+
+  /////// 글자 이동함수 ////////////////////
+  function moveTit(){
+    // 스크롤 위치값 구하기 
+    let scTop = window.scrollY;
+    // 호출확인
+    console.log('타이틀 이동!!!',scTop);
+
+    if(scTop > 300){ 
+        stage.style.top = '50%';
+        stage.style.left = '25%';
+        stage.style.transition = '2s';
+    }
+
+  } /////////// moveTit 함수 //////////////
+
+
+
+
+
+
+
 } /////////// showLetters 함수 ///////////
