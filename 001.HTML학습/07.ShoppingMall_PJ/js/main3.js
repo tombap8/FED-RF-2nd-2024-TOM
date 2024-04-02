@@ -167,6 +167,8 @@ function loadFn() {
     // seq - 변경할 순번
     console.log("블릿클릭!", seq);
 
+    // 0. 인터발 지우기함수 호출
+    clearAuto();
     // 1.현재 슬라이드 순번 블릿순번으로 업데이트
     snum = seq;
     // 2.슬라이드 순번 클래스 제어함수 호출
