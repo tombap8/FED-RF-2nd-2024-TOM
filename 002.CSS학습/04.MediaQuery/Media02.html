@@ -1,137 +1,262 @@
 <!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>레이아웃 미디어쿼리1</title>
-        <style>
-            html,
-            body {
-                margin: 0;
-                padding: 0;
-            }
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>미디어쿼리 레이아웃 연습2 - col-셋팅 미디어쿼리 사용법</title>
+    <style>
+        /* 공사중표시 */
+        body *{
+            outline: 2px dashed #ccc;
+        }
+        body>div>*{
+            outline-color: red;
+        }
 
-            /* 공통class */
-            .ibx {
-                /* 속박스 */
-                max-width: 1200px;
-                /* 1200px 보다 작아지면 auto */
-                margin: 0 auto;
-                outline: 1px dashed red;
-            }
+        /* 기본 초기화 */
+        html,body,h1,h2,h3,h4{
+            margin: 0;
+            padding: 0;
+        }
 
-            /* float해제 */
-            .ibx::after {
-                content: '';
-                display: block;
-                clear: both;
-            }
+        /* 공통 레이아웃 클래스 */
+        /* 속박스 */
+        .inbox{
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        /* 클리어 설정 가상요소
+        float에 의한 망가짐 방지! */
+        .inbox::after,
+        .group-part::after{
+            content: '';
+            display: block;
+            clear: both;
+        }
+        /* 파티션박스 */
+        .partbox{
+            /* 옆으로 흐르게 */
+            /* float: left; */
+            /* 보더/패딩 포함박스 */
+            box-sizing: border-box;
+            /* 내부패딩 */
+            padding: 15px;
+            /* 임시 보이게 보더 */
+            border: 2px dotted blue;
+            /* 높이값이 속박스에 있을 경우 
+            채우기셋팅 - 높이값이 파티션박스에 있으면 안씀! */
+            height: 100%;
 
-            .pbx {
-                /* 파티션박스 */
-                float: left;
-                outline: 1px dotted lime;
-            }
+        }
+        /* 공통 flex박스 클래스 */
+        .flex-box{
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-            /* 개별 디자인 */
+        /* 12 그리드 클래스 : 
+        한줄에 합이 12컬럼이 되도록 셋팅! */
+        .col-1 {width: 8.33%;}
+        .col-2 {width: 16.66%;}
+        .col-3 {width: 25%;}
+        .col-4 {width: 33.33%;}
+        .col-5 {width: 41.66%;}
+        .col-6 {width: 50%;}
+        .col-7 {width: 58.33%;}
+        .col-8 {width: 66.66%;}
+        .col-9 {width: 75%;}
+        .col-10 {width: 83.33%;}
+        .col-11 {width: 91.66%;}
+        .col-12 {width: 100%;}
+        /* 참고: https://www.w3schools.com/css/css_rwd_grid.asp */
 
-            /* 1. 상단영역 */
-            .top > .pbx {
-                width: 33.33%;
-                /* 3등분 */
-                height: 120px;
-            }
+        /* 숨길 박스 */
+        .col-none{display: none;}
+        /* 보일 박스 */
+        .col-block{display: block;}
 
-            .top1 {
-                background: url(./images/jeong1.jpg) no-repeat top/cover;
-            }
+        /* 개별영역 박스 -> 확장형 박스
+        -> 개별영역 중앙속박스에 높이값을 주면
+        파트박스가 늘어날 경우 높이값에 제한을 받게됨!
+        확장형은 반드시 파트박스에 높이값을 설정한다! */
+        /************* 1. 상단영역 *************/
+        #header{
+            background-color: lightblue;
+        }
+        .header .partbox{
+            height: 100px;
+        }
+        /************* 2. 배너영역 *************/
+        #banner{
+            background-color: lightgreen;
+        }
+        .banner .partbox{
+            height: 300px;
+        }
+        /************* 3. 메인영역 : .group-part *************/
+        #main{
+            background-color: lightpink;
+        }
+        .main .group-part-01 .partbox{
+            height: 360px;
+        }
+        .main .group-part-02 .partbox{
+            height: 120px;
+        }
+        .main .group-part-03 .partbox{
+            height: 220px;
+        }
+        .main .group-part-04 .partbox{
+            height: 280px;
+        }
+        .main .group-part-05 .partbox{
+            height: 240px;
+        }
+        /************* 4. 하단영역 *************/
+        #footer{
+            background-color: lightskyblue;
+        }
+        .footer .partbox{
+            height: 100px;
+        }
 
-            .top2 {
-                background: url(./images/jeong2.jpg) no-repeat top/cover;
-            }
+        /* 미디어쿼리 레이아웃 변경 적용 */
+        /* 최대 800px 이하 시작 */
+        @media screen and (max-width:800px) {
+            /* 원리 - 그리드구성 클래스셋을 다른이름으로
+            하나더 만들고 미리 요소에 클래스 주면
+            해당크기로 미디어쿼리 작동시 그리드값을 덮어씀! */
 
-            .top3 {
-                background: url(./images/jeong3.jpg) no-repeat top/cover;
-            }
-
-            /* 2. 중앙영역 */
-            .cont > .pbx {
-                width: 25%;
-                /* 4등분 */
-                height: 300px;
-            }
-
-            .cont1 {
-                background: url(./images/jeong4.jpg) no-repeat top/cover;
-            }
-
-            .cont2 {
-                background: url(./images/jeong5.jpg) no-repeat top/cover;
-            }
-
-            .cont3 {
-                background: url(./images/jeong6.jpg) no-repeat top/cover;
-            }
-
-            .cont4 {
-                background: url(./images/jeong7.jpg) no-repeat top/cover;
-            }
-
-            /* 3. 하단영역 */
-            .info > .pbx {
-                width: 50%;
-                /* 2등분 */
-                height: 200px;
-            }
-
-            .info1 {
-                background: url(./images/jeong8.jpg) no-repeat top/cover;
-            }
-
-            .info2 {
-                background: url(./images/jeong9.jpg) no-repeat top/cover;
-            }
-
-            /* 크기별 미디어쿼리 */
-
-            /************** 1024px 이하 **************/
+            /* 레이아웃구성 */
             
-            /* 1024px 이하 */
 
-            /*************** 800px 이하 ***************/
-           
-            /* 800px 이하 */
-
-            /**************** 500px 이하 ****************/
+            /* 숨길 박스 */
             
-            /* 500px 이하 */
-        </style>
-    </head>
+            /* 보일 박스 */
+            
+        }
+        /* 최대 800px 이하 종료 */
 
-    <body>
-        <!-- 1. 상단영역 -->
-        <div>
-            <header class="ibx top">
-                <div class="pbx top1"></div>
-                <div class="pbx top2"></div>
-                <div class="pbx top3"></div>
-            </header>
-        </div>
-        <!-- 2. 중앙영역 -->
-        <div>
-            <main class="ibx cont">
-                <div class="pbx cont1"></div>
-                <div class="pbx cont2"></div>
-                <div class="pbx cont3"></div>
-                <div class="pbx cont4"></div>
-            </main>
-        </div>
-        <!-- 3. 하단영역 -->
-        <div>
-            <footer class="ibx info">
-                <div class="pbx info1"></div>
-                <div class="pbx info2"></div>
-            </footer>
-        </div>
-    </body>
+        /* 최대 500px 이하 시작 */
+        @media screen and (max-width:500px) {
+            /* 모든 그리드 클래스 100%로 일괄변경하기! */
+            /* 
+                CSS 선택자 문법 : 속성선택자
+                [속성명=값] -> 어떤속성값이 정확히 일치
+                [속성명^=값] -> 어떤속성값이 어떤값으로 시작
+                [속성명$=값] -> 어떤속성값이 어떤값으로 끝남
+                [속성명*=값] -> 어떤속성값이 어떤값이 포함됨
+            */
+
+            /* [class^='fl']{ */
+            /* [class$='-9']{ */
+            
+        }
+        /* 최대 500px 이하 종료 */
+
+
+    </style>
+</head>
+<body>
+    <!-- 확장형 레이아웃 -->
+    <!-- 1. 상단영역 -->
+    <div id="header">
+        <header class="header inbox">
+            <!-- 파트박스 3개 -->
+            <div class="flex-box">
+                <div class="partbox col-2"></div>
+                <div class="partbox col-7"></div>
+                <div class="partbox col-3"></div>
+            </div>
+        </header>
+    </div>
+    <!-- 2. 배너영역 -->
+    <div id="banner">
+        <section class="banner inbox">
+            <h2>메인배너</h2>
+            <!-- 파트박스 2개 -->
+            <div class="flex-box">
+                <div class="partbox col-9"></div>
+                <div class="partbox col-none"></div>
+                <div class="partbox col-3"></div>
+            </div>
+        </section>
+    </div>
+    <!-- 3. 메인영역 -->
+    <div id="main">
+        <main class="main inbox">
+            <!-- 파트그룹박스 5개 -->
+            <div class="group-part group-part-01">
+                <h2>배너바로가기</h2>
+                <!-- 파트박스 4개 -->
+                <div class="flex-box">
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                </div>
+            </div>
+            <div class="group-part group-part-02">
+                <h2>바로가기링크영역</h2>
+                <!-- 파트박스 1개 -->
+                <div class="partbox col-12"></div>
+            </div>
+            <div class="group-part group-part-03">
+                <h2>뉴스모아보기</h2>
+                <!-- 파트박스 8개 -->
+                <div class="flex-box">
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                </div>
+                
+            </div>
+            <div class="group-part group-part-04">
+                <h2>유관기관링크모음</h2>
+                <!-- 파트박스 6개 -->
+                <div class="flex-box">
+                    <div class="partbox col-2"></div>
+                    <div class="partbox col-2"></div>
+                    <div class="partbox col-2"></div>
+                    <div class="partbox col-2"></div>
+                    <div class="partbox col-2"></div>
+                    <div class="partbox col-2"></div>
+                </div>
+                
+            </div>
+            <div class="group-part group-part-05">
+                <h2>마케팅통계보기</h2>
+                <!-- 파트박스 4개 -->
+                <div class="flex-box">
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3"></div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <!-- 4. 하단영역 -->
+    <div id="footer">
+        <footer class="footer inbox">
+            <!-- 파트박스 6개 -->
+            <div class="flex-box">
+                <div class="partbox col-6"></div>
+                <div class="partbox col-6"></div>
+                <div class="partbox col-2"></div>
+                <div class="partbox col-4"></div>
+                <div class="partbox col-2"></div>
+                <div class="partbox col-4"></div>
+            </div>
+        </footer>
+    </div>
+
+
+    
+</body>
 </html>
