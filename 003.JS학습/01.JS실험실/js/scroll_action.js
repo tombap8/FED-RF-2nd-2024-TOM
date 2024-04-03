@@ -253,7 +253,11 @@ function moveWoman(){
   // 이미지이동값 = 
   // 윈도우높이(winH) * 스크롤이동값(scTop) / 스크롤한계값(scLlimit)
 
-  // 3. 
+  // 3. 떨녀에게 적용하기
+  woman.style.top = wTop + 'px';
+
+  // 4. 맨위일때 윗쪽으로 숨기기
+  if(scTop === 0) woman.style.top = '-20%';
 
 
 
