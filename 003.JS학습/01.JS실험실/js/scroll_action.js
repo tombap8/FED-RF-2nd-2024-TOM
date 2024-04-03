@@ -215,6 +215,8 @@ function showLetters() {
 
 ///////////////////////////////////////////
 /////// 떨어지는 여자 구현하기 //////////////
+///////////////////////////////////////////
+
 // 기본원리: 스크롤 이동에 따른 화면높이값 범위안에서
 // 떨어지는 여자 이미지가 아래쪽으로 이동애니함!
 // [비례식을 세운다!!]
@@ -244,7 +246,16 @@ myFn.addEvt(window,'scroll',moveWoman);
 function moveWoman(){
   // 1. 스크롤 위치값
   let scTop = window.scrollY;
-  console.log('스위:',scTop);
+  
+  // 2. 떨녀 top 값  
+  let wTop = winH * scTop / scLlimit;
+  console.log('스위:',scTop,'\n여자:',wTop);
+  // 이미지이동값 = 
+  // 윈도우높이(winH) * 스크롤이동값(scTop) / 스크롤한계값(scLlimit)
+
+  // 3. 
+
+
 
 
 } //////// moveWaman 함수 /////////////
