@@ -73,8 +73,12 @@ myFn.addEvt(window, "scroll", showIt);
 // 3-1. 스크롤 등장액션 함수
 function showIt() {
   // 클래스 on넣기 함수 호출하기
-  // for of 문 호출
-  for (let x of scAct) addOn(x);
+
+  // for of 제어문 처리방법
+  // for (let x of scAct) addOn(x);
+
+  // forEach메서드 처리방법
+  scAct.forEach(ele=>addOn(ele));
 
   // let pos = myFn.getBCR(scAct[0]);
   // let pos2 = myFn.getBCR(scAct[1]);
@@ -89,13 +93,14 @@ function showIt() {
 
 // 스크롤 등장 기준설정 : 화면의 2/3
 const CRITERIA = (window.innerHeight / 3) * 2;
-console.log("기준값:", CRITERIA);
+// console.log("기준값:", CRITERIA);
 
 //// [ 클래스 on 넣기 함수 ] ///////////
 function addOn(ele) {
   // ele - 대상요소
   // 바운딩값 구하기
   let bcrVal = myFn.getBCR(ele);
+  // console.log(bcrVal);
 
   // 기준값보다 작을때 등장
   if (bcrVal < CRITERIA) ele.classList.add("on");
@@ -170,14 +175,14 @@ function showLetters() {
   // 화면절반크기 변수(포스터 위치에서 뺄값!)
   const gap = window.innerHeight / 2;
 
-  console.log("포스터위치:", posTop, gap);
+  // console.log("포스터위치:", posTop, gap);
 
   /////// 글자 이동함수 ////////////////////
   function moveTit() {
     // 스크롤 위치값 구하기
     let scTop = window.scrollY;
     // 호출확인
-    console.log("타이틀 이동!!!", scTop);
+    // console.log("타이틀 이동!!!", scTop);
 
     // 1. 맨위 원위치하기 : 첫번째 기준보다 작을때
     if (scTop < posTop[0] - gap) {
@@ -205,3 +210,41 @@ function showLetters() {
     }
   } /////////// moveTit 함수 //////////////
 } /////////// showLetters 함수 ///////////
+
+
+
+///////////////////////////////////////////
+/////// 떨어지는 여자 구현하기 //////////////
+// 기본원리: 스크롤 이동에 따른 화면높이값 범위안에서
+// 떨어지는 여자 이미지가 아래쪽으로 이동애니함!
+// [비례식을 세운다!!]
+// 스크롤한계값 : 윈도우높이 = 스크롤이동값 : 이미지이동값
+// 이미지이동값 = 윈도우높이 * 스크롤이동값 / 스크롤한계값
+
+// 0. 변수값 셋팅하기
+// (1) 스크롤 한계값 : 전체document높이 - 화면높이
+// 전체document높이
+let docH = document.body.clientHeight;
+// 화면높이
+let winH = window.innerHeight;
+// 스크롤한계값
+let scLlimit = docH - winH;
+console.log(
+  '문서높이:', docH,
+'\n화면높이:',winH,
+'\n한계값:',scLlimit);
+
+// 1. 대상선정: 떨어지는 여자요소
+const woman = myFn.qs('#woman');
+
+// 2. 스크롤 이벤트 설정하기 : window가 이벤트 대상임!
+myFn.addEvt(window,'scroll',moveWoman);
+
+// 3. 함수 만들기 /////////
+function moveWoman(){
+  // 1. 스크롤 위치값
+  let scTop = window.scrollY;
+  console.log('스위:',scTop);
+
+
+} //////// moveWaman 함수 /////////////
