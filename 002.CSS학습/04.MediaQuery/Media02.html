@@ -155,6 +155,9 @@
         /* 최대 500px 이하 시작 */
         @media screen and (max-width:500px) {
             /* 모든 그리드 클래스 100%로 일괄변경하기! */
+            [class*='col-']{
+                width: 100%;
+            }
             /* 
                 CSS 선택자 문법 : 속성선택자
                 [속성명=값] -> 어떤속성값이 정확히 일치
@@ -171,6 +174,7 @@
 
 
     </style>
+
 </head>
 <body>
     <!-- 확장형 레이아웃 -->
@@ -205,10 +209,10 @@
                 <h2>배너바로가기</h2>
                 <!-- 파트박스 4개 -->
                 <div class="flex-box">
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
                 </div>
             </div>
             <div class="group-part group-part-02">
@@ -220,14 +224,14 @@
                 <h2>뉴스모아보기</h2>
                 <!-- 파트박스 8개 -->
                 <div class="flex-box">
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3 col-2nd-4"></div>
+                    <div class="partbox col-3 col-2nd-4"></div>
+                    <div class="partbox col-3 col-2nd-4"></div>
+                    <div class="partbox col-3 col-2nd-4"></div>
+                    <div class="partbox col-3 col-2nd-4"></div>
+                    <div class="partbox col-3 col-2nd-4"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
                 </div>
                 
             </div>
@@ -235,12 +239,12 @@
                 <h2>유관기관링크모음</h2>
                 <!-- 파트박스 6개 -->
                 <div class="flex-box">
-                    <div class="partbox col-2"></div>
-                    <div class="partbox col-2"></div>
-                    <div class="partbox col-2"></div>
-                    <div class="partbox col-2"></div>
-                    <div class="partbox col-2"></div>
-                    <div class="partbox col-2"></div>
+                    <div class="partbox col-2 col-2nd-3"></div>
+                    <div class="partbox col-2 col-2nd-3"></div>
+                    <div class="partbox col-2 col-2nd-3"></div>
+                    <div class="partbox col-2 col-2nd-3"></div>
+                    <div class="partbox col-2 col-2nd-6"></div>
+                    <div class="partbox col-2 col-2nd-6"></div>
                 </div>
                 
             </div>
@@ -248,10 +252,10 @@
                 <h2>마케팅통계보기</h2>
                 <!-- 파트박스 4개 -->
                 <div class="flex-box">
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
-                    <div class="partbox col-3"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
+                    <div class="partbox col-3 col-2nd-6"></div>
+                    <div class="partbox col-3 col-2nd-12"></div>
+                    <div class="partbox col-3 col-2nd-12"></div>
                 </div>
             </div>
         </main>
@@ -261,16 +265,28 @@
         <footer class="footer inbox">
             <!-- 파트박스 6개 -->
             <div class="flex-box">
-                <div class="partbox col-6"></div>
-                <div class="partbox col-6"></div>
-                <div class="partbox col-2"></div>
-                <div class="partbox col-4"></div>
-                <div class="partbox col-2"></div>
-                <div class="partbox col-4"></div>
+                <div class="partbox col-6 col-2nd-6"></div>
+                <div class="partbox col-6 col-2nd-6"></div>
+                <div class="partbox col-2 col-2nd-12"></div>
+                <div class="partbox col-4 col-2nd-none"></div>
+                <div class="partbox col-2 col-2nd-none"></div>
+                <div class="partbox col-4 col-2nd-none"></div>
             </div>
         </footer>
     </div>
+<script>
+    // 더미 이미지 사이트 주소로 넣기
+    // 대상: .partbox
+    const tg = document.querySelectorAll('.partbox');
 
+    // 1. 이미지 사이트 주소로 넣기
+    // -> https://picsum.photos/id/번호/200/300
+    tg.forEach((ele,idx)=>{
+        ele.style.backgroundImage = 
+        `url(https://picsum.photos/id/${idx+20}/200/300)`;
+
+    }); //// forEach ///////
+</script>
 
     
 </body>
