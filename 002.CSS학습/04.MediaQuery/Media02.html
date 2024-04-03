@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>미디어쿼리 레이아웃 연습2 - col-셋팅 미디어쿼리 사용법</title>
+    <title>미디어쿼리 레이아웃 연습2 - 
+        col-셋팅 미디어쿼리 사용법</title>
     <style>
         /* 공사중표시 */
         body *{
@@ -128,11 +129,25 @@
             해당크기로 미디어쿼리 작동시 그리드값을 덮어씀! */
 
             /* 레이아웃구성 */
+            .col-2nd-1 {width: 8.33%;}
+            .col-2nd-2 {width: 16.66%;}
+            .col-2nd-3 {width: 25%;}
+            .col-2nd-4 {width: 33.33%;}
+            .col-2nd-5 {width: 41.66%;}
+            .col-2nd-6 {width: 50%;}
+            .col-2nd-7 {width: 58.33%;}
+            .col-2nd-8 {width: 66.66%;}
+            .col-2nd-9 {width: 75%;}
+            .col-2nd-10 {width: 83.33%;}
+            .col-2nd-11 {width: 91.66%;}
+            .col-2nd-12 {width: 100%;}
             
 
             /* 숨길 박스 */
+            .col-2nd-none{display: none;}
             
             /* 보일 박스 */
+            .col-2nd-block{display: block;}
             
         }
         /* 최대 800px 이하 종료 */
@@ -164,9 +179,9 @@
         <header class="header inbox">
             <!-- 파트박스 3개 -->
             <div class="flex-box">
-                <div class="partbox col-2"></div>
-                <div class="partbox col-7"></div>
-                <div class="partbox col-3"></div>
+                <div class="partbox col-2 col-2nd-3"></div>
+                <div class="partbox col-7 col-2nd-9"></div>
+                <div class="partbox col-3 col-2nd-12"></div>
             </div>
         </header>
     </div>
@@ -176,9 +191,9 @@
             <h2>메인배너</h2>
             <!-- 파트박스 2개 -->
             <div class="flex-box">
-                <div class="partbox col-9"></div>
-                <div class="partbox col-none"></div>
-                <div class="partbox col-3"></div>
+                <div class="partbox col-9 col-2nd-6"></div>
+                <div class="partbox col-none col-2nd-6 col-2nd-block"></div>
+                <div class="partbox col-3 col-2nd-12"></div>
             </div>
         </section>
     </div>
