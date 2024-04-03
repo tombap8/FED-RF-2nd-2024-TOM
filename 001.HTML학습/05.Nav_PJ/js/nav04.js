@@ -26,10 +26,10 @@ console.log("대상:", gnbList);
 
 // 3. 이벤트 설정하기 //////
 gnbList.forEach((ele) => {
-    // 1. 클릭시 메뉴 열기 / 기타서브 닫기
+  // 1. 클릭시 메뉴 열기 / 기타서브 닫기
   myFn.addEvt(ele, "click", showMenu);
   // 2. 마우스떠날때 메뉴 닫기
-//   myFn.addEvt(ele, "mouseleave", hideMenu);
+  //   myFn.addEvt(ele, "mouseleave", hideMenu);
 }); //// forEach /////
 
 // 4. 함수 만들기 ////////////
@@ -42,7 +42,7 @@ function showMenu() {
   // null의 뜻은 '빈값'
 
   // 호출확인
-  console.log("보여줘 서브메뉴!",this, smenu);
+  console.log("보여줘 서브메뉴!", this, smenu);
 
   // 2. 조건분기 하기 : 서브가 있는 경우 높이값 만들기
   // 높이값은 하위의 ol요소의 높이값을 읽어와서
@@ -58,36 +58,53 @@ function showMenu() {
 
     // 3. 높이값 적용하기
     // 대상: .smenu -> smenu변수
-    smenu.style.height = 
-    (smenu.clientHeight === 0 ? hval : 0) + "px";
+    smenu.style.height = (smenu.clientHeight === 0 ? hval : 0) + "px";
     // (smenu의 높이값이 0이냐? 맞으면 높이값 hval적용
     // 아니면 0값 적용하여 열었다/닫았다를 가능하게함!)
+  } //////// if : .smenu있는 경우 ///////////
 
-    // 4. 기타 다른 서브메뉴가 열렸다면 모두 닫아준다!
-    // gnb 상위 li를 모두 순회한다!
-    gnbList.forEach(ele=>{
-        // isSameNode() 메서드 : 순회중 같은노드(요소)
-        // 인지 판별해주는 기능을 가짐(같은면 true)
-        let isSame = ele.isSameNode(this);
-        console.log('서브닫기체크:',ele,isSame);
-    });
+  // -> 서브메뉴가 없는 상위li가 클릭돼도 모두 닫기 처리!!!
+  // 4. 기타 다른 서브메뉴가 열렸다면 모두 닫아준다!
+  // gnb 상위 li를 모두 순회한다!
+  gnbList.forEach((ele) => {
+    // ele - 각li요소
+    // isSameNode() 메서드 : 순회중 같은노드(요소)
+    // 인지 판별해주는 기능을 가짐(같은면 true)
+    // -> 여기서 this키워드는 함수를 호출한 li다!
 
-  } //////// if ///////////
+    // 1. 현재 요소가 같은 요소인지 판별하기
+    let isSame = ele.isSameNode(this);
+    // console.log('서브닫기체크:',ele,isSame);
+
+    // 2. 같은요소가 아닌 경우만 하위 .smenu를 가져옴
+    if (!isSame) {
+      // !(Not연산자)로 false일때 true변경
+      let smenu = myFn.qsEl(ele, ".smenu");
+      if (smenu) {
+        // 서브메뉴가 있는 경우
+        // 서브메뉴의 높이값이 0이 아닌경우
+        if (smenu.clientHeight != 0) {
+          console.log("0만들어!");
+          smenu.style.height = "0px";
+        } /// if ///
+      } //// if ////
+    } /// if ////
+  }); ///// forEach ///////
 } ////////// showMenu 함수 ///////////
 
 // 4-2. 서브메뉴 숨기기함수 /////////
-function hideMenu(){
-    // 1. 하위의 서브메뉴 가져오기 : 서브없으면 null
+function hideMenu() {
+  // 1. 하위의 서브메뉴 가져오기 : 서브없으면 null
   let smenu = myFn.qsEl(this, ".smenu");
-    // 함수호출확인
-    console.log('메뉴숨겨!');
+  // 함수호출확인
+  console.log("메뉴숨겨!");
 
-    // 2. 분기하기
-    if(smenu){ // 서브가 있는 경우 높이값 0
-        if(smenu.clientHeight != 0){
-            console.log('0만들어!');
-            smenu.style.height = '0px';
-        } /// if ///
+  // 2. 분기하기
+  if (smenu) {
+    // 서브가 있는 경우 높이값 0
+    if (smenu.clientHeight != 0) {
+      console.log("0만들어!");
+      smenu.style.height = "0px";
     } /// if ///
-
+  } /// if ///
 } /////// hideMenu 함수 //////////////
