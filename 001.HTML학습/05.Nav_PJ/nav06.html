@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>유형6. 가로네비 서브별 드롭다운 전체창</title>
+    <!-- 메인CSS -->
+    <link rel="stylesheet" href="./css/nav06.css" />
+    <!-- 메뉴data JS -->
+    <script src="./js/mdata.js"></script>
+    <!-- 메인 JS -->
+    <script src="./js/nav06.js" defer></script>
+    <!-- 드래그배너 JS -->
+    <script src="./js/drag_banner.js" type="module"></script>
+  </head>
+  <body>
+    <!-- 1. 상단영역 -->
+    <div id="top-area">
+      <header class="ibx top-area">
+        <!-- 1-1.탑메뉴영역 -->
+        <div class="top-menu">
+          <h1 class="logo-box">
+            <a href="#">
+              <img src="./images/img_nav06/logo.png" alt="메인로고" />
+            </a>
+          </h1>
+        </div>
+        <!-- 1-2.GNB영역 -->
+        <nav class="gnb"></nav>
+      </header>
+      <!-- GNB배경박스 -->
+      <!-- <div class="bgbx"></div> -->
+    </div>
+    <!-- 2. 컨텐츠 영역 -->
+    <main class="cont">
+      <!-- 배너영역 -->
+      <section class="banbx">
+        <!--슬라이드-->
+        <ul class="slide dtg"></ul>
+
+        <!--이동버튼-->
+        <a href="#" class="abtn ab1">
+          <span class="ir">왼쪽버튼</span>
+        </a>
+        <a href="#" class="abtn ab2">
+          <span class="ir">오른쪽버튼</span>
+        </a>
+        
+        <!--블릿버튼-->
+        <ol class="indic"></ol>
+      </section>
+    </main>
+  </body>
+</html>
