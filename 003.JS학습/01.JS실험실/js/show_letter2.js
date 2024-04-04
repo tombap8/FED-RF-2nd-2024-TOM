@@ -71,7 +71,7 @@ function scrollFn() {
   if (pos < CRITERIA) {
     stage.classList.add("on");
   } /// if //
-  else {
-    stage.classList.remove("on");
-  } /// else ///
+  //   else {
+  //     stage.classList.remove("on");
+  //   } /// else ///
 } /////// scrollFn 함수 //////////////
