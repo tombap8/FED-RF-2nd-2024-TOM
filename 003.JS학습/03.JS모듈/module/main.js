@@ -106,4 +106,21 @@ txtData.personInfo.forEach(function (v) {
   contBox.innerHTML += makeMsg(v[0], v[1]);
 });
 
+// (3) 영화정보 뿌리기
+// ol>li 형식으로  .mvpart 박스에 영화정보를 구성함
+// 데이터는 txtData.mvData 배열임!
+mvBox.innerHTML = "<h2>♥ 영화위시리스트 ♥</h2>";
+
+txtData.mvData.forEach(v=>{
+    mvBox.innerHTML += `
+        <ol>
+            <li>★제목 : ${v[0]}</li>
+            <li>★장르 : ${v[1]}</li>
+            <li>★감독 : ${v[2]}</li>
+            <li>★주연 : ${v[3]}</li>
+            <li>★한마디 : ${v[4]}</li>
+        </ol>
+    `;
+}); ////////// forEach ///////////
+
 
