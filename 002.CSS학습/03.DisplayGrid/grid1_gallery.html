@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid1 - Gallery</title>
+    <style>
+        /**************************************************** 
+                    [ 그리드 디스플레이 ]
+
+        - 가로,세로 양방향 레이아웃을 위한 디스플레이 속성
+        - 주요 속성:
+        1. grid-template-colums
+            - 가로방향 width폭을 지정하는 속성
+            - 값은 순서대로 값을씀 (개수만큼 한줄 컬럼결정)
+            - 반복을 사용할 수 있다
+                -> repeat(개수,설정값)
+            - 설정값: px,%,vw,rem 등 구체적인값
+                또는 비율값 -> 숫자fr (가로크기 전체의 비율)
+                fr은 fraction에서 나온말
+                예) 1fr 2fr -> 1:2비율 
+        2. grid-template-rows
+            - 세로방향의 height값을 지정하는 속성
+            - 값은 순서대로 값을씀
+            - 나머지는 1번과 동일
+            - 만약 이 값을 설정하지 않으면 모든 박스에 대한
+            기본비를 유지함!(내가 원하는 비는 별도로 설정함)
+            -> 기본비에 대한 기준은 내부컨텐츠임
+            (이미지라면 이미지 기본비를 기준함)
+            
+        3. grid-column-gap
+            - 가로방향 사이간격
+        
+        4. grid-row-gap
+            - 세로방향 사이간격
+        ________________________________
+        
+        5.  가로정렬, 세로정렬은 flex와 개념상 동일하다! 
+        - 한줄일때 (진행방에 여러개있을 경우)
+        justify-content -> 가로진행방향 정렬
+        align-content -> 세로진행방향 정렬
+        - 여러줄일때
+        justify-items -> 가로방향 다중 정렬 (flex에 없음!)
+        align-items -> 세로방향 다중 정렬
+
+        ___________________________________
+
+        그리드 사용 예시 사이트: 매치 리스트
+        https://www.matchroomboxing.com/
+
+    ****************************************************/
+    /* 타이틀 */
+    .tit{
+        text-align: center;
+        font-size: max(3vw,25px);
+    }
+    /* 그리드박스 */
+    .grid{
+        
+    }
+
+    /* 그리드 각 박스 공통 */
+    .grid>div{
+        position: relative;
+        /* 부모자격 */
+        aspect-ratio: 280/400;
+    }
+    /* 설명박스 */
+    .grid>div aside{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background-color: #00000074;
+        font-size: min(1.2vw,12px);
+    }
+
+    /* 이미지셋팅 */
+    .grid img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+
+        /* 박스 이미지 하단 공백제거위한 셋팅 */
+        vertical-align: middle;
+    }
+
+    /************************************* 
+        
+            [ 그리드 위치 영역 속성 ]
+
+            1. 가로방향 위치속성
+                grid-column : 시작위치번호 / 끝위치번호;
+
+            2. 세로방향 위치속성
+                grid-row : 시작위치번호 / 끝위치번호;
+
+            -> 각 위치값은 그리드 기준선 번호를 참고함
+            (브라우저에서 그리드 소스 버튼을 클릭하여
+            볼 수 있음!)
+
+            >>>>> 셋팅시 유의사항 <<<<<<<
+            - grid-column 을 설정할때 만약 그리드범위에
+            넘치면 자동으로 아랫줄로 떨어진다!
+            그러므로 grid-row를 따로 잡아줄 필요가 없다!
+            단, 별도의 위치를 세로방향으로 변경해야할 경우
+            grid-row를 설정해야 한다!
+        
+        *************************************/
+
+    /* 
+        [ 개별적 변경하기 - 그리드 위치와 크기 변경 ]
+        방법) 개별요소에 column과 row의 시작/끝번호를 지정함
+
+        grid-column: 시작번호/끝번호
+        grid-row: 시작번호/끝번호
+    */
+    .first{
+        grid-column: 1/3;
+        grid-row: 1/3;
+    }
+    .second{
+        grid-column: 3/5;
+        grid-row: 10/12;
+    }
+
+    /* 1200px 이하 미디어쿼리 */
+    @media screen and (max-width:1200px) {
+        .grid{
+            grid-template-columns: repeat(4,1fr);
+        }
+    } 
+    /* 1000px 이하 미디어쿼리 */
+    @media screen and (max-width:1000px) {
+        .grid{
+            grid-template-columns: repeat(3,1fr);
+        }
+        
+        .second{
+            /* 위치잡기 복잡할 경우 원래 자기위치로
+            돌려보낸다! 그 값은 auto! */
+            grid-column: auto;
+            grid-row: auto;
+        }
+    } 
+    /* 800px 이하 미디어쿼리 */
+    @media screen and (max-width:800px) {
+        .grid{
+            grid-template-columns: repeat(2,1fr);
+        }
+    } 
+    /* 500px 이하 미디어쿼리 */
+    @media screen and (max-width:500px) {
+        .grid{
+            grid-template-columns: repeat(1,1fr);
+        }
+        .first{
+            /* 위치잡기 복잡할 경우 원래 자기위치로
+            돌려보낸다! 그 값은 auto! */
+            grid-column: auto;
+            grid-row: auto;
+        }
+    } 
+    
+
+    </style>
+</head>
+<body>
+    <!-- 타이틀 -->
+    <h1 class="tit">그리드1 - 이미지갤러리</h1>
+    <!-- 그리드 레이아웃박스 -->
+    <div class="grid">
+        <div class="first">
+            <img src="./images/1.jpg" alt="dress">
+            <aside>
+                <h2>상품명1</h2>
+                <h3>상품가격1</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/2.jpg" alt="dress">
+            <aside>
+                <h2>상품명2</h2>
+                <h3>상품가격2</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/3.jpg" alt="dress">
+            <aside>
+                <h2>상품명3</h2>
+                <h3>상품가격3</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/4.jpg" alt="dress">
+            <aside>
+                <h2>상품명4</h2>
+                <h3>상품가격4</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/5.jpg" alt="dress">
+            <aside>
+                <h2>상품명5</h2>
+                <h3>상품가격5</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/6.jpg" alt="dress">
+            <aside>
+                <h2>상품명6</h2>
+                <h3>상품가격6</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/7.jpg" alt="dress">
+            <aside>
+                <h2>상품명7</h2>
+                <h3>상품가격7</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/8.jpg" alt="dress">
+            <aside>
+                <h2>상품명8</h2>
+                <h3>상품가격8</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/9.jpg" alt="dress">
+            <aside>
+                <h2>상품명9</h2>
+                <h3>상품가격9</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/10.jpg" alt="dress">
+            <aside>
+                <h2>상품명10</h2>
+                <h3>상품가격10</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/11.jpg" alt="dress">
+            <aside>
+                <h2>상품명11</h2>
+                <h3>상품가격11</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/12.jpg" alt="dress">
+            <aside>
+                <h2>상품명12</h2>
+                <h3>상품가격12</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/13.jpg" alt="dress">
+            <aside>
+                <h2>상품명13</h2>
+                <h3>상품가격13</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/14.jpg" alt="dress">
+            <aside>
+                <h2>상품명14</h2>
+                <h3>상품가격14</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/15.jpg" alt="dress">
+            <aside>
+                <h2>상품명15</h2>
+                <h3>상품가격15</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/16.jpg" alt="dress">
+            <aside>
+                <h2>상품명16</h2>
+                <h3>상품가격16</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/17.jpg" alt="dress">
+            <aside>
+                <h2>상품명17</h2>
+                <h3>상품가격17</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/18.jpg" alt="dress">
+            <aside>
+                <h2>상품명18</h2>
+                <h3>상품가격18</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/19.jpg" alt="dress">
+            <aside>
+                <h2>상품명19</h2>
+                <h3>상품가격19</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/20.jpg" alt="dress">
+            <aside>
+                <h2>상품명20</h2>
+                <h3>상품가격20</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/21.jpg" alt="dress">
+            <aside>
+                <h2>상품명21</h2>
+                <h3>상품가격21</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/22.jpg" alt="dress">
+            <aside>
+                <h2>상품명22</h2>
+                <h3>상품가격22</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/23.jpg" alt="dress">
+            <aside>
+                <h2>상품명23</h2>
+                <h3>상품가격23</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/24.jpg" alt="dress">
+            <aside>
+                <h2>상품명24</h2>
+                <h3>상품가격24</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/25.jpg" alt="dress">
+            <aside>
+                <h2>상품명25</h2>
+                <h3>상품가격25</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/26.jpg" alt="dress">
+            <aside>
+                <h2>상품명26</h2>
+                <h3>상품가격26</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/27.jpg" alt="dress">
+            <aside>
+                <h2>상품명27</h2>
+                <h3>상품가격27</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/28.jpg" alt="dress">
+            <aside>
+                <h2>상품명28</h2>
+                <h3>상품가격28</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/29.jpg" alt="dress">
+            <aside>
+                <h2>상품명29</h2>
+                <h3>상품가격29</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/30.jpg" alt="dress">
+            <aside>
+                <h2>상품명30</h2>
+                <h3>상품가격30</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/31.jpg" alt="dress">
+            <aside>
+                <h2>상품명31</h2>
+                <h3>상품가격31</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/32.jpg" alt="dress">
+            <aside>
+                <h2>상품명32</h2>
+                <h3>상품가격32</h3>
+            </aside>
+        </div>
+        <div class="second">
+            <img src="./images/33.jpg" alt="dress">
+            <aside>
+                <h2>상품명33</h2>
+                <h3>상품가격33</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/34.jpg" alt="dress">
+            <aside>
+                <h2>상품명34</h2>
+                <h3>상품가격34</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/35.jpg" alt="dress">
+            <aside>
+                <h2>상품명35</h2>
+                <h3>상품가격35</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/36.jpg" alt="dress">
+            <aside>
+                <h2>상품명36</h2>
+                <h3>상품가격36</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/37.jpg" alt="dress">
+            <aside>
+                <h2>상품명37</h2>
+                <h3>상품가격37</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/38.jpg" alt="dress">
+            <aside>
+                <h2>상품명38</h2>
+                <h3>상품가격38</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/39.jpg" alt="dress">
+            <aside>
+                <h2>상품명39</h2>
+                <h3>상품가격39</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/40.jpg" alt="dress">
+            <aside>
+                <h2>상품명40</h2>
+                <h3>상품가격40</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/41.jpg" alt="dress">
+            <aside>
+                <h2>상품명41</h2>
+                <h3>상품가격41</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/42.jpg" alt="dress">
+            <aside>
+                <h2>상품명42</h2>
+                <h3>상품가격42</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/43.jpg" alt="dress">
+            <aside>
+                <h2>상품명43</h2>
+                <h3>상품가격43</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/44.jpg" alt="dress">
+            <aside>
+                <h2>상품명44</h2>
+                <h3>상품가격44</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/45.jpg" alt="dress">
+            <aside>
+                <h2>상품명45</h2>
+                <h3>상품가격45</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/46.jpg" alt="dress">
+            <aside>
+                <h2>상품명46</h2>
+                <h3>상품가격46</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/47.jpg" alt="dress">
+            <aside>
+                <h2>상품명47</h2>
+                <h3>상품가격47</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/48.jpg" alt="dress">
+            <aside>
+                <h2>상품명48</h2>
+                <h3>상품가격48</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/49.jpg" alt="dress">
+            <aside>
+                <h2>상품명49</h2>
+                <h3>상품가격49</h3>
+            </aside>
+        </div>
+        <div>
+            <img src="./images/50.jpg" alt="dress">
+            <aside>
+                <h2>상품명50</h2>
+                <h3>상품가격50</h3>
+            </aside>
+        </div>
+    </div>
+    
+</body>
+</html>
