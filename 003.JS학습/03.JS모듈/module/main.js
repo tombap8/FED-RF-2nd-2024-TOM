@@ -1,16 +1,38 @@
 // 모듈 연습 메인 JS - main.js
 
 // 공통함수 불러오기
-import myFn from './my_function.js';
+import myFn from "./my_function.js";
 
-// 텍스트 데이터 불러오기
-import { mTitle,sTitle,personInfo,mvData } from './text_data.js';
+// [import 방법1 : 보내준 이름 그대로쓰기]
+// import { mTitle, sTitle, personInfo, mvData } from "./text_data.js";
+
+// [import 방법2 : 별칭지어서 쓰기]
+// -> 별칭을 지었으면 반드시 별칭으로 사용해야함!
+// import {
+//   mTitle as mTit,
+//   sTitle as sTit,
+//   personInfo as pInfo,
+//   mvData as mdt,
+// } from "./text_data.js";
+
+// [import 방법3 : 한꺼번에 불러오기 - *사용!]
+// -> import * as 별칭 from 경로
+// -> 별칭 이름으로 한꺼번에 불러온 값을 객체에 담음
+// -> 모듈용 전용객체에 저장하여 객체.변수명 으로 사용함
+import * as txtData from "./text_data.js";
 
 // 불러온 값확인
-console.log(myFn,mTitle,sTitle,personInfo,mvData);
+// console.log(
+    //myFn, mTitle, sTitle, personInfo, mvData);
+// console.log(myFn, mTit, sTit, pInfo, mdt);
+console.log(txtData, txtData.mTitle);
 
 
+// [export default 로 내보낸 단일 함수 불러오기]
+// import makeMessage from "./msg_format.js";
+import makeMsg from "./msg_format.js";
 
+console.log(makeMsg);
 
 /**********************************************     
     [ import 형식 ]
@@ -52,4 +74,15 @@ console.log(myFn,mTitle,sTitle,personInfo,mvData);
 ***************************************************/
 
 
-// DOM선택함수 객체 불러오기
+
+// 요구사항 : 각 출력박스에 불러온 메시지 출력하기
+
+// 1. 대상선정 :  출력박스
+// (1) 타이틀 출력박스 : .tpart
+const titBox = myFn.qs('.tpart');
+// (2) 내용 출력박스 : #demo
+const contBox = myFn.qs('#demo');
+// (3) 영화정보 출력박스 : .mvpart
+const mvBox = myFn.qs('.mvpart');
+
+console.log('대상:', titBox,contBox,mvBox);
