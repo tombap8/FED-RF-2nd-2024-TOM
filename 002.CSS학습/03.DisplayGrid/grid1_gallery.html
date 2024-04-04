@@ -92,9 +92,9 @@
                 repeat(3,100px 1fr 2fr);
             ->>> 단순하게 사용할 경우 repeat(컬럼수,1fr)
             ********************************************/
-            grid-template-columns: repeat(5,1fr);
+        grid-template-columns: repeat(5, 1fr);
 
-            /******************************************** 
+        /******************************************** 
                 [ 세로 그리드 템플릿 ]
                 grid-template-rows
                 ______________________
@@ -128,19 +128,19 @@
                     grid-auto-rows: 400px;
                     
             ********************************************/
-            /* [수평간격] : grid-column-gap */
-            /* grid-column-gap: 10px; */
+        /* [수평간격] : grid-column-gap */
+        /* grid-column-gap: 10px; */
 
-            /* [수직간격] : grid-row-gap */
-            /* grid-row-gap: 30px; */
+        /* [수직간격] : grid-row-gap */
+        /* grid-row-gap: 30px; */
 
-            /* [그리드 종합간격] : grid-gap:세로 가로
+        /* [그리드 종합간격] : grid-gap:세로 가로
             -> 한 수치만 쓰면 양방향 모두셋팅 */
-            grid-gap: 15px 10px;
-            
-            /* [flex gap속성도 OK] : gap:세로 가로 */
-            /* gap: 30px 10px; */
+        /* grid-gap: 15px 10px; */
+        grid-gap: min(1.5vw, 15px) min(1vw, 10px);
 
+        /* [flex gap속성도 OK] : gap:세로 가로 */
+        /* gap: 30px 10px; */
       }
 
       /* 그리드 각 박스 공통 */
@@ -172,26 +172,29 @@
 
       /************************************* 
         
-            [ 그리드 위치 영역 속성 ]
+        [ 그리드 위치 영역 속성 ]
 
-            1. 가로방향 위치속성
-                grid-column : 시작위치번호 / 끝위치번호;
+        1. 가로방향 위치속성
+            grid-column : 시작위치번호 / 끝위치번호;
 
-            2. 세로방향 위치속성
-                grid-row : 시작위치번호 / 끝위치번호;
+        2. 세로방향 위치속성
+            grid-row : 시작위치번호 / 끝위치번호;
 
-            -> 각 위치값은 그리드 기준선 번호를 참고함
-            (브라우저에서 그리드 소스 버튼을 클릭하여
-            볼 수 있음!)
+        3. 가로/세로 방향 위치속성 한번에 쓰기
+            grid-area: 로시작 / 컬럼시작 / 로끝 / 컬럼끝;
 
-            >>>>> 셋팅시 유의사항 <<<<<<<
-            - grid-column 을 설정할때 만약 그리드범위에
-            넘치면 자동으로 아랫줄로 떨어진다!
-            그러므로 grid-row를 따로 잡아줄 필요가 없다!
-            단, 별도의 위치를 세로방향으로 변경해야할 경우
-            grid-row를 설정해야 한다!
-        
-        *************************************/
+        -> 각 위치값은 그리드 기준선 번호를 참고함
+        (브라우저에서 그리드 소스 버튼을 클릭하여
+        볼 수 있음!)
+
+        >>>>> 셋팅시 유의사항 <<<<<<<
+        - grid-column 을 설정할때 만약 그리드범위에
+        넘치면 자동으로 아랫줄로 떨어진다!
+        그러므로 grid-row를 따로 잡아줄 필요가 없다!
+        단, 별도의 위치를 세로방향으로 변경해야할 경우
+        grid-row를 설정해야 한다!
+    
+    *************************************/
 
       /* 
         [ 개별적 변경하기 - 그리드 위치와 크기 변경 ]
@@ -201,23 +204,76 @@
         grid-row: 시작번호/끝번호
     */
 
-    /* 1200px 이하 미디어쿼리 시작 */
-    @media screen and (max-width: 1200px) {
-        /* 그리드 컬럼수를 4개로 변경 */
-        .grid{
-            grid-template-columns: repeat(4,1fr);
-        }        
-    }
-    /* 1200px 이하 미디어쿼리 종료 */
+      /* 그리드 구성박스 변경주기 */
+      .first {
+        /* grid-column: 1/3;
+        grid-row: 1/3; */
+        /* 한번에 쓰기 */
+        grid-area: 1/1/3/3;
+        /* grid-area: 로시/컬시/로끝/컬끝 */
+      }
+      .second {
+        /* grid-column: 3/5;
+        grid-row: 10/12; */
+        grid-area: 10/3/12/5;
+      }
 
-    /* 1000px 이하 미디어쿼리 시작 */
-    @media screen and (max-width: 1000px) {
+      /* 1200px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 1200px) {
+        /* 그리드 컬럼수를 4개로 변경 */
+        .grid {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        /* 하단이미지 위치변경 */
+        .second {
+          grid-area: 10/2/12/4;
+        }
+      }
+      /* 1200px 이하 미디어쿼리 종료 */
+
+      /* 1000px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 1000px) {
         /* 그리드 컬럼수를 3개로 변경 */
-        .grid{
-            grid-template-columns: repeat(3,1fr);
-        }        
-    }
-    /* 1000px 이하 미디어쿼리 종료 */
+        .grid {
+          grid-template-columns: repeat(3, 1fr);
+        }
+      }
+      /* 1000px 이하 미디어쿼리 종료 */
+
+      /* 800px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 800px) {
+        /* 그리드 컬럼수를 2개로 변경 */
+        .grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        /* 하단이미지 위치변경 */
+        .second {
+          grid-area: 10/1/12/3;
+        }
+      }
+      /* 800px 이하 미디어쿼리 종료 */
+
+      /* 500px 이하 미디어쿼리 시작 */
+      @media screen and (max-width: 500px) {
+        body{
+            margin: 0;
+        }
+        /* 그리드 컬럼수를 1개로 변경 */
+        .grid {
+          grid-template-columns: repeat(1, 1fr);
+          grid-gap: 0;
+        }
+        .grid > div aside {
+          font-size: 4vw;
+        }
+        /* 변경박스 초기화하기 */
+        .first,.second{
+            grid-area: auto;
+            /* 초기화 값은 auto임! */
+        }
+      }
+      /* 500px 이하 미디어쿼리 종료 */
     </style>
   </head>
   <body>
@@ -232,7 +288,10 @@
       // 50개 이미지 넣기
       for (let i = 1; i <= 50; i++) {
         grid.innerHTML += `
-            <div>
+            <div ${
+              // 중첩조건연산자(비?집:해?산:해변)
+              i === 1 ? 'class="first"' : i === 33 ? 'class="second"' : ""
+            }>
                 <img src="./images/${i}.jpg" alt="dress">
                 <aside>
                     <h2>상품명${i}</h2>
