@@ -93,3 +93,8 @@ titBox.innerHTML = `
     <h2>${txtData.mTitle}</h2>
     <h3>${txtData.sTitle}</h3>
 `;
+
+// (2) 내용 넣기 : 이름과 나이를 소개하는 메시지 넣기
+contBox.innerHTML = makeMsg('공유',46);
+contBox.innerHTML += makeMsg('톰행크스',60);
+contBox.innerHTML += makeMsg('졸리',49);
