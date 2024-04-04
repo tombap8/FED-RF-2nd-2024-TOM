@@ -23,10 +23,9 @@ import * as txtData from "./text_data.js";
 
 // 불러온 값확인
 // console.log(
-    //myFn, mTitle, sTitle, personInfo, mvData);
+//myFn, mTitle, sTitle, personInfo, mvData);
 // console.log(myFn, mTit, sTit, pInfo, mdt);
 console.log(txtData, txtData.mTitle);
-
 
 // [export default 로 내보낸 단일 함수 불러오기]
 // import makeMessage from "./msg_format.js";
@@ -73,19 +72,17 @@ console.log(makeMsg);
     -> msg_format.js
 ***************************************************/
 
-
-
 // 요구사항 : 각 출력박스에 불러온 메시지 출력하기
 
 // 1. 대상선정 :  출력박스
 // (1) 타이틀 출력박스 : .tpart
-const titBox = myFn.qs('.tpart');
+const titBox = myFn.qs(".tpart");
 // (2) 내용 출력박스 : #demo
-const contBox = myFn.qs('#demo');
+const contBox = myFn.qs("#demo");
 // (3) 영화정보 출력박스 : .mvpart
-const mvBox = myFn.qs('.mvpart');
+const mvBox = myFn.qs(".mvpart");
 
-console.log('대상:', titBox,contBox,mvBox);
+console.log("대상:", titBox, contBox, mvBox);
 
 // 2. 변경적용하기
 // (1)  타이틀 출력하기 : 큰제목 + 작은제목
@@ -95,6 +92,18 @@ titBox.innerHTML = `
 `;
 
 // (2) 내용 넣기 : 이름과 나이를 소개하는 메시지 넣기
-contBox.innerHTML = makeMsg('공유',46);
-contBox.innerHTML += makeMsg('톰행크스',60);
-contBox.innerHTML += makeMsg('졸리',49);
+contBox.innerHTML = makeMsg("공유", 46);
+contBox.innerHTML += makeMsg("톰행크스", 60);
+contBox.innerHTML += makeMsg("졸리", 49);
+
+// 이름과 나이가 셋팅된 personInfo 배열을 순회하여
+// 메시지 함수를 호출해서 메시지를 찍어준다!
+// txtData.personInfo.forEach(
+//     v=>contBox.innerHTML+=makeMsg(v[0],v[1]));
+
+// 길게 변경
+txtData.personInfo.forEach(function (v) {
+  contBox.innerHTML += makeMsg(v[0], v[1]);
+});
+
+

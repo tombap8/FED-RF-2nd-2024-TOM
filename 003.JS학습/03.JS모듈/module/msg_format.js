@@ -2,7 +2,6 @@
 
 // 내용 메시지를 구성하는 함수 ////
 
-
 // 1. 선언적함수를 만들고 
 // 아래쪽에서 export default하기
 // function makeMessage(name,age){
@@ -54,6 +53,6 @@
 export default (name,age)=> `
         나의 이름은 ${name}입니다.
         나이는 ${age}살입니다. 반갑습니다!!!^^
-        <br><br>
+        <br>
     `;
  ////// makeMessage 함수 ///////
