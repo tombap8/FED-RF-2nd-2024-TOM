@@ -86,3 +86,10 @@ const contBox = myFn.qs('#demo');
 const mvBox = myFn.qs('.mvpart');
 
 console.log('대상:', titBox,contBox,mvBox);
+
+// 2. 변경적용하기
+// (1)  타이틀 출력하기 : 큰제목 + 작은제목
+titBox.innerHTML = `
+    <h2>${txtData.mTitle}</h2>
+    <h3>${txtData.sTitle}</h3>
+`;
