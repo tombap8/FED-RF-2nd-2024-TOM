@@ -60,32 +60,12 @@
     }
 
     /* 그리드 각 박스 공통 */
-    .grid>div{
-        position: relative;
-        /* 부모자격 */
-        aspect-ratio: 280/400;
-    }
+    .grid>div{}
     /* 설명박스 */
-    .grid>div aside{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-        color: #fff;
-        background-color: #00000074;
-        font-size: min(1.2vw,12px);
-    }
+    .grid>div aside{}
 
     /* 이미지셋팅 */
-    .grid img{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: top;
-
-        /* 박스 이미지 하단 공백제거위한 셋팅 */
-        vertical-align: middle;
-    }
+    .grid img{}
 
     /************************************* 
         
@@ -117,53 +97,6 @@
         grid-column: 시작번호/끝번호
         grid-row: 시작번호/끝번호
     */
-    .first{
-        grid-column: 1/3;
-        grid-row: 1/3;
-    }
-    .second{
-        grid-column: 3/5;
-        grid-row: 10/12;
-    }
-
-    /* 1200px 이하 미디어쿼리 */
-    @media screen and (max-width:1200px) {
-        .grid{
-            grid-template-columns: repeat(4,1fr);
-        }
-    } 
-    /* 1000px 이하 미디어쿼리 */
-    @media screen and (max-width:1000px) {
-        .grid{
-            grid-template-columns: repeat(3,1fr);
-        }
-        
-        .second{
-            /* 위치잡기 복잡할 경우 원래 자기위치로
-            돌려보낸다! 그 값은 auto! */
-            grid-column: auto;
-            grid-row: auto;
-        }
-    } 
-    /* 800px 이하 미디어쿼리 */
-    @media screen and (max-width:800px) {
-        .grid{
-            grid-template-columns: repeat(2,1fr);
-        }
-    } 
-    /* 500px 이하 미디어쿼리 */
-    @media screen and (max-width:500px) {
-        .grid{
-            grid-template-columns: repeat(1,1fr);
-        }
-        .first{
-            /* 위치잡기 복잡할 경우 원래 자기위치로
-            돌려보낸다! 그 값은 auto! */
-            grid-column: auto;
-            grid-row: auto;
-        }
-    } 
-    
 
     </style>
 </head>
