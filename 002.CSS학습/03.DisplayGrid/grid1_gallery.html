@@ -66,23 +66,98 @@
         margin: 0 auto;
         outline: 2px dashed lightcoral;
 
-        /**************************** 
+        /******************************************** 
             [ 가로 그리드 템플릿 ]
             grid-template-columns
             ______________________
 
             1. 가로사이즈 단위를 띄어쓰기로
             나열하면 개수만큼 그 크기의 세로
-            컬럼이 생성됨
-        ****************************/
-        grid-template-columns: 100px 200px 300px 400px;
+            컬럼이 생성됨 (auto는 나머지채우기임)
+            예)
+                grid-template-columns: 
+                100px 200px auto 400px;
+
+            2. fr 단위로 가로전체를 기준하여
+            비율을 설정한 컬럼이 생성됨
+            fr은 fraction(부분) 단어에서 유래
+            예)
+                grid-template-columns: 
+                1fr 3fr 5fr 2fr;
+
+            3. repeat(수치의 반복수, 반복수치)
+            -> 반복수*반복수수치개수 (이것이 컬럼수다!)
+            예)
+                grid-template-columns: 
+                repeat(3,100px 1fr 2fr);
+            ->>> 단순하게 사용할 경우 repeat(컬럼수,1fr)
+            ********************************************/
+            grid-template-columns: repeat(5,1fr);
+
+            /******************************************** 
+                [ 세로 그리드 템플릿 ]
+                grid-template-rows
+                ______________________
+    
+                1. 구체적인 수치를 나열하면
+                나열한 개수만큼 그 수치로 셋팅됨!
+                나머지 row는 자동(auto)임!
+                예)
+                    grid-template-rows: 
+                    100px 200px 300px;
+    
+                2. fr단위를 써서 나열하면 비를 쓴만큼
+                높이값 전체에서의 비로 셋팅됨!
+                예)
+                    grid-template-rows: 
+                    1fr 3fr 5fr 2fr;
+    
+                3. repeat(수치의반복, 반복수치)
+                -> column과 비슷하나 다른 이유는
+                column은 설정된것만 column으로 올라오므로
+                남는 것이 없고 row는 설정외에 남는
+                항목이 있을 수 있다!
+                (나머지는 auto-기본컨텐츠를 기준한 비로 자동)
+                예)
+                    grid-template-rows: 
+                    repeat(4,300px 200px);
+
+                4. 모든 높이값 동일하게 셋팅하기
+                -> grid-auto-rows : 특정값
+                예)
+                    grid-auto-rows: 400px;
+                    
+            ********************************************/
+            /* [수평간격] : grid-column-gap */
+            /* grid-column-gap: 10px; */
+
+            /* [수직간격] : grid-row-gap */
+            /* grid-row-gap: 30px; */
+
+            /* [그리드 종합간격] : grid-gap:세로 가로
+            -> 한 수치만 쓰면 양방향 모두셋팅 */
+            grid-gap: 15px 10px;
+            
+            /* [flex gap속성도 OK] : gap:세로 가로 */
+            /* gap: 30px 10px; */
+
       }
 
       /* 그리드 각 박스 공통 */
       .grid > div {
+        position: relative;
+        /* 부모자격 */
+        aspect-ratio: 7/10;
       }
       /* 설명박스 */
       .grid > div aside {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        background-color: #00000076;
+        font-size: 12px;
       }
 
       /* 이미지셋팅 */
@@ -125,6 +200,24 @@
         grid-column: 시작번호/끝번호
         grid-row: 시작번호/끝번호
     */
+
+    /* 1200px 이하 미디어쿼리 시작 */
+    @media screen and (max-width: 1200px) {
+        /* 그리드 컬럼수를 4개로 변경 */
+        .grid{
+            grid-template-columns: repeat(4,1fr);
+        }        
+    }
+    /* 1200px 이하 미디어쿼리 종료 */
+
+    /* 1000px 이하 미디어쿼리 시작 */
+    @media screen and (max-width: 1000px) {
+        /* 그리드 컬럼수를 3개로 변경 */
+        .grid{
+            grid-template-columns: repeat(3,1fr);
+        }        
+    }
+    /* 1000px 이하 미디어쿼리 종료 */
     </style>
   </head>
   <body>
