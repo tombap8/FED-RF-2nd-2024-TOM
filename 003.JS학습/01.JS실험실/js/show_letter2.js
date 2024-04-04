@@ -10,6 +10,9 @@ const domFn = {
   
     // 이벤트셋팅함수
     addEvt: (ele, evt, fn) => ele.addEventListener(evt, fn),
+    // BCR top값 리턴함수
+    getBCR: ele => ele.getBoundingClientRect().top,
+
   }; /////// domFn 객체 /////////////
 
   // 1. 구현요구사항 : 
@@ -29,7 +32,7 @@ const domFn = {
   // 결과: 자를문자열은 없어지고 배열로 나누어져 저장됨!
   const newText = myText.split(' ');
   // 이 경우엔 스페이스(공백)을 기준으로 나눔!
-  console.log(newText)
+//   console.log(newText)
 
 
   // html태그변수
@@ -39,7 +42,7 @@ const domFn = {
 
   // 새로 생성된 newText배열을 for of문으로 순회한다!
   for(let x of newText){
-    console.log(x);
+    // console.log(x);
     hcode += 
     `<span style="transition-delay: ${seqNum*0.1}s;">${x}</span>`;
 
@@ -47,14 +50,39 @@ const domFn = {
     seqNum++;
   } //////// for of ///////////
 
-  console.log('코드:',hcode);
+//   console.log('코드:',hcode);
 
   // 5. 스테이지박스에 코드 출력하기
   stage.innerHTML = hcode;
 
-  // 6. 일정시간뒤 등장클래스 .on주기
-  setTimeout(() => {
+  // 6. 스크롤 이벤트 발생시 글자박스가 화면 1/2위치에서
+  // 등장할 수 있도록 클래스 on주기
+
+  // 이벤트 설정하기
+  domFn.addEvt(window,'scroll',scrollFn);
+
+  // 기준값 설정하기
+  const CRITERIA = window.innerHeight/2;
+
+  function scrollFn(){
+    // 대상의 BCR값 알아오기
+    let pos = domFn.getBCR(stage);
+
+    console.log('스크롤~~~!',pos);
+    // 기준값보다 작아지면 on넣기
+    if(pos < CRITERIA){
+        stage.classList.add('on');
+    } /// if //
+    else{
+        stage.classList.remove('on');
+    } /// else ///
+
+
+  } /////// scrollFn 함수 //////////////
+
+  
+  function addOn(){
     stage.classList.add('on');
-  }, 2000);
+  } ///// addOn 함수 //////////
 
 
