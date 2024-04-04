@@ -101,7 +101,7 @@ contBox.innerHTML += makeMsg("졸리", 49);
 // txtData.personInfo.forEach(
 //     v=>contBox.innerHTML+=makeMsg(v[0],v[1]));
 
-// 길게 변경
+// 길게 변경 : v[0]은 이름, v[1]은 나이
 txtData.personInfo.forEach(function (v) {
   contBox.innerHTML += makeMsg(v[0], v[1]);
 });
