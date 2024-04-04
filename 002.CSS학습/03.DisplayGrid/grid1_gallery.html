@@ -33,6 +33,9 @@
         
         4. grid-row-gap
             - 세로방향 사이간격
+
+        5. grid-gap : 세로 가로
+        (-> flex용 gap속성도 사용가능!)
         ________________________________
         
         5.  가로정렬, 세로정렬은 flex와 개념상 동일하다! 
@@ -56,6 +59,23 @@
       }
       /* 그리드박스 */
       .grid {
+        display: grid;
+
+        /* 박스중앙 최대크기 지정 */
+        max-width: 1200px;
+        margin: 0 auto;
+        outline: 2px dashed lightcoral;
+
+        /**************************** 
+            [ 가로 그리드 템플릿 ]
+            grid-template-columns
+            ______________________
+
+            1. 가로사이즈 단위를 띄어쓰기로
+            나열하면 개수만큼 그 크기의 세로
+            컬럼이 생성됨
+        ****************************/
+        grid-template-columns: 100px 200px 300px 400px;
       }
 
       /* 그리드 각 박스 공통 */
@@ -67,6 +87,12 @@
 
       /* 이미지셋팅 */
       .grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: top;
+        /* 블록박스 이미지 하단공백제거 */
+        vertical-align: middle;
       }
 
       /************************************* 
