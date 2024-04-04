@@ -49,6 +49,9 @@ console.log(makeMsg);
     (http://...) Live Server로 열기때문에 볼 수 있음!
     -> 로컬파일로 열면 작동안됨!
 
+    5. 모듈화의 모든 export 파일에서도 import는 가능하다!
+    ____________________________________________________
+
     [ import의 사용방법 ]
     1. export default인 경우
         -> import 변수 from 경로
