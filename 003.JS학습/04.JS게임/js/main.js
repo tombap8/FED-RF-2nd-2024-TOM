@@ -8,8 +8,10 @@ import myFn from "./dom.js";
 // -> 내가 지은 변수명으로 import후 맨끝에 assert {type:'json'}씀
 // import msgTxt from "./data_racing.json" assert { type: "json" };
 
-// 'assert' is deprecated in import statements and support will be removed
-// in V8 v12.6 and Chrome 126; use 'with' instead
+// 'assert' is deprecated in import statements 
+// and support will be removed in V8 v12.6
+// and Chrome 126; use 'with' instead
+
 // -> assert 키워드 지원중단됨(사용은가능). 대신 with 키워드 권장!
 // -> 같이써 타입제이슨! with {type:'json'}
 // -> 브라우저 지원버전이 너무 최신이라 지금은 assert를 사용하자!
