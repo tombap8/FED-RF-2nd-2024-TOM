@@ -67,6 +67,9 @@ const T1_NUM = 16;
 // (8) 결승선 위치 상수
 const FINAL_NUM = 650;
 
+// (9) 거북작동멈춤 상태변수
+let t1Stop = false;
+
 // console.log('대상:',t1,r1,btns,level,msg);
 
 // 2. 이벤트 설정하기 ////////////
@@ -88,6 +91,9 @@ function goGame() {
     goR1(); // 인터발호출함수
   } /// if ///
   else if(btxt === '거북출발'){
+    // 거북멈춤 상태값이 true이면 함수나가!(return)
+    if(t1Stop) return;
+
     // 거북의 설정된 값만큼 이동하기
     t1pos += T1_NUM;
     t1.style.left = t1pos + 'px';
@@ -137,7 +143,16 @@ function goR1(){
 *****************************************/
 function whoWinner(){
 
-    console.log('토끼위치:',r1pos,
-    '\n거북위치:',t1pos);
+    // console.log('토끼위치:',r1pos,
+    // '\n거북위치:',t1pos);
+
+    // 1. 토끼 / 거북 위치값이 기준값 이상일때
+    // 토끼 인터발함수 멈추기 + 거북클릭작동 막기
+    if(r1pos >= FINAL_NUM || t1pos >= FINAL_NUM){
+        // (1) 토끼야 멈춰라!
+        clearInterval(autoI);
+        // (2) 거북아 멈춰라!(거북멈춤상태값 true!)
+        t1Stop = true;
+    } //////// if /////////
 
 } ///////// whoWinner 함수 ////////////////
