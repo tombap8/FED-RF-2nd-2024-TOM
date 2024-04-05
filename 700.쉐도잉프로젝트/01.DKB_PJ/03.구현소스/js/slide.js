@@ -60,7 +60,7 @@ export default function slideFn() {
     기능: 로딩 후 버튼 이벤트 및 기능구현
 ******************************************/
   function loadFn() {
-    console.log("로딩완료!");
+    // console.log("로딩완료!");
 
     // 이동버튼 대상:  .abtn
     const abtn = qsa(".abtn");
@@ -123,7 +123,7 @@ export default function slideFn() {
       // 함수의 전달변수 하나를 쓸 경우 또는
       // 여러전달변수중 첫번째 변수는 이벤트객체가
       // 전달된다!
-      console.log("전달변수:", evt, sts);
+      // console.log("전달변수:", evt, sts);
 
       // 만약 버튼 클릭일 경우 인터발지우기함수호출!
       if (sts) {
@@ -152,7 +152,7 @@ export default function slideFn() {
       // 해당클래스가 있으면 true, 없으면 false
 
       // 함수호출확인
-      console.log("나 슬라이드야~!", this, isRbtn);
+      // console.log("나 슬라이드야~!", this, isRbtn);
       // this는 호출한 버튼 자신
 
       // 2. 버튼별 분기하기 //////
@@ -222,7 +222,7 @@ export default function slideFn() {
       let seq = slide
         .querySelectorAll("li")
         [isRbtn ? 1 : 0].getAttribute("data-seq");
-      console.log("블릿이 읽어올 슬순번:", seq, "/데이터형:", typeof seq);
+      // console.log("블릿이 읽어올 슬순번:", seq, "/데이터형:", typeof seq);
       // string - 문자형, number - 숫자형
 
       // 4. 블릿변경하기 ///////////
@@ -270,7 +270,7 @@ export default function slideFn() {
     /// [ 인터발 지우기함수 ] ///////
     function clearAuto() {
       // 지우기 확인!
-      console.log("인터발 지워!");
+      // console.log("인터발 지워!");
       // 1.인터발 지우기
       clearInterval(autoI);
       // 2.타임아웃 지우기 : 실행쓰나미 방지!!!

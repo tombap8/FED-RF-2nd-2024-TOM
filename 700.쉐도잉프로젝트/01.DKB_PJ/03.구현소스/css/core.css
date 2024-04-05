@@ -61,6 +61,11 @@ body{
     box-sizing: border-box;
 }
 
+/* 메인영역 col- 박스 */
+.main-area [class*='col-'] {
+    padding: 10px;
+}
+
 /* 공통 서브타이틀 */
 .stit{
     padding-bottom: 32px;

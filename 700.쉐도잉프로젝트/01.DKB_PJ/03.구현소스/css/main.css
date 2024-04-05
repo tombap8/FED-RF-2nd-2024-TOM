@@ -55,19 +55,55 @@ body * {
     border: 1px solid #000;
     font-weight: bold;
 }
-/* 4. 미리보기영역 */
+
+/* 인트로 동영상 박스 */
+.intro-mv-img{
+    position: relative;
+    /* 부모자격 */
+    aspect-ratio: 2/1.1;
+}
+/* 가상요소로 플레이버튼 만들기
+-> .off를 준 경우에만 가상요소 버튼보임
+따라서 비디오태그 넣을 경우 .off 지울것! */
+.intro-mv-img.off::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 72px;
+    height: 72px;
+    background: url(../images/icon_play.png) no-repeat;
+    cursor: pointer;
+}
+
+/* 하위 이미지/동영상 */
+.intro-mv-img img,
+.intro-mv-img video{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+/* 동영상 설명박스 */
+.intro-mv-box figcaption{
+    font-size: 2rem;
+    padding-top: 10px;
+}
+
+/************** 4. 미리보기영역 **************/
 .preview-area{
     height: 803px;
 }
-/* 5. 현장포토영역 */
+/************** 5. 현장포토영역 **************/
 .real-photo-area{
     height: 1043px;
 }
-/* 6. 대표이미지 영역 */
+/************** 6. 대표이미지 영역 **************/
 .main-photo-area{
     height: 731px;
 }
-/* 7. 최신동영상영역 */
+/************** 7. 최신동영상영역 **************/
 .clip-video-area{
     height: 548px;
 }
