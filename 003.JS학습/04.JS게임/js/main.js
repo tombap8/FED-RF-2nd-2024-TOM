@@ -169,12 +169,19 @@ function whoWinner(){
         else winner = '비김';
 
         // (4) 랜덤수 만들기 
+        // Math.floor(Math.random() * 배열개수)
+        // 배열개수는 배열변수.length
+        // 0부터 배열끝번호 사이수가 랜덤으로 생성됨
+        let rdmNum = 
+        Math.floor(Math.random() * msgTxt[winner].length);
+        console.log('랜덤수:',rdmNum);
 
         // (5) 메시지 넣기
-        // 메시지 할당하기
-        msg.innerText = msgTxt[winner][0];
+        // 메시지 할당하기(랜덤수로 불러오기)
+        msg.innerText = msgTxt[winner][rdmNum];
         // 메시지 박스보이기
         msg.style.display = 'block';
+        // 커버보다 위
         msg.style.zIndex = '100';
 
         // (6) 전체 반투명 커버 암전주기
@@ -196,3 +203,30 @@ function whoWinner(){
     } //////// if /////////
 
 } ///////// whoWinner 함수 ////////////////
+
+/**************************************** 
+    [ 내가 원하는 랜덤수 만들기 ]
+    1. Math.random() 
+    -> 0~1사이 소수점 16자리 랜덤수 생성됨
+
+    2. 내가원하는 1~몇까지의 랜덤수 만들기
+    (1) Math.random() * 원하는 최대수
+    -> 0~원하는수보다 1작은수까지 랜덤수발생~
+    (2) 올림처리하여 1~원하는수 를 만들어준다!
+    -> Math.ceil(Math.random() * 원하는 최대수)
+    -> 만약 0부터 1작은 최대수를 만들고싶으면
+    내림처리하면된다! Math.floor()
+    (3) 중간범위의 랜덤수를 만들고자 할때는
+    1부터 최대수를 구하고 특정 시작수를 더해주면된다!
+    예) 4~12 랜덤수는 
+    Math.ceil(Math.random() * 8)+3
+****************************************/
+
+console.log('Math.random():',
+Math.random());
+console.log('Math.random()*8:',
+Math.random()*8);
+console.log('Math.ceil(Math.random()*8):',
+Math.ceil(Math.random()*8));
+console.log('4~12 랜덤수:',
+Math.ceil(Math.ceil(Math.random() * 8)+3));
