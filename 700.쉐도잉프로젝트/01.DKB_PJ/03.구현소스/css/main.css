@@ -13,9 +13,47 @@ body * {
     /* outline: 2px dashed #ccc; */
 }
 
-/* 3. 인트로영역 */
+/**************** 3. 인트로영역 ****************/
 .intro-area{
     height: 575px;
+}
+/*********** 방송편성소개파트 : .intro-part ***********/
+.main .intro-part .partbox {
+    height: 455px;
+    padding: 10px;
+}
+/* 서브타이틀 */
+.intro-part .stit{
+    padding-bottom: 0;
+}
+/* 하위제목+아이콘 박스 */
+.intro-desc{
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 2.5rem;
+}
+.intro-desc h3{
+    margin-right: 10px;
+}
+.intro-desc ul{
+    display: flex;
+    gap: 0 15px;
+}
+/* 설명박스 */
+.intro-txt{
+    padding: 20px;
+    font-size: 2.2rem;
+    line-height: 2;
+    color: #555;
+}
+/* 인트로버튼 */
+.intro-btn{
+    padding: 20px 50px;
+    border-radius: 10px;
+    font-size: 1.8rem;
+    background-color: transparent;
+    border: 1px solid #000;
+    font-weight: bold;
 }
 /* 4. 미리보기영역 */
 .preview-area{
