@@ -160,6 +160,20 @@ function whoWinner(){
         clearInterval(autoI);
         // (2) 거북아 멈춰라!(거북멈춤상태값 true!)
         t1Stop = true;
+
+        // 승자변수(메시지때문에씀:토끼/거북/비김)
+        let winner;
+        // (3) 승자판별하기
+        if(r1pos > t1pos) winner = '토끼';
+        else if(r1pos < t1pos) winner = '거북';
+        else winner = '비김';
+
+        // (4) 메시지 랜덤으로 커버박스에 넣기
+        msg.innerText = msgTxt[winner][0];
+        // 보이기
+        msg.style.display = 'block';
+
+
     } //////// if /////////
 
 } ///////// whoWinner 함수 ////////////////
