@@ -1,5 +1,23 @@
 // Racing PJ 메인 JS - main.js
 
+// DOM 메서드 모듈
+import myFn from "./dom.js";
+
+// 메시지 제이슨 파일 불러오기
+// -> 어서써 타입 제이슨!!!
+// -> 내가 지은 변수명으로 import후 맨끝에 assert {type:'json'}씀
+import msgTxt from "./data_racing.json" assert { type: "json" };
+
+// 'assert' is deprecated in import statements and support will be removed
+// in V8 v12.6 and Chrome 126; use 'with' instead
+// -> assert 키워드 지원중단됨(사용은가능). 대신 with 키워드 권장!
+// -> 같이써 타입제이슨! with {type:'json'}
+// -> 브라우저 지원버전이 너무 최신이라 지금은 assert를 사용하자!
+// import msgTxt from './data_racing.json' with {type:'json'};
+
+// 불러온 것 확인
+console.log(myFn, msgTxt);
+
 /********************************************** 
             [ 게임 기능정의 ]
     _________________________________
@@ -24,28 +42,62 @@
 
 // 1. 대상선정 ///////////////////
 // (1) 거북 : #t1
+const t1 = myFn.qs("#t1");
 
 // (2) 토끼 : #r1
+const r1 = myFn.qs("#r1");
 
 // (3) 버튼 : #btns a
+const btns = myFn.qsa("#btns a");
 
 // (4) 레벨 : #level
+const level = myFn.qs("#level");
 
 // (5) 메시지박스 : #msg
+const msg = myFn.qs("#msg");
 
 // (6) 토끼, 거북 위치값 변수
-
+let r1pos = 0,
+  t1pos = 0;
 // 토끼위치 : r1pos / 거북위치 : t1pos
+
+// (7) 거북이동값 상수
+const T1_NUM = 16;
 
 // console.log('대상:',t1,r1,btns,level,msg);
 
 // 2. 이벤트 설정하기 ////////////
+btns.forEach((ele) => {
+  myFn.addEvt(ele, "click", goGame);
+}); /////////// forEach /////////////
 
 /*********************************** 
     함수명: goGame
     기능: 버튼별 기능분기
 ***********************************/
- /////////// goGame 함수 ////////////
+function goGame() {
+  // 1. 버튼 글자 읽기
+  let btxt = this.innerText;
+  console.log("고고씽~!", btxt);
+
+  // 2. 버튼별 기능분기하기 ////
+  if(btxt === '토끼출발'){
+    goR1();
+
+  } /// if ///
+  else if(btxt === '거북출발'){
+    // 거북의 설정된 값만큼 이동하기
+    t1pos += T1_NUM;
+    t1.style.left = t1pos + 'px';
+
+  } /// else if ///
+  else if(btxt === '처음으로'){
+    // 페이지 리로드하기
+    location.reload();
+
+  } /// else if ///
+
+} /////////// goGame 함수 ////////////
 
 /*********************************** 
  함수명: goR1
@@ -53,8 +105,12 @@
  ***********************************/
 // 인터발지우기용 변수
 let autoI;
+function goR1(){
+    setInterval(() => {
+        r1.style.left = ++r1pos + 'px';
+    }, 10);
 
- ///////// goR1함수 //////////////////
+} ///////// goR1함수 //////////////////
 
 /***************************************** 
     함수명: whoWinner
@@ -62,4 +118,4 @@ let autoI;
         승자를 판별하여 메시지를 보여준다!
 *****************************************/
 
- ///////// whoWinner 함수 ////////////////
+///////// whoWinner 함수 ////////////////
