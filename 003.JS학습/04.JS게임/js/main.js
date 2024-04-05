@@ -64,6 +64,9 @@ let r1pos = 0,
 // (7) 거북이동값 상수
 const T1_NUM = 16;
 
+// (8) 결승선 위치 상수
+const FINAL_NUM = 650;
+
 // console.log('대상:',t1,r1,btns,level,msg);
 
 // 2. 이벤트 설정하기 ////////////
@@ -113,13 +116,17 @@ function goR1(){
     if(!autoI){ // false일때만 들어감(할당전에만)
         console.log('토끼 인터발!!!',level.value);
         autoI = setInterval(() => {
+            // 토끼위치이동(1px씩)
             r1.style.left = ++r1pos + 'px';
+            // 승자판별함수 호출!(인터발내 계속호출)
+            whoWinner();
         }, level.value);
         // level.value는 선택박스의 선택된 값이다!
         // 원래 option요소의 value값은 문자형이므로
         // 숫자여도 숫자형으로 형변환해야하지만
         // 요즘 브라우저는 자동형변환 해준다!
-    } //// if ////
+
+    } ///////////// if /////////////
 
 } ///////// goR1함수 //////////////////
 
@@ -128,5 +135,9 @@ function goR1(){
     기능: 기준값 보다 레이서위치값이 큰경우
         승자를 판별하여 메시지를 보여준다!
 *****************************************/
+function whoWinner(){
 
-///////// whoWinner 함수 ////////////////
+    console.log('토끼위치:',r1pos,
+    '\n거북위치:',t1pos);
+
+} ///////// whoWinner 함수 ////////////////
