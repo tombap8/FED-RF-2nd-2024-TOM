@@ -168,10 +168,29 @@ function whoWinner(){
         else if(r1pos < t1pos) winner = '거북';
         else winner = '비김';
 
-        // (4) 메시지 랜덤으로 커버박스에 넣기
+        // (4) 랜덤수 만들기 
+
+        // (5) 메시지 넣기
+        // 메시지 할당하기
         msg.innerText = msgTxt[winner][0];
-        // 보이기
+        // 메시지 박스보이기
         msg.style.display = 'block';
+        msg.style.zIndex = '100';
+
+        // (6) 전체 반투명 커버 암전주기
+        myFn.qs('.cover').style.cssText = `
+            position:fixed;
+            top:0;
+            left:0;
+            width:100vw;
+            height:100vh;
+            background-color:#000;
+            opacity:0.5;
+            z-index:99;
+        `; 
+        // (7) 버튼박스 위로 올리기
+        myFn.qs('#btns').style.zIndex = 200;
+
 
 
     } //////// if /////////
