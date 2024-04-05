@@ -222,11 +222,11 @@ function whoWinner(){
     Math.ceil(Math.random() * 8)+3
 ****************************************/
 
-console.log('Math.random():',
-Math.random());
-console.log('Math.random()*8:',
-Math.random()*8);
-console.log('Math.ceil(Math.random()*8):',
-Math.ceil(Math.random()*8));
-console.log('4~12 랜덤수:',
-Math.ceil(Math.ceil(Math.random() * 8)+3));
+// console.log('Math.random():',
+// Math.random());
+// console.log('Math.random()*8:',
+// Math.random()*8);
+// console.log('Math.ceil(Math.random()*8):',
+// Math.ceil(Math.random()*8));
+// console.log('4~12 랜덤수:',
+// Math.ceil(Math.ceil(Math.random() * 8)+3));
