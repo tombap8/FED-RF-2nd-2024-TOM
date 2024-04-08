@@ -53,7 +53,6 @@ introMv.onclick = () => {
 
 ************************************************/
 
-
 // 2. 미리보기 파트 내용 넣기 //////////
 /////// 미리보기 구현 코드랩핑구역 시작 //////
 (() => {
@@ -101,23 +100,23 @@ introMv.onclick = () => {
   let hcode = `<ul>`;
 
   // li구성을 hcode변수에 대입연산자로 할당함!
-  for (let i = 0; i < 8; i++) {
+  // liveData 배열은 총8개임. 모두 돌기를 셋팅하자!
+  lvData.forEach((v) => {
     hcode += `
-        <li>
-            <figure>
-                <img src="" alt="">
-                <figcaption></figcaption>
-            </figure>
-
-        </li>
-    `;
-  } //// for //////
+              <li>
+                  <figure>
+                      <img src="./images/live_photo/${v.imgName}.jpg" alt="${v.title}">
+                      <figcaption>${v.title}</figcaption>
+                  </figure>      
+              </li>
+          `;
+  }); /////// forEach /////////////////
 
   hcode += `</ul>`;
 
   // 데이터 확인
   // console.log(hcode);
-  // console.log('대상:',previewBox,'현장포토 data:',pData);
+  //   console.log('대상:',liveBox,'현장포토 data:',lvData);
 
   // 2. 화면출력하기 ///////
   liveBox.innerHTML = hcode;
