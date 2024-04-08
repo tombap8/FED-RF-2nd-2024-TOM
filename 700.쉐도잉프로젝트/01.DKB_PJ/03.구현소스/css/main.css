@@ -124,6 +124,16 @@ body * {
     margin-top: 1.4rem;
     color: #00000099;
     line-height: 1.7;
+
+    /* 여러줄 말줄임표시 셋팅하기 */
+    display: -webkit-box;
+    overflow: hidden;
+    /* 말줄임표시 */
+    text-overflow: ellipsis;
+    /* 보여줄 라인수 셋팅속성 */
+    -webkit-line-clamp: 7;
+    /* 라인진행방향 셋팅 */
+    -webkit-box-orient: vertical;
 }
 /* 리스트박스 오버시 내용글자색 */
 .preview-box li:hover p {
