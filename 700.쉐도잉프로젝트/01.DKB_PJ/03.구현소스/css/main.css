@@ -17,9 +17,14 @@ body * {
     padding-top: 80px;
     padding-bottom: 60px;
 }
+/* 메인파트 직계하위박스(겉박스) div 두번째부터
+패딩탑 위아래 간격주기 */
+.main-area>div+div{
+    padding-top: 60px;
+}
 /**************** 3. 인트로영역 ****************/
 .intro-area{
-    height: 575px;
+    /* height: 575px; */
 }
 /*********** 방송편성소개파트 : .intro-part ***********/
 .main .intro-part .partbox {
@@ -97,7 +102,11 @@ body * {
 
 /************** 4. 미리보기영역 **************/
 .preview-area{
-    height: 803px;
+    /* height: 803px; 
+    -> 높이값을 지정하면 내용만큼 자동으로
+    높이값이 잡히지 않아서 매번 크기에 따라
+    값을 셋팅해야하므로 auto로 두자!
+    */
 }
 .preview-box ul {
     gap: 20px;
