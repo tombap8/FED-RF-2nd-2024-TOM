@@ -256,3 +256,7 @@ const previewData = [
     date: "2017-01-21",
   },
 ];
+
+
+// 데이터 공개하기 //////
+export {previewData};
