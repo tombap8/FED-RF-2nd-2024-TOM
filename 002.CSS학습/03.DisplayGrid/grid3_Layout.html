@@ -119,23 +119,29 @@
 
       /* 4. 배너 -10개영역 */
       .ban {
+        grid-column: 1/10;
       }
 
       /* 5. 배너 사이드 - 2개영역 */
       .bnside {
+        grid-column: 4/13;
         line-height: 300px;
       }
 
       /* 6. 하단좌측 - 3개영역 */
       .bleft {
+        grid-column: 1/4;
+        grid-row: 3/4;
       }
 
       /* 7. 하단정보 - 6개영역 */
       .binfo {
+        grid-column: 1/10;
       }
 
       /* 8. 하단우측 - 3개영역 */
       .bright {
+        grid-column: 10/13;
       }
 
       /************************************* 
@@ -165,9 +171,6 @@
         .grid > div {
           grid-column: 1/13;
           grid-row: auto;
-        }
-        .grid {
-          grid-template-rows: auto;
         }
       }
 
