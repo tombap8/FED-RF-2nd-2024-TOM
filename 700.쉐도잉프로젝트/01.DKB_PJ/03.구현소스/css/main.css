@@ -12,7 +12,11 @@
 body * {
     /* outline: 2px dashed #ccc; */
 }
-
+/* 메인파트 전체박스 */
+.main-area {
+    padding-top: 80px;
+    padding-bottom: 60px;
+}
 /**************** 3. 인트로영역 ****************/
 .intro-area{
     height: 575px;
@@ -95,6 +99,37 @@ body * {
 .preview-area{
     height: 803px;
 }
+.preview-box ul {
+    gap: 20px;
+}
+/* 리스트박스 */
+.preview-box li {
+    /* 한줄에 4개 플렉스 배치 - gap값 고려해서뺌 */
+    flex-basis: calc(100% / 4 - 15px);
+    padding: 24px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    box-shadow: 0 0 5px #222;
+    box-sizing: border-box;
+}
+/* 리스트 타이틀 */
+.preview-box li h3 {
+    font-size: 2rem;
+    color: #000;
+    font-weight: normal;
+}
+/* 리스트 내용 */
+.preview-box li p {
+    font-size: 1.5rem;
+    margin-top: 1.4rem;
+    color: #00000099;
+    line-height: 1.7;
+}
+/* 리스트박스 오버시 내용글자색 */
+.preview-box li:hover p {
+    color: #000;
+}
+
 /************** 5. 현장포토영역 **************/
 .real-photo-area{
     height: 1043px;

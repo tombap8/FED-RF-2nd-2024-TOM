@@ -47,8 +47,26 @@ const previewBox = myFn.qs('.preview-box');
 // 데이터: dkb_data.js 의 previewData배열
 const pData = dkbData.previewData;
 // 구조: ul>li>h3+p
-// 8개만 데이터를 구성하여 넣는다!
+
+// 1. 8개만 데이터를 html로 구성하여 넣는다!
+// html 코드변수
+let hcode = `<ul class="fx-box">`;
+
+// li구성을 hcode변수에 대입연산자로 할당함!
+for(let i=0; i< 8;i++) {
+    hcode += `
+        <li>
+            <h3>${pData[i].title}</h3>
+            <p>${pData[i].story}</p>
+        </li>
+    `;
+} //// for //////
+
+hcode += `</ul>`;
 
 // 데이터 확인
-console.log('대상:',previewBox,'미리보기 data:',pData);
+// console.log(hcode);
+// console.log('대상:',previewBox,'미리보기 data:',pData);
 
+// 2. 화면출력하기 ///////
+previewBox.innerHTML = hcode;
