@@ -118,7 +118,7 @@ body * {
     padding: 24px 20px;
     cursor: pointer;
     border-radius: 5px;
-    box-shadow: 0 0 5px #222;
+    box-shadow: 0 0 10px #22222240;
     box-sizing: border-box;
 }
 /* 리스트 타이틀 */
