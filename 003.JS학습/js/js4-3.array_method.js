@@ -212,6 +212,19 @@ function showFruit() {
     // splice(지울순번, 지울개수)
   } /// else if //////
 
+  // (7) '중간배열삽입' 버튼 : splice()
+  // ((삽입시))
+  // splice(순번,0,넣을값,넣을값,...)
+  // -> 순번뒤에 전달값 0을 쓰고 그 뒤에 넣을값을 나열
+  // -> 결과: 선택순번 앞쪽에 배열값이 삽입됨!
+  else if(btxt === '중간배열삽입'){
+    // 대상: fruit
+    fruit.splice(aNum.value,0,sel.value);
+    // fruit.splice(순번,0,넣을값)
+    console.log('넣을순번앞에 삽입:',aNum.value);
+
+  } /////////// else if ////////
+
 
   // 공통 실행 코드구역 ///////
 
