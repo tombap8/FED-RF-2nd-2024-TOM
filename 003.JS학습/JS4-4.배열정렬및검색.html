@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS4-4. 배열의 정렬과 검색</title>
+    <style>
+      /* 타이틀 */
+      .tit,
+      .stit {
+        text-align: center;
+      }
+      .showNum img {
+        height: 100px;
+      }
+      .showNum2 span {
+        font-size: 64px;
+        display: inline-block;
+        margin: 0 10px;
+        font-family: "궁서";
+        color: darkgreen;
+      }
+      /* 구분박스 */
+      .sbx {
+        margin: 20px auto;
+        padding: 20px;
+        border: 5px dotted lightseagreen;
+        max-width: 1000px;
+      }
+      .cont {
+        text-align: center;
+      }
+      /* 선택박스의 박스 */
+      .selbx {
+        text-align: center;
+      }
+      .sbx select,
+      input,
+      button {
+        margin-bottom: 15px;
+        font-size: 24px;
+      }
+
+      .sbx table {
+        width: 700px;
+        border-collapse: collapse;
+        border-top: 2px solid #222;
+        margin: 0 auto;
+      }
+
+      .sbx table th {
+        padding: 10px;
+        border-bottom: 2px solid #555;
+        background-color: #ccc;
+      }
+      .sbx table td {
+        padding: 10px 0;
+        border-bottom: 1px solid #888;
+      }
+      .sbx tbody tr:nth-child(even) {
+        background-color: #eeeeee;
+      }
+      .sbx tbody tr td:first-child {
+        text-align: center;
+      }
+      .sbx tbody tr:last-child td {
+        border-bottom: 2px solid #222;
+      }
+    </style>
+    <script type="module" src="./js/js4-4.array_sort.js"></script>
+  </head>
+  <body>
+    <h1 class="tit">[ 🏢배열의 정렬🏰 ]</h1>
+
+    <h2 class="stit">🌊숫자로만된 배열의 정렬</h2>
+    <div class="sbx">
+      <div class="selbx">
+        <select name="sel" id="sel" class="sel">
+          <option value="0">정렬선택</option>
+          <option value="1">오름차순</option>
+          <option value="2">내림차순</option>
+        </select>
+      </div>
+      <div class="showNum cont"></div>
+    </div>
+
+    <h2 class="stit">🛕문자데이터 배열의 정렬</h2>
+    <div class="sbx">
+      <div class="selbx">
+        <select name="sel2" id="sel2" class="sel2">
+          <option value="0">정렬선택</option>
+          <option value="1">오름차순</option>
+          <option value="2">내림차순</option>
+        </select>
+      </div>
+      <div class="showNum2 cont"></div>
+    </div>
+
+    <h2 class="stit">👨‍👩‍👦‍👦객체데이터 배열의 정렬</h2>
+    <div class="sbx">
+      <div class="selbx">
+        <select name="cta3" id="cta3" class="cta3">
+          <option value="idx">번호</option>
+          <option value="tit">제목</option>
+          <option value="cont">내용</option>
+        </select>
+        <select name="sel3" id="sel3" class="sel3">
+          <option value="0">정렬선택</option>
+          <option value="1">오름차순</option>
+          <option value="2">내림차순</option>
+        </select>
+      </div>
+      <div class="showList3"></div>
+    </div>
+
+    <h2 class="stit">🏸객체데이터 검색후 배열의 정렬</h2>
+    <div class="sbx">
+      <div class="selbx">
+        <select name="cta4" id="cta4" class="cta4">
+          <option value="idx">번호</option>
+          <option value="tit">제목</option>
+          <option value="cont">내용</option>
+        </select>
+        <select name="sel4" id="sel4" class="sel4">
+          <option value="0">정렬선택</option>
+          <option value="1">오름차순</option>
+          <option value="2">내림차순</option>
+        </select>
+        <input id="stxt" type="text" maxlength="50" />
+        <button class="sbtn">검색</button>
+        <button class="sample">샘플</button>
+        <button class="fbtn">FL</button>
+      </div>
+      <div class="showList4"></div>
+    </div>
+
+    <h2 class="stit">🏸객체원본 배열로 변환하기</h2>
+    <div class="sbx">
+      <div class="selbx">
+        <select name="cta5" id="cta5" class="cta5">
+          <option value="idx">번호</option>
+          <option value="tit">제목</option>
+          <option value="cont">내용</option>
+        </select>
+        <select name="sel5" id="sel5" class="sel5">
+          <option value="0">정렬선택</option>
+          <option value="1">오름차순</option>
+          <option value="2">내림차순</option>
+        </select>
+      </div>
+      <div class="showList5"></div>
+    </div>
+  </body>
+</html>
