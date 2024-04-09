@@ -111,9 +111,14 @@ sel.innerHTML = newArr.join("");
 // 대상: #anum -> aNum변수
 // 데이터: fruit 배열
 // 갱신시 계속 재바인딩 되어야 함!(함수화 필요!)
-aNum.innerHTML = fruit
-  .map((v, i) => `<option value="${i}">${v}</option>`)
-  .join("");
+const bindCombo = () => {
+    aNum.innerHTML = 
+    fruit.map((v, i) => 
+    `<option value="${i}">${v}</option>`).join("");
+}; ///////// bindCombo 함수 ////////////
+
+// 콤보박스 데이터 바인딩 함수 최초호출!
+bindCombo();
 
 // 4. 이벤트 설정하기 ///////////////////
 mbtn.forEach((ele) => {
@@ -183,6 +188,9 @@ function showFruit() {
 
   // 배열출력함수 호출!
   showArray();
+
+  // 콤보박스 바인딩 함수 호출!
+  bindCombo();
 
   // fruit 배열확인
   console.log("fruit배열:", fruit);
