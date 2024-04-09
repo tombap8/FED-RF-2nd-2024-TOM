@@ -151,17 +151,27 @@ function showFruit() {
     // 출력박스에 태그넣기
     cont.innerHTML = hcode;
   } //// if /////
+
   // (2) '뒷배열추가요~!' 버튼 : push()
   else if (btxt === "뒷배열추가요~!") {
     // 대상: fruit 배열
     // 읽어올곳 : #sel 박스 -> 값은 value
     fruit.push(sel.value);
   } /// else if //////
+
+  // (3) '앞배열추가요~!' 버튼 : unshift()
+  else if (btxt === "앞배열추가요~!") {
+    // 대상: fruit 배열
+    // 읽어올곳 : #sel 박스 -> 값은 value
+    fruit.unshift(sel.value);
+  } /// else if //////
+
   // (4) '뒷배열삭제요~!' 버튼 : pop()
   else if (btxt === "뒷배열삭제요~!") {
     // 대상: fruit 배열
     fruit.pop();
   } /// else if //////
+
   // (5) '앞배열삭제요~!' 버튼 : shift()
   else if (btxt === "앞배열삭제요~!") {
     // 대상: fruit 배열
