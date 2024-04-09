@@ -112,9 +112,9 @@ sel.innerHTML = newArr.join("");
 // 데이터: fruit 배열
 // 갱신시 계속 재바인딩 되어야 함!(함수화 필요!)
 const bindCombo = () => {
-    aNum.innerHTML = 
-    fruit.map((v, i) => 
-    `<option value="${i}">${v}</option>`).join("");
+  aNum.innerHTML = fruit
+    .map((v, i) => `<option value="${i}">${v}</option>`)
+    .join("");
 }; ///////// bindCombo 함수 ////////////
 
 // 콤보박스 데이터 바인딩 함수 최초호출!
@@ -194,21 +194,19 @@ function showFruit() {
     // 지울 개수 읽어오기 (대상:#delnum=>delNum변수)
     let delCnt = delNum.value;
 
-    console.log(
-        '삭제할 시작순번:',delSeq,
-        '\n지울개수:',delCnt);
-    
+    console.log("삭제할 시작순번:", delSeq, "\n지울개수:", delCnt);
+
     // 입력한 지울개수가 숫자가 아니면 1로 넣기
     // isNaN(변수) -> 숫자가 아니면 true, 맞으면 false
-    if(isNaN(delCnt)){ 
-        // 변수값 1로 변경
-        delCnt = 1;
-        // 입력창에도 1로 넣기
-        delNum.value = 1;
+    if (isNaN(delCnt)) {
+      // 변수값 1로 변경
+      delCnt = 1;
+      // 입력창에도 1로 넣기
+      delNum.value = 1;
     } //// if ////
 
     // 대상: fruit 배열
-    fruit.splice(delSeq,delCnt);
+    fruit.splice(delSeq, delCnt);
     // splice(지울순번, 지울개수)
   } /// else if //////
 
@@ -217,14 +215,12 @@ function showFruit() {
   // splice(순번,0,넣을값,넣을값,...)
   // -> 순번뒤에 전달값 0을 쓰고 그 뒤에 넣을값을 나열
   // -> 결과: 선택순번 앞쪽에 배열값이 삽입됨!
-  else if(btxt === '중간배열삽입'){
+  else if (btxt === "중간배열삽입") {
     // 대상: fruit
-    fruit.splice(aNum.value,0,sel.value);
+    fruit.splice(aNum.value, 0, sel.value);
     // fruit.splice(순번,0,넣을값)
-    console.log('넣을순번앞에 삽입:',aNum.value);
-
+    console.log("넣을순번앞에 삽입:", aNum.value);
   } /////////// else if ////////
-
 
   // 공통 실행 코드구역 ///////
 
