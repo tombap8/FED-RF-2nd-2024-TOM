@@ -68,7 +68,7 @@ showit.innerText = fruit.join('♥');
 
 const arrFruits = Object.keys(frObj);
 // console.log('변환전 객체:',frObj);
-console.log('변환후 키배열:',arrFruits);
+// console.log('변환후 키배열:',arrFruits);
 // console.log('변환후 값배열:',Object.values(frObj));
 
 // 기존배열값을 태그로 변환하여 다시 배열로 할당하기
@@ -80,7 +80,7 @@ console.log('변환후 키배열:',arrFruits);
 // ->>> map에 사용한 원본배열은 보존된다!!!
 let newArr = arrFruits.map(v=>`<option>${v}</option>`);
 
-console.log('map변환후 배열값:',newArr);
+// console.log('map변환후 배열값:',newArr);
 
 // 배열값을 문자화하여 콤보박스에 태그 넣기
 // 그냥 배열을 할당하면 콤마가 사이에 들어감!
@@ -103,3 +103,38 @@ fruit.map((v,i)=>
 `<option value="${i}">${v}</option>`).join('');
 
 
+// 4. 이벤트 설정하기 ///////////////////
+mbtn.forEach(ele=>{
+    mFn.addEvt(ele,'click',showFruit);
+}); /////////// forEach ///////////////
+
+// 5. 함수 만들기 ///////////////////////
+// 기능 : 배열을 조작하여 과일을 화면에 출력!
+function showFruit(){
+    // 1. 버튼 텍스트 읽기
+    let btxt = this.innerText;
+    // 호출확인
+    console.log(btxt);
+
+    // 2. 버튼별 기능분기하기 /////
+    // (1) '과일주세요~!' 버튼 : 하단과일 이미지출력
+    if(btxt === '과일주세요~!'){
+        // 출력박스에 배열정보로 태그넣기
+        // 구조: ul>li
+        // 과일배열만큼 돌면서 만들기
+        let hcode = `<ul>`;
+        fruit.forEach(v=>{
+            hcode += `
+                <li style="background:url(./addimg/${frObj[v]}.png) no-repeat center/cover">
+                    ${v}
+                </li>
+            `;
+        }); ///// forEach ////////
+
+        hcode += `</ul>`;
+
+        // 출력박스에 태그넣기
+        cont.innerHTML = hcode;
+
+    } //// if /////
+} ///////// showFruit 함수 /////////////////
