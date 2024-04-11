@@ -22,6 +22,21 @@ console.log(gnbData);
 
 /// 구현코드 파트 //////////////
 
+// GNB 메뉴 코드 넣기 /////////////////
+// 대상: .gnb
+myFn.qs('.gnb').innerHTML = `
+  <ul>
+    ${
+      Object.keys(gnbData).map(v=>`
+        <li>
+          <a href="#">${v}</a>
+        </li>
+      `).join('')
+    }
+  </ul>
+    
+`;
+
 // 1. 부드러운 스크롤 호출
 startSS();
 
