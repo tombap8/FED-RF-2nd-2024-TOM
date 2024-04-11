@@ -216,7 +216,9 @@ function changeSort(e,arrObj){
     // arrObj 배열전달변수
     // 1. 선택옵션값 읽어오기
     let optVal = e.currentTarget.value;
-    console.log('선택값:',optVal);
+    // 추가: 이벤트발생요소(선택박스)의 아이디 읽어오기
+    let selId = e.currentTarget.id;
+    console.log('선택값:',optVal,'/아이디:',selId);
 
     // 2. 정렬변경 분기하기
     // 2-1. 오름차순 : 값 1
@@ -237,8 +239,10 @@ function changeSort(e,arrObj){
     // 원본배열을 다른변수에 할당후 다른변수를 정렬후엔
     // 여전히 원본배열은 없어진다!!!ㅠ.ㅠ
 
-    // 3. 정렬변경된 배열 화면에 출력하기   
-    showImgNum(arrObj);
+    // 3. 정렬변경된 배열 화면에 출력하기  
+    // 선택박스 아이디에 따라 호출해주는 함수가 다름!
+    if(selId == 'sel') showImgNum(arrObj);
+    else if(selId == 'sel2') showSpanText(arrObj);
 
     // 전달변수에 할당된 배열확인하기
     console.log('정렬후 할당배열:',arrObj);
@@ -263,6 +267,14 @@ const showSpanText = (arrObj) => { // arrObj 전달된 배열
 
 // (3) 텍스트 출력함수 최초호출
 showSpanText(arrString);
+
+// (4) 텍스트 정렬 선택박스 변경시 정렬함수 호출하기!
+// (4-1) 대상: #sel2
+const selBox2 = mFn.qs('#sel2');
+
+// (4-2) 이벤트 연결하기 : 이벤트 종류 - change
+// 연결된 함수는 위의 숫자정렬한 정렬함수를 사용한다!
+mFn.addEvt(selBox2,'change',e=>changeSort(e,arrString));
 
 
 
