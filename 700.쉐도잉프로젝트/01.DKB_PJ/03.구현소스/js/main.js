@@ -13,6 +13,11 @@ import slideFn from "./slide.js";
 // 데이터 셋팅 불러오기 //////
 import * as dkbData from "../data/dkb_data.js";
 // import { previewData } from '../data/dkb_data.js';
+
+// GNB 메뉴 데이터 불러오기 /////
+import gnbData from "../data/gnb_data.js";
+console.log(gnbData);
+
 ///////////////////////////////////////////////
 
 /// 구현코드 파트 //////////////
@@ -72,7 +77,7 @@ introMv.onclick = () => {
       (Number(a.idx) == Number(b.idx) ? 
         0 : Number(a.idx) < Number(b.idx) ? 1 : -1))
   // );
-  
+
   // 구조: ul>li>h3+p
 
   // 1. 8개만 데이터를 html로 구성하여 넣는다!
