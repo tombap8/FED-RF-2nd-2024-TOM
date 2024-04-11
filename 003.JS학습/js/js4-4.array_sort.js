@@ -234,6 +234,8 @@ function changeSort(e,arrObj){
 
     // ((주의!!!)) 
     // 원본배열을 정렬후엔 원본배열은 없어진다!!!ㅠ.ㅠ
+    // 원본배열을 다른변수에 할당후 다른변수를 정렬후엔
+    // 여전히 원본배열은 없어진다!!!ㅠ.ㅠ
 
     // 3. 정렬변경된 배열 화면에 출력하기   
     showImgNum(arrObj);
@@ -244,6 +246,26 @@ function changeSort(e,arrObj){
     console.log('정렬후 원본배열:',arrNumber);
 
 } ////////// changeSort 함수 /////////////
+
+
+//////////////////////////////////////////
+// 2. 문자로만 된 배열의 화면 뿌리기 //////
+// map() 메서드로 배열값을 태그로 감싸서 출력하기
+
+// (1) 출력대상 : .showNum2
+const showText = mFn.qs('.showNum2');
+
+// (2) 배열만큼 태그를 넣고 문자출력하기
+const showSpanText = (arrObj) => { // arrObj 전달된 배열
+    showText.innerHTML = 
+    arrObj.map(v=>`<span>${v}</span>`).join('');
+}; ///////// showSpanText 함수 /////////
+
+// (3) 텍스트 출력함수 최초호출
+showSpanText(arrString);
+
+
+
 
 
 
