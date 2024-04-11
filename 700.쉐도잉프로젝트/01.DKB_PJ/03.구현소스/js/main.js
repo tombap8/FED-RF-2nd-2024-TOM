@@ -24,15 +24,49 @@ console.log(gnbData);
 
 // GNB 메뉴 코드 넣기 /////////////////
 // 대상: .gnb
-myFn.qs('.gnb').innerHTML = `
+// 데이터: gnbData는 객체니까 배열용 map()메서드 못씀!
+// 그래서 gnbData를 키배열로 변환해서 사용함!
+// 그리고 이 객체의 key는 상위메뉴 이기도 함!
+// Object.keys(객체) -> 해당객체의 속성명(키) 배열생성!
+console.log(Object.keys(gnbData));
+
+myFn.qs(".gnb").innerHTML = `
   <ul>
-    ${
-      Object.keys(gnbData).map(v=>`
+    ${Object.keys(gnbData)
+      .map(
+        (v) => `
         <li>
           <a href="#">${v}</a>
+          ${
+            // 서브메뉴 "없음"이면 빈값
+            // 아니면 서브메뉴 출력!
+            // gnbData[키] -> 값을 가져옴!
+            gnbData[v] == "없음"
+              ? ""
+              : `
+            <!-- 서브메뉴 -->
+            <div class="smenu">
+              <div class="swrap">
+                <h2>${v}</h2>
+                <ol>
+                ${gnbData[v]
+                  .map(
+                    (vSub) => `
+                  <li>
+                    <a href="#">${vSub}</a>
+                  </li>          
+                  `
+                  )
+                  .join("")}
+                </ol>
+              </div>
+            </div>
+            `
+          }
         </li>
-      `).join('')
-    }
+      `
+      )
+      .join("")}
   </ul>
     
 `;
@@ -83,14 +117,13 @@ introMv.onclick = () => {
   // 데이터원본의 정렬을 내림차순으로 변경!
   // console.log(
 
-  // 배열값인 객체의 idx키값을 기준으로 
+  // 배열값인 객체의 idx키값을 기준으로
   // 내림차순 정렬을 할때 문자형 숫자이므로
   // Number() 숫자형변환 메서드로 싸서 숫자로써
   // 비교하여 정확한 내림차순이 되도록 한다!
-    pData.sort(
-      (a, b) => 
-      (Number(a.idx) == Number(b.idx) ? 
-        0 : Number(a.idx) < Number(b.idx) ? 1 : -1))
+  pData.sort((a, b) =>
+    Number(a.idx) == Number(b.idx) ? 0 : Number(a.idx) < Number(b.idx) ? 1 : -1
+  );
   // );
 
   // 구조: ul>li>h3+p
