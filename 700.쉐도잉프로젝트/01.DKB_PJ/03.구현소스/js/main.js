@@ -52,10 +52,10 @@ myFn.qs(".gnb").innerHTML = `
                 ${gnbData[v]
                   .map(
                     (vSub) => `
-                  <li>
-                    <a href="#">${vSub}</a>
-                  </li>          
-                  `
+                      <li>
+                        <a href="#">${vSub}</a>
+                      </li>          
+                    `
                   )
                   .join("")}
                 </ol>
