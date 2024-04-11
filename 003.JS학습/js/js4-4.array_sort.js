@@ -162,6 +162,23 @@ const showImgNum = () => {
     `).join('');
 }; //////// showImgNum 함수 //////////
 
+// map() 메서드의 특징
+console.log('원본 배열:',arrNumber2);
+
+console.log('원본 배열로 태그작성:',
+arrNumber2.map(v=>`<숫자>${v}</숫자>`));
+
+console.log('원본 배열로 태그작성한 배열을 문자열로 변경하기:',
+arrNumber2
+.map(v=>`<숫자>${v}</숫자>`).join('🎃'));
+
+console.log('원본 배열로 데이터작성:',
+arrNumber2.map((v,i)=>
+`👓회원번호${i+1}:${v}포인트`));
+console.log('원본 배열:',arrNumber2);
+
+
+
 // const showImgNum = () => {
 //     showNum.innerHTML = returnTag(arrNumber);
 // }; //////// showImgNum 함수 //////////
