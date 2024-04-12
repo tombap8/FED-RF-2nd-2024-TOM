@@ -1,0 +1,271 @@
+@charset "utf-8";
+
+/* 도깨비 PJ 미디어쿼리 CSS - media.css */
+
+/********* 최대사이즈 1024px 이하 시작 *********/
+@media screen and (max-width: 1024px) {
+  /* 내가 직접 수정한것! */
+
+  /* 미리보기 한줄에 2개씩 */
+  .preview-box li {
+    flex-basis: calc(100% / 2 - 15px);
+  }
+
+
+  /* x축 스크롤없앰 -> html,body에 줄때
+  하위 박스중 sticky박스가 작동하지 않음!
+  따라서 body>* 박스에 이것을 준다! */
+  body>* {
+    overflow-x: hidden;
+  }
+  /* 스티키 박스 메뉴 아래쪽에 걸리게 top값 조정 */
+  #dokebi-menu{
+    top: 58px;
+    z-index: 999;
+  }
+
+  /* 화면에서 사라짐 */
+  .top-menu {
+    display: none;
+  }
+  /* 상단영역 높이값 auto */
+  .header .partbox {
+    height: auto;
+  }
+  /* 상단로고 조정 */
+  .header__logo img {
+    width: auto;
+    height: 38px;
+    margin: 0;
+    padding: 9px;
+  }
+
+  /* 햄버거 버튼 보이기 */
+  .ham {
+    display: block;
+  }
+  /* 햄버거 버튼 상위.top에 클래스on 
+    줄경우 x버튼으로 변경 */
+  .header.on .ham {
+    z-index: 9999;
+    transform: scale(1.5);
+  }
+  .header.on .ham::before {
+    content: "×";
+  }
+  /* 상단영역고정으로 가려지는 공간밀기 */
+  body {
+    padding-top: 59px;
+  }
+  /* 상단영역 고정 */
+  #header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 99999;
+    background-color: #fff;
+  }
+  /* 전체메뉴박스 */
+  .gnb {
+    position: fixed;
+    top: 59px;
+    left: 100%;
+    height: calc(100% - 59px);
+    /* 내용많아지면 스크롤바 자동생성(y축) */
+    overflow: auto;
+    z-index: 9999999;
+    width: 100%;
+    background-color: #fff;
+    /* 트랜지션 */
+    transition: left 0.4s ease-in-out;
+  }
+  /* 메뉴박스 등장 */
+  .header.on .gnb {
+    left: 0;
+  }
+
+  .gnb ul {
+    flex-direction: column;
+  }
+
+  .gnb ul > li > a {
+    font-size: min(4vw, 20px);
+    padding: min(3vw, 11px) min(6vw, 20px);
+  }
+
+  /* 하위메뉴 자리차지하기 */
+  .smenu {
+    position: static;
+    overflow: visible;
+    height: auto;
+    display: none;
+  }
+
+  .smbx ol {
+    flex-direction: column;
+    text-indent: 40px;
+  }
+
+  .smbx h2 {
+    display: none;
+  }
+
+  /* 현장포토 */
+  .live-box ul {
+    /* 한줄에 2개씩 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 5줄 생성하기:이동배치위해 repeat(개수,특정크기) */
+    grid-template-rows: repeat(5, 34vw);
+  }
+  /* 동욱이 옆으로 이동 : 원래 grid-row: 4/5 */
+  .live-box ul li:nth-child(7) {
+    grid-column: 2/3;
+  }
+  /* 고은이 아래로 이동 */
+  .live-box ul li:nth-child(8) {
+    grid-row: 5/6;
+    grid-column: 2/3;
+  }
+
+  /* 대표이미지 */
+  .poster-box ul {
+    /* 한줄에 2개씩 */
+    grid-template-columns: repeat(2, 1fr);
+    /* 4줄 생성하기:이동배치위해 repeat(개수,특정크기) */
+    /* grid-template-rows: repeat(4, 34vw); */
+    /* grid-template-rows: auto; */
+  }
+  /* 공통 */
+  .poster-box ul li {
+    grid-row: auto !important;
+  }
+  
+
+  /* 최신동영상 - 한번에 2개만 보이기 */
+  .clip-box li {
+    flex-basis: calc(51% - 2%);
+  }
+
+  /* 하단 바로가기 콤보박스 : 한줄 차지하기 */
+  .combo-area {
+    text-align: center;
+  }
+  .combo-area select {
+    width: 45%;
+  }
+
+  /* 레이아웃 col- 파트 */
+  .col-2nd-1 {
+    flex-basis: 8.33%;
+  }
+  .col-2nd-2 {
+    flex-basis: 16.66%;
+  }
+  .col-2nd-3 {
+    flex-basis: 25%;
+  }
+  .col-2nd-4 {
+    flex-basis: 33.33%;
+  }
+  .col-2nd-5 {
+    flex-basis: 41.66%;
+  }
+  .col-2nd-6 {
+    flex-basis: 50%;
+  }
+  .col-2nd-7 {
+    flex-basis: 58.33%;
+  }
+  .col-2nd-8 {
+    flex-basis: 66.66%;
+  }
+  .col-2nd-9 {
+    flex-basis: 75%;
+  }
+  .col-2nd-10 {
+    flex-basis: 83.33%;
+  }
+  .col-2nd-11 {
+    flex-basis: 91.66%;
+  }
+  .col-2nd-12 {
+    flex-basis: 100%;
+  }
+}
+/********* 최대사이즈 1024px 이하 끝 *********/
+
+/********* 최대사이즈 500px 이하 시작 *********/
+@media screen and (max-width: 500px) {
+  /* 소제목 공통 */
+  .stit {
+    padding-bottom: 9vw;
+    font-size: 8vw;
+  }
+  /* 그룹파트 공통 */
+  .group-part {
+    padding: 10vw 0;
+  }
+
+  /* 인트로 파트 : 높이값 자동 */
+  .main .intro-part .partbox {
+    height: auto;
+  }
+
+  /* 인트로 설명박스 */
+  .intro-txt {
+    padding: 2vw;
+    font-size: 4.5vw;
+    line-height: 1.7;
+  }
+  /* 인트로 설명박스 제목 */
+  .intro-desc h3 {
+    margin-right: 0;
+    font-size: 5vw;
+  }
+
+  /* 인트로버튼 */
+  .intro-btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 5vw;
+    padding: 8px 15px;
+  }
+
+  /* 동영상 설명박스 */
+  .intro-mv-box figcaption {
+    font-size: 4vw;
+    padding-top: 2vw;
+  }
+
+  /* 미리보기파트 */
+  .main .preview-part .partbox {
+    height: auto;
+  }
+  /* 각 미리보기 타이틀 */
+  .preview-box h3 {
+    font-size: 4.2vw;
+    text-align: center;
+  }
+  /* 각 미리보기 내용박스 */
+  .preview-box p {
+    font-size: 3.5vw;
+    line-height: 1.7;
+    -webkit-line-clamp: 3;
+  }
+  /* 동영상이동버튼 */
+  .btn-box button:first-child {
+    left: -18px;
+  }
+  .btn-box button:last-child {
+    right: -18px;
+  }
+  .btn-box button {
+    top: 40%;
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+  }
+}
+/********* 최대사이즈 500px 이하 끝 *********/
