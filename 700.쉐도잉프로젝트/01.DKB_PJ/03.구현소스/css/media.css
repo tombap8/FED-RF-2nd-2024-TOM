@@ -58,7 +58,7 @@
     padding-top: 59px;
   }
   /* 상단영역 고정 */
-  #header {
+  #top-area {
     position: fixed;
     top: 0;
     left: 0;
@@ -81,7 +81,7 @@
     transition: left 0.4s ease-in-out;
   }
   /* 메뉴박스 등장 */
-  .header.on .gnb {
+  .top-area.on .gnb {
     left: 0;
   }
 
