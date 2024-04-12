@@ -487,4 +487,4 @@ const clipData = [
 ];
 
 // 데이터 공개하기 //////
-export { previewData, liveData, posterData };
+export { previewData, liveData, posterData, clipData };

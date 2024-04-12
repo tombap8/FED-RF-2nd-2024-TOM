@@ -245,6 +245,7 @@ body * {
 /* 동영상 이미지박스 이미지 */
 .clip-mv-box img {
     width: 100%;
+    border-radius: 6px;
 }
 /* 동영상 이미지박스 가상요소로 플레이버튼 */
 .clip-mv-box::after {

@@ -223,3 +223,41 @@ introMv.onclick = () => {
   // 2. 화면출력하기 ///////
   posterBox.innerHTML = hcode;
 })(); //// 대표이미지 코드랩핑구역 종료 /////////
+
+// 5. 최신동영상 파트 데이터 태그 구성하여 화면출력하기 ///
+// 코드랩핑구역 시작 //////////////////////////
+(()=>{
+  // 5-1. 변경대상: .clip-box
+  const clipBox = myFn.qs('.clip-box');
+
+  // 5-2. 생성코드 변수
+  let hcode = `<ul>`;
+
+  // 데이터만큼 순회하여 li코드 만들기 ///
+  // 데이터: dkbData.clipData
+  dkbData.clipData.forEach(v=>{
+    hcode += `
+    <li>
+      <div class="clip-mv-box">
+        <img
+          src="./images/clip_img/1.jpg"
+          alt="김고은. 능력있으神 공유에게 뜬금포 사랑고백 ′사랑해요′"
+        />
+      </div>
+      <h4>
+        김고은. 능력있으神 공유에게 뜬금포 사랑고백 ′사랑해요′
+      </h4>
+      <h3>도깨비1화</h3>
+    </li>
+    `;
+
+  }); /////////// forEach /////////////////
+
+  hcode += `</ul>`;
+
+  // 5-3. 화면출력하기 ///////
+  clipBox.innerHTML = hcode;
+
+
+})();
+// 코드랩핑구역 종료 //////////////////////////
