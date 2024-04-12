@@ -29,7 +29,7 @@ export default function setElement() {
   footerArea.innerHTML = comData.footerArea;
 
   // 3. 기능처리 함수 호출하기
-  
+
   // 3-1. GNB메뉴 만들기 함수 호출!
   makeMenu();
 
@@ -37,7 +37,7 @@ export default function setElement() {
   slideFn();
 } /////////// setElement 함수 ///////////////
 
-// GNB메뉴코드 만들기 함수 ///////
+// [ GNB메뉴코드 만들기 함수 ] ///////
 function makeMenu() {
   // GNB 메뉴 코드 넣기 /////////////////
   // 대상: .gnb
