@@ -26,5 +26,6 @@
 -> 플렉스 박스는 싸고 있는 부모를 설정함! */
 .cont-box{
     display: flex;
+    flex-wrap: wrap;
     height: 100%;
 }
