@@ -233,23 +233,23 @@
         line-height: 90px;
         text-shadow: 0 0 2px #777;
         z-index: 1;
+        box-shadow: 5px 5px 5px #0000008a;
       }
 
       .s1 > li .kw {
         background-image: radial-gradient(
-          
-        farthest-corner at 96% 86%,
-            #001351 6%,
-            #b1d8ff 90%
+          closest-corner at 30px 15px,
+          #fff,
+          blue
         );
         animation: updown2 0.5s ease-in-out infinite alternate;
       }
 
       .s2 > li .kw {
         background-image: radial-gradient(
-          farthest-side at 110% 110%,
-          #a2b8ff 10%,
-          #2047c7 70%
+          closest-corner at 30px 15px,
+          #fff,
+          blue
         );
         animation: updown2 0.5s ease-in-out infinite alternate;
       }
@@ -393,6 +393,7 @@
         padding: 0;
         box-sizing: border-box;
         cursor: pointer;
+        filter: drop-shadow(5px 5px 5px #0000008a);   
       }
 
       .mtit::before {
@@ -425,7 +426,7 @@
         text-align: center;
         text-shadow: 0 0 10px #000;
         white-space: nowrap;
-        z-index: 1;
+        z-index: 1;     
       }
 
       .rot:hover::after {
