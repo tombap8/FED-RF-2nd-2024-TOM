@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Portfolio 2nd Management</title>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Poor+Story&display=swap');
+             html,
+             body {
+                 margin: 0;
+                 padding: 0;
+                 width: 100%;
+                 height: 100%;
+             }
+ 
+             body {
+                 background: url(images/3rd/bg.webp) no-repeat center/cover;
+                 overflow: hidden;
+                 perspective: 480px;
+                 font-family: 'Poor Story', sans-serif;
+             }
+ 
+             ul {
+                 margin: 0 auto;
+                 padding: 0;
+                 list-style: none;
+             }
+ 
+             ul::after {
+                 content: "";
+                 display: block;
+                 clear: both;
+             }
+ 
+             a {
+                 text-decoration: none;
+                 color: #fff;
+                 font-size: 23px;
+             }
+ 
+             /*큰제목*/
+             .mainTit {
+                 position: absolute;
+                 top: 5%;
+                 left: 50%;
+                 transform: translateX(-50%) rotateY(5deg);
+                 width: 40vw;
+                 text-align: center;
+                 background: url(images/3rd/cyberpan.jpg) no-repeat center/cover;
+                 border-radius: 20px;
+                 border: 10px double rgb(0, 208, 255);
+                 color: #fff;
+                 font-size: 2vw;
+                 line-height: 4vw;
+                 text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
+                 overflow: hidden;
+                 cursor: pointer;
+                 animation: mtitAni 1s ease-in-out infinite alternate;
+             }
+ 
+             .mainTit:hover {
+                 animation: mtitAni2 1s ease-in-out infinite alternate;
+             }
+ 
+             .mainTit::after {
+                 content: "";
+                 display: block;
+                 position: absolute;
+                 top: -100px;
+                 left: -50%;
+                 width: 70px;
+                 height: 500px;
+                 background-image: linear-gradient(to left, #fff 5%, transparent 50%, transparent);
+                 transform: rotate(30deg);
+                 opacity: 0.5;
+                 animation: reflect 1s ease-in-out infinite alternate;
+             }
+ 
+             .mainTit:hover::after {
+                 left: -100px;
+                 top: -50%;
+                 height: 70px;
+                 width: 1000px;
+                 background-image: linear-gradient(to bottom, #fff 5%, transparent 50%, transparent);
+                 transform: rotate(10deg);
+                 opacity: 0.5;
+                 animation: reflect2 1s ease-in-out infinite alternate;
+             }
+ 
+             .mainTit span {
+                 font-size: 20px;
+             }
+ 
+             @keyframes mtitAni {
+                 from {
+                     transform: translateX(-50%) rotateY(5deg);
+                 }
+ 
+                 to {
+                     transform: translateX(-50%) rotateY(-5deg);
+                 }
+             }
+ 
+             @keyframes mtitAni2 {
+                 from {
+                     transform: translateX(-50%) rotateY(0deg) rotateX(15deg);
+                 }
+ 
+                 to {
+                     transform: translateX(-50%) rotateY(0deg) rotateX(-15deg);
+                 }
+             }
+ 
+             @keyframes reflect {
+                 from {
+                     left: -50%;
+                 }
+ 
+                 to {
+                     left: 150%;
+                 }
+             }
+ 
+             @keyframes reflect2 {
+                 from {
+                     top: -50%;
+                 }
+ 
+                 to {
+                     top: 150%;
+                 }
+             }
+ 
+             .sbox {
+                 position: absolute;
+                 top: 50%;
+                 left: 150%;
+                 transform: translate(-50%, -50%);
+                 display: flex;
+                 flex-wrap: wrap;
+                 gap: 2vw 2%;
+                 width: 800px;
+                 z-index: 9999;
+             }
+ 
+             .sbox li {
+                 position: relative;
+                 flex-shrink: 0;
+                 flex-basis: 18%;
+             }
+ 
+             .cbox {
+                 position: absolute;
+                 top: 0;
+                 left: 50%;
+                 width: 0;
+                 /*300px;*/
+                 height: 300px;
+                 overflow: hidden;
+                 transition: 0.2s ease-out 0.2s;
+                 /*            outline: 1px solid red;*/
+             }
+ 
+             .cbox > div {
+                 float: left;
+                 height: 100%;
+             }
+ 
+             .cbox > div:first-child {
+                 position: relative;
+                 width: 100px;
+                 /*            background: #d05858;*/
+             }
+ 
+             .cbox > div:first-child::before {
+                 content: "";
+                 display: block;
+                 position: absolute;
+                 top: 0;
+                 right: 0;
+                 width: 110%;
+                 height: 1px;
+                 background: #00ffeb;
+                 transform-origin: right;
+                 transform: rotate(-30deg);
+                 box-shadow: 0 0 5px #000;
+             }
+ 
+             .cbox > div:last-child {
+                 position: absolute;
+                 top: 0;
+                 left: 100px;
+                 width: 200px;
+                 height: 0px;
+                 background: #000 url(images/3rd/cyberpan.jpg) no-repeat center 50px/100%;
+                 border: 2px solid #00ffeb;
+                 color: #fff;
+                 text-shadow: 0 1px #000, 0 -1px #000, 1px 0 #000, -1px 0 #000;
+                 text-align: center;
+ 
+                 box-sizing: border-box;
+                 overflow: hidden;
+                 transition: 0.2s ease-out;
+             }
+ 
+             .cbox > div:last-child img {
+                 width: 100%;
+             }
+ 
+             .kw {
+                 position: relative;
+                 display: block;
+                 width: 90px;
+                 height: 90px;
+                 margin: 0 auto;
+                 font-size: 24px;
+                 font-weight: bold;
+                 text-decoration: none;
+                 color: #fff;
+                 border-radius: 50%;
+                 text-align: center;
+                 line-height: 90px;
+                 text-shadow: 0 0 2px #777;
+                 z-index: 1;
+             }
+ 
+             .s1 > li .kw {
+                 background-image: radial-gradient(
+                     farthest-side at 110% 110%,
+                     #b2d0f8 10%,
+                     #2047c7 70%
+                 );
+                 animation: updown2 0.5s ease-in-out infinite alternate;
+             }
+ 
+             .s2 > li .kw {
+                 background-image: radial-gradient(
+                     farthest-side at 110% 110%,
+                     #a2b8ff 10%,
+                     #2047c7 70%
+                 );
+                 animation: updown2 0.5s ease-in-out infinite alternate;
+             }
+ 
+             .s1 > li .cbox {
+                 animation: updown2 0.5s ease-in-out infinite alternate;
+             }
+ 
+             .s2 > li .cbox {
+                 animation: updown2 0.5s ease-in-out infinite alternate;
+             }
+ 
+             /*
+         .s1>li .cbox>div:first-child::before {
+             animation: rot .5s ease-in-out infinite alternate;
+         }
+ */
+ 
+             .sbox > li .cbox > div:first-child::before {
+                 animation: rot2 0.5s ease-in-out infinite alternate;
+             }
+ 
+             .sbox > li.on .cbox {
+                 width: 300px;
+                 transition: 0.4s ease-out;
+                 z-index: 2;
+             }
+ 
+             .sbox > li.on .cbox > div:last-child {
+                 height: 300px;
+                 transition: 0.4s ease-out 0.4s;
+             }
+ 
+             .s2 > li:hover .kw {
+                 background-image: radial-gradient(
+                     farthest-side at 30% 30%,
+                     #a2ffb3 10%,
+                     #20c741 70%
+                 );
+                 z-index: 3;
+             }
+ 
+             .s1 > li:hover .kw {
+                 background-image: radial-gradient(
+                     farthest-side at 30% 30%,
+                     #20c741 30%,
+                     #a2ffb3 90%
+                 );
+                 z-index: 3;
+             }
+ 
+             .tit {
+                 margin: 0;
+                 padding: 10px 0;
+                 background: rgba(0, 0, 255, 0.67);
+                 font-size: 18px;
+             }
+ 
+             .desc {
+                 overflow: auto;
+                 height: 120px;
+                 background: rgba(0, 0, 0, 0.7);
+                 font-size: 12px;
+                 margin: 0;
+                 padding: 10px;
+                 text-align: left;
+                 line-height: 25px;
+             }
+ 
+             .desc::-webkit-scrollbar {
+                 width: 5px;
+             }
+ 
+             .desc::-webkit-scrollbar-thumb {
+                 background: #666;
+                 border-radius: 5px;
+             }
+ 
+             .desc::-webkit-scrollbar-track {
+                 background: #ddd;
+                 border-radius: 5px;
+             }
+ 
+             .desc > a {
+                 display: block;
+             }
+ 
+             .two {
+                 line-height: 30px;
+                 padding-top: 15px;
+                 box-sizing: border-box;
+             }
+ 
+             @keyframes updown {
+                 from {
+                     transform: translateY(1px);
+                 }
+ 
+                 to {
+                     transform: translateY(-1px);
+                 }
+             }
+ 
+             @keyframes updown2 {
+                 from {
+                     transform: translateY(-1px);
+                 }
+ 
+                 to {
+                     transform: translateY(1px);
+                 }
+             }
+ 
+             @keyframes rot {
+                 from {
+                     transform: rotate(-31deg);
+                 }
+ 
+                 to {
+                     transform: rotate(-29deg);
+                 }
+             }
+ 
+             @keyframes rot2 {
+                 from {
+                     transform: rotate(-29deg);
+                 }
+ 
+                 to {
+                     transform: rotate(-31deg);
+                 }
+             }
+ 
+             .mtit {
+                 position: absolute;
+                 top: 60%;
+                 left: 50%;
+                 transform: translate(-50%, -50%);
+                 width: 20vw;
+                 margin: 0;
+                 padding: 0;
+                 box-sizing: border-box;
+                 cursor: pointer;
+             }
+ 
+             .mtit::before {
+                 content: "";
+                 display: block;
+                 padding-top: 100%;
+             }
+ 
+             .mtit::after {
+                 content: "";
+                 display: block;
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+                 width: 100%;
+                 height: 100%;
+                 border-radius: 50%;
+                 background: url(images/3rd/circle.jpg) no-repeat center/cover;
+             }
+ 
+             /* 내부글자 */
+             .mtit > span {
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+                 right: 0;
+                 bottom: 0;
+                 font: bold 3vw/20vw Verdana;
+                 color: darkblue;
+                 text-align: center;
+                 text-shadow: 0 0 3px #777;
+                 white-space: nowrap;
+                 z-index: 1;
+             }
+ 
+             .rot:hover::after {
+                 animation: rot 3s ease-in-out infinite;
+             }
+ 
+             @keyframes rot {
+                 0% {
+                     transform: rotate(0deg);
+                 }
+ 
+                 12.5% {
+                     transform: rotate(45deg);
+                 }
+ 
+                 25% {
+                     transform: rotate(90deg);
+                 }
+ 
+                 37.5% {
+                     transform: rotate(135deg);
+                 }
+ 
+                 50% {
+                     transform: rotate(180deg);
+                 }
+ 
+                 62.5% {
+                     transform: rotate(225deg);
+                 }
+ 
+                 75% {
+                     transform: rotate(270deg);
+                 }
+ 
+                 87.5% {
+                     transform: rotate(315deg);
+                 }
+ 
+                 100% {
+                     transform: rotate(360deg);
+                 }
+             }
+ 
+             .mt1 {
+                 right: 60%;
+             }
+ 
+             .mt2 {
+                 left: 60%;
+             }
+ 
+             /*전체중앙디피박스*/
+             #dpbox {
+                 position: fixed;
+                 width: 60%;
+                 top: 50%;
+                 left: 50%;
+                 transform: translate(-50%, -50%);
+                 z-index: 9999999;
+                 background-color: rgba(255, 255, 255, 0.51);
+                 overflow: hidden;
+                 border-radius: 10px;
+                 padding: 5px;
+                 display: none;
+             }
+ 
+             #dpbox::before {
+                 content: "";
+                 display: block;
+                 padding-top: 60%;
+             }
+ 
+             #dpbox > div {
+                 position: absolute;
+                 top: 0;
+                 left: 0;
+                 bottom: 0;
+                 right: 0;
+             }
+ 
+             #dpbox > span {
+                 position: absolute;
+                 top: 20px;
+                 right: 20px;
+                 width: 30px;
+                 height: 30px;
+                 font-size: 24px;
+                 text-align: center;
+                 line-height: 30px;
+                 color: #000;
+                 text-shadow: 0 0 3px #fff;
+                 cursor: pointer;
+             }
+ 
+             #dpbox > div > iframe {
+                 width: 100%;
+                 height: 100%;
+                 overflow-x: hidden;
+                 overflow-y: auto;
+                 border: none;
+             }
+ 
+             @media only screen and (max-width: 1200px) {
+                 /*큰제목*/
+                 .mainTit {
+                     position: absolute;
+                     top: 5%;
+                     left: 50%;
+                     transform: translateX(-50%) rotateY(5deg);
+                     width: max(40vw, 370px);
+                     text-align: center;
+                     background: url(images/cyberpan.jpg) no-repeat center/cover;
+                     color: #fff;
+                     font-size: max(2vw, 20px);
+                     line-height: max(4vw, 30px);
+                     text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
+                     overflow: hidden;
+                     cursor: pointer;
+                     animation: mtitAni 1s ease-in-out infinite alternate;
+                 }
+ 
+                 .mainTit:hover {
+                     animation: mtitAni2 1s ease-in-out infinite alternate;
+                 }
+ 
+                 .mainTit::after {
+                     content: "";
+                     display: block;
+                     position: absolute;
+                     top: -100px;
+                     left: -50%;
+                     width: 70px;
+                     height: 500px;
+                     background-image: linear-gradient(
+                         to left,
+                         #fff 5%,
+                         transparent 50%,
+                         transparent
+                     );
+                     transform: rotate(30deg);
+                     opacity: 0.5;
+                     animation: reflect 1s ease-in-out infinite alternate;
+                 }
+ 
+                 .mainTit:hover::after {
+                     left: -100px;
+                     top: -50%;
+                     height: 70px;
+                     width: 1000px;
+                     background-image: linear-gradient(
+                         to bottom,
+                         #fff 5%,
+                         transparent 50%,
+                         transparent
+                     );
+                     transform: rotate(10deg);
+                     opacity: 0.5;
+                     animation: reflect2 1s ease-in-out infinite alternate;
+                 }
+ 
+                 .mainTit span {
+                     font-size: 20px;
+                 }
+ 
+                 .sbox {
+                     position: absolute;
+                     margin-top: 15vh;
+                     left: 150%;
+                     /* transform: translate(-50%, -50%); */
+                     width: max(100vw, 370px);
+                     z-index: 9999;
+                     flex-direction: column;
+                     gap: 0 0;
+                 }
+ 
+                 .sbox li {
+                     position: relative;
+                     width: 100%;
+                     margin: 0;
+                 }
+ 
+                 .cbox {
+                     position: static;
+                     top: 0;
+                     left: 50%;
+                     width: auto;
+                     /*300px;*/
+                     height: 0px;
+                     overflow: hidden;
+                     transition: 0.2s ease-out 0.2s;
+                     /*            outline: 1px solid red;*/
+                 }
+ 
+                 .cbox > div {
+                     float: left;
+                     height: 100%;
+                 }
+ 
+                 .cbox > div:first-child {
+                     position: relative;
+                     width: auto;
+                     /*            background: #d05858;*/
+                 }
+ 
+                 .cbox > div:first-child::before {
+                     display: none;
+                 }
+ 
+                 .cbox > div:last-child {
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 0px;
+                     background: #000 url(images/cyberpan.jpg) no-repeat center 50px/100%;
+                     border: 2px solid #00ffeb;
+                     color: #fff;
+                     text-shadow: 0 1px #000, 0 -1px #000, 1px 0 #000, -1px 0 #000;
+                     text-align: center;
+                     box-sizing: border-box;
+                     overflow: hidden;
+                     transition: 0.2s ease-out;
+                 }
+ 
+                 .cbox > div:last-child img {
+                     width: auto;
+                     float: left;
+                 }
+ 
+                 .kw {
+                     position: relative;
+                     display: block;
+                     width: 100%;
+                     height: 5vh;
+                     margin: 0 auto;
+                     font-size: 24px;
+                     font-weight: bold;
+                     text-decoration: none;
+                     color: #fff;
+                     border-radius: 0;
+                     text-align: center;
+                     line-height: 5vh;
+                     text-shadow: 0 0 2px #777;
+                     z-index: 1;
+                 }
+ 
+                 .s1 > li .kw {
+                     background-image: linear-gradient(to bottom, #f8b2d8 10%, #c7207a 70%);
+                     animation: updown2 0.5s ease-in-out infinite alternate;
+                 }
+ 
+                 .s2 > li .kw {
+                     background-image: radial-gradient(
+                         farthest-side at 110% 110%,
+                         #a2b8ff 10%,
+                         #2047c7 70%
+                     );
+                     animation: updown2 0.5s ease-in-out infinite alternate;
+                 }
+ 
+                 .s1 > li .cbox {
+                     animation: updown2 0.5s ease-in-out infinite alternate;
+                 }
+ 
+                 .s2 > li .cbox {
+                     animation: updown2 0.5s ease-in-out infinite alternate;
+                 }
+ 
+                 .sbox > li .cbox > div:first-child::before {
+                     animation: rot2 0.5s ease-in-out infinite alternate;
+                 }
+ 
+                 .sbox > li:hover .cbox {
+                     height: 20vh;
+                     width: auto;
+                     transition: 0.4s ease-out;
+                     z-index: 2;
+                 }
+ 
+                 .sbox > li:hover .cbox > div:last-child {
+                     height: 20vh;
+                     transition: 0.4s ease-out 0.4s;
+                 }
+ 
+                 .s2 > li:hover .kw {
+                     background-image: radial-gradient(
+                         farthest-side at 30% 30%,
+                         #a2b8ff 10%,
+                         #2047c7 70%
+                     );
+                     z-index: 3;
+                 }
+ 
+                 .s1 > li:hover .kw {
+                     background-image: radial-gradient(
+                         farthest-side at 30% 30%,
+                         #f8b2d8 10%,
+                         #c7207a 70%
+                     );
+                     z-index: 3;
+                 }
+ 
+                 .tit {
+                     margin: 0;
+                     padding: 10px 0;
+                     background: rgba(0, 0, 255, 0.67);
+                     font-size: 18px;
+                 }
+ 
+                 .desc {
+                     overflow: auto;
+                     height: 20vh;
+                     background: rgba(0, 0, 0, 0.7);
+                     font-size: 3vh;
+                     margin: 0;
+                     padding: 10px;
+                     text-align: left;
+                     line-height: 5vh;
+                 }
+ 
+                 .mtit {
+                     position: absolute;
+                     top: 60%;
+                     left: 50%;
+                     transform: translate(-50%, -50%);
+                     width: max(20vw, 200px);
+                     margin: 0;
+                     padding: 0;
+                     box-sizing: border-box;
+                     cursor: pointer;
+                 }
+ 
+                 .mtit::before {
+                     content: "";
+                     display: block;
+                     padding-top: 100%;
+                 }
+ 
+                 .mtit::after {
+                     content: "";
+                     display: block;
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     width: 100%;
+                     height: 100%;
+                     border-radius: 50%;
+                     background: url(images/circle.png) no-repeat center/cover;
+                 }
+ 
+                 /* 내부글자 */
+                 .mtit > span {
+                     position: absolute;
+                     top: 0;
+                     left: 0;
+                     right: 0;
+                     bottom: 0;
+                     font-weight: bold;
+                     font-size: max(3vw, 30px);
+                     line-height: max(20vw, 200px);
+                     font-family: Verdana;
+                     color: #fff;
+                     text-align: center;
+                     text-shadow: 0 0 3px #777;
+                     white-space: nowrap;
+                     z-index: 1;
+                 }
+ 
+                 .rot:hover::after {
+                     animation: rot 3s ease-in-out infinite;
+                 }
+             }
+ 
+             /* 미디어쿼리 */
+         </style>
+        <script src="js/jquery-3.5.0.min.js"></script>
+        <script src="js/jquery-ui.min.js"></script>
+        <script>
+            $(function () {
+                // jQB /////////////////
+
+                // 이름원을 클릭할때 상세 프로젝트 열기
+                $(".sbox li").click(function(){
+                    $(this).addClass('on').siblings().removeClass('on');
+                })
+                // 이름원에서 마우스 떠날때 프록젝트 닫기
+                $(".sbox li").mouseleave(function(){
+                    $(this).removeClass('on');
+                })
+
+                // 메인타이틀 클릭시
+                $(".mainTit").click(function () {
+                    $(".mtit").css({
+                        top: "60%",
+                        left: "50%",
+                        transform: "translate(-50%,-50%) scale(1)",
+                    }); /// css ///
+                    $(".s1").css({
+                        left: "150%",
+                    }); /// css ///
+                });
+
+                // 링크 클릭시 //
+                $(".desc a").click(function (e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    // a링크의 href값
+                    const tgsrc = $(this).attr("href");
+
+                    window.open().location.href = tgsrc;
+                }); //// click ///////
+
+                $("#dpbox>span").click(function () {
+                    // 숨기기
+                    $("#dpbox").fadeOut(300);
+                }); //// click ///////
+
+                $("body").append('<button class="back">메인페이지</button>');
+                $(".back")
+                    .css({
+                        position: "fixed",
+                        bottom: "5px",
+                        left: "50%",
+                        transform: "translateX(-50%)",
+                        backgroundColor: "cyan",
+                        fontSize: "3vh",
+                        lineHeight: "5vh",
+                        borderRadius: "5px",
+                    })
+                    .click(function () {
+                        location.href = "../../index.html";
+                    });
+            }); ///////// jQB /////////////////////
+            /////////////////////////////////////
+
+            window.addEventListener("DOMContentLoaded", function () {
+                var tg = document.getElementsByClassName("mtit");
+                var tg2 = document.getElementsByClassName("sbox");
+                tg[0].addEventListener("click", function () {
+                    //                alert("하하");
+                    this.style.top = "10%";
+                    this.style.left = "70%";                    
+                    this.style.transform = "translateY(-50%) scale(.4)";
+                    this.style.transition = "all .5s ease-in-out";
+
+                    tg2[0].style.left = "50%";
+                    tg2[0].style.transition = "all .5s ease-in-out";
+                }); ///// click //////////////////////////////
+            });
+        </script>
+    </head>
+
+    <body>
+        <!--제목-->
+        <h1 class="mainTit">
+            프론트엔드(React, PHP), <br />
+            플러터(Flutter)활용 <br />
+            웹&앱개발 양성과정 1회차 <br>
+            <span>2023.07.27~2024.01.19</span>
+        </h1>
+
+        <ul class="sbox s1">
+            <!-- <li>
+                <a href="#" class="kw">최수진</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">쉑쉑버거</h2>
+                        <img src="images/1st/pf1.png" alt="최수진PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://choisj01.github.io/FED_RF-2023-Project-CSJ/01.first_PJ_CSJ/index.html"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://choisj01.github.io/FED_RF-2023-Project-CSJ/FED_RF_2023_Project_CSJ/1%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20SHAKESHACK(%EC%B5%9C%EC%88%98%EC%A7%84)_230922.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li> -->
+            <li>
+                <a href="#" class="kw">권영혜</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">Pomme Verte</h2>
+                        <img src="images/2nd/pf2.png" alt="권영혜PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://kwonyounghye.github.io/PommeVerte/#/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf2.pptx" download
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">김내우</a>
+                <div class="cbox leega1">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">Tottenham</h2>
+                        <img src="images/2nd/pf3.png" alt="김내우PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://kimnaewoo.github.io/kimnaewoo-react-pj/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/pf3.pptx" download
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">김민정</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">converse</h2>
+                        <img src="images/2nd/pf4.png" alt="김민정PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://minjxx.github.io/converse/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://minjxx.github.io/FED-RF-2023-Project-KMJ/02.converse_PJ/%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C/2%EC%B0%A8_%EC%BB%A8%EB%B2%84%EC%8A%A4.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">김범서</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">XEXYMIX</h2>
+                        <img src="images/2nd/pf5.png" alt="김범서PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://bumstop.github.io/react_xexymix_clone/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf5.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <!-- <li>
+                <a href="#" class="kw">김윤민</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">위스키정보사이트</h2>
+                        <img src="images/1st/pf6.png" alt="김윤민PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://yoonminkim.github.io/FED-RF-2023-Project-KYM/05.%20New/HTML_01.Main_new.html"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://yoonminkim.github.io/FED-RF-2023-KYM/999.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/FED-RF-2023-%EA%B9%80%EC%9C%A4%EB%AF%BC-%EB%B0%9C%ED%91%9C%EB%AC%B8%EC%84%9C.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li> -->
+            <li>
+                <a href="#" class="kw">문승준</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">최강야구</h2>
+                        <img src="images/1st/pf7.png" alt="문승준PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://moonlyong.github.io/FED-RF-2023-Project-MSJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="pdf/2nd/pf7.pptx" download
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">박서진</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">Expedia</h2>
+                        <img src="images/2nd/pf8.png" alt="박서진PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://rumblerum.github.io/FED-RF-2023-Project-PSJ/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="pdf/2nd/pf8.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <!-- <li>
+                <a href="#" class="kw">박수민</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">사이트</h2>
+                        <img src="images/1st/pf9.png" alt="박수민PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://parksumin0611.github.io/my_project/900.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/start.html"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://parksumin0611.github.io/my_project/900.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/04.%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C/%EB%B0%95%EC%88%98%EB%AF%BC-%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li> -->
+            <!-- <li>
+                <a href="#" class="kw">박정현</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">메가박스</h2>
+                        <img src="images/1st/pf10.png" alt="박정현PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://parkjjung79.github.io/FED-RF-2023-Project-PJH/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://parkjjung79.github.io/FED-RF-2023-Project-PJH/PJH_project01_guide.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li> -->
+            <!-- <li>
+                <a href="#" class="kw">신용진</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">MK 트레이딩</h2>
+                        <img src="images/1st/pf11.png" alt="신용진PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://novall9633.github.io/FED-RF-2023-Project-SYJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/index.html"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://novall9633.github.io/FED-RF-2023-Project-SYJ/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/MK%20%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%94%A9%20%EA%B0%80%EC%9D%B4%EB%93%9C.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li> -->
+            <li>
+                <a href="#" class="kw">안주현</a>
+                <div class="cbox leega1">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">LEOPOLO</h2>
+                        <img src="images/2nd/pf12.png" alt="안주현PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://itjuh.github.io/FED-REF-2023-PJ-REACT/intro/intro.html"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf12.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">유승환</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">MR.STREET</h2>
+                        <img src="images/1st/pf13.png" alt="유승환PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://yush0723.github.io/FED-RF-2023-YUSH/999.%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/mrs.html"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://yush0723.github.io/FED-RF-2023-YUSH/MRS.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">유혜경</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">AIR BNB</h2>
+                        <img src="images/2nd/pf14.png" alt="유혜경PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://hyeppyday.github.io/hg-react-pj/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf14.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">이동엽</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">THE BLACK LABEL</h2>
+                        <img src="images/2nd/pf15.png" alt="이동엽PJ">
+                        <p class="desc">
+                            <a href="https://zdzd3643.github.io/nick-theblack-pj/">1. 사이트</a>
+                            <a href="./pdf/2nd/pf15.pdf">2. 가이드 문서</a>
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">이조은</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">ANIMAX</h2>
+                        <img src="images/2nd/pf16.png" alt="이조은PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://zoe-world.github.io/FED-RF-2023-Dist-LJE/#"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://zoe-world.github.io/FED-RF-2023-Project-LJE/04.%EB%B0%9C%ED%91%9C/MDLA_%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">임경은</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">kairos</h2>
+                        <img src="images/2nd/pf17.png" alt="임경은PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://imlimge.github.io/LKE-kairos/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf17.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">최정우</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">Todays Weather</h2>
+                        <img src="images/1st/pf18.png" alt="최정우PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://next-weather-app-13.vercel.app/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="https://docs.google.com/presentation/d/18Z0f4UJ2cr2uax62JKVgJvnZ_r_8iV8p/edit#slide=id.p1"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">최지민</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">유니버셜스튜디오</h2>
+                        <img src="images/2nd/pf19.png" alt="최지민PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://ogreencakeo.github.io/ogreencakeo-react-pj/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf19.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <a href="#" class="kw">최진구</a>
+                <div class="cbox">
+                    <div></div>
+                    <div>
+                        <h2 class="tit">What is Game</h2>
+                        <img src="images/2nd/pf20.png" alt="최진구PJ" />
+                        <p class="desc">
+                            <a
+                                href="https://jingoochoi.github.io/tonypj2/"
+                                >1. 사이트</a
+                            >
+                            <a
+                                href="./pdf/2nd/pf20.pdf"
+                                >2. 가이드 문서</a
+                            >
+                        </p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+        <h2 class="mtit rot">
+            <span style="line-height: 1.5; display: inline-block; transform: translateY(30%)"
+                >2차<br />프로젝트</span
+            >
+        </h2>
+
+        <!--전체중앙디피박스-->
+        <div id="dpbox">
+            <div></div>
+            <span>×</span>
+        </div>
+    </body>
+</html>
