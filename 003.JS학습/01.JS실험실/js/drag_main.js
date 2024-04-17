@@ -2,7 +2,8 @@
 
 import mFn from "./my_function.js";
 
-import goDrag from "./drag.js";
+import setDrag from "./drag.js";
 
 // 드래그 기능 함수 호출하기
-goDrag(mFn.qsa('.dtg'));
+// 드래그 대상 클래스 이름만 보내준다!
+setDrag('dtg');
