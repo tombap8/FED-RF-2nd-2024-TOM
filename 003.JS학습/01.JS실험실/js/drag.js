@@ -164,6 +164,9 @@ function goDrag(ele) {
     // 단독할당되지 않고 내부 함수호출로 연결되어있으므로
     // 이벤트 전달을 토스해줘야 한다!(전달변수 e)
 
+    // 마우스 다운시 주먹손!
+    dtg.style.cursor = "grabbing";
+
     console.log("마우스 다운!", dragSts);
   }); ///////// mousedown //////////
 
@@ -173,6 +176,9 @@ function goDrag(ele) {
     dFalse();
     // 마지막 위치포인트 셋팅!
     lastPoint(e);
+    
+    // 마우스 업시 편손!
+    dtg.style.cursor = "grab";
 
     console.log("마우스 업!", dragSts);
   }); ///////// mouseup //////////
