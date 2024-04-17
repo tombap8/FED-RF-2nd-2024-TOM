@@ -92,8 +92,11 @@ const dMove = (e) => { // e - 이벤트 객체 전달변수
 
         // 3. 이동차를 구한 resultX,resultY값을 대상 위치값에 적용
         // 대상 : 드래그 요소 dtg
-        dtg.style.left = resultX + 'px';
-        dtg.style.top = resultY + 'px';
+        dtg.style.left = resultX + lastX + 'px';
+        dtg.style.top = resultY + lastY + 'px';
+        // 처음엔 lastX,lastY값이 0으로 들어오기
+        // 두번째부터는 mouseup이벤트 발생부터 저장된
+        // 최종 이동위치값이 더해진다!
 
 
         // 값확인
@@ -102,6 +105,12 @@ const dMove = (e) => { // e - 이벤트 객체 전달변수
 
 
     } //// if ////////
+
+    // 드래그 중(dragSts===true)일때는 주먹손(grabbing), 
+    // 드래그아닐때(dragSts===false) 편손(grab)
+    dtg.style.cursor = dragSts ? 'grabbing' : 'grab';
+
+
 }; ///////// dMove 함수 /////////////////
 
 // (4) 첫번째 위치포인트 셋팅함수 : firstX, firstY 값셋팅
