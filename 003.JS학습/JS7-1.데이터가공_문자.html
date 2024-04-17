@@ -13,17 +13,17 @@
        console.log(rep1); 
        
        // "태국"->"코리아"로 변경
-       
+       rep1 = rep1.replace("태국","코리아");
        console.log(rep1); 
 
        // 콤마(,)를 별(☆)로 변경
-       
+       rep1 = rep1.replace(",","☆");
        console.log(rep1); 
 
        // 일반적으로 replace는 한개의 값을 다른값으로 변경함!
        // 여러개를 모두 찾아 바꾸려면 정규표현식을 써야함!
             
-       
+       rep1 = rep1.replace(/,/g,"☆");
        console.log(rep1); 
 
         /*********************************************************** 
