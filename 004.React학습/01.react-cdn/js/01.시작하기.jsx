@@ -43,6 +43,7 @@ function MyFirstReact() {
             <li>바벨 라이브러리</li>
         </ul>
       </h2>
+      <iframe width="100%" height="720" src="https://www.youtube.com/embed/QFaFIcGhPoM?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3" title="ReactJS Tutorial - 1 - Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </React.Fragment>
   );
 } ////////// MyFirstReact 생성자함수 /////////////
