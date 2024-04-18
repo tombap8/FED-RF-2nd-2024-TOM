@@ -36,12 +36,15 @@ function MyFirstReact() {
         빠르고 쉽게 UI화면의 구성한다! <br /># 가상돔은 실제DOM을 변경하기전에
         메모리상에서 구성하는 가짜 DOM이다! <br />
         # 변경사항을 한번에 구성하여 반영하기 위한도구다! <br />
-        # 리액트는 변경하고자 하는 부분만 업데이트 가능함! <br />
+        # 리액트는 변경하고자 하는 부분만 업데이트 가능함! <br /> <br />
+        # 리액트 라이브러리 구성 <br />
         <ul>
             <li>리액트 라이브러리</li>
             <li>리액트돔 라이브러리</li>
             <li>바벨 라이브러리</li>
         </ul>
+        
+        # 리액트 기초배우기 영상 <br />
       </h2>
       <iframe width="100%" height="720" src="https://www.youtube.com/embed/QFaFIcGhPoM?list=PLC3y8-rFHvwgg3vaYJgHGnModB54rxOk3" title="ReactJS Tutorial - 1 - Introduction" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
     </React.Fragment>
