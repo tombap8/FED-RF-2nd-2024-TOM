@@ -84,10 +84,10 @@ function goDrag(ele) {
   // 배너가 left값 -220% 기준박스에서 이동함
   // .banbx의 width값 곱하기 2.2
   // 기준위치값 변수에 할당!
-  let leftVal = mFn.qs('.banbx').offsetWidth*-2.2;
-  console.log('left 셋팅값:',leftVal);
+  let leftVal = mFn.qs(".banbx").offsetWidth * -2.2;
+  console.log("left 셋팅값:", leftVal);
   // left위치값 최초셋업! -> px단위 꼭 쓸것!!!
-  dtg.style.left = leftVal + 'px';
+  dtg.style.left = leftVal + "px";
 
   // 2. 변수 셋팅 ///////////////////////
   // (1) 드래그 상태 변수 만들기
@@ -129,7 +129,7 @@ function goDrag(ele) {
 
       // 1. 드래그 상태에서 움질일대 포인터 위치값
       // - 브라우저용 포인터 위치는 pageX, pageY를 사용!
-      // - 모바일용 터치 스크린 터치위치는 
+      // - 모바일용 터치 스크린 터치위치는
       // touches[0].screenX, touches[0].screenY
       // -> 두가지를 모두 사용하는 방법은 OR문 할당법을 쓴다!
       // -> 변수 = 할당문1 || 할당문2
@@ -209,7 +209,7 @@ function goDrag(ele) {
     dFalse();
     // 마지막 위치포인트 셋팅!
     lastPoint(e);
-    
+
     // 마우스 업시 편손!
     dtg.style.cursor = "grab";
 
@@ -231,7 +231,6 @@ function goDrag(ele) {
 
     console.log("마우스나감!", dragSts);
   }); ///////// mouseleave //////////
-
 
   //////////// 모바일 이벤트 처리 구역 //////////
 
@@ -263,7 +262,6 @@ function goDrag(ele) {
   // (3) 터치무브 이벤트 함수연결하기
   mFn.addEvt(dtg, "touchmove", dMove);
   //////////// touchmove /////////////
-
 } /////////////// goDrag 함수 ///////////////
 /////////////////////////////////////////////
 
