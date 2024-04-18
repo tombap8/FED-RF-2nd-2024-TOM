@@ -71,11 +71,20 @@
         $('h2').click(()=>{
           console.log('나야나~!');
           // 변경대상: .list
-          $('.list').css({
+          $('.list')
+          .css({
+            position: 'relative',
+            left:'0',
             fontSize:'50px',
             color:'hotpink',
             transition:'1.5s ease-in-out',
           })
+          // 1.5 초 기다림
+          .delay(1500) 
+          // 0.5초간 left값 변경애니
+          .animate({left:"300px"},500)
+
+          // .animate({},시간,이징,함수)
         }); //// click /////
       });
     </script>
