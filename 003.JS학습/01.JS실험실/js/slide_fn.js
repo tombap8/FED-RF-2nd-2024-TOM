@@ -258,7 +258,7 @@ function slideFn(selEl) { // selEl 선택 슬라이드 부모 요소
    } ///////// slideAuto 함수 //////////////
 
    // 인터발함수 최초호출!
-   slideAuto();
+//    slideAuto();
 
    // 버튼을 클릭할 경우를 구분하여 자동넘김을 멈춰준다!
    function clearAuto(){
