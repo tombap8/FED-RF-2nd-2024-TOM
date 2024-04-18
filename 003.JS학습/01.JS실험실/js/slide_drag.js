@@ -54,7 +54,7 @@ function setDrag(clsName) {
 } /////////// setDrag 함수 ////////////////
 
 // z-index 공통관리 변수(전역변수)
-let zNum = 0;
+// let zNum = 0;
 
 /******************************************* 
     [ 드래그 다중적용 함수 만들기 ]
@@ -81,7 +81,13 @@ function goDrag(ele) {
   // 필수 셋팅요소는 position:relative / top:0 / left:0
   dtg.style.position = "relative";
   // dtg.style.top = "0";
-  dtg.style.left = "0";
+  // 배너가 left값 -220% 기준박스에서 이동함
+  // .banbx의 width값 곱하기 2.2
+  // 기준위치값 변수에 할당!
+  let leftVal = mFn.qs('.banbx').offsetWidth*-2.2;
+  console.log('left 셋팅값:',leftVal);
+  // left위치값 최초셋업! -> px단위 꼭 쓸것!!!
+  dtg.style.left = leftVal + 'px';
 
   // 2. 변수 셋팅 ///////////////////////
   // (1) 드래그 상태 변수 만들기
@@ -92,7 +98,8 @@ function goDrag(ele) {
   let firstX;
 
   // (3) 마지막 위치 포인트 : last x, last y
-  let lastX = 0;
+  // -> 최초위치 셋팅값으로 프리셋팅!
+  let lastX = leftVal;
   // -> 중첩된 최종위치가 처음에는 계산되지 않았으므로
   // 출발위치인 0값으로 초기값을 넣어준다!
   // 초기값을 안넣으면 최초에 값을 더할때 에러가 발생한다!
@@ -191,7 +198,7 @@ function goDrag(ele) {
     dtg.style.cursor = "grabbing";
 
     // z-index 전역변수(zNum) 숫자를 1씩 높이기
-    dtg.style.zIndex = ++zNum;
+    // dtg.style.zIndex = ++zNum;
 
     console.log("마우스 다운!", dragSts);
   }); ///////// mousedown //////////
@@ -238,7 +245,7 @@ function goDrag(ele) {
     // 이벤트 전달을 토스해줘야 한다!(전달변수 e)
 
     // z-index 전역변수(zNum) 숫자를 1씩 높이기
-    dtg.style.zIndex = ++zNum;
+    // dtg.style.zIndex = ++zNum;
 
     console.log("터치스타트!", dragSts);
   }); ///////// touchstart //////////
