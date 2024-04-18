@@ -1,12 +1,12 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title> 태그 선택자  </title>
-<!-- jQuery library 가장위에 있어야함!!! -->
-<script src="../jquery-3.6.3.min.js"></script>
-	<script>
-    /************************************************* 
+  <head>
+    <meta charset="utf-8" />
+    <title>태그 선택자</title>
+    <!-- jQuery library 가장위에 있어야함!!! -->
+    <script src="../jquery-3.6.3.min.js"></script>
+    <script>
+      /************************************************* 
       [ 제이쿼리 라이브러리 사용법 ]
       
       1. 제이쿼리 함수 호출하기
@@ -64,40 +64,39 @@
     
     *************************************************/
 
-			
-	
-	</script>
-	
-	
-	
-	
-	
-	
-</head>
-  
-<body>
+      //  제이쿼리 코드 구역 !!!
+      $(() => {
+        // 대상: h2
+        // 이벤트는 클릭
+        $('h2').click(()=>{
+          console.log('나야나~!');
+          // 변경대상: .list
+          $('.list').css({
+            fontSize:'50px',
+            color:'hotpink',
+            transition:'1.5s ease-in-out',
+          })
+        }); //// click /////
+      });
+    </script>
+  </head>
 
-<div id="container">
+  <body>
+    <div id="container">
+      <header>
+        <h2>여기를 클릭하시오~!!!</h2>
+      </header>
 
- <header>
-   <h2> 여기를 클릭하시오~!!! </h2>
- </header>
+      <nav>
+        <ul class="list">
+          <li id="first">One</li>
+          <li id="second">Two</li>
+          <li id="third">Three</li>
+        </ul>
+      </nav>
+    </div>
 
- <nav>
-   <ul class="list">
-   <li id="first">One</li>
-   <li id="second">Two</li>
-   <li id="third">Three</li>
-  </ul>
- </nav>
-
-</div>
-
-<!---------- jQuery code Start ---------->
-<script>
-
-</script>
-
-</body>
+    <!---------- jQuery code Start ---------->
+    <script></script>
+  </body>
 </html>
-
