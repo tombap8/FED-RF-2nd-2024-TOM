@@ -123,8 +123,17 @@ function goDrag(ele) {
 
       // 1. 드래그 상태에서 움질일대 포인터 위치값
       // - 브라우저용 포인터 위치는 pageX, pageY를 사용!
-      moveX = e.pageX;
-      moveY = e.pageY;
+      // - 모바일용 터치 스크린 터치위치는 
+      // touches[0].screenX, touches[0].screenY
+      // -> 두가지를 모두 사용하는 방법은 OR문 할당법을 쓴다!
+      // -> 변수 = 할당문1 || 할당문2
+      // ->>> 두 할당문중 값이 유효한(true)값이 할당됨!
+      // DT용 코드와 Mobile코드를 동시에 셋팅할 수 있다!
+      moveX = e.pageX || e.touches[0].screenX;
+      moveY = e.pageY || e.touches[0].screenY;
+      // console.log(e.touches[0]);
+      // moveX = e.pageX;
+      // moveY = e.pageY;
 
       // 2. 움직일 위치 결과값
       // 움직일때 위치 포인트 - 첫번째 위치 포인트
@@ -156,8 +165,11 @@ function goDrag(ele) {
 
   // (4) 첫번째 위치포인트 셋팅함수 : firstX, firstY 값셋팅
   const firstPoint = (e) => {
-    firstX = e.pageX;
-    firstY = e.pageY;
+    // DT용값과 Mobile값을 동시에 OR문으로 할당함!
+    firstX = e.pageX || e.touches[0].screenX;
+    firstY = e.pageY || e.touches[0].screenY;
+    // firstX = e.pageX;
+    // firstY = e.pageY;
     console.log("첫포인트:", firstX, " | ", firstY);
   }; ///////// firstPoint 함수 //////////
 
