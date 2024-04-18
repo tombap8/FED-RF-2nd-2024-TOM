@@ -92,14 +92,20 @@
           .mouseover((e)=>{
             // 자기자신
             let ele = e.currentTarget;
-            
+
             console.log('오버야~!',
             ele,
             $(ele).text(),
             $(ele).parent().index());
+            // text()는 태그 데이터 읽기/쓰기
+            // parent()는 부모요소로 올라감
+            // index() 같은 형제요소의 순번(0부터)
+            
+            // 오버된 span의 부모li순번
+            let seq = $(ele).parent().index();
 
             // 글자변경하기!
-
+            $(ele).text(arrText[seq]);
 
           }); ///// mouseover //////
 
