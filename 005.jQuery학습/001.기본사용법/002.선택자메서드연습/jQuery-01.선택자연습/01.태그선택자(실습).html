@@ -85,7 +85,30 @@
           .animate({left:"300px"},500)
 
           // .animate({},시간,이징,함수)
+
+
+          /// 클릭시 이벤트 셋팅하기!
+          $('.list li span')
+          .mouseover((e)=>{
+            // 자기자신
+            let ele = e.currentTarget;
+            
+            console.log('오버야~!',
+            ele,
+            $(ele).text(),
+            $(ele).parent().index());
+
+            // 글자변경하기!
+
+
+          }); ///// mouseover //////
+
         }); //// click /////
+
+        const arrText = ["나는","프론트엔드","개발자다!"];
+        const arrColor = ["red","blue","green"];
+
+
       });
     </script>
   </head>
@@ -98,9 +121,9 @@
 
       <nav>
         <ul class="list">
-          <li id="first">One</li>
-          <li id="second">Two</li>
-          <li id="third">Three</li>
+          <li id="first"><span>One</span></li>
+          <li id="second"><span>Two</span></li>
+          <li id="third"><span>Three</span></li>
         </ul>
       </nav>
     </div>
