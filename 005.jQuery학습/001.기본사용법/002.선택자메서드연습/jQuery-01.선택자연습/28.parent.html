@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> parent </title>
+<!-- jQuery library -->
+<script src="../jquery-3.6.3.min.js"></script>
+<script src="../jquery-ui.min.js"></script>
+<script>
+$(document).ready(function(e) {
+
+  /************************************************ 
+    [ 8. parent() 메서드 ]
+    - 선택요소를 싸고있는 부모요소를 선택함
+    -> 만약 parent() 를 여러번쓰면 쓴 횟수만큼 부모로 올라감
+    예) div>p>a>span 이런 구조라면
+    $("span").parent().parent() -> 부모들 중 p태그임!
+  ************************************************/
+	
+	// 미션: p태그를 클릭하면 부모요소의 배경색을 빨간색으로 변경하시오.
+  // animate() 사용!
+  $("p").click(function(){
+    $(this).parent()
+    .animate({backgroundColor:"red"},1000);
+  }); /////////// click ////////
+	
+	// parents(요소명) -> 부모들 중 특정 부모를 선택함!
+	// 미션: a를 클릭하면 부모들 중 p태그는 배경색을 노란색, 
+  // div#sub 태그는 배경색을 녹색으로 지정하시오.
+  $("a").click(function(e){
+    // 이벤트가 부모p요소로 전달되는 것을 막아야
+    // click이벤트가 중복 실행되지 않는다!
+    e.stopPropagation();
+
+    $(this) // a요소
+    .parents("p") // 부모들 중 p요소
+    .animate({backgroundColor:"yellow"},500);
+
+    $(this) // a요소
+    .parents("#sub") // 부모들 중 p요소
+    .animate({backgroundColor:"green"},1000);
+  }); /////////// click ///////////
+	
+	
+	
+});//jQuery실행구역
+</script>
+
+<style>
+  div, p, a {float:left;margin:10px; background-color:#FFF; display:block;}
+  div#sub { width:180px; height:180px; border:#000 thin solid;}
+  p { width:150px; height:150px; border:#000 thin solid;}
+  a { width:130px; height:100px; border:#000 thin solid;}
+</style>
+</head>
+<body>
+<div id="container">
+
+    <div id = "sub">
+      <p>div p
+        <a href="#">
+            div p a
+        </a>  
+		</p>
+    </div>
+    <p id="part1">p</p>
+    <p>p</p>
+    <p>p</p>
+
+</div>
+<!---------- jQuery code Start ---------->
+<script>
+
+</script>
+
+</body>
+</html>

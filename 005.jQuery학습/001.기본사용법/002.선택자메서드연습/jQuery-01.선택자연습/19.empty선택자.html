@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title> empty 선택자 </title>
+<!-- jQuery library -->
+<script src="../jquery-3.6.3.min.js"></script>
+<script src="../jquery-ui.min.js"></script>
+<script>
+$(document).ready(function (e) {
+      /* 
+        :empty 선택자는 내용이 빈 요소를 선택함
+        - 빈요소란? 엔터나 스페이스 조차 없는 요소임!
+      */
+
+      // 미션: 공포특집....... #container를 클릭하면
+      $("#container").click(function () {
+        //   body가 10초간 서서히 검은색이 되고....
+        $("body").animate({
+          backgroundColor: "#000"
+        }, 10000, function () { //애니후
+          // 10초 후 5초간 빈요소에 글자가 9px빨간색으로 
+          // 무섭지? 라는 글자로 서서히 24px까지 5초간 커지다가
+          $("li:empty").text("무섭지?")
+            .css({
+              fontSize: "9px",
+              color: "red",
+              fontFamily: "궁서체"
+            }) //////// css ///////////
+            .animate({
+              fontSize: "24px"
+            }, 5000) //// animate ///////
+            // 0.5초간 72px로 갑자기 커진다!
+            .animate({
+              fontSize: "72px"
+            }, 500); /////// animate //////
+
+        }); ///// animate /////////
+
+      }); /////// click //////////////////////
+
+
+
+
+    }); //jQuery실행구역
+</script>
+
+</head>
+<body>
+
+<div id="container">
+
+   <ul class="nav1">
+     <li>apple</li>
+     <li>banana</li>
+     <li></li>
+   </ul>
+
+   <ul class="nav2">
+     <li>
+     </li>
+     <li>tiger</li>
+     <li>  </li>
+   </ul>
+   
+</div>
+
+<!---------- jQuery code Start ---------->
+<script>
+</script>
+
+</body>
+</html>
