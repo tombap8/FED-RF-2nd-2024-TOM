@@ -248,27 +248,9 @@ function goDrag(ele) {
     console.log("터치엔드!", dragSts);
   }); ///////// touchend //////////
 
-  // (3) 마우스 무브 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mousemove", dMove);
-  //////////// mousemove /////////////
-
-  // (4) 마우스가 대상을 벗어나면 드래그상태값 false처리하기
-  mFn.addEvt(dtg, "mouseleave", () => {
-    // 드래그 상태값 false로 변경!
-    dFalse();
-    // 과도한 드래그로 갑자가 아웃되면 lastX,lastY값이
-    // 셋팅되지 못한다! 이것을 기존 요소의 위치값으로 보정함!
-    // 단, style위치값 코드는 'px'단위가 있으므로 parseInt처리!
-    // lastX = parseInt(dtg.style.left);
-    // lastY = parseInt(dtg.style.top);
-
-    console.log("마우스나감!", dragSts);
-  }); ///////// mouseleave //////////
-
-
-
-
-
+  // (3) 터치무브 이벤트 함수연결하기
+  mFn.addEvt(dtg, "touchmove", dMove);
+  //////////// touchmove /////////////
 
 } /////////////// goDrag 함수 ///////////////
 /////////////////////////////////////////////
