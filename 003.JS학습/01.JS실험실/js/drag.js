@@ -236,20 +236,17 @@ function goDrag(ele) {
     dtg.style.zIndex = ++zNum;
 
     console.log("터치스타트!", dragSts);
-  }); ///////// mousedown //////////
+  }); ///////// touchstart //////////
 
-  // (2) 마우스 업 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mouseup", (e) => {
+  // (2) 터치엔드 이벤트 함수연결하기
+  mFn.addEvt(dtg, "touchend", () => {
     // 드래그 상태값 false로 변경!
     dFalse();
     // 마지막 위치포인트 셋팅!
-    lastPoint(e);
-    
-    // 마우스 업시 편손!
-    dtg.style.cursor = "grab";
+    lastPoint();
 
-    console.log("마우스 업!", dragSts);
-  }); ///////// mouseup //////////
+    console.log("터치엔드!", dragSts);
+  }); ///////// touchend //////////
 
   // (3) 마우스 무브 이벤트 함수연결하기
   mFn.addEvt(dtg, "mousemove", dMove);
