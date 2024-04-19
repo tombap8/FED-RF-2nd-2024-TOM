@@ -91,9 +91,6 @@
       // 생성자 함수의 데이터형은? function 즉, 함수임!
       console.log("생성자 함수의 데이터형:", typeof MovieInfo);
 
-      // 영화정보 배열변수
-      const mi = [];
-
       // 보다 현실적이 데이터는 DB로부터 넘겨받은
       // 배열데이터를 받게 된다!
       const dbData = [
@@ -128,11 +125,18 @@
 
       // DB 배열데이터 찍기
       // dbData.forEach(v=>console.log(v));
+      
+      // 영화정보 배열변수
+      // const mi = [];
 
       // 1. 생성자 함수로 객체만들기
-      dbData.forEach((v,i)=>{
-        mi[i] = new MovieInfo(v);
-      }); //// forEach /////////
+      // dbData.forEach((v,i)=>{
+      //   mi[i] = new MovieInfo(v);
+      // }); //// forEach /////////
+
+      // -> 위의 forEach를 사용하는 것보다
+      // 더 짧고 간단한 방법은? -> map()을 쓴다!
+      const mi = dbData.map(v=>new MovieInfo(v));
 
 
       // 생성된 객체 확인하기
@@ -148,6 +152,18 @@
       //////////////////// 로드구역 ///////////////////////
       window.addEventListener("DOMContentLoaded", () => {
         console.log("로딩완료");
+
+        // 한글자씩 span태그로 싸는 함수
+        const wrapSpan = x => { // x - 문구데이터
+          let hcode = '';
+          // for of로 한글자씩 순회 ///
+          for(let txt of x){
+             if(txt == ' ') hcode += '&nbsp;&nbsp;';
+             else hcode += `<span>${txt}</span>`;
+          } ////// for of ////////
+          // 코드리턴
+          return hcode;
+        }; ///////// wrapSpan 함수 //////////
 
         // 객체로 셋팅된 정보를 반복출력하자!
         // 출력대상: .wrap
@@ -178,13 +194,11 @@
             <!-- 영화 한마디 -->
             <h2 class="showtit">♥ 영화한마디!</h2>
             <!-- 6. 문구 -->
-            <div class="show">${v.문구}
-                <span>누</span><span>가</span>&nbsp;&nbsp;<span>죄</span><span>인</span><span>인</span><span>가</span>
+            <div class="show">
+              ${wrapSpan(v.문구)}
             </div>
         </section>
         `).join('');
-
-
 
 
       }); //////////////// 로드구역 ///////////////////////
