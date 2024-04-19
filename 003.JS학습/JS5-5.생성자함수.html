@@ -63,11 +63,128 @@
         */
 
       // 생성자함수의 인스턴스 생성시 전달값 셋팅함!
-      
+      // this키워드로 생성한 속성과 메서드만 외부접근가능!
+      // this의 의미는 인스턴스로 생성된 객체 자신을 의미!
+      // function MovieInfo(pos, tit, sum, dir, act, des) {
+      function MovieInfo(minfo) { // 배열로 데이터 전달됨!
+        // 속성 6가지 셋팅하기
+        this.포스터 = minfo[0];
+        this.제목 = minfo[1];
+        this.개요 = minfo[2];
+        this.감독 = minfo[3];
+        this.출연 = minfo[4];
+        this.문구 = minfo[5];
+
+        // 일반변수는 사용가능한가? 예 가능합니다!
+        // 이렇게 선언하여 사용한 변수는 내부에서만 
+        // 사용되고 인스턴스화 되지 않는다!
+        let 메시지 = minfo[6];
+
+        // 메서드 1가지 셋팅 : 영화감독 정보 리턴함!
+        this.함수 = () => `영화 '${this.제목}'의 감독님 이름은 ${this.감독}입니다! ${메시지} ${응원함수()}`;
+
+        // 개별적으로 내부 함수도 만들수 있으나
+        // 외부에서 접근할 수는 없고 내부에서 사용함!
+        const 응원함수 = () => `영화 대박나라!`;
+      } //////////// MovieInfo 생성자함수 /////////
+
+      // 생성자 함수의 데이터형은? function 즉, 함수임!
+      console.log("생성자 함수의 데이터형:", typeof MovieInfo);
+
+      // 영화정보 배열변수
+      const mi = [];
+
+      // 보다 현실적이 데이터는 DB로부터 넘겨받은
+      // 배열데이터를 받게 된다!
+      const dbData = [
+        [
+          "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+          "조제",
+          "멜로/로맨스, 드라마",
+          "김종관",
+          "한지민, 남주혁",
+          "조제 보러 오세요",
+          "조제는 사강의 작품 주인공이름입니다!"
+        ],
+        [
+          "https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2",
+          "영웅",
+          "드라마, 뮤지컬",
+          "윤제균",
+          "정성화, 김고은",
+          "누가 죄인인가",
+          "영화 영웅은 뮤직컬로 더 유명합니다!"
+        ],
+        [
+          "https://movie-phinf.pstatic.net/20221227_112/16721270739480lDiS_JPEG/movie_image.jpg?type=m203_290_2",
+          "교섭",
+          "드라마",
+          "임순례",
+          "황정민(정재호), 현빈(박대식)",
+          "아쌀라말라이쿰",
+          "현빈은 북한공작원 전문배우입니다!"
+        ],
+      ];
+
+      // DB 배열데이터 찍기
+      // dbData.forEach(v=>console.log(v));
+
+      // 1. 생성자 함수로 객체만들기
+      dbData.forEach((v,i)=>{
+        mi[i] = new MovieInfo(v);
+      }); //// forEach /////////
+
+      // 생성된 객체 확인하기
+      console.log(mi);
+
+      // 구체적인 객체 확인하기
+      console.log(mi[1].제목);
+      console.log(mi[1].함수());
+
+      // this 키워드로 등록되지 않은 변수/함수는 접근불가!
+      // console.log(mi[1].응원함수());
+
       //////////////////// 로드구역 ///////////////////////
       window.addEventListener("DOMContentLoaded", () => {
         console.log("로딩완료");
-        
+
+        // 객체로 셋팅된 정보를 반복출력하자!
+        // 출력대상: .wrap
+        qs('.wrap').innerHTML = mi.map(v=`
+        <section class="cbx">
+            <div class="minfo">
+                <!-- 1. 포스터 -->
+                <div class="photo">
+                    <img src="https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2" alt="영웅의 포스터">  
+                </div>
+                <div class="cont">
+                    <!-- 2. 제목 -->
+                    <h2 class="tit">
+                        영웅</h2>
+                    <!-- 3. 개요 -->
+                    <h3 class="sum">
+                        ★장르 : 드라마, 뮤지컬</h3>
+                    <!-- 4. 감독 -->
+                    <h3 class="dir">
+                        ★감독 : 윤제균</h3>
+                    <!-- 5. 출연 -->
+                    <h3 class="act">
+                        ★출연 : 정성화, 김고은</h3>
+                </div>
+            </div>
+
+            <!-- 영화 한마디 -->
+            <h2 class="showtit">♥ 영화한마디!</h2>
+            <!-- 6. 문구 -->
+            <div class="show">
+                <span>누</span><span>가</span>&nbsp;&nbsp;<span>죄</span><span>인</span><span>인</span><span>가</span>
+            </div>
+        </section>
+        `).join('');
+
+
+
+
       }); //////////////// 로드구역 ///////////////////////
       /////////////////////////////////////////////////////
     </script>
