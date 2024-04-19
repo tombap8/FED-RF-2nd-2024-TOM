@@ -62,8 +62,13 @@
 
       // 엄격모드 : 선언없이 쓰는 변수를 막는 등 엄격한
       // JS문법을 적용하도록 제한한다!(프로젝트에서 선호됨!)
-    //   "use strict";
+      // "use strict";
+      // -> 주로 오타에 의한 변수실수로 자동전역변수
+      // 선언되는 JS의 기능을 막아주는 것이 가장 중요한 이유다!
       // (참고) https://www.w3schools.com/js/js_strict.asp
+
+      // myhone = '하하하';
+
 
       const qs = (x) => document.querySelector(x);
       const qsa = (x) => document.querySelectorAll(x);
@@ -72,13 +77,14 @@
       const obj = {
         // 객체 속성
         name: "김종서",
+        age: 39,
         // 객체 메서드
         // 익명함수 메서드
         fn1: function () {
           // this는 객체 자신!
           console.log("1.객체안 익명메서드:", this);
           // this로 내부 속성불러오기!
-          console.log("2.객체안 익명메서드에서 객체속성읽기:", this.name);
+          console.log("2.객체안 익명메서드에서 객체속성읽기:", this.name, this.age+"세");
         },
         // 화살표함수 메서드
         fn2: () => {
@@ -86,7 +92,7 @@
           console.log("3.객체안 화살표함수:", this);
           // this로 내부 속성불러오기! -> 접근불가!
           console.log("4.객체안 화살표함수에서 객체속성읽기:", this.name);
-          // 이미 obj라는 객체가 전역등록되;어 객체명으로
+          // 이미 obj라는 객체가 전역등록되어 객체명으로
           // 속성에 접근할 수 있다!
           console.log("5.객체안 화살표함수에서 객체속성읽기:", obj.name);
         },
@@ -145,6 +151,31 @@
         // 만약 이를 원하지 않는 경우 mouseenter를 사용함!
         // 경계선 기준의 mouseenter/mouseleave는 이벤트버블링
         // 발생이 없다!
+        qs('.pic').onmouseenter = function(){
+          console.log('마우스오버!');
+
+          // 하위요소의 클릭 이벤트 설정하기 ////
+          // ㅎㅎ버튼 : 일반익명함수로 생성
+          qs('.hh').onclick = function(){
+            console.log('익명:',this);
+            // 나는 누구인가 찍기
+            qs('#exp').innerText = 
+            this.getAttribute('data-nm');
+            // this는 버튼자신임!
+          }; ////////// click /////////
+
+          // ㅋㅋ버튼 : 화살표함수로 생성
+          qs('.kk').onclick = ()=>{
+            console.log('화살:',this);
+            // 나는 누구인가 찍기
+            qs('#exp').innerText = 
+            this.getAttribute('data-nm');
+            // this는 바깥에 싸고 있는 이벤트 대상인
+            // div.pic 을 의미함!(그래서 '차무식'이 찍힘!)
+            // 화살표함수는 한단계위의 이벤트 대상으로
+            // 올라가는 기능을 가지고 있음!
+          }; ////////// click /////////
+        }; ///////// mouseenter ////////
         
       }); //////////////// load ////////////////////
     </script>
