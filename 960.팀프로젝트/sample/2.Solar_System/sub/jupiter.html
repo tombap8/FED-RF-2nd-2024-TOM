@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLAR SYSTEM</title>
+    <!-- Favicon -->
+    <link href='./subimg/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+    <!-- 폰트어썸 CDN CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- swiper jQuery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- 외부CSS 불러오기 -->
+    <link rel="stylesheet" href="./subcss/jupiter.css" />
+    <!-- 외부 미디어쿼리 CSS 불러오기 -->
+    <link rel="stylesheet" href="./subcss/mainmedia.css" />
+    <!-- 외부JS삽입 -->
+    <script src="./subjs/main.js"></script>
+    <!-- 외부data -->
+    <script src="./subjs/jupiter_p2ginfo.js"></script>
+    <!-- 외부JS삽입 -->
+    <script src="./subjs/jupiter.js"></script>
+</head>
+<body>
+
+    <!-- 1. 상단영역 -->
+    <div class="top">
+        <header class="topbx">
+            <!-- 1-1.로고 -->
+            <h1 class="logo">
+                <a href="../main.html">
+                    <img src="../img/logo.png" alt="로고이미지">
+                </a>
+            </h1>
+            <!-- 1-2.GNB메뉴 -->
+            <nav class="gnb">
+                <ul>
+                    <li><img src="./subimg/orrery_icon.svg" alt="행성이미지"></li>
+                    <li><a href="./jupiter.html">Jupiter</a></li>
+                    <li><a href="./mercury.html">Mercury</a></li>
+                    <li><a href="./sun.html">Sun</a></li>
+                    <li><a href="./earth.html">Earth</a></li>
+                    <li><a href="./mars.html">Mars</a></li>
+                    <li>
+                        <div class="sbx">
+                            <input type="text" id="searchbx" class="searchbx">
+                            <label for="searchbx" class="fa-solid fa-magnifying-glass sicon"></label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 모바일 햄버거버튼 -->
+            <button class="ham"></button>
+            
+        </header>
+    </div>
+
+    <!-- 2. 메인영역 -->
+    <div id="cont">
+        <main class="cont">
+            <!-- <div class="jbx">
+                <div class="jibx">
+                    <img src="./img/jupiter_new.png" alt="목성">
+                </div>
+                <div class="jtbx" >
+                    <div>
+                        <ul class="p1ul">
+                            <li>
+                                <div>Jupiter</div>
+                            </li> 
+                            <li>
+                                <div class="p1_infobx">
+                                    <div class="btns">
+                                        <a href="#">＜</a>
+                                    </div>
+                                    <div class="slidebx">
+                                        <ol>
+                                            <li>
+                                                <div>
+                                                    <div class="fz12">DISTANCE FROM SUN</div>
+                                                    <div class="fz20" id="page2">460,272,598
+                                                        <span>KM</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div class="fz12">ONE WAY LIGHT TIME TO THE SUN</div>
+                                                    <div class="fz20">41.180554
+                                                        <span>mins</span>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div class="fz12">LENGTH OF YEAR</div>
+                                                    <div class="fz20">4,333 Earth Days
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div>
+                                                    <div class="fz12">PLANET TYPE</div>
+                                                    <div class="fz20">Gas Giant
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <div class="btns">
+                                        <a href="#">＞</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div> -->
+                    <div class="page page1">
+                        <div class="p1bg"></div>
+                    <div class="p1txtbx">
+                        <h2>JUPITER</h2>
+                        <p>I'm Jupiter.<br>
+                            I'm the biggest planet.<br>
+                            Are you curious about me?</p>
+                            <div>
+                                <a href="#page2">Click Here!</a>
+                            </div>
+                    </div>
+                    <div class="p1more" >
+                        <a href="#">MORE</a>
+
+                        <div class="sun" id="page2"></div>
+                    </div>
+                </div>
+            </div>  
+            </div>
+
+
+            <div class="page page2"  >
+                <div class="p2top" >
+                    <ul>
+                        <li>
+                            <a href="">OVERVIEW</a>
+                        </li>
+                        <li>
+                            <a href="">IN DEPTH</a>
+                        </li>
+                        <li>
+                            <a href="">BY THE NUMBERS</a>
+                        </li>
+                        <li>
+                            <a href="">EXPLORATION</a>
+                        </li>
+                        <li>
+                            <a href="">GALLERIES</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="p2contbx">
+                    <article class="p2overview p25">
+                        <div class="p2txt">
+                            <p>Jupiter has a long history of surprising scientists – all the way back to 1610 when Galileo Galilei found the first moons beyond Earth. That discovery changed the way we see the universe.</p>
+                            <p>Fifth in line from the Sun, Jupiter is, by far, the largest planet in the solar system – more than twice as massive as all the other planets combined.</p>
+                            <p>Jupiter's familiar stripes and swirls are actually cold, windy clouds of ammonia and water, floating in an atmosphere of hydrogen and helium. Jupiter’s iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years.</p>
+                            <p>One spacecraft – NASA's Juno orbiter – is currently exploring this giant world.</p>
+                        </div>
+                        <div class="p2txt">
+                            <p>Jupiter has a long history of surprising scientists – all the way back to 1610 when Galileo Galilei found the first moons beyond Earth. That discovery changed the way we see the universe.</p>
+                            <p>Fifth in line from the Sun, Jupiter is, by far, the largest planet in the solar system – more than twice as massive as all the other planets combined.</p>
+                            <p>Jupiter's familiar stripes and swirls are actually cold, windy clouds of ammonia and water, floating in an atmosphere of hydrogen and helium. Jupiter’s iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years.</p>
+                            <p>One spacecraft – NASA's Juno orbiter – is currently exploring this giant world.</p>
+                        </div>
+                        <!-- 이미지박스와 텍스트박스가있고
+                            이미지는 트랜지션을주어 부드럽게 이동하나
+                            텍스트는 바로바로 바뀌게끔 되어있다.
+                            어떻게 구현해야 할까?
+                        -->
+                        <!-- <div class="p2slide">
+                            <ul>
+                                <li>
+                                    <div>
+                                        <img src="./img/Full_Jupiter-800.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p>This striking view of Jupiter was captured by NASA's Juno spacecraft on Feb. 12, 2019, as the spacecraft performed its 17th science pass of Jupiter. Credits: NASA/JPL-Caltech/SwRI/MSSS| ›</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <img src="./img/Jupiter_Io_Juno-800.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p>Jupiter's moon Io rises just off the horizon of the gas giant planet in this image from NASA's Juno spacecraft. Slightly larger than Earth's moon, Io is the most volcanically active world in the solar system. Credits: NASA/JPL-Caltech/SwRI/MSSS</p>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div>
+                                        <img src="./img/PIA24237_Jupiter_Cyclones-800.jpg" alt="">
+                                    </div>
+                                    <div>
+                                        <p>This composite of images from the JunoCam imager on NASA's Juno spacecraft shows eight circumpolar cyclones around a central cyclone at Jupiter's north pole. The cyclones range in size from 1,500 miles (2,400 kilometers) to 1,740 miles (2,800 kilometers) across — about the same distance as from the southern tip of Texas to the border with Canada. The images were taken on Feb. 17, April 10, June 2, and July 25 of 2020. Credits: NASA/JPL-Caltech/SwRI/MSSS</p>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="p2slide_bullet">
+                                <ol>
+                                    <li>
+                                        <img class="show" src="./img/dot1.png" alt="">
+                                        <img src="./img/dot2.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img class="show" src="./img/dot1.png" alt="">
+                                        <img src="./img/dot2.png" alt="">
+                                    </li>
+                                    <li>
+                                        <img class="show" src="./img/dot1.png" alt="">
+                                        <img src="./img/dot2.png" alt="">
+                                    </li>
+                                </ol>
+                            </div>
+                            
+                        </div>
+                        <div>
+                            <div class="p2slide_btns p2slide_btns_left">
+                                <a href="">＜</a>
+                            </div>
+                            <div class="p2slide_btns p2slide_btns_right">
+                                <a href="">＞</a>
+                            </div>
+                        </div> -->
+                    </article>
+
+
+                    <article class="p2indepth p25">
+                        <h2>Jupiter</h2>
+                        <p>Jupiter is the fifth planet from our Sun and is, by far, the largest planet in the solar system – more than twice as massive as all the other planets combined. Jupiter's stripes and swirls are actually cold, windy clouds of ammonia and water, floating in an atmosphere of hydrogen and helium. Jupiter’s iconic Great Red Spot is a giant storm bigger than Earth that has raged for hundreds of years.</p>
+                        <p>Jupiter is surrounded by dozens of moons. Jupiter also has several rings, but unlike the famous rings of Saturn, Jupiter’s rings are very faint and made of dust, not ice.</p>
+                        <h2>Namesake</h2>
+                        <p>Jupiter, being the biggest planet, gets its name from the king of the ancient Roman gods.</p>
+                        <h2>Potential for Life</h2>
+                        <p>Jupiter’s environment is probably not conducive to life as we know it. The temperatures, pressures, and materials that characterize this planet are most likely too extreme and volatile for organisms to adapt to.</p>
+                        <p>While planet Jupiter is an unlikely place for living things to take hold, the same is not true of some of its many moons. Europa is one of the likeliest places to find life elsewhere in our solar system. There is evidence of a vast ocean just beneath its icy crust, where life could possibly be supported.</p>
+                        <h2>Size and Distance</h2>
+                        <p>With a radius of 43,440.7 miles (69,911 kilometers), Jupiter is 11 times wider than Earth. If Earth were the size of a nickel, Jupiter would be about as big as a basketball.</p>
+                        <p>From an average distance of 484 million miles (778 million kilometers), Jupiter is 5.2 astronomical units away from the Sun. One astronomical unit (abbreviated as AU), is the distance from the Sun to Earth. From this distance, it takes Sunlight 43 minutes to travel from the Sun to Jupiter.</p>
+                        <div>
+                            <img src="../sub/subimg/jupiter01.jpeg" alt="궤도이미지">
+                            <p>
+                                Planets are shown in the correct order of distance from the Sun and with the correct relative orbital distances. The sizes of the bodies are greatly exaggerated for emphasis. Credit: NASA/Moore Boeck
+                            </p>
+                        </div>
+                        <div class="minfo"><h3><a href="#">You need more information?</a></h3></div>   
+                    </article>
+
+
+                    <article class="p2bythenumbers">
+                        <div class="p2_3_top">
+                            <section>
+                                <div class="w-50">
+                                    <div class="p2_3_top_img">
+                                        <img src="../sub/subimg/jupiter02.jpg" alt="jupiter">
+                                    </div>
+                                    <div>Jupiter</div>
+                                </div>
+                                <div class="w-50">
+                                    <div class="p2_3_top_img">
+                                        <img src="../sub/subimg/jupiter03.jpg" alt="earth">
+                                    </div>
+                                    <div>Earth</div>
+                                </div>
+                                <div class="vs"></div>
+                            </section>
+                        </div>
+                        <div class="p2_3_main">
+                            <section>
+                                <div class="p2_3_titbx">SIZE COMPARISON</div>
+                                <div class="p2_3_bx db">
+                                    <div class="bigcircle">
+                                        <div class="smallcircle">
+                                            <div>earth</div>
+                                        </div>
+                                        <div class="bcjupiter">Jupiter</div>
+                                    </div>
+                                    <div>
+                                        <span>Jupiter is 11.0x larger than Earth</span>
+                                    </div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">DATE OF DISCOVERY</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">Unknown</div>
+                                    <div class="w-50">Unknown</div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">DISCOVERED BY</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">Known by the Ancients</div>
+                                    <div class="w-50">Known by the Ancients</div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">AVERAGE ORBIT DISTANCE</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">483,638,564<span>miles</span></div>
+                                    <div class="w-50">92,956,050<span>miles</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">MEAN ORBIT VELOCITY</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">29,205<span>mph</span></div>
+                                    <div class="w-50">66,622<span>mph</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">ORBIT ECCENTRICITY</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">0.04838624</div>
+                                    <div class="w-50">0.01671123</div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">EQUATORIAL INCLINATION</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">3.1 degrees</div>
+                                    <div class="w-50">23.4393 degrees</div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">EQUATORIAL RADIUS</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">43,440.7<span>miles</span></div>
+                                    <div class="w-50">3,958.8<span>miles</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">EQUATORIAL CIRCUMFERENCE</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">272,945.9<span>miles</span></div>
+                                    <div class="w-50">24,873.6<span>miles</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">VOLUME</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">343,382,767,518,322<span>square miles</span></div>
+                                    <div class="w-50">259,875,159,532<span>square miles</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">SURFACE AREA</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">23,713,907,537<span>square miles</span></div>
+                                    <div class="w-50">196,936,994<span>square miles</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">SURFACE GRAVITY</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">81.3<span>ft/s2</span></div>
+                                    <div class="w-50">32.041<span>ft/s2</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">ESCAPE VELOCITY</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">134,664<span>mph</span></div>
+                                    <div class="w-50">25,031<span>mph</span></div>
+                                </div>
+                            </section>
+                            <section>
+                                <div class="p2_3_titbx">ATMOSPHERIC CONSTITUENTS</div>
+                                <div class="p2_3_bx">
+                                    <div class="w-50">Hydrogen, Helium</div>
+                                    <div class="w-50">Nitrogen, Oxygen</div>
+                                </div>
+                            </section>
+                        </div>
+
+                    </article>
+                    <article class="p2exploration p25">
+                        <p>While Jupiter has been known since ancient times, the first detailed observations of this planet were made by Galileo Galilei in 1610 with a small telescope. More recently, this planet has been visited by passing spacecraft, orbiters and probes.</p>
+                        <p>Pioneer 10 and 11 and Voyager 1 and 2 were the first to fly by Jupiter in the 1970s, and since then we’ve sent Galileo to orbit the gas giant and drop a probe into its atmosphere. Cassini took detailed photos of Jupiter on its way to neighboring Saturn, as did New Horizons on its quest for Pluto and the Kuiper Belt. NASA’s Juno spacecraft, which arrived in the Jovian system in July 2016, is currently studying the giant planet from orbit.</p>
+                        <h2>Significant Events</h2>
+
+                        <ul>
+                            <li>
+                                <span>
+                                    <b>1610</b>: Galileo Galilei makes the first detailed observations of Jupiter.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>1973</b>: Pioneer 10 becomes the first spacecraft to cross the asteroid belt and fly past Jupiter.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>1979</b>: Voyager 1 and 2 discover Jupiter's faint rings, several new moons and volcanic activity on Io's surface.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>1992</b>: Ulysses swung by Jupiter on Feb. 8, 1992. The giant planet's gravity bent the spacecraft's flight path southward and away from the ecliptic plane, putting the probe into a final orbit that would take it over the sun's south and north poles.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>1994</b>: Astronomers observe as pieces of comet Shoemaker-Levy 9 collide with Jupiter's southern hemisphere.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>1995-2003</b>: The Galileo spacecraft drops a probe into Jupiter's atmosphere and conducts extended observations of Jupiter and its moons and rings.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>2000</b>: Cassini makes its closest approach to Jupiter at a distance of approximately 6.2 million miles (10 million kilometers), taking a highly detailed true color mosaic photo of the gas giant.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>2007</b>: Images taken by NASA's New Horizons spacecraft, on the way to Pluto, show new perspectives on Jupiter's atmospheric storms, the rings, volcanic Io, and icy Europa.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>2009</b>: On 20 July, almost exactly 15 years after fragments of comet Shoemaker-Levy slammed into Jupiter, a comet or asteroid crashes into the giant planet's southern hemisphere.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>2011</b>: Juno launches to examine Jupiter's chemistry, atmosphere, interior structure and magnetosphere.
+                                </span>
+                            </li>
+                            <li>
+                                <span>
+                                    <b>2016</b>: NASA's Juno spacecraft arrives at Jupiter, conducting an in-depth investigation of the planet's atmosphere, deep structure and magnetosphere for clues to its origin and evolution.
+                                </span>
+                            </li>
+                        </ul>
+                    </article>
+                    <article class="p2galleries ">
+                        <div class="p2_5_top">
+                            <div>
+                                <ul>
+                                    <li>
+                                        <a href="">Images</a>
+                                    </li>
+                                    <li>
+                                        <a href="">Videos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div>
+                                <ol>
+                                    <li class="p2gallerries_look">
+                                        <a href="">list</a>
+                                    </li>
+                                    <li class="p2gallerries_look">
+                                        <a href="">grid</a>
+                                    </li>
+                                </ol>
+                            </div>
+                        </div>
+                        <!-- p2_5_top 끝부분 -->
+                        <div class="p2_5_contbx">
+                            <div class="p2_5_cont_list">
+                            </div>
+                            <div class="p2_5_cont_grid">
+                                <div class="p2_5_gridbx">
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>    
+            </div>
+
+
+
+            <div class="page page3">
+                <div class="p3cont">
+                    <header>
+                        <h2>10 Need-to-Know Things About Jupiter</h2>
+                    </header>
+                    <section class="p3grid">
+                        <div class="p3gridbx ptn">
+                            <div class="circle">1</div>
+                            <div class="p3girdcont">
+                                <h3>THE GRANDEST PLANET</h3>
+                                <p>Eleven Earths could fit across Jupiter’s equator. If Earth were the size of a grape, Jupiter would be the size of a basketball.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx ptn">
+                            <div class="circle">2</div>
+                            <div class="p3girdcont">
+                                <h3>FIFTH PLANET FROM OUR STAR</h3>
+                                <p>Jupiter orbits about 484 million miles (778 million kilometers) or 5.2 Astronomical Units (AU) from our Sun (Earth is one AU from the Sun).</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx bdrx ptn">
+                            <div class="circle">3</div>
+                            <div class="p3girdcont">
+                                <h3>SHORT DAY/LONG YEAR</h3>
+                                <p>Jupiter rotates once about every 10 hours (a Jovian day), but takes about 12 Earth years to complete one orbit of the Sun (a Jovian year).</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx">
+                            <div class="p3girdcont g1bg">
+                            </div>
+                        </div>
+                        <div class="p3gridbx">
+                            <div class="circle">4</div>
+                            <div class="p3girdcont">
+                                <h3>WHAT'S INSIDE</h3>
+                                <p>Jupiter is a gas giant and so lacks an Earth-like surface. If it has a solid inner core at all, it’s likely only about the size of Earth.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx bdrx">
+                            <div class="circle">5</div>
+                            <div class="p3girdcont">
+                                <h3>MASSIVE WORLD, LIGHT ELEMENTS</h3>
+                                <p>Jupiter's atmosphere is made up mostly of hydrogen (H2) and helium (He).</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx">
+                            <div class="circle">6</div>
+                            <div class="p3girdcont">
+                                <h3>WORLDS GALORE</h3>
+                                <p>Jupiter has more than 75 moons.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx">
+                            <div class="circle">7</div>
+                            <div class="p3girdcont">
+                                <h3>RINGED WORLD</h3>
+                                <p>In 1979 the Voyager mission discovered Jupiter’s faint ring system. All four giant planets in our solar system have ring systems.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx bdrx">
+                            <div class="circle">8</div>
+                            <div class="p3girdcont">
+                                <h3>EXPLORING JUPITER</h3>
+                                <p>Nine spacecraft have visited Jupiter. Seven flew by and two have orbited the gas giant. Juno, the most recent, arrived at Jupiter in 2016.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx bdbx">
+                            <div class="circle">9</div>
+                            <div class="p3girdcont">
+                                <h3>INGREDIENTS FOR LIFE?</h3>
+                                <p>Jupiter cannot support life as we know it. But some of Jupiter's moons have oceans beneath their crusts that might support life.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx bdbx">
+                            <div class="circle">10</div>
+                            <div class="p3girdcont">
+                                <h3>SUPER STORM</h3>
+                                <p>Jupiter's Great Red Spot is a gigantic storm that’s about twice the size of Earth and has raged for over a century.</p>
+                            </div>
+                        </div>
+                        <div class="p3gridbx bdrx bdbx">
+                            <div class="p3girdcont g2bg"></div>
+                        </div>
+                    </section>
+                    
+                </div>
+            </div>
+        </main>
+    </div>
+
+
+    <!-- 3. 하단영역 -->
+    <div id="info">
+        <footer class="info ibx">
+            <!-- 3-1. More Destinations -->
+            <div class="more">
+                <h3>More Destinations</h3>
+                
+                <div class="swiper2">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/jupiter_new.png" alt="Jupiter">
+                                <span>Jupiter</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="./earth.html">
+                                <img src="../img/earth.png" alt="Earth">
+                                <span>Earth</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/mercury_new.png" alt="Mercury">
+                                <span>Mercury</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/mars.png" alt="Mars">
+                                <span>Mars</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/venus_jg.png" alt="Venus">
+                                <span>Venus</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/saturn.png" alt="Saturn">
+                                <span>Saturn</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/uranus.png" alt="Uranus">
+                                <span>Uranus</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/neptune.png" alt="Neptune">
+                                <span>Neptune</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/earth_moon.png" alt="Earth's Moon">
+                                <span>Earth's Moon</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!--이동버튼-->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
+
+            <!-- 3-2. SNS -->
+            <div class="sns">
+                <h3>Stay Connected</h3>
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/NASASolarSystem" target="
+                        _blank">
+                            <span class="ir">트위터 바로가기</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/NASASolarSystem/" target="
+                        _blank">
+                            <span class="ir">페이스북 바로가기</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/nasasolarsystem/" target="
+                        _blank">
+                            <span class="ir">인스타그램 바로가기</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3-3. 하단링크 -->
+            <div class="blink">
+                <ul>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">BIBLIOGRAPHY</a></li>
+                    <li><a href="#">FEEDBACK</a></li>
+                    <li><a href="#">PRIVACY</a></li>
+                    <li><a href="#">IMAGE USE</a></li>
+                    <li><a href="#">NASA SCIENCE MISSION DIRECTORATE</a></li>
+                    <li><a href="#">NASA PORTAL</a></li>
+                    <li><a href="#">SITEMAP</a></li>
+                </ul>
+            </div>
+
+            <!-- 3-4. 회사정보 -->
+            <div class="addr">
+                <address>
+                    This site is maintained by the Planetary Science Communications team at <br>
+                    <strong>NASA’s Jet Propulsion Laboratory</strong> for <a href="#">NASA’s Science Mission Directorate.</a>
+                </address>
+            </div>
+
+        </footer>
+    </div>
+
+
+
+    
+</body>
+</html>

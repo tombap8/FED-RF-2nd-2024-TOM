@@ -1,0 +1,57 @@
+@charset "utf-8";
+/* SOLAR SYSTEM PJ 공통클래스/웹폰트 CSS - core.css */
+/* 웹폰트, 공용클래스 */
+
+/*********** 1. 웹폰트 : CDN ***********/
+/* Kanit, 체 */
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400;500;700;900&display=swap');
+/* 
+    font-family: 'Kanit', sans-serif;
+*/
+
+/* 전체 글자크기 Root 셋팅! */
+html{
+    font-size: 10px;
+}
+
+/******************** 2. 공통 클래스 ********************/
+
+/* 속박스 class */
+.ibx{
+    max-width: 1200px;
+    /* 최대가로크기 1200px이면
+    싸고 있는 박스가 이것보다 작아질 경우
+    auto로 자동전환되어 가로스크롤이 안생김! */
+    margin: 0 auto;
+}
+
+/* 스크롤바 디자인 클래스 */
+/* -webkit- 밴더사명(크롬,사파리) 접두어 
+( 참고: -ms-(ie), -o-(오페라), -moz-(파이어폭스) */
+.scbar::-webkit-scrollbar{
+    /* 전체 스크롤바 크기변경 */
+    width: 7px;
+}
+.scbar::-webkit-scrollbar-thumb{
+    /* 스크롤바 */
+    background-color: #555;
+    border-radius: 5px;
+}
+.scbar::-webkit-scrollbar-track{
+    /* 스크롤바 트랙 */
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+/* IR클래스 */
+/* 배경이미지 설명클래스 (Image Replacement) */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+:root{
+    --swiper-theme-color: #c9d5f7;
+}

@@ -1,0 +1,36 @@
+@charset "UTF-8";
+/* 서브페이지 브랜드 미디어쿼리 CSS - brand_media.css */
+
+@media screen and (max-width: 768px) {
+    .cont {
+        padding: 0 0 20px;
+    }
+    .tab_brand {
+        margin: 0 auto;
+    }
+    .tit {
+        background-color: #f3f3f3;
+        border: 1px solid #e3e3e3;
+        text-align: center;
+    }
+    .tit h2 {
+        line-height: 40px;
+        font-size: 18px;
+    }
+    .tit h3 {
+        display: none;
+    }
+    .intro {
+        padding: 12px;
+    }
+    .tab_brand ul li {
+        height: 38px;
+        line-height: 38px;
+    }
+    .tab_brand ul li > a {
+        display: block;
+        padding: 0;
+        height: 100%;
+        font-size: 14px;
+    }
+}

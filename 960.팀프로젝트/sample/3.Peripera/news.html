@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Peripera-News</title>
+        <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css" />
+        <link rel="stylesheet" href="./styles.css" />
+        <link rel="stylesheet" href="./css/news.css" />
+        <link rel="stylesheet" href="./css/news-media.css" />
+        <script src="./js/linksys.js"></script>
+    </head>
+    <body>
+        <div class="wholeHeader">
+            <!-- headerForMobile는 모바일 쿼리일때 보이는 메뉴바 -->
+            <header class="headerForMobile">
+                <div class="menuWrapperForMobile">
+                    <button class="burgerBtn"><i class="uil uil-bars"></i></button>
+                    <button class="crossBtn"><i class="uil uil-times"></i></button>
+                    <button class="searchBtn"><i class="uil uil-search"></i></button>
+                    <h1>
+                        <a href="./main_page.html">
+                            <img src="./images/images-header/logo_new.png" alt="" />
+                        </a>
+                    </h1>
+                </div>
+                <div class="serachWrapperForMobile">
+                    <form>
+                        <input
+                            type="email"
+                            class="serachWrapperForMobileInput"
+                            name="Email"
+                            placeholder="검색어를 입력해주세요"
+                            autocomplete="off"
+                        />
+                        <input class="searchBtnForMobile" value="검색" type="submit" />
+                        <button class="serachBarCloseBtn"></button>
+                        <button class="crossBtn"><i class="uil uil-times"></i></button>
+                    </form>
+                </div>
+
+                <!-- 아래는 모바일때 숨겨진 메뉴, 버거 버튼 누르면 나옴. -->
+                <div class="hiddenMenuWrapper">
+                    <ul>
+                        <li><a class="hover01" href="#">COMPANY</a></li>
+                        <li><a class="hover01" href="#">BRAND</a></li>
+                        <li><a class="hover01" href="#">PRODUCT</a></li>
+                        <li><a class="hover01" href="#">MEDIA</a></li>
+                        <li><a class="hover01" href="#">SNS</a></li>
+                        <li><a class="hover01" href="#">NEWS</a></li>
+                      </ul>
+                </div>
+            </header>
+
+            <!-- headerForMobile는 PC 쿼리일때 보이는 메뉴바 -->
+            <header class="headerForPC">
+                <div class="pinkBox">
+                    <div class="lanWrapper">
+                        <ul class="lanUl">
+                            <li><a href="">KOR</a></li>
+                            <li><a href="">ENG</a></li>
+                            <li><a href="">CHN</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="menuWrapper">
+                    <h1>
+                        <a href="./main_page.html">
+                            <img src="./images/images-header/logo_new.png" alt="" />
+                        </a>
+                    </h1>
+
+                    <div class="menuList">
+                        <ul>
+                            <li><a class="hover01" href="#">COMPANY</a></li>
+                            <li><a class="hover01" href="#">BRAND</a></li>
+                            <li><a class="hover01" href="#">PRODUCT</a></li>
+                            <li><a class="hover01" href="#">MEDIA</a></li>
+                            <li><a class="hover01" href="#">SNS</a></li>
+                            <li><a class="hover01" href="#">NEWS</a></li>
+                          </ul>
+                    </div>
+                    <div class="searchWrapper">
+                        <!-- 아래 버튼은 devtooly에서 불러온 것, 완벽하게 이해하려고 하지 마세요.-->
+                        <div class="search">
+                            <input type="text" class="search__input" placeholder="검색어를 입력해 주세요." />
+                            <button class="search__button">
+                                <svg class="search__icon" aria-hidden="true" viewBox="0 0 24 24">
+                                    <g>
+                                        <path
+                                            d="M21.53 20.47l-3.66-3.66C19.195 15.24 20 13.214 20 11c0-4.97-4.03-9-9-9s-9 4.03-9 9 4.03 9 9 9c2.215 0 4.24-.804 5.808-2.13l3.66 3.66c.147.146.34.22.53.22s.385-.073.53-.22c.295-.293.295-.767.002-1.06zM3.5 11c0-4.135 3.365-7.5 7.5-7.5s7.5 3.365 7.5 7.5-3.365 7.5-7.5 7.5-7.5-3.365-7.5-7.5z"
+                                        ></path>
+                                    </g>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </header>
+        </div>
+        <main>
+            <div class="main_wrap">
+                <!-- 본인 내용을 여기에 작성하세요 -->
+                <div class="tit_wrap">
+                    <h2>페리 뉴스</h2>
+                    <h5>페리페라를 소개합니다.</h5>
+                </div>
+                <div class="table_wrap">
+                    <div class="searchbx">
+                        <select name="key" id="key" class="key">
+                            <option value="tit">제목</option>
+                            <option value="cont">내용</option>
+                        </select>
+                        <input type="text" placeholder="검색어를 입력해주세요" class="search_input" />
+                        <a href="#" class="search_btn">검색</a>
+                    </div>
+                    <table class="news">
+                        <colgroup>
+                            <col class="num mb_hidden" />
+                            <col class="con" />
+                            <col class="writer mb_hidden" />
+                            <col class="date" />
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th class="mb_hidden">번호</th>
+                                <th>제목</th>
+                                <th class="mb_hidden">작성자</th>
+                                <th>작성일</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <div class="page">
+                        <a href="#">&lt;&lt;</a>
+                        <a href="#">&lt;</a>
+                        <a href="#">1</a>
+                        <a href="#">2</a>
+                        <a href="#">3</a>
+                        <a href="#">4</a>
+                        <a href="#">5</a>
+                        <a href="#">&gt;</a>
+                        <a href="#">&gt;&gt;</a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer id="footer">
+            <div class="footer_wrap">
+                <div class="site_area">
+                    <div class="footer_site">
+                        <a href="#" class="select_txt">FAMILY SITE</a>
+                        <button class="btn_txt">이동</button>
+                        <ul class="site_list">
+                            <li>
+                                <a href="#">(주)클리오</a>
+                            </li>
+                            <li>
+                                <a href="#">클럽클리오</a>
+                            </li>
+                            <li>
+                                <a href="#">클리오</a>
+                            </li>
+                            <li>
+                                <a href="#">구달</a>
+                            </li>
+                            <li>
+                                <a href="#">힐링버드</a>
+                            </li>
+                            <li>
+                                <a href="#">더마토리</a>
+                            </li>
+                            <li>
+                                <a href="#">트루알엑스</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <address class="footer_info">
+                    <dl class="call">
+                        <dt>고객상담실</dt>
+                        <dd>080-080-1510</dd>
+                    </dl>
+                    <dl class="call_time">
+                        <dt>상담안내시간</dt>
+                        <dd>
+                            <b>월~금 09:00~17:00</b>
+                        </dd>
+                        <br />
+                        <dt>LUNCH:</dt>
+                        <dd>
+                            <b>12:30~13:30 (토/일/공휴일 휴무)</b>
+                        </dd>
+                    </dl>
+                    <p>서울특별시 성동구 왕십리로 66 (주)클리오 / 대표이사 : 한현옥</p>
+                    <p>COPYRIGHTS(C) 2016 CLUBCLIO.CO.LTD. ALL RIGHTS RESERVED.</p>
+                    <h1><i>PERIPERA</i></h1>
+                </address>
+            </div>
+        </footer>
+        <!-- javascript -->
+        <script src="./js/app-header.js"></script>
+        <script src="./js/app-footer.js"></script>
+        <script src="./js/news_data.js"></script>
+        <script src="./js/news.js"></script>
+    </body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLAR SYSTEM</title>
+    <!-- Favicon -->
+    <link href='./img/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+    <!-- 폰트어썸 CDN CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- swiper jQuery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- 외부CSS 불러오기 -->
+    <link rel="stylesheet" href="./css/main.css" />
+    <!-- 외부 미디어쿼리 CSS 불러오기 -->
+    <link rel="stylesheet" href="./css/mainmedia.css" />
+    <!-- 외부JS삽입 -->
+    <script src="./js/main.js"></script>
+</head>
+<body>
+
+    <!-- 1. 상단영역 -->
+    <div class="top">
+        <header class="topbx">
+            <!-- 1-1.로고 -->
+            <h1 class="logo">
+                <a href="main.html">
+                    <img src="./img/logo.png" alt="로고이미지">
+                </a>
+            </h1>
+            <!-- 1-2.GNB메뉴 -->
+            <nav class="gnb">
+                <ul>
+                    <li><img src="./img/orrery_icon.svg" alt="행성이미지"></li>
+                    <li><a href="./sub/jupiter.html">Jupiter</a></li>
+                    <li><a href="#">Mercury</a></li>
+                    <li><a href="./sub/sun.html">Sun</a></li>
+                    <li><a href="./sub/earth.html">Earth</a></li>
+                    <li><a href="#">Mars</a></li>
+                    <li>
+                        <div class="sbx">
+                            <input type="text" id="searchbx" class="searchbx">
+                            <label for="searchbx" class="fa-solid fa-magnifying-glass sicon"></label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 모바일 햄버거버튼 -->
+            <button class="ham"></button>
+            
+        </header>
+    </div>
+
+    <!-- 2. 메인영역 -->
+    <div id="cont">
+        <main class="swiper1">
+            <!-- 슬라이드 -->
+            <ul class="swiper-wrapper">
+                <li class="swiper-slide">
+                    <img src="./img/bg01.jpg" alt="배너이미지01">
+                    <div class="tbx">
+                        <h2>What's UP: February 2023</h2>
+                        <p>Venus and Jupiter cozy up, the constellation Auriga makes a worthy target, and two star clusters you can find using Sirius and a pair of binoculars. </p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <img src="./img/bg02.jpg" alt="배너이미지02">
+                    <div class="tbx tbg1">
+                        <h2>A Voice Among the Stars</h2>
+                        <p>U.S Poet Laureate Ada Limon, known for work that explores the human connection to the natural world, is crafting a new poem dedicated to the Europa Clipper Mission.</p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <img src="./img/bg03.jpg" alt="배너이미지03">
+                    <div class="tbx">
+                        <h2>From Deep Space, With Love</h2>
+                        <p>Thirty-three years ago, scientists and engineers created the famous Earth as a "Pale Blue Dot" image as a love letter to planet Earth.</p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+                <li class="swiper-slide">
+                    <img src="./img/bg04.jpg" alt="배너이미지04">
+                    <div class="tbx tbg2">
+                        <h2>Magnetic Field of the Psyche Spacecraft</h2>
+                        <p>Understanding the spacecraft's magnetic field will lead to better measurements of metal-rich asteroid Psyche.</p>
+                        <div class="btn">
+                            <a href="#">READ MORE</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+
+
+
+            <!--블릿버튼-->
+            <div class="swiper-pagination"></div>
+
+            <!--이동버튼-->
+            <div class="swiper-button-prev"></div>
+            <div class="swiper-button-next"></div>
+
+
+        </main>
+    </div>
+
+
+    <!-- 3. 하단영역 -->
+    <div id="info">
+        <footer class="info ibx">
+            <!-- 3-1. More Destinations -->
+            <div class="more">
+                <h3>More Destinations</h3>
+                
+                <div class="swiper2">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/jupiter_new.png" alt="Jupiter">
+                                <span>Jupiter</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/earth.png" alt="Earth">
+                                <span>Earth</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/mercury_new.png" alt="Mercury">
+                                <span>Mercury</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/mars.png" alt="Mars">
+                                <span>Mars</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/venus_jg.png" alt="Venus">
+                                <span>Venus</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/saturn.png" alt="Saturn">
+                                <span>Saturn</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/uranus.png" alt="Uranus">
+                                <span>Uranus</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/neptune.png" alt="Neptune">
+                                <span>Neptune</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="./img/earth_moon.png" alt="Earth's Moon">
+                                <span>Earth's Moon</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!--이동버튼-->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
+
+            <!-- 3-2. SNS -->
+            <div class="sns">
+                <h3>Stay Connected</h3>
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/NASASolarSystem" target="
+                        _blank">
+                            <span class="ir">트위터 바로가기</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/NASASolarSystem/" target="
+                        _blank">
+                            <span class="ir">페이스북 바로가기</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/nasasolarsystem/" target="
+                        _blank">
+                            <span class="ir">인스타그램 바로가기</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3-3. 하단링크 -->
+            <div class="blink">
+                <ul>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">BIBLIOGRAPHY</a></li>
+                    <li><a href="#">FEEDBACK</a></li>
+                    <li><a href="#">PRIVACY</a></li>
+                    <li><a href="#">IMAGE USE</a></li>
+                    <li><a href="#">NASA SCIENCE MISSION DIRECTORATE</a></li>
+                    <li><a href="#">NASA PORTAL</a></li>
+                    <li><a href="#">SITEMAP</a></li>
+                </ul>
+            </div>
+
+            <!-- 3-4. 회사정보 -->
+            <div class="addr">
+                <address>
+                    This site is maintained by the Planetary Science Communications team at <br>
+                    <strong>NASA’s Jet Propulsion Laboratory</strong> for <a href="#">NASA’s Science Mission Directorate.</a>
+                </address>
+            </div>
+
+        </footer>
+    </div>
+
+
+
+    
+</body>
+</html>

@@ -1,0 +1,111 @@
+@charset "utf-8";
+
+/* 초기화 CSS 호출 */
+@import url(reset.css);
+@import url(common.css);
+@import url(fonts.css);
+
+body {
+    font-family: "dominikth";
+}
+
+/* B. 메인부분 */
+.bg_con {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background: url(../image/main.jpg) no-repeat center/cover;
+    filter: brightness(30%);
+}
+
+.cont {
+    display: grid;
+    width: min(1200px, 90vw);
+    height: 70vh;
+    margin: 0 auto;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1.3fr 0.7fr;
+    grid-template-areas:
+    'season1 season2 season3'
+    'characters characters characters';
+    grid-gap: 1vw;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+}
+
+.cont > div {
+    position: relative;
+}
+
+.cont > div > a {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    font-size: 2vw;
+    font-weight: bold;
+    color: #000000;
+}
+
+.cont > div:hover > a {
+    display: flex;
+}
+
+.season1 {
+    grid-area: season1;
+    background: url(../image/car1_poster.jpg) no-repeat center/cover;
+}
+
+.season2 {
+    grid-area: season2;
+    background: url(../image/car2_poster.jpg) no-repeat center/cover;
+}
+
+.season3 {
+    grid-area: season3;
+    background: url(../image/car3_poster.jpg) no-repeat center/cover;
+}
+
+.characters {
+    grid-area: characters;
+    background: url(../image/main.jpg) no-repeat  center 80%/cover;
+}
+
+@media(max-width:1024px){
+    .cont > div > a {
+        font-size: 4vw;
+    }
+}
+
+@media(max-width:750px){
+    .bg_con {
+        height: calc(100vh - 140px);
+    }
+
+    .cont {
+        height: 60vh;
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, 1fr);
+        grid-template-areas:
+        'season1'
+        'season2'
+        'season3'
+        'characters';
+        top: 47%;  
+        transform: translate(-50%, -50%);
+    }
+
+    .cont > div > a {
+        display: flex;
+        font-size: 6vw;
+    }
+    
+    .cont > div:hover {
+        transition: none;
+    }
+}

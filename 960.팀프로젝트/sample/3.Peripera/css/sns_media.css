@@ -1,0 +1,80 @@
+@charset "UTF-8";
+/* 서브페이지 SNS 미디어쿼리 CSS - sns_media.css */
+
+@media screen and (max-width: 1070px) {
+  main {
+    width: 100%;
+    min-height: 0;
+  }
+  .sct {
+    padding: 90px 20px 0 0;
+  }
+  /* 그리드박스 */
+  .titgrid {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-column-gap: min(1.5vw, 10px);
+    grid-row-gap: min(1.5vw, 10px);
+  }
+  /* 갤러리박스 */
+  .titgrid > div {
+    aspect-ratio: 280 / 330;
+  }
+  /* 아이콘글자 박스 */
+  .titgrid aside {
+    display: none;
+  }
+  /* 그리드 이미지 */
+  .titgrid > div > img {
+    height: 94%;
+  }
+}
+
+@media screen and (max-width: 765px) {
+  .sbx {
+    display: none;
+  }
+  .sct {
+    padding: 0 20px;
+  }
+  /* 타이틀박스 */
+  .tbx h2 {
+    text-align: center;
+    margin-top: 25px;
+  }
+  .tbx h3 {
+    display: none;
+  }
+  /* 핑크 인스타그램 박스 */
+  .inbx {
+    margin: 0;
+    margin-bottom: 25px;
+  }
+
+  /* 그리드박스 */
+  .titgrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /* 갤러리박스 */
+  .titgrid > div {
+    aspect-ratio: 1 / 1;
+    padding: 0;
+    border: none;
+  }
+  /* 그리드 이미지 */
+  .titgrid > div > img {
+    height: 100%;
+    margin: 0;
+  }
+  /* 하단버튼 */
+  .btn{
+    width: max(1vw,120px);
+    height: 5vh;
+    margin: 25px 0 50px 0;
+  }
+  .btn a{
+    font-size: min(3vw,16px);
+  }
+}
+
+

@@ -1,0 +1,452 @@
+@charset "utf-8";
+
+body {
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+:root {
+    --soundTrack-width: 1008px;
+    --h1-font: "neutraltextbook";
+    --main-font: "dominikth";
+    --footer-font: 'Itim', cursive;
+    --light-gray-color: #555;
+    --arrow-position: 32%;
+    --arrow-size: 50px;
+}
+
+
+/******************** A. 상단부분(season3) ********************/
+#sub_bg {
+    position: relative;
+    width: 100vw;
+    height: calc(100vh - 50vh);
+}
+
+#sub_bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(60%);
+}
+
+#subTop {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    z-index: 999;
+    background-color: transparent;
+}
+
+#subTop > .subTop {
+    padding: 2vh 0;
+    text-align: center;
+}
+
+/* 1. 페이지타이틀 */
+.subTit{
+    width: 200px;
+    height: 100px;
+}
+
+.btn_con {
+    position: absolute;
+    top: 30px;
+    right: 5vw;
+    padding: 3vh 0;
+}
+
+.btn_con a {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+
+/******************** B. 메인부분(season3) ********************/
+.main {
+    max-width: 1008px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.track {
+    display: flex;
+}
+
+.track>dt,
+.track dd {
+    font-family: var(--main-font);
+    font-style: normal;
+    font-weight: 600;
+}
+
+.track dd:last-child {
+    padding-top: 10px;
+    padding-bottom: 40px;
+    font-size: 18px;
+    color: var(--light-gray-color);
+}
+
+dl dd {
+    padding-left: 85px;
+    font-size: 20px;
+}
+
+#soundTrack {
+    min-height: 620px;
+    width: var(--soundTrack-width);
+    margin: 0 auto;
+}
+
+.trackVideo {
+    width: 820px;
+    height: 442px;
+    margin: 0 auto;
+}
+
+.trackVideo iframe {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.pageHeader {
+    width: var(--soundTrack-width);
+    margin: 0 auto;
+}
+
+.pageHeader h1 {
+    padding: 72px 0 60px 0;
+    font-family: var(--h1-font);
+    font-weight: 400;
+    font-style: normal;
+}
+.sldbx {
+    position: absolute;
+    top: 19%;
+    height: 29vh;
+    width: 509px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#posterWrap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* 포스터 넣기 */
+.posterWrap {
+    width: 1058px;
+    margin: 0 auto;
+    bottom: 0;
+    display: flex;
+    left: 50%;
+    top: 25%;
+    transform: translate(-58.6%, -27%);
+    position: absolute;
+    gap: 0 44px;
+}
+
+.posterWrap > div {
+    box-shadow: 3px 3px 15px #000;
+    transition: all.2s cubic-bezier(1, -0.01, 0, 1.47);
+    filter: brightness(75%);
+    width: 100%;
+    height: 100%;
+}
+
+.posterWrap > div:nth-child(1),
+.posterWrap > div:nth-child(2),
+.posterWrap > div:nth-child(6) {
+    opacity: 0;
+} 
+
+
+.posterWrap > div:nth-child(4) {
+    transform: scale(1.20);
+    filter: brightness(100%);
+}
+
+.poster img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 1. 스크롤시 상단메뉴바 색 변경 셋업 */
+#subTop.active {
+    background-color: #fff;
+    box-shadow: 2px 2px 20px #131313;
+    padding: 10px 0;
+    transition: .3s ease-in-out;
+}
+
+/* 2. 상단이동 버튼 */
+.gobtn.mttop {
+    margin-bottom: 100px;
+}
+
+.gobtn {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    right: 20px;
+    bottom: 15px;
+    border: 1px solid #000;
+    border-radius: 50%;
+
+    line-height: 62px;
+    text-align: center;
+}
+
+.gobtn:hover {
+    background-color: #000;
+}
+
+.gobtn img {
+    width: 60%;
+}
+
+.gobtn:hover img {
+    filter: brightness(100);
+}
+
+/* 화살표 이동버튼 */
+.arrow_nav {
+    position: absolute;
+    width: 24px;
+    height: 50px;
+    top: var(--arrow-position);
+    transform: translateY(-10%);
+    background-image: url(../image/arrow.png);
+    cursor: pointer;
+}
+
+.left {
+    background-position: -26px -125px;
+    left: -40px;
+}
+
+.right {
+    background-position: -165px -228px;
+    right: -40px;
+}
+
+/* IR(배경이미지 설명 숨기기) */
+.ir {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/******************** C. 하단영역(season3) ********************/
+#bottomInfo {
+    background-color: #000;
+}
+
+#bottomInfo > .bottomInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+/* 5. 제작사 로고 */
+#bottomInfo .copyLogo img {
+    height: 60px;
+}
+
+/* 6. 하단정보 */
+#bottomInfo address {
+    font-family: "dominikth";
+    font-style: normal;
+    color: rgb(243, 242, 242);
+    font-size: 20px;
+    line-height: 100px;
+}
+
+/******************** 미디어쿼리(season3) ********************/
+@media screen and (max-width:1040px) {
+    .main h1 {
+        padding: 72px 40px 60px 40px;
+    }
+
+    .track {
+        padding: 0 50px;
+    }
+
+    .trackVideo {
+        margin: 0 110px;
+        width: 720px;
+    }
+
+    .track {
+        padding: 0 40px;
+    }
+
+    .main dd {
+        padding: 0 60px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .gobtn, .mttop {
+        display: none !important;
+    }
+}
+
+@media screen and (max-width: 853px) {
+    .trackVideo {
+        margin: 0 110px;
+        width: 630px;
+    }
+
+    .main dd {
+        padding: 0 60px;
+    }
+
+    .track {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 753px) {
+    .trackVideo {
+        margin: 0 110px;
+        width: 600px;
+    }
+
+    .main dd {
+        padding: 0 60px;
+    }
+
+    .track {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 727px) {
+    .trackVideo {
+        margin: 0 110px;
+        width: 550px;
+    }
+
+    .main dd {
+        padding: 0 60px;
+    }
+
+    .track {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 682px) {
+    .trackVideo {
+        margin: 0 110px;
+        width: 520px;
+    }
+
+    .main dd {
+        padding: 0 60px;
+    }
+
+    .track {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 652px){
+    .trackVideo {
+        margin: 0 90px;
+        width: 500px;
+    }
+
+    .track {
+        padding: 0 40px;
+    }
+}
+
+@media screen and (max-width: 620px){
+    .trackVideo {
+        width: 460px;
+    }
+
+    .posterWrap > div:nth-child(1),
+    .posterWrap > div:nth-child(2),
+    .posterWrap > div:nth-child(3),
+    .posterWrap > div:nth-child(5),
+    .posterWrap > div:nth-child(6) {
+        opacity: 0;
+    }
+
+    .right {
+        right: 92px;
+    }
+
+    .left {
+        left: 92px;
+    }
+
+    .track {
+        padding: 0 25px;
+    }
+}
+
+@media screen and (max-width: 608px) {
+    .bottomInfo {
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 600px){
+    .trackVideo {
+        margin: 0 70px;
+        width: 420px;
+    }
+
+    .track {
+        padding: 0 30px;
+    }
+
+    .main dd {
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 552px) {
+    .trackVideo {
+        margin: 0 70px; 
+        width: 350px;
+    }
+
+    .track {
+        padding: 0 30px;
+    }
+
+    .main dd {
+        padding: 0 30px;
+        font-size: 1.2rem;
+    }
+
+    .main dd:nth-child(2){
+        font-size: 1.1rem;
+    }
+}
+
+@media screen and (max-width: 479px) {
+    .main dd {
+        font-size: 1rem;
+    }
+
+    .main dd:nth-child(2){
+        font-size: 0.97rem;
+    }
+
+    .trackVideo {
+        width: 330px;
+    }
+}

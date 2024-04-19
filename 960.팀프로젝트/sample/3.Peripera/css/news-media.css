@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 1000px) {
+    main{
+        min-height: auto;
+    }
+    .main_wrap{
+        width: auto;
+    }
+    .tit_wrap{
+        align-items: center;
+        padding-top: 30px;
+        padding-bottom: 10px;
+        margin-bottom: 30px;
+        border-bottom: 10px  double pink;
+    }
+    .news{
+        width: 100%;
+    }
+    .mb_hidden{
+        display: none;
+    }
+    .searchbx{
+        width: 97%;
+    }
+    .search_input{
+        width: 80%;
+        margin-left: 5px;
+    }
+    .search_btn{
+        margin-left: 5px;
+    }
+}

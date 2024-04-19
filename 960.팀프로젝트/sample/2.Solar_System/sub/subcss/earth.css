@@ -1,0 +1,584 @@
+@charset "utf-8";
+/* 서브페이지 : 지구 CSS - sub_earth.css */
+
+/* 공통 외부 CSS 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 초기화 */
+html{
+    overflow-x: hidden;
+}
+body {
+    width: 100%;
+    /* height: 100vh; */
+}
+/* 제목 폰트 */
+h1,
+h2,
+h3 {
+    font-family: "Kanit", sans-serif;
+}
+/* 타이틀 */
+.artit {
+    font-size: 4rem;
+    color: #3a3a3a;
+}
+/* 본문 */
+.contTxt {
+    width: 30vw;
+
+    font-size: 1.7rem;
+    color: #222;
+    text-align: justify;
+    word-break: break-word;
+    line-height: 1.7;
+}
+
+/****************************************** 2.메인영역 ******************************************/
+
+/************ 2-1. 1페이지 ************/
+/* 타이틀 */
+.pg1 .tit {
+    position: absolute;
+    z-index: 1;
+    top: 18%;
+    left: 10%;
+    /* font-size: min(10vw, 18rem); */
+    font-size: 18rem;
+    letter-spacing: 0.8rem;
+    color: #43aaed;
+}
+
+/* 부제 */
+.pg1 .stit {
+    position: absolute;
+    z-index: 1;
+    top: 45%;
+    left: 10%;
+
+    color: #fff;
+    font-size: 5rem;
+    letter-spacing: 0.5rem;
+    white-space: nowrap;
+}
+
+/* 전문 */
+.pg1 .contTxt {
+    position: absolute;
+    z-index: 1;
+    top: 55%;
+    left: 10%;
+    width: max(30vw, 450px);
+
+    color: #fff;
+    font-size: 1.7rem;
+    text-align: justify;
+    word-break: break-word;
+    line-height: 1.7;
+}
+
+/* 지구 동영상 속박스 */
+.pg1 .screen {
+    width: 100%;
+    height: 100vh;
+    background-color: #000;
+}
+
+/* 지구 동영상 프레임 */
+.pg1 #earthVid {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* filter: brightness(65%); */
+}
+
+/************ 2-2. 2페이지 ************/
+/* 2페이지 겉박스 */
+.pg2 {
+    /* width: 100%; */
+    /* height: 100%; */
+    padding-top: 10vw;
+    padding-bottom: 10vw;
+}
+
+/* 🚀이름 기원 */
+/* 이름 기원 겉박스 */
+.pg2 .namesake {
+    margin-bottom: 3vw;
+}
+/* 이름 기원 타이틀 */
+
+/* 이름 기원 본문 */
+.namesake .contTxt {
+    margin-top: 1vw;
+    width: min(50vw, 600px);
+}
+
+/* 🚀크기와 거리 */
+/* 크기와 거리 겉박스 */
+.pg2 .SizeAndDistance {
+    position: relative;
+    /* 부모자격 - .artit, .conTxt */
+}
+/* 지구 3D 모델 속박스 */
+.pg2 .inWrap {
+    width: 50%;
+    height: 50vh;
+}
+/* 지구 3D 모델 아이프레임 */
+.pg2 iframe {
+    width: 100%;
+    height: 100%;
+    vertical-align: bottom;
+    /* 아주 약간 아래쪽에 사이 간격 발생하는 것 때문에 부여함 */
+}
+/* 크기와 거리 타이틀 */
+.SizeAndDistance .artit {
+    position: absolute;
+    /* 부모는? - .SizeAndDistance */
+    top: 22%;
+    right: 0%;
+}
+/* 크기와 거리 본문 */
+.SizeAndDistance .contTxt {
+    position: absolute;
+    /* 부모는? - .SizeAndDistance */
+    bottom: 0%;
+    right: 0%;
+    width: min(50vw, 500px);
+
+    /* outline: 2px dashed red; */
+}
+
+/***************** 2-3. 3페이지 *****************/
+/* 3페이지 겉박스 */
+.pg3 {
+    /* height: 35vh; */
+    min-height: 35vh;
+    padding-top: 10vw;
+    padding-bottom: 10vw;
+    background: url(../subimg/earth02.jpg) no-repeat center/cover;
+    background-attachment: fixed;
+}
+
+/* 🚀형성 */
+/* 형성 타이틀 */
+.formation .artit {
+    font-size: 6rem;
+    color: #fff;
+    margin-bottom: 1vw;
+
+    /* 등장액션 관련 */
+    transition: all 1s ease-in-out;
+    opacity: 0;
+    transform: translateX(-10%);
+}
+/* 형성 타이틀 등장액션 */
+.formation .artit.appear{
+    opacity: 1;
+    transform: translateX(0);
+}
+/* 형성 본문 */
+.formation .contTxt {
+    width: 45vw;
+    font-size: 3rem;
+    color: #c2c2c1;
+    text-shadow: 1px 1px #000;
+
+    /* 등장액션 관련 */
+    transition: 1s ease-in-out;
+    opacity: 0;
+    transform: translateX(-10%);
+}
+/* 형성 본문 등장액션 */
+.formation .contTxt.appear{
+    opacity: 1;
+    transform: translateX(0);
+}
+/********************** 2-4. 4페이지 **********************/
+/* 🚀궤도 및 회전 */
+.pg4 {
+    padding-top: 20vw;
+    padding-bottom: 20vw;
+}
+.orbitAndRotation {
+    position: relative;
+    /* 부모자격 - .figimg */
+    padding-top: 5vw;
+    padding-bottom: 5vw;
+    border-top: 1px solid #3a3a3a;
+    border-bottom: 1px solid #3a3a3a;
+}
+/* 타이틀 */
+.pg4 .artit {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 1vw;
+    font-size: 9.5rem;
+
+    /* 등장액션 관련 */
+    transition: 1s ease-in-out;
+    opacity: 0;
+    transform: translateX(-10%);
+}
+/* 타이틀 등장액션 클래스 */
+.pg4 .artit.appear{
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* 본문 내용 공통 디자인 */
+.pg4 .contTxt {
+    position: relative;
+    margin: 2vw 0;
+    width: 70%;
+    font-size: 3rem;
+    letter-spacing: 0.1rem;
+}
+/* 본문 첫번째 단 개별 디자인*/
+.pg4 .pgh1 {
+    z-index: 1;
+}
+/* 본문 두번째 단 개별 디자인 */
+.pg4 .pgh2 {
+    left: 30%;
+    mix-blend-mode: difference;
+}
+/* 첫번째 이미지 겉박스 */
+.pg4 .figimg1 {
+    position: absolute;
+    top: -15vh;
+    left: 55%;
+}
+/* 첫번째 이미지 */
+.pg4 .figimg1 img {
+    width: 35vw;
+}
+/* 두번째 이미지 겉박스 */
+.pg4 .figimg2 {
+    position: absolute;
+    z-index: -1;
+    top: 80%;
+    left: 5%;
+}
+/* 두번째 이미지 */
+.pg4 .figimg2 img {
+    width: 25vw;
+}
+
+/*************************** 2-5. 5페이지 ***************************/
+/* 🚀삶의 잠재력 */
+article.potentialForLife {
+    position: relative;
+    /* 부모자격 - .figmig3 */
+}
+/* 삶의 잠재력 타이틀 */
+.potentialForLife .artit {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120%;
+
+    text-align: center;
+    background-color: #1d56a3;
+    font-size: 8vw;
+    color: #fff;
+    letter-spacing: 0.4rem;
+}
+/* 본문 겉박스 */
+.potentialForLife #contTxt {
+    margin: 10vw 0 20vw;
+    padding-left: 30vw;
+}
+/* 본문 박스 */
+.potentialForLife .contTxt {
+    width: auto;
+    font-weight: bold;
+    font-size: max(1.7vw, 2rem);
+    color: #c2c2c1;
+}
+/* 타 사이트 링크 */
+.potentialForLife .link {
+    color: #a9d3ee;
+}
+/* 타 사이트 링크에 마우스 오버시 */
+.potentialForLife .link:hover {
+    text-decoration: underline;
+}
+
+/* 세번째 이미지 겉박스 */
+.pg5 .figimg3 {
+    position: absolute;
+    /* 부모는? - .potentialForLife */
+    top: 40%;
+    left: 0%;
+}
+/* 세번째 이미지 */
+.pg5 .figimg3 img {
+    width: 25vw;
+}
+
+/**************************************** 애니메이션 ****************************************/
+/* 1.스크롤바 동작시 이미지 제자리에서 커지게 만들기 */
+/* 모든 이미지 겉박스 세팅 */
+/* body .cont figure {
+    overflow: hidden;
+} */
+/* 제자리에서 커지는 클래스 초기화 */
+/* .expansion {
+    transform: scale(1);
+    transition: 3s ease-in-out;
+} */
+/* 제자리에서 커지는 클래스 작동 */
+/* .expansion.on {
+    transform: scale(1.3);
+} */
+
+/* 2.스크롤바가 특정 위치에 왔을 때 highlighter 만들기 */
+/* highlighter 초기화 클래스 */
+.highlighter {
+    color: #c2c2c1;
+    transition: color 0.3s ease-in;
+}
+/* 등장액션 클래스 작동 */
+.highlighter.on {
+    background-color: transparent;
+    color: #1d56a3;
+}
+
+
+
+
+
+
+
+
+/*************************************************** 😊미디어 쿼리😊 ***************************************************/
+/* 1440px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1440px) {
+    .potentialForLife .artit {
+        width: 90vw;
+    }
+}
+/* 1440px 사이즈 이하 미디어쿼리 끝 */
+
+/* 1200px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1200px) {
+    .pg2 {
+        text-align: center;
+        padding: 10vw 5vw;
+    }
+
+    .namesake .contTxt {
+        position: static;
+        margin: 0 auto;
+        width: 70vw;
+    }
+
+    .SizeAndDistance .contTxt {
+        margin: 0 auto;
+        width: 70vw;
+        position: static;
+    }
+
+    .pg2 .inWrap {
+        margin: 0 auto;
+        width: 100%;
+        height: 55vh;
+    }
+
+    .SizeAndDistance .artit {
+        position: static;
+        margin: 3vh 0;
+    }
+
+    .formation .artit {
+        text-align: center;
+    }
+
+    .formation .contTxt {
+        margin: 0 auto;
+        width: 80vw;
+    }
+
+    .pg4 {
+        padding: 20vw 5vw 20vw;
+    }
+
+    .pg4 .artit {
+        font-size: 6vw;
+    }
+
+    article.potentialForLife {
+        margin: 0 5vw;
+    }
+}
+/* 1200px 사이즈 이하 미디어쿼리 끝 */
+
+/* 850px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 850px) {
+    .pg1 .tit {
+        z-index: 1;
+        top: 10%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 20vw;
+    }
+
+    .pg1 .stit {
+        top: 32%;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 5vw;
+    }
+
+    .pg1 .contTxt {
+        top: auto;
+        bottom: 8%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .namesake .artit {
+        margin-bottom: 3vw;
+    }
+
+    .formation .contTxt {
+        margin-top: 3vw;
+        font-size: 2.5vw;
+    }
+
+    .pg4 .contTxt {
+        font-size: 2vw;
+    }
+}
+/* 850px 사이즈 이하 미디어쿼리 끝 */
+
+/* 768px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 768px) {
+    .pg4 .figimg1 {
+        top: -7vh;
+    }
+    .pg5 .figimg3 {
+        top: 30%;
+    }
+    .pg5 .figimg3 img {
+        width: 25vw;
+        height: 48vh;
+        object-fit: cover;
+    }
+}
+/* 768px 사이즈 이하 미디어쿼리 끝 */
+
+/* 600px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 600px) {
+    .pg1 .tit {
+        top: 12vh;
+        font-size: max(20vw, 11rem);
+    }
+
+    .pg1 .stit {
+        top: 30vh;
+    }
+
+    .pg4 .figimg1 {
+        top: -7vh;
+    }
+
+    .pg4 .artit {
+        font-size: 7vw;
+    }
+
+    .pg4 .contTxt {
+        font-size: 2.7vw;
+    }
+
+    .pg4 .figimg2 {
+        bottom: 3%;
+    }
+}
+/* 600px 사이즈 이하 미디어쿼리 끝 */
+
+/* 500px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 500px) {
+    .formation .contTxt {
+        font-size: min(3.5vw, 1.8rem);
+    }
+
+    .pg4 .contTxt {
+        font-size: 3.6vw;
+    }
+
+    .pg4 .figimg1 {
+        left: 50%;
+    }
+
+    .pg4 .figimg1 img {
+        width: 46vw;
+        height: 40vh;
+        object-fit: cover;
+    }
+
+    .pg4 .figimg2 {
+        top: 65%;
+    }
+
+    .pg4 .figimg2 img {
+        width: 60vw;
+        height: 35vh;
+        object-fit: cover;
+    }
+
+    .pg5 .figimg3 {
+        top: 16%;
+    }
+
+    .pg5 .figimg3 img {
+        width: 25vw;
+        height: 75vh;
+        object-fit: cover;
+    }
+
+}
+/* 500px 사이즈 이하 미디어쿼리 끝 */
+
+/* 464px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 464px) {
+    .pg1 .stit{
+        font-size: 8vw;
+    }
+
+    .pg1 .contTxt {
+        width: 80vw;
+    }
+
+    .formation .contTxt {
+        font-size: 3.9vw;
+    }
+
+    /* 2페이지 이름 기원*/
+    /* 이름 기원 겉박스 */
+    .pg2 .namesake {
+        margin-bottom: 8vh;
+    }
+    /* 2페이지 크기와 거리 */
+    /* 크기와 거리 겉박스 */
+    .pg2 .SizeAndDistance {
+        margin-bottom: 8vh;
+    }
+
+    /* 3페이지 형성 */
+    /* 형성 겉박스 */
+    .pg3{
+        margin-bottom: 10vh;
+    }
+    
+    /* 4페이지 궤도 및 회전 */
+    /* 궤도 및 회전 겉박스 */
+    .pg4{
+        padding-bottom: 40vw;
+    }
+}
+/* 464px 사이즈 이하 미디어쿼리 끝 */

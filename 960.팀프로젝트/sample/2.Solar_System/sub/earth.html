@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>SOLAR SYSTEM-EARTH</title>
+        <!-- Favicon -->
+        <link href='./subimg/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+        <!-- 폰트어썸 CDN CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+        <!-- swiper jQuery -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+        <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <!-- 외부CSS 불러오기 -->
+        <link rel="stylesheet" href="./subcss/earth.css" />
+        <!-- 외부 미디어쿼리 CSS 불러오기 -->
+        <link rel="stylesheet" href="./subcss/mainmedia.css" />
+        <!-- 외부JS삽입 -->
+        <!-- <script src="./js/linksys.js"></script> -->
+        <script src="./subjs/main.js"></script>
+        <script src="./subjs/earth.js"></script>
+    </head>
+    <body>
+        <!-- 1. 상단영역 -->
+        <div class="top">
+            <header class="topbx">
+                <!-- 1-1.로고 -->
+                <h1 class="logo">
+                    <a href="../main.html">
+                        <img src="../img/logo.png" alt="로고이미지" />
+                    </a>
+                </h1>
+                <!-- 1-2.GNB메뉴 -->
+                <nav class="gnb">
+                    <ul>
+                        <li><img src="./subimg/orrery_icon.svg" alt="행성이미지"></li>
+                        <li><a href="./jupiter.html">Jupiter</a></li>
+                        <li><a href="./mercury.html">Mercury</a></li>
+                        <li><a href="./sun.html">Sun</a></li>
+                        <li><a href="./earth.html">Earth</a></li>
+                        <li><a href="./mars.html">Mars</a></li>
+                        <li>
+                            <div class="sbx">
+                                <input type="text" id="searchbx" class="searchbx" />
+                                <label for="searchbx" class="fa-solid fa-magnifying-glass sicon"></label>
+                            </div>
+                        </li>
+                    </ul>
+                </nav>
+
+                <!-- 모바일 햄버거버튼 -->
+                <button class="ham"></button>
+            </header>
+        </div>
+
+
+        <!-- 2.메인영역 -->
+        <div class="cont">
+
+            <!-- 2-1. 1페이지 -->
+            <section class="pg1">
+                <!-- (1)메인 타이틀 -->
+                <div id="tit">
+                    <h1 class="tit">Earth</h1>
+                </div>
+                <!-- (2)메인 부제 -->
+                <div id="stit">
+                    <h3 class="stit">Our home planet</h3>
+                </div>
+                <!-- (3)메인 전문 -->
+                <div id="contTxt">
+                    <p class="contTxt">
+                        Our home planet is the third planet from the Sun, and the only place we know of so far that’s
+                        inhabited by living things.
+                        <br />
+                        While Earth is only the fifth largest planet in the solar system, it is the only world in our
+                        solar system with liquid water on the surface. Just slightly larger than nearby Venus, Earth is
+                        the biggest of the four planets closest to the Sun, all of which are made of rock and metal.
+                    </p>
+                </div>
+                <!-- (4)지구 동영상 -->
+                <div class="Wrap">
+                    <div class="screen">
+                        <video id="earthVid" src="../sub/subimg/earth.mp4" loop autoplay muted playsinline></video>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2페이지부터는 ibx로 감싸서 중앙으로 모아주기 -->
+            <!-- 2-2. 2페이지 -->
+            <section class="pg2 ibx">
+                <!-- 🚀이름 기원 -->
+                <article class="namesake">
+                    <!-- (1)타이틀 -->
+                    <div id="artit">
+                        <h2 class="artit">Namesake</h2>
+                    </div>
+                    <!-- (2)본문 -->
+                    <div id="contTxt">
+                        <p class="contTxt">
+                            The name Earth is at least 1,000 years old. All of the planets, except for Earth, were named after Greek and Roman gods and goddesses. However, the name Earth is a Germanic word, which simply means “the ground.”
+                        </p>
+                    </div>
+                </article>
+                <!-- 🚀크기와 거리 -->
+                <article class="SizeAndDistance">
+                    <!-- (1)3D 지구 모델 -->
+                    <div class="outWrap">
+                        <div class="inWrap">
+                            <iframe src="https://solarsystem.nasa.gov/gltf_embed/2392" frameborder="0"> </iframe>
+                        </div>
+                    </div>
+                    <!-- (2)타이틀 -->
+                    <div id="artit">
+                        <h2 class="artit">Size and Distance</h2>
+                    </div>
+                    <!-- (3)본문 -->
+                    <div id="contTxt">
+                        <p class="contTxt">
+                            With a radius of 3,959 miles (6,371 kilometers), Earth is the biggest of the terrestrial planets and the fifth largest planet overall.
+                            <br>
+                            From an average distance of 93 million miles (150 million kilometers), Earth is exactly one astronomical unit away from the Sun because one astronomical unit (abbreviated as AU), is the distance from the Sun to Earth. This unit provides an easy way to quickly compare planets' distances from the Sun.
+                            <br>
+                            It takes about eight minutes for light from the Sun to reach our planet.
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 2-2. 3페이지 -->
+            <section class="pg3">
+                <!-- 🚀형성 -->
+                <article class="formation ibx">
+                    <!-- (1)타이틀 -->
+                    <div id="artit">
+                        <h2 class="artit">Formation</h2>
+                    </div>
+                    <!-- (2)본문 -->
+                    <div id="contTxt">
+                        <p class="contTxt">
+                            When the solar system settled into its current layout about 4.5 billion years ago, Earth formed when gravity pulled swirling gas and dust in to become the third planet from the Sun. Like its fellow terrestrial planets, Earth has a central core, a rocky mantle, and a solid crust.
+                        </p>
+                    </div>
+                </article>
+            </section>
+
+            <!-- 2-2. 4페이지 -->
+            <section class="pg4">
+                <!-- 🚀궤도 및 회전 -->
+                <article class="orbitAndRotation ibx">
+                    <!-- (1)타이틀 -->
+                    <div id="artit">
+                        <h2 class="artit">Orbit and Rotation</h2>
+                    </div>
+                    <!-- (2)본문 -->
+                    <div id="contTxt">
+                        <p class="contTxt pgh1">
+                            As Earth orbits the Sun, it completes one rotation every 23.9 hours. It takes 365.25 days to complete one trip around the Sun. That extra quarter of a day presents a challenge to our calendar system, which counts one year as 365 days. To keep our yearly calendars consistent with our orbit around the Sun, every four years we add one day. That day is called a leap day, and the year it's added to is called a leap year.
+                        </p>
+                        <br>
+                        <p class="contTxt pgh2">
+                            Earth's axis of rotation is tilted 23.4 degrees with respect to the plane of Earth's orbit around the Sun. This tilt causes our yearly cycle of seasons. During part of the year, the northern hemisphere is tilted toward the Sun, and the southern hemisphere is tilted away. With the Sun higher in the sky, solar heating is greater in the north producing summer there. Less direct solar heating produces winter in the south. Six months later, the situation is reversed. When spring and fall begin, both hemispheres receive roughly equal amounts of heat from the Sun.
+                        </p>
+                    </div>
+                    <!-- (3)이미지 -->
+                    <figure class="figimg1">
+                        <img class="expansion" src="../sub/subimg/earth08.jpg" alt="우주왕복선에서 촬영한 지구와 달">
+                    </figure>
+                </article>
+            </section>
+
+
+            <!-- 2-2. 5페이지 -->
+            <section class="pg5">
+                <!-- 🚀삶의 잠재력 -->
+                <article class="potentialForLife ibx">
+                    <!-- (1)타이틀 -->
+                    <div id="artit">
+                        <h2 class="artit">Potential for Life</h2>
+                    </div>
+                    <!-- (2)본문 -->
+                    <div id="contTxt">
+                        <p class="contTxt">
+                            Earth has a very hospitable temperature and mix of chemicals that have made life abundant here. Most notably, <span class="highlighter">Earth is unique</span> in that most of our planet is covered in liquid water, since the temperature allows liquid water to exist for extended periods of time. <span class="highlighter">Earth's vast oceans provided a convenient place for life to begin about 3.8 billion years ago.</span>
+                        </p>
+                        <br>
+                        <br>
+                        <p class="contTxt">
+                            Some of the features of our planet that make it great for <span class="highlighter">sustaining life</span> are changing due to the ongoing effects of climate change. To find out more visit our sister website, <a class="link" href="https://climate.nasa.gov/" target="_blank">climate.nasa.gov.</a>
+                        </p>
+                    </div>
+                    <!-- (3)이미지 -->
+                    <figure class="figimg3">
+                        <img class="appearance" src="../sub/subimg/earth04.jpg" alt="나사의 지구 관측소가 촬영한 북대서양 식물성 플랑크톤의 확산 사진">
+                    </figure>
+                </article>
+            </section>
+
+        </div>
+
+        <!-- 3. 하단영역 -->
+        <div id="info">
+            <footer class="info ibx">
+                <!-- 3-1. More Destinations -->
+                <div class="more">
+                    <h3>More Destinations</h3>
+                    
+                    <div class="swiper2">
+                        <ul class="swiper-wrapper">
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/jupiter_new.png" alt="Jupiter">
+                                    <span>Jupiter</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="./earth.html">
+                                    <img src="../img/earth.png" alt="Earth">
+                                    <span>Earth</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/mercury_new.png" alt="Mercury">
+                                    <span>Mercury</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/mars.png" alt="Mars">
+                                    <span>Mars</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/venus_jg.png" alt="Venus">
+                                    <span>Venus</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/saturn.png" alt="Saturn">
+                                    <span>Saturn</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/uranus.png" alt="Uranus">
+                                    <span>Uranus</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/neptune.png" alt="Neptune">
+                                    <span>Neptune</span>
+                                </a>
+                            </li>
+                            <li class="swiper-slide">
+                                <a href="#">
+                                    <img src="../img/earth_moon.png" alt="Earth's Moon">
+                                    <span>Earth's Moon</span>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <!--이동버튼-->
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                    </div>
+
+                </div>
+
+                <!-- 3-2. SNS -->
+                <div class="sns">
+                    <h3>Stay Connected</h3>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <span class="ir">트위터 바로가기</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="ir">페이스북 바로가기</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span class="ir">인스타그램 바로가기</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- 3-3. 하단링크 -->
+                <div class="blink">
+                    <ul>
+                        <li><a href="#">ABOUT US</a></li>
+                        <li><a href="#">BIBLIOGRAPHY</a></li>
+                        <li><a href="#">FEEDBACK</a></li>
+                        <li><a href="#">PRIVACY</a></li>
+                        <li><a href="#">IMAGE USE</a></li>
+                        <li><a href="#">NASA SCIENCE MISSION DIRECTORATE</a></li>
+                        <li><a href="#">NASA PORTAL</a></li>
+                        <li><a href="#">SITEMAP</a></li>
+                    </ul>
+                </div>
+
+                <!-- 3-4. 회사정보 -->
+                <div class="addr">
+                    <address>
+                        This site is maintained by the Planetary Science Communications team at <br />
+                        <strong>NASA’s Jet Propulsion Laboratory</strong> for
+                        <a href="#">NASA’s Science Mission Directorate.</a>
+                    </address>
+                </div>
+            </footer>
+        </div>
+
+    </body>
+</html>

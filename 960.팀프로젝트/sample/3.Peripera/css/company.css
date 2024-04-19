@@ -1,0 +1,225 @@
+
+
+
+
+main {
+  margin-top: 0;
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+
+body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select, pre, menu {
+  margin: 0;
+  padding: 0;
+}
+/* 
+html,body{min-width:1200px;height:auto;min-height:100%;overflow:auto;} */
+
+.wrapper{overflow:hidden;}
+
+.contents_wrap{padding:107px 0 0;}
+
+.contents{width:1000px;min-height:300px;margin:0 auto;padding:0 0 130px;text-align:left;}
+
+.content{margin:0;display:block;}
+
+.content>p{text-align:center}
+
+
+/* media="screen and (min-width: 768px)" */
+.tit_cat{
+  margin-bottom: 40px;
+}
+.tit_cat hgroup h2 {
+    line-height: 34px;
+    font-size: 24px;
+}
+.tit_cat hgroup h2 {
+    line-height: 40px;
+    font-size: 18px;
+    color: #1e1e1e;
+}
+h1, h2, h3, h4, h5, h6, b, strong {
+    font-weight: 600;
+}
+body, div, p, h1, h2, h3, h4, h5, h6, ul, ol, li, dl, dt, dd, table, th, td, form, fieldset, legend, input, textarea, button, select, pre, menu {
+    margin: 0;
+    padding: 0;
+}
+/* user agent stylesheet */
+h2 {
+    display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+/* media="screen and (min-width: 768px)" */
+.contents {
+    min-width: 1000px;
+    min-height: 300px;
+    margin: 0 auto;
+    padding: 0 0 130px;
+    text-align: left;
+}
+.wrapper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+}
+body {
+    background: #fff;
+    min-width: 320px;
+    font-family: 'Nanum Gothic','Droid Sans','Apple-Gothic',sans-serif;
+    font-size: 12px;
+    color: #5c5c5c;
+}
+
+img {
+  border: 0;
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+  overflow: clip;
+}
+
+img, hr {
+  border: none;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+
+body, p, div, ul, li, dl, dt, dd, ol, fieldset, textarea, input, select, table, th, td, address, cite, h1, h2, h3, h4, h5, h6, strong, b, label, button {
+  font-family: 'Noto Sans KR', sans-serif;
+}
+.aboutus .way_top {
+  padding: 50px 0 100px;
+  background: #99877b;
+  text-align: center;
+}
+body {
+  color: #555;
+  font-size: 13px;
+  line-height: 1.2;
+}
+
+/* media="screen and (min-width: 768px)" */
+
+.about .company_top .bg p strong {
+    margin-bottom: 15px;
+    font-size: 40px;
+    line-height: 42px;
+}
+.about .company_top .bg p strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 30px;
+    line-height: 33px;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+}
+h1, h2, h3, h4, h5, h6, b, strong {
+    font-weight: 600;
+}
+
+strong {
+    font-weight: bold;
+}
+/* media="screen and (min-width: 768px)" */
+
+.about .company_top .bg p {
+    padding-top: 35px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.about .company_top .bg p {
+    color: #fff;
+    font-size: 13px;
+    /* text-align: left; */
+    font-family: 'Noto Sans CJK KR', 'Noto Sans KR', sans-serif;
+}
+.about .company_top .bg1 {
+    position: relative;
+    margin: 0;
+    padding: 25px 20px;
+    background: url(../images/images-company/company_bg.jpg) no-repeat center;
+    background-size: cover;
+    text-align: left;
+}
+.about .company_top .bg2 {
+  position: relative;
+  margin: 0;
+  padding: 25px 20px;
+  background: url(../images/images-company/ceo_bg.jpg) no-repeat center;
+  background-size: cover;
+  text-align: center;
+}
+.about .company_top .bg3 {
+  position: relative;
+  height: 50vh;
+  margin: 0;
+  padding: 25px 20px;
+  background: url(../images/images-company/way_bg04.jpg) no-repeat center;
+  background-size: cover;
+  /* text-align: left; */
+}
+.about .company_top .bg4 {
+  position: relative;
+  margin: 0;
+  padding: 25px 20px;
+  background: url(../images/images-company/way_bg01.jpg) no-repeat center;
+  background-size: cover;
+  text-align: right;
+}
+.about .company_top .bg5 {
+  position: relative;
+  margin: 0;
+  padding: 25px 20px;
+  background: url(../images/images-company/way_bg02.jpg) no-repeat center;
+  background-size: cover;
+  text-align: left;
+}
+.about .company_top .bg6 {
+  position: relative;
+  margin: 0;
+  padding: 25px 20px;
+  background: url(../images/images-company/way_bg03.jpg) no-repeat center;
+  background-size: cover;
+  text-align: right;
+}
+
+/* media="screen and (min-width: 768px)" */
+.about .company_top .company_btn{
+  margin-top: 40px ;
+}
+.about .company_top .company_btn a {
+    width: 300px;
+    height: 60px;
+    font-size: 16px;
+    line-height: 60px;
+}
+.about .company_top .company_btn a {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+    height: 60px;
+    font-size: 17px;
+    line-height: 60px;
+    background: #000;
+    color: #fff;
+    border-radius: 7px;
+    text-align: center;
+}

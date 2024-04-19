@@ -1,0 +1,411 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+
+/* font-family: 'Noto Sans KR', sans-serif; */
+@import url(./reset.css);
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  /* overflow: hidden; */
+}
+body * {
+  /* outline: 1px solid red; */
+}
+body {
+  background: url(../img/sp.png) no-repeat fixed center/cover;
+  overflow-x: hidden;
+}
+
+.part {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+#top {
+  position: relative;
+  height: 80px;
+  z-index: 99;
+}
+
+.tit {
+  text-align: center;
+  font: 40px/4 "Noto Sans KR";
+  color: cyan;
+  text-shadow: 0 0 0px aquamarine;
+  animation: titani 2s ease-in-out infinite alternate;
+}
+
+.gnb {
+  /* display: flex; */
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
+.gnb ul {
+  display: flex;
+}
+
+.gnb li {
+  /* position: relative; */
+  padding: 0 10px;
+}
+
+.gnb a {
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+}
+
+/* .smenu {
+            position: absolute;
+            top: 27px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 5px;
+            width: 110px;
+            font-size: 11px;
+            display: none;
+        }
+
+        .gnb>ul>li:hover .smenu {
+            display: block;
+        }
+
+        .smenu li {
+            float: none;
+        }
+
+        .smenu a {
+            display: inline-block;
+            width: 100%;
+        }
+
+        .smenu a:hover {
+            color: cyan;
+        }
+
+        .smenu a::after {
+            content: '☞';
+            font-size: 14px;
+            float: right;
+            transform: translateY(-4px);
+            opacity: 0;
+        }
+
+        .smenu::before {
+            content: '';
+            display: block;
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-bottom: 10px solid rgb(255, 255, 255);
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            left: 50%;
+            top: -5px;
+            transform: translateX(-50%);
+        }
+
+        .smenu ol {
+            border: 2px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .smenu a:hover::after {
+            opacity: 1;
+        }
+
+        .hline {
+            border-top: 2px solid #ccc;
+            padding-top: 9px;
+        } */
+
+#cam {
+  transform: scale(1);
+  position: absolute;
+  bottom: 0px;
+  right: -25px;
+}
+
+#cam img {
+  position: relative;
+  z-index: 1;
+  width: 50px;
+  transform: rotate(15deg);
+  transition: transform 0.5s 0.3s;
+}
+
+.bim {
+  position: absolute;
+  top: -17px;
+  right: 7%;
+  width: 0;
+  height: 71px;
+  background: url(img/light.png) no-repeat;
+  background-position: right/center;
+  background-size: auto 100%;
+  transition: width 0.5s linear;
+}
+
+#cam:hover .bim {
+  transition-delay: 0.5s;
+  width: 290px;
+}
+
+#cam:hover img {
+  transform: rotate(0deg);
+  transition-delay: 0;
+}
+
+#cont {
+  position: relative;
+  aspect-ratio: 1200 / 788;
+}
+
+#screen {
+  position: absolute;
+  top: 17.2%;
+  left: 21.3%;
+  width: 58.6%;
+  height: 50.6%;
+  background-color: rgb(27, 27, 27);
+}
+
+#screen iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.mlist {
+  position: absolute;
+  bottom: 5.4%;
+  left: 50%;
+  width: 60%;
+  transform: translateX(-49%);
+
+}
+.mlist ul{
+  display: flex;
+  justify-content: space-between;
+  perspective: 50vh;
+}
+
+.mlist ul > li + li {
+  margin-left: 1.5%;
+}
+/* 선택메뉴 상위li */
+.mlist ul > li {
+  position: relative;
+  /* 부모자격 - .movtxt */
+  flex: 1;
+  /* 등분할설정 */
+  overflow: hidden;
+
+  /* x축회전적용하기 */
+  transform: rotateX(30deg);
+  /* 회전축변경 : 하단 */
+  transform-origin: bottom;
+  /* 트랜지션 : 속시이지 */
+  transition: 0.4s;
+}
+/* 마우스 오버시 + 클래스"on"적용시
+포스터 일어나기! */
+.mlist ul > li:hover,
+.mlist ul > li.on {
+  /* x축회전 */
+  transform: translateX(0);
+  /* 다른 li보다 위 */
+  z-index: 1;
+  /* 테두리 생김 */
+  outline: 1px solid aqua;
+}
+/* 포스터 이미지 */
+.mlist img {
+  width: 100%;
+  /* height: 140px; */
+}
+
+/* 영화정보박스 */
+.movtxt {
+  /* 플렉스박스 */
+  display: flex;
+  /* 플렉스 진행방향 */
+  flex-direction: column;
+  /* 진행방향정렬 : 중앙 */
+  justify-content: center;
+
+  /* 앱솔루트 포지션 */
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  height: 100%;
+  /* 부모는? 싸고있는 li */
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.603);
+
+  /* 글자셋팅 */
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: min(14px, 1.1vw);
+  line-height: 2;
+  color: #fff;
+
+  /* 트랜지션 : 속시이지 */
+  transition: top 0.5s cubic-bezier(0.54, -0.09, 0.56, 1.12);
+}
+/* 상위li에 마우스 오버시 영화정보 올라오기 */
+.mlist ul > li:hover .movtxt {
+  top: 0;
+}
+
+/* 영화정보박스 제목만 병경 */
+.movtxt li:first-child {
+  font-size: min(17px, 1.2vw);
+  color: aqua;
+  white-space: nowrap;
+}
+
+
+/************************ 하단영역 ************************/
+
+#info {
+  position: relative;
+  height: 100px;
+}
+
+#info address {
+  font-style: normal;
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  line-height: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.int {
+  display: block;
+  margin-left: 15%;
+}
+
+#info address img {
+  position: absolute;
+  transform: scale(0.5);
+  float: left;
+  margin-right: 2px;
+  margin-top: -32px;
+}
+
+.sns {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.bld {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sns li {
+  width: 34px;
+  height: 34px;
+  float: left;
+  margin: 2px;
+  background: url(../img/sprites_logo.png) no-repeat;
+}
+
+.sns li:nth-child(1) {
+  background-position: -509px -429px;
+}
+
+.sns li:nth-child(2) {
+  background-position: -551px -429px;
+}
+
+.sns li:nth-child(3) {
+  background-position: -593px -429px;
+}
+
+.sns a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@keyframes titani {
+  to {
+    text-shadow: 0 0 30px aquamarine;
+  }
+}
+
+/* #act1 {
+  position: absolute;
+  transform: scale(0);
+  animation: act1ani 5s ease-in infinite;
+  z-index: -3;
+}
+
+@keyframes act1ani {
+  0% {
+    top: -20%;
+    left: -20%;
+    transform: scale(0);
+  }
+
+  40% {
+    top: 40%;
+    left: 40%;
+    transform: scale(0.8);
+  }
+
+  60% {
+    top: 40%;
+    left: 40%;
+    transform: scale(0.8);
+  }
+
+  100% {
+    top: 120%;
+    left: 120%;
+    transform: scale(2.5);
+  }
+}
+
+.earth {
+  position: absolute;
+  transform: scale(0.8);
+  left: -20%;
+  bottom: -600px;
+  animation: earthani 15s ease-in-out infinite alternate;
+  z-index: -2;
+}
+
+@keyframes earthani {
+  to {
+    transform: scale(0.9);
+    left: -20%;
+    bottom: -600px;
+  }
+}
+
+.deth {
+  position: absolute;
+  transform: scale(0.35);
+  left: -200px;
+  bottom: -300px;
+  animation: dethani 5s ease-in-out infinite alternate;
+  z-index: -1;
+}
+
+@keyframes dethani {
+  to {
+    transform: scale(0.4);
+    left: -150px;
+    bottom: -250px;
+  }
+} */

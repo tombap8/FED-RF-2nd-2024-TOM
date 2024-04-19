@@ -1,0 +1,345 @@
+@charset "utf-8";
+/* EpisodeⅢ : 메인CSS - main.css */
+
+/* 외부 css 합치기 */
+/* @import url(./reset.css);
+@import url(./common.css); */
+
+/* 웹폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&family=Tilt+Warp&display=swap");
+
+/* 폰트
+font-family: 'Noto Sans KR', sans-serif;
+font-family: 'Tilt Warp', cursive;
+*/
+
+/* 각 섹션 공통 */
+.page {
+    height: 100vh;
+}
+
+/* 2-1. sub 메인 */
+
+/* 메인 이미지 */
+
+/* .m 부모 */
+.main_bn {
+    position: relative;
+}
+
+.main_bn {
+    position: relative;
+}
+
+.main_bn .bg_con {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        rgba(0, 0, 0, 1) 0%,
+        rgba(0, 0, 0, 0.8) 25%,
+        rgba(0, 0, 0, 0) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+}
+
+/* 메인 이미지 크기, 가운데 정렬 */
+.main_img > img {
+    display: block;
+    width: 80%;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* 메인 이미지 위 이미지, 텍스트 */
+.m {
+    position: absolute;
+    top: 0;
+    left: 30%;
+    top: 70%;
+    transform: translate(-50%, -50%);
+}
+
+.tit_img > img {
+    display: block;
+    width: 15vw;
+    height: auto;
+    margin: 0 auto;
+    padding: 0 0 15px 0;
+}
+
+.main_txt {
+    text-align: center;
+}
+
+/* 영화 포스터 */
+
+.mv {
+    display: flex;
+    width: 80%;
+    padding: 40px 0;
+    margin: 0 auto;
+}
+
+.mv_poster {
+    width: 40%;
+}
+
+.mv_poster > img {
+    display: block;
+    width: 100%;
+}
+
+/* 영화 제목 및 줄거리 */
+
+.text {
+    font-family: "Noto Sans KR", sans-serif;
+}
+
+.mv_intro {
+    padding: 0 0 0 53px;
+    width: 60%;
+}
+
+/* 영화 제목 */
+.mv_tit {
+    font-size: 40px;
+    margin: 0 0 12px;
+    font-family: "Tilt Warp", cursive;
+    font-weight: normal;
+    letter-spacing: 1px;
+    /* white-space: nowrap; */
+}
+
+/* 영화 장르 */
+.mv_genre {
+    color: #b5b7b7;
+    font-size: 14px;
+    padding: 0 0 30px 4px;
+    font-weight: bold;
+}
+
+/* 영화 줄거리 */
+.mv_sumr {
+    color: #b5b7b7;
+    font-size: 16px;
+    font-weight: normal;
+    margin: 0 0 24px;
+}
+
+/* 텍스트 이미지 */
+.txt_img {
+    width: 76px;
+    height: auto;
+}
+
+.txt_img > img {
+    width: 100%;
+    height: 100%;
+}
+
+/* sub 제목 공통 */
+.tit {
+    text-align: center;
+    text-decoration-line: underline;
+    font-size: min(30px, 3.05vw);
+    margin: 50px;
+    /* font-family: "Tilt Warp", cursive; */
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* .tit::before{
+    content: '';
+    position: absolute;
+    background-color: #48494a;
+    height: 2px;
+    width: 4px;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 2px;
+}
+
+.tit::after{
+    content: '';
+    position: absolute;
+    background-color: #48494a;
+    height: 2px;
+    width: 4px;
+    bottom: 0px;
+    left: 0px;
+    border-radius: 2px;
+} */
+
+/* 2-2. sub 동영상 */
+#screen {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    width: 701px;
+    height: 398px;
+    background-color: #000;
+    border: 1px solid #b5b7b7;
+}
+
+#screen iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+#cont {
+    position: relative;
+}
+
+.vlist {
+    position: relative;
+}
+
+.vlist ul {
+    display: flex;
+    position: relative;
+    margin-top: 50px;
+    justify-content: center;
+    top: 50%;
+    left: 50%;
+    gap: 0 29px;
+    transform: translate(-50%);
+}
+
+.vlist ul > li {
+    padding: 10px 10px;
+    margin: 5px;
+    cursor: pointer;
+    /* border: 1px solid #b5b7b7; */
+}
+
+.vlist ul > li:hover img,
+.vlist ul > li.on img {
+    outline: 3px solid #fcb735;
+    box-shadow: 0 0 20px #fcb735;
+}
+
+.vlist img {
+    width: 202px;
+    height: 113px;
+}
+
+/* 2-3. sub 갤러리 */
+
+/* 배너 전체박스 */
+.photobx {
+    /* 부모 자격 */
+    position: relative;
+    /* height: 100vh; */
+    /* aspect-ratio: 1 / 0.4; */
+    /* background-color: #555; */
+
+    padding: 80px 0;
+}
+
+/* 배너 컨텐츠박스1 */
+.photocont {
+    /* 자리 차지함 */
+    position: relative;
+
+    /* top: 10%; */
+    transform: translateX(-50%);
+    left: 50%;
+    width: 50vw;
+    aspect-ratio: 1/0.55;
+    /* border: 2px solid red; */
+    box-sizing: border-box;
+
+    /* outline: 5px dotted blue; */
+}
+
+.slide {
+    display: flex;
+    /* 플렉스박스!!! */
+    gap: 0 10vw;
+    /* 양쪽간격 10vw */
+
+    /*사진을 싸고 있는 슬라이드*/
+    position: absolute;
+    top: 0;
+    left: -240%;
+    /* 2장의 앞쪽에 나가있음!
+        원래는 -200%지만 가로폭 5%가 
+        양쪽 셋팅되어서 10%를 두번 더해서
+        240%임 -> 하나당 120%  */
+    width: 100%;
+    height: 100%;
+}
+
+.slide li {
+    flex-shrink: 0;
+    /* 부모박스크기만큼 줄어들지 않음 -> 0 */
+    flex-basis: 100%;
+    /* 가로크기를 부모박스 크기에 맞춤! */
+    /* height 값은 flex박스 자식요소에서
+        등분할시 자동 100%임! */
+    /* outline: 2px dashed red; */
+
+    /* 필터로 밝기조절(어둡게) */
+    /* filter: brightness(70%); */
+
+    /* 박스 그림자 */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+
+    /* 트랜지션 */
+    transition: 0.4s;
+}
+/* 배너박스1만 3번째가 주인공이므로 원래밝기로 조금 크게변경! */
+.photobx .slide li:nth-child(3) {
+    filter: brightness(100%);
+    transform: scale(1.2);
+}
+.slide li img {
+    /*이미지는 박스에 맞춤!*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지 비율유지 채우기! */
+}
+
+/* 이동버튼 */
+.abtn {
+    position: absolute;
+    width: 24px;
+    height: 51px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Y축 중앙이동 안함 */
+
+    /* background-color: #222; */
+    background-image: url(../img_episodeⅢ/main.png);
+    background-size: 190px 175px;
+    background-repeat: no-repeat;
+    /* outline: 1px solid red; */
+}
+
+/* 왼쪽버튼 */
+.ab1 {
+    left: 16.5%;
+    background-position: -26px -124px;
+}
+
+/* 오른쪽버튼 */
+.ab2 {
+    right: 16.5%;
+    background-position: -166px -53px;
+}
+
+/* IR */
+.ir {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}

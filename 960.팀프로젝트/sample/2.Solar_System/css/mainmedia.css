@@ -1,0 +1,162 @@
+@charset "utf-8";
+
+/* SOLAR SYSTEM PJ 공통 미디어쿼리 - mainmedia.css */
+
+/* 1400px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1400px) {
+
+    /******** 2. 메인영역 *********/
+    .swiper1 .swiper-slide .tbx{
+        width: 23vw;
+    }
+    .swiper1 .swiper-slide .tbg1{
+        width: 30vw;
+    }
+    .swiper1 .swiper-slide .tbx h2{
+    font-size: 3.5rem;
+    line-height: 1.4;
+    }
+    .swiper1 .swiper-slide .tbx p{
+    font-size: 1.8rem;
+    font-weight: 200;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    }
+    .swiper1 .swiper-slide .tbx .btn{
+    width: 8vw;
+    }
+    .swiper1 .swiper-slide .tbx .btn a{
+    font-size: 1.4rem;
+    }
+
+    /* 3-1. More Destinations */
+    #info .ibx{
+        padding: 0 8vw;
+    }
+    .info .more{
+        padding: 10vh 0;
+    }
+    .info .more h3{
+        margin-bottom: 8vh;
+    }
+
+    /* 3-2. SNS */
+    .info .sns{
+    padding: 0 0 10vh;
+    }
+}
+/* 1400px 사이즈 이하 미디어쿼리 끝 */
+
+
+
+
+/* 1100px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1100px) {
+
+    /********** 1. 상단영역 *********/
+    .gnb{
+        display: none;
+    }
+    .ham {
+        display: block;
+    }
+    /* 햄버거버튼 클릭시 */
+    .top.active{
+        background-color: #052a46;
+    }
+    .top.active .ham{
+        z-index: 9999;
+        color: #fff;
+        transform: scale(1);
+    }
+    .top.active .ham::before {
+        content: '×';
+    }
+    .top.active .gnb{
+        display: block;
+        position: fixed;
+        top: 90px;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        background-color: #052a46;
+        z-index: 99;
+    }
+    .top.active .gnb ul{
+        flex-direction: column;
+        text-align: center;
+    }
+    .top.active .gnb ul li{
+        border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+        width: 100%;
+        margin: 0;
+        padding: 10px 0;
+    }
+    .top.active .gnb ul li:last-child{
+        display: none;
+    }
+
+    /******** 2. 메인영역 *********/
+    .swiper1 .swiper-slide .tbx{
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 70vw;
+      }
+    .swiper1 .swiper-slide .tbx h2{
+        font-size: 3rem;
+        line-height: 1.4;
+    }
+    .swiper1 .swiper-slide .tbx p{
+        font-size: 1.7rem;
+        font-weight: 200;
+    }
+    .swiper1 .swiper-slide .tbx .btn{
+        width: 20vw;
+    }
+    .swiper1 .swiper-slide .tbx .btn a{
+        font-size: 1.4rem;
+    }
+      /*이동버튼*/
+    .swiper1 .swiper-button-next:after, .swiper1 .swiper-button-prev:after {
+        margin-top: 88vh;
+    }
+
+    /* 3-1. More Destinations */
+    .info .more {
+        padding: 7vh 0;
+    }
+
+    /* 3-3. 하단링크 */
+    .info .blink ul {
+        padding: 0 5vw;
+    }
+
+}
+/* 1100px 사이즈 이하 미디어쿼리 끝 */
+
+
+/* 600px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 600px) {
+    .topbx{
+        margin: 0 2vw;
+        height: 8vh;
+    }
+    h1.logo {
+        width: 250px;
+        height: 45px;
+        margin-top: 10px;
+    }
+    .top.active .gnb{
+        top: 8vh;
+    }
+
+    /* 3-1. More Destinations */
+    .info .swiper2 .swiper-wrapper li span {
+        font-size: 1.7rem;
+    }
+
+
+}
+/* 600px 사이즈 이하 미디어쿼리 끝 */

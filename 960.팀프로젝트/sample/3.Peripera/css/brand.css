@@ -1,0 +1,108 @@
+@charset "utf-8";
+
+/* 서브페이지 브랜드 CSS - brand.css */
+
+
+/* 웹폰트 */
+/* @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap'); */
+/* font-family: 'Nanum Gothic', sans-serif; */
+
+
+/* 공사중 */
+/* body * {
+    outline: 1px dashed #ccc;
+} */
+
+/* 겉박스 */
+#cont {
+    max-width: 1920px;
+    margin: 0 auto;
+}
+/* 속박스 */
+.cont {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 65px 15px 130px;
+}
+
+.tit {
+    font-family: 'Nanum Gothic', sans-serif;
+    text-align: left;
+}
+.tit h2 {
+    display: block;
+    line-height: 34px;
+    font-size: 24px;
+    font-weight: 700;
+    color: #1e1e1e;
+}
+.tit h3 {
+    display: block;
+    line-height: 20px;
+    font-size: 12px;
+    font-weight: 700;
+    color: #888888;
+}
+
+.tab_brand {
+    display: block;
+    max-width: 1000px;
+    /* height: 40px; */
+    margin: 50px auto 50px;
+}
+.tab_brand ul {
+    /* 플렉스박스 */
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+/*******************************/
+/* "on" 클래스 버전 따로 만들기! */
+.tab_brand ul li {
+    width: 50%;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid #e4e4e4;
+    border-bottom: 1px solid #9f9f9f;
+    box-sizing: border-box;
+    text-align: center;
+    background: transparent;
+}
+.tab_brand ul li:hover {
+    background: #e1425d;
+}
+.tab_brand ul li.on {
+    background: #e1425d;
+}
+/*******************************/
+
+/*******************************/
+/* a 글자 설정 */
+.tab_brand ul li > a {
+    display: block;
+    /* a요소 확장 */
+    /* height: 100%; */
+    font-size: 14px;
+    color: #4c4c4c;
+}
+.tab_brand ul li:hover > a {
+    font-weight: 700;
+    color: #fff;
+}
+.tab_brand ul li.on > a {
+    font-weight: 700;
+    color: #fff;
+}
+/*******************************/
+
+
+/* 배경이미지 공통셋팅 클래스 */
+.bgi {
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.intro img {
+    width: 100%;
+    height: auto;
+}

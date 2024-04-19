@@ -1,0 +1,22 @@
+@charset "utf-8";
+/* EpisodeⅢ : 리셋CSS - reset.css */
+
+html,body,h1,h2,h3,h4,ul,ol,li{
+    margin: 0;
+    padding: 0;
+}
+
+/* 가로스크롤 생김 방지 */
+html, body{
+  overflow-x: hidden;
+}
+
+/* ul, ol 블릿 제거 */
+ul,ol{
+    list-style: none;
+}
+
+/* li 가로로 위치 */
+li{
+    float: left;
+}

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Star Wars: Attack of the clones</title>
+    <link rel="shortcut icon" href="./subimg/icon.webp" />
+    <!-- 외부 CSS -->
+    <link rel="stylesheet" href="./CSS/episode2.css" />
+    <!-- 미디어쿼리 CSS -->
+    <link rel="stylesheet" href="./CSS/epi2media.css" />
+    <!-- 외부 JS -->
+    <script src="./js/cdata.js"></script>
+    <script src="./js/episode2.js"></script>
+  </head>
+  <body>
+    <header id="top" class="part">
+      <h1 class="tit">
+        <a href="#">
+          <img src="./subimg/title.webp" alt="스타워즈" />
+        </a>
+      </h1>
+      <nav class="gnb">
+        <ul>
+          <li>
+            <a href="./sub01.html">EPISODE I</a>
+          </li>
+          <li>
+            <a href="./episode2.html">EPISODE II</a>
+          </li>
+          <li>
+            <a href="./episodeⅢ.html">EPISODE III</a>
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main class="cont part">
+      <!-- 1.메인이미지 박스 -->
+      <div class="mimg">
+        <!--  메인이미지 -->
+        <figure class="mimg_img">
+          <img src="./subimg/main_img.jpeg" alt="메인이미지" />
+        </figure>
+        <!-- 타이틀 이미지 -->
+        <figure class="mimg_tit">
+          <img src="./subimg/titlelogo.png" alt="타이틀로고" />
+          <figcaption>
+            Young Anakin and Padmé fall in love as galactic war looms.
+          </figcaption>
+        </figure>
+      </div>
+      <!-- 2.영화소개란 -->
+      <div class="mcont">
+        <!-- 포스터 -->
+        <div class="mposter">
+          <figure>
+            <img src="./subimg/poster.jpeg" alt="영화포스터" />
+          </figure>
+        </div>
+        <!-- 영화소개텍스트 -->
+        <div class="mtxt">
+          <h2>Star Wars: Attack of the Clones (Episode II)</h2>
+          <h3>
+            <span>Rating:</span>
+            <span>PG</span>
+          </h3>
+          <h3>
+            <span>Genre:</span>
+            <span
+              >Action, Adventure, Fantasy, Live Action, Science Fiction</span
+            >
+          </h3>
+          <p>
+            Watch the seeds of Anakin Skywalker's transformation take root in
+            Star Wars: Episode II - Attack of the Clones. Ten years after the
+            invasion of Naboo, the galaxy is on the brink of civil war. Under
+            the leadership of a renegade Jedi named Count Dooku, thousands of
+            solar systems threaten to break away from the Galactic Republic.
+            When an assassination attempt is made on Senator Padmé Amidala, the
+            former Queen of Naboo, twenty-year-old Jedi apprentice Anakin
+            Skywalker is assigned to protect her. In the course of his mission,
+            Anakin discovers his love for Padmé as well as his own darker side.
+            Soon, Anakin, Padmé, and Obi-Wan Kenobi are drawn into the heart of
+            the Separatist movement and the beginning of the Clone Wars.
+          </p>
+        </div>
+      </div>
+      <!-- 3.캐릭터 -->
+      <div class="mcha">
+        <h2 class="msubtit">Characters</h2>
+        <!--캐릭터 목록 -->
+        <div class="mcha_list setit">
+          <ul></ul>
+        </div>
+        <!-- 캐릭터 소개 출력용 박스 -->
+        <div class="mcha_data"></div>
+      </div>
+      <!-- 4.비디오 -->
+      <div class="mvideo">
+        <h2 class="msubtit">Video</h2>
+        <div class="mvideo_cont setit">
+          <!-- 목록 넘어가기 버튼 -->
+          <button class="btn_next vlist_btn">
+            <span class="fa-solid fa-chevron-right"></span>
+          </button>
+          <button class="btn_pre vlist_btn btn_off">
+            <span class="fa-solid fa-chevron-left"></span>
+          </button>
+          <!-- 비디오 목록 -->
+          <div class="mvideo_contwrap">
+            <ul></ul>
+          </div>
+        </div>
+        <!-- 비디오 출력용 박스 -->
+        <div class="mvid_data">></div>
+      </div>
+      <!-- 5. 갤러리 -->
+      <div class="mgall">
+        <h2 class="msubtit">Galleries</h2>
+        <!-- 스토리 갤러리 박스 -->
+        <section class="mgall_contbx">
+          <h3 class="gall_subtit">Story Gallery</h3>
+          <div class="gall_subbx gall_story setit">
+            <!-- 목록 넘어가기 버튼 -->
+            <button class="btn_pre glist_btn">
+              <span class="fa-solid fa-chevron-left"></span>
+            </button>
+            <button class="btn_next glist_btn">
+              <span class="fa-solid fa-chevron-right"></span>
+            </button>
+            <!-- 갤러리 출력 -->
+            <ul>
+              <li>
+                <div class="gall_wrap">
+                  <div class="gall_imgbx"></div>
+                  <div class="gall_txtbx">
+                    <div class="gall_cnt">
+                      <span></span>
+                      of
+                      <span></span>
+                    </div>
+                    <div class="mcha_beam">
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <p></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+        <!-- 비하인드 갤러리 박스 -->
+        <section class="mgall_contbx">
+          <h3 class="gall_subtit">Behind the Scenes Gallery</h3>
+          <div class="gall_subbx gall_behind setit">
+            <!-- 목록 넘어가기 버튼 -->
+            <button class="btn_pre glist_btn">
+              <span class="fa-solid fa-chevron-left"></span>
+            </button>
+            <button class="btn_next glist_btn">
+              <span class="fa-solid fa-chevron-right"></span>
+            </button>
+            <!-- 갤러리 출력 -->
+            <ul>
+              <li>
+                <div class="gall_wrap">
+                  <div class="gall_imgbx"></div>
+                  <div class="gall_txtbx">
+                    <div class="gall_cnt">
+                      <span></span>
+                      of
+                      <span></span>
+                    </div>
+                    <div class="mcha_beam">
+                      <span></span>
+                      <span></span>
+                    </div>
+                    <p></p>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+    </main>
+    <footer id="info" class="part">
+      <div class="blogo">
+        <img src="img/logo.png" alt="하단로고" />
+      </div>
+      <address>
+        <span class="int">
+          루카스필름(Lucasfilm)은 1971년 헐리우드의 저명한 영화 감독인 조지
+          루카스가 설립한 미국의 영화 & TV 제작사이다. <br />
+          캘리포니아주 샌프란시스코에 본사를 두고 있으며, Letterman Digital Arts
+          Center에 기반을 두고 운영하고 있다. <br />
+          2012년, 월트 디즈니 컴퍼니에 인수되었으며,[2] 주요 작품으로는
+          스타워즈, 인디아나 존스가 있다.
+        </span>
+      </address>
+      <ul class="sns">
+        <li>
+          <a
+            href="https://www.facebook.com/StarWars"
+            target="_blank"
+            title="페이스북 바로가기"
+          >
+            <span class="bld">페이스북 바로가기</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://twitter.com/starwars"
+            target="_blank"
+            title="트위터 바로가기"
+          >
+            <span class="bld">트위터 바로가기</span>
+          </a>
+        </li>
+        <li>
+          <a
+            href="https://www.instagram.com/starwars/"
+            target="_blank"
+            title="인스타그램 바로가기"
+          >
+            <span class="bld">인스타그램 바로가기</span>
+          </a>
+        </li>
+      </ul>
+    </footer>
+
+    <script
+      src="https://kit.fontawesome.com/2041668019.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

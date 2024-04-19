@@ -1,0 +1,28 @@
+@charset "utf-8";
+
+@font-face {
+	font-family: "dominikth";
+	src: url("./fonts/dominikth.eot"); /* IE9 Compat Modes */
+	src: url("./fonts/dominikth.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+		 url("./fonts/dominikth.otf") format("opentype"), /* Open Type Font */
+		 url("./fonts/dominikth.svg") format("svg"), /* Legacy iOS */
+		 url("./fonts/dominikth.ttf") format("truetype"), /* Safari, Android, iOS */
+		 url("./fonts/dominikth.woff") format("woff"), /* Modern Browsers */
+		 url("./fonts/dominikth.woff2") format("woff2"); /* Modern Browsers */
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "neutraltextbook";
+	src: url("./fonts/neutraltextbook.eot"); /* IE9 Compat Modes */
+	src: url("./fonts/neutraltextbook.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+		 url("./fonts/neutraltextbook.otf") format("opentype"), /* Open Type Font */
+		 url("./fonts/neutraltextbook.svg") format("svg"), /* Legacy iOS */
+		 url("./fonts/neutraltextbook.ttf") format("truetype"), /* Safari, Android, iOS */
+		 url("./fonts/neutraltextbook.woff") format("woff"), /* Modern Browsers */
+		 url("./fonts/neutraltextbook.woff2") format("woff2"); /* Modern Browsers */
+	font-style: normal;
+}
+
+/* 웹폰트 CDN - Itim */
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap'); 

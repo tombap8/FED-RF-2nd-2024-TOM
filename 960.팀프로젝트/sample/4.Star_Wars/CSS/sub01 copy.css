@@ -1,0 +1,476 @@
+@charset "UTF-8";
+
+/* 팀프로젝트 스타워즈 서브01 CSS - sub01 */
+
+/* CDN 구글웹폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+/* font-family: 'Noto Sans KR', sans-serif; */
+@import url("https://fonts.googleapis.com/css2?family=Russo+One&display=swap");
+/* font-family: 'Russo One', sans-serif; */
+
+html {
+  scroll-behavior: smooth;
+}
+body * {
+  /* outline: 1px solid red; */
+  max-width: 1920px;
+}
+
+html,
+body,
+ul,
+ol,
+li,
+h1,
+h2 {
+  margin: 0;
+  padding: 0;
+}
+a {
+  color: #fff;
+  text-decoration: none;
+}
+ul,
+ol {
+  list-style: none;
+}
+/* 5. 이미지 리셋 */
+img {
+  border: none;
+  /* 이미지 링크시 서버에서 볼때 파란색 자동보더 없애기 */
+  vertical-align: bottom;
+  /* 박스 이미지 하단간극 없애기(약4px)
+  값으로 top, middle등 도 효과있음! */
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url(../img/sp.png) no-repeat fixed center/cover;
+  overflow-x: hidden;
+}
+
+.part {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+/******************** 상단영역 ********************/
+#top {
+  position: relative;
+  height: 80px;
+  z-index: 99;
+}
+.tit {
+  text-align: center;
+  font: 40px/4 "Noto Sans KR";
+  color: cyan;
+  text-shadow: 0 0 0px aquamarine;
+  animation: titani 2s ease-in-out infinite alternate;
+}
+@keyframes titani {
+  to {
+    text-shadow: 0 0 30px aquamarine;
+  }
+}
+.tit a {
+  color: cyan;
+}
+.gnb {
+  position: absolute;
+  top: 40px;
+  right: 15px;
+}
+.gnb ul {
+  display: flex;
+}
+.gnb ul li {
+  padding: 0 15px;
+}
+
+/******************** 메인영역 ********************/
+/* #cont {
+  position: relative;
+  height: 100vh;
+} */
+/***** 메인상단 *****/
+.tsec {
+  position: fixed;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  gap: 130px;
+  align-items: center;
+  justify-content: space-evenly;
+  /* width: 1000px; */
+  /* height: 650px; */
+  /* outline: 1px dashed yellow; */
+}
+.tsecI {
+  opacity: 0;
+}
+.tsecI img {
+  height: 600px;
+  /* margin: 70px; */
+}
+.tsecT {
+  width: 585px;
+  /* font-size: min(20px, 1.7vw); */
+  font-size: 26px;
+  color: rgb(247, 148, 1);
+  line-height: 55px;
+  text-shadow: 4px 3px rgb(6, 9, 12);
+  /* -webkit-text-stroke: 1px black; */
+  font-family: "Russo One", sans-serif;
+  /* letter-spacing: normal; */
+}
+
+/* 글자개별박스 셋팅 */
+.tsecT span {
+  /* 트랜스폼 적용위해 */
+  display: inline-block;
+  /* 현재위치로부터 이동 */
+  transform: translate(500%, -300%);
+  /* 투명도 0 */
+  opacity: 0;
+  /* 트랜지션: 속시이지 */
+  transition: 0.3s ease-in;
+}
+/* 스테이지로 들어오기 */
+.tsecT.on span {
+  transform: translate(0, 0);
+  opacity: 1;
+}
+/* 개별 지연시간을 JS에서 셋업한다! */
+
+/***** 메인중반 *****/
+/* 전체박스 */
+.msec {
+  padding-top: 900px;
+  padding-bottom: 550px;
+  height: calc(100vh + 1300px);
+  
+}
+/* 메인중반로고 */
+.msecL {
+  text-align: center;
+  margin: 40px 0;
+  opacity: 0;
+  transition: 3s ease-in-out;
+}
+.msecL.on {
+  top: 5vh;
+  position: sticky;
+  opacity: 1;
+}
+.msecL img {
+  height: 210px;
+}
+/* 메인중반텍스트 */
+.msecT ul {
+  /* height: 1700px; */
+  padding-top: 100px;
+}
+.msecT li {
+  /* top: 25vh; */
+  /* position: sticky; */
+  padding-top: 50px;
+  text-align: center;
+  font-family: "Russo One", sans-serif;
+  font-size: 40px;
+  color: rgb(247, 148, 1);
+  text-shadow: 5px 5px rgb(44, 44, 44);
+  /* -webkit-text-stroke: 2px black; */
+  transition: 0.1s ease-in;
+  opacity: 0;
+}
+
+/******* 메인하단 *******/
+/* 로고 / 슬라이드 부모박스 */
+
+.blogo_bx{
+  position: relative;
+}
+/* 하단로고 */
+.blogo {
+  position: fixed;
+  top: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  opacity: 0;
+  /* padding-top: 750px; */
+  transition: .8s ease-in-out;
+}
+.blogo.on{
+  position: fixed;
+  top: 8vh;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 1;
+}
+.blogo img {
+  height: 110px;
+}
+
+/* 슬라이드 박스 */
+.slidebx {
+  position: relative;
+  /* padding-top: 100px; */
+}
+/* 하단슬라이드 */
+.slide {
+  position: relative;
+  margin: 0 auto;
+  width: 900px;
+  height: 515px;
+  /* aspect-ratio: 1/0.55; */
+  overflow: hidden;
+}
+.slide > ul {
+  display: flex;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.slide > ul > li {
+  flex-shrink: 0;
+  flex-basis: 100%;
+}
+.slide ul li img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  /* box-sizing: border-box; */
+}
+/* 이동버튼 */
+.abtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 1;
+  /* 폰트 */
+  font-size: 70px;
+  color: rgb(243, 109, 0);
+  text-shadow: 0 0 0px rgb(231, 198, 9);
+  animation: titani 8s ease-in-out infinite alternate;
+}
+@keyframes titani {
+  0% {
+    color: rgb(243, 109, 0);
+    text-shadow: 0 0 30px rgb(214, 108, 9);
+  }
+  30% {
+    color: rgb(57, 243, 0);
+    text-shadow: 0 0 30px rgb(9, 214, 118);
+  }
+  60% {
+    color: rgb(0, 134, 243);
+    text-shadow: 0 0 30px rgb(9, 207, 214);
+  }
+  100% {
+    color: rgb(243, 0, 0);
+    text-shadow: 0 0 30px rgb(252, 94, 94);
+  }
+}
+.ab1 {
+  left: 5%;
+}
+.ab2 {
+  right: 5%;
+}
+
+/* 최하단영역 */
+
+/* 공통텍스트 */
+.b_text {
+  color: #fff;
+  font-size: 22px;
+  width: 600px;
+  
+  text-align: center;
+}
+
+/* 첫번째 섹션 */
+.b_img.b1 img {
+  height: 400px;
+}
+.b_text.b1{
+  
+  line-height: 1.4;
+}
+.b_text.b1 li:first-child{
+  padding: 40px 0 15px;
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(243, 222, 29);
+}
+.b_sec1 {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 300px;
+  /* gap: 40px; */
+  opacity: 0;
+}
+
+/* 두번째 섹션 */
+.b_img.b2 img {
+  height: 600px;
+}
+.b_text.b2{
+  line-height: 1.8;
+}
+.b_text.b2 li:first-child{
+  padding: 80px 0 15px;
+  font-weight: bold;
+  font-size: 30px;
+  color: rgb(243, 222, 29);
+}
+.b_sec2 {
+  display: flex;
+  justify-content: space-evenly;
+  padding-top: 200px;
+  /* gap: 60px; */
+  opacity: 0;
+}
+
+
+/******************** 하단영역 ********************/
+#info {
+  /* height: 100px; */
+  padding: 70px 0 30px;
+}
+.bot {
+  position: relative;
+}
+#info address {
+  font-style: normal;
+  color: #fff;
+  font-family: "Noto Sans KR";
+  font-size: 15px;
+  line-height: 20px;
+  padding-top: 20px;
+  padding-left: 20px;
+}
+.int {
+  display: block;
+  text-align: center;
+  /* margin-left: 15%; */
+}
+
+#info address img {
+  position: absolute;
+  transform: scale(0.5);
+  margin-right: 2px;
+  margin-top: -32px;
+}
+
+.sns {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.bld {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.sns li {
+  width: 34px;
+  height: 34px;
+  float: left;
+  margin: 2px;
+  background: url(../img/sprites_logo.png) no-repeat;
+}
+
+.sns li:nth-child(1) {
+  background-position: -509px -429px;
+}
+
+.sns li:nth-child(2) {
+  background-position: -551px -429px;
+}
+
+.sns li:nth-child(3) {
+  background-position: -593px -429px;
+}
+
+.sns a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 글자 숨김 클래스(IR배경이미지 설명 등  숨기기) */
+.ir {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+
+/* 마우스포인터 액션 */
+/* 부모박스 */
+.lightS{
+  position: fixed;
+  width: 0;
+  height: 0;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* transform: translate(-50%, -50%); */
+  z-index: 1;
+  /* outline: 1px dashed lime; */
+  transition: .3s ease-out;
+  /* z-index: -1; */
+}
+.redS{
+  position: absolute;
+  top: 36px;
+  left: 44px;
+  width: 7px;
+  height: 17px;
+  border-radius: 0 0 3px 3px;
+  transform: rotate(-45deg);
+  background: linear-gradient(rgba(104, 99, 99, 0.349),silver);
+  
+  background-color: rgb(141, 141, 141);
+  /* box-shadow: 0 0 0 red; */
+  /* animation: redS 2s ease-in-out infinite alternate; */
+}
+.blueS{
+  position: absolute;
+  top: 5px;
+  left: 25px;
+  width: 7px;
+  height: 40px;
+  border-radius: 20px 20px 0 0;
+  transform: rotate(-45deg);
+
+  background-color: rgba(0, 110, 255, 0.603);
+  box-shadow: 0 0 0 blue;
+  animation: blueS 2s ease-in-out infinite alternate;
+}
+
+@keyframes redS {
+  to{
+    /* background-color: red; */
+    box-shadow: 0 0 20px rgba(248, 29, 0, 0.959);
+  }
+}
+@keyframes blueS {
+  to{
+    /* background-color: rgb(0, 110, 255); */
+    box-shadow: 0 0 20px rgb(0, 174, 255);
+  }
+}

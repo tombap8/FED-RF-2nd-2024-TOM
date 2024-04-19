@@ -1,0 +1,449 @@
+
+
+.pinkBox{
+    width:100%;
+    height: 29px;
+    background-color: #f49bba;
+
+
+}
+
+.headerForMobile{
+  position: relative;
+  display: none;
+}
+
+.lanWrapper{
+    width: 1200px;
+    margin: 0 auto;
+
+}
+
+.lanUl{
+    margin: 0 auto;
+
+}
+
+
+.lanUl li{
+    display: inline-block;
+
+}
+
+
+.lanUl li a{
+
+padding: 0 15px;
+height: 29px;
+color: #fff;
+font-size: 13px;
+font-weight: 600;
+line-height: 29px;
+}
+
+
+.headerForPC{
+  border-bottom: 1px solid #aaa;
+}
+.headerForPC h1{
+  top: 5px;
+}
+
+.menuWrapper{
+    height: 135px;
+    position: relative;
+
+    width:1200px;
+
+    margin: 0 auto;
+}
+
+.menuWrapper h1{
+    width: 170px;
+    height: 100px;
+    margin: 0 auto;
+    position: absolute;
+    left: 50%;
+
+}
+
+.menuWrapper h1 a{
+
+    display: inline-block;
+}
+
+
+/* 바꿔야하는 부분 */
+.menuWrapper h1 a img{
+    margin-top: 25px;
+}
+
+
+
+.menuList{
+    float: left;
+
+}
+
+.menuList ul{
+    display:block;
+}
+
+.menuList ul li{
+    display:inline-block;
+    height: 100px;
+    line-height: 30px;
+    padding: 35px 30px 0 0;
+    font-size: 17px;
+    font-weight: 800;
+    color: #1e1e1e;
+    border: 0 none;
+}
+
+
+
+
+
+/* 아래 마진 탑 조정해야 함 */
+.searchWrapper{
+    margin-top: 25px;
+
+    float: right;
+}
+/* Search Bar CSS*/
+.search {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-align: center;
+  }
+  
+  .search__input {
+    font-family: inherit;
+    font-size: inherit;
+    background-color: #f4f2f2;
+    border: none;
+    color: #646464;
+    padding: 0.7rem 1rem;
+    border-radius: 30px;
+    width: 14rem;
+    transition: all ease-in-out .5s;
+    margin-right: -2rem;
+  }
+  
+  .search__input:hover, .search__input:focus {
+    box-shadow: 0 0 1em #00000013;
+  }
+  
+  .search__input:focus {
+    outline: none;
+    background-color: #f0eeee;
+  }
+  
+  .search__input::-webkit-input-placeholder {
+    font-weight: 100;
+    color: #ccc;
+  }
+  
+  .search__input:focus + .search__button {
+    background-color: #f0eeee;
+  }
+  
+  .search__button {
+    border: none;
+    background-color: #f4f2f2;
+    margin-top: .1em;
+  }
+  
+  .search__button:hover {
+    cursor: pointer;
+  }
+  
+  .search__icon {
+    height: 1.3em;
+    width: 1.3em;
+    fill: #b4b4b4;
+  }
+  /*  END */
+
+/* 메뉴 호버 효과 */
+
+  .hover01::before {
+    margin-left: auto;
+  }
+  
+  .hover01::after, .hover01::before {
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: #f49bba;
+    display: block;
+    transition: 0.5s;
+  }
+  
+  .hover01:hover::after, .hover01:hover::before {
+    width: 100%;
+  }
+
+
+
+
+
+
+
+  .serachWrapperForMobile {
+    display: none;
+    align-items: center;
+    background-color: #2c2c2c;
+    height: 50px;
+    position: relative;
+
+
+  }
+
+
+  .serachWrapperForMobile form{
+    white-space: nowrap;
+    display: block;
+    width: 100%;
+  }
+
+
+  .serachWrapperForMobileInput{
+    width: calc(100% - 140px);
+    height: 30px;
+    margin-left: 2%;
+
+  }
+
+
+  /* 버튼을 위아래 위치 조정 어케 함? */
+  .searchBtnForMobile{
+
+    width: 60px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    color: #fff;
+    background: #1e1e1e;
+    cursor: pointer;
+
+  }
+  
+
+  .serachBarCloseBtn{
+  position: absolute;
+  top: 47%;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0;
+  background: url(../images/images-header/mb_header_srch_close.png) no-repeat 50% 50%;
+  background-size: 22px;
+  border: none;
+  cursor: pointer;
+  }
+
+
+
+  .hiddenMenuWrapper{
+    position: absolute;
+    display: none;
+    background-color: white;
+    justify-content: center;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 95vw;
+    padding-bottom: 30px;
+  }
+
+  .hiddenMenuWrapper ul li{
+    margin-top: 40px;
+    width: 50vw;
+    text-align: center;
+    padding: 25px;
+    transition: .5s linear;
+    position: relative;
+    overflow: hidden;
+    font-weight: 900;
+    display: block;
+    border-bottom: 1px solid black;
+
+  }
+
+
+
+/* 햄버거 메뉴 hover 효과 */
+  
+  .hiddenMenuWrapper ul li:before {
+    position: absolute;
+    content: '';
+    left: 0;
+    bottom: 0;
+    height: 4px;
+    width: 100%;
+    border-bottom: 4px solid transparent;
+    border-left: 4px solid transparent;
+    box-sizing: border-box;
+    transform: translateX(100%);
+  }
+  
+  .hiddenMenuWrapper ul li:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    border-top: 4px solid transparent;
+    border-right: 4px solid transparent;
+    box-sizing: border-box;
+    transform: translateX(-100%);
+  }
+  
+  .hiddenMenuWrapper ul li:hover {
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  }
+  
+  .hiddenMenuWrapper ul li:hover:before {
+    border-color: #FFACC7;
+    height: 100%;
+    transform: translateX(0);
+    transition: .3s transform linear, .3s height linear .3s;
+  }
+  
+  .hiddenMenuWrapper ul li:hover:after {
+    border-color: #FFACC7;
+    height: 100%;
+    transform: translateX(0);
+    transition: .3s transform linear, .3s height linear .5s;
+  }
+
+/* End */
+
+
+
+
+
+
+
+  .showFlex{
+    display: flex;
+    animation: fade-in-bottom 0.4s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+  }
+
+  .showMenu{
+    display: flex;
+    z-index: 999;
+    
+  }
+
+
+
+  /* 모바일 버튼 클릭시 부드럽게 나오는 애니메이션*/
+
+  @keyframes fade-in-bottom {
+    0% {
+              transform: translateY(-20px);
+      opacity: 0;
+    }
+    100% {
+              transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+
+
+
+  /* 미디어 쿼리 css */
+  @media screen and (max-width: 1350px) {
+    .headerForPC{
+      display:none;
+
+    }
+    .headerForMobile{
+      display: block;
+    }
+
+    .menuWrapperForMobile{
+      width: 100%;
+      height: 60px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      border-bottom: 1px solid #e1425d;
+
+
+    }
+
+    .menuWrapperForMobile h1{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      top: 20px;
+      transform: translateX(-50%);
+  }
+
+  .menuWrapperForMobile h1 a img{
+    height: 25px;
+    
+}
+
+
+  
+
+  .burgerBtn{
+    font-size: 30px;
+    position: absolute;
+    left:10px;
+    top: 13px;
+    background-color: transparent;
+    border: none;
+    cursor:pointer;
+
+  }
+
+  .crossBtn{
+    font-size: 30px;
+    position: absolute;
+    left:10px;
+    top: 13px;
+    background-color: transparent;
+    border: none;
+    cursor:pointer;
+    display:none;
+  }
+
+
+  .searchBtn{
+    font-size: 30px;
+    position: absolute;
+    right: 10px;
+    top: 13px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+
+  
+  }
+
+
+
+  /* 주의!!!!아래 코드를 미디어 퀴리 앞순서로 두면 작동하지 않음. */
+  .displayOff{
+    display: none;
+  }
+  
+  
+  .displayOn{
+    display: block;
+  }
+
+
+

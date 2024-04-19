@@ -1,0 +1,177 @@
+@charset "utf-8";
+/* 서브페이지 SNS CSS - sns.css */
+
+@import url(./css/reset.css);
+@import url(./css/footer.css); 
+@import url(./css/footer-media.css); 
+@import url(./css/main.css);
+@import url(./css/main-media.css);
+@import url(./css/header.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+
+main {
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+}
+/*******************************************/
+
+/* 초기화 */
+html,
+body,
+h1,
+h2,
+h3 {
+  margin: 0;
+  padding: 0;
+}
+
+/* 공사중표시 */
+/* body * {
+  outline: 1px dotted red;
+} */
+
+/* 루트동그라미 */
+.sbx h2 > div {
+  background-repeat: no-repeat;
+  background-position: center;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+.circle1 > div {
+  background-image: url(./images/images_SNS/color2.jpg);
+}
+.circle2 > div {
+  background-image: url(./images/images_SNS/color3.jpg);
+}
+.circle3 > div {
+  background-image: url(./images/images_SNS/color4.jpg);
+}
+
+/* 오른쪽상단 루트박스 */
+.sbx {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 0 0 15px;
+}
+
+/* 타이틀박스 */
+.tbx {
+  font-family: "Nanum Gothic", sans-serif;
+}
+.tbx > div {
+  padding: 0 0 13px;
+}
+.tbx h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 10px;
+}
+.tbx h3 {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  color: #8c8c8c;
+}
+
+/* 핑크 인스타그램 박스 */
+.inbx {
+  margin: 25px 0 55px 0;
+  height: 45px;
+  line-height: 45px;
+  text-align: center;
+  font-weight: bold;
+
+  color: #fff;
+  background-color: #e1425d;
+}
+
+.sct {
+  padding-top: 90px;
+}
+
+.content {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* 그리드박스 */
+.titgrid {
+  display: grid;
+  margin: 0 auto;
+
+  grid-template-columns: repeat(3, 2fr);
+  grid-column-gap: min(1vw, 15px);
+  grid-row-gap: min(1.5vw, 20px);
+
+  cursor: pointer;
+}
+
+/* 갤러리박스 */
+.titgrid > div {
+  position: relative;
+  aspect-ratio: 280 / 330;
+  overflow: hidden;
+
+  display: flex;
+
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0 15px;
+}
+
+/* 그리드 이미지 */
+.titgrid > div > img {
+  margin-top: 1em;
+  width: 100%;
+  height: 82%;
+}
+
+/* 아이콘글자 박스 */
+.titgrid aside {
+  position: absolute;
+  bottom: 13px;
+  padding-right: 10px;
+}
+
+/* 아이콘이미지 박스 */
+.titgrid aside img {
+  vertical-align: -6px;
+}
+aside > span {
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  color: #5c5c5c;
+  padding-left: 4px;
+}
+/* 하단버튼 */
+.btn{
+  width: max(1vw,180px);
+  height: 5vh;
+  border-radius: 35px;
+  border: 5px outset #f49bba;
+  background-color: #fff;
+  
+  margin: 55px 0 120px 0;
+}
+.btn a{
+  display: block;
+  font-family: "Nanum Gothic", sans-serif;
+  font-size: 16px;
+  font-weight: 750;
+  color: #f49bba;
+}
+.btn:hover{
+  background-color: #f49bba;
+}
+.btn:hover a{
+  color: #fff;
+}
+

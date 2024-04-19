@@ -1,0 +1,166 @@
+@charset "utf-8";
+
+/* SOLAR SYSTEM PJ 메인 페이지 CSS - main.css */
+
+/* 외부 공통 CSS 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+/* 스크롤바 안보이게 하기 */
+body{
+  -ms-overflow-style: none;
+}
+body::after{
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #000;
+  animation: introAni 1s ease-in-out forwards;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes introAni {
+  0%{
+    opacity: 1;
+  }
+  90%{
+    opacity: 0;
+    height: 100vh;
+  }
+  100%{
+    opacity: 0;
+    height: 0;
+  }
+}
+
+/************* 2. 메인영역 **************/
+main.swiper1{
+  /* 슬라이드부모 */
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* 넘치는 자식요소 숨기기 */
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.swiper1 .swiper-wrapper{
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.swiper1 .swiper-wrapper li{
+  position: relative;
+  flex-shrink: 0;
+  flex-basis: 100%;
+}
+.swiper1 .swiper-wrapper li::before{
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.4) 10%, rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.4) 100%);
+}
+.swiper1 .swiper-wrapper li img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.swiper1 .swiper-wrapper .tbx{
+  position: absolute;
+  left: 200px;
+  top: 250px;
+  width: 20vw;
+  color: #fff;
+  font-family: 'Kanit', sans-serif;
+}
+.swiper1 .swiper-wrapper .tbg1{
+  top: 45vh;
+  padding: 25px;
+  width: 35vw;
+  background-color: rgba(28, 28, 28, 0.601);
+}
+.swiper1 .swiper-wrapper .tbg2{
+  top: 33vh;
+  padding: 25px;
+  width: 18vw;
+  background-color: rgba(28, 28, 28, 0.601);
+}
+.swiper1 .swiper-wrapper .tbx h2{
+  font-size: 4.2rem;
+  line-height: 1.2;
+  margin-bottom: 30px;
+}
+.swiper1 .swiper-wrapper .tbx p{
+  font-size: 2.2rem;
+  font-weight: 200;
+  line-height: 1.5;
+  margin-bottom: 30px;
+}
+.swiper1 .swiper-wrapper .tbx .btn{
+  width: 120px;
+  text-align: center;
+}
+.swiper1 .swiper-wrapper .tbx .btn a{
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 8px 5px;
+  box-sizing: border-box;
+  font-size: 1.6rem;
+  font-weight: 400;
+  color: #a9d3ee;
+  border: 1px solid #ffffff4b;
+  transition: .5s;
+}
+.swiper1 .swiper-wrapper .tbx .btn:hover a{
+  color: #fff;
+  border: 1px solid #ffffff;
+}
+
+/*이동버튼*/
+:root{
+  --swiper-theme-color: #c9d5f7;
+}
+.swiper-button-next:after,.swiper-button-prev:after {
+  text-shadow: 1px 1px 3px #333;
+}
+.swiper1 .swiper-button-next:after{
+  margin-right: 50px;
+}
+.swiper1 .swiper-button-prev:after{
+  margin-left: 50px;
+}
+
+/*블릿버튼*/
+.swiper1 .swiper-horizontal>.swiper-pagination-bullets,
+.swiper1 .swiper-pagination-bullets.swiper-pagination-horizontal,
+.swiper1 .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: 40px;
+}
+.swiper1 .swiper-pagination-bullet { 
+  width: 12px; 
+  height: 12px; 
+  background: transparent; 
+  border: 1px solid #c9d5f7;
+  opacity: 1; 
+}
+.swiper1 .swiper-pagination-bullet-active { 
+  width: 40px; 
+  transition: width .5s; 
+  border-radius: 5px; 
+  background: #c9d5f7;
+  border: 1px solid transparent; 
+}
+
+
+

@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+@media screen and (max-width: 1000px) {
+    .contents {
+        /* width: 579px; */
+        width: min(100vw,800px);
+        min-width: auto;
+    }
+
+
+}
+@media screen and (max-width: 700px) {
+    .contents {
+        /* width: 579px; */
+        width: min(100vw,400px);
+    }
+
+
+}

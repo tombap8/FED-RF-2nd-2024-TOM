@@ -1,0 +1,516 @@
+@charset "UTF-8";
+
+/* 서브페이지(episode2) CSS - episode2.css */
+
+@import url(./reset.css);
+@import url(./common.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap');
+
+body {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+
+.earth {
+    display: none;
+}
+
+#act1 {
+    display: none;
+}
+
+.cont {
+    max-width: 1200px;
+    background-color: #000;
+    padding: 0 20px;
+}
+
+/* 1. 메인이미지 박스 */
+.mimg {
+    position: relative;
+    width: min(70vw, 1200px);
+    margin: 0 auto;
+}
+
+/* 메인이미지 */
+.mimg figure img {
+    width: 100%;
+    height: 100%;
+}
+
+/* 가상요소로 메인이미지에 어두운 그라데이션 배경 */
+.mimg_img::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background:linear-gradient(270deg, #00000000 0%, #0000000A 16%, #00000021 29%, #00000042 41%, #0000006B 51%, #00000094 61%, #000000BD 70%, #000000DE 79%, #000000F5 89%, #000000FF 100%);
+    z-index: 1;
+}
+
+/* 타이틀 이미지 */
+.mimg_tit {
+    position: absolute;
+    width: min(25vw, 450px);
+    bottom: 5%;
+    left: 5%;
+    text-align: center;
+    color : #fff;
+    z-index: 2;
+}
+
+/* 타이틀 이미지 밑에 글씨 */
+.mimg_tit figcaption {
+    padding-top: 20px;
+    font-size: min(2vw, 20px);
+}
+
+/* 2. 영화소개란 */
+.mcont {
+    display: flex;
+    margin-top: 40px;
+}
+
+/* 포스터 */
+.mposter {
+    width: min(30vw, 450px);
+}
+
+.mposter img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* 영화소개텍스트 */
+.mtxt {
+    width: min(60vw, 800px);
+    padding:0 20px 0 40px;
+    box-sizing: border-box;
+    color : #b5b7b7;
+}
+
+.mtxt h2 {
+    font-size: 34px;
+    color : #fff;
+}
+
+.mtxt h3{
+    font-size: 14px;
+}
+
+.mtxt h3 span:nth-child(2) {
+    font-weight: normal;
+}
+
+.mtxt p {
+    font-size: 16px;
+}
+
+
+/* 스크롤등장 초기화 클래스 */
+.setit{
+    transform: translateY(10%);
+    opacity: 0;
+    transition: all .8s ease-in-out;
+}
+/* 스크롤등장 클래스 .setit + .on */
+.setit.on{
+    transform: translateY(0);
+    opacity: 1;
+}
+
+
+
+/* 3. 캐릭터 */
+
+.mcha {
+    color : #fff;
+}
+
+.msubtit {
+    padding: 50px 0 10px;
+    color : #fff;
+    border-bottom: 1px solid #555;
+}
+
+/* 캐릭터 목록 */
+.mcha_list {
+    padding-top: 20px;
+}
+.mcha_list ul {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-column-gap: min(5vw, 50px);
+    grid-row-gap: min(1.5vw, 15px);
+}
+
+.mcha_list li {
+    cursor: pointer;
+}
+
+.mcha_list li:hover .mcha_wrap>div img {
+    transform: scale(1.1);
+}
+
+.mcha_wrap>div:first-child {
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    border-radius: 15px;
+}
+
+/* 캐릭터 이미지 */
+.mcha_wrap>div img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: .3s;
+}
+
+
+.mcha_beam span {
+    display: inline-block;
+    height: 5px;
+    background-color: rgba(255,255,255,0.5);
+
+}
+.mcha_beam span:first-child {
+    width: 25px;
+    border-radius: 20px;
+}
+.mcha_beam span:nth-child(2) {
+    width: 5px;
+    border-radius: 50%;
+}
+
+/* 오버시 빛나게 */
+.mcha_list li:hover .mcha_beam span,
+.mcha_contwrap:hover .mcha_beam span,
+.mvideo_cont li:hover .mcha_beam span,
+.gall_subbx li:hover .mcha_beam span {
+    background-color: rgba(255,255,255,1);
+    box-shadow: 0 0 5px 1px #fff;
+    transition: .5s;
+}
+
+.mcha_wrap h4 {
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.mcha_list li:hover h4 {
+    color : rgba(255,255,255,0.8);
+    transition: color .5s;
+}
+
+/* 캐릭터 소개 출력용 박스 */
+.mcha_cont, .mvid_dtcont {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+/* 가상요소로 뒷배경 검은거 */
+.mcha_cont::before, .mvid_dtcont::before {
+    content: '';
+    position: absolute;
+    top: -200%;
+    left: -50%;
+    width: 200%;
+    height: 200vh;
+    z-index: -1;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.mcha_contwrap {
+    display: flex;
+    border-radius: 20px;
+}
+.mcha_cont_img {
+    width: 800px;
+}
+
+.mcha_cont_img img{
+    width: 100%;
+    height: 100%;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    object-fit: cover;
+}
+
+.mcha_cont_txt {
+    width: 400px;
+    padding: 10px 20px;
+    background-color: #1d1e1f;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+}
+
+/* 닫기버튼 */
+.cbtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border: none;
+    background-color: transparent;
+    color : #fff;
+    font-size: 40px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* 4. 비디오 */
+.mvideo_cont {
+    width: 1200px;
+    overflow-x: hidden;
+    color: #fff;
+    position: relative;
+    padding-top: 20px;
+    /* background-color: #fff; */
+}
+
+/* 목록 넘어가기 버튼 */
+.vlist_btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: #000;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 99;
+    background-color: #fff;
+    border-radius: 50%;
+    font-size: 20px;
+    line-height: 25px;
+    cursor: pointer;
+    transition: .4s;
+    border : none;
+}
+
+.vlist_btn:hover {
+    background-color: #ccc;
+}
+
+.btn_next {
+    right: 0;
+}
+
+.btn_next.btn_off{
+    display: none;
+}
+
+.btn_pre.btn_off{
+    display: none;
+}
+
+
+.mvideo_cont ul{
+    display: flex;
+    justify-content: space-between;
+    gap: 20px 0;
+    position: relative;
+    top: 0;
+    left: 0;
+    transition : left .5s;
+}
+
+.mvideo_cont li {
+    cursor: pointer;
+    /* outline: 2px dashed gray; */
+}
+
+
+
+.mvideo_cont li:first-child {
+    padding:0 40px 0 40px;
+}
+
+.mvideo_cont li:nth-child(4) {
+    padding: 0 40px 0 30px;
+}
+
+.mvideo_cont li:nth-child(2), 
+.mvideo_cont li:nth-child(3), 
+.mvideo_cont li:nth-child(5) {
+    padding-right: 40px;
+}
+
+/* 비디오 목록 이미지 출력 */
+.mvideo_imgbx {
+    position: relative;
+    width: 350px;
+    overflow: hidden;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+/* 가상요소로 그라데이션 주기 */
+.mvideo_imgbx::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    /* min-height: 4em; */
+    display: block;
+    z-index: 1;
+    background: linear-gradient(to top, rgba(1,5,15,0.65), rgba(1,5,15,0) 40px);
+}
+
+.mvideo_imgbx img{
+    width: 100%;
+    transition: .3s;
+    object-fit: cover;
+}
+
+.mvideo_cont li:hover .mvideo_imgbx img{
+    transform: scale(1.1);
+}
+.mvideo_imgbx div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+/* 재생 모양 */
+.mvideo_imgbx>div span:first-child{
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(0,0,0,0.5);
+    transform: translate(-50%, -50%);
+}
+
+/* 시간표시 */
+.mvideo_imgbx>div span:nth-child(2) {
+    display: block;
+    position: absolute;
+    bottom: 10px;
+    font-size: 12px;
+    background-color: rgba(0,0,0,0.5);
+    padding: 5px 10px;
+    border-radius: 20px;
+    z-index: 2;
+}
+
+/* 비디오 타이틀 박스 */
+.mvideo_txtbx {
+    height: 105px;
+    padding: 10px 10px;
+    background-color:#1d1e1f;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    box-sizing: border-box;
+}
+
+.mvideo_txtbx h4 {
+    padding-top: 10px;
+}
+
+/* 비디오 출력용 박스 */
+.mvid_data iframe {
+    aspect-ratio: 640 / 360;
+    width: 640px;
+}
+
+.mvid_data .cbtn {
+    right : -50px;
+}
+
+/* 5.갤러리 */
+.mgall_contbx {
+    padding-top: 20px;
+    min-height: 500px;
+    color: #fff;
+}
+
+.mgall_contbx h3 {
+    padding-bottom: 20px;
+}
+
+.gall_subbx {
+    position: relative;
+}
+/* 넘어가기 버튼 */
+.glist_btn {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    color: #fff;
+    background-color: transparent;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1;
+    font-size: 20px;
+    line-height: 25px;
+    cursor: pointer;
+    transition: .4s;
+    border : none;
+}
+
+.glist_btn:hover {
+    color: #ccc;
+}
+
+.gall_subbx .btn_pre {
+    display: inline-block;
+}
+
+.gall_subbx ul {
+    position: relative;
+    left: 0;
+    overflow: hidden;
+}
+
+.gall_wrap {
+    display: flex;
+}
+
+/* 공통 이미지 박스 */
+.gall_imgbx {
+    aspect-ratio: 1280 /780;
+    width: 700px;
+}
+
+.gall_imgbx img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 공통 텍스트 박스 */
+.gall_txtbx {
+    width: 500px;
+    background-color:#1d1e1f;
+    padding: 20px 20px 0;
+    box-sizing: border-box;
+}
+
+.gall_cnt {
+    font-size: 14px;
+    padding-bottom: 10px;
+}
+
+.gall_txtbx p {
+    padding-right: 10px;
+}
+
+
+

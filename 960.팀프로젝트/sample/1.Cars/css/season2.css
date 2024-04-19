@@ -1,0 +1,519 @@
+@charset "utf-8";
+
+/* 외부CSS파일 합치기 */
+@import url(./reset.css);
+@import url(./common.css);
+@import url(./fonts.css);
+
+/* 서브 페이지 기본값 셋팅 */
+#cont {
+    font-family: "neutraltextbook";
+    font-size: 22px;
+    color: rgba(29, 29, 29, 0.702);
+}
+p {
+    /* p태그 리셋 */
+    margin: 0;
+    padding: 0;
+
+    text-align: justify;
+    line-height: 1.6;
+}
+a {
+    /* reset.css 셋팅값 변경 */
+    width: auto;
+    height: auto
+}
+#cont img {
+    vertical-align: top;
+    object-fit: cover;
+}
+.font_tit {
+    /* 제목폰트 설정 */
+    font-family: "dominikth";
+    text-align: center;
+}
+
+/************* 1번 컨텐츠 *************/
+.ct1 {
+    /* 부모자격 */
+    position: relative;
+}
+.bg_ct1 {
+    width: 100%;
+    height: 100vh;
+
+    background: url(../image/car2_main.jpg) no-repeat center/cover;
+    filter: brightness(40%);
+}
+.tit_ct1 {
+    position: absolute;
+    /* 박스가운데 정렬 */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 50vw;
+
+    color: #fff;
+}
+.tit_ct1 h1 {
+    margin-bottom: 15%;
+
+    text-align: center;
+    font-size: 70px;
+}
+
+/************* 2번 컨텐츠 *************/
+.ct2 {
+    display: flex;
+}
+.imgbx {
+    width: 50%;
+}
+.slide2 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+.slide2 li {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transition: 2s;
+}
+.slide2 li img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+.slide2 li.on {
+    opacity: 1;
+}
+.txtbx {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    padding: 0 5vw;
+    width: 50%;
+    box-sizing: border-box;
+}
+.txtbx img {
+    width: 270px;
+    margin-bottom: 30px;
+}
+
+/************* 3번 컨텐츠 *************/
+
+.ct3 {
+    display: flex;
+}
+.ct3 h2 {
+    font-size: 50px;
+}
+.slidebx {
+    /* .abtn의 부모 */
+    position: relative;
+
+    width: 50%;
+}
+.slidebx a {
+    display: none;
+}
+.slide3 {
+    position: relative;
+
+    width: 100%;
+    height: 100vh;
+}
+.slide3 li {
+    /* 부모자격 */
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    opacity: 0;
+    transition: 1s;
+}
+.slide3 li img {
+    width: 100%;
+    height: 100%;
+
+    filter: brightness(40%);
+}
+.slide3 li.op1 {
+    opacity: 1;
+}
+.slide3 li .txt {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    width: 70%;
+
+    color: #fff;
+}
+.txt h3 {
+    margin-bottom: 8vh;
+    font-size: 38px;
+}
+.sbtn {
+    position: absolute;
+    top: 50%;
+
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.sbtn img {
+    width: 80px;
+}
+.right {
+    right: 0;
+}
+.sbtn:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.btns {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 28px 0;
+
+    width: 50%;
+}
+.btns h2 {
+    margin-bottom: 20px;
+    color: #000;
+}
+.btns div {
+    position: relative;
+
+    width: 55%;
+    padding: 25px 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    
+    border: 1px solid #c2c2c2;
+    border-radius: 19px;
+    box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+    
+    opacity: 0.6;
+    transition: color 0.3s, opacity 0.3s;
+
+    cursor: pointer;
+}
+.btns div::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: -100%;
+    
+    background-color: #5a4d4d92;
+    transition: all 0.3s ease-in-out;
+    z-index: -1;
+}
+
+.btns div:hover::before {
+    transform: translateX(100%);
+}
+.btns div img {
+    position: absolute;
+    top: 5px;
+    right: 20px;
+
+    height: 90%;
+}
+.btns div.op1 {
+    font-weight: bold;
+    background-color: #5a4d4d92;
+    color: #fff;
+    opacity: 1;
+}
+.btns div:hover {
+    font-weight: bold;
+    opacity: 1;
+    color: #fff;
+}
+.btns div.op1:hover::before {
+    display: none;
+}
+
+/************* 4번 컨텐츠 *************/
+.ct4 h2 {
+    margin: 0 auto;
+    padding: 4% 0;
+
+    font-size: 50px;
+    color: #fff;
+}
+.ct4 {
+    width: 100%;
+    height: calc(100vh - 100px);
+    background-color: #000;
+}
+.sbx {
+    position: relative;
+    overflow: hidden;
+    margin: 0 auto;
+
+    width: 50%;
+    height: 50%;
+}
+.slide4 {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+}
+.slide4 li {
+    flex-shrink: 0;
+    flex-basis: 100%;
+}
+.slide4 li a{
+    width: 100%;
+    height: 100%;
+}
+.slide4 li a img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+}
+
+/* 인디케이터 */
+.indic {
+    display: flex;
+    justify-content: center;
+    gap: 3%;
+
+    width: 100%;
+    height: 100%;
+
+    padding: 15px;
+    box-sizing: border-box;
+}
+.indic li {
+    position: relative;
+    
+    transition: 0.3s;
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+.indic li img {
+    width: 100%;
+    height: 100%;
+}
+.indic li span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px;
+    color: #fff;
+}
+.ibtx {
+    margin: 0 auto;
+    margin-top: 3%;
+
+    width: 45%;
+    height: 13%;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.129);
+}
+.indic li.on4 {
+    opacity: 1;
+    outline: 4px solid red;
+}
+#mimg {
+    display: none;
+}
+.mimg {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.mimg li {
+    position: relative;
+    width: 100%;
+}
+.mimg li img {
+    width: 100%;
+}
+.mimg li a::after{
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 58px;
+    height: 58px;
+
+    transform: translate(-50%,-50%);
+    background: url(../image/car2_btn.png) no-repeat center/cover;
+}
+
+/************* 미디어쿼리 *************/
+/* 1350px 사이즈이하 */
+ @media screen and (max-width: 1350px) {
+    .btns div {
+        padding: 25px 25px;
+    }
+    .btns span {
+        font-size: 19px;
+    }
+    .sbx {
+        width: 60%;
+    }
+}
+/* 1200px 사이즈이하 */
+@media screen and (max-width: 1200px) {
+    #cont {
+        font-size: 20px;
+    }
+    .btns div {
+        padding: 25px 20px;
+    }
+    .btns div img {
+        height: 80%;
+        top: 10px;
+        right: 10px;
+    }
+    .btns span {
+        font-size: 18px;
+    }
+    .txtbx img {
+        width: 250px;
+    }
+}
+/* 1024px 사이즈이하 */
+@media screen and (max-width: 1024px) {
+    #cont {
+        font-size: 18px;
+    }
+    .ct4 {
+        height: calc(100vh - 160px);
+    }
+    .tit_ct1 {
+        width: 70vw;
+    }
+    .tit_ct1 h1 {
+        margin-bottom: 13%;
+        font-size: 60px;
+    }
+    .imgbx,
+    .btns {
+        display: none;
+    }
+    .txtbx,
+    .slidebx {
+        width: 100%;
+    }
+    .slidebx a {
+        display: block;
+    }
+    .ibtx {
+        display: none;
+    }
+    .slide3,
+    .txtbx {
+        height: 50vh;
+    }
+    .txtbx{
+        padding: 0 100px;
+    }
+    .txtbx img {
+        width: 180px;
+        margin-bottom: 15px;
+    }
+    .sbx {
+        width: 60%;
+    }
+}
+@media screen and (max-width: 740px) {
+    .tit_ct1 {
+        width: 85vw;
+    }
+    .txtbx img {
+        display: none;
+    }
+    .tit_ct1 h1 {
+        font-size: 50px;
+    }
+    #cont {
+        font-size: 18px;
+    }
+    .ct4 h2{
+        font-size: 40px;
+    }
+    .txt h3 {
+        font-size: 30px;
+    }
+    .txtbx {
+        padding: 0 50px;
+    }
+    .sbx {
+        display: none;
+    }
+    #mimg{
+        display: block;
+        margin: 0 auto;
+        width: 400px;
+    }
+    .mimg li img {
+        width: 100%;
+        height: 140px;
+      }
+      .mimg {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    
+}
+@media screen and (max-width: 500px) {
+    .ct4 h2 {
+      padding: 30px 0;
+      font-size: 38px;
+    }
+    #cont {
+        font-size: 16px;
+    }
+    .sbtn img {
+        width: 59px;
+    }
+    #mimg {
+        width: 300px;
+    }
+    .mimg{
+      gap: 10px;
+    }
+}
+@media screen and (max-width: 375px) {
+    .tit_ct1,
+    .txtbx {
+        min-width: 300px;
+    }
+    #cont {
+        font-size: 17px;
+    }
+    .txt h3 {
+        margin-bottom: 20px;
+        font-size: 33px;
+    }
+}

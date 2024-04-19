@@ -1,0 +1,289 @@
+@charset "utf-8";
+
+/* A. 상단부분 */
+#top {
+    width: 100%;
+    padding: 2vh 0;
+    /* background-color: #ffffff; */
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
+.top > a {
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+}
+
+/* 1. 페이지타이틀 */
+.tit{
+    left: calc(50% - 100px);
+    width: 200px;
+    height: 100px;
+}
+
+/* nav */
+#top .btn_con {
+    position: absolute;
+    top: 50%;
+    right: 5vw;
+    transform: translateY(-50%);
+}
+
+.top .btn_con a {
+    font-size: min(26px, 6vw);
+    color:#ffffff;
+    font-weight: bold;
+    font-family: dominikth;
+}
+
+.top .btn_con a.black {
+    color:#000000;
+}
+
+#nav_bg {
+    display: none;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    background-color: transparent;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 110;
+}
+
+#nav {
+    display: none;
+    width: 100%;
+    margin: 0 auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 110;
+    animation: open 0.5s forwards;
+}
+
+#nav.open {
+    animation: open 0.5s forwards;
+}
+
+#nav.close {
+    animation: close 0.5s forwards;
+}
+
+.left_nav, .right_nav {
+    height: 100%;
+}
+
+#nav > .contents_con {
+    display: flex;
+    width: 100%; 
+}
+
+#nav > .contents_con > .left_nav {
+    width: 70%;
+    height: 100vh;
+}
+
+#nav > .contents_con > .right_nav {
+    width: 30%;
+    height: 100vh;
+    background-color: #ffffff;
+    border-left: 5px solid #bc2521;
+    position: relative;
+    box-sizing: border-box;
+}
+
+#nav > .contents_con > .right_nav .close_btn {
+    position: absolute;
+    top: calc(2vh + 50px);
+    right: 5vw;
+    transform: translateY(-50%);
+}
+
+#nav > .contents_con > .right_nav .close_btn a {
+    font-size: min(26px, 6vw);
+    color: #000000;
+    font-weight: bold;
+    font-family: dominikth;
+}
+
+#nav > .contents_con > .right_nav .list_con {
+    width: 100%;
+    padding-left: 20%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    box-sizing: border-box;
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+}
+
+#nav > .contents_con > .right_nav .list_con li {
+    margin-top: 50px;
+}
+
+#nav > .contents_con > .right_nav .list_con li a {
+    display: inline;
+    font-size: min(34px, 12vw);
+    color: #000000;
+    font-weight: bold;
+    font-family: dominikth;
+}
+
+#nav > .contents_con > .right_nav .list_con li:first-child{
+    margin-top: 0;
+}
+
+/* C. 하단부분 */
+#info {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    background-color: #000000;
+}
+
+#info > .info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 5vw;
+}
+
+/* 5. 제작사 로고 */
+#info .copyLogo img {
+    height: 60px;
+}
+
+/* 6. 하단정보 */
+#info address {
+    font-family: "dominikth";
+    font-style: normal;
+    color: rgb(243, 242, 242);
+    font-size: 20px;
+    line-height: 100px;
+}
+
+/* IR 배경이미지 숨기기 */
+.bld {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* li 박스 */
+.sns li {
+    width: 34px;
+    height: 34px;
+    float: left;
+    margin: 2px;
+    background: url(../image/sprites_logo.png) no-repeat;
+}
+
+/* 스프라이츠 위치 */
+.sns li:nth-child(1){
+    background-position: -465px -429px;
+}
+.sns li:nth-child(2){
+    background-position: -509px -429px;
+}
+.sns li:nth-child(3){
+    background-position: -551px -429px;
+}
+.sns li:nth-child(4){
+    background-position: -593px -429px;
+}
+
+@media(max-width:1024px){
+    #nav > .contents_con > .left_nav {
+        width: 50%;
+    }
+    
+    #nav > .contents_con > .right_nav {
+        width: 50%;
+    }
+}
+
+@media(max-width:750px){
+    .top > a {
+        width: 100px;
+    }
+
+    .top .btn_con a {
+        font-size: min(20px, 6vw);
+        color:#ffffff;
+        font-weight: bold;
+        font-family: dominikth;
+    }
+
+    .tit {
+        left: calc(50% - 75px);
+        width: 100px;
+        height: 50px;
+    }
+
+    #nav > .contents_con > .left_nav {
+        width: 30%;
+    }
+    
+    #nav > .contents_con > .right_nav {
+        width: 70%;
+    }
+
+    #nav > .contents_con > .right_nav .close_btn a {
+        font-size: min(20px, 6vw);
+        color: #000000;
+        font-weight: bold;
+        font-family: dominikth;
+    }
+
+    #info {
+        margin: 0 auto;
+        height: 140px;
+    }
+
+    #info > .info {
+        display: block;
+        padding: 0;
+        text-align: center;
+    }
+
+    #info .copyLogo img {
+        height: 50px;
+    }
+
+    #info address {
+        font-size: 12px;
+        line-height: 20px;
+    }
+
+    .sns {
+        width: 152px;
+        margin: 10px auto 0;
+    }
+}
+
+/* keyframe */
+@keyframes open {
+    from {
+        transform: translateX(100%);
+    }
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes close {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+    }
+}

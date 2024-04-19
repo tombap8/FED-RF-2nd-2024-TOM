@@ -1,0 +1,260 @@
+@charset "utf-8";
+/* 아카이브 CSS - main.css */
+
+/* 웹폰트CDN */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Single+Day&family=Sunflower:wght@500&display=swap");
+
+/* 
+font-family: 'Bebas Neue', cursive;
+font-family: 'Single Day', cursive;
+font-family: 'Sunflower', sans-serif;
+
+ */
+
+html {
+    scroll-behavior: smooth;
+    /* #아이디명 스크롤 이동시 부드럽게 애니메이션 이동함! */
+    font-size: 10px;
+    /* rem계산시 쉽도록 10px */
+}
+body {
+    overflow: hidden;
+    font-family: "Bebas Neue", "Single Day";
+}
+
+/* 상단영역 */
+#top {
+    position: fixed;
+    width: 100%;
+    /* 판타롱스타킹 이므로 100%로 가로폭 확장! */
+    height: 300px;
+    top: 0;
+    left: 0;
+    /* 맨위로 올리기 */
+    z-index: 9999;
+}
+
+/* ul 초기화 (3無) */
+ul,
+ol {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* 전체 타이틀 */
+.tit {
+    font-size: 5rem;
+    font-family: "Sunflower";
+    color: lightseagreen;
+}
+
+.part small a{
+    color: pink;
+    font-size: 20px;
+}
+
+/************** GNB메뉴 **************/
+/* GNB박스 width 크기를 주고 마영오! */
+.gnb {
+    width: 600px;
+    margin: 0 auto;
+    white-space: nowrap;
+    font-family: "Sunflower";
+}
+/* li 옆으로 흐르게 float */
+.gnb li {
+    float: left;
+    text-align: center;
+    width: 150px;
+}
+/* ul박스 가상요소로 clear처리 */
+.gnb ul::after {
+    content: "";
+    display: block;
+    clear: both;
+}
+/* GNB a요소 */
+.gnb a {
+    /* 글자색,밑줄없앰 */
+    color: lime;
+    text-decoration: none;
+
+    font-size: 30px;
+    /* 그림자로 글자 테두리주기
+    블러없는 그림자 4개사용 */
+    text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    /* 보이는 화면에 기준하여 높이값을 설정함
+-> 직계 하위 자식요소가 높이값을 %로 설정할때 
+body가 기준이 된다!  */
+}
+
+/* 페이지박스 : div 블록박스 */
+.mybox {
+    width: 100%;
+    height: 100%;
+    /*  */
+
+    /* 배경이미지넣기 bgi */
+    background-image: url(../imgs/worksbg.jpg);
+    /* 배경반복여부 bgr 반복안함(no-repeat) */
+    background-repeat: no-repeat;
+    /* 배경고정: bga - 고정의 기준은 보이는 화면! */
+    background-attachment: fixed;
+    /* 배경위치: bgp */
+    background-position: center;
+    /* 배경 크기 : 채우기(cover) bgz */
+    background-size: cover;
+}
+/* 두번째 페이지박스 */
+#pg2 {
+    background-image: url(../imgs/001.jpg);
+}
+/* 세번째 페이지박스 */
+#pg3 {
+    background-image: url(../imgs/002.jpg);
+}
+/* 네번째 페이지박스 */
+#pg4 {
+    background-image: url(../imgs/005.jpg);
+}
+
+/* 페이지별 컨텐츠 박스 */
+.pwrap {
+    position: relative;
+    top: 300px;
+    width: 90%;
+    height: calc(100% - 350px);
+    /* 부모높이값 보다 300px만큼 조금더 그 크기를 뺀
+    높이값은 calc()로 계산한다! */
+
+    /* 플렉스박스 */
+    display: flex;
+
+    background-color: rgba(255, 255, 255, 0.525);
+    /* 둥근모서리 brad */
+    border-radius: 20px;
+    /* 가로중앙 */
+    /* 마영오! 씨를 무대 중앙으로 모시겠습니다! */
+    margin: 0 auto;
+    /* 양쪽 마진이 auto이면 양쪽을 등분해서 가로 중앙이 된다! */
+}
+
+/* .pwrap 하위 .part박스 */
+.part {
+    flex: 1;
+    /* 1:1 비율로 등분할! */
+    padding: 50px;
+}
+/* 서브타이틀 */
+.part h2 {
+    background-color: rgba(0, 0, 0, 0.444);
+    padding: 20px;
+    border-radius: 20px;
+    color: #fff;
+    font-size: 4rem;
+    text-align: center;
+    text-shadow: 2px 2px 2px #000;
+}
+.part h2 span {
+    display: inline-block;
+}
+  
+.part h2 span{
+    animation: titAni 1s ease-in-out infinite;
+}
+
+@keyframes titAni {
+    0%{
+        transform: translateY(0);
+    }
+    10%{
+        transform: translateY(-50%);
+    }
+    20%{
+        transform: translateY(0);
+    }
+}
+
+/* .part a요소 */
+.part a {
+    display: inline-block;
+    color: #222;
+    text-decoration: none;
+    font-size: 3.5rem;
+}
+/* 다운로드 */
+.part a.dld{
+    font-weight: normal;
+    font-size: 1vw;
+    margin-left: 20px;
+}
+/* .part a요소 */
+.part h3 {
+    color: #222;
+    text-decoration: none;
+    font-size: 3rem;
+    padding-left: 50px;
+    font-weight: normal;
+}
+.part h3 a {
+    display: inline-block;
+    color: #222;
+    text-decoration: none;
+    font-size: 3rem;
+    margin-left: 20px;
+}
+/* 가상요소로 밑줄 애니만들기
+        대상선택:
+        1. GNB메뉴의 상위메뉴 a요소
+        2. 사이드메뉴의 1,2번 li하위 a요소 */
+.part a::after{
+    content: "";
+    display: block;
+
+    /* 변경속성 */
+    width: 0%;
+    margin-left: 100%;
+
+    height: 5px;
+    margin-top: 1px;
+    background-color: palevioletred;
+    /* 트랜지션: 속시이지 trs */
+    transition: all 0.3s;
+}
+/* 오버시 바 보이기 */
+.part a:hover::after {
+    width: 100%;
+    margin-left: 0%;
+    /* 마진left값은 트랜지션 안되고 
+            width만 돼야한다! */
+    transition-property: width;
+    /* 오버시 트랜지션 속성을 width만 적용! */
+}
+
+/* pg1 - 공통프로젝트 아이콘 */
+#pg1 .part li::before {
+    content: "🎭";
+    margin-right: 10px;
+    font-size: 3.5rem;
+}
+.part li{
+    padding: 5px 0;
+}
+
+/* h1요소 */
+.tit {
+    /* 기본마진없앰 */
+    margin: 0;
+    /* 패딩 */
+    padding: 20px;
+    /* 글자중앙 */
+    text-align: center;
+}

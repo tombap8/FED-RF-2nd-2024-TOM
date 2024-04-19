@@ -1,0 +1,151 @@
+
+@import url(./reset.css);
+@import url(./footer.css); 
+@import url(./footer-media.css); 
+@import url(./main.css);
+@import url(./main-media.css);
+@import url(./header.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+/* ***** MEDIA ***** */
+  @import url('https://fonts.googleapis.com/css2?family=Black+Han+Sans&display=swap');
+/* ***** MEDIA ***** */
+
+main {
+  margin-top: 0;
+  min-height: 100vh;
+  width: 100vw;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+/* ***** MEDIA ***** */
+
+#media_all{
+  width: min(64vw,1000px);
+}
+
+.media_top{
+  margin: 50px 0;
+}
+
+.media_head{
+  margin: 30px 0;
+}
+.media_head>h2{
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 34px;
+  color: #1e1e1e;
+}
+
+.media_head>p{
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 20px;
+  color: #8c8c8c;
+}
+
+.media_Btns{
+  display: flex;
+  justify-content: center;
+}
+
+.media_Btns div{
+  width: 33.3333%;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #8c8c8c;
+
+  border: 1px solid #e4e4e4;
+  border-bottom: 1px solid #8c8c8c;
+  
+  transition: 0.3s ease-in;
+  cursor: pointer;
+}
+
+.media_Btns div>a{
+  color: #8c8c8c;
+}
+
+
+.media_Btns div:last-child,
+.media_Btns div:hover{
+  background-color: #e1425d;
+}
+
+.media_Btns div:last-child a,
+.media_Btns div:hover a{
+  color: #fff;
+}
+
+.media_con{
+  text-align: center;
+}
+
+.media_con iframe{
+  aspect-ratio: 16/9;
+  width: min(64vw,1000px);
+  margin-bottom: 50px;
+}
+
+.media_con img{
+  width: min(64vw,1000px);
+/* position: relative;
+left: 50%;
+transform: translateX(-50%); */
+}
+
+.media_con button{
+  padding: 20px 40px;
+  border-radius: 50px;
+  margin-bottom: 50px;
+  border: 2px solid #e966a1;
+
+  box-sizing: border-box;
+  font-family: 'Black Han Sans', sans-serif;
+  font-size: 30px;
+  font-weight: normal;
+  color: #e966a1;
+
+}
+
+.media_con button:hover{
+  background-color: #e966a1;
+  color: #fff;
+}
+
+@media screen and (max-width: 767px) {
+  .media_top{
+    margin: 30px 0;
+  }
+
+  .media_con iframe{
+    margin-bottom: 30px;
+  }
+
+  .media_con button{
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin: 30px 0 50px;
+    border: 2px solid #e966a1;
+  
+    box-sizing: border-box;
+    font-family: 'Black Han Sans', sans-serif;
+    font-size: 20px;
+    font-weight: normal;
+    color: #e966a1;
+  
+  }
+}
+
+/* ***** MEDIA ***** */
+
+
+
+
+

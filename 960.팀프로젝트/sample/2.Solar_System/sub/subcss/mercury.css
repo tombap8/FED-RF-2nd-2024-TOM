@@ -1,0 +1,315 @@
+@charset "utf-8";
+
+/* SOLAR SYSTEM PJ [ mercury ] 서브 페이지  CSS - mercury.css */
+
+/* 외부 공통 CSS */
+@import url(./reset.css);
+@import url(./core.css);
+@import url(./common.css);
+
+.mercury {
+    font-family: "Kanit", sans-serif;
+    background: url(../subimg/Mercury_shooting_star01.gif) repeat top/50%;
+}
+
+/* 수성01 */
+.mercury01 {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: url(../subimg/Mercury_galaxy.png) center/cover;
+}
+.mercury01_video{
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    border-radius: 50%;
+    top: 12%;
+    right: 5%;
+    overflow: hidden;
+}   
+.mercury01_video video{
+    position: absolute;
+    width: 740px;
+    top: -20px;
+    right: -20px;
+    opacity: 0;
+    animation: showMercury 2s 1 ease-in-out forwards    ;
+}
+@keyframes showMercury {
+    to{
+        opacity: 1;
+    }
+}
+.mercury01_text {
+    color: #fff;
+    position: absolute;
+    top: 60%;
+    left: 10%;
+}
+.mercury01_text > h2 {
+    font-size: 130px;
+    line-height: 1;
+    opacity: 0;
+    animation: fadein 1.4s ease-in-out 1s forwards;
+}
+.mercury01_text > p {
+    width: 560px;
+    font-size: 20px;
+    opacity: 0;
+    animation: fadein 1.4s ease-in-out 1.5s forwards;
+}
+/* 글자애니메이션 */
+@keyframes fadein {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* 수성02 */
+.mercury02{
+    display: flex;
+    justify-content: space-evenly;
+    max-width: 1200px;
+    margin: 50px auto;
+    font-family: Metropolis,Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    /* color: #3a3a3a; */
+    color: #fff;
+    box-sizing: border-box;
+}
+.mercury02 h3{
+    font-size: 24px;
+}
+.mercury02 p{
+    margin: 1em 0px;
+    word-wrap: break-word;
+    font-size: 100%;
+}
+
+.mercury02_left{
+    width: 600px;
+    margin-top: 20px;
+}
+.mercury02_left a{
+    color: #43aaed;
+    font-weight: bold;
+}
+
+.mercury02_right{
+    position: relative;
+    width: 300px;
+}
+.model3D iframe{
+    position: absolute;
+    z-index: 9;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 300px;
+    transition: all 1s;
+}
+.model3D iframe:hover{
+    width: 500px;
+    height: 500px;
+}
+.model3D p{
+    font-size: 12px;
+    margin-top: 310px;
+}
+.model3D a{
+    color: #43aaed;
+    font-weight: bold;
+}
+.support_exp{
+    height: 470px;
+    padding: 5.26316%;
+    margin-top: 10px;
+    border: 1px solid #C1C1C1;
+}
+.support_exp p:first-line {  
+    font-weight: bold;  
+}
+
+/* 수성03 */
+.mercury03{
+    height: 50vh;
+    /* background: url(../subimg/Mercury02.jpg) no-repeat center/cover; */
+    background-image: url(../subimg/Mercury02.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+/* 수성04 */
+.mercury04{
+    width: 100%;
+    margin-top: 50px;
+    color: #fff;
+
+}
+.mercury04 h2{
+    font-size: 40px;
+    text-align: center;
+}
+
+.mrcy_grid{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1200px;
+    margin: 50px auto 0;
+    padding: 1px;
+    text-align: center;
+    box-sizing: border-box;
+}
+.mrcy_grid:hover{
+    padding: 0;
+    border: 1px solid #f3e4c2;
+}
+.mrcy_grid_item{
+    font-family: CooperHewitt,Helvetica,Arial,sans-serif;
+    padding: 2rem;
+    width: 33%;
+    font-weight: 400;
+    box-sizing: border-box;
+    transition: all 0.7s;
+}
+.mrcy_grid_item:nth-child(3n-1){
+    width: 34%;
+}
+.mrcy_grid_item:hover{
+    background-color: #f3e4c288;
+}
+.number_count{
+    color: #333;
+    font-size: 24px;
+    font-weight: 600;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    background-color: #f3e4c2;
+    border-radius: 50%;
+    margin-bottom: 1.5rem;
+}
+.mrcy_grid_item h3{
+    font-size: 20px;
+    margin-bottom: 1rem;
+}
+.mrcy_grid_item p{
+    font-size: 16px;
+}
+
+/* 1200px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width:1200px) {
+    .mrcy_grid{
+        max-width: 1000px;
+        margin: 50px auto 0;
+        padding: 1px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+    .mrcy_grid .mrcy_grid_item{
+        padding: 1.5rem;
+        width: 50%;
+    }
+    .mrcy_grid .mrcy_grid_item:nth-child(9){
+        width: 100%;
+    }
+    .mrcy_grid .mrcy_grid_item:nth-child(9)>p{
+        width: 50%;
+        margin: 0 auto;
+    }
+}
+/* 1200px 사이즈 이하 미디어쿼리 끝 */
+/* 950px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 950px) {
+    .mercury01_video{
+        top: 8%;
+        right: 50%;
+        transform: translateX(50%);
+    }   
+    .mercury01_text {
+        color: #fff;
+        position: absolute;
+        top: 75%;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .mercury02{
+        max-width: 950px;
+    }
+    .mercury02_left{
+        width: 60%;
+    }
+    .mercury02_right{
+        width: 30%;
+    }
+    .model3D iframe{
+        width: 100%;
+        height: 300px;
+    }
+    .support_exp{
+        height: 50%;
+        padding: 5%;
+    }
+}
+/* 950px 사이즈 이하 미디어쿼리 끝 */
+/* 780px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 780px) {
+    .mercury01{
+        overflow: hidden;
+        height: 75vh;
+    }
+    .mercury01_video{
+        transform-origin: right center;
+        scale: 0.5;
+        top: 0;
+    }
+    
+    .mercury01_text {
+        top: 70%;
+        transform-origin: left center;
+        scale: 0.6;
+    }
+    
+    .mercury02{
+        max-width: 950px;
+    }
+    .mercury02_left{
+        width: 90%;
+    }
+    .mercury02_right{
+        display: none;
+    }
+
+    .mercury04 h2{
+        font-size: 30px;
+    }
+    .mrcy_grid{
+        max-width: 780px;
+        padding: 0;
+    }
+    .mrcy_grid:hover{
+        border: none;
+    }
+    .mrcy_grid .mrcy_grid_item{
+        width: 60%;
+    }
+    .mrcy_grid .mrcy_grid_item:nth-child(9){
+        width: 60%;
+    }
+    .mrcy_grid .mrcy_grid_item:nth-child(9)>p{
+        width: 100%;
+    }
+}
+/* 780px 사이즈 이하 미디어쿼리 끝 */

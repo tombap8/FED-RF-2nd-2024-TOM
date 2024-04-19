@@ -1,0 +1,21 @@
+@charset "UTF-8";
+html,body,h1,h2,h3,h4,h5,h6,ul,ol,li,dl,dt,dd,figure{
+    margin: 0;
+    padding: 0;
+}
+a{
+    color: #fff;
+    text-decoration: none;
+}
+ul,ol{
+    list-style: none;
+}
+
+/* 4. 이미지 리셋 */
+img {
+    border: none;
+    /* 이미지 링크시 서버에서 볼때 파란색 자동보더 없애기 */
+    vertical-align: bottom;
+    /* 박스 이미지 하단간극 없애기(약4px)
+    값으로 top, middle등 도 효과있음! */
+}

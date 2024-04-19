@@ -1,0 +1,23 @@
+
+@import url(./css/reset.css);
+@import url(./css/footer.css);
+@import url(./CSS/footer-media.css);
+@import url(./css/main.css);
+@import url(./css/main-media.css);
+@import url(./css/news.css);
+@import url(./css/header.css);
+@import url(./css/brand.css);
+@import url(./css/brand_media.css);
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@200;300&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Open+Sans|Roboto:400,700&display=swap");
+
+
+main {
+  margin-top: 0;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+

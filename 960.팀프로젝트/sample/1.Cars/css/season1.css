@@ -1,0 +1,641 @@
+@charset "utf-8";
+/* car1 */
+
+/* 초기화 CSS 호출 */
+@import url(reset.css);
+@import url(common.css);
+@import url(fonts.css);
+
+/* 상단 */
+
+#top {
+    background-color: #ffffff;
+    position: relative;
+}
+
+.top .btn_con a {
+    color: #222;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: intrepid, sans-serif;
+}
+
+.cont {
+    min-height: 700px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.sc0 {
+    position: relative;
+    top: 70px;
+}
+/* 메인 공통 */
+
+.h2 {
+    text-align: center;
+}
+
+h2 {
+    display: inline-block;
+    padding: 40px;
+    transition: scale 2s ease-in-out;
+    font-size: 2.4rem;
+}
+
+h2:hover {
+    transform: scale(1.2);
+}
+
+h2::before {
+    content: "\f1b9";
+    display: inline-block;
+    padding-right: 10px;
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    transition: 1s cubic-bezier(0.18, 0.89, 0.32, 1.28);
+}
+
+h2:hover::before {
+    transform: translateX(-50px);
+    color: red;
+}
+
+/* B. 메인부분 */
+/* 2-1. 첫페이지 : 영화 첫 도입 */
+/* 글자등장 */
+
+main .title {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 20px;
+    font-family: NeutraText-Book, sans-serif;
+    z-index: 200;
+    cursor: pointer;
+}
+
+main .title span {
+    display: inline-block;
+    transform: translate(-2000%, -2000%) rotateX(0deg);
+    opacity: 0;
+}
+main .title span b {
+    font-weight: normal;
+    display: inline-block;
+}
+
+/* 스테이지로 들어오기  */
+.title.on span {
+    transform: translate(0, 0) rotateX(1080deg);
+
+    transition: transform 0.8s cubic-bezier(0.4, 0, 1, 1);
+    opacity: 1;
+
+    animation: tit1 1s cubic-bezier(0.39, 0.58, 0.57, 1) forwards 4s,
+        tit2 1s cubic-bezier(0.6, -0.28, 0.74, 0.05) forwards 5s;
+}
+
+/* 글자 등장 키프레임 */
+
+@keyframes tit1 {
+    to {
+        transform: rotateY(-540deg);
+        scale: 0.2;
+    }
+} /* tit1 키프레임 */
+
+@keyframes tit2 {
+    to {
+        transform: rotateX(0deg) rotateY(0deg);
+        scale: 1.8;
+        letter-spacing: 30px;
+    }
+} /* tit2 키프레임 */
+
+/* 문이 열리는 애니메이션  */
+
+.car1 {
+    position: absolute;
+    left: 0;
+    width: 50%;
+    height: 100%;
+    transform-origin: left;
+    border: 2px solid #222;
+    box-shadow: 6px 6px 10px 12px rgba(25, 80, 199, 0.4);
+    animation: opencar1 4s ease-out forwards, car1colordoor 0.4s ease-out infinite alternate;
+}
+/* 문짝 색깔  */
+@keyframes car1colordoor {
+    100% {
+        box-shadow: 10px 10px 20px 25px rgba(37, 231, 118, 0.4);
+    }
+}
+.car2 {
+    position: absolute;
+    right: 0;
+    width: 50%;
+    height: 100%;
+    transform-origin: right;
+    border: 2px solid #222;
+    box-shadow: 6px 6px 10px 12px rgba(25, 80, 199, 0.4);
+    animation: opencar2 4s ease-out forwards, car2colordoor 0.4s ease-out infinite alternate;
+}
+/* 문짝 색깔  */
+@keyframes car2colordoor {
+    100% {
+        box-shadow: -2px -2px 20px 25px rgba(37, 231, 118, 0.4);
+    }
+}
+
+/* 문짝 처음 열기 키프레임 */
+
+@keyframes opencar1 {
+    to {
+        transform: rotateY(-100deg);
+    }
+} /* opencar1키프레임 */
+
+@keyframes opencar2 {
+    to {
+        transform: rotateY(100deg);
+    }
+} /* opencar2키프레임 */
+
+.doorpart {
+    height: calc(64vh - 41px);
+    width: 600px;
+    position: relative;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    aspect-ratio: 600/400;
+    perspective: 1400px;
+    background: url(../car1_image/car1_movie_image.jpg) no-repeat center / 100% 100%;
+}
+
+.doorpart img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 손잡이 */
+.handle {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: rgb(3, 3, 3);
+}
+
+.car2 .handle {
+    left: 10px;
+    right: auto;
+}
+
+/* 2-2. 줄거리 및 예고편  공통*/
+
+iframe {
+    margin: 0;
+    padding: 0;
+}
+.sc1 {
+    display: block;
+}
+
+/* 예고편  */
+
+.sc1 .play {
+    margin: 0 auto;
+    aspect-ratio: 1 / 0.4;
+}
+
+.play iframe {
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* 줄거리 */
+
+.sc1 p {
+    margin: 0;
+    text-indent: 20px;
+    font-size: 32px;
+    line-height: 40px;
+}
+
+/* 2-3. 캐릭터 소개  */
+
+.sc2 .ani {
+    margin: 0 auto;
+    width: 800px;
+    height: 100px;
+    background: url(../car1_image/street.jpg) repeat-x top/auto 100%;
+    border: 4px ridge #2219c6;
+    animation: road 4s linear infinite;
+}
+
+/* 스크린배경이동 키프레임 */
+
+@keyframes road {
+    to {
+        background-position: -800px 0;
+    }
+}
+
+.sc2 i {
+    margin-top: 20px;
+    font-family: "Font Awesome 6 Free";
+    font-size: 50px;
+    color: blue;
+    transform: translateX(20px);
+    animation: car1 2s linear, car2 2s ease-out infinite;
+}
+
+@keyframes car1 {
+    to {
+        transform: translateX(20px);
+    }
+}
+
+@keyframes car2 {
+    0% {
+        transform: translateX(20px);
+        color: blue;
+    }
+    50% {
+        transform: translateX(360px);
+        color: #fff;
+    }
+    100% {
+        transform: translateX(660px);
+        /* color: yellowgreen; */
+        color: rgb(218, 12, 233);
+    }
+}
+
+.sc2 .chac {
+    margin-top: 10px;
+}
+.sc2 img {
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 1px solid rgb(14, 14, 14);
+    box-shadow: 6px 6px 8px #e8ec0d;
+}
+
+.sc2 h3 {
+    display: inline-block;
+    font-size: 32px;
+    font-weight: 500;
+    vertical-align: 30px;
+    padding-left: 40px;
+    text-shadow: 0 0 4px #14c8f0;
+    animation: titAni 1s ease-in infinite alternate;
+}
+
+@keyframes titAni {
+    100% {
+        text-shadow: 0 0 12px rgb(218, 12, 233);
+    }
+}
+
+.sc2 p {
+    text-indent: 20px;
+    font-size: 16px;
+    line-height: 18px;
+    margin: 10px;
+}
+
+/* 다각형 애니  성우소개 */
+
+/* 2-4. 성우 소개 */
+
+:root {
+    --chacsz: 25vw;
+}
+
+/* 큐브애니메이션  레이아웃 */
+article.cube {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 4%;
+}
+
+/* 2-4-1. 메뉴버튼  */
+.actor {
+    text-align: left;
+    box-sizing: border-box;
+}
+
+.actor li {
+    margin: 0 20px;
+    background-image: linear-gradient(to bottom, transparent, rgba(225, 255, 0, 0.713), rgba(162, 255, 0, 0.713));
+}
+
+.actor li a {
+    display: block;
+    color: #222;
+    font-style: italic;
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 50px;
+    text-shadow: 1px 1px 2px rgba(255, 115, 0, 0.908);
+}
+
+.actor > ul li::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 0%;
+    margin-left: 0%;
+    transition: all 0.5s ease-out;
+    background-color: #218408df;
+}
+
+.actor > ul > li:hover::after {
+    width: 100%;
+    margin-left: 0%;
+    transition-property: width, margin-left;
+}
+
+/* 2-4-2 캐릭터 이미지 */
+.carchac {
+    width: 24%;
+    aspect-ratio: 1/0.8;
+    box-sizing: border-box;
+    border: 1px solid #000;
+    box-shadow: 2px 2px 2px 2px rgb(255, 174, 0);
+}
+
+.carchac img {
+    width: 100%;
+    height: 100%;
+    vertical-align: middle;
+}
+
+/* 2-4-3 작동 큐브 애니  */
+
+.sc3 .anicube {
+    width: 25%;
+    aspect-ratio: 1/1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.squ {
+    transform-style: preserve-3d;
+    height: 100%;
+    width: 100%;
+}
+
+.sc3 .squ li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.sc3 .squ li::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100%;
+    clip-path: polygon(20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%);
+}
+
+/* 앞면 카1 포스터 */
+.sc3 .squ li:nth-child(1) {
+    /* 화면방향(z축) */
+    transform: translateZ(calc(var(--chacsz) / 2));
+}
+
+.sc3 .squ li:nth-child(1)::before {
+    background: url(../car1_image/3_car1_poster.jpg) no-repeat center/ 100% 100%;
+}
+
+/* 오른면 Lightning McQueen */
+.sc3 .squ li:nth-child(2) {
+    transform: rotateY(90deg) translateZ(calc(var(--chacsz) / 2));
+}
+
+.sc3 .squ li:nth-child(2)::before {
+    background: url(../car1_image/actor1.jpg) no-repeat left top / 100% 100%;
+}
+
+/* 뒷면 'Tow Mater' */
+
+.sc3 .squ li:nth-child(3) {
+    transform: rotateY(180deg) translateZ(calc(var(--chacsz) / 2));
+}
+
+.sc3 .squ li:nth-child(3)::before {
+    background: url(../car1_image/actor2.jpg) no-repeat center/ cover;
+}
+
+/* 왼쪽 Doc Hudson*/
+.sc3 .squ li:nth-child(4) {
+    transform: rotateY(-90deg) translateZ(calc(var(--chacsz) / 2));
+}
+
+.sc3 .squ li:nth-child(4)::before {
+    background: url(../car1_image/actor3.jpg) no-repeat center/ cover;
+}
+
+/* 윗면 Sally Carrera*/
+.sc3 .squ li:nth-child(5) {
+    transform: rotateX(90deg) translateZ(calc(var(--chacsz) / 2));
+}
+
+.sc3 .squ li:nth-child(5)::before {
+    background: url(../car1_image/actor4.jpg) no-repeat center/ cover;
+}
+
+/* 아랫면 Chick Hicks */
+.sc3 .squ li:nth-child(6) {
+    transform: rotateX(-90deg) translateZ(calc(var(--chacsz) / 2));
+}
+
+.sc3 .squ li:nth-child(6)::before {
+    background: url(../car1_image/actor5.jpg) no-repeat center/ cover;
+}
+
+/* 캐릭터 나오기 */
+
+/*  2-4-3-1. 캐스팅 설명박스  */
+.squbx {
+    display: inline-block;
+
+    /* 글자설정 */
+    color: rgb(83, 212, 23);
+    text-shadow: 0 0 2px #000;
+
+    /* 처음에 투명하게 */
+    opacity: 0;
+    margin: 0 auto;
+    background-color: rgba(149, 190, 53, 0.322);
+    border-radius: 20%;
+}
+
+/* 종속 선택자  */
+article h3.cname {
+    text-align: center;
+    font-size: 40px;
+    font-weight: normal;
+    margin: 10px 10px;
+}
+
+/* car 1  */
+
+/* 미디어쿼리 375px 아이폰SE 까지  */
+
+/* ********************max-width: 1500px*********
+************* */
+@media screen and (max-width: 1500px) {
+    .cont {
+        margin: 0 5vw 2vh;
+        min-height: 700px;
+    }
+
+    .story p {
+        font-size: 24px;
+        line-height: 26px;
+    }
+}
+
+/* ********************max-width: 1200px********************** */
+@media screen and (max-width: 1200px) {
+    article h3.cname {
+        font-size: 32px;
+        line-height: 34px;
+    }
+
+    .sc1 .story p {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .sc2 .ani {
+        margin-bottom: 14px;
+    }
+} /* ********************max-width: 1200px********************** */
+
+/* ********************max-width: 1000px********************** */
+@media screen and (max-width: 1000px) {
+    .sc2 .ani {
+        display: none;
+    }
+} /* ********************max-width: 1000px********************** */
+
+/* ********************max-width: 900px********************** */
+@media screen and (max-width: 850px) {
+    h2 {
+        font-size: 24px;
+        padding: 20px;
+    }
+
+    .sc2 h3 {
+        font-size: 24px;
+    }
+
+    .sc3 nav li a,
+    article h3.cname {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+/* ********************max-width: 850px********************** */
+
+/********************max-width: 750px********************** */
+@media screen and (max-width: 750px) {
+    .cont {
+        min-height: auto;
+    }
+    .sc0 {
+        position: static;
+    }
+    .doorpart {
+        top: 0;
+        width: 100%;
+        height: 100%;
+    }
+    .carposter {
+        display: none;
+    }
+    #top {
+        position: relative;
+    }
+
+    .sc2 .ani {
+        display: none;
+    }
+
+    article h3.cname,
+    .sc1 .story p {
+        font-size: 20px;
+        line-height: 24px;
+    }
+}
+/********************max-width: 750px********************** */
+
+/********************max-width: 600px********************** */
+@media screen and (max-width: 600px) {
+    @keyframes tit2 {
+        to {
+            transform: rotateX(0deg) rotateY(0deg);
+            scale: 1.2;
+            letter-spacing: 5px;
+        }
+    } /* tit2 키프레임 */
+
+    .sc3 nav li a,
+    article h3.cname {
+        font-size: 16px;
+        line-height: 18px;
+    }
+
+    /* 푸터 */
+
+    #info {
+        height: 130px;
+    }
+    #info address {
+        line-height: 20px;
+    }
+    #info .copyLogo img {
+        height: 40px;
+    }
+}
+/********************max-width: 600px********************** */
+
+/********************max-width: 500px********************** */
+@media screen and (max-width: 500px) {
+    .sc3 nav li a {
+        font-size: 14px;
+        line-height: 16px;
+    }
+    #info {
+        height: 114px;
+    }
+}
+/********************max-width: 500px********************** */

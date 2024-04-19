@@ -1,0 +1,301 @@
+@charset "UTF-8";
+
+/* 팀프로젝트 스타워즈 서브페이지 미디어쿼리 CSS - media.css */
+
+/* 1200px사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1200px) {
+  /***** 메인 상단영역 *****/
+  .tsec {
+    max-width: 900px;
+    gap: 100px;
+  }
+  .tsec img {
+    height: 530px;
+  }
+  /* 메인 상단 텍스트 */
+  .tsecT {
+    font-size: 20px;
+    line-height: 43px;
+  }
+
+  /***** 메인 중반영역 *****/
+  .msec {
+    margin: 0 auto;
+    max-width: 950px;
+  }
+  .msecL img {
+    height: 180px;
+  }
+  .msecT li {
+    font-size: 34px;
+  }
+  /***** 메인하단영역 *****/
+  /* 슬라이드 */
+  .slide {
+    width: 800px;
+    height: 490px;
+  }
+  /* 공통 텍스트 */
+  .b_text {
+    color: #fff;
+    font-size: 22px;
+    width: 600px;
+
+    text-align: center;
+  }
+  /* 메인하단 첫번째 구역 */
+  .b_img.b1 img {
+    height: 300px;
+  }
+  .b_text.b1 li:first-child {
+    padding: 15px 0;
+  }
+  /* 메인하단 두번째 구역 */
+  .b_img.b2 img {
+    height: 440px;
+  }
+  .b_text.b2 li:first-child {
+    padding: 15px 0;
+  }
+} /* 1200px사이즈 이하 미디어쿼리 끝 */
+
+/* 990px사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 990px) {
+  /***** 상단영역 *****/
+  .tit{
+    font-size: 35px;
+  }
+  .gnb ul {
+    display: flex;
+    flex-direction: column;
+  }
+
+  /***** 메인 상단영역 *****/
+  .tsec {
+    max-width: 800px;
+    gap: 50px;
+  }
+  .tsec img {
+    height: 450px;
+  }
+  /* 메인 상단 텍스트 */
+  .tsecT {
+    font-size: 19px;
+    line-height: 43px;
+  }
+  /***** 메인 중반영역 *****/
+  .msec {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  .msecL img {
+    height: 150px;
+  }
+  .msecT li {
+    font-size: 31px;
+  }
+  /***** 메인하단영역 *****/
+  /* 메인하단로고 */
+  .blogo img{
+    height: 80px;
+  }
+  /* 슬라이드 */
+  .slide {
+    width: 550px;
+    height: 330px;
+  }
+  /* 슬라이드 버튼 */
+  .ab1 {
+    top: 120%;
+    left: 40vw;
+  }
+  .ab2 {
+    top: 120%;
+    right: 40vw;
+  }
+  /* 공통 텍스트 */
+  .b_text {
+    color: #fff;
+    font-size: 22px;
+    width: 600px;
+
+    text-align: center;
+  }
+  /* 메인하단 첫번째 구역 */
+  .b_sec1 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .b_img.b1 img {
+    height: 300px;
+  }
+  .b_text.b1 li:first-child {
+
+    padding: 30px 0;
+  }
+
+  /* 메인하단 두번째 구역 */
+  .b_sec2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .b_img.b2 img {
+    padding: 50px 0;
+    height: 440px;
+  }
+  .b_text.b2 li:first-child {
+    padding: 30px 0;
+  }
+  /* footer 영역 */
+  #info address{
+    font-size: 12px;
+  }
+  #info address img {
+    position: absolute;
+    transform: scale(0.4);
+    margin-left: -35px;
+    margin-top: -37px;
+}
+} /* 990px사이즈 이하 미디어쿼리 끝 */
+
+
+/* 390px사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 630px) {
+  /***** 상단영역 *****/
+  html,body{
+    width: 100vw;
+    overflow-x: hidden;
+  }
+  .tit{
+    font-size: 6vw;
+  }
+  .gnb li{
+    font-size: 3vw;
+  }
+  /***** 중반영역 *****/
+  /***** 메인 상단영역 *****/
+  .tsec {
+    margin: 0 auto;
+    max-width: 800px;
+    /* gap: 50px; */
+    flex-direction: column;
+  }
+  .tsec img {
+    height: 40vh;
+  }
+  /* 메인 상단 텍스트 */
+  .tsecT {
+    text-align: center;
+    font-size: 4vw;
+    line-height: 2;
+  }
+  /***** 메인 중반영역 *****/
+  .msec {
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  .msecL.on {
+    position: sticky;
+    top: 5vh;
+    opacity: 1;
+  }
+  .msecL img {
+    height: 25vw;
+  }
+  .msecT li {
+    padding: 50px 15px 0;
+    font-size: 5vw;
+  }
+  /***** 메인하단영역 *****/
+  /* 메인하단로고 */
+  .blogo img{
+    height: 8vh;
+  }
+  /* 슬라이드 */
+  .slide {
+    width: 280px;
+    height: 170px;
+  }
+  /* 슬라이드 버튼 */
+  .abtn{
+    font-size: 30px;
+  }
+  .ab1 {
+    top: 120%;
+    left: 40vw;
+  }
+  .ab2 {
+    top: 120%;
+    right: 40vw;
+  }
+  /* 공통 텍스트 */
+  .b_text ul{
+    display: inline-block;
+    color: #fff;
+    font-size: 4vw;
+    width: 300px;
+
+    text-align: center;
+  }
+  /* 메인하단 첫번째 구역 */
+  .b_sec1 {
+    flex-direction: column;
+    align-items: center;
+    padding-top: 100px;
+  }
+  .b_img.b1 img {
+    height: 200px;
+  }
+  .b_text.b1 li:first-child {
+    font-size: 5vw;
+    padding: 30px 0;
+  }
+
+  /* 메인하단 두번째 구역 */
+  .b_sec2 {
+    flex-direction: column;
+    align-items: center;
+  }
+  .b_img.b2 img {
+    padding: 50px 0;
+    height: 50vh;
+  }
+  .b_text.b2 li:first-child {
+    font-size: 5vw;
+    padding: 30px 0;
+  }
+  
+  /***** footer 영역 *****/
+  #info address{
+    font-size: 2vw;
+    line-height: 15px;
+    padding-top: 0;
+    padding-left: 0;
+}
+  
+  #info address img {
+    position: absolute;
+    left: 3%;
+    top: -35%;
+}
+.sns {
+  position: absolute;
+  top: -26%;
+  right: 5%;
+}
+.int{
+  text-align: center;
+  margin: 0 auto;
+  padding: 20px;
+}
+.lightS{
+  display: none;
+}
+.redS{
+  display: none;
+}
+.blueS{
+  display: none;
+}
+  /***** 하단영역 *****/
+ } /* 390px사이즈 이하 미디어쿼리 끝 */

@@ -1,0 +1,369 @@
+@charset "utf-8";
+
+/* SOLAR SYSTEM PJ [ 태양 ] 서브 페이지  CSS - sun.css */
+
+/* 외부 공통 CSS 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+
+
+
+/* 태양설명영역 */
+.sun{
+  font-family: 'Kanit', sans-serif;
+  color: #333;
+}
+/************* section01 *************/
+.sun01{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: url(../subimg/sunmain.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-color: #000;
+}
+.sun01 .sun01_textbox{
+  color: #fff;
+  position: absolute;
+  bottom: 25vh;
+  left: 10%;
+}
+.sun01 .sun01_textbox h2{
+  font-size: min(18vw,12rem);
+  letter-spacing: 3px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px #333;
+  opacity: 0;
+  animation: fadein 1.4s ease-in-out 1.3s forwards;
+}
+.sun01 .sun01_textbox p{
+  width: min(70vw,500px);
+  font-size: min(3vw,1.8rem);
+  line-height: 1.3;
+  font-weight: 200;
+  text-indent: 5px;
+  text-shadow: 1px 1px 2px #333;
+  opacity: 0;
+  animation: fadein 1.4s ease-in-out 2s forwards;
+}
+/* 글자애니메이션 */
+@keyframes fadein{
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+
+}
+/* 페이지 들어왔을때 효과 */
+.sun01::after{
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 9999;
+  background-color: #000;
+  animation: introAni 2s ease-in-out forwards;
+}
+
+@keyframes introAni {
+  0%{
+    opacity: 0.7;
+  }
+  90%{
+    opacity: 0;
+    height: 100vh;
+  }
+  100%{
+    opacity: 0;
+    height: 0;
+  }
+}
+
+
+/************* section02 *************/
+.sun02{
+  padding: 15vh 7vw;
+}
+.sun02 .sun02_textbox{
+  display: flex;
+  align-items: start;
+}
+.sun02 .sun02_left{
+  width: 65%;
+  margin-right: 5%;
+}
+.sun02 .sun02_left h3{
+  font-size: 5.5rem;
+  font-weight: 400;
+}
+.sun02 .sun02_left p{
+  margin-top: 4vh;
+  font-size: 1.8rem;
+  font-weight: 300;
+  line-height: 1.5;
+  text-indent: 10px;
+}
+.sun02 .sun02_right{
+  width: 30%;
+  border: 1px solid #c0c0c0;
+  box-sizing: border-box;
+  padding: 4vh 2vw;
+}
+.sun02 .sun02_right h3{
+  font-size: 2.8rem;
+  font-weight: 600;
+}
+.sun02 .sun02_right li{
+  margin-top: 2.5vh;
+  font-size: 1.7rem;
+  font-weight: 200;
+  line-height: 1.3;
+}
+.sun02 .sun02_right li strong{
+  font-size: 2rem;
+  font-weight: 400;
+}
+.sun02 .sun02_right li a{
+  color: #43aaed;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+/************* section03 *************/
+.sun03{
+  height: 50vh;
+  background: url(../subimg/sunsec03.jpg) no-repeat center/cover;
+  background-attachment: fixed;
+}
+.sun03 .ibx{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.sun03 .medal{
+  width: 330px;
+  height: 330px;
+  perspective: 600px;
+  border-radius: 50%;
+  
+}
+.sun03 .front,
+.sun03 .back{
+  width: 330px;
+  height: 330px;
+  box-sizing: border-box;
+  padding: 30px;
+  backface-visibility: hidden;
+  transition: 1s;
+  position: absolute;
+  background-color: rgb(255, 255, 255);
+  color: #424242;
+  border-radius: 50%;
+  text-align: center;
+  box-shadow: 1px 1px 5px 3px rgba(205, 181, 171, 0.396);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.sun03 .front{
+  transform: rotateY(0);
+}
+.sun03 .front h4{
+  font-size: 4.5rem;
+  margin-bottom: 2vh;
+}
+.sun03 .back{
+  transform: rotateY(-180deg);
+  flex-direction: column;
+}
+.sun03 .back p{
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 15px;
+}
+.sun03 .back .view_btn{
+  display: block;
+  border: 1px solid #333;
+  color: #424242;
+  padding: 8px 30px;
+  font-size: 1.5rem;
+  border-radius: 3px;
+  transition: 1s;
+  font-weight: 700;
+}
+.sun03 .back .view_btn:hover{
+  background-color: rgba(255, 220, 206, 0.397);
+}
+/* mouse hover */
+.sun03 .medal:hover .front{
+  transform: rotateY(180deg);
+}
+.sun03 .medal:hover .back{
+  transform: rotateY(0);
+}
+
+.sun03 .sun03_video{
+  position: fixed;
+   left: 0;
+   top: 0;
+   width: 100%;
+   height: 100vh;
+   background: url(../subimg/sunsec03.jpg) no-repeat center/cover;
+   z-index: 99999;
+   display: none;
+}
+.sun03 .sun03_video .videobox{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 60%;
+  aspect-ratio: 16/9;
+}
+.sun03 .sun03_video .sun03_ifr{
+  width: 100%;
+  height: 100%;
+}
+.sun03 .sun03_video p{
+  color: #fff;
+  font-size: 3vw;
+  text-align: center;
+  text-shadow: 2px 2px 2px #333;
+}
+.sun03 .sun03_video .close_btn{
+  position: absolute;
+  right: 3vw;
+  top: 4vh;
+  font-size: min(4vw,3rem);
+  color: #fff;
+  background: none;
+  background-color: #000;
+  border: 1px solid #fff;
+  padding: 5px 12px;
+  transition: .3s;
+}
+.sun03 .sun03_video .close_btn:hover{
+  background-color: #fff;
+  color: #333;
+}
+
+
+/************* section04 *************/
+.sun04{
+  padding: 15vh 7vw;
+}
+.sun04 h3{
+  font-size: min(7rem,10vw);
+  font-weight: 500;
+  margin-bottom: 5vh;
+}
+.sun04 ul{
+  position: relative;
+}
+.sun04 ul .explorelist a{
+  box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  padding: 2vh 0;
+  border-top: 1px solid #b6b6b6;
+  color: #333;
+}
+.sun04 ul .explorelist:last-child a{
+  border-bottom: 1px solid #b6b6b6;
+}
+.sun04 .explorelist .explore_img{
+  width: 25%;
+  object-fit: cover;
+}
+.sun04 .explorelist .explore_img img{
+  width: 100%;
+}
+.sun04 .explorelist .explore_text{
+  width: 75%;
+  box-sizing: border-box;
+  padding: 2vh 3vw;
+}
+.sun04 .explorelist .explore_text h4{
+  font-size: min(2.8rem,4vw);
+  margin-bottom: 3vh;
+  font-weight: 400;
+}
+.sun04 .explorelist .explore_text p{
+  font-size: min(2rem,3vw);
+  font-weight: 200;
+
+  /* m.naver.com -> 뉴스기사 레이아웃 참고
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical; */
+}
+.explorebox{
+  position: relative;
+}
+.sun04 .movebox{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  background-color: rgba(255, 220, 206, 0.397);
+  transition: .4s ease-in-out;
+  opacity: 0;
+}
+
+
+/**********************************************************/
+/*미디어쿼리*/
+
+/* 1300px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 1300px) {
+  .sun04 .explorelist .explore_text {
+    padding: 0 3vw;
+  }
+  .sun04 .explorelist .explore_text p{
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+}
+  
+
+
+/* 850px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 850px) {
+  .sun04 ul .explorelist a{
+    flex-direction: column;
+  }
+  .sun04 .explorelist .explore_img{
+    width: 100%;
+  }
+  .sun04 .explorelist .explore_text{
+    width: 100%;
+    margin: 3vh 0;
+  }
+}
+
+
+/* 700px 사이즈 이하 미디어쿼리 시작 */
+@media screen and (max-width: 700px) {
+  .sun02 .sun02_left{
+    width: 100%;
+  }
+  .sun02 .sun02_right{
+    display: none;
+  }
+}

@@ -1,0 +1,222 @@
+@charset "UTF-8";
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@700&display=swap");
+
+/* font-family: 'Noto Sans KR', sans-serif; */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    /* height: 100%; */
+    overflow-x: hidden;
+}
+
+body {
+    background: url(../img/sp.png) no-repeat center/cover;
+}
+
+.part {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+#top {
+    position: relative;
+    height: 160px;
+    z-index: 99;
+    background-color: #000;
+}
+
+.tit {
+    text-align: center;
+    height: 80px;
+    padding: 20px 0;
+    /* font: 40px/4 'Noto Sans KR';
+    color: cyan;
+    text-shadow: 0 0 0px aquamarine;
+    animation: titani 2s ease-in-out infinite alternate; */
+}
+
+.tit img {
+    height: 100%;
+}
+
+.gnb {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.gnb ul {
+    display: flex;
+}
+
+.gnb li {
+    position: relative;
+    padding: 0 10px;
+}
+
+.gnb a {
+    font-family: 'Noto Sans KR';
+    color : #b5b7b7;
+    transition: color .3s;
+    font-size: 16px;
+    white-space: nowrap;
+}
+.gnb a:hover {
+    color : #fff;
+}
+
+/* .smenu {
+    position: absolute;
+    top: 27px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px;
+    width: 110px;
+    font-size: 11px;
+    display: none;
+} */
+
+/* ㄴㅅ */
+
+
+
+#info {
+    display: flex;
+    align-items: center;
+    /* position: relative; */
+    height: 100px;
+}
+
+.blogo {
+    width: 110px;
+    margin-right: 20px;
+}
+
+.blogo img {
+    position: relative;
+    width: 100%;   
+}
+
+#info address {
+    font-style: normal;
+    color: #fff;
+    font-family: 'Noto Sans KR';
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.sns {
+    display: flex;
+    margin-left: auto;
+}
+
+.bld {
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.sns li {
+    width: 34px;
+    height: 34px;
+    margin: 2px;
+    background: url(../img/sprites_logo.png) no-repeat;
+}
+
+.sns li:nth-child(1) {
+    background-position: -509px -429px;
+}
+
+.sns li:nth-child(2) {
+    background-position: -551px -429px;
+}
+
+.sns li:nth-child(3) {
+    background-position: -593px -429px;
+}
+
+.sns a {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+
+
+@keyframes titani {
+    to {
+        text-shadow: 0 0 30px aquamarine;
+    }
+}
+
+#act1 {
+    position: absolute;
+    transform: scale(0);
+    animation: act1ani 5s ease-in infinite;
+    z-index: -3;
+}
+
+@keyframes act1ani {
+    0% {
+        top: -20%;
+        left: -20%;
+        transform: scale(0);
+    }
+
+    40% {
+        top: 40%;
+        left: 40%;
+        transform: scale(.8);
+    }
+
+    60% {
+        top: 40%;
+        left: 40%;
+        transform: scale(.8);
+    }
+
+    100% {
+        top: 120%;
+        left: 120%;
+        transform: scale(2.5);
+    }
+}
+
+.earth {
+    position: absolute;
+    transform: scale(.8);
+    left: -20%;
+    bottom: -600px;
+    animation: earthani 15s ease-in-out infinite alternate;
+    z-index: -2;
+}
+
+@keyframes earthani {
+    to {
+        transform: scale(.9);
+        left: -20%;
+        bottom: -600px;
+    }
+
+}
+
+.deth {
+    position: absolute;
+    transform: scale(.35);
+    left: -200px;
+    bottom: -300px;
+    animation: dethani 5s ease-in-out infinite alternate;
+    z-index: -1;
+}
+
+@keyframes dethani {
+    to {
+        transform: scale(.4);
+        left: -150px;
+        bottom: -250px;
+    }
+}

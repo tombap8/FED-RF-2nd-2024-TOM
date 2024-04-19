@@ -1,0 +1,352 @@
+@charset "UTF-8";
+
+/* 서브페이지(episode2) 미디어쿼리 CSS - epi2media.css */
+
+/* 1200px 이하 사이즈 시작 */
+@media screen and (max-width:1200px) {
+    .part {
+        width: 1000px;
+    }
+
+    /* 메인 */
+    .cont {
+        max-width: 1000px;
+    }
+
+    /* 캐릭터 목록 */
+    .mcha_list ul {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    /* 캐릭터 소개 출력용 박스 */
+    .mcha_cont_img {
+        width: 600px;
+    }
+
+    .mcha_cont_txt {
+        width: 400px;
+    }
+
+    /* 비디오 */
+    .mvideo_cont {
+        width: 1000px;
+    }
+    
+    .mvideo_imgbx {
+        width: 440px;
+    }
+    /* 홀수번째 */
+    .mvideo_cont li:nth-child(odd) {
+        padding:0 40px 0 40px;
+    }
+    /* 짝수번째 */
+    .mvideo_cont li:nth-child(even) {
+        padding: 0 40px 0 0;
+    }
+
+
+    
+}
+/* 1200px 이하 사이즈 종료 */
+
+/* 1000px 이하 사이즈 시작 */
+@media screen and (max-width:1000px) {
+    .part {
+        width: 800px;
+    }
+    /* 메인 */
+    .cont {
+        max-width: 800px;
+    }
+
+    /* 캐릭터 소개 출력용 박스 */
+    .mcha_cont_img {
+        width: 500px;
+    }
+
+    .mcha_cont_txt {
+        width: 300px;
+    }
+
+    /* 비디오 */
+    .mvideo_cont {
+        width: 800px;
+    }
+
+    .mvideo_imgbx {
+        width: 340px;
+    }
+    /* 갤러리 */
+    .gall_wrap {
+        height: 350px;
+    }
+    /* 공통 이미지 박스 */
+    .gall_imgbx {
+        width: 460px;
+    }
+}
+/* 1000px 이하 사이즈 종료 */
+
+/* 850px 이하 사이즈 시작 */
+@media screen and (max-width:850px) {
+    .part {
+        width: 600px;
+    }
+
+    .gnb a {
+        font-size: 14px;
+    }
+    /* 메인 */
+    .cont {
+        max-width: 600px;
+    }
+    
+    .mtxt h2 {
+        font-size: 30px;
+    }
+
+    .mtxt h3{
+        font-size: 12px;
+    }
+
+    .mtxt p {
+        font-size: 14px;
+    }
+
+    /* 캐릭터 */
+    .mcha_list ul {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* 캐릭터 출력용 박스 */
+    .mcha_contwrap {
+        flex-direction: column;
+    }
+    .mcha_cont_img {
+        width: 600px;
+    }
+    
+    .mcha_cont_img img{
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0;
+    }
+    .mcha_cont_txt {
+        width: 600px;
+        box-sizing: border-box;
+        border-top-right-radius: 0;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+    }
+    /* 비디오 */
+    .mvideo_cont {
+        width: 600px;
+    }
+
+    .mvideo_imgbx {
+        width: 520px;
+    }
+
+    .mvideo_cont ul {
+        gap : 20px 80px;
+    }
+
+    /* 홀수번째 */
+    .mvideo_cont li:nth-child(odd) {
+        padding:0;
+    }
+    /* 짝수번째 */
+    .mvideo_cont li:nth-child(even) {
+        padding: 0;
+    }
+
+    .mvideo_cont li:first-child {
+        padding-left: 40px;
+    }
+
+    /* 갤러리 */
+    .gall_wrap {
+        flex-direction: column;
+        height: 630px;
+    }
+
+    /* 공통 이미지 박스 */
+    .gall_imgbx {
+        width: 600px;
+    }
+    /* 공통 텍스트 박스 */
+    .gall_txtbx {
+        width: 600px;
+        height: 260px;
+    }
+
+    /* 하단 */
+    #info {
+        flex-direction: column;
+        height: auto;
+        gap: 10px 0;
+        }
+    
+        .blogo {
+            margin-right: 0;
+        }
+    
+        #info address {
+            text-align: center;
+        }
+    
+    
+        .sns {
+            margin-left: 0;
+        }
+    
+}
+/* 850px 이하 사이즈 종료 */
+
+/* 650px 이하 사이즈 시작 */
+@media screen and (max-width:650px) {
+        .part {
+            width: 450px;
+        }
+
+        .gnb a {
+            font-size: 10px;
+        }
+    
+        /* 메인 */
+        .cont {
+            max-width: 450px;
+        }
+
+        /* 영화소개란 */
+        .mcont {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* 영화소개 텍스트 */
+        .mtxt {
+            padding: 0;
+        }
+
+        /* 캐릭터 */
+        .mcha_list ul {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        /* 캐릭터정보 출력용 박스 */
+        .mcha_cont_img {
+            width: 450px;
+        }
+
+        .mcha_cont_txt {
+            width: 450px;
+        }
+        /* 비디오 */
+        .mvideo_cont {
+            width: 450px;
+        }
+
+        .mvideo_cont ul {
+            gap: 20px 60px;
+        }
+
+        .mvideo_cont li:first-child {
+            padding-left: 30px;
+        }
+
+        .mvideo_imgbx {
+            width: 390px;
+        }
+
+        /* 비디오 출력용 박스 */
+        .mvid_data iframe {
+            width: 100vw;
+        }
+        /* 닫기 버튼 */
+        .mvid_data .cbtn {
+            top: 2vh;
+            right : 0;
+        }
+
+        /* 갤러리 */
+        /* 공통 이미지 박스 */
+        .gall_imgbx {
+            width: 450px;
+        }
+        /* 공통 텍스트 박스 */
+        .gall_txtbx {
+            width: 450px;
+        }
+        /* 넘어가기 버튼 */
+        .glist_btn {
+            top: 40%;
+        }
+
+}
+/* 650px 이하 사이즈 종료 */
+
+/* 500px 이하 사이즈 시작 */
+@media screen and (max-width:500px) {
+        .part {
+            width: 300px;
+        }
+    
+        /* 메인 */
+        .cont {
+            max-width: 300px;
+        }
+            
+        .mtxt h2 {
+            font-size: 26px;
+        }
+
+        .mtxt h3{
+            font-size: 12px;
+        }
+
+        .mtxt p {
+            font-size: 14px;
+        }
+
+        /* 캐릭터정보 출력용 박스 */
+        .mcha_cont_img {
+            width: 300px;
+        }
+
+        .mcha_cont_txt {
+            width: 300px;
+        }
+        /* 비디오 */
+        .mvideo_cont {
+            width: 300px;
+        }
+
+        .mvideo_cont ul {
+            gap: 20px 40px;
+        }
+
+        .mvideo_cont li:first-child {
+            padding-left: 20px;
+        }
+
+        .mvideo_imgbx {
+            width: 260px;
+        }   
+                /* 갤러리 */
+        /* 공통 이미지 박스 */
+        .gall_imgbx {
+            width: 300px;
+        }
+        /* 공통 텍스트 박스 */
+        .gall_txtbx {
+            width: 300px;
+            height: 350px;
+            font-size: 14px;
+        }
+        /* 넘어가기 버튼 */
+        .glist_btn {
+            top: 30%;
+        }     
+}
+/* 500px 이하 사이즈 종료 */

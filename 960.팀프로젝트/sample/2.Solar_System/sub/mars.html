@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOLAR SYSTEM</title>
+    <!-- Favicon -->
+    <link href='./subimg/favicon-32x32.png' rel='icon' sizes='32x32' type='image/png'>
+    <!-- 폰트어썸 CDN CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <!-- swiper jQuery -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <!-- 외부CSS 불러오기 -->
+    <link rel="stylesheet" href="./subcss/mars.css" />
+    <!-- 외부 미디어쿼리 CSS 불러오기 -->
+    <link rel="stylesheet" href="./subcss/mainmedia.css" />
+    <!-- 외부JS삽입 -->
+    <script src="./subjs/main.js"></script>
+    <!-- 화성 JS 삽입 -->
+    <script defer src="./subjs/mars.js"></script>
+</head>
+<body>
+
+    <!-- 1. 상단영역 -->
+    <div class="top">
+        <header class="topbx">
+            <!-- 1-1.로고 -->
+            <h1 class="logo">
+                <a href="../main.html">
+                    <img src="../img/logo.png" alt="로고이미지">
+                </a>
+            </h1>
+            <!-- 1-2.GNB메뉴 -->
+            <nav class="gnb">
+                <ul>
+                    <li><img src="./subimg/orrery_icon.svg" alt="행성이미지"></li>
+                    <li><a href="./jupiter.html">Jupiter</a></li>
+                    <li><a href="./mercury.html">Mercury</a></li>
+                    <li><a href="./sun.html">Sun</a></li>
+                    <li><a href="./earth.html">Earth</a></li>
+                    <li><a href="./mars.html">Mars</a></li>
+                    <li>
+                        <div class="sbx">
+                            <input type="text" id="searchbx" class="searchbx">
+                            <label for="searchbx" class="fa-solid fa-magnifying-glass sicon"></label>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- 모바일 햄버거버튼 -->
+            <button class="ham"></button>
+            
+        </header>
+    </div>
+
+    <!-- 2. 메인영역 -->
+    <!-- 2-1. mars 1page -->
+    <div class="pg pg1">
+        <div class="title_m">
+            <h1>MARS</h1>
+        </div>
+        <video class="vd_mars" src="./subimg/mars_video.mp4" autoplay muted></video>
+        
+        <div class="model">
+            <h2>Interoduce Mars!</h2>
+            <iframe class="imodel" src="https://solarsystem.nasa.gov/gltf_embed/2372" frameborder="0" width="100%" loading="eager"></iframe>
+            <div class="mars_copy1">
+                <h3 class= "md_h3">
+                    Mars is the fourth planet from the Sun – a dusty, cold, desert world with a very thin atmosphere. Mars is also a dynamic planet with seasons, polar ice caps, canyons, extinct volcanoes, and evidence that it was even more active in the past.
+                </h3>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2-2. mars 2page -->
+    <div class="pg pg2">
+        <h2>Moon to Mars</h2>
+        <div class="arti arti1">
+            <div class="pg2_img1">
+                <img src="./subimg/mars01.jpg" alt="화성탐사사진1">
+            </div>
+            <div class="arti1_copy">
+                <h3>
+                    After completing the first sample depot on another world, the rover continues its hunt for Mars rocks worthy of study on Earth.<br><br>
+                    NASA’s Perseverance rover will celebrate its second anniversary on the surface of Mars Saturday, Feb. 18. Since arriving at Jezero Crater in 2021, the six-wheeled, nuclear-powered rover has been examining geologic features and collecting samples of the Red Planet that are central to the first step of the NASA-ESA (European Space Agency) Mars Sample Return campaign. Scientists want to study Martian samples with powerful lab equipment on Earth to search for signs of ancient microbial life and to better understand the processes that have shaped the surface of Mars.
+                </h3>
+            </div>
+        </div>
+        <div class="arti arti2">
+            <div class="pg2_img2">
+                <img src="./subimg/mars02.jpg" alt="화성탐사사진1">
+            </div>
+            <div class="arti2_copy">
+                <h3>
+                    “Anniversaries are a time of reflection and celebration, and the Perseverance team is doing a lot of both,” said Perseverance project scientist Ken Farley of Caltech in Pasadena. “Perseverance has inspected and performed data collection on hundreds of intriguing geologic features, collected 15 rock cores, and created the first sample depot on another world. With the start of the next science campaign, known as ‘Upper Fan,’ on Feb. 15, we expect to be adding to that tally very soon.”
+                </h3>
+            </div>
+            
+        </div>
+    </div>
+
+    <!-- 2-3.mars 3page -->
+    <div class="pg pg3">
+        <div class="mars_item">
+            <div class="M_items mars_item1">
+                <iframe class="Mars3d Mars3d1" src="https://solarsystem.nasa.gov/gltf_embed/2398"></iframe>
+                <div class="mars_copy3">
+                    <h2></h2>
+                </div>
+                <div class="m_dis">
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="M_items mars_item2">
+                <iframe class="Mars3d Mars3d2" src="https://solarsystem.nasa.gov/gltf_embed/2371"></iframe>
+                <div class="mars_copy3">
+                    <h2></h2>
+                </div>
+                <div class="m_dis">
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="M_items mars_item3">
+                <iframe class="Mars3d Mars3d3" src="https://solarsystem.nasa.gov/gltf_embed/2370"></iframe>
+                <div class="mars_copy3">
+                    <h2></h2>
+                </div>
+                <div class="m_dis">
+                    <h3></h3>
+                </div>
+            </div>
+            <div class="M_items mars_item4">
+                <iframe class="Mars3d Mars3d4" src="https://solarsystem.nasa.gov/gltf_embed/2361"></iframe>
+                <div class="mars_copy3">
+                    <h2></h2>
+                </div>
+                <div class="m_dis">
+                    <h3></h3>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 3. 하단영역 -->
+    <div id="info">
+        <footer class="info ibx">
+            <!-- 3-1. More Destinations -->
+            <div class="more">
+                <h3>More Destinations</h3>
+                
+                <div class="swiper2">
+                    <ul class="swiper-wrapper">
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/jupiter_new.png" alt="Jupiter">
+                                <span>Jupiter</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="./earth.html">
+                                <img src="../img/earth.png" alt="Earth">
+                                <span>Earth</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/mercury_new.png" alt="Mercury">
+                                <span>Mercury</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/mars.png" alt="Mars">
+                                <span>Mars</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/venus_jg.png" alt="Venus">
+                                <span>Venus</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/saturn.png" alt="Saturn">
+                                <span>Saturn</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/uranus.png" alt="Uranus">
+                                <span>Uranus</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/neptune.png" alt="Neptune">
+                                <span>Neptune</span>
+                            </a>
+                        </li>
+                        <li class="swiper-slide">
+                            <a href="#">
+                                <img src="../img/earth_moon.png" alt="Earth's Moon">
+                                <span>Earth's Moon</span>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <!--이동버튼-->
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+
+            </div>
+
+            <!-- 3-2. SNS -->
+            <div class="sns">
+                <h3>Stay Connected</h3>
+                <ul>
+                    <li>
+                        <a href="https://twitter.com/NASASolarSystem" target="
+                        _blank">
+                            <span class="ir">트위터 바로가기</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/NASASolarSystem/" target="
+                        _blank">
+                            <span class="ir">페이스북 바로가기</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/nasasolarsystem/" target="
+                        _blank">
+                            <span class="ir">인스타그램 바로가기</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- 3-3. 하단링크 -->
+            <div class="blink">
+                <ul>
+                    <li><a href="#">ABOUT US</a></li>
+                    <li><a href="#">BIBLIOGRAPHY</a></li>
+                    <li><a href="#">FEEDBACK</a></li>
+                    <li><a href="#">PRIVACY</a></li>
+                    <li><a href="#">IMAGE USE</a></li>
+                    <li><a href="#">NASA SCIENCE MISSION DIRECTORATE</a></li>
+                    <li><a href="#">NASA PORTAL</a></li>
+                    <li><a href="#">SITEMAP</a></li>
+                </ul>
+            </div>
+
+            <!-- 3-4. 회사정보 -->
+            <div class="addr">
+                <address>
+                    This site is maintained by the Planetary Science Communications team at <br>
+                    <strong>NASA’s Jet Propulsion Laboratory</strong> for <a href="#">NASA’s Science Mission Directorate.</a>
+                </address>
+            </div>
+
+        </footer>
+    </div>
+
+
+
+    
+</body>
+</html>

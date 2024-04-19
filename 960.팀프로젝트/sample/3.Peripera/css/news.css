@@ -1,0 +1,103 @@
+@charset "UTF-8";
+
+main{
+    text-align: center;
+    position: relative;
+}
+.main_wrap{
+    width: 1000px;
+    margin: 0 auto;
+}
+.tit_wrap{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding-top: 120px;
+    margin-bottom: 130px;
+}
+.tit_wrap h2{
+    display: inline-block;
+    font-size: 40px;
+}
+.tit_wrap h5{
+    display: inline-block;
+}
+.table_wrap{
+    margin: 0 auto;
+}
+.searchbx{
+    display: flex;
+    width: 360px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.key{
+    width: 80px;
+    height: 30px;
+    border: 1px solid #aaa;
+    text-align: center;
+    color: #aaa;
+    box-sizing: border-box;
+}
+.search_input{
+    width: 200px;
+    height: 30px;
+    border: 1px solid #aaa;
+    color: #aaa;
+    box-sizing: border-box;
+}
+.search_btn{
+    width: 60px;
+    height: 30px;
+    background-color: #000;
+    color: #fff;
+    line-height: 30px;
+    box-sizing: border-box;
+}
+.news{
+    width: 1000px;
+    margin: 0 auto;
+    border-collapse: separate;
+    padding-bottom: 20px;
+    line-height: 1.66666em;
+}
+.news th{
+    border-top: 1.5px solid #000;
+    border-bottom: 1px solid #000;
+    font-size: 15px;
+}
+.news th{
+    padding: 11px 0 10px;
+}
+.news col.num{
+    width: 80px;
+}
+.news col.writer{
+    width: 100px;
+}
+.news col.date{
+    width: 100px;
+}
+.news tbody td{
+    padding: 11px 10px 10px;
+    border-bottom: 1px solid #aaa;
+}
+.news .tit{
+    text-align: left;
+    font-weight: 600;
+}
+.page{
+    margin-bottom: 150px;
+}
+.page a{
+    display: inline-block;
+    font-size: 13px;
+    line-height: 20px;
+    border: 1px solid #aaa;
+    color: #aaa;
+    width: 20px;
+    height: 20px;
+}
+.page a+a{
+    margin-left: 4px;
+}

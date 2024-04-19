@@ -1,0 +1,460 @@
+@charset "utf-8";
+
+/* SOLAR SYSTEM PJ [ MARS ] 서브 페이지  CSS - mars.css */
+
+/* 외부 공통 CSS 합치기 */
+@import url(reset.css);
+@import url(core.css);
+@import url(common.css);
+
+
+html{
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+
+/* Mars 페이지공통 */
+.pg{
+    max-width: 100vw;
+    height: 2200px;
+    margin: 0 auto;
+}
+/********************* 1페이지 *********************/
+/******************* 1페이지공통 *******************/
+.pg1{
+    background: url(../subimg/mars_bg.jpg);
+    height: 3000px;
+}
+.title_m{
+    position: absolute;
+    height: 100%;
+    width: 100vw;
+}
+.title_m h1{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    opacity: 0;
+    
+    transition: 2s ease-in;
+    color: rgba(255, 255, 255);
+    font-size: 23vw;
+}
+.vd_mars{
+    /* position: relative; */
+    filter: brightness(80%);
+    margin-top: 90px;
+    width: 100%;
+    height: auto;
+    z-index: 1;
+}
+
+/* 3d 모델 */
+.model{
+    width: 35vw;
+    margin: 0 auto;
+    margin-top: 300px;
+}
+.imodel{
+    /* appr효과를 주기위해 */
+    position: relative;
+    top: 100px;/* here */
+    opacity: 0;/* here */
+
+    width: 35vw;
+    height: 35vw;
+    border-radius: 50%;
+
+    margin-top: 80px;
+    transition: 2s ease-in-out;
+    transition-delay: .8s;
+}
+.model h2{
+    /* 가운데정렬 */
+    display: flex;
+    justify-content: center;
+    
+    font-size: 5vw;
+    white-space: nowrap;
+    color: #fff;
+    line-height: 150px;
+
+    text-shadow: 0 0 5px aqua;
+    animation: fontAni 3s infinite alternate;
+}
+@keyframes fontAni {
+    0% {
+        color: rgba(255, 255, 255, 0.297);
+    }
+    100% {
+        color: #fff;
+    }
+}
+.mars_copy1{
+    position: relative;
+    /* h3의 부모자격 */
+    width: 35vw;
+    height: 390px;
+    
+    margin: 0 auto;
+    margin-top: 100px;
+    
+    /* outline: 1px dashed red; */
+}
+.model h3{
+    /* 처음에 안보이기 */
+    opacity: 0;
+    top: 100px;
+
+    /* 글씨효과를 주기위해 앱솔루트 */
+    position: absolute;
+    transition: 1s ease-in;
+
+    /* 줄간격 */
+    line-height: 1.7;
+    
+    font-size: 2vw;
+    color: #cecece;
+    text-align: justify;
+
+    text-shadow: 0 0 3px aqua;
+}
+/********************* 2페이지 *********************/
+/******************* 2페이지공통 *******************/
+/* 2페이지 타이틀 */
+.pg2 h2{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    font-size: min(5vw,64px);
+    margin: 100px 0;
+    color: #222;
+    white-space: nowrap;
+
+    transition: 3s ease-in-out; 
+    animation: fontAni2 3s ease-in-out 1s infinite alternate;
+}
+/* 타이틀 효과  */
+@keyframes fontAni2 {
+    0%{
+        text-shadow: 0px 0px 0px rgba(13, 199, 199, 0.562);
+    }
+    100%{
+        text-shadow: 2px 2px 5px rgba(0, 255, 255, 0.562);
+    }
+}
+.arti2{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+/* 기사 */
+.pg2 h3{
+    /* 효과 주기위해 설정 */
+    position: relative;
+    top: 0px;
+    
+    /* 기본설정 */
+    font-size: max(1.2vw,14px);
+    line-height: 1.7;
+    /* 글 양쪽정렬 */
+    text-align: justify;
+
+    /* text-shadow: 1px 1px 1px #5f5f5f; */
+}
+
+/******************* 2페이지메인 *******************/
+.arti{
+    display: flex;
+}
+.pg2_img1{
+    width: 45vw;
+    height: auto;
+    margin-right: 5vw;
+    margin-left: 40px;
+    overflow: hidden;
+}
+.pg2_img1 img{
+    width: 45vw;
+    transition: .4s;
+}
+/* 오버 시 커짐 효과 */
+.pg2_img1>img:hover{
+    transform: scale(1.2);
+}
+.arti1_copy{
+    width: 45vw;
+    margin-right: 30px;
+}
+
+.arti2_copy{
+    width: 45vw;
+    margin-left: 40px;
+    margin-right: 7vw;
+
+}
+.arti2{
+    margin-top: 100px;
+}
+
+.pg2_img2{
+    width: 45vw;
+    margin-right: 30px;
+    overflow: hidden;
+}
+.pg2_img2 img{
+    width: 45vw;
+    transition: .4s;
+}
+/* 오버시 커짐효과 */
+.pg2_img2>img:hover{
+    transform: scale(1.2);
+}
+/********************* 3페이지 *********************/
+/******************* 3페이지공통 *******************/
+.pg3{
+    background-color: #ebebeb;
+}
+.mars_item{
+    display: grid;
+    grid-template-columns: repeat(2, 2fr);
+    column-gap: max(8vw,30px);
+    grid-template-rows: 800px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 40px 0 30px;
+}
+.M_items{
+    margin: 0 auto;
+    width: 100%;
+}
+.Mars3d{
+    width: 100%;
+    height: 400px;
+    border: none;
+
+    /* 효과주기위함 */
+    position: relative;
+    top: 100px;/* here */
+    opacity: 0;/* here */
+    transition: 2s ease-in-out;
+    transition-delay: 2s;
+
+}
+.mars_copy3{
+    width: 100%;
+}
+.mars_copy3 h2{
+    display: inline-block;
+    line-height: 2;
+    font-size: max(2.5vw,24px);
+    font-weight: bold;
+    text-shadow: 2px 2px #626262;
+
+    margin: 0 auto;
+    left: 50%;
+    transform: translateX(-50%);
+
+    /* 효과 */
+    position: relative;
+    top: 100px;/* here */
+    opacity: 0;/* here */
+    transition: 2s ease-in-out;
+}
+.m_dis{
+    width: 100%;
+    height: 200px;
+    /* outline: 1px dashed red; */
+    margin: 0 auto;
+    margin-top: 30px;
+}
+.m_dis h3{
+    font-size: max(1vw,14px);
+    line-height: 1.7;
+    text-align: justify;
+
+    /* 효과 */
+    position: relative;
+    top: 100px;/* here */
+    opacity: 0;/* here */
+    transition: 2s ease-in-out;
+}
+
+/******************** JS효과 변수 ********************/
+/* 글자효과 */
+.copyFt{
+    position: relative;
+    top: 100px;
+    opacity: 0;
+    color: rgba(34, 34, 34, 0.158);
+    transition: 2s ease-in-out;
+}
+.copyFtA{
+    position: relative;
+    top: 0;
+    opacity: 1;
+    color: fff;;
+    transition: 2s ease-in-out;
+}
+
+/* iframe 효과 */
+.iEffect{
+    position: relative;
+    top: 100px;
+    opacity: 0;
+}
+.iEffectA{
+    position: relative;
+    top: 0;
+    opacity: 1;
+}
+
+/******************* 미디어쿼리 *******************/
+@media screen and (max-width: 1400px) {
+    /* 페이지 높이 수정 */
+    .model{
+        margin-top: 100px;
+    }
+    .pg1{
+        height: 2200px;
+    } 
+
+}
+@media screen and (max-width: 950px) {
+    /************** 950px 1pg **************/
+    /* 페이지 높이 수정 */
+    .pg1{
+        height: 2200px;
+    } 
+    /* 컨텐츠 크기, 공간 수정 */
+    .model{
+        width: 70vw;
+        margin-top: 100px;
+    }
+    /* 타이틀 크기 수정 */
+    .model h2{
+        font-size: 9vw;
+    }
+    /* iframe 크기 수정 */
+    .imodel{
+        width: 70vw;
+        height: 70vw;
+        margin-top: 50px;
+    }
+    .mars_copy1{
+        margin-top: 70px;
+        width: 100%;
+    }
+    /* 내용 글씨크기 수정 */
+    .model h3{
+        font-size: 3.5vw;
+    }
+    /* 영상 타이틀 수정 */
+    .title_m h1{
+        top: 30%;
+    }
+
+    /************** 950px 2pg **************/
+    .pg2{
+        height: 2600px;
+        margin: 0 auto;
+        width: 80vw;
+    }
+    .pg2 h2{
+        margin: 80px 0;
+        font-size: 8vw;
+    }
+    .pg2 h3{
+        font-size: 2.5vw;
+    }
+    .arti{
+        display: block;
+    }
+    .pg2_img1{
+        width: 80vw;
+        margin: 0;
+        overflow: hidden;
+    }
+    .pg2_img1 img{
+        display: block;
+        margin: 0 auto;
+		width: 80vw;
+    }
+    
+    
+    .arti1_copy{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 200px;
+    }
+
+    .pg2_img2{
+        width: 80vw;
+        margin: 0;
+        overflow: hidden;
+    }
+    .pg2_img2 img{
+        width: 80vw;
+    }
+    .arti2_copy{
+        margin: 0;
+        width: 100%;
+        margin-top: 50px;
+    }
+
+
+    /************** 950px 3pg **************/
+    .pg3{
+        height: 3100px;
+    }
+    .mars_item{
+        display: block;
+        width: 80vw;
+    }
+    .mars_copy3 h2{
+        font-size: 5vw;
+    }
+    .m_dis{
+        width: 60vw;
+        margin-bottom: 45px;
+    }
+    .m_dis h3{
+        font-size: 2.5vw;
+    }
+}
+
+
+
+/* 페이지높이만 수정 */
+@media screen and (max-width: 750px) {
+    .pg1{
+        height: 1700px;
+    }
+    .pg2{
+        height: 2000px;
+    }
+    .title_m h1{
+        top: 20%;
+    }
+}
+@media screen and (max-width: 600px) {
+    .pg1{
+        height: 1450px;
+    }
+
+    .pg2 h3{
+        font-size: max(3vw,16px);
+    }
+    
+    .mars_copy3 h2{
+        font-size: max(5vw,32px);
+    }
+    .m_dis h3{
+        font-size: max(3vw,16px);
+    }
+}

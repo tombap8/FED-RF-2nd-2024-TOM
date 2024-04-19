@@ -1,0 +1,113 @@
+@charset "utf-8";
+/* CGV PJ 인트로 페이지 CSS - intro.css */
+
+/* 외부 공통 CSS 합치기 */
+@import url(./reset.css);
+@import url(./core.css);
+
+/* 전체 페이지 보이는 화면기준 */
+html,body{
+    width: 100vw;
+    height: 100vh;
+    /* 스크롤바 숨기기 */
+    overflow: hidden;
+}
+
+/* 1. 비디오 요소 */
+#myvid{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* object-position: -100px -200px; */
+
+    /* 필터의 명도를 조정하여 어두워보이게 함 */
+    filter: transparent(50%);
+    /* 
+        용어체크:
+        1) 오버레이효과(overlay) - 어둡게처리
+        2) 트렌스페런트효과(transparent) - 밝게처리
+    */
+}
+
+/* 2. 들어가기 버튼 */
+.loader{
+  position: absolute;
+  left: calc(50% - 70px);
+  top: calc(50% - 70px);
+  /* transform: translate(-10%, -50%); */
+  height: 140px;
+  width: 140px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  /* transform-origin: 50% 50%; */
+  animation: loader1 5s linear forwards;
+}
+
+.loader::after{
+  content: "";
+  position: absolute;
+  top: 1px;
+  left: 20px;
+  width: 18px;
+  height: 18px;
+  border-radius: 10px;
+  background-color: #fff;
+  animation: loader2 5s linear forwards;
+}
+@keyframes loader1{
+    0%{
+      transform:rotate(0deg);
+    }
+    50%{
+      border: 3px solid #fff;
+    }
+    80%{
+      border: 3px solid #000;
+    }
+    100%{
+      border: 3px solid #000;
+      transform:rotate(500deg);
+    }
+}
+@keyframes loader2{
+  50%{
+    background-color: #fff;
+  }
+  80%{
+    background-color: #000;
+  }
+  100%{
+    background-color: #000;
+  }
+}
+.ltxt{
+  position: absolute;
+  /* 중앙정렬 */
+  left: 50.35%;
+  top: 50.5%;
+  transform: translate(-50%, -50%);
+  /* height: 120px;
+  width: 120px; */
+  color: #fff;
+  font-size: 2rem;
+  letter-spacing: 3px;
+  font-family: 'Kanit', sans-serif;
+  animation: loader3 4.2s linear forwards;
+  transition: .3s;
+}
+.ltxt:hover{
+  font-size: 3rem;
+  letter-spacing: 1px;
+}
+@keyframes loader3{
+  50%{
+    color: #fff;
+  }
+  100%{
+    color: #000;
+  }
+}
+
+
+
+

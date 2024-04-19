@@ -1,0 +1,121 @@
+@charset "UTF-8";
+
+/* 팀프로젝트 스타워즈 미디어쿼리 CSS - media.css */
+
+/******************** 1200px사이즈 이하 미디어쿼리 시작 ********************/
+@media screen and (max-width: 1200px) {
+  .gnb {
+    top: 50px;
+    right: 25px;
+  }
+  .gnb ul {
+    flex-direction: column;
+  }
+  .part {
+    max-width: 900px;
+  }
+  /* .mlist{
+    left: 93px;
+  } */
+  #info address {
+    font-style: normal;
+    color: #fff;
+    font-family: "Noto Sans KR";
+    font-size: 12px;
+    line-height: 20px;
+    padding-top: 20px;
+  }
+  #info address img {
+    position: absolute;
+    transform: scale(0.5);
+    float: left;
+    margin-left: -55px;
+    margin-right: 66px;
+    margin-top: -46px;
+  }
+} /******************** 1200px사이즈 이하 미디어쿼리 끝 ********************/
+
+/******************** 900px사이즈 이하 미디어쿼리 시작 ********************/
+@media screen and (max-width: 900px) {
+  .tit {
+    font-size: min(40px, 5.7vw);
+  }
+  .gnb {
+    top: 36px;
+    right: 13px;
+  }
+  .gnb a {
+    font-size: 12px;
+  }
+  /* 선택메뉴 ul */
+  .mlist ul {
+    flex-wrap: wrap;
+    /* 사이간격 : 위아래,양쪽 */
+    gap: 1vh 2.2%;
+  }
+  /* 선택메뉴 상위li */
+  .mlist ul > li {
+    flex-basis: 31.83%;
+    /* 사이간격 마진이 빠진비율임! 
+    -> flex-basis는 width와 같지만
+    flex 통합설정에서는 flex-basis로 
+    재정의 된다! */
+  }
+  .mlist ul > li + li {
+    margin-left: 0;
+  }
+  /* 속박스 */
+  #cont {
+    /* 비율설정 */
+    aspect-ratio: 1 / 1.3;
+    background-size: 130%;
+  }
+  /* 2-1.스크린 */
+  #screen {
+    top: 11.2%;
+    left: 12.6%;
+    width: 76.3%;
+    height: 33.3%;
+  }
+  /* 2-2.예고편 선택메뉴 */
+  .mlist {
+    bottom: 0.4%;
+    width: 70%;
+  }
+
+  /* 영화정보박스 */
+  .movtxt {
+    font-size: 3vw;
+  }
+  /* 영화정보박스 제목만 변경 */
+  .movtxt li:first-child {
+    font-size: 3.3vw;
+  }
+  #info {
+    padding: 80px 0 80px;
+  }
+  #info address {
+    padding: 0;
+  }
+  #info address img {
+    position: absolute;
+    /* transform: ; */
+    /* float: left; */
+    /* margin-left: -55px; */
+    /* margin-right: 66px; */
+    /* margin-top: -46px; */
+    top: 2.5vh;
+    left: 50%;
+    transform: scale(0.5) translateX(-50%);
+  }
+  .int {
+    /* margin: 0 auto; */
+    text-align: center;
+    margin-left: 0;
+  }
+  .sns {
+    top: 80%;
+    right: 50%;
+    transform: translateX(50%);
+  }
+} /******************** 900px사이즈 이하 미디어쿼리 끝 ********************/
