@@ -134,6 +134,7 @@
         mi[i] = new MovieInfo(v);
       }); //// forEach /////////
 
+
       // 생성된 객체 확인하기
       console.log(mi);
 
@@ -150,33 +151,34 @@
 
         // 객체로 셋팅된 정보를 반복출력하자!
         // 출력대상: .wrap
-        qs('.wrap').innerHTML = mi.map(v=`
+        document.querySelector('.wrap')
+        .innerHTML = mi.map(v=>`
         <section class="cbx">
             <div class="minfo">
                 <!-- 1. 포스터 -->
                 <div class="photo">
-                    <img src="https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2" alt="영웅의 포스터">  
+                    <img src="${v.포스터}" alt="${v.제목}의 포스터">  
                 </div>
                 <div class="cont">
                     <!-- 2. 제목 -->
                     <h2 class="tit">
-                        영웅</h2>
+                        ${v.제목}</h2>
                     <!-- 3. 개요 -->
                     <h3 class="sum">
-                        ★장르 : 드라마, 뮤지컬</h3>
+                        ★장르 : ${v.개요}</h3>
                     <!-- 4. 감독 -->
                     <h3 class="dir">
-                        ★감독 : 윤제균</h3>
+                        ★감독 : ${v.감독}</h3>
                     <!-- 5. 출연 -->
                     <h3 class="act">
-                        ★출연 : 정성화, 김고은</h3>
+                        ★출연 : ${v.출연}</h3>
                 </div>
             </div>
 
             <!-- 영화 한마디 -->
             <h2 class="showtit">♥ 영화한마디!</h2>
             <!-- 6. 문구 -->
-            <div class="show">
+            <div class="show">${v.문구}
                 <span>누</span><span>가</span>&nbsp;&nbsp;<span>죄</span><span>인</span><span>인</span><span>가</span>
             </div>
         </section>
