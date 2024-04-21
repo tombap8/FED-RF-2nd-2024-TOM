@@ -46,9 +46,12 @@ ol {
 .tit {
     font-size: 5rem;
     font-family: "Sunflower";
-    color: lightseagreen;
+    color: #61efe7;
+    text-shadow: 2px 2px 2px #0000008f;
 }
-
+.tit img{
+    height: 70px;
+}
 .part small a{
     color: pink;
     font-size: 20px;
@@ -129,9 +132,9 @@ body가 기준이 된다!  */
 /* 페이지별 컨텐츠 박스 */
 .pwrap {
     position: relative;
-    top: 300px;
+    top: 200px;
     width: 90%;
-    height: calc(100% - 350px);
+    /* height: calc(100% - 350px); */
     /* 부모높이값 보다 300px만큼 조금더 그 크기를 뺀
     높이값은 calc()로 계산한다! */
 
@@ -145,6 +148,7 @@ body가 기준이 된다!  */
     /* 마영오! 씨를 무대 중앙으로 모시겠습니다! */
     margin: 0 auto;
     /* 양쪽 마진이 auto이면 양쪽을 등분해서 가로 중앙이 된다! */
+    white-space: nowrap;
 }
 
 /* .pwrap 하위 .part박스 */
@@ -159,7 +163,7 @@ body가 기준이 된다!  */
     padding: 20px;
     border-radius: 20px;
     color: #fff;
-    font-size: 4rem;
+    font-size: 3rem;
     text-align: center;
     text-shadow: 2px 2px 2px #000;
 }
@@ -188,7 +192,7 @@ body가 기준이 된다!  */
     display: inline-block;
     color: #222;
     text-decoration: none;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 }
 /* 다운로드 */
 .part a.dld{
@@ -200,7 +204,7 @@ body가 기준이 된다!  */
 .part h3 {
     color: #222;
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2rem;
     padding-left: 50px;
     font-weight: normal;
 }
@@ -208,7 +212,7 @@ body가 기준이 된다!  */
     display: inline-block;
     color: #222;
     text-decoration: none;
-    font-size: 3rem;
+    font-size: 2rem;
     margin-left: 20px;
 }
 /* 가상요소로 밑줄 애니만들기
@@ -243,7 +247,7 @@ body가 기준이 된다!  */
 #pg1 .part li::before {
     content: "🎭";
     margin-right: 10px;
-    font-size: 3.5rem;
+    font-size: 2.5rem;
 }
 .part li{
     padding: 5px 0;
