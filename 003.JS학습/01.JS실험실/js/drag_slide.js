@@ -100,7 +100,7 @@ function slideFn(selEl, slider) {
 
     // 1. 오른쪽 버튼 여부 알아내기
     let isRight = this.classList.contains("ab2");
-    
+
     // 2. 버튼분기하기 '.ab2' 이면 오른쪽버튼
     if (isRight) {
       // 오른쪽버튼
@@ -154,8 +154,8 @@ function slideFn(selEl, slider) {
     setTimeout(() => {
       // 3.맨앞li 맨뒤로 이동
       slide.appendChild(slide.querySelectorAll("li")[0]);
-      // 4.slide left값 -220%
-      slide.style.left = "-220%";
+      // 4.slide left값 -220% -> 최종 left값은 px로!
+      slide.style.left = selEl.offsetWidth * -2.2 + "px";
       // 5.트랜지션 없애기
       slide.style.transition = "none";
     }, TIME_SLIDE);
@@ -170,16 +170,15 @@ function slideFn(selEl, slider) {
   // 함수호출시 전달값이 없는 경우엔 기본값으로 처리하고
   // 함수호출시 전달값이 있으면 그 전달될 값으로 처리한다!
   // 이것을 함수 전달변수 기본입력값 처리라고 한다!
-  function leftSlide(leftVal="-330%") {
-    console.log('왼쪽버튼이동left값:',leftVal);
+  function leftSlide(leftVal = "-330%") {
+    console.log("왼쪽버튼이동left값:", leftVal);
     // leftVal - li앞에 이동시 left값 설정변수
     // 1. 슬라이드 li 새로 읽기
     let eachOne = slide.querySelectorAll("li");
 
     // 2. 맨뒤li 맨앞으로 이동
     // 놈.놈.놈 -> insertBefore(넣을놈,넣을놈전놈)
-    slide.insertBefore(
-      eachOne[eachOne.length - 1], eachOne[0]);
+    slide.insertBefore(eachOne[eachOne.length - 1], eachOne[0]);
 
     // 3. left값 -330% 만들기 : 들어올 준비 위치!
     slide.style.left = leftVal;
@@ -193,12 +192,11 @@ function slideFn(selEl, slider) {
     // 시간은 0이어도 비동기 처리므로 효과있음!
 
     setTimeout(() => {
-      // 4. left값 -220%으로 들어오기
-      slide.style.left = "-220%";
+      // 4. left값 -220%으로 들어오기 -> px값으로 변환!
+      slide.style.left =  selEl.offsetWidth * -2.2 + "px";
 
       // 5. 트랜지션주기
-      slide.style.transition = 
-      TIME_SLIDE + "ms ease-out";
+      slide.style.transition = TIME_SLIDE + "ms ease-out";
     }, 0);
   } //////////// leftSlide 함수 ////////////
 
@@ -409,8 +407,7 @@ function slideFn(selEl, slider) {
 
     // 대상의 left값 찍기(px단위를 parseInt()로 없애기!)
     let currentLeft = parseInt(dtg.style.left);
-    console.log("슬라이드left:", currentLeft,
-    'X축순수이동값:',resultX);
+    console.log("슬라이드left:", currentLeft, "X축순수이동값:", resultX);
     // 대상 슬라이드 이동기준 분기하기
     if (currentLeft < valFirst) {
       console.log("왼쪽으로 이동!!!");
@@ -424,8 +421,8 @@ function slideFn(selEl, slider) {
       // leftSlide() 함수 호출함!
       // 슬라이드 이동함수 호출시 드래그시 이동된값이
       // 계산된 -330%값을 보내준다!
-      let resVal = (selEl.offsetWidth * -3.3) + resultX;
-      leftSlide(resVal+"px");
+      let resVal = selEl.offsetWidth * -3.3 + resultX;
+      leftSlide(resVal + "px");
     } /// else if ///
     else {
       // valFirst와 valSecond의 사이범위
