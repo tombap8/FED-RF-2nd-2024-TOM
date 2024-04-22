@@ -40,6 +40,9 @@ function slideFn(selEl) {
   let clickSts = 0;
   // 0-2. 슬라이드 이동시간 : 상수로 설정
   const TIME_SLIDE = 400;
+  // 0-3. 슬라이드 기준위치값 :
+  let originalValue = selEl.offsetWidth * -2.2;
+  // -> 슬라이드 가로크기의 2.2배 음수값
 
   // 1. 대상선정
   // 1-1. 슬라이드 부모요소 : 전달된 선택요소 -> selEl
@@ -156,7 +159,7 @@ function slideFn(selEl) {
       // 3.맨앞li 맨뒤로 이동
       slide.appendChild(slide.querySelectorAll("li")[0]);
       // 4.slide left값 -220% -> 최종 left값은 px로!
-      slide.style.left = selEl.offsetWidth * -2.2 + "px";
+      slide.style.left = originalValue + "px";
       // 5.트랜지션 없애기
       slide.style.transition = "none";
     }, TIME_SLIDE);
@@ -194,7 +197,7 @@ function slideFn(selEl) {
 
     setTimeout(() => {
       // 4. left값 -220%으로 들어오기 -> px값으로 변환!
-      slide.style.left =  selEl.offsetWidth * -2.2 + "px";
+      slide.style.left =  originalValue + "px";
 
       // 5. 트랜지션주기
       slide.style.transition = TIME_SLIDE + "ms ease-out";
@@ -431,7 +434,7 @@ function slideFn(selEl) {
 
     // 드래그 시 더해지는 마지막 위치값 lastX를
     // -220%의 left px 값으로 초기화해준다!(숫자만!)
-    lastX = selEl.offsetWidth*-2.2;
+    lastX = originalValue;
     // -> 이것을 해야 오작동이 없다!!!
 
     console.log("마우스 업!", lastX);
