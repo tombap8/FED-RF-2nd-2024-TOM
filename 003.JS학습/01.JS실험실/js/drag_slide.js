@@ -387,8 +387,19 @@ function slideFn(selEl,slider) {
     // 마우스 업시 편손!
     dtg.style.cursor = "grab";
 
-    // 대상의 left값 찍기
-    console.log('슬라이드left:',dtg.style.left);
+    // 대상의 left값 찍기(px단위를 parseInt()로 없애기!)
+    let currentLeft = parseInt(dtg.style.left);
+    console.log('슬라이드left:',currentLeft);
+    // 대상 슬라이드 이동기준 분기하기
+    if(currentLeft < valFirst) {
+      console.log('왼쪽으로 이동!!!');
+    } /// if ///
+    else if(currentLeft > valSecond){
+      console.log('오른쪽으로 이동!!!');
+    } /// else if ///
+    else{ // valFirst와 valSecond의 사이범위
+      console.log('제자리!!!');
+    } /// else ////
 
     // console.log("마우스 업!", dragSts);
   }); ///////// mouseup //////////
