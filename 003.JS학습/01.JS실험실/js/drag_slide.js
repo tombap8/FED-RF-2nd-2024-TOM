@@ -411,6 +411,9 @@ function slideFn(selEl, slider) {
     } /// if ///
     else if (currentLeft > valSecond) {
       console.log("오른쪽으로 이동!!!");
+      // 왼쪽버튼 클릭시 오른쪽이동과 동일!
+      // leftSlide() 함수 호출함!
+      leftSlide();
     } /// else if ///
     else {
       // valFirst와 valSecond의 사이범위
