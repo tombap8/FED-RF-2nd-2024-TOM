@@ -269,9 +269,9 @@ function slideFn(selEl) {
   dtg.style.position = "relative";
   // dtg.style.top = "0";
   // 배너가 left값 -220% 기준박스에서 이동함
-  // .banbx의 width값 곱하기 2.2
-  // 기준위치값 변수에 할당!
-  let leftVal = mFn.qs(".banbx").offsetWidth * -2.2;
+  // .banbx의 width값 곱하기 -2.2
+  // 기준위치값 변수에 할당! -> originalValue변수값 할당!
+  let leftVal = originalValue;
   // 왼쪽으로 이동할 기준값(기준위치값*1.1)
   let valFirst = leftVal * 1.1;
   // 오른쪽으로 이동할 기준값(기준위치값*0.9)
@@ -491,10 +491,16 @@ function slideFn(selEl) {
 
   // 브라우저 크기 리사이즈시 동적 변경값 업데이트함수
   mFn.addEvt(window,"resize",()=>{
-    // 기준위치값 left 업데이트
-    originalValue = selEl.offsetWidth *2.2;
-    // 기준위치값으로 실제 슬라이드 CSS left값 변경하기
+    // 1. 기준위치값 left 업데이트
+    originalValue = selEl.offsetWidth * -2.2;
+    // 2. 기준위치값으로 실제 슬라이드 CSS left값 변경하기
     slide.style.left = originalValue + 'px';
+    // 3. 초기left값 셋팅
+    leftVal = originalValue;
+    // 4. 왼쪽으로 이동할 기준값(기준위치값*1.1)
+    valFirst = leftVal * 1.1;
+    // 5. 오른쪽으로 이동할 기준값(기준위치값*0.9)
+    valSecond = leftVal * 0.9;
   }); ////////////// resize함수 //////////////////
 
 
