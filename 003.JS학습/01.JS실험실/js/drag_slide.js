@@ -424,8 +424,8 @@ function slideFn(selEl, slider) {
       // leftSlide() 함수 호출함!
       // 슬라이드 이동함수 호출시 드래그시 이동된값이
       // 계산된 -330%값을 보내준다!
-      let resVal = selEl.offsetWidth * -3.3 + resultX;
-      leftSlide(resVal);
+      let resVal = (selEl.offsetWidth * -3.3) + resultX;
+      leftSlide(resVal+"px");
     } /// else if ///
     else {
       // valFirst와 valSecond의 사이범위
