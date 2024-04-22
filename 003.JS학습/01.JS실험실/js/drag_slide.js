@@ -406,15 +406,24 @@ function slideFn(selEl) {
     // 마우스 업시 편손!
     dtg.style.cursor = "grab";
 
+    // 중앙li순번 방향별 셋팅하기
+    let slideSeq = 2; // 왼쪽버튼(오른쪽이동)
+    // 만약 오른쪽버튼 왼쪽이동일 경우 순번은 3이된다!
+    // 업데이트는 오른쪽일 경우에만 해준다!
+    // 기타일 경우는 세번째 순번인 2를 유지한다!
+
     // 대상의 left값 찍기(px단위를 parseInt()로 없애기!)
     let currentLeft = parseInt(dtg.style.left);
     console.log("슬라이드left:", currentLeft, "X축순수이동값:", resultX);
+
     // 대상 슬라이드 이동기준 분기하기
     if (currentLeft < valFirst) {
       console.log("왼쪽으로 이동!!!");
       // 오른쪽버튼 클릭시 왼쪽이동과 동일!
       // rightSlide() 함수 호출함!
       rightSlide();
+      // on넣을 li순번 업데이트
+      slideSeq = 3;
     } /// if ///
     else if (currentLeft > valSecond) {
       console.log("오른쪽으로 이동!!!");
@@ -436,6 +445,12 @@ function slideFn(selEl) {
     // -220%의 left px 값으로 초기화해준다!(숫자만!)
     lastX = originalValue;
     // -> 이것을 해야 오작동이 없다!!!
+
+    // 중앙 li에 클래스 on넣기
+    mFn.qsaEl(slide,"li").forEach((ele,idx)=>{
+      if(idx===slideSeq) ele.classList.add("on");
+      else ele.classList.remove("on");
+    })
 
     console.log("마우스 업!", lastX);
   }); ///////// mouseup //////////
@@ -501,6 +516,10 @@ function slideFn(selEl) {
     valFirst = leftVal * 1.1;
     // 5. 오른쪽으로 이동할 기준값(기준위치값*0.9)
     valSecond = leftVal * 0.9;
+
+    // 호출작동확인!
+    console.log('리사이즈 작동!!!',
+    originalValue,leftVal,valFirst,valSecond);
   }); ////////////// resize함수 //////////////////
 
 

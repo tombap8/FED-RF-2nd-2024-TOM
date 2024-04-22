@@ -123,8 +123,8 @@ ol {
     /* 트랜지션 */
     transition: .4s ease-in-out;
 }
-/* 3번째가 주인공이므로 원래밝기로 조금 크게변경! */
-.slide li:nth-child(3){
+/* li.on이 주인공이므로 원래밝기로 조금 크게변경! */
+.slide li.on{
     filter: brightness(100%);
     transform: scale(1.1);
 }
