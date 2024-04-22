@@ -124,12 +124,17 @@ function slideFn(selEl) {
 
     // 5. 중앙 li에 클래스 on넣기
     // slideSeq값은 오른쪽버튼2,왼쪽버튼3
-    let slideSeq = isRight?3:2;
-    mFn.qsaEl(slide,"li").forEach((ele,idx)=>{
-      if(idx===slideSeq) ele.classList.add("on");
-      else ele.classList.remove("on");
-    })
+    let slideSeq = isRight ? 3 : 2;
+    addOnSlide(slideSeq);
   } ////////// goSlide 함수 /////////
+
+  // 중앙슬라이드 클래스 on처리 함수 /////
+  function addOnSlide(slideSeq) {
+    mFn.qsaEl(slide, "li").forEach((ele, idx) => {
+      if (idx === slideSeq) ele.classList.add("on");
+      else ele.classList.remove("on");
+    }); ///// forEach ///////
+  } //////////// addOnSlide 함수 ///////////
 
   // 블릿순번 변경 함수 /////////////
   function chgIndic(isRight) {
@@ -205,7 +210,7 @@ function slideFn(selEl) {
 
     setTimeout(() => {
       // 4. left값 -220%으로 들어오기 -> px값으로 변환!
-      slide.style.left =  originalValue + "px";
+      slide.style.left = originalValue + "px";
 
       // 5. 트랜지션주기
       slide.style.transition = TIME_SLIDE + "ms ease-out";
@@ -268,7 +273,7 @@ function slideFn(selEl) {
 
   // 드래그 적용 대상 및 이벤트 설정하기 ////
   // 1. 대상선정 : 보내준 대상 HTML컬렉션
-  const dtg = slide; 
+  const dtg = slide;
   // -> slide는 선택박스 하위 슬라이드
   // const dtg = mFn.qs('.dtg2');
 
@@ -456,13 +461,13 @@ function slideFn(selEl) {
 
     // 중앙 li에 클래스 on넣기
     // slideSeq값은 오른쪽버튼2,왼쪽버튼3
-    mFn.qsaEl(slide,"li").forEach((ele,idx)=>{
-      if(idx===slideSeq) ele.classList.add("on");
+    mFn.qsaEl(slide, "li").forEach((ele, idx) => {
+      if (idx === slideSeq) ele.classList.add("on");
       else ele.classList.remove("on");
-    })
+    });
 
     // 블릿변경함수호출 : 오른쪽이 3 일때 true
-    chgIndic(slideSeq===3?true:false);
+    chgIndic(slideSeq === 3 ? true : false);
 
     console.log("마우스 업!", lastX);
   }); ///////// mouseup //////////
@@ -515,13 +520,12 @@ function slideFn(selEl) {
   mFn.addEvt(dtg, "touchmove", dMove);
   //////////// touchmove /////////////
 
-
   // 브라우저 크기 리사이즈시 동적 변경값 업데이트함수
-  mFn.addEvt(window,"resize",()=>{
+  mFn.addEvt(window, "resize", () => {
     // 1. 기준위치값 left 업데이트
     originalValue = selEl.offsetWidth * -2.2;
     // 2. 기준위치값으로 실제 슬라이드 CSS left값 변경하기
-    slide.style.left = originalValue + 'px';
+    slide.style.left = originalValue + "px";
     // 3. 초기left값 셋팅
     leftVal = originalValue;
     // 4. 왼쪽으로 이동할 기준값(기준위치값*1.1)
@@ -530,14 +534,13 @@ function slideFn(selEl) {
     valSecond = leftVal * 0.9;
 
     // 호출작동확인!
-    console.log('리사이즈 작동!!!',
-    originalValue,leftVal,valFirst,valSecond);
+    console.log(
+      "리사이즈 작동!!!",
+      originalValue,
+      leftVal,
+      valFirst,
+      valSecond
+    );
   }); ////////////// resize함수 //////////////////
-
-
-
-
-
-
 } /////////////// slideFn 함수 ///////////////
 /////////////////////////////////////////////
