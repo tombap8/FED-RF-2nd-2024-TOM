@@ -487,5 +487,20 @@ function slideFn(selEl) {
   // (3) 터치무브 이벤트 함수연결하기
   mFn.addEvt(dtg, "touchmove", dMove);
   //////////// touchmove /////////////
+
+
+  // 브라우저 크기 리사이즈시 동적 변경값 업데이트함수
+  mFn.addEvt(window,"resize",()=>{
+    // 기준위치값 left 업데이트
+    originalValue = selEl.offsetWidth *2.2;
+    // 기준위치값으로 실제 슬라이드 CSS left값 변경하기
+    slide.style.left = originalValue + 'px';
+  }); ////////////// resize함수 //////////////////
+
+
+
+
+
+
 } /////////////// slideFn 함수 ///////////////
 /////////////////////////////////////////////
