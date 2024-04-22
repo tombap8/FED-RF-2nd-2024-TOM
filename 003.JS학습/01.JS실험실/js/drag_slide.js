@@ -253,7 +253,13 @@ function slideFn(selEl,slider) {
   // .banbx의 width값 곱하기 2.2
   // 기준위치값 변수에 할당!
   let leftVal = mFn.qs(".banbx").offsetWidth * -2.2;
-  // console.log("left 셋팅값:", leftVal);
+  // 왼쪽으로 이동할 기준값(기준위치값*1.1)
+  let valFirst = leftVal*1.1;
+  // 오른쪽으로 이동할 기준값(기준위치값*0.9)
+  let valSecond = leftVal*0.9;
+  console.log("기준값:", leftVal);
+  console.log("기준값의 110%:", valFirst);
+  console.log("기준값의 90%:", valSecond);
   // left위치값 최초셋업! -> px단위 꼭 쓸것!!!
   dtg.style.left = leftVal + "px";
 
