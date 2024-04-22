@@ -390,35 +390,9 @@ function slideFn(selEl) {
     // console.log("끝포인트:", lastX);
   }; ///////// lastPoint 함수 //////////
 
-  // 4. 드래그 이벤트 설정하기 //////////
-  // (1) 마우스 다운 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mousedown", (e) => {
-    // 드래그 상태값 true로 변경!
-    dTrue();
-    // 첫번째 위치포인트 셋팅!
-    firstPoint(e);
-    // 단독할당되지 않고 내부 함수호출로 연결되어있으므로
-    // 이벤트 전달을 토스해줘야 한다!(전달변수 e)
-
-    // 마우스 다운시 주먹손!
-    dtg.style.cursor = "grabbing";
-
-    // z-index 전역변수(zNum) 숫자를 1씩 높이기
-    // dtg.style.zIndex = ++zNum;
-
-    // console.log("마우스 다운!", dragSts);
-  }); ///////// mousedown //////////
-
-  // (2) 마우스 업 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mouseup", (e) => {
-    // 드래그 상태값 false로 변경!
-    dFalse();
-    // 마지막 위치포인트 셋팅!
-    lastPoint(e);
-
-    // 마우스 업시 편손!
-    dtg.style.cursor = "grab";
-
+  // (6) 슬라이드 드래그 이동구현
+  // -> mouseup / touchend 이벤트 발생시 호출함!
+  const moveDragSlide = () => {
     // 중앙li순번 방향별 셋팅하기
     let slideSeq = 2; // 왼쪽버튼(오른쪽이동)
     // 만약 오른쪽버튼 왼쪽이동일 경우 순번은 3이된다!
@@ -465,8 +439,42 @@ function slideFn(selEl) {
 
     // 블릿변경함수호출 : 오른쪽이 3 일때 true
     chgIndic(slideSeq === 3 ? true : false);
+  }; ////////// moveDragSlide 함수 /////////////
 
-    console.log("마우스 업!", lastX);
+  //////////////////////////////////////
+  // 4. 드래그 이벤트 설정하기 //////////
+  // (1) 마우스 다운 이벤트 함수연결하기
+  mFn.addEvt(dtg, "mousedown", (e) => {
+    // 드래그 상태값 true로 변경!
+    dTrue();
+    // 첫번째 위치포인트 셋팅!
+    firstPoint(e);
+    // 단독할당되지 않고 내부 함수호출로 연결되어있으므로
+    // 이벤트 전달을 토스해줘야 한다!(전달변수 e)
+
+    // 마우스 다운시 주먹손!
+    dtg.style.cursor = "grabbing";
+
+    // z-index 전역변수(zNum) 숫자를 1씩 높이기
+    // dtg.style.zIndex = ++zNum;
+
+    // console.log("마우스 다운!", dragSts);
+  }); ///////// mousedown //////////
+
+  // (2) 마우스 업 이벤트 함수연결하기
+  mFn.addEvt(dtg, "mouseup", (e) => {
+    // 드래그 상태값 false로 변경!
+    dFalse();
+    // 마지막 위치포인트 셋팅!
+    lastPoint(e);
+
+    // 마우스 업시 편손!
+    dtg.style.cursor = "grab";
+
+    // 드래그 슬라이드 이동함수 호출!
+    moveDragSlide();
+
+    // console.log("마우스 업!", lastX);
   }); ///////// mouseup //////////
 
   // (3) 마우스 무브 이벤트 함수연결하기
@@ -509,6 +517,9 @@ function slideFn(selEl) {
     dFalse();
     // 마지막 위치포인트 셋팅!
     lastPoint();
+
+    // 드래그 슬라이드 이동함수 호출!
+    moveDragSlide();
 
     // console.log("터치엔드!", dragSts);
   }); ///////// touchend //////////
