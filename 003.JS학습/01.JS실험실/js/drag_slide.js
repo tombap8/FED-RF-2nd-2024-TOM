@@ -461,10 +461,7 @@ function slideFn(selEl) {
 
     // 중앙 li에 클래스 on넣기
     // slideSeq값은 오른쪽버튼2,왼쪽버튼3
-    mFn.qsaEl(slide, "li").forEach((ele, idx) => {
-      if (idx === slideSeq) ele.classList.add("on");
-      else ele.classList.remove("on");
-    });
+    addOnSlide(slideSeq);
 
     // 블릿변경함수호출 : 오른쪽이 3 일때 true
     chgIndic(slideSeq === 3 ? true : false);
