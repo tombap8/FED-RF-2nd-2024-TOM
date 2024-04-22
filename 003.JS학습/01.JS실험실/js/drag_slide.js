@@ -164,7 +164,15 @@ function slideFn(selEl, slider) {
   /////////////////////////////
   // 슬라이드 왼쪽버튼클릭시 //
   // 오른쪽방향 이동함수 /////////
-  function leftSlide() {
+  // 드래그 이동시엔 left값을 -330%가 아닌
+  // 드래그가 이동된 값을 적용한 left값을 적용한다!
+  // 함수전달변수를 leftVal="330%" 로 기본입력값 처리하면
+  // 함수호출시 전달값이 없는 경우엔 기본값으로 처리하고
+  // 함수호출시 전달값이 있으면 그 전달될 값으로 처리한다!
+  // 이것을 함수 전달변수 기본입력값 처리라고 한다!
+  function leftSlide(leftVal="330%") {
+    console.log('왼쪽버튼이동left값:',leftVal);
+    // leftVal - li앞에 이동시 left값 설정변수
     // 1. 슬라이드 li 새로 읽기
     let eachOne = slide.querySelectorAll("li");
 
@@ -174,7 +182,7 @@ function slideFn(selEl, slider) {
       eachOne[eachOne.length - 1], eachOne[0]);
 
     // 3. left값 -330% 만들기 : 들어올 준비 위치!
-    slide.style.left = "-330%";
+    slide.style.left = leftVal;
 
     // 4. 트랜지션 없애기
     slide.style.transition = "none";
