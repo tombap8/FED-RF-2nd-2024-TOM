@@ -164,7 +164,9 @@ function slideFn(selEl,slider) {
     }); ///////// forEach ///////////
   } /////////// chgIndic함수 ////////////
 
-  // 슬라이드 오른쪽방향 함수 ////////////
+  /////////////////////////////
+  // 슬라이드 오른쪽버튼클릭시 //
+  // 왼쪽방향 이동함수 /////////
   function rightSlide() {
     //1.대상이동하기 : -330%
     slide.style.left = "-330%";
@@ -393,6 +395,9 @@ function slideFn(selEl,slider) {
     // 대상 슬라이드 이동기준 분기하기
     if(currentLeft < valFirst) {
       console.log('왼쪽으로 이동!!!');
+      // 오른쪽버튼 클릭시 왼쪽이동과 동일!
+      // rightSlide() 함수 호출함!
+      rightSlide();
     } /// if ///
     else if(currentLeft > valSecond){
       console.log('오른쪽으로 이동!!!');
