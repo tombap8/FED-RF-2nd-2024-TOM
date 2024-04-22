@@ -170,7 +170,7 @@ function slideFn(selEl, slider) {
   // 함수호출시 전달값이 없는 경우엔 기본값으로 처리하고
   // 함수호출시 전달값이 있으면 그 전달될 값으로 처리한다!
   // 이것을 함수 전달변수 기본입력값 처리라고 한다!
-  function leftSlide(leftVal="330%") {
+  function leftSlide(leftVal="-330%") {
     console.log('왼쪽버튼이동left값:',leftVal);
     // leftVal - li앞에 이동시 left값 설정변수
     // 1. 슬라이드 li 새로 읽기
