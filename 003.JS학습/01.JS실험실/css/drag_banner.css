@@ -95,7 +95,7 @@ ol {
     width: 100%;
     height: 100%;
     /* 트랜지션 */
-    transition: left .4s ease-out;
+    /* transition: left .4s ease-out; */
     /* 변경준비 */
     will-change: left;
 }
