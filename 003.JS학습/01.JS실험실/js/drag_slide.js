@@ -21,7 +21,6 @@ export default function setSlide(clsName) {
     // 슬라이드 함수 호출하기
     slideFn(ele, subSlide);
     // 실제 DOM요소를 보낸다!
-
   }); /////// forEach ///////////
 } ///////////// setSlide 함수 //////////
 
@@ -30,7 +29,7 @@ export default function setSlide(clsName) {
     기능: 로딩 후 버튼 이벤트 및 기능구현
         + 드래그 이동기능(goDrag함수 합침)
  ******************************************/
-function slideFn(selEl,slider) {
+function slideFn(selEl, slider) {
   // selEl 선택 슬라이드 부모 요소
   // slider 드래그할 대상 슬라이드
   // console.log("슬라이드 함수 호출확인!");
@@ -101,11 +100,8 @@ function slideFn(selEl,slider) {
 
     // 1. 오른쪽 버튼 여부 알아내기
     let isRight = this.classList.contains("ab2");
-
-    // 2. 슬라이드 li 새로 읽기
-    let eachOne = slide.querySelectorAll("li");
-
-    // 3. 버튼분기하기 '.ab2' 이면 오른쪽버튼
+    
+    // 2. 버튼분기하기 '.ab2' 이면 오른쪽버튼
     if (isRight) {
       // 오른쪽버튼
       // 오른쪽에서 들어오는 슬라이드함수 호출!
@@ -113,32 +109,13 @@ function slideFn(selEl,slider) {
     } ////// if //////////////
     else {
       // 왼쪽버튼
-      // 1. 맨뒤li 맨앞으로 이동
-      // 놈.놈.놈 -> insertBefore(넣을놈,넣을놈전놈)
-      slide.insertBefore(eachOne[eachOne.length - 1], eachOne[0]);
-      // 2. left값 -330% 만들기 : 들어올 준비 위치!
-      slide.style.left = "-330%";
-      // 3. 트랜지션 없애기
-      slide.style.transition = "none";
-
-      // 같은 left값을 동시에 변경하면 효과가 없음!
-      // 비동기적으로 처리해야함!
-      // -> setTimeout으로 싸주기!
-      // 시간은 0이어도 비동기 처리므로 효과있음!
-
-      setTimeout(() => {
-        // 4. left값 -220%으로 들어오기
-        slide.style.left = "-220%";
-
-        // 5. 트랜지션주기
-        slide.style.transition = TIME_SLIDE + "ms ease-in-out";
-      }, 0);
+      leftSlide();
     } /////// else //////////////
 
-    // 4. 블릿순번 변경 함수 호출
+    // 3. 블릿순번 변경 함수 호출
     chgIndic(isRight); // 방향값을 보냄!
 
-    // 5. 자동넘김 멈춤함수 호출하기
+    // 4. 자동넘김 멈춤함수 호출하기
     clearAuto();
   } ////////// goSlide 함수 /////////
 
@@ -183,6 +160,39 @@ function slideFn(selEl,slider) {
       slide.style.transition = "none";
     }, TIME_SLIDE);
   } //////////// rightSlide 함수 ////////////
+
+  /////////////////////////////
+  // 슬라이드 왼쪽버튼클릭시 //
+  // 오른쪽방향 이동함수 /////////
+  function leftSlide() {
+    // 1. 슬라이드 li 새로 읽기
+    let eachOne = slide.querySelectorAll("li");
+
+    // 2. 맨뒤li 맨앞으로 이동
+    // 놈.놈.놈 -> insertBefore(넣을놈,넣을놈전놈)
+    slide.insertBefore(
+      eachOne[eachOne.length - 1], eachOne[0]);
+
+    // 3. left값 -330% 만들기 : 들어올 준비 위치!
+    slide.style.left = "-330%";
+
+    // 4. 트랜지션 없애기
+    slide.style.transition = "none";
+
+    // 같은 left값을 동시에 변경하면 효과가 없음!
+    // 비동기적으로 처리해야함!
+    // -> setTimeout으로 싸주기!
+    // 시간은 0이어도 비동기 처리므로 효과있음!
+
+    setTimeout(() => {
+      // 4. left값 -220%으로 들어오기
+      slide.style.left = "-220%";
+
+      // 5. 트랜지션주기
+      slide.style.transition = 
+      TIME_SLIDE + "ms ease-in-out";
+    }, 0);
+  } //////////// leftSlide 함수 ////////////
 
   /********************************** 
         자동넘기기 기능구현
@@ -256,9 +266,9 @@ function slideFn(selEl,slider) {
   // 기준위치값 변수에 할당!
   let leftVal = mFn.qs(".banbx").offsetWidth * -2.2;
   // 왼쪽으로 이동할 기준값(기준위치값*1.1)
-  let valFirst = leftVal*1.1;
+  let valFirst = leftVal * 1.1;
   // 오른쪽으로 이동할 기준값(기준위치값*0.9)
-  let valSecond = leftVal*0.9;
+  let valSecond = leftVal * 0.9;
   console.log("기준값:", leftVal);
   console.log("기준값의 110%:", valFirst);
   console.log("기준값의 90%:", valSecond);
@@ -391,19 +401,20 @@ function slideFn(selEl,slider) {
 
     // 대상의 left값 찍기(px단위를 parseInt()로 없애기!)
     let currentLeft = parseInt(dtg.style.left);
-    console.log('슬라이드left:',currentLeft);
+    console.log("슬라이드left:", currentLeft);
     // 대상 슬라이드 이동기준 분기하기
-    if(currentLeft < valFirst) {
-      console.log('왼쪽으로 이동!!!');
+    if (currentLeft < valFirst) {
+      console.log("왼쪽으로 이동!!!");
       // 오른쪽버튼 클릭시 왼쪽이동과 동일!
       // rightSlide() 함수 호출함!
       rightSlide();
     } /// if ///
-    else if(currentLeft > valSecond){
-      console.log('오른쪽으로 이동!!!');
+    else if (currentLeft > valSecond) {
+      console.log("오른쪽으로 이동!!!");
     } /// else if ///
-    else{ // valFirst와 valSecond의 사이범위
-      console.log('제자리!!!');
+    else {
+      // valFirst와 valSecond의 사이범위
+      console.log("제자리!!!");
     } /// else ////
 
     // console.log("마우스 업!", dragSts);
