@@ -253,7 +253,7 @@ function slideFn(selEl) {
   } ///////// slideAuto 함수 //////////////
 
   // 인터발함수 최초호출!
-  //    slideAuto();
+  slideAuto();
 
   // 버튼을 클릭할 경우를 구분하여 자동넘김을 멈춰준다!
   function clearAuto() {
@@ -334,10 +334,9 @@ function slideFn(selEl) {
     // e - 이벤트 객체 전달변수
     // 드래그 상태는 dragSts값이 true인 경우에만 허용!
     if (dragSts) {
-
       // 0. 자동넘김 멈춤함수 호출하기
       clearAuto();
-  
+
       // // console.log('드래그중~!');
 
       // 1. 드래그 상태에서 움질일대 포인터 위치값
@@ -476,7 +475,7 @@ function slideFn(selEl) {
   mFn.addEvt(dtg, "mouseup", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
     clearAuto();
-    
+
     // 드래그 상태값 false로 변경!
     dFalse();
     // 마지막 위치포인트 셋팅!
@@ -514,7 +513,7 @@ function slideFn(selEl) {
   mFn.addEvt(dtg, "touchstart", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
     clearAuto();
-    
+
     // 드래그 상태값 true로 변경!
     dTrue();
     // 첫번째 위치포인트 셋팅!
@@ -532,7 +531,7 @@ function slideFn(selEl) {
   mFn.addEvt(dtg, "touchend", () => {
     // 0. 자동넘김 멈춤함수 호출하기
     clearAuto();
-    
+
     // 드래그 상태값 false로 변경!
     dFalse();
     // 마지막 위치포인트 셋팅!
