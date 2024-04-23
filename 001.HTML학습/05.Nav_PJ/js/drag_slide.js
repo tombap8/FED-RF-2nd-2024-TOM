@@ -274,7 +274,7 @@ function slideFn(selEl) {
   } ///////// slideAuto 함수 //////////////
 
   // 인터발함수 최초호출!
-  slideAuto();
+  // slideAuto();
 
   /********************************** 
     함수명: clearAuto

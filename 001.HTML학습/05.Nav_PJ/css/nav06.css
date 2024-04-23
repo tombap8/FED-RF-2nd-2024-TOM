@@ -181,4 +181,22 @@ html,body{
     flex: 1;
     outline: 2px dashed lightpink;
 }
+/* 서브 컨텐츠 오른쪽박스 */
+.cont-right-box{
+    overflow: hidden;
+}
+
+/* 서브 배너 디자인 변경하기 */
+.sub-banbx {
+    left: 0;
+    width: 100%;
+}
+
+.sub-banbx .ab1 {
+    left: 15px;
+}
+
+.sub-banbx .ab2 {
+    right: 15px;
+}
 
