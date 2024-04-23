@@ -76,6 +76,10 @@ ol {
     box-sizing: border-box;
     
     outline: 5px dotted blue;
+
+    /* 드래그 선택영역 안잡히게하기 */
+    -webkit-user-drag: none;
+    user-select: none;
 }
 
 /* 배너 최상위박스에 드래그 막기장치 가상요소 */
@@ -88,7 +92,7 @@ ol {
     width: 200%;
     height: 100%;
     z-index:99;
-    background-color: rgba(43, 55, 224, 0.5);
+    /* background-color: rgba(43, 55, 224, 0.5); */
 }
 
 .slide {

@@ -187,13 +187,16 @@ function slideFn(selEl) {
       // 5.트랜지션 없애기
       slide.style.transition = "none";
     }, TIME_SLIDE);
+
+    // 슬라이드 커버 만들기 함수 호출
+    coverDrag();
   } //////////// rightSlide 함수 ////////////
 
   /********************************** 
     함수명: leftSlide
     기능: 오른쪽방향 이동(왼쪽버튼)
   **********************************/
- function leftSlide(leftVal = "-330%") {
+  function leftSlide(leftVal = "-330%") {
     // 드래그 이동시엔 left값을 -330%가 아닌
     // 드래그가 이동된 값을 적용한 left값을 적용한다!
     // 함수전달변수를 leftVal="330%" 로 기본입력값 처리하면
@@ -227,6 +230,9 @@ function slideFn(selEl) {
       // 5. 트랜지션주기
       slide.style.transition = TIME_SLIDE + "ms ease-out";
     }, 0);
+
+    // 슬라이드 커버 만들기 함수 호출
+    coverDrag();
   } //////////// leftSlide 함수 ////////////
 
   /********************************** 
@@ -246,7 +252,10 @@ function slideFn(selEl) {
   // 타임아웃함수도 마찬가지임!
   // clearTimeout(할당변수) 해야 실행 쓰나미를 막을 수 있다!
 
-  // 인터발호출 함수 //////////
+  /********************************** 
+    함수명: slideAuto
+    기능: 인터발호출
+  **********************************/
   function slideAuto() {
     autoI = setInterval(() => {
       // 오른쪽이동 슬라이드 함수호출
@@ -267,7 +276,10 @@ function slideFn(selEl) {
   // 인터발함수 최초호출!
   slideAuto();
 
-  // 버튼을 클릭할 경우를 구분하여 자동넘김을 멈춰준다!
+  /********************************** 
+    함수명: clearAuto
+    기능: 자동넘김을 멈추기(인터발삭제)
+  **********************************/
   function clearAuto() {
     // 자동넘김 지우기
     // clearInterval(인터발할당변수)
@@ -281,6 +293,20 @@ function slideFn(selEl) {
     autoT = setTimeout(slideAuto, 5000);
     // 결과적으로 5초후 인터발재실행은 하나만 남는다!
   } //////////// clearAuto 함수 ///////////
+
+  /********************************** 
+    함수명: coverDrag
+    기능: 슬라이드 이동시 드래그막기
+  **********************************/
+  function coverDrag() {
+    // selEl로 전달된 대상에 클래스 on을 줘서
+    // 가상요소로 셋팅된 슬라이드 커버가 나오게함
+    selEl.classList.add("on");
+    // 슬라이드 기본 이동시간(TIME_SLIDE)후 on제거
+    setTimeout(() => {
+      selEl.classList.remove("on");
+    }, TIME_SLIDE);
+  } ////////// coverDrag 함수 /////////
 
   ////////////////////////////////////////////
   ////////// 드래그 기능 구현 구역 /////////////
@@ -347,7 +373,7 @@ function slideFn(selEl) {
     // 드래그 상태는 dragSts값이 true인 경우에만 허용!
     if (dragSts) {
       // 0. 자동넘김 멈춤함수 호출하기
-      clearAuto();
+      // clearAuto();
 
       // // console.log('드래그중~!');
 
@@ -465,7 +491,10 @@ function slideFn(selEl) {
   // (1) 마우스 다운 이벤트 함수연결하기
   mFn.addEvt(dtg, "mousedown", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
-    clearAuto();
+    // clearAuto();
+    // 자동호출을 지우기만 해서 자동시작안함!
+    clearInterval(autoI);
+    clearTimeout(autoT);
 
     // 드래그 상태값 true로 변경!
     dTrue();
@@ -524,7 +553,10 @@ function slideFn(selEl) {
   // (1) 터치스타트 이벤트 함수연결하기
   mFn.addEvt(dtg, "touchstart", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
-    clearAuto();
+    // clearAuto();
+    // 자동호출을 지우기만 해서 자동시작안함!
+    clearInterval(autoI);
+    clearTimeout(autoT);
 
     // 드래그 상태값 true로 변경!
     dTrue();
