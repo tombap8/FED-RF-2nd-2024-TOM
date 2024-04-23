@@ -86,7 +86,11 @@ function slideFn(selEl) {
   // 2. 이벤트 설정하기 : 버튼요소들 -> forEach()
   abtn.forEach((ele) => mFn.addEvt(ele, "click", goSlide));
 
-  // 3. 함수만들기
+  // 3. 함수만들기 //////////////////
+  /********************************** 
+    함수명: goSlide
+    기능: 이동버튼 클릭시 이동분기하기
+  **********************************/
   function goSlide() {
     // a요소 기본이동 막기
     event.preventDefault();
@@ -128,7 +132,10 @@ function slideFn(selEl) {
     addOnSlide(slideSeq);
   } ////////// goSlide 함수 /////////
 
-  // 중앙슬라이드 클래스 on처리 함수 /////
+  /********************************** 
+    함수명: addOnSlide
+    기능: 중앙슬라이드 클래스 on처리
+  **********************************/
   function addOnSlide(slideSeq) {
     mFn.qsaEl(slide, "li").forEach((ele, idx) => {
       if (idx === slideSeq) ele.classList.add("on");
