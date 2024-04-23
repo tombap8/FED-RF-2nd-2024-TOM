@@ -12,7 +12,7 @@ import setSlide from "./drag_slide.js";
 
 // 1. 배너 리스트 셋팅하기 ////
 // (1) 대상: .slide
-const slideBox = mFn.qs('.slide');
+const slideBox = mFn.qs('.ban-slide');
 
 // 슬라이드 코드변수
 let slideCode = '';
