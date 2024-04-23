@@ -27,6 +27,19 @@ html,body{
     /* outline: 5px dotted blue; */
 }
 
+/* 가상요소로 드래그 막기장치 */
+.banbx.on::after{
+    content: "";
+    position:absolute;
+    transform: scaleY(1.1);
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    z-index:99;
+    /* background-color: rgba(43, 55, 224, 0.5); */
+}
+
 .slide {
     display: flex;
     /* 플렉스박스!!! */
@@ -68,8 +81,8 @@ html,body{
     /* 트랜지션 */
     transition: .4s ease-out;
 }
-/* 3번째가 주인공이므로 원래밝기로 조금 크게변경! */
-.slide li:nth-child(3){
+/* 클래스가 on이 주인공이므로 원래밝기로 조금 크게변경! */
+.slide li.on{
     filter: brightness(100%);
     transform: scale(1.1);
 }
