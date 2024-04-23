@@ -227,9 +227,10 @@ body가 기준이 된다!  */
     width: 0%;
     margin-left: 100%;
 
-    height: 5px;
+    height: 4px;
+    border-radius: 2px;
     margin-top: 1px;
-    background-color: palevioletred;
+    background-color: aqua;
     /* 트랜지션: 속시이지 trs */
     transition: all 0.3s;
 }
