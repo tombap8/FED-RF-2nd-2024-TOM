@@ -43,8 +43,8 @@ html,body{
 .slide {
     display: flex;
     /* 플렉스박스!!! */
-    gap: 0 5vw;
-    /* 양쪽간격 5vw */
+    gap: 0 10%;
+    /* 양쪽간격 기준박스의 10%크기 */
 
     /*사진을 싸고 있는 슬라이드*/
     position: absolute;
@@ -172,7 +172,8 @@ html,body{
 .sub-cont{
     display: flex;
     max-width: 1200px;
-    height: 500px;
+    aspect-ratio: 2/1.1;
+    /* height: 500px; */
     margin: 0 auto;
     padding: 50px 0;
 }
@@ -186,10 +187,13 @@ html,body{
     overflow: hidden;
 }
 
-/* 서브 배너 디자인 변경하기 */
-.sub-banbx {
-    left: 0;
-    width: 100%;
+/* 서브 배너 디자인 변경하기 
+-> scale 1.1배에 대한 보정으로
+크기를 박스에 맞춤!*/
+.sub-banbx {    
+    left: 3.2%;
+    width: 92.2%;
+    aspect-ratio: 1;
 }
 
 .sub-banbx .ab1 {
@@ -198,5 +202,10 @@ html,body{
 
 .sub-banbx .ab2 {
     right: 15px;
+}
+/* 사이간격은 그대로 두고 li크기를
+키워서 사이간격 없애기 셋팅 */
+.sub-slide li{
+    transform: scale(1.1);
 }
 
