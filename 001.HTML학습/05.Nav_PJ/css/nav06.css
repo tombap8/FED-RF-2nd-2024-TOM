@@ -166,3 +166,18 @@ html,body{
     /*우선적용!*/
 }
 
+
+
+/* 서브 컨텐츠 */
+.sub-cont{
+    display: flex;
+    max-width: 1200px;
+    height: 500px;
+    margin: 0 auto;
+    padding: 50px 0;
+}
+.sub-cont>div{
+    flex: 1;
+    outline: 2px dashed lightpink;
+}
+
