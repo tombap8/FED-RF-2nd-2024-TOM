@@ -597,7 +597,7 @@ function slideFn(selEl) {
   //////////// touchmove /////////////
 
   // (4) 버튼,블릿에 오버시 자동처리호출셋팅 ///
-  mFn.qsa('.controls').forEach((ele) =>
+  mFn.qsaEl(selEl,'.controls').forEach((ele) =>
     mFn.addEvt(ele,"mouseenter", 
     () => {
       moveDragSlide();
