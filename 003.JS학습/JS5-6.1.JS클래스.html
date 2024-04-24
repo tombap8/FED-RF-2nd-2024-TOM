@@ -50,6 +50,13 @@
         -> 메서드를 추가해서 만들 경우
         constructor() 메서드 아래에 하나씩 생성한다!
 
+        ((차이점알기!!!))
+        -> 메서드는 생성자함수처럼 
+        this키워드로 등록하지 않는다!
+        클래스에서는 메서드가 자동 등록된다!!!
+        그래서 외부에서 인스턴스 생성후 
+        바로 하위 경로로 호출이 가능하다!
+
         ________________________________
 
         ((클래스로 생성할 객체모델))
@@ -61,6 +68,144 @@
         -> 실행할 메서드            
 
     **********************************************/
+
+    // 클래스로 객체 생성 템플릿 만들기 /////
+    class MovieInfo {
+      // 생성자 메서드 : 주로 속성만 셋팅함
+      constructor(변수){
+        this.포스터 = 변수[0];
+        this.제목 = 변수[1];
+        this.개요 = 변수[2];
+        this.감독 = 변수[3];
+        this.출연 = 변수[4];
+        this.문구 = 변수[5];
+      } //// 생성자 메서드 /////
+
+      // 내가 만들고자 하는 메서드
+      myMethod(txt){
+        // txt - 전달변수는 응원메시지 받기
+        return `
+          영화 ${this.제목}의
+          감독님 이름은 ${this.감독},
+          나의 응원은 ${txt}
+        `;
+      } ////// myMethod 메서드 ///////
+    } ///////////// MovieInfo 클래스 ////////
+
+    // 클래스의 데이터형은? function 즉, 함수임!
+    // -> 그.러.나... 선언형 함수와 같이 생성전에
+    // 위쪽에서 호출하는 함수호출 호이스팅은 불가함!
+    console.log("생성자 함수의 데이터형:", typeof MovieInfo);
+
+    // 보다 현실적이 데이터는 DB로부터 넘겨받은
+      // 배열데이터를 받게 된다!
+      const dbData = [
+        [
+          "https://movie-phinf.pstatic.net/20201116_276/1605491658399poUOC_JPEG/movie_image.jpg?type=m99_141_2",
+          "조제",
+          "멜로/로맨스, 드라마",
+          "김종관",
+          "한지민, 남주혁",
+          "조제 보러 오세요",
+        ],
+        [
+          "https://movie-phinf.pstatic.net/20221213_158/1670910727328mpqYu_JPEG/movie_image.jpg?type=m203_290_2",
+          "영웅",
+          "드라마, 뮤지컬",
+          "윤제균",
+          "정성화, 김고은",
+          "누가 죄인인가",
+        ],
+        [
+          "https://movie-phinf.pstatic.net/20221227_112/16721270739480lDiS_JPEG/movie_image.jpg?type=m203_290_2",
+          "교섭",
+          "드라마",
+          "임순례",
+          "황정민(정재호), 현빈(박대식)",
+          "아쌀라말라이쿰",
+        ],
+      ];
+
+      // DB 배열데이터 찍기
+      // dbData.forEach(v=>console.log(v));
+      
+      // 영화정보 배열변수
+      // const mi = [];
+
+      // 1. 생성자 함수로 객체만들기
+      // dbData.forEach((v,i)=>{
+      //   mi[i] = new MovieInfo(v);
+      // }); //// forEach /////////
+
+      // -> 위의 forEach를 사용하는 것보다
+      // 더 짧고 간단한 방법은? -> map()을 쓴다!
+      const mi = dbData.map(v=>new MovieInfo(v));
+
+
+      // 생성된 객체 확인하기
+      console.log(mi);
+
+      // 구체적인 객체 확인하기
+      console.log(mi[1].제목);
+      console.log(mi[1].myMethod("대박나라!!!"));
+
+      // this 키워드로 등록되지 않은 변수/함수는 접근불가!
+      // console.log(mi[1].응원함수());
+
+      //////////////////// 로드구역 ///////////////////////
+      window.addEventListener("DOMContentLoaded", () => {
+        console.log("로딩완료");
+
+        // 한글자씩 span태그로 싸는 함수
+        const wrapSpan = x => { // x - 문구데이터
+          let hcode = '';
+          // for of로 한글자씩 순회 ///
+          for(let txt of x){
+             if(txt == ' ') hcode += '&nbsp;&nbsp;';
+             else hcode += `<span>${txt}</span>`;
+          } ////// for of ////////
+          // 코드리턴
+          return hcode;
+        }; ///////// wrapSpan 함수 //////////
+
+        // 객체로 셋팅된 정보를 반복출력하자!
+        // 출력대상: .wrap
+        document.querySelector('.wrap')
+        .innerHTML = mi.map(v=>`
+        <section class="cbx">
+            <div class="minfo">
+                <!-- 1. 포스터 -->
+                <div class="photo">
+                    <img src="${v.포스터}" alt="${v.제목}의 포스터">  
+                </div>
+                <div class="cont">
+                    <!-- 2. 제목 -->
+                    <h2 class="tit">
+                        ${v.제목}</h2>
+                    <!-- 3. 개요 -->
+                    <h3 class="sum">
+                        ★장르 : ${v.개요}</h3>
+                    <!-- 4. 감독 -->
+                    <h3 class="dir">
+                        ★감독 : ${v.감독}</h3>
+                    <!-- 5. 출연 -->
+                    <h3 class="act">
+                        ★출연 : ${v.출연}</h3>
+                </div>
+            </div>
+
+            <!-- 영화 한마디 -->
+            <h2 class="showtit">♥ 영화한마디!</h2>
+            <!-- 6. 문구 -->
+            <div class="show">
+              ${wrapSpan(v.문구)}
+            </div>
+        </section>
+        `).join('');
+
+
+      }); //////////////// 로드구역 ///////////////////////
+      /////////////////////////////////////////////////////
 
       
     </script>
