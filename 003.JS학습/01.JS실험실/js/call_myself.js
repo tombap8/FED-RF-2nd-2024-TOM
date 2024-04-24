@@ -25,15 +25,17 @@ hcode += "</ul>";
 // 대상에 코드넣기
 gbox.innerHTML = hcode;
 
-//// 갤러리 박스를 왼쪽으로 계속 움직이게하는
+//////////////////////////////////////////////
+//// 갤러리 박스를 왼쪽으로 계속 움직이게하는 ////
 // 재귀호출함수 만들기 ///////
 
 // 움직일 대상: .gbox ul
 let target = mFn.qsEl(gbox,'ul');
 
 // 기준값 업데이트 함수
-const updateCriteria = () => window.innerWidth/4;
-// 기준값 (윈도우 가로폭의 1/4)->왜? li하나크기
+const updateCriteria = () => 
+mFn.qsaEl(target,"li")[0].offsetWidth;
+// 기준값 (대상 li의 가로크기값)
 let criteria = updateCriteria();
 // 리사이즈시 업데이트
 mFn.addEvt(window,"resize",
@@ -58,6 +60,7 @@ function moveGallery(){
     if(currVal == Math.floor(-criteria)){
         // 1.맨앞li 맨뒤로 이동!
         // appendChild(맨앞li)
+        // -> 맨앞li는 새로 구해와야함!(계속변경되니까!)
         target.appendChild(
             mFn.qsaEl(target,"li")[0]);
 
@@ -70,9 +73,30 @@ function moveGallery(){
 
     
     // 재귀호출!(타임아웃함수로 호출함!)
+    // stopSts변수값이 false일때만 실행하기
+    if(!stopSts)
     setTimeout(moveGallery,10);
 
 } ///////// moveGallery 함수 /////////////
+
+// 대상에 마우스 오버시 멈추고 아웃시 다시 흘러가게하기!
+// 대상: .gbox -> gbox변수
+// 멈춤상태변수
+let stopSts = false;
+
+// 1. 멈추기(mouseenter)
+mFn.addEvt(gbox,"mouseenter",()=>{
+    // 멈춤상태변수 true변경
+    stopSts = true;
+});
+// 2. 다시흘러가기(mouseleave)
+mFn.addEvt(gbox,"mouseleave",()=>{
+    // 멈춤상태변수 false변경
+    stopSts = false;
+    // 재귀호출함수 호출!
+    moveGallery();
+});
+
 
 
 setTimeout(moveGallery,2000);
