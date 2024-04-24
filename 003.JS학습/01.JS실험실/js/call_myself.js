@@ -33,7 +33,7 @@ let target = mFn.qsEl(gbox,'ul');
 
 // 기준값 업데이트 함수
 const updateCriteria = () => window.innerWidth/4;
-// 기준값 
+// 기준값 (윈도우 가로폭의 1/4)->왜? li하나크기
 let criteria = updateCriteria();
 // 리사이즈시 업데이트
 mFn.addEvt(window,"resize",
@@ -52,10 +52,22 @@ function moveGallery(){
     // 현재값 1씩감소
     target.style.translate = --currVal+"px";
 
-    // 하나 크기만큼 나가면 맨앞li 맨뒤로 이동!
-    // appendChild(맨앞li)
+    // 하나 크기만큼 나가면 처리!
+    // 기준값을 마이너스로 하고 소수점 아래는 버림
+    // Math.floor()소수점 아래 내림(버림)함수
+    if(currVal == Math.floor(-criteria)){
+        // 1.맨앞li 맨뒤로 이동!
+        // appendChild(맨앞li)
+        target.appendChild(
+            mFn.qsaEl(target,"li")[0]);
 
-    // 하나 크기만큼 나가면 currVal값 초기화!
+        // 2. translate값 초기화
+        target.style.translate = "0px";
+
+        // 3. 하나 크기만큼 나가면 currVal값 초기화!
+        currVal = 0;
+    } /////////// if /////////////////
+
     
     // 재귀호출!(타임아웃함수로 호출함!)
     setTimeout(moveGallery,10);
