@@ -57,7 +57,8 @@ function moveGallery(){
     // 하나 크기만큼 나가면 처리!
     // 기준값을 마이너스로 하고 소수점 아래는 버림
     // Math.floor()소수점 아래 내림(버림)함수
-    if(currVal == Math.floor(-criteria)){
+    // == 비교보다는 <= 로 해야 안전함!
+    if(currVal <= Math.floor(-criteria)){
         // 1.맨앞li 맨뒤로 이동!
         // appendChild(맨앞li)
         // -> 맨앞li는 새로 구해와야함!(계속변경되니까!)
