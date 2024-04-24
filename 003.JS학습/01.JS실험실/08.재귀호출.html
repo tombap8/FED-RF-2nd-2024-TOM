@@ -15,10 +15,18 @@
         }
         .gbox ul{
             display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
         }
         .gbox li{
             width: 25vw; 
+            /* 플렉스 부모박스크기에 맞춰줄여라에
+            0을 쓰면 아니! 안줄여 이런뜻임! */
+            flex-shrink: 0;
             aspect-ratio: 664/443;   
+            padding: 1vw;
+            box-sizing: border-box;
         }
         .gbox li img{
             width: 100%;
