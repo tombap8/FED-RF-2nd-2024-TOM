@@ -1,0 +1,51 @@
+
+:root {
+  --gfs: 1440;
+  --black: #000;
+  --olive: #2d312a;
+  --leaves: #a6a999;
+  --silk: #f6f2ef;
+  --lavender-blue: #a3adcb;
+  --midnight: #171717;
+  --red: #f94242;
+  --light-red: #ff8080;
+  --darkness-bg: rgba(0, 0, 0, 0.6);
+  --lightness-bg: hsla(26, 28%, 95%, 0.4);
+  --s-220: calc((220 / var(--gfs)) * 100 * 1vw);
+  --s-120: calc((120 / var(--gfs)) * 100 * 1vw);
+  --s-96: calc((96 / var(--gfs)) * 100 * 1vw);
+  --s-80: calc((80 / var(--gfs)) * 100 * 1vw);
+  --s-72: calc((72 / var(--gfs)) * 100 * 1vw);
+  --s-64: calc((64 / var(--gfs)) * 100 * 1vw);
+  --s-60: calc((60 / var(--gfs)) * 100 * 1vw);
+  --s-56: calc((56 / var(--gfs)) * 100 * 1vw);
+  --s-52: calc((52 / var(--gfs)) * 100 * 1vw);
+  --s-40: calc((40 / var(--gfs)) * 100 * 1vw);
+  --s-32: calc((32 / var(--gfs)) * 100 * 1vw);
+  --s-24: calc((24 / var(--gfs)) * 100 * 1vw);
+  --s-20: calc((20 / var(--gfs)) * 100 * 1vw);
+  --s-16: calc((16 / var(--gfs)) * 100 * 1vw);
+  --s-14: calc((14 / var(--gfs)) * 100 * 1vw);
+  --s-12: calc((12 / var(--gfs)) * 100 * 1vw);
+  --s-8: calc((8 / var(--gfs)) * 100 * 1vw);
+  --s-4: calc((4 / var(--gfs)) * 100 * 1vw);
+  --header-height: calc((56 / var(--gfs)) * 100 * 1vw);
+  --footer-height: calc((96 / var(--gfs)) * 100 * 1vw);
+  --header-padding: calc(var(--header-height) + var(--s-32));
+  --top-space: 21.6748768473vh;
+  --bottom-space: 6.4039408867vh;
+  --z-preloader: 15;
+  --z-header: 11;
+  --z-cookie: 10;
+  --z-menu: 10;
+  --z-h-layer: calc(var(--z-menu) - 1);
+}
+@media (max-width: 834px) {
+  :root {
+    --gfs: 375;
+    --top-space: 23.645320197vh;
+    --bottom-space: 8.1280788177vh;
+    --header-height: calc((64 / var(--gfs)) * 100 * 1vw);
+    --header-padding: calc(var(--header-height) + var(--s-12));
+  }
+}
