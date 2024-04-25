@@ -56,7 +56,13 @@
             line-height: 60px;
             font-weight: bold;
             color: #fff;  
-            background-color: #ccc; 
+            background-color: #ccc;
+            /* 글자그림자로 1px글자외곽선 만들기 */
+            text-shadow: 
+            1px 0 #000,
+            -1px 0 #000,
+            0 1px #000,
+            0 -1px #000;             
         }
         /* 퍼센트 글자박스 */
         .pNum{            
@@ -68,7 +74,7 @@
         .bar{
             position: absolute;
             left: 0;
-            width: 50%;
+            width: 0%;
             height: 100%;
             background-color: blue;
         }

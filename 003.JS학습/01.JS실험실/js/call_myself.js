@@ -102,3 +102,25 @@ mFn.addEvt(gbox,"mouseleave",()=>{
 
 setTimeout(moveGallery,2000);
 
+
+//////////////////////////////////////////////////////
+/// 프로그래스 바 퍼센트 증가하기 재귀호출함수 만들기 ////
+// 퍼센트 증가 숫자변수
+let percent = 0;
+// 숫자출력박스 : .pNum
+const pNum = mFn.qs(".pNum");
+
+increasePercent();
+
+// 재귀호출함수 만들기
+function increasePercent(){
+    // pNum에 숫자출력
+    pNum.innerText = ++percent;
+
+    if(percent<100)
+    setTimeout(increasePercent, 60);
+
+} //////// increasePercent 함수 ///////////////
+
+
+
