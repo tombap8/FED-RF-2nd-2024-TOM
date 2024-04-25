@@ -69,7 +69,7 @@
         // 속성셋팅 생성자 메서드는 필수!
         // 기본적으로 부모 생성자 메서드 전달변수사용!
         // 왜? 상속받았으니까!!!
-        constructor(pos, tit, sum, dir, act, des, msg, num){          
+        constructor(pos, tit, sum, dir, act, des, msg, num) {
           // super() 메서드 : 부모생성자 메서드 호출용
           // new키워드로 CGV클래스 인스턴스 생성시
           // 부모 클래스의 생성자가 필요로 하는
@@ -86,24 +86,19 @@
         } ////////// CGV 생성자 메서드 //////////
 
         // CGV 만의 메서드 만들기 /////////
-        showCGV(txt){
+        showCGV(txt) {
           // txt 전달변수를 부모메서드에 전달하여
           // 부모 공통메서드를 호출한 결과
           // 리턴값을 받아서 처리한다!
           // 부모메서드 접근법: super.부모메서드명()
-          return super.공통메서드(txt) + 
-          ", <br>CGV안내 : " + this.극장안내;
-
+          return super.공통메서드(txt) + ", <br>CGV안내 : " + this.극장안내;
         } ///////// showCGV 메서드 /////////
-
       } ////////// CGV 클래스 /////////////////
-      
-
 
       /**************************************** 
       ///////   MegaBox 영화상영관 클래스 //////
       ****************************************/
-      
+
       //////////////////////////////////////////////
       /////// 클래스로 객체 생성하고 화면출력하기 /////
       //////////////////////////////////////////////
@@ -125,10 +120,39 @@
       );
 
       // 객체확인하기
-      console.log("CGV객체확인:",cgvInfo);
+      console.log("CGV객체확인:", cgvInfo);
+      console.log("CGV객체key배열:", Object.keys(cgvInfo));
 
-
+      // 로드구역 /////////////
+      window.addEventListener("load", () => {
+        // .cgv-part에 출력하기
+        document.querySelector(".cgv-part").innerHTML = `<div class="cgv-info">
+            <h1> [ 🎪CGV 상영관 영화안내 ] </h1>
+            <h2>
+              <ol>
+               ${Object.keys(cgvInfo)
+                 .map(
+                   (v) => `
+                  <li>
+                    ${
+                      v == "포스터" ? 
+                      `<img src="${cgvInfo[v]}" 
+                      alt="영화 ${cgvInfo["제목"]}의 포스터">`
+                        : v + ":" + cgvInfo[v]
+                    }
+                  </li>
+                `
+                 )
+                 .join("")}
+              </ol>
+            </h2>
+          </div>
+        `;
+      }); ////////// load ///////////////////
     </script>
   </head>
-  <body></body>
+  <body>
+    <!-- CGV극장 게시정보 출력박스 -->
+    <div class="cgv-part"></div>
+  </body>
 </html>
