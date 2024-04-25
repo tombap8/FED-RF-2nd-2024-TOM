@@ -1,4 +1,14 @@
 // 04.리액트 컴포넌트 JSX
+
+// 내함수 불러오기
+import mFn from "./my_function";
+// console.log(mFn);
+
+// 외부 컴포넌트 불러오기
+import Avengers from "./avengers";
+// 리액트에서는 from뒤 파일명에 "js/jsx"를 생략해도 됨!
+
+
 /************************************************* 
     [ 리액트 컴포넌트 ]
     - 컴포넌트는 HTML요소를 반환하는 함수다!
@@ -53,7 +63,7 @@ class GoghWork extends React.Component {
 } ///////// GoghWork 클래스형 컴포넌트 //////
 
 // 전체 출력요소 선택하기
-const target = document.querySelectorAll(".root");
+const target = mFn.qsa(".root");
 
 // 첫번째 .root에 고흐출력하기
 ReactDOM.render(<GoghWork />, target[0]);
@@ -144,7 +154,8 @@ function Answer(){
 // 출력: 다섯번째 .root
 ReactDOM.render(<Who />,target[4]);
 
-
+// 출력: 여섯번째 .root
+ReactDOM.render(<Avengers />,target[5]);
 
 
 /*************************************************** 
