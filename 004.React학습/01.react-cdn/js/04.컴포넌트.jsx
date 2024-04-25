@@ -71,8 +71,15 @@ function IronMan() {
 } ///////// IronMan 컴포넌트 /////////////
 
 // [ 이미지 생성 공통 컴포넌트 ] ////
-function MakeImage(props) {
-  return <img src={"./images/" + props.isrc} alt={props.ialt} />;
+// function MakeImage(헐) {
+// function MakeImage({ialt, isrc}) {
+function MakeImage({ialt:ㅎㅎ, isrc:ㅋㅋ}) {
+  // 하나의 변수에는 전달된 값이 보낼때 설정된
+  // 객체로 전달된다! {속성:값,속성:값,...}
+  // console.log(헐);
+  return <img src={"./images/" + ㅋㅋ} alt={ㅎㅎ} />;
+  // return <img src={"./images/" + isrc} alt={ialt} />;
+  // return <img src={"./images/" + 헐.isrc} alt={헐.ialt} />;
 } /////// MakeImage 컴포넌트 //////////
 
 // 두번째 .root에 아이언맨출력하기
