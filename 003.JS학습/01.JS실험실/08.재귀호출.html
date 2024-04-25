@@ -33,11 +33,42 @@
             height: 100%;
             object-fit: cover;
         }
+        /* 프로그래스 바 */
+        .progress{
+            display: flex;
+        }
+        /* 준비/출발 글자박스 */
+        .txt{
+            font-size: 40px;
+            color: hotpink;
+            line-height: 60px;
+            padding: 0 10px;
+        }
+        /* 퍼센트바 */
+        .pbar{
+            width: 500px;
+            height: 60px;
+            border: 2px solid gray;
+            text-align: center;
+            font-size: 30px;
+            line-height: 60px;
+            font-weight: bold;
+            color: #fff;  
+            background-color: #ccc; 
+        }
 
     </style>
 </head>
 <body>
     <h1>08. 재귀호출 : 무한이동 갤러리</h1>
+    <div class="progress">
+        <span class="txt">준비</span>
+        <div class="pbar">
+            <span class="pNum">0</span>%
+            <span class="bar"></span>
+        </div>
+    </div>
+
     <div class="gbox">
 
     </div>
