@@ -71,6 +71,8 @@ function IronMan() {
 } ///////// IronMan 컴포넌트 /////////////
 
 // [ 이미지 생성 공통 컴포넌트 ] ////
+// -> 비구조화할당(구조분해할당)을 사용하여 
+// 전달객체를 개별 변수값으로 처리할 수 있다!
 // function MakeImage(헐) {
 // function MakeImage({ialt, isrc}) {
 function MakeImage({ialt:ㅎㅎ, isrc:ㅋㅋ}) {

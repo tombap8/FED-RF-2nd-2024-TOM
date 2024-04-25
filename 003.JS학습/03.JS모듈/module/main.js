@@ -15,6 +15,8 @@ import myFn from "./my_function.js";
 //   mvData as mdt,
 // } from "./text_data.js";
 
+// console.log(mTit);
+
 // [import 방법3 : 한꺼번에 불러오기 - *사용!]
 // -> import * as 별칭 from 경로
 // -> 별칭 이름으로 한꺼번에 불러온 값을 객체에 담음
