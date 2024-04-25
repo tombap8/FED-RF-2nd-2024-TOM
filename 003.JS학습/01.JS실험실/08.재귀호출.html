@@ -44,8 +44,10 @@
             line-height: 60px;
             padding: 0 10px;
         }
-        /* 퍼센트바 */
+        /* 퍼센트바 박스 */
         .pbar{
+            position: relative;
+            /* 부모자격 - .bar */
             width: 500px;
             height: 60px;
             border: 2px solid gray;
@@ -55,6 +57,20 @@
             font-weight: bold;
             color: #fff;  
             background-color: #ccc; 
+        }
+        /* 퍼센트 글자박스 */
+        .pNum{            
+            position: relative;
+            z-index: 1;
+            /* 표시바 보다 위 */
+        }
+        /* 증가표시바 */
+        .bar{
+            position: absolute;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            background-color: blue;
         }
 
     </style>
