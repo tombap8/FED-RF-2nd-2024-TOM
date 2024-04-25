@@ -100,7 +100,7 @@ mFn.addEvt(gbox,"mouseleave",()=>{
 
 
 
-setTimeout(moveGallery,2000);
+// setTimeout(moveGallery,2000);
 
 
 //////////////////////////////////////////////////////
@@ -109,16 +109,31 @@ setTimeout(moveGallery,2000);
 let percent = 0;
 // 숫자출력박스 : .pNum
 const pNum = mFn.qs(".pNum");
+// 퍼센트바 : .bar
+const bar = mFn.qs(".bar");
+// 글자출력박스 : .txt
+const txt = mFn.qs(".txt");
 
 increasePercent();
 
 // 재귀호출함수 만들기
 function increasePercent(){
-    // pNum에 숫자출력
+    // 1. pNum에 숫자출력
     pNum.innerText = ++percent;
 
-    if(percent<100)
-    setTimeout(increasePercent, 60);
+    // 2. 퍼센트바 width 값 동시에 증가하기
+    bar.style.width = percent+"%";
+
+    // 3. 증가숫자가 100보다작을때까지 계속 재귀호출
+    if(percent<100){
+        setTimeout(increasePercent, 60);
+    } /// if ///
+    else{
+        // 4. 재귀호출이 끝나면 "준비"글자를 "출발!"로 변경
+        txt.innerText = "출발!"
+        // 5. 슬라이드 이동함수 호출하기(타이아웃호출은 주석)
+        moveGallery();
+    } ////// else ////
 
 } //////// increasePercent 함수 ///////////////
 
