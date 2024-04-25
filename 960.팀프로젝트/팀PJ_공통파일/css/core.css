@@ -1,0 +1,109 @@
+@charset "utf-8";
+/* 공통 클래스 CSS - core.css */
+/* 공통 셋팅을 위한 클래스 + 웹폰트 */
+
+/* 웹폰트 CDN */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&family=Gugi&family=Nanum+Gothic&family=Single+Day&family=ZCOOL+KuaiLe&display=swap');
+/* 
+    0. 메뉴 등 일반체
+    font-family: 'Noto Sans KR', sans-serif;
+    1. 캐릭터 설명 제목체
+    font-family: 'Gugi', cursive;
+    2. 캐릭터 설명 내용체
+    font-family: 'Single Day', cursive;
+    3. 캐릭터 설명 한자체
+    font-family: 'ZCOOL KuaiLe', cursive;
+    4. 전체 공통체(메뉴 등)
+    font-family: 'Nanum Gothic', sans-serif;
+*/
+
+/* 전체 글자크기 */
+html{
+    font-size: 10px;
+    /* rem단위 계산편의를 위함 */
+}
+body{
+    /* 글자체 */
+    font-family: "Noto Sans KR", Malgun Gothic, dotum, "돋움", Arial, AppleGothic, Sans-serif;
+}
+
+/********* 공통 클래스 *********/
+/* 임시표시타이틀 */
+.temp-tit{
+    position: absolute;
+    font-size: 2vw;
+    color: #ccc;
+}
+/* 중앙속박스 */
+.inbox{
+    /* 최대가로크기 */
+    max-width: 1360px;
+    padding: 0 20px;
+    /* 블록박스 중앙정렬 -> 마.영.오! */
+    margin: 0 auto;    
+}
+
+/* 그룹파트박스 */
+.group-part{
+    /* 상하패딩 넣기 */
+    padding: 60px 0;
+}
+
+/* 플렉스박스 클래스 */
+.fx-box{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* 파트박스 */
+.partbox {
+    /* 패딩,보더 포함박스 */
+    box-sizing: border-box;
+}
+
+/* 메인영역 col- 박스 */
+.main-area [class*='col-'] {
+    padding: 10px;
+}
+
+/* 공통 서브타이틀 */
+.stit{
+    padding-bottom: 32px;
+    font-size: 3.8rem;
+    font-weight: normal;
+}
+
+/* IR(Images Replacement) 
+- 배경이미지 설명 숨기기 클래스 */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* 화면출력 숨기기 클래스 */
+.blind{
+    display: none;
+}
+
+
+/* 스크롤바 디자인 클래스 */
+/* -webkit- 밴더사명(크롬,사파리) 접두어 */
+/* 클래스명 scbar */
+.scbar::-webkit-scrollbar{
+    /* 전체 스크롤바 크기변경 */
+    width: 7px;
+}
+.scbar::-webkit-scrollbar-thumb{
+    /* 스크롤바 */
+    background-color: #555;
+    border-radius: 5px;
+}
+.scbar::-webkit-scrollbar-track{
+    /* 스크롤바 트랙 */
+    background-color: #ddd;
+    border-radius: 5px;
+}
+
+
