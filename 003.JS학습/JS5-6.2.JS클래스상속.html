@@ -135,10 +135,10 @@
                    (v) => `
                   <li>
                     ${
-                      v == "포스터" ? 
-                      `<img src="${cgvInfo[v]}" 
-                      alt="영화 ${cgvInfo["제목"]}의 포스터">`
-                        : v + ":" + cgvInfo[v]
+                      (v == "포스터") ? 
+                      (`<img src="${cgvInfo[v]}" 
+                      alt="영화 ${cgvInfo["제목"]}의 포스터">`) : 
+                      (v + ":" + cgvInfo[v])
                     }
                   </li>
                 `
