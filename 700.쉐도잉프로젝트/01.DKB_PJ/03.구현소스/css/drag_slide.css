@@ -1,0 +1,170 @@
+/* 드래그 슬라이드 CSS - drag_slide.css */
+
+/* 배너전체박스 */
+.banbx {
+    /*슬라이드부모*/
+    position: relative;
+    margin-top: 50px;
+    /* 부모는? .page */
+    /* top: 50%;
+    transform: translateY(-50%); */
+    /* 세로중앙! */
+    left: 25vw;
+    width: 50vw;
+    aspect-ratio: 1/0.55;
+    /* border: 2px solid red; */
+    box-sizing: border-box;
+    
+    /* outline: 5px dotted blue; */
+    
+    /* 선택 및 드래그 방지 */
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+/* 가상요소로 드래그 막기장치 */
+.banbx.on::after{
+    content: "";
+    position:absolute;
+    transform: scaleY(1.1);
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    z-index:99;
+    /* background-color: rgba(43, 55, 224, 0.5); */
+}
+
+.slide {
+    display: flex;
+    /* 플렉스박스!!! */
+    gap: 0 10%;
+    /* 양쪽간격 기준박스의 10%크기 */
+
+    /*사진을 싸고 있는 슬라이드*/
+    position: absolute;
+    top: 0;
+    left: -220%;
+    /* 2장의 앞쪽에 나가있음!
+    원래는 -200%지만 가로폭 5%가 
+    양쪽 셋팅되어서 10%를 두번 더해서
+    220%임 -> 하나당 110%  */
+    width: 100%;
+    height: 100%;
+}
+
+/* 슬라이드 드래그 기능을 위해 
+선택/드래그 금지셋팅 */
+.slide * {
+    user-select: none;
+    -webkit-user-drag: none;
+}
+
+
+.slide li {
+    flex-shrink: 0;
+    /* 부모박스크기만큼 줄어들지 않음 -> 0 */
+    flex-basis: 100%;
+    /* 가로크기를 부모박스 크기에 맞춤! */
+    /* height 값은 flex박스 자식요소에서
+    등분할시 자동 100%임! */
+    /* outline: 2px dashed red; */
+
+    /* 필터로 밝기조절(어둡게) */
+    filter: brightness(70%);
+    
+    /* 트랜지션 */
+    transition: .4s ease-out;
+}
+/* 클래스가 on이 주인공이므로 원래밝기로 조금 크게변경! */
+.slide li.on{
+    filter: brightness(100%);
+    transform: scale(1.1);
+}
+.slide li img {
+    /*이미지는 박스에 맞춤!*/
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* 이미지 비율유지 채우기! */
+}
+
+/* 이동버튼, 블릿 -> .controls 
+부모박스에 클래스 no가 적용될 경우 
+컨트롤스 모두 이벤트 통과!*/
+.no .controls {
+    pointer-events: none;
+}
+
+
+/*이동버튼*/
+.abtn {
+    position: absolute;
+    width: 24px;
+    height: 51px;
+    top: 50%;
+    transform: translateY(-50%);
+    /* Y축 중앙이동 */
+    z-index: 10;
+
+    /* background-color: #000; */
+    background-image: url(../images/img_nav06/main.png);
+    background-size: 190px 175px;
+    background-repeat: no-repeat;
+    /* outline: 1px solid red; */
+}
+
+/*왼쪽버튼*/
+.ab1 {
+    left: -4.9vw;
+    background-position: -26px -124px;
+}
+
+/*오른쪽버튼*/
+.ab2 {
+    right: -4.9vw;    
+    background-position: -166px -53px;
+}
+
+/* IR */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+
+/*블릿버튼*/
+.indic {
+    display: flex;
+    /* 플렉스박스 */
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    transform: scale(.7);
+    z-index: 1;
+}
+
+.indic li {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
+.indic li img {
+    position: absolute;
+    /*이미지 겹치게*/
+}
+
+.indic li img:last-child {
+    /*회색이미지만 투명하게*/
+    opacity: 0;
+}
+
+/*회색블릿이미지가 보이게하는 class*/
+.indic li.on img:last-child {
+    /*회색이미지만 투명하게*/
+    opacity: 1;
+    /*우선적용!*/
+}

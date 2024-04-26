@@ -8,6 +8,10 @@
 /* 그리드 12 불러오기 */
 @import url(./grid_12_flex.css);
 
+/* 드래그 슬라이드 CSS불러오기 */
+@import url(./drag_slide.css);
+
+
 /* 공사중 표시 */
 body * {
     /* outline: 2px dashed #ccc; */
