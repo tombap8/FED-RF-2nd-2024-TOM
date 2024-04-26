@@ -546,9 +546,11 @@ function slideFn(selEl) {
     // 기존 처리되는 일반 요청처리 코드가 모두
     // 스택(stack)에서 처리가 끝날때까지 기다렸다가
     // 큐에서 순서대로 스택으로 넘어가 처리된다!
-    // setTimeout(dFalse, 0);
+    setTimeout(dFalse, 0);
 
-    dFalse();
+    if(dragSts) moveDragSlide();
+
+    // dFalse();
 
     // 과도한 드래그로 갑자가 아웃되면 lastX,lastY값이
     // 셋팅되지 못한다! 이것을 기존 요소의 위치값으로 보정함!
