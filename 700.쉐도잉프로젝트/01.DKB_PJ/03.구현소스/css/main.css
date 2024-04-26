@@ -240,6 +240,8 @@ body * {
 .clip-box li {    
     flex-basis: 25%;
     flex-shrink: 0;
+    /* 플렉스 gap 속성대신 패딩으로 처리!
+    이유는? 드래그시 영역아웃현상때문! */
     padding: 0 1.1%;
     box-sizing: border-box;
 }
