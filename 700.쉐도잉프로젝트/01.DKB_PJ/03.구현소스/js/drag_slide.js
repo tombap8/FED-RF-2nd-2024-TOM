@@ -388,7 +388,28 @@ function slideFn(selEl) {
       // 대상 : 드래그 요소 dtg
       dtg.style.left = resultX + lastX + "px";
 
-    } //// if ////////
+      // 4. 양쪽끝에서 튕겨서 제자리 보내기
+      // (1) 현재 리스트 li 수집하기
+      let currList = mFn.qsaEl(dtg,"li");
+      // (2) 리스트 길이(개수)
+      let listLength = currList.length;
+      // (3) 리스트 한개당 크기(li가로크기)
+      let oneSize = currList[0].offsetWidth;
+
+      // 4-1. 맨앞에서 튕기기
+      if(parseInt(dtg.style.left)>0){
+        // 약간의 시간간격으로 조금 간후 튕겨서 돌아오는 효과
+        setTimeout(() => {
+          // left 값 0
+          dtg.style.left = "0";
+          // 마지막 위치값 0
+          lastX = 0;
+        }, 200);
+      } ////// if /////////
+
+
+
+    } /////// if ////////
 
     // 드래그 중(dragSts===true)일때는 주먹손(grabbing),
     // 드래그아닐때(dragSts===false) 편손(grab)
