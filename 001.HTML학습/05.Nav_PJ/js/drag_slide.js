@@ -371,6 +371,12 @@ function slideFn(selEl) {
   const dMove = (e) => {
     // e - 이벤트 객체 전달변수
     // 드래그 상태는 dragSts값이 true인 경우에만 허용!
+
+    // 이동버튼+블릿 이벤트 없앰설정하기
+    // 상위 selEl에 클래스 .no 주면된다!
+    if (dragSts) selEl.classList.add('no');
+    else selEl.classList.remove('no');
+
     if (dragSts) {
       // 0. 자동넘김 멈춤함수 호출하기
       // clearAuto();
@@ -563,16 +569,16 @@ function slideFn(selEl) {
 
   // (5) 버튼,블릿에 오버시 자동처리호출셋팅 ///
   // (조건:드래그상태 변수인 dragSts값이 true일때 )
-  mFn.qsaEl(selEl, ".controls").forEach(
-    (ele) =>
-      mFn.addEvt(ele, "mouseenter", () => {
-        console.log('dragSts:',dragSts);
-        if(dragSts){ // 드래그 중일때 처리
-          moveDragSlide();
-          clearAuto();
-        } /// if /////
-      }) ///////mouseenter /////
-  ); /////// forEach /////////
+  // mFn.qsaEl(selEl, ".controls").forEach(
+  //   (ele) =>
+  //     mFn.addEvt(ele, "mouseenter", () => {
+  //       console.log('dragSts:',dragSts);
+  //       if(dragSts){ // 드래그 중일때 처리
+  //         moveDragSlide();
+  //         clearAuto();
+  //       } /// if /////
+  //     }) ///////mouseenter /////
+  // ); /////// forEach /////////
 
 
 

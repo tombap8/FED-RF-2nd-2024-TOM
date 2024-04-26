@@ -94,6 +94,14 @@ html,body{
     /* 이미지 비율유지 채우기! */
 }
 
+/* 이동버튼, 블릿 -> .controls 
+부모박스에 클래스 no가 적용될 경우 
+컨트롤스 모두 이벤트 통과!*/
+.no .controls {
+    pointer-events: none;
+}
+
+
 /*이동버튼*/
 .abtn {
     position: absolute;
