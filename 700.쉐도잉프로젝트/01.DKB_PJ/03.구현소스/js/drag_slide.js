@@ -126,7 +126,7 @@ function slideFn(selEl) {
     // chgIndic(isRight); // 방향값을 보냄!
 
     // 4. 자동넘김 멈춤함수 호출하기
-    clearAuto();
+    // clearAuto();
 
     // 5. 중앙 li에 클래스 on넣기
     // slideSeq값은 오른쪽버튼2,왼쪽버튼3
@@ -323,6 +323,8 @@ function slideFn(selEl) {
   // 드래그할 대상의 CSS 기본값을 셋팅한다!
   // 필수 셋팅요소는 position:relative / top:0 / left:0
   dtg.style.position = "relative";
+  // selEl.style.userSelect = "none";
+  // selEl.style.webkitUserDrag = "none";
   // dtg.style.top = "0";
   // 배너가 left값 -220% 기준박스에서 이동함
   // .banbx의 width값 곱하기 -2.2
@@ -336,7 +338,7 @@ function slideFn(selEl) {
   // console.log("기준값의 110%:", valFirst);
   // console.log("기준값의 90%:", valSecond);
   // left위치값 최초셋업! -> px단위 꼭 쓸것!!!
-  dtg.style.left = leftVal + "px";
+  // dtg.style.left = leftVal + "px";
 
   // 2. 변수 셋팅 ///////////////////////
   // (1) 드래그 상태 변수 만들기
@@ -348,7 +350,7 @@ function slideFn(selEl) {
 
   // (3) 마지막 위치 포인트 : last x, last y
   // -> 최초위치 셋팅값으로 프리셋팅!
-  let lastX = leftVal;
+  let lastX = 0;
   // -> 중첩된 최종위치가 처음에는 계산되지 않았으므로
   // 출발위치인 0값으로 초기값을 넣어준다!
   // 초기값을 안넣으면 최초에 값을 더할때 에러가 발생한다!
@@ -371,52 +373,21 @@ function slideFn(selEl) {
 
   // (3) 드래그 상태시 처리함수
   const dMove = (e) => {
-    // e - 이벤트 객체 전달변수
-    // 드래그 상태는 dragSts값이 true인 경우에만 허용!
-
-    // 이동버튼+블릿 이벤트 없앰설정하기
-    // 상위 selEl에 클래스 .no 주면된다!
-    if (dragSts) selEl.classList.add('no');
-    else selEl.classList.remove('no');
-    
-    if (dragSts) {
-      // 0. 자동넘김 멈춤함수 호출하기
-      // clearAuto();
-
-      // // // console.log('드래그중~!');
+    if (dragSts) {      
 
       // 1. 드래그 상태에서 움질일대 포인터 위치값
-      // - 브라우저용 포인터 위치는 pageX, pageY를 사용!
-      // - 모바일용 터치 스크린 터치위치는
-      // touches[0].screenX, touches[0].screenY
-      // -> 두가지를 모두 사용하는 방법은 OR문 할당법을 쓴다!
-      // -> 변수 = 할당문1 || 할당문2
-      // ->>> 두 할당문중 값이 유효한(true)값이 할당됨!
+      
       // DT용 코드와 Mobile코드를 동시에 셋팅할 수 있다!
       moveX = e.pageX || e.touches[0].screenX;
-      // // // console.log(e.touches[0]);
-      // moveX = e.pageX;
-      // moveY = e.pageY;
 
       // 2. 움직일 위치 결과값
       // 움직일때 위치 포인트 - 첫번째 위치 포인트
-      // moveX - firstX
-      // moveY - firstY
       resultX = moveX - firstX;
-      // -> 순수하게 움직인 거리를 계산함!
-      // -> 움직인위치 - 첫번째위치 순으로 빼준 이유는?
-      // ->>> top, left위치이동 양수 음수차를 고려한 순서임
 
       // 3. 이동차를 구한 resultX,resultY값을 대상 위치값에 적용
       // 대상 : 드래그 요소 dtg
       dtg.style.left = resultX + lastX + "px";
-      // 처음엔 lastX,lastY값이 0으로 들어오기
-      // 두번째부터는 mouseup이벤트 발생부터 저장된
-      // 최종 이동위치값이 더해진다!
 
-      // 값확인
-      // // console.log(`moveX: ${moveX}`);
-      // // console.log(`resultX: ${resultX}`);
     } //// if ////////
 
     // 드래그 중(dragSts===true)일때는 주먹손(grabbing),
@@ -498,11 +469,6 @@ function slideFn(selEl) {
 
   // (1) 마우스 다운 이벤트 함수연결하기
   mFn.addEvt(dtg, "mousedown", (e) => {
-    // 0. 자동넘김 멈춤함수 호출하기
-    // clearAuto();
-    // 자동호출을 지우기만 해서 자동시작안함!
-    clearInterval(autoI);
-    clearTimeout(autoT);
 
     // 드래그 상태값 true로 변경!
     dTrue();
@@ -514,16 +480,12 @@ function slideFn(selEl) {
     // 마우스 다운시 주먹손!
     dtg.style.cursor = "grabbing";
 
-    // z-index 전역변수(zNum) 숫자를 1씩 높이기
-    // dtg.style.zIndex = ++zNum;
-
-    // // console.log("마우스 다운!", dragSts);
   }); ///////// mousedown //////////
 
   // (2) 마우스 업 이벤트 함수연결하기
   mFn.addEvt(dtg, "mouseup", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
-    clearAuto();
+    // clearAuto();
 
     // 드래그 상태값 false로 변경!
     dFalse();
@@ -534,7 +496,7 @@ function slideFn(selEl) {
     dtg.style.cursor = "grab";
 
     // 드래그 슬라이드 이동함수 호출!
-    moveDragSlide();
+    // moveDragSlide();
 
     // // console.log("마우스 업!", lastX);
   }); ///////// mouseup //////////
@@ -545,58 +507,29 @@ function slideFn(selEl) {
 
   // (4) 마우스가 대상을 벗어나면 드래그상태값 false처리하기
   mFn.addEvt(dtg, "mouseleave", () => {
-    // 드래그 상태값 false로 변경!
-    // 하단 컨트롤 mouseenter 에서 처리하는
-    // dragSts값처리시 mouseleave에서 처리하는
-    // 코드가 가장 나중에 처리하게 하려면
-    // 해당코드를 setTimeout() 함수에 넣는다!
-    // 결과적으로 이 코드는 큐(Queue)에 들어가서
-    // 기존 처리되는 일반 요청처리 코드가 모두
-    // 스택(stack)에서 처리가 끝날때까지 기다렸다가
-    // 큐에서 순서대로 스택으로 넘어가 처리된다!
+    
     setTimeout(dFalse, 0);
     
     // 마우스가 벗어나면 이동판별함수 호출!
-    if(dragSts) moveDragSlide();
-
-    // dFalse();
-
-    // 과도한 드래그로 갑자가 아웃되면 lastX,lastY값이
-    // 셋팅되지 못한다! 이것을 기존 요소의 위치값으로 보정함!
-    // 단, style위치값 코드는 'px'단위가 있으므로 parseInt처리!
-    // lastX = parseInt(dtg.style.left);
-    // -> 드래그 배너에서는 불필요!(있어면 오작동!)
-
-    // // console.log("마우스나감!", dragSts);
+    // if(dragSts) moveDragSlide();
   }); ///////// mouseleave //////////
 
   //////////// 모바일 이벤트 처리 구역 //////////
 
   // (1) 터치스타트 이벤트 함수연결하기
   mFn.addEvt(dtg, "touchstart", (e) => {
-    // 0. 자동넘김 멈춤함수 호출하기
-    // clearAuto();
-    // 자동호출을 지우기만 해서 자동시작안함!
-    clearInterval(autoI);
-    clearTimeout(autoT);
 
     // 드래그 상태값 true로 변경!
     dTrue();
     // 첫번째 위치포인트 셋팅!
     firstPoint(e);
-    // 단독할당되지 않고 내부 함수호출로 연결되어있으므로
-    // 이벤트 전달을 토스해줘야 한다!(전달변수 e)
 
-    // z-index 전역변수(zNum) 숫자를 1씩 높이기
-    // dtg.style.zIndex = ++zNum;
-
-    // // console.log("터치스타트!", dragSts);
   }); ///////// touchstart //////////
 
   // (2) 터치엔드 이벤트 함수연결하기
   mFn.addEvt(dtg, "touchend", () => {
     // 0. 자동넘김 멈춤함수 호출하기
-    clearAuto();
+    // clearAuto();
 
     // 드래그 상태값 false로 변경!
     dFalse();
@@ -604,7 +537,7 @@ function slideFn(selEl) {
     lastPoint();
 
     // 드래그 슬라이드 이동함수 호출!
-    moveDragSlide();
+    // moveDragSlide();
 
     // // console.log("터치엔드!", dragSts);
   }); ///////// touchend //////////
@@ -627,15 +560,6 @@ function slideFn(selEl) {
     valFirst = leftVal * 1.1;
     // 5. 오른쪽으로 이동할 기준값(기준위치값*0.9)
     valSecond = leftVal * 0.9;
-
-    // 호출작동확인!
-    // console.log(
-    //   "리사이즈 작동!!!",
-    //   originalValue,
-    //   leftVal,
-    //   valFirst,
-    //   valSecond
-    // );
   }); ////////////// resize함수 //////////////////
 } /////////////// slideFn 함수 ///////////////
 /////////////////////////////////////////////

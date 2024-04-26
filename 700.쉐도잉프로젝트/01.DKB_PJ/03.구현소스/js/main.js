@@ -14,6 +14,7 @@ import { startSS, setScrollPos } from "./smoothScroll23.js";
 import * as dkbData from "../data/dkb_data.js";
 // import { previewData } from '../data/dkb_data.js';
 
+import setSlide from "./drag_slide.js";
 
 ///////////////////////////////////////////////
 
@@ -180,7 +181,7 @@ introMv.onclick = () => {
   const clipBox = myFn.qs('.clip-box');
 
   // 5-2. 생성코드 변수
-  let hcode = `<ul>`;
+  let hcode = `<ul class="slide">`;
 
   // 데이터만큼 순회하여 li코드 만들기 ///
   // 데이터: dkbData.clipData
@@ -208,3 +209,5 @@ introMv.onclick = () => {
 
 })();
 // 코드랩핑구역 종료 //////////////////////////
+
+setSlide('banbx');
