@@ -113,19 +113,39 @@ function slideFn(selEl) {
     // classList.contains(클래스명)
     // 선택요소에 해당클래스가 있으면 true
 
+    console.log('슬left:',slide.style.left);
+    console.log('한개당크기:',sList[0].offsetWidth);
+    // 슬라이드가 몇개 나가있는지 알아내기
+    // left값 / 한개당 개수
+    let outCnt = 
+    parseInt(slide.style.left) / sList[0].offsetWidth;
+    outCnt = Math.abs(outCnt);
+    console.log('바깥에 나간개수:',outCnt);
+
+
     // 1. 오른쪽 버튼 여부 알아내기
-    let isRight = this.classList.contains("fa-chevron-right");
+    let isRight = this.classList.contains("ab2");
 
     // 2. 버튼분기하기 '.ab2' 이면 오른쪽버튼
     if (isRight) {
       // 오른쪽버튼
       // 오른쪽에서 들어오는 슬라이드함수 호출!
-      rightSlide();
+      outCnt++;
     } ////// if //////////////
     else {
       // 왼쪽버튼
-      leftSlide();
+      outCnt--;
     } /////// else //////////////
+
+    // 이동적용하기
+    slide.style.left = 
+    -(sList[0].offsetWidth * outCnt) + "px";
+
+    // 버튼 표시 분기하기
+    if(outCnt > 0){
+      abtn[0].parentElement.classList.remove("right");
+    }
+
 
     // 3. 블릿순번 변경 함수 호출
     // chgIndic(isRight); // 방향값을 보냄!
@@ -135,8 +155,8 @@ function slideFn(selEl) {
 
     // 5. 중앙 li에 클래스 on넣기
     // slideSeq값은 오른쪽버튼2,왼쪽버튼3
-    let slideSeq = isRight ? 3 : 2;
-    addOnSlide(slideSeq);
+    // let slideSeq = isRight ? 3 : 2;
+    // addOnSlide(slideSeq);
   } ////////// goSlide 함수 /////////
 
   /********************************** 
@@ -177,27 +197,16 @@ function slideFn(selEl) {
 
   // 슬라이드 처음에 left 기본값 넣기
   slide.style.left = "0px"; 
+  // 슬라이드 버튼부모박스에 클래스 right 넣기
+  abtn[1].parentElement.classList.add("right");
+  // parentElement는 선택요소의 직계부모요소를 선택한다!
 
   /********************************** 
     함수명: rightSlide
     기능: 왼쪽방향 이동(오른쪽버튼)
   **********************************/
   function rightSlide() {
-    console.log('슬left:',slide.style.left);
-    console.log('한개당크기:',sList[0].offsetWidth);
-    // 슬라이드가 몇개 나가있는지 알아내기
-    // left값 / 한개당 개수
-    let outCnt = 
-    parseInt(slide.style.left) / sList[0].offsetWidth;
-    outCnt = Math.abs(outCnt);
-    console.log('바깥에 나간개수:',outCnt);
-
-    outCnt++;
-
-    // 이동적용하기
-    slide.style.left = 
-    -(sList[0].offsetWidth * outCnt) + "px";
-
+    // 비었다...
   } //////////// rightSlide 함수 ////////////
 
   /********************************** 
@@ -205,7 +214,7 @@ function slideFn(selEl) {
     기능: 오른쪽방향 이동(왼쪽버튼)
   **********************************/
   function leftSlide() {
-    console.log('슬left:',slide.style.left);
+    // 비었다...
   } //////////// leftSlide 함수 ////////////
 
   /********************************** 
