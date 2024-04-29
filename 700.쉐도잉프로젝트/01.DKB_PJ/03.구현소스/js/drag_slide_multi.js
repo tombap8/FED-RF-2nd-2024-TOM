@@ -93,7 +93,16 @@ function slideFn(selEl) {
   // 2. 이벤트 설정하기 : 버튼요소들 -> forEach()
   abtn.forEach((ele) => mFn.addEvt(ele, "click", goSlide));
 
-  // 3. 함수만들기 //////////////////
+  // [ 슬라이드 초기값 셋팅하기 ] //////////
+  // 슬라이드 처음에 left 기본값 넣기
+  slide.style.left = "0px"; 
+  // 슬라이드 처음 트랜지션 기본값 넣기
+  slide.style.transition = "left .3s ease-out";
+  // 슬라이드 버튼부모박스에 클래스 right 넣기
+  abtn[1].parentElement.classList.add("right");
+  // parentElement는 선택요소의 직계부모요소를 선택한다!
+
+  // 3. 함수만들기 ///////////////////////////
   /********************************** 
     함수명: goSlide
     기능: 이동버튼 클릭시 이동분기하기
@@ -142,8 +151,20 @@ function slideFn(selEl) {
     -(sList[0].offsetWidth * outCnt) + "px";
 
     // 버튼 표시 분기하기
-    if(outCnt > 0){
+    // (1) 왼쪽이동 한계값체크(오른쪽버튼만 보임)
+    if(outCnt == 0){
+      abtn[0].parentElement.classList.add("right");
+      abtn[0].parentElement.classList.remove("left");
+    }
+    // (2) 오른쪽이동 한계값체크(왼쪽버튼만 보임)
+    // -> 한계값은 전체 개수 빼기 화면노출개수(4)
+    else if(outCnt == SLIDE_LENGTH-4){
+      abtn[0].parentElement.classList.add("left");
       abtn[0].parentElement.classList.remove("right");
+    }
+    // (3) 양쪽끝 한계값 이외에는 버튼모두 보이기
+    else{
+      abtn[0].parentElement.classList.remove("right","left");
     }
 
 
@@ -194,12 +215,7 @@ function slideFn(selEl) {
       else ele.classList.remove("on");
     }); ///////// forEach ///////////
   } /////////// chgIndic함수 ////////////
-
-  // 슬라이드 처음에 left 기본값 넣기
-  slide.style.left = "0px"; 
-  // 슬라이드 버튼부모박스에 클래스 right 넣기
-  abtn[1].parentElement.classList.add("right");
-  // parentElement는 선택요소의 직계부모요소를 선택한다!
+  
 
   /********************************** 
     함수명: rightSlide
@@ -391,10 +407,14 @@ function slideFn(selEl) {
           // 마지막 위치값 0
           lastX = 0;
         }, 200);
+
+        // 버튼처리하기(오른쪽버튼만 보임)
+        abtn[0].parentElement.classList.remove("left");
+        abtn[0].parentElement.classList.add("right");
       } ////// if /////////
 
       // 4-2. 맨뒤에서 튕기기 ////////////
-      if(parseInt(dtg.style.left)<limitSize){
+      else if(parseInt(dtg.style.left)<limitSize){
         // 약간의 시간간격으로 조금 간후 튕겨서 돌아오는 효과
         setTimeout(() => {
           // left 값 0
@@ -402,7 +422,15 @@ function slideFn(selEl) {
           // 마지막 위치값 0
           lastX = limitSize;
         }, 200);
-      } ////// if /////////
+
+        // 버튼처리하기(왼쪽버튼만 보임)
+        abtn[0].parentElement.classList.add("left");
+        abtn[0].parentElement.classList.remove("right");
+      } ////// else if /////////
+      // 그밖의 경우는 버튼 모두 보이기
+      else{
+        abtn[0].parentElement.classList.remove("left","right");
+      } ////// else /////////
 
 
 
