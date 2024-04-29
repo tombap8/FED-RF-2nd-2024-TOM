@@ -89,14 +89,15 @@ function upDownFn(ele,idx){
     let mVal = mFn.getBCR2(ele);
 
     // 2. 위치값을 양수로 만들고 윈도우 크기로 나눈후 백분율
-    // 수치가 크므로 2로 나누어주었음...
-    mVal = Math.abs(mVal/window.innerWidth)*100/2;
+    // 수치가 크므로 3로 나누어주었음...
+    mVal = Math.abs(mVal/window.innerWidth)*100/3;
     // console.log('바운딩left:',mVal);
 
     // 3. 들어온 li순번이 짝수일 경우 마이너스 처리하기!
     // 짝수일 경우 마이너스를 곱하여 방향을 반대로 해준다
     // 짝수는 %연산자사용 : 숫자%2==0 이면 짝수임!
     if(idx%2==0) mVal = -mVal;
+    console.log("순번을 2로나눈 나머지:",idx%2);
 
     // 4. 실제 위치이동 CSS적용하기
     ele.style.translate = `0 ${mVal}%`;
