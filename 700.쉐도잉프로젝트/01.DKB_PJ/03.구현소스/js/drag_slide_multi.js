@@ -1,4 +1,4 @@
-// 드래그 기능 + 슬라이드 기능 합친 JS - drag_slide.js
+// 드래그 기능 + 슬라이드 기능 합친 JS - drag_slide_multi.js
 
 // DOM 모듈함수
 import mFn from "./my_function.js";

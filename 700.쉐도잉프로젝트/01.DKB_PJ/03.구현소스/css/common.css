@@ -157,7 +157,7 @@ z-index: 999;
   cursor: pointer;
 }
 /* 버튼요소 */
-.abtn{
+.ban-area .abtn{
   position: fixed;
   top: 0;
   left: 0;
