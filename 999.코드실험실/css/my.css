@@ -1,0 +1,25 @@
+/* my.scss */
+.test h1 {
+  color: pink;
+  font-family: Helvetica, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+}
+.test a {
+  font-size: 20px;
+  color: blue;
+  text-decoration: overline;
+}
+
+.test2 h1 {
+  color: darkorchid;
+  font-size: 40px;
+}
+.test2 a {
+  font-size: 25px;
+  color: red;
+  text-decoration: underline;
+}
+.test2 p {
+  font-size: 18px;
+}/*# sourceMappingURL=my.css.map */

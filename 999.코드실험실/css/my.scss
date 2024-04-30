@@ -1,0 +1,33 @@
+/* my.scss */
+$bgcolor: lightblue;
+$textcolor: darkblue;
+$fontsize: 18px;
+.test {
+  h1 {
+    color: pink;
+    font: {
+        family: Helvetica, sans-serif;
+        size: 18px;
+        weight: bold;
+      }
+  }
+  a {
+    font-size: 20px;
+    color: blue;
+    text-decoration: overline;
+  }
+}
+.test2 {
+  h1 {
+    color: darkorchid;
+    font-size: 40px;
+  }
+  a {
+    font-size: 25px;
+    color: red;
+    text-decoration: underline;
+  }
+  p{
+    font-size: $fontsize;
+  }
+}
