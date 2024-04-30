@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG 기본원리 및 애니메이션</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+      }
+      body {
+        background-image: linear-gradient(
+          to bottom,
+          lightgreen,
+          lightpink,
+          lightblue
+        );
+      }
+      /* 로고 */
+      .mv-logo{
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 30vw;
+      }
+      .mv-logo svg{
+        width: 100%;
+      }
+
+      /* 전체박스 */
+      .wrap {
+        /* 플렉스박스 */
+        display: flex;
+        /* 플렉스 랩핑박스 */
+        flex-wrap: wrap;
+        width: 100vw;
+        height: 100vh;
+      }
+      /* 내부구역박스 */
+      .wrap > section {
+        /* 렐러티브 부모자격 */
+        position: relative;
+        /* 가로, 세로 등분할 채우기 */
+        flex: 1;
+        /* 한줄에 2개씩 */
+        flex-basis: 50%;
+      }
+      /* 컨텐츠 박스 */
+      .cbx {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        /* 정중앙이동 */
+        width: 300px;
+        height: 300px;
+        /* outline: 2px dotted blue; */
+      }
+
+      /* svg요소 공통 */
+      .cbx svg {
+        width: 100%;
+        height: 100%;
+      }
+
+      /* 1. 아이언맨 */
+      .svg1 {
+        background: url(./images/man.jpg) no-repeat top/cover;
+        /* 원형박스 */
+        border-radius: 50%;
+      }
+      /* circle 부모 svg */
+      .svg1 > svg {
+        /* 트랜스폼 적용되나?
+        -> 하위 백터요소에는 일반 트랜스폼
+        적용안됨! 부모요소인 svg는 적용됨! */
+        transform: rotate(-90deg);
+      }
+
+      /* circle 설정 */
+      .c1 {}
+      /* 오버시 선보이기 */
+      .svg1:hover .c1 {}
+
+      /* 끝날때 빠져나가는 다른방식 연구~ */
+      /* .svg1:hover .c1.on{
+        stroke-dashoffset: -300%;
+      } */
+
+      /* 2. 블랙위도우 */
+      .svg2 {
+        background: url(./images/black.jpg) no-repeat top/cover;
+      }
+      /* 사각형 svg - rect */
+      .rt1 {}
+      /* 오버시 선 움직이기 */
+      .svg2:hover .rt1 {}
+
+      /* 3. 닥스박스 : 다각형(6각형) */
+      .svg3 {
+        background: url(./images/doc.jpg) no-repeat top/cover;
+        /* 다각형 클리핑 적용하기 
+        clip-path: polygon(x1 y1,x2 y2,...) */
+        clip-path: polygon(50% 0, 100% 33%, 100% 66%, 50% 100%, 0% 66%, 0% 33%);
+      }
+
+      /* 다각형 */
+      .pg1 {}
+      /* 오버시 선보이기 */
+      .svg3:hover .pg1 {}
+
+      /* 4. 완다 : path */
+      .svg4 svg {}
+      /* 패스 */
+      .pa1{}
+      /* 완다에 오버시 선그리기 */
+      .svg4:hover .pa1{}
+
+
+      /* 미디어쿼리 */
+      @media screen and (max-width:1000px) {
+        
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+      [ SVG 코드를 symbol로 처리하기 ]
+      1. 실제 svg가 나올 곳에 간단히 호출코딩
+      <svg>
+        <use href="#심볼아이디명" />
+      </svg>
+
+      2. 별도의 코딩구역에 박스를 안보이게 처리함
+      <div style="display:none">
+        <svg>
+          <symbol viewBox="원본위치크기" id="아이디명">
+            원본 svg코드
+          </symbol>
+        </svg>
+      </div>
+
+     -->
+    <!-- 마블로고 SVG -->
+    <div class="mv-logo">
+      <svg>
+        <use href="#mvlogo" />
+      </svg>
+    </div>
+
+    <!-- 전체 랩핑박스 -->
+    <div class="wrap">
+      <!-- 1.아이언맨 : 원 -->
+      <section>
+        <div class="cbx svg1">
+          <svg viewbox="0 0 300 300">
+            <circle class="c1" cx="150" cy="150" r="140" />
+            <!-- <circle class="c1" cx="150" cy="150" r="140" transform="rotate(-90,150,150)" /> -->
+          </svg>
+        </div>
+      </section>
+      <!-- 2. 블랙위도우 : 사각형 -->
+      <section>
+        <div class="cbx svg2">
+          <svg viewbox="0 0 300 300">
+            <rect class="rt1" width="280" height="280" x="10" y="10" />
+          </svg>
+        </div>
+      </section>
+      <!-- 3.닥스박스 : 다각형(6각형) -->
+      <section>
+        <div class="cbx svg3">
+          <svg viewbox="0 0 300 300">
+            <!-- 
+              [defs요소] : 요소에 효과를 정의함
+
+              [linearGradient요소] : 선형그라데이션
+              - id속성 : 적용할 요소에 이 id명을 연결함
+                  예) stroke:url(#아이디명)
+              - x1,y1 하나의점에서 x2,y2 하나의 점
+                방향으로 그라데이션이 적용된다!
+
+              [stop요소] : 색상옵션 설정요소
+              - offset속성: 색상변경 지점
+              - stop-color속성: 실제색적용
+            -->
+            <defs>
+              <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" stop-color="red" />
+                <stop offset="30%" stop-color="blue" />
+                <stop offset="60%" stop-color="green" />
+                <stop offset="100%" stop-color="orange" />
+              </linearGradient>
+            </defs>
+            <polygon
+              style="stroke:url(#grad1)"
+              class="pg1"
+              points="150,10 290,100 290,200 150,290 10,200 10,100"
+            />
+          </svg>
+        </div>
+      </section>
+
+      <!-- 4.완다박스 : 자유도형 -->
+      <section>
+        <div class="cbx svg4">
+          <svg viewbox="0 0 300 300">
+            <path class="pa1" d="M27.72,33.29c0,0,45.99,49.6,18.04,101c0,0-36.97,45.99-15.33,82.96c0,0,11.72,18.04,24.35,24.35c0,0,21.64,4.51-7.21,37.87c0,0-23.45,24.35,99.2-7.21c0,0,64.93,3.61,78.46-29.76c0,0,81.16-74.85,18.94-101c0,0-35.17-26.15,7.21-53.21c0,0,54.11-54.11-14.43-46.89c0,0-151.5,27.05-120.84-7.21c0,0,17.13-20.74-41.48-8.12C74.61,26.08-2.94,14.35,27.72,33.29z" />
+          </svg>
+        </div>
+      </section>
+    </div>
+
+    <!-- 완다 클리핑용 SVG -->
+    <svg>
+      <defs>
+          <clippath id="myClip">
+            <path class="pa1" d="M27.72,33.29c0,0,45.99,49.6,18.04,101c0,0-36.97,45.99-15.33,82.96c0,0,11.72,18.04,24.35,24.35c0,0,21.64,4.51-7.21,37.87c0,0-23.45,24.35,99.2-7.21c0,0,64.93,3.61,78.46-29.76c0,0,81.16-74.85,18.94-101c0,0-35.17-26.15,7.21-53.21c0,0,54.11-54.11-14.43-46.89c0,0-151.5,27.05-120.84-7.21c0,0,17.13-20.74-41.48-8.12C74.61,26.08-2.94,14.35,27.72,33.29z" />
+          </clippath>
+      </defs>
+  </svg>
+
+    <!-- 
+        [ SVG란? ]
+        SVG - Scalable Vector Graphic
+        -> 이미지를 확대해도 깨지지 않는 백처방식의 그래픽요소
+        -> 이미지가 코드로 되어있음
+        -> 백터 그래픽: 일러스트레이터 같은 툴에서 제작함
+        -> https://www.w3schools.com/graphics/svg_intro.asp
+
+        비교) 포토샵에서 픽셀로 만드는 이미지는? -> 비트맵 이미지!
+        -> canvas요소 : 비트맵 이미지 그래픽요소
+        : canvas는 JS로 코딩함!
+        -> http://www.effectgames.com/demos/canvascycle/
+
+        [ svg 요소 표현법 ]
+        - svg요소 내부에 자식요소로 각 도형요소를 넣고 코딩함
+        (유의사항: svg는 처음에 px단위의 특정크기로 만들어야
+        한다. 그래야 기본형으로 정하고 유동적인 크기는 
+        viewBox설정으로 얼마든지 변경이 가능하다!!!)
+
+        [ circle 요소 : 원 ]
+        - cx : 중심원 x좌표 (center x), 단위없는 숫자는 px
+        - cy : 중심원 y좌표 (center y), 단위없는 숫자는 px
+        - r : 반지름(radius)
+        - transform 속성 : svg 요소를 변형하기 위한 속성
+            rotate(각도,x위치,y위치)
+            -> 회전속성으로 각도를 단위없이 사용, 마이너스는 반시계
+            -> 이 속성을 쓰는 이유는 circle에는 일반 transform이 
+            적용되지 않기 때문임!
+            (svg요소 transform이 적용됨!)
+
+        [ rect 요소 : 사각형 ]
+        - rectangle(사각형) 이라는 말에서 나온 요소명
+        - width : 가로크기
+        - height : 세로크기
+        - x, y : x축, y축
+
+        [ polygon 요소 : 다각형 ]
+        - points 속성
+        - 표현법: <polygon points="x1,y1 x2,y2 ...">
+            -> x,y 좌표를 콤마로 구분하고
+            다른 좌표는 띄어쓰기로 구분함
+
+        [ path 요소 : 자유로운 선 ]
+
+        <path> 요소는 경로를 정의하는 데 사용됩니다.
+        표현법: <path d="패스명령어">
+        경로 데이터에 대해 다음 명령을 사용할 수 있습니다.
+
+        M = 이동(시작점)
+        L = 직선
+        H = 수평선
+        V = 수직선
+        C = 곡선
+        S = 부드러운 곡선
+        Q = 2차 베지어 곡선
+        T = 부드러운 2차 베지어 곡선
+        A = 타원형 호
+        Z = 마지막점
+        참고: 위의 모든 명령은 소문자로도 표현할 수 있습니다. 대문자는 절대 위치를 의미하고 소문자는 상대적 위치를 의미합니다.
+
+        ________________________________________
+
+        [ svg  축소확대용 속성 ]
+
+        viewBox 속성: 
+        (주의! 속성명 B대문자 필수! 대소문자구분!
+        -> 최신브라우저에서 자동으로 대문자 전환해줌!)
+        - 형식 : viewBox="x축위치 y축위치 width크기 height크기"
+        - 위의 형식의 값은 4가지이고 각 값은 띄어쓰기로 구분한다!
+        - 각 속성값의 특성
+        1) x축위치, y축위치는 양수값은 스테이지 바깥쪽방향이동
+          음수값은 스테이지 안쪽방향이동
+        -> 스테이지 보다 큰 svg 이미지가 있다면 위치를 이동해서
+        특정 이미지만 보이게 하는데 사용한다!!!
+
+        2) width크기, height크기는 svg원본 크기를 지정하는 부분이다.(현재 보이는 영역의 스테이지 크기설정)
+        -> 이 값의 width크기를 실제크기와 다르게 조정할 경우
+        값이 원본보다 커지면 보이는 벡터이미지는 작게 표현된다!
+        (값이 작아지면 크게표현됨)
+        -> height 크기는 벡터 그래픽의 세로영역을 확장하는데 사용
+
+        [ viewBox의 가장 일반적인 셋팅은? ]
+
+        viewBox="0 0 원래가로크기 원래세로크기"
+        -> 이 셋팅을 하면 스테이지가 크기 변경을 할때 svg의
+        크기를 비율을 유지하여 축소확대를 하게된다!
+
+
+
+     -->
+
+
+
+     <!-- SVG 심볼 코드구역 -->
+     <div style="display:none">
+      <svg>
+        <!-- 1. 마블로고 -->
+        <symbol viewBox="0 0 130 52" id="mvlogo">          
+            <rect fill="#EC1D24" width="100%" height="100%"></rect><path fill="#FEFEFE" d="M126.222 40.059v7.906H111.58V4h7.885v36.059h6.757zm-62.564-14.5c-.61.294-1.248.44-1.87.442v-14.14h.04c.622-.005 5.264.184 5.264 6.993 0 3.559-1.58 5.804-3.434 6.705zM40.55 34.24l2.183-18.799 2.265 18.799H40.55zm69.655-22.215V4.007H87.879l-3.675 26.779-3.63-26.78h-8.052l.901 7.15c-.928-1.832-4.224-7.15-11.48-7.15-.047-.002-8.06 0-8.06 0l-.031 39.032-5.868-39.031-10.545-.005-6.072 40.44.002-40.435H21.278L17.64 26.724 14.096 4.006H4v43.966h7.95V26.78l3.618 21.192h4.226l3.565-21.192v21.192h15.327l.928-6.762h6.17l.927 6.762 15.047.008h.01v-.008h.02V33.702l1.845-.27 3.817 14.55h7.784l-.002-.01h.022l-5.011-17.048c2.538-1.88 5.406-6.644 4.643-11.203v-.002C74.894 19.777 79.615 48 79.615 48l9.256-.027 6.327-39.85v39.85h15.007v-7.908h-7.124v-10.08h7.124v-8.03h-7.124v-9.931h7.124z"></path><path fill="#EC1D24" d="M0 0h30v52H0z"></path><path fill="#FEFEFE" d="M31.5 48V4H21.291l-3.64 22.735L14.102 4H4v44h8V26.792L15.577 48h4.229l3.568-21.208V48z"></path>
+        </symbol>
+      </svg>
+    </div>
+  </body>
+</html>

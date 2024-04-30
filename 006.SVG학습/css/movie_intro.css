@@ -1,0 +1,23 @@
+/* 영화 인트로 애니 CSS */
+html,body{
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+body{
+    background-color: #000;
+}
+
+/* IR 설명숨기기 */
+.ir{
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* 스틸컷 전체박스 */
+#stc{
+    position: relative;
+    height: 100vh;
+}

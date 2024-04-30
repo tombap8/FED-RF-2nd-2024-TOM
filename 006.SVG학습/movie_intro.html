@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SVG를 활용한 영화 인트로 애니</title>
+    <link rel="stylesheet" href="./css/movie_intro.css" />
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <script src="./js/movie_intro.js" defer></script>
+  </head>
+  <body>
+    <!-- 공각기동대 스틸컷 박스 -->
+    <section id="stc">
+      <div>
+        <span class="ir">공각스틸컷</span>
+      </div>
+      <div>
+        <span class="ir">공각스틸컷</span>
+      </div>
+      <div>
+        <span class="ir">공각스틸컷</span>
+      </div>
+      <div>
+        <span class="ir">공각스틸컷</span>
+      </div>
+    </section>
+
+    
+    <!-- 라인 SVG -->
+    <svg class="stage">
+        <line class="line1" x1="0%" y1="0%" x2="100%" y2="100%" />
+        <line class="line1" x1="100%" y1="0%" x2="0%" y2="100%" />
+    </svg>
+
+
+    <!-- 로고 박스 -->
+    <div id="mlogo">
+      <!-- 로고이미지 -->
+      <img src="images/GoastInTheShell_logo.png" alt="공각로고" />
+      <!-- 삼각형 svg -->
+      <svg class="tribox" viewBox="0 0 300 270">
+        <polygon points="0,270 300,270 150,0" />
+      </svg>
+    </div>
+
+    <!-- 오디오넣기 -->
+    <div class="play-box">
+        <img src="./images/vbt2.png" alt="조작버튼">
+        <audio src="./images/goast.mp3" class="my-audio"></audio>
+    </div>
+
+
+  </body>
+</html>

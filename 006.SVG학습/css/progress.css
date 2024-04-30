@@ -1,0 +1,53 @@
+@charset "utf-8";
+/* 프로그레스 페이지 CSS - progress.css */
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    background-image: linear-gradient(
+        to bottom,
+        rgb(223, 219, 255),
+        rgb(255, 204, 247),
+        skyblue
+    );
+}
+
+/* 파티션 박스 */
+.pbx {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    padding-top: 20vh;
+}
+
+/* 원을 담는 박스 */
+.btns {
+    position: relative;
+    width: 20vw;
+    background: url(../images/pang.jpg) no-repeat top/cover;
+    border-radius: 50%;
+}
+
+/* 비율밀기 */
+.btns::before {
+    content: "";
+    display: block;
+    padding-top: 100%;
+}
+
+/* svg셋팅 */
+.btns svg {
+    position: absolute;
+    top: 0;
+    /* 부모박스가 패딩탑으로 비율밀기하므로
+앱솔로 부모박스 맨위로 위치고정! 
+svg 자체는 viewBox설정 때문에 채우기 비율유지함!*/
+}
