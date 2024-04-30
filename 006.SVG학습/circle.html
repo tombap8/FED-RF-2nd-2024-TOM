@@ -78,13 +78,65 @@
         /* 트랜스폼 적용되나?
         -> 하위 백터요소에는 일반 트랜스폼
         적용안됨! 부모요소인 svg는 적용됨! */
-        transform: rotate(-90deg);
+        rotate: -90deg;
       }
 
       /* circle 설정 */
-      .c1 {}
+      .c1 {
+        /* 채우기색 fill(기본색:검정) 
+        transparent - 투명색
+        none - 채우기없앰(아래쪽 터치가능)
+        */
+        fill:none;
+        /* 선색 stroke (기존은 안나옴) */
+        stroke: red;
+        /* 선두께 stroke-width
+        기본두께 1px, 단위생략가능 */
+        stroke-width: 20;
+
+        /* 데쉬설정(선-공백) stroke-dasharray 
+        선과 공백순으로 숫자를 나열하여 셋팅함
+        - 공백을 선으로채우는 라인애니의 중요
+        속성임!
+        - 원리가 선으로 모두 채우고
+        선크기만큼 밀어서 공백부터 나오게함*/
+        stroke-dasharray: calc(50%*6);
+        /* 
+          데쉬설정 선으로 채우기 방법:
+          1. 값으로 50%를 줘본다!
+          2. 몇조각 나는지 세어본다
+          3. 모두 선으로 채우려면
+            50% 곱하기 조각수
+          4. 데쉬옵셋값을 데쉬값과 같은값으로
+          셋팅하면 공백부터 모두 채우기됨!
+          5. 오버시나 특정이벤트시 데쉬옵셋값을
+          0으로 변경하면 선이 채워지는 애니가됨!
+        */
+        /* 데쉬시작선 밀기 속성 
+        stroke-dashoffset */
+        stroke-dashoffset: calc(50%*6);
+
+        /* 선끝 둥글게하기 
+        선끝처리 : stroke-linecap 
+            1) butt : 끝에 중심선이 보임(기본값)
+            2) square : 끝에 사각형으로 덮음
+            3) round : 끝에 둥근모양으로 덮음
+        */
+        stroke-linecap: round;
+
+        /* 시작위치를 위에서부터 하기위해
+        트랜스폼 rotate를 여기서 주면?
+        여기서는 적용안됨! 부모를 하거나
+        개별 회전속성을 사용해야함 */
+        /* rotate: -90deg; */
+
+        /* 트랜지션 */
+        transition: stroke-dashoffset .6s;
+      }
       /* 오버시 선보이기 */
-      .svg1:hover .c1 {}
+      .svg1:hover .c1 {
+        stroke-dashoffset: 0;
+      }
 
       /* 끝날때 빠져나가는 다른방식 연구~ */
       /* .svg1:hover .c1.on{
@@ -96,9 +148,21 @@
         background: url(./images/black.jpg) no-repeat top/cover;
       }
       /* 사각형 svg - rect */
-      .rt1 {}
+      .rt1 {        
+        fill: none;
+        stroke: black;
+        stroke-width: 20;
+        stroke-linecap: round;
+        /* 데쉬선 */
+        stroke-dasharray: 15%;
+        stroke-dashoffset: 102%;
+        /* 트랜지션 */
+        transition: 0.6s;
+      }
       /* 오버시 선 움직이기 */
-      .svg2:hover .rt1 {}
+      .svg2:hover .rt1 {
+        stroke-dashoffset: 0;
+      }
 
       /* 3. 닥스박스 : 다각형(6각형) */
       .svg3 {
@@ -109,21 +173,58 @@
       }
 
       /* 다각형 */
-      .pg1 {}
+      .pg1 {        
+        fill: none;
+        stroke: lightgreen;
+        stroke-width: 20;
+        stroke-linecap: round;
+        /* 데쉬선 */
+        stroke-dasharray: 300%;
+        stroke-dashoffset: 300%;
+        /* 트랜지션 */
+        transition: 0.6s;
+      }
       /* 오버시 선보이기 */
-      .svg3:hover .pg1 {}
+      .svg3:hover .pg1 {
+        stroke-dashoffset: 0;
+      }
 
       /* 4. 완다 : path */
-      .svg4 svg {}
+      .svg4 svg {
+        background: url(./images/wan.jpg) no-repeat top/cover;
+        /* 클리핑 SVG모양대로 보이게함 */
+        clip-path: url(#myClip);
+      }
       /* 패스 */
-      .pa1{}
+      .pa1{        
+        fill: none;
+        stroke: orangered;
+        stroke-width: 20;
+        stroke-linecap: round;
+
+        /* 데쉬선 설정 */
+        stroke-dasharray: 340%;
+        stroke-dashoffset: 340%;
+        /* 트랜지션 */
+        transition: .7s ease-out;
+      }
       /* 완다에 오버시 선그리기 */
-      .svg4:hover .pa1{}
+      .svg4:hover .pa1{
+        stroke-dashoffset: 0;
+      }
 
 
       /* 미디어쿼리 */
-      @media screen and (max-width:1000px) {
-        
+      @media screen and (max-width:1000px) {        
+        /* 컨텐츠박스 */
+        .cbx{
+          width: 200px;
+          height: 200px;
+        }
+        /* 완다 클리핑 SVG */
+        #myClip{
+          transform: scale(.67);
+        }
       }
     </style>
   </head>
