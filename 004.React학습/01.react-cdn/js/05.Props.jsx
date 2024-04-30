@@ -63,7 +63,8 @@ function AskMoreInfo({ brand, model, color, opt }) {
     <React.Fragment>
       <h1>더 자세히 말씀해주세요?!</h1>
       {/* 디테일 정보구성 컴포넌트 호출 */}
-      <DetailCarInfo brand={brand} model={model} color={color} opt={opt} />
+      <DetailCarInfo 
+      brand={brand} model={model} color={color} opt={opt} />
     </React.Fragment>
   );
 } ////////// AskMoreInfo 컴포넌트 ////////////////
