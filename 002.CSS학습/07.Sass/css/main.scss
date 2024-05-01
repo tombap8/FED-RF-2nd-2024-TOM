@@ -24,15 +24,79 @@
 
     -> 에러 발생시 컴파일이 안되고 cmd창에
     에러메시지가 나온다!
-    
 
+    3. 주요 문법
+    (1) 네스팅 기법 
+        - 선택자 중괄호안에 다른 하위선택을 하는것!
+        예) div{h1{color:red;}}
+        -> 장점: 같은 셋팅요소를 선택시 중복된
+        선택자의 반복을 하지 않아도 된다!
+        또한 같은 구성요소를 묶어서 셋팅 관리가능!
+
+    (2) 속성접두어 묶음기법
+        - 반복되는 같은 종류의 하위속성의 접두어를
+        한번만 사용하여 셋팅을 묶어주는 방법
+        예) font: {size:12px; weight:bold;}
+
+    (3) 변수사용기법
+        - 동일하게 사용할 값을 변수에 넣고 디자인을 배치함
+        - 변수사용법-> $변수명: 값
+        - 변수명은 모두 붙여쓰며 구분단어는
+        캐믈케이스(camelCase) 또는 
+        캐밥케이스(camel-case)를 사용한다
+        - 변수의 범위는 변수를 선언후 하위로 상속되어 값이유지됨
+
+    (4) 파일 분리기법 : @import
+        - 부분파일을 분리하여 공통모듈로 합쳐서 사용한다!
+        - 부분파일명은 사스에서 언더바를 붙여서 사용하는것이
+        원칙이지만 언더바를 안써도 기본적으로 부분파일처리해줌!
+        - 파일호출시 확장자 생략가능함!
+        예) @import "reset";
+        - 일반 CSS @import 와는 다른점은 http요청을 하지 않음
 
 
 *********************************************/
+
+// 외부변수셋팅 sass불러오기
+@import "./data/variables";
+
 
 // 전체 페이지 요소
 .wrapper{
     max-width: 1000px;
     margin: 0 auto;
+}
+
+/* 상단영역 */
+.top-area{
+    color: $mainColor1;
+    // 네스팅기법
+    h1{
+        color: $fontColor1;
+
+        // 속성접두어 묶음기법
+        font: {
+            size: 40px;
+            family: "Times New Roman";
+        }
+
+        text: {
+            align: center;
+            decoration: underline;
+            underline-offset: 10px;
+            shadow: 5px 5px 4px #00000077;
+        }
+
+        background: {
+            color: $mainColor1-2;
+            image: url(../images/flower.png);
+            size: 70px;
+            position: center;
+            repeat: repeat-x;
+        }
+
+        padding: 20px;
+
+    }
 }
 
