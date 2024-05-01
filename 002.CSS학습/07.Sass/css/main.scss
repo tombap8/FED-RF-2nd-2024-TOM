@@ -165,6 +165,8 @@
 .main-area{
     // 내부박스 section
     section{
+        // 박스 테두리 믹스인 호출
+        @include box-border(pink);
         margin-bottom: 20px;
         padding: 20px;
     }

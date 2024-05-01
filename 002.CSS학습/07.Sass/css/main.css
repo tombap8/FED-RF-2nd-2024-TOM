@@ -147,6 +147,9 @@ img {
 
 /* 메인영역 */
 .main-area section {
+  border-color: pink;
+  border-style: dashed;
+  border-width: 7px;
   margin-bottom: 20px;
   padding: 20px;
 }
