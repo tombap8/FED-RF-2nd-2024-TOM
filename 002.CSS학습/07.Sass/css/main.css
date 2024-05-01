@@ -180,11 +180,15 @@ img {
   text-underline-offset: 10px;
   text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4666666667);
 }
-.main-area ul, .main-area ol, .main-area p {
+.main-area ul,
+.main-area ol,
+.main-area p {
   line-height: 2;
   font-size: 24px;
 }
-.main-area ul li, .main-area ol li, .main-area p li {
+.main-area ul li,
+.main-area ol li,
+.main-area p li {
   text-decoration: underline;
   text-underline-offset: 10px;
   text-decoration-thickness: 5px;
@@ -193,13 +197,17 @@ img {
   background-color: #ff0;
   /* 가상요소 블릿넣기 */
 }
-.main-area ul li:first-child, .main-area ol li:first-child, .main-area p li:first-child {
+.main-area ul li:first-child,
+.main-area ol li:first-child,
+.main-area p li:first-child {
   color: orchid;
   font-weight: bold;
   font-size: 30px;
   text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
 }
-.main-area ul li::before, .main-area ol li::before, .main-area p li::before {
+.main-area ul li::before,
+.main-area ol li::before,
+.main-area p li::before {
   content: "😋";
 }
 
