@@ -67,6 +67,18 @@
         -> @include 믹스인이름;
         -> @include 믹스인이름(전달값);
 
+    (6) 네스팅 이어붙이기 기법(&)
+        - 가상요소, 가상클래스, 특정클래스를
+            현재 선택요소에 셋팅하는 방법임!
+        - &(앰퍼센드)는 현재 선택요소 자신을 가리킴!
+
+    (7) 반복코드 확장 : @extend (extend는 연장하다,확장하다)
+        1) 사용이유 : 반복되는 같은 셋팅을 클래스를 쉽게 도입한다
+        2) 사용방법 : 선택자 코드 안에 (@extend 클래스명) 형식
+        3) 공통코드 외에 다른 셋팅속성은 하단에 추가로 구현한다!
+        4) 장점 : 공통코드 적용을 위해 각 요소에 클래스를 일일히
+        주지 않아도 공통코드를 적용할 수 있다!
+
 
 
 *********************************************/
@@ -128,9 +140,11 @@ img {
 /* 상단영역 */
 .top-area {
   color: #d10000;
+  /* 서브 타이틀 박스 */
 }
 .top-area h1 {
   color: aqua;
+  margin-bottom: 40px;
   font-size: 40px;
   font-family: "Times New Roman";
   text-align: center;
@@ -144,6 +158,9 @@ img {
   background-repeat: repeat-x;
   padding: 20px;
 }
+.top-area h2 {
+  font-size: 30px;
+}
 
 /* 메인영역 */
 .main-area section {
@@ -155,6 +172,7 @@ img {
 }
 .main-area h3 {
   color: darkblue;
+  margin-bottom: 40px;
   font-size: 40px;
   font-family: "Times New Roman";
   text-align: center;
@@ -162,10 +180,57 @@ img {
   text-underline-offset: 10px;
   text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4666666667);
 }
+.main-area ul, .main-area ol, .main-area p {
+  line-height: 2;
+  font-size: 24px;
+}
+.main-area ul li, .main-area ol li, .main-area p li {
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 5px;
+  text-decoration-color: #005ed1;
+  text-align: center;
+  background-color: #ff0;
+  /* 가상요소 블릿넣기 */
+}
+.main-area ul li:first-child, .main-area ol li:first-child, .main-area p li:first-child {
+  color: orchid;
+  font-weight: bold;
+  font-size: 30px;
+  text-shadow: 1px 0 #000, -1px 0 #000, 0 1px #000, 0 -1px #000;
+}
+.main-area ul li::before, .main-area ol li::before, .main-area p li::before {
+  content: "😋";
+}
+
+.button-basic, .button-report {
+  display: inline-block;
+  border: 1px solid #222;
+  border-radius: 20px;
+  padding: 15px 30px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.box-basic, .bottom-title, .button-box, .top-area h2 {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.button-report {
+  background-color: orange;
+  color: #fff;
+}
+
+.button-box {
+  background-image: linear-gradient(to bottom, lightgreen, transparent);
+}
 
 /* 하단 타이틀 */
 .bottom-title {
   color: red;
+  margin-bottom: 40px;
   font-size: 40px;
   font-family: "Times New Roman";
   text-align: center;
