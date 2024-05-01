@@ -63,7 +63,7 @@
         [3] 전달변수가 있고 기본값도 있는 믹스인
         @mixin 믹스인이름(변수:기본값) {CSS코드}
 
-        2) 믹스인 호출방법
+        2) 믹스인 호출방법 : 믹스인을 포함하라!(@include)
         -> @include 믹스인이름;
         -> @include 믹스인이름(전달값);
 
@@ -143,4 +143,26 @@ img {
   background-position: center;
   background-repeat: repeat-x;
   padding: 20px;
+}
+
+/* 메인영역 */
+.main-area h3 {
+  color: darkblue;
+  font-size: 40px;
+  font-family: "Times New Roman";
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4666666667);
+}
+
+/* 하단 타이틀 */
+.bottom-title {
+  color: red;
+  font-size: 40px;
+  font-family: "Times New Roman";
+  text-align: center;
+  text-decoration: underline;
+  text-underline-offset: 10px;
+  text-shadow: 5px 5px 4px rgba(0, 0, 0, 0.4666666667);
 }/*# sourceMappingURL=main.css.map */
