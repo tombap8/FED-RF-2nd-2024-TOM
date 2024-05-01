@@ -220,6 +220,17 @@ img {
   cursor: pointer;
   margin-left: 20px;
 }
+.button-basic:hover, .button-report:hover {
+  background-color: hotpink;
+  text-decoration: overline;
+  text-decoration-style: wavy;
+}
+.button-basic.my, .my.button-report {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 5px;
+}
 
 .box-basic, .bottom-title, .button-box, .top-area h2 {
   text-align: center;
