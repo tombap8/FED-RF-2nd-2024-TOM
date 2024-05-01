@@ -108,6 +108,15 @@
     }
 }
 
+// (2) 박스 테두리 믹스인
+@mixin box-border($bdColor:blue){
+    border: {
+        color: $bdColor;
+        style: dashed;
+        width: 7px;
+    }
+}
+
 
 // 전체 페이지 요소
 .wrapper{
@@ -154,6 +163,11 @@
 
 /* 메인영역 */
 .main-area{
+    // 내부박스 section
+    section{
+        margin-bottom: 20px;
+        padding: 20px;
+    }
     // 메인 영역 타이틀 믹스인 호출!
     h3{
         @include title-text(darkblue);

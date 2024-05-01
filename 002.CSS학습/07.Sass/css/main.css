@@ -146,6 +146,10 @@ img {
 }
 
 /* 메인영역 */
+.main-area section {
+  margin-bottom: 20px;
+  padding: 20px;
+}
 .main-area h3 {
   color: darkblue;
   font-size: 40px;
