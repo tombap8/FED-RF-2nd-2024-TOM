@@ -1,0 +1,27 @@
+[ 같은 사스인데 sass파일과 scss파일의 차이 ]
+
+=> sass는 중괄호 및 세미콜론이 없지만 scss는 있다.
+=> 따라서 scss가 한 눈에 구조를 파악하는데 더욱 익숙하다고 할 수 있다.
+
+((sass 예)) ******************************
+.list
+  width: 100px
+  float: left
+  li
+    color: red
+    background: url("./image.jpg")
+    &:last-child
+      margin-right: -10px
+
+((scss 예)) *******************************
+.list {
+  width: 100px;
+  float: left;
+  li {
+    color: red;
+    background: url("./image.jpg");
+    &:last-child {
+      margin-right: -10px;
+    }
+  }
+}
