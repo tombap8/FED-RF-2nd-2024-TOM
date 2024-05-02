@@ -10,12 +10,11 @@
 
 // 자동스크롤 기능 함수 //////////////////
 export default function AutoScrollFn() {
-
   // 기본 초기화 CSS 설정하기 ///////////////
   // html - 부드러운 스크롤 설정 (스크롤 애니메이션 설정)
-  document.querySelector('html').style.scrollBehavior = "smooth";
+  document.querySelector("html").style.scrollBehavior = "smooth";
   // body - 오버플로워 히든 (스크롤바 없애는 설정)
-  document.querySelector('body').style.overflow = "hidden";
+  document.querySelector("body").style.overflow = "hidden";
 
   /********************************************** 
     [ 자동스크롤 기능정의 ]
@@ -103,7 +102,21 @@ export default function AutoScrollFn() {
     console.log("델타값:", delta);
     // -> 마이너스가 아랫방향임!
 
-    // 4. 방향별 분기하기 ///////
+    // 4. 페이지 이동함수 호출하기
+    movePage(delta);
+
+  } /////////// wheelFn 함수 ////////////////
+  ///////////////////////////////////////////
+
+  /************************************************ 
+    함수명 : movePage
+    기능 : DT나 Mobile 모두 페이지 이동시 호출하여
+          실제 페이지를 이동시키고 메뉴변경함수호출함
+  ************************************************/
+  function movePage(delta) { 
+    // delta - 방향을 나타내는 양수/음수
+
+    // 1. 방향별 분기하기 ///////
     if (delta < 0) {
       // 아랫페이지로 가야하니까 페이지번호증가
       pgNum++;
@@ -124,29 +137,21 @@ export default function AutoScrollFn() {
     } /// else ///
     console.log("pgNum:", pgNum);
 
-    // 5. 페이지 이동하기 //////
-    // 5-1.이동할 위치알아내기
+    // 2. 페이지 이동하기 //////
+
+    // 2-1.이동할 위치알아내기
     // -> .page 요소중 해당 순번페이지위치
     let pos = elePage[pgNum].offsetTop;
     // offsetTop은 최상단에서 부터 거리
     console.log("이동할위치:", pos);
-    // 5-2.페이지 스크롤 위치 이동하기
+
+    // 2-2.페이지 스크롤 위치 이동하기
     // scrollTo(0, y축이동값)
     window.scrollTo(0, pos);
 
-    // 6. 해당메뉴 순번 on넣기 / 나머지 on빼기
+    // 3. 해당메뉴 순번 on넣기 / 나머지 on빼기
     chgMenu(pgNum);
-  } /////////// wheelFn 함수 ////////////////
-  ///////////////////////////////////////////
-
-  /************************************************ 
-    함수명 : movePage
-    기능 : DT나 Mobile 모두 페이지 이동시 호출하여
-          실제 페이지를 이동시키고 메뉴변경함수호출함
-  ************************************************/
- function movePage(){
-
- } //////////////// movePage 함수 //////////////////
+  } //////////////// movePage 함수 //////////////////
 
   /******************************* 
     메뉴 클릭시 이벤트 처리하기 
@@ -205,7 +210,6 @@ export default function AutoScrollFn() {
     // parentElement는 선택요소의 부모요소다!
   } //////////// chgMenu 함수 //////////
 
-
   /********************************************************* 
     [ 모바일 이벤트처리 ]
     
@@ -223,55 +227,46 @@ export default function AutoScrollFn() {
         스크롤을 포함한 브라우저 화면을 기준한 x,y 좌표
 *********************************************************/
 
-// 1. 모바일 이벤트 등록하기 ////////////
-// 대상 : window
-window.addEventListener("touchstart",touchStartFn);
-window.addEventListener("touchend",touchEndFn);
+  // 1. 모바일 이벤트 등록하기 ////////////
+  // 대상 : window
+  window.addEventListener("touchstart", touchStartFn);
+  window.addEventListener("touchend", touchEndFn);
 
-// 2. 모바일 이벤트 함수 만들기 ///////////////
+  // 2. 모바일 이벤트 함수 만들기 ///////////////
 
-// 터치시 위치값 변수 
-// mPosStart 시작위치 / mPosEnd 끝위치
-let mPosStart = 0, mPosEnd = 0;
+  // 터치시 위치값 변수
+  // mPosStart 시작위치 / mPosEnd 끝위치
+  let mPosStart = 0,
+    mPosEnd = 0;
 
-// 2-1. 터치시작 이벤트 호출함수 /////////
-function touchStartFn (e) {
-  // Y축 터치위치 알아오기
-  mPosStart = e.touches[0].screenY;
-  // 모바일 이벤트값 객체는 touches[0]임!
+  // 2-1. 터치시작 이벤트 호출함수 /////////
+  function touchStartFn(e) {
+    // Y축 터치위치 알아오기
+    mPosStart = e.touches[0].screenY;
+    // 모바일 이벤트값 객체는 touches[0]임!
 
-  console.log(mPosStart);
+    console.log(mPosStart);
+  } /////////// touchStartFn 함수 ////////////
 
+  // 2-2. 터치끝 이벤트 호출함수 /////////
+  function touchEndFn(e) {
+    // 1. Y축 터치위치 알아오기
+    mPosEnd = e.changedTouches[0].screenY;
+    // 모바일 이벤트값 객체는 touches[0]임!
+    // 그러나 같은 이벤트가 연속될 경우 변경된 값을
+    // 읽어와야 하므로 changedTouches[0]를 사용해야함!
 
-} /////////// touchStartFn 함수 ////////////
+    // 2. 처음 터치위치와 마지막 위치의 차 구하기
+    let diffValue = mPosEnd - mPosStart;
+    // 음수가 아랫방향 이동으로 맞추기위해 (끝값 - 첫값)
 
-// 2-2. 터치끝 이벤트 호출함수 /////////
-function touchEndFn (e) {
-  // 1. Y축 터치위치 알아오기
-  mPosEnd = e.changedTouches[0].screenY;
-  // 모바일 이벤트값 객체는 touches[0]임!
-  // 그러나 같은 이벤트가 연속될 경우 변경된 값을
-  // 읽어와야 하므로 changedTouches[0]를 사용해야함!
+    // 분석결과:
+    // 음수는 아래에서 위로 쓸어올림(아랫페이지로 이동)
+    // 양수는 위에서 아래로 쓸어내림(윗페이지로 이동)
 
-  // 2. 처음 터치위치와 마지막 위치의 차 구하기
-  let diffValue = mPosStart - mPosEnd;
+    // 3. 페이지 이동함수 호출하기 ////
+    movePage(diffValue);
 
-  // 분석결과: 
-  // 양수는 아래에서 위로 쓸어올림(아랫페이지로 이동)
-  // 음수는 위에서 아래로 쓸어내림(윗페이지로 이동)
-
-  console.log(mPosEnd, '차이수:',diffValue);
-
-
-} /////////// touchEndFn 함수 ////////////
-
-
-
-
-
-
-
-
-
-
+    console.log(mPosEnd, "차이수:", diffValue);
+  } /////////// touchEndFn 함수 ////////////
 } ///////////// autoScrollFn 함수 //////////////
