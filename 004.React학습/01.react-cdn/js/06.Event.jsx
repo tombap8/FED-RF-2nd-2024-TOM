@@ -17,6 +17,10 @@ import mFn from "./my_function";
     이벤트 속성과 달리 JS 이벤트 리스너를 통한 이벤트 객체에
     등록되므로 html 태그상 이벤트 등록속성이 보이지 않는다!
 
+    [ 컴포넌트 호출시 중요한 특징하나!!! ]
+    ->>> 설정된 전달변수와 셋팅속성은 전달된 속성값만 셋팅된다!
+    쉽게말해 보내주지 않은 속성은 스킵(skip!!!)된다는 말!
+
 *************************************************************/
 
 /////// 전체 이벤트 적용할 컴포넌트 구성하기 //////////////////
@@ -43,8 +47,7 @@ function EventShow() {
     let alaBox = mFn.qs("#ala");
 
     // (2) 이미지출력
-    ReactDOM.render(
-    <MakeImg isrc="./images/ala4.jpg" ialt="알라딘" />, alaBox);
+    ReactDOM.render(<MakeImg isrc="./images/ala4.jpg" ialt="알라딘" />, alaBox);
     // 컴포넌트 호출시 전달변수를 셋팅하여 보내야하는데
     // 만약 전달변수이름이 잘못되었거나 보내주지 않으면
     // 컴포넌트에서 에러가 나지 않고 해당 항목을
@@ -102,16 +105,17 @@ function EventShow() {
 
     // 2. 램프 이미지 넣기
     ReactDOM.render(
-      <MakeImg        isrc="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/3168457870/B.png"        
-      ialt="알라딘램프"
-      icss={lampCSS}
+      <MakeImg
+        isrc="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/3168457870/B.png"
+        ialt="알라딘램프"
+        icss={lampCSS}
       />,
       lampBox
     );
 
     // 3. 0.5초후 램프 이미지 중앙이동하기
     setTimeout(() => {
-      let lampImg = mFn.qsEl(lampBox,"img").style;
+      let lampImg = mFn.qsEl(lampBox, "img").style;
       // 수직방향이동
       lampImg.top = "310px";
       // 수평방향 중앙계산 이동
@@ -124,7 +128,6 @@ function EventShow() {
     setTimeout(() => {
       mFn.qsa("button")[1].style.display = "inline-block";
     }, 3000);
-
   }; ////////// getLamp 함수 ///////////
 
   // (3) 페라리 가져오기 함수 /////////////
@@ -133,19 +136,19 @@ function EventShow() {
     // 페라리 이미지 넣기
     // 대상: #ferrari
     ReactDOM.render(
-    <MakeImg
-      isrc="./images/ferrari.png"
-      ialt="페라리레드"
-      itit="클릭하면 시운전해요!"
-      idName="fcar"
-      clickFn={moveCar}
-    />,
-    mFn.qs("#ferrari"));
+      <MakeImg
+        isrc="./images/ferrari.png"
+        ialt="페라리레드"
+        itit="클릭하면 시운전해요!"
+        idName="fcar"
+        // 함수에 값을 보낼때는 익명함수로 처리!
+        clickFn={() => moveCar("#fcar")}
+      />,
+      mFn.qs("#ferrari")
+    );
     // ReactDOM.render(어쩌구,저쩌구);
     // 어쩌구를 저쩌구에 넣기
-
   }; //////////// getFerrari 함수 //////////
-
 
   /// 2. 리턴 코드 만들기 ////////////
   return (
@@ -159,14 +162,11 @@ function EventShow() {
           /* 마우스오버시 showAladin함수호출 */
           overFn={showAladin}
         />
-
         {/* 램프가 들어갈 요소 */}
         <div className="lamp"></div>
-
         {/* 버튼들 */}
         <button onClick={getLamp}>램프가져오기~!</button> <br />
         <button onClick={getFerrari}>소원빌기~! 페라리주세요~!!!</button>
-
         {/* 소원이 무엇이냐 말풍선박스 */}
         <div className="tit"></div>
       </div>
@@ -177,18 +177,19 @@ function EventShow() {
 /******************************************* 
     이미지 생성 컴포넌트 : MakeImg
 *******************************************/
-function MakeImg({ isrc, ialt , icss, overFn, clickFn, itit,idName }) {
-  // 리턴코드 : return키워드 바로 뒤에 JSX태를 바로 이어쓰거나
+function MakeImg({ isrc, ialt, icss, overFn, clickFn, itit, idName }) {
+  // ((리턴코드 작성시 주의사항))
+  // return키워드 바로 뒤에 JSX태그를 바로 이어쓰거나
   // 소괄호 시작부분을 같은 라인에 써야 에러가 나지 않는다!
   return (
-  <img 
-    src={isrc} 
-    alt={ialt} 
-    style={icss} 
-    title={itit}
-    id={idName}
-    onMouseOver={overFn}
-    onClick={clickFn}
+    <img
+      src={isrc}
+      alt={ialt}
+      style={icss}
+      title={itit}
+      id={idName}
+      onMouseOver={overFn}
+      onClick={clickFn}
     />
   );
 } ///////////// MakeImg 컴포넌트 ////////////////
@@ -197,9 +198,18 @@ function MakeImg({ isrc, ialt , icss, overFn, clickFn, itit,idName }) {
 // ReactDOM.render(넣을코드,대상)
 ReactDOM.render(<EventShow />, mFn.qs("#root"));
 
-
 //// 일반함수로 페라리 움직이기 구현 ////////////
-function moveCar (){
-  console.log("페라리 움직여!");
+function moveCar(eleName) {
+  // eleName - 요소명
+  console.log("페라리 움직여!", eleName);
 
+  // 1. 대상요소 셋팅하기
+  const tg = mFn.qs(eleName).style;
+  console.log(tg.translate, tg.scale);
+
+  // 2. 번갈아서 왔다갔다 움직이기
+  tg.translate = tg.translate == "150%" ? "0" : "150%";
+  tg.scale = tg.scale == "2" ? "1" : "2";
+
+  tg.transition = "2s ease-in-out";
 } ////////////// moveCar 함수 ///////////////
