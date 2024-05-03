@@ -45,4 +45,29 @@ import mFn from "./my_function.js";
 
         console.log("나야나~!",isR);
 
+        // 2. 이동대상 변수할당 ////
+        let eachOne = mFn.qsaEl(gbx,"div");
+
+        // 3. 분기하기 /////////
+        // 3-1. 오른쪽버튼일 경우
+        if(isR){
+            // 오른쪽에서 이미지박스가 들어오므로
+            // 맨앞div 맨뒤로 이동함!
+            // appendChild(맨앞div)
+            // 대상: gbx
+            gbx.appendChild(eachOne[0]);
+
+        } //// if ////
+        // 3-2. 왼쪽버튼일 경우
+        else{
+            // 왼쪽에서 이미지박스가 들어오므로
+            // 맨뒤div를 맨앞으로 이동함!
+            // insertBefore(맨뒤div,맨앞div)
+            // 대상: gbx
+            gbx.insertBefore(
+            eachOne[eachOne.length-1],eachOne[0]);
+            // 맨뒤div 순번은 [개수-1]
+
+        } //// else ////
+
     } ////////changeSlide 함수 //////////////
