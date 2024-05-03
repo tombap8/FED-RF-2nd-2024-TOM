@@ -96,6 +96,7 @@ function EventShow() {
       right: "0",
       width: "200px",
       borderRadius: "50%",
+      zIndex: "999",
       transition: "2s, right 1s 2s",
     };
 
@@ -114,7 +115,7 @@ function EventShow() {
       // 수직방향이동
       lampImg.top = "310px";
       // 수평방향 중앙계산 이동
-      lampImg.left = "calc(50% - 100px)";
+      lampImg.right = "calc(50% - 100px)";
       // 회전하기
       lampImg.rotate = "720deg";
     }, 500);
