@@ -96,7 +96,7 @@ function EventShow() {
       right: "0",
       width: "200px",
       borderRadius: "50%",
-      transition: "2s",
+      transition: "2s, right 1s 2s",
     };
 
     // 2. 램프 이미지 넣기
@@ -107,6 +107,20 @@ function EventShow() {
       />,
       lampBox
     );
+
+    // 3. 0.5초후 램프 이미지 중앙이동하기
+    setTimeout(() => {
+      let lampImg = mFn.qsEl(lampBox,"img").style;
+      // 수직방향이동
+      lampImg.top = "310px";
+      // 수평방향 중앙계산 이동
+      lampImg.left = "calc(50% - 100px)";
+      // 회전하기
+      lampImg.rotate = "720deg";
+    }, 500);
+
+
+
   }; ////////// getLamp 함수 ///////////
 
   /// 2. 리턴 코드 만들기 ////////////
