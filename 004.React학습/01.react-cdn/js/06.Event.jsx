@@ -37,7 +37,7 @@ function EventShow() {
     let alaBox = mFn.qs("#ala");
 
     // (2) 이미지출력
-    ReactDOM.render(<img src="./images/ala4.jpg" alt="알라딘" />, alaBox);
+    ReactDOM.render(<MakeImg isrc="./images/ala4.jpg" ialt="알라딘" />, alaBox);
 
     // 3. 말풍선 박스에 글자넣기 ///
     let titBox = mFn.qs(".tit");
@@ -73,6 +73,28 @@ function EventShow() {
   // (2) 램프가져오기 함수 ////////////
   const getLamp = () => {
     console.log("램프 가져와~!!!");
+
+    // 1. 램프선택하기 : .lamp
+    let lampBox = mFn.qs(".lamp");
+
+    // 램프 이미지 CSS 객체셋팅
+    let lampCSS = {
+      position: "absolute",
+      top: "0",
+      right: "0",
+      width: "200px",
+      borderRadius: "50%",
+      transition: "2s",
+    };
+
+    // 2. 램프 이미지 넣기
+    ReactDOM.render(
+      <MakeImg        isrc="https://cdn.011st.com/11dims/resize/600x600/quality/75/11src/product/3168457870/B.png"        
+      ialt="알라딘램프"
+      icss={lampCSS}
+      />,
+      lampBox
+    );
   }; ////////// getLamp 함수 ///////////
 
   /// 2. 리턴 코드 만들기 ////////////
@@ -101,6 +123,14 @@ function EventShow() {
     </React.Fragment>
   );
 } /////////// EventShow 컴포넌트 /////////////////
+
+/******************************************* 
+    이미지 생성 컴포넌트 : MakeImg
+*******************************************/
+function MakeImg({ isrc, ialt , icss }) {
+  // 리턴코드
+  return <img src={isrc} alt={ialt} style={icss} />;
+} ///////////// MakeImg 컴포넌트 ////////////////
 
 // 화면출력하기 ////////////
 // ReactDOM.render(넣을코드,대상)
