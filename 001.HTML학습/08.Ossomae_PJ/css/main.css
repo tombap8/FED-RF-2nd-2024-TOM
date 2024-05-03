@@ -7,7 +7,7 @@ html,body,h1{
 
 body{
     overflow: hidden;
-    background: url(../images/bg-main.jpg) no-repeat fixed center/cover;
+    background: url(../images/bg-main.jpg) fixed left bottom/50%;
 }
 
  /* IR 클래스 */
