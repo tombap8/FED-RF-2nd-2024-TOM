@@ -75,3 +75,34 @@ import mFn from "./my_function.js";
         } //// else ////
 
     } ////////changeSlide 함수 //////////////
+
+
+    // 자동넘김용 호출함수 ///////////////
+    // 오른쪽 이동함수 ///
+    const goRight = () => 
+    gbx.appendChild(mFn.qsaEl(gbx,"div")[0]);
+
+    // 자동넘김용 변수
+    // (인터발용: autoI, 타임아웃용:autoT)
+    let autoI, autoT;
+
+    // 인터발 호출함수 ////
+    const autoSlide = () => 
+    autoI = setInterval(goRight,3000);
+
+    // 인터발 함수 최초호출 ////
+    autoSlide();
+
+    // 인터발지우기 함수 ////
+    const clearAuto = () => {
+        // 인터발지우기
+        clearInterval(autoI);
+        // 타임아웃지우기(실행쓰나미방지)
+        clearTimeout(autoT);
+        // 일정시간후 작동
+        autoT = setTimeout(autoSlide, 5000);
+    }; ////// clearAuto 함수 //////
+
+    // 버튼 클릭시 clearAuto함수 호출하기 ////
+    abtn.forEach(
+        ele=>mFn.addEvt(ele,"click",clearAuto));
