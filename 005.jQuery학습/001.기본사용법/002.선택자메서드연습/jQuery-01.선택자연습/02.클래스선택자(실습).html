@@ -1,69 +1,99 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-<meta charset="utf-8">
-<title> 클래스 선택자  </title>
-<script src="../jquery-3.6.3.min.js"></script>
-	<script>
-    // window.addEventListener("load", function(){});
-    $(()=>{
-      // 미션: 클래스가 group인 요소를 선택하여
+  <head>
+    <meta charset="utf-8" />
+    <title>클래스 선택자</title>
+    <!-- 제이쿼리 기본 라이브러리 -->
+    <script src="../jquery-3.6.3.min.js"></script>
+    <!-- 제이쿼리 UI는 색상애니, 드래그기능 등 추가모듈 -->
+    <script src="../jquery-ui.min.js"></script>
+    <script>
+      // window.addEventListener("load", function(){});
+      $(() => {
+        // 미션: 클래스가 group인 요소를 선택하여
         // li를 클릭할 경우 배경색을 lime
         // 글자크기는 52px로 변경하시오.
-        // 단, transition 을 "all .6s"로 
+        // 단, transition 을 "all .6s"로
         // 설정하여 애니메이션 되게 하시오.
         // 그리고 개별적으로 적용되게할것!(this사용)
 
         // 대상: .group li
-        $(".group li").click(()=>{
+        $(".group li").click((e) => {
           // 이벤트 발생요소 자신(li자신)
-          let me = event.currentTarget;
-          console.log('나야나!',me);
+          let me = e.currentTarget;
+          // 해당요소 순번
+          let idx = $(me).index();
+          console.log("나야나!", idx);
+          // index() 메서드는 선택요소 형제순번
 
-          // CSS변경하기
-          $(me).css({
-            "background-color":"lime",
-            "font-size":"52px",
-            "transition":".6s",
-          }); /// css ///
+          // 선택요소 뒤에 메서드를 계속 이어쓰는
+          // 방법을 메서드 체인(method chain)이라고함
+          // 예) $(선택요소).text().css().animate()
+
+          // CSS변경하기(속성명을 변수형으로 사용가능)
+          // .css({
+          //   backgroundColor:"lime",
+          //   fontSize:"52px",
+          //   transition:".6s",
+          // }) /// css ///
+
+          $(me)
+            // [ 애니메이션 주기 ]
+            // animate({CSS설정},시간,이징,콜백함수)
+            // 시간을 안쓰면 기본시간 400(0.4초)
+            // 색상변경은 제이쿼리 UI를 위에 가져온다
+            // 트랜스폼은 새로나온 개별속성을 사용한다!
+            // (translate, rotate 등 사용함)
+            // 이징가속도는 https://easings.net/ko
+            // 이징은 이름을 정확히 쓰는 것이 중요함!
+            .animate(
+              {
+                backgroundColor: "lime",
+                fontSize: "52px",
+                translate: "200px",
+                rotate: "720deg",
+                // transform: "translateX(200px)",
+              },
+              // 시간: 1/1000초
+              2000,
+              // 이징: 정해진 가속도 옵션주기
+              "easeInOutCirc",
+              // 함수: 애니메이션 후 작업코드
+              () => {
+                // body배경색 애니메이션하기
+                $("body").animate(
+                  {
+                    backgroundColor:
+                      idx == 0 ? "green" : idx == 1 ? "red" : "blue",
+                  },
+                  1500
+                ); /// animate ///
+              }
+            ) /////// animate /////
+
+            // 텍스트 변경하기 : text(내용)
+            .text(idx == 0 ? "👨‍🦱" : idx == 1 ? "👩‍🦰" : "👲");
         }); /// click ///
+      }); /////////// jQB /////////////////
+    </script>
+  </head>
 
-       
+  <body>
+    <div id="container">
+      <header>
+        <h2>Welcome mySite</h2>
+      </header>
 
-    }); /////////// jQB /////////////////
+      <nav>
+        <ul class="group">
+          <li id="first">One</li>
+          <li id="second">Two</li>
+          <li id="third">Three</li>
+        </ul>
+      </nav>
+    </div>
 
-
-  </script>
-	
-	
-	
-	
-	
-</head>
-  
-<body>
-
-<div id="container">
-
- <header>
-   <h2> Welcome mySite </h2>
- </header>
-
- <nav>
-   <ul class="group">
-       <li id="first">One</li>
-       <li id="second">Two</li>
-       <li id="third">Three</li>
-  </ul>
- </nav>
-
-</div>
-
-<!---------- jQuery code Start ---------->
-<script>
-
-</script>
-
-</body>
+    <!---------- jQuery code Start ---------->
+    <script></script>
+  </body>
 </html>
-
