@@ -115,11 +115,11 @@ function EventShow() {
       <div id="tbox" style={{ textAlign: "center" }}>
         {/* 스타일 인라인 적용시 바깥중괄호는 표현식
                 내부 중괄호는 객체형식의 스타일 설정임! */}
-        <img
-          src="./images/genie.avif"
-          alt="지니"
+        <MakeImg
+          isrc="./images/genie.avif"
+          ialt="지니"
           /* 마우스오버시 showAladin함수호출 */
-          onMouseOver={showAladin}
+          overFn={showAladin}
         />
 
         {/* 램프가 들어갈 요소 */}
@@ -139,9 +139,17 @@ function EventShow() {
 /******************************************* 
     이미지 생성 컴포넌트 : MakeImg
 *******************************************/
-function MakeImg({ isrc, ialt , icss }) {
-  // 리턴코드
-  return <img src={isrc} alt={ialt} style={icss} />;
+function MakeImg({ isrc, ialt , icss, overFn }) {
+  // 리턴코드 : return키워드 바로 뒤에 JSX태를 바로 이어쓰거나
+  // 소괄호 시작부분을 같은 라인에 써야 에러가 나지 않는다!
+  return (
+  <img 
+    src={isrc} 
+    alt={ialt} 
+    style={icss} 
+    onMouseOver={overFn}
+    />
+  );
 } ///////////// MakeImg 컴포넌트 ////////////////
 
 // 화면출력하기 ////////////
