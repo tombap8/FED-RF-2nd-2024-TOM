@@ -37,6 +37,10 @@ import mFn from "./my_function.js";
     // 4. 함수만들기 ////////////
     // 갤러리 이동하기 함수
     function changeSlide(){
+        // 0. 광클금지 //////
+        if(stopClick) return;
+        stopClick = true;
+        setTimeout(()=>stopClick=false, TIME_SLIDE);
 
         // 1. 버튼 구분하기
         let isR = this.classList.contains("rb");
