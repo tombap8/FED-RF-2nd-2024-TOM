@@ -120,9 +120,32 @@ function EventShow() {
       lampImg.rotate = "720deg";
     }, 500);
 
-
+    // 4. 소원빌기 버튼 3초후 보이기
+    setTimeout(() => {
+      mFn.qsa("button")[1].style.display = "inline-block";
+    }, 3000);
 
   }; ////////// getLamp 함수 ///////////
+
+  // (3) 페라리 가져오기 함수 /////////////
+  const getFerrari = () => {
+    console.log("페라리 줄께~!");
+    // 페라리 이미지 넣기
+    // 대상: #ferrari
+    ReactDOM.render(
+    <MakeImg
+      isrc="./images/ferrari.png"
+      ialt="페라리레드"
+      itit="클릭하면 시운전해요!"
+      idName="fcar"
+      clickFn={moveCar}
+    />,
+    mFn.qs("#ferrari"));
+    // ReactDOM.render(어쩌구,저쩌구);
+    // 어쩌구를 저쩌구에 넣기
+
+  }; //////////// getFerrari 함수 //////////
+
 
   /// 2. 리턴 코드 만들기 ////////////
   return (
@@ -141,8 +164,8 @@ function EventShow() {
         <div className="lamp"></div>
 
         {/* 버튼들 */}
-        <button onClick={getLamp}>램프가져오기~!</button>
-        <button>소원빌기~! 페라리주세요~!!!</button>
+        <button onClick={getLamp}>램프가져오기~!</button> <br />
+        <button onClick={getFerrari}>소원빌기~! 페라리주세요~!!!</button>
 
         {/* 소원이 무엇이냐 말풍선박스 */}
         <div className="tit"></div>
@@ -154,7 +177,7 @@ function EventShow() {
 /******************************************* 
     이미지 생성 컴포넌트 : MakeImg
 *******************************************/
-function MakeImg({ isrc, ialt , icss, overFn }) {
+function MakeImg({ isrc, ialt , icss, overFn, clickFn, itit,idName }) {
   // 리턴코드 : return키워드 바로 뒤에 JSX태를 바로 이어쓰거나
   // 소괄호 시작부분을 같은 라인에 써야 에러가 나지 않는다!
   return (
@@ -162,7 +185,10 @@ function MakeImg({ isrc, ialt , icss, overFn }) {
     src={isrc} 
     alt={ialt} 
     style={icss} 
+    title={itit}
+    id={idName}
     onMouseOver={overFn}
+    onClick={clickFn}
     />
   );
 } ///////////// MakeImg 컴포넌트 ////////////////
@@ -170,3 +196,10 @@ function MakeImg({ isrc, ialt , icss, overFn }) {
 // 화면출력하기 ////////////
 // ReactDOM.render(넣을코드,대상)
 ReactDOM.render(<EventShow />, mFn.qs("#root"));
+
+
+//// 일반함수로 페라리 움직이기 구현 ////////////
+function moveCar (){
+  console.log("페라리 움직여!");
+
+} ////////////// moveCar 함수 ///////////////
