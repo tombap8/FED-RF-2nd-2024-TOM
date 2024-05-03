@@ -5,12 +5,18 @@ import mFn from "./my_function";
 
 /************************************************************* 
     [ 리액트 이벤트 ]
+
     1. 일반 HTML DOM 이벤트와 마찬가지로 사용자이벤트 사용가능함
     2. 이벤트 종류: click, change, mouseover 등 일반이벤트
     3. 이벤트 표기법: 캐믈케이스 - 첫글자소문자 단어마다 대문자
-    예) onclick -> onClick
+      예) onclick -> onClick
     4. 이벤트 핸들러 : 중괄호 안에 작성(중괄호는 JSX표현식영역)
-    예) onclick="getIt()" => onClick={getIt}
+      예) onclick="getIt()" => onClick={getIt}
+
+    5. 리액트에 속성형태로 등록하는 이벤트는 html요소에 등록된
+    이벤트 속성과 달리 JS 이벤트 리스너를 통한 이벤트 객체에
+    등록되므로 html 태그상 이벤트 등록속성이 보이지 않는다!
+
 *************************************************************/
 
 /////// 전체 이벤트 적용할 컴포넌트 구성하기 //////////////////
@@ -37,7 +43,13 @@ function EventShow() {
     let alaBox = mFn.qs("#ala");
 
     // (2) 이미지출력
-    ReactDOM.render(<MakeImg isrc="./images/ala4.jpg" ialt="알라딘" />, alaBox);
+    ReactDOM.render(
+    <MakeImg isrc="./images/ala4.jpg" ialt="알라딘" />, alaBox);
+    // 컴포넌트 호출시 전달변수를 셋팅하여 보내야하는데
+    // 만약 전달변수이름이 잘못되었거나 보내주지 않으면
+    // 컴포넌트에서 에러가 나지 않고 해당 항목을
+    // 제외하여 표시하지 않는 특징 있음!
+    // 여기서 icss가 있으나 안보내주니 표시되지 않는다!
 
     // 3. 말풍선 박스에 글자넣기 ///
     let titBox = mFn.qs(".tit");
