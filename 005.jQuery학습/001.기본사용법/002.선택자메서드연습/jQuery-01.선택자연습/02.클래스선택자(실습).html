@@ -5,6 +5,7 @@
 <title> 클래스 선택자  </title>
 <script src="../jquery-3.6.3.min.js"></script>
 	<script>
+    // window.addEventListener("load", function(){});
     $(()=>{
       // 미션: 클래스가 group인 요소를 선택하여
         // li를 클릭할 경우 배경색을 lime
@@ -14,6 +15,18 @@
         // 그리고 개별적으로 적용되게할것!(this사용)
 
         // 대상: .group li
+        $(".group li").click(()=>{
+          // 이벤트 발생요소 자신(li자신)
+          let me = event.currentTarget;
+          console.log('나야나!',me);
+
+          // CSS변경하기
+          $(me).css({
+            "background-color":"lime",
+            "font-size":"52px",
+            "transition":".6s",
+          }); /// css ///
+        }); /// click ///
 
        
 
