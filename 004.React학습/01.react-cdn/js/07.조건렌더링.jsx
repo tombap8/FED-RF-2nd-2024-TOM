@@ -93,7 +93,7 @@ ReactDOM.render(
 ReactDOM.render(
     <Developer 
     isNormal={true}
-    isrc={devImg[0]}
+    isrc={devImg[1]}
     ialt="일반인 동석"
     itit="개발자가 뭡니까?"
     />,
