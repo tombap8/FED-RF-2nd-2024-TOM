@@ -128,13 +128,13 @@ function bindCombo(){
 
   // 데이터 만들어서 넣기 /////
   corpBox.innerHTML = 
-  corpData.map(v=>`
+  corpData.map((v,i)=>`
     <optgroup label="${v}">
     ${
       // 해당 객체의 값은 키배열값과 매칭함!
       // ov변수는 객체가 가지는 배열값임!
       comboData.corp[v].map((ov,oi) => `
-        <option value="corp${oi+1}">${ov}</option>      
+        <option value="corp${i+1}-${oi+1}">${ov}</option>      
       `).join('')
     }
     </optgroup>
