@@ -96,13 +96,12 @@ function makeMenu() {
 `;
 } ////////// makeMenu 함수 //////////
 
-
 // 콤보박스 바인딩 함수 ////////////
-function bindCombo(){
+function bindCombo() {
   // 1. 대상선정 :  #brand, #corp
   const brandBox = document.querySelector("#brand");
   const corpBox = document.querySelector("#corp");
-  console.log("콤보바인딩!",brandBox,corpBox);
+  console.log("콤보바인딩!", brandBox, corpBox);
 
   // 2. 데이터 바인딩하기
   // 2-1. 브랜드 바로가기 콤보박스 : 단순바인딩(option만)
@@ -110,11 +109,15 @@ function bindCombo(){
 
   // 대상요소 내부 데이터 넣기
   // 배열데이터.map().join('')
-  brandBox.innerHTML = 
-  `<option value="init">브랜드 바로가기</option>`+
-  comboData.brand.map((v,i)=>`
-    <option value="brand${i+1}">${v}</option>  
-  `).join('');
+  brandBox.innerHTML =
+    `<option value="init">브랜드 바로가기</option>` +
+    comboData.brand
+      .map(
+        (v, i) => `
+    <option value="brand${i + 1}">${v}</option>  
+  `
+      )
+      .join("");
 
   // 2-2. 계열사 바로가기 콤보박스
   // -> 복합바인딩 : optgroup > option
@@ -128,29 +131,48 @@ function bindCombo(){
   console.log(corpData);
 
   // 데이터 만들어서 넣기 /////
-  corpBox.innerHTML = 
-  `<option value="init">계열사 바로가기</option>`+
-  corpData.map((v,i)=>`
+  corpBox.innerHTML =
+    `<option value="init">계열사 바로가기</option>` +
+    corpData
+      .map(
+        (v, i) => `
     <optgroup label="${v}">
     ${
       // 해당 객체의 값은 키배열값과 매칭함!
       // ov변수는 객체가 가지는 배열값임!
-      comboData.corp[v].map((ov,oi) => `
-        <option value="corp${i+1}-${oi+1}">${ov}</option>      
-      `).join('')
+      comboData.corp[v]
+        .map(
+          (ov, oi) => `
+        <option value="corp${i + 1}-${oi + 1}">${ov}</option>      
+      `
+        )
+        .join("")
     }
     </optgroup>
-  `).join('');  
+  `
+      )
+      .join("");
 
-    // 3. 선택박스 선택변경시 링크이동하기
-    // 3-1. 브랜드 바로가기 링크 이동하기
-    // 대상: brandBox변수
-    // 이벤트: change
-    brandBox.addEventListener("change",
-    function(){
-      console.log("브랜드 어디?",this.value);
-
-    }); //////// 브랜드 change 이벤트 함수 //////
+  // 3. 선택박스 선택변경시 링크이동하기
+  // 3-1. 브랜드 바로가기 링크 이동하기
+  // 대상: brandBox변수
+  // 이벤트: change
+  brandBox.addEventListener("change", openWindow); 
+  // 3-2. 계열사 바로가기 링크 이동하기
+  // 대상: corpBox변수
+  // 이벤트: change
+  corpBox.addEventListener("change", openWindow); 
 
 
 } /////////// bindCombo 함수 ///////////////
+
+// 링크 이동함수 /////////////
+function openWindow() { 
+  // 1. 이동할 주소
+  let url = comboData.brandLink[this.value];
+  // console.log("브랜드 어디?",url);
+
+  // 2. 선택 option값의 주소로 이동하기
+  // 새창열기 : window.open(이동할주소)
+  window.open(url);
+} ///////////// openWindow 함수 /////////////
