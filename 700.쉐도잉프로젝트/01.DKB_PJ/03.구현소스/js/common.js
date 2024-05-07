@@ -171,14 +171,23 @@ function openWindow() {
   // 현재 나자신의 아이디는?
   // console.log(this.id);
 
+  // 0. 옵션값이 "init"일 경우 돌아가!
+  // if(this.value == "init") return;
+
   // 1. 이동할 주소 : 
   // comboData.brandLink 또는 comboData.corpLink 객체선택
   // 객체이름 조합을 (아이디명+"Link")
   // 그 하위의 option값을 url값으로 가져옴!
   let url = comboData[this.id+"Link"][this.value];
-  // console.log("브랜드 어디?",url);
+  console.log("브랜드 어디?",url);
+  // -> 만약 데이터가 없으면 url변수의 값은 셋팅되지 못하여
+  // undefined 처리된다! 이것을 if문으로 처리하여
+  // 아래 새창띄우기 코드를 감싸준다!
+  // url값이 셋팅되지 않으면 새창열기 코드는 실행되지 않음
+  // 따라서 위의 "init" 코드로 별도의 처리가 불필요함!
+  // undefined는 if문에서 false처리됨!
 
   // 2. 선택 option값의 주소로 이동하기
   // 새창열기 : window.open(이동할주소)
-  window.open(url);
+  if(url) window.open(url);
 } ///////////// openWindow 함수 /////////////
