@@ -111,8 +111,9 @@ function bindCombo(){
   // 대상요소 내부 데이터 넣기
   // 배열데이터.map().join('')
   brandBox.innerHTML = 
+  `<option value="init">브랜드 바로가기</option>`+
   comboData.brand.map((v,i)=>`
-    <option value="brand${i}">${v}</option>  
+    <option value="brand${i+1}">${v}</option>  
   `).join('');
 
   // 2-2. 계열사 바로가기 콤보박스
@@ -128,6 +129,7 @@ function bindCombo(){
 
   // 데이터 만들어서 넣기 /////
   corpBox.innerHTML = 
+  `<option value="init">계열사 바로가기</option>`+
   corpData.map((v,i)=>`
     <optgroup label="${v}">
     ${
@@ -138,9 +140,17 @@ function bindCombo(){
       `).join('')
     }
     </optgroup>
-  `).join('');
+  `).join('');  
 
+    // 3. 선택박스 선택변경시 링크이동하기
+    // 3-1. 브랜드 바로가기 링크 이동하기
+    // 대상: brandBox변수
+    // 이벤트: change
+    brandBox.addEventListener("change",
+    function(){
+      console.log("브랜드 어디?",this.value);
 
-  
+    }); //////// 브랜드 change 이벤트 함수 //////
+
 
 } /////////// bindCombo 함수 ///////////////
