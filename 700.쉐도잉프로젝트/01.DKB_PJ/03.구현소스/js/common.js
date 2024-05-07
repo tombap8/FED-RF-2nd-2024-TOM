@@ -168,8 +168,14 @@ function bindCombo() {
 
 // 링크 이동함수 /////////////
 function openWindow() { 
-  // 1. 이동할 주소
-  let url = comboData.brandLink[this.value];
+  // 현재 나자신의 아이디는?
+  // console.log(this.id);
+
+  // 1. 이동할 주소 : 
+  // comboData.brandLink 또는 comboData.corpLink 객체선택
+  // 객체이름 조합을 (아이디명+"Link")
+  // 그 하위의 option값을 url값으로 가져옴!
+  let url = comboData[this.id+"Link"][this.value];
   // console.log("브랜드 어디?",url);
 
   // 2. 선택 option값의 주소로 이동하기
