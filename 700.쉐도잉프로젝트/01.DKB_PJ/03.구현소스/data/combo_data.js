@@ -23,7 +23,7 @@ const comboData = {
     brand3: "https://tvn.cjenm.com/ko/",
     brand4: "https://tvnsports.cjenm.com/ko/",
     brand5: "https://tvn.cjenm.com/ko/tvNstory-main/",
-    brand66: "https://tvn.cjenm.com/ko/tvNDRAMA_main/",
+    brand6: "https://tvn.cjenm.com/ko/tvNDRAMA_main/",
     brand7: "https://tvn.cjenm.com/ko/tvNshow-main/",
     brand8: "https://ocn.cjenm.com/ko/",
     brand9: "https://zhtv.cjenm.com/ko/",

@@ -190,4 +190,5 @@ function openWindow() {
   // 2. 선택 option값의 주소로 이동하기
   // 새창열기 : window.open(이동할주소)
   if(url) window.open(url);
+  else alert("선택을 변경해 주세요~!");
 } ///////////// openWindow 함수 /////////////
