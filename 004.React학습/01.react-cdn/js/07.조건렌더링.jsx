@@ -110,41 +110,50 @@ function FoodList({ foodName }) {
 } /////////// FoodList 컴포넌트 ///////////////
 
 // 2-3. 개발자 선호 음식 리스트 출력 컴포넌트 //////
-function WishList({wList}){
-    // wList - 좋아하는 음식리스트(배열)
-    
-    // 리턴 코드 구역 //////////////
-    return(
-        <React.Fragment>
-            {/* 음식 리스트 타이틀 */}
-            <SetTitle title="음식" />
-            <div>
-                <h2>개발자가 좋아하는 음식은 모두
-                    {wList.length}가지 입니다!
-                </h2>
-                <ul>
-                    {
-                        wList.map(v=>
-                        <FoodList foodName={v} />)
-                        // 배열변수.map() 메서드사용!
-                        // map메서드는 원래 새로운배열을
-                        // 현재 자리에 출력하는 용도임
-                        // 그러나 리액트는 이것을 변경하여
-                        // 표현식안에서 출력시
-                        // 태그JSX 형식으로 변환해 줌!
-                        // JS 처럼 map().join('')처리
-                        // 불필요!!!
-                    }
-                </ul>
-            </div>
+function WishList({ wList }) {
+  // wList - 좋아하는 음식리스트(배열)
 
-        </React.Fragment>
-
-    );
-
+  // 리턴 코드 구역 //////////////
+  return (
+    <React.Fragment>
+      {/* 음식 리스트 타이틀 */}
+      <SetTitle title="음식" />
+      {wList.length > 0 && (
+        <div>
+          <h2>
+            개발자가 좋아하는 음식은 모두
+            {wList.length}가지 입니다!
+          </h2>
+          <ul>
+            {
+              wList.map((v) => (
+                <FoodList foodName={v} />
+              ))
+              // 배열변수.map() 메서드사용!
+              // map메서드는 원래 새로운배열을
+              // 현재 자리에 출력하는 용도임
+              // 그러나 리액트는 이것을 변경하여
+              // 표현식안에서 출력시
+              // 태그JSX 형식으로 변환해 줌!
+              // JS 처럼 map().join('')처리
+              // 불필요!!!
+            }
+          </ul>
+        </div>
+      )}
+      {/*  배열값이 0인 경우 다른것 출력하기 */}
+      {
+        wList.length == 0 &&
+        <h2>아직 개발자 음식 리스트가 업데이트 되지 않았습니다!</h2>
+      }
+    </React.Fragment>
+  );
 } ////////// WishList 컴포넌트 ///////////////
 
-// 컴포넌트 출력하기 /////
-ReactDOM.render(
-<WishList wList={foods} />,root[2]);
+// 컴포넌트 출력하기 : 배열값 있는 경우 /////
+ReactDOM.render(<WishList wList={foods} />, root[2]);
+// ReactDOM.render(어쩌구,저쩌구);
+
+// 컴포넌트 출력하기 : 배열값 없는 경우 /////
+ReactDOM.render(<WishList wList={[]} />, root[3]);
 // ReactDOM.render(어쩌구,저쩌구);
