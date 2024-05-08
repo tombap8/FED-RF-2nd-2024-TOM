@@ -242,4 +242,13 @@ $(".spart-menu a").click(e=>{
   pos = $(pos).offset().top;
   console.log("위치값:",pos);
 
+  // 3. 스크롤 애니메이션 이동하기
+  // 제이쿼리는 이것을 정말 잘한다!!!
+  // $("html,body").animate({scrollTop:몇px},시간,이징,함수)
+  $("html,body")
+  .animate({scrollTop: pos+"px"},
+  800, // 시간(1/1000초)
+  "easeInOutElastic" // 이징(https://easings.net)
+  );
+
 }); //////// 도깨비 파트 메뉴 클릭 함수 ///////////////
