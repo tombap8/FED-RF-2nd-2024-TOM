@@ -237,6 +237,11 @@ $(".spart-menu a").click(e=>{
     case "대표 포스터": pos = "#main-photo-area";break;
   } ///////// switch case ////////
 
+  // 만약 해당된 요소가 없으면 여기서 돌아가!
+  // 위에서 할당안되면 undefined이면 if문에서 false처리됨
+  // !(NOT)연산자로 반대로 뒤집으면 false일때 처리함!
+  if(!pos) return;
+
   // 2-2. 해당 박스 아이디의 위치값 알아내기
   // offset().top 제이쿼리 top 위치값정보
   pos = $(pos).offset().top;
@@ -248,7 +253,12 @@ $(".spart-menu a").click(e=>{
   $("html,body")
   .animate({scrollTop: pos+"px"},
   800, // 시간(1/1000초)
-  "easeInOutElastic" // 이징(https://easings.net)
+  "easeInOutQuint", // 이징(https://easings.net)
+  // 이동후 부드러운 스크롤 위치값 업데이트 필수
+  ()=>{
+    // 이것 안하면 위치이동후 스크롤시 튐!
+    setScrollPos(pos);
+  }
   );
 
 }); //////// 도깨비 파트 메뉴 클릭 함수 ///////////////
