@@ -378,15 +378,51 @@ const updateCode = (arrData, exBox) => {
 updateCode(list1, showList3);
 
 // 3-5. 정렬변경 이벤트 발생시 실제 정렬 변경하기 ////
-// (1) 이벤트 대상: .sel3
+// - change 이벤트 대상 선택박스들
+// (1) 정렬종류 대상: .sel3
 const sel3 = mFn.qs(".sel3");
 // (2) 정렬기준 대상: .cta3
 const cta3 = mFn.qs(".cta3");
 
-// (3) 이벤트 대상 선택 변경시
+// (3) 정렬종류 대상 선택 변경시
 // -> 실제 정렬을 적용하여 리스트를 갱신한다!
 // -> 정렬 적용시 정렬기준 대상 선택항목을 가져가야함!
+mFn.addEvt(sel3,"change",
+(e)=>sortingFn(e,list1,showList3));
 
 // (4) 정렬기준 대상 선택 변경시
-// -> 이벤트 대상 선택 초기화하기("정렬선택"으로 변경!)
+// -> 정렬종류 대상 초기화하기("정렬선택"으로 변경!)
+
+// 3-6. 정렬함수 만들기 //////////////
+function sortingFn(evt, arrData, exBox) {
+  // evt - 이벤트 발생요소의 이벤트객체 전달
+  // arrData - 배열 데이터
+  // exBox - 출력 대상박스
+  // console.log(evt,arrData,exBox);
+
+  // 1. 선택값 읽어오기(오름차순:1,내림차순:2)
+  let selVal = evt.target.value;
+  console.log("선택값:",selVal);
+
+  // 검색기준 선택박스 값 읽어오기
+  let cta = cta3.value;
+  console.log("정렬기준:",cta);
+
+  // 2. 정렬분기하기 ////////////////
+  // 2-1. 오름차순
+  if(selVal == 1){
+    arrData.sort((a,b)=> 
+    a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? 1 : -1);
+    
+  } /// if /////
+  // 2-2. 내림차순
+  else if(selVal == 2){
+    arrData.sort((a,b)=> 
+    a[cta] == b[cta] ? 0 : a[cta] > b[cta] ? -1 : 1);
+
+  } /// else if /////
+
+  console.log("정렬결과:",arrData);
+
+} ////////////// sortingFn 함수 ////////////////
 
