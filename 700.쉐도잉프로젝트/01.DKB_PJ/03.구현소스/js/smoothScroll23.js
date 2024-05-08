@@ -12,19 +12,24 @@ function startSS() {
   // new SmoothScroll(document.querySelector('.wrap'), 60, 12)
 }
 
-// 전역변수 스크롤 위치값
-let scrollPos;
-// -> 다른 코딩으로 스크롤 이동시 이 변수에 일치필요!!!
-
-// 전역변수 scrollPos를 셋팅하는 함수(외부에서 이것사용!)
-function setScrollPos(val) {
-  // val - 위치값 전달변수
-  scrollPos = val;
-}
 
 
 function SmoothScroll(scrollTarget, speed, smooth) {
   // scrollTarget - 대상요소, speed - 스크롤애니속도, smooth - 부드러운정도
+
+  // 생성자 함수내 지역변수 스크롤 위치값
+  let scrollPos;
+  // -> 다른 코딩으로 스크롤 이동시 이 변수에 일치필요!!!
+  
+  // 지역변수 scrollPos를 셋팅하는 함수
+  // (외부에서 이것사용하려면 this키워드로 노출하고
+  // 할당형 함수로 만들어 줘야함!)
+  this.setScrollPos = (val) => {
+    // val - 위치값 전달변수
+    scrollPos = val;
+  }
+
+
   if (scrollTarget === document)
     scrollTarget =
       document.scrollingElement ||
@@ -108,4 +113,4 @@ function SmoothScroll(scrollTarget, speed, smooth) {
 // 함수 외부 공개하기
 // 부드러운 스크롤 시작함수 : startSS()
 // 위치값 변경함수 : setScrollPos()
-export {startSS, setScrollPos};
+export default SmoothScroll;
