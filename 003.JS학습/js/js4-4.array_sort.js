@@ -388,14 +388,15 @@ const cta3 = mFn.qs(".cta3");
 // -> 실제 정렬을 적용하여 리스트를 갱신한다!
 // -> 정렬 적용시 정렬기준 대상 선택항목을 가져가야함!
 mFn.addEvt(sel3,"change",
-(e)=>sortingFn(e,list1,showList3));
+(e)=>sortingFn(e,cta3.value,list1,showList3));
 
 // (4) 정렬기준 대상 선택 변경시
 // -> 정렬종류 대상 초기화하기("정렬선택"으로 변경!)
 
 // 3-6. 정렬함수 만들기 //////////////
-function sortingFn(evt, arrData, exBox) {
+function sortingFn(evt, cta, arrData, exBox) {
   // evt - 이벤트 발생요소의 이벤트객체 전달
+  // cta - 정렬기준값(객체속성명:키명)
   // arrData - 배열 데이터
   // exBox - 출력 대상박스
   // console.log(evt,arrData,exBox);
@@ -405,7 +406,6 @@ function sortingFn(evt, arrData, exBox) {
   console.log("선택값:",selVal);
 
   // 검색기준 선택박스 값 읽어오기
-  let cta = cta3.value;
   console.log("정렬기준:",cta);
 
   // 2. 정렬분기하기 ////////////////
