@@ -212,4 +212,3 @@ introMv.onclick = () => {
 
 // 드래그 슬라이드 태그 구성후 호출하기!
 setSlide('banbx');
-
