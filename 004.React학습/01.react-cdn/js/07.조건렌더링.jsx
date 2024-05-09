@@ -24,8 +24,11 @@ function LostDeveloper() {
 } /////// LostDeveloper 컴포넌트 ///////////
 
 // 3번 컴포넌트 /////////////////////
-function MakeImage({ isrc, ialt, itit }) {
-  return <img src={isrc} alt={ialt} title={itit} />;
+function MakeImage({ isrc, ialt, itit, icss }) {
+  // isrc - 파일경로, ialt - 설명 
+  // itit - 툴팁, icss - 스타일설정
+  // -> 만약 속성중 안보낸것은 출력되지 않는다!
+  return <img src={isrc} alt={ialt} title={itit} style={icss} />;
 } ////////// MakeImage 컴포넌트 ////////////
 
 // 메인 출력 컴포넌트 ////////////////////
@@ -233,11 +236,15 @@ function MovieWishList({ wList }) {
             ))}
           </ul>
           {/* 영화포스터 이미지 영화순서대로 만들기 */}
-          {wList.map(x=>
-          <MakeImage isrc={x.poster} ialt={x.mtit} />)}
-        </div>        
+          {wList.map((x) => (
+            <MakeImage
+              isrc={x.poster}
+              ialt={x.mtit}
+              icss={{ width: "100px" }}
+            />
+          ))}
+        </div>
       )}
-
 
       {/* 빈 배열일 경우 출력 */}
       {wList.length == 0 && (
@@ -245,7 +252,6 @@ function MovieWishList({ wList }) {
           <h2>아직 개발자 영화 리스트가 업데이트 되지 않았습니다!</h2>
         </div>
       )}
-
     </React.Fragment>
   );
 } ////////// MovieWishList 컴포넌트 ////////////
