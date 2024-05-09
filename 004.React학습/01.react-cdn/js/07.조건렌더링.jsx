@@ -108,9 +108,25 @@ function SetTitle({ title }) {
 const foods = ["스파게티", "짜파게티", "냉면", "짜장면", "마라탕"];
 
 // 2-2. 반복리스트를 위한 컴포넌트 ///////////
-function FoodList({ foodName }) {
-  return <li>개발자는 {foodName} 좋아해!</li>;
-} /////////// FoodList 컴포넌트 ///////////////
+function MakeList({ foodName, movieInfo }) {
+  console.log(foodName,"/",movieInfo);
+  // 음식일 경우
+  if(foodName){
+    return (
+    <li>개발자는 {foodName} 좋아해!</li>  
+    );
+  }
+  // 영화일 경우
+  else if(movieInfo){
+    return (
+      <li>{movieInfo[0]}년도 {movieInfo[1]}</li>  
+    );
+  }
+  // 조건에 해당없으면 출력하는 리턴문
+  return (
+    <li>호출시 전달값을 점검하세요!</li>  
+  );
+} /////////// MakeList 컴포넌트 ///////////////
 
 // 2-3. 개발자 선호 음식 리스트 출력 컴포넌트 //////
 function WishList({ wList }) {
@@ -130,7 +146,7 @@ function WishList({ wList }) {
           <ul>
             {
               wList.map((v) => (
-                <FoodList foodName={v} />
+                <MakeList foodName={v} />
               ))
               // 배열변수.map() 메서드사용!
               // map메서드는 원래 새로운배열을
@@ -159,4 +175,61 @@ ReactDOM.render(<WishList wList={foods} />, root[2]);
 
 // 컴포넌트 출력하기 : 배열값 없는 경우 /////
 ReactDOM.render(<WishList wList={[]} />, root[3]);
+// ReactDOM.render(어쩌구,저쩌구);
+
+
+////// 3. 좀 더 복잡한 리스트를 출력하는 컴포넌트 //////
+
+// 전달할 배열변수 ////
+const movs = [
+  {year:"2021",mtit:"모가디슈",poster:"https://upload.wikimedia.org/wikipedia/ko/9/92/%EC%98%81%ED%99%94_%EB%AA%A8%EA%B0%80%EB%94%94%EC%8A%88.jpg"},
+  {year:"2022",mtit:"범죄도시2",poster:"https://upload.wikimedia.org/wikipedia/ko/b/b9/%EB%B2%94%EC%A3%84%EB%8F%84%EC%8B%9C_2_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"},
+  {year:"2023",mtit:"가디언즈 오브 갤럭시3",poster:"https://i.namu.wiki/i/qA_v1drdO1CusnMcmQVZDEGXEspqfuS0-sAHYUFExpgZMF_GSyCSrxSh-_IWua2lqD6GnNNlqw0hMvNzXYrefA.webp"},
+  {year:"2024",mtit:"파묘",poster:"https://i.namu.wiki/i/EWdG2Jtlu36U1-03moAiO7Hmh1waKlbB0DIEvamksSTTzWCsqDXxUiiPSdcmpAQjh_tUFOwAGhR7LX7f6U0wXQ.webp"},
+];
+
+/* 
+[ 출력형태 ]
+    👨‍🔧개발자👩‍🔧가 좋아하는 영화
+    개발자가 좋아하는 영화는 최근 몇년간 아래와 같습니다!
+    2021년도 영화1
+    2022년도 영화2
+    2023년도 영화3
+    ... 여기는 영화포스트 나열하기 ...
+*/
+
+// 개발자 선호 영화 리스트 출력 컴포넌트 ///////
+// 제목 컴포넌트, 리스트 컴포넌트 모두 재활용!
+function MovieWishList({wList}){
+
+  return(
+    <React.Fragment>
+      {/* 영화위시리스트 타이틀 출력 */}
+      <SetTitle title="영화" />
+      {/* 영화리스트 출력 */}
+      {wList.length > 0 &&
+        <div>
+          <h2>
+            개발자가 좋아하는 영화는
+            최근 {wList.length}년간 아래와 같습니다!
+          </h2>
+          <ul>
+            {wList.map(x=><MakeList movieInfo={x} />)}
+          </ul>
+        </div>}
+        {/* 빈 배열일 경우 출력 */}
+      {wList.length == 0 &&
+        <div>
+          <h2>
+            아직 개발자 영화 리스트가 업데이트 되지 않았습니다!
+          </h2>
+        </div>}
+    </React.Fragment>
+  );
+
+} ////////// MovieWishList 컴포넌트 ////////////
+
+
+// 컴포넌트 출력하기  /////
+ReactDOM.render(<MovieWishList wList={movs} />, root[4]);
 // ReactDOM.render(어쩌구,저쩌구);
