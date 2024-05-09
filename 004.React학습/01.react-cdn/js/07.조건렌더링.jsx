@@ -25,7 +25,7 @@ function LostDeveloper() {
 
 // 3번 컴포넌트 /////////////////////
 function MakeImage({ isrc, ialt, itit, icss }) {
-  // isrc - 파일경로, ialt - 설명 
+  // isrc - 파일경로, ialt - 설명
   // itit - 툴팁, icss - 스타일설정
   // -> 만약 속성중 안보낸것은 출력되지 않는다!
   return <img src={isrc} alt={ialt} title={itit} style={icss} />;
@@ -118,12 +118,14 @@ function MakeList({ foodName, movieInfo }) {
       {
         // 음식 데이터가 들어온 경우
         // undefined 가 아니면 true이므로 &&뒤 코드출력!
-        foodName && "개발자는 " + foodName + "좋아해!"
+        foodName && 
+        "개발자는 " + foodName + "좋아해!"
       }
       {
         // 영화 데이터가 들어온 경우
         // undefined 가 아니면 true이므로 &&뒤 코드출력!
-        movieInfo && movieInfo.year + "년도 " + movieInfo.mtit
+        movieInfo && 
+        movieInfo.year + "년도 " + movieInfo.mtit
       }
     </li>
   );
@@ -181,6 +183,12 @@ ReactDOM.render(<WishList wList={[]} />, root[3]);
 
 // 전달할 배열변수 ////
 const movs = [
+  {
+    year: "2020",
+    mtit: "남산의 부장들",
+    poster:
+      "https://i.namu.wiki/i/d-g1xW3vvsfh71KCQIxl2es_i0wKyMJhkwEaXKdCgDAyhJVRb4vWA_TNnRHMksw0S6pK_nFrDITK2ISIJRuRpA.webp",
+  },
   {
     year: "2021",
     mtit: "모가디슈",
