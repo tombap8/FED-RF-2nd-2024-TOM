@@ -522,3 +522,5 @@ const list2 = [
 // 4-3. 코드 만들어 출력하는 함수 호출하기
 // updateCode(배열데이터,출력박스)
 updateCode(list2, showList4);
+
+// 4-5. 
