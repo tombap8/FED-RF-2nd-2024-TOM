@@ -523,4 +523,58 @@ const list2 = [
 // updateCode(배열데이터,출력박스)
 updateCode(list2, showList4);
 
-// 4-5. 
+// 4-5. 검색 이벤트 설정하기 /////////
+// 4-5-1. 대상선정 :
+// (1) 검색기준 선택박스
+const searchCta4 = mFn.qs(".search-cta4");
+// (2) 검색버튼 
+const btnSearch = mFn.qs(".sbtn");
+// (3) 검색어 입력창
+const keyWord = mFn.qs("#stxt");
+// console.log(searchCta4,btnSearch,keyWord);
+
+// 4-5-2. 이벤트 설정하기 ////
+mFn.addEvt(btnSearch,"click",searchingFn);
+
+// 4-6. 검색함수 만들기 ////////////////
+function searchingFn(){
+  // 1. 검색 기준값 읽어오기
+  let cta = searchCta4.value;
+  // 2. 검색어 읽어오기
+  let kword = keyWord.value;
+  // 3. 검색어가 없으면 돌아가!
+  if(kword == "") {
+    alert("검색어를 입력해주세요!");
+    // 입력창에 포인터 들어가기! focus()
+    keyWord.focus();
+    return;
+  }
+  console.log(cta,kword);
+
+  // 4. 검색기준으로 검색어를 사용하여 검색하기
+  // 검색대상 데이터 배열 : list2
+  // 사용 배열메서드 : filter()
+  let result = list2.filter(v=>{
+    // v는 배열값
+    // 만약에 찾는문자가 전체문자열에 있으면 -1이 아님!!!
+    // -> 숫자이면 에러남! 왜? indexOf()는 문자열전문!
+    // 무조건 문자형으로 변환한다! String(대상)
+    if(String(v[cta]).indexOf(kword)!=-1) return true;
+    // 이 조건에 리턴값을 true로 하면 해당 데이터를
+    // 배열로 만들어서 순서대로 변수에 할당한다!
+    // 여기서는 result변수가 결과 배열 변수가 된다!
+    // console.log(v["tit"].indexOf(kword));
+  });
+  // 전체문자열.indexOf(문자열) -> 해당문자열이 전체문자열에서
+  // 몇번째에 있는지 그 순번을 리턴해 주는 메서드다!
+  // 만약 없으면 -1값을 리턴한다!!!
+
+  // 결과찍기
+  console.log(result);
+
+  // 5. 결과를 화면에 보여주기 : updateCode 함수호출
+  updateCode(result,showList4);
+
+
+} ////////////// searchingFn 함수 ///////////
+
