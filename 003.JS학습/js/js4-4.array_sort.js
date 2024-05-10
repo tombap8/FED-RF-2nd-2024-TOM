@@ -468,7 +468,7 @@ function sortingFn(evt, cta, arrData, exBox) {
   // 값이 객체일 경우 이 방식은 효과가 없다!
   // 효과있는 방법은?
   // 새변수 = JSON.parse(JSON.stringify(배열원본변수))
-  const xxx = JSON.parse(JSON.stringify(arrData));
+  let xxx = JSON.parse(JSON.stringify(arrData));
   // xxx는 원본과는 분리된 같은 배열값의 새로운 배열이다!
 
   // 1. 선택값 읽어오기(오름차순:1,내림차순:2)
