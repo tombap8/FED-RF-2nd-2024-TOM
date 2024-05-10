@@ -323,7 +323,16 @@ function ShowLikePinter({ isChange }) {
       {/* 1.큰제목 */}
       <SetTitle title="명화" />
       {/* 2. 변경버튼 */}
-      <button>작가변경!!!</button>
+      <button
+      onClick={()=>{setResult(!result)}}
+      style={{
+        fontSize:"30px",
+        padding:"10px",
+        fontWeight:"bold",
+        backgroundColor:result?"red":"blue",
+        color:result?"yellow":"aqua",
+      }}
+      >작가변경!!!</button>
       {/* 3. 작품출력 */}
       {
         // 삼항연산자로 isChange값에 따라 출력변경하기
