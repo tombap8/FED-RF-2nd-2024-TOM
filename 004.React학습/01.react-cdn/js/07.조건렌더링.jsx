@@ -264,6 +264,73 @@ function MovieWishList({ wList }) {
   );
 } ////////// MovieWishList 컴포넌트 ////////////
 
-// 컴포넌트 출력하기  /////
+// 컴포넌트 출력하기 : 배열값 있는경우  /////
 ReactDOM.render(<MovieWishList wList={movs} />, root[4]);
 // ReactDOM.render(어쩌구,저쩌구);
+
+// 컴포넌트 출력하기 : 배열값 없는경우 /////
+ReactDOM.render(<MovieWishList wList={[]} />, root[5]);
+
+
+/********************************************************** 
+    4. 조건 연산자(삼항연산자)를 사용하여 조건부 랜더링하기 
+    비?집:놀이동산
+**********************************************************/
+// 명화 데이터
+const workUrl = {
+  피카소:
+    "https://m.theartin.net/web/product/big/201907/30c5a0fdd153bfdfdc8f19b2f4166fa8.jpg",
+  모네: "https://dimg.donga.com/wps/NEWS/IMAGE/2015/12/11/75316598.3.jpg",
+};
+
+// 개발자가 좋아하는 그림(명화) 찍기
+
+// 4-1. 작가타이틀과 그림찍기 컴포넌트 //////
+// 구성 : 작가이름 + 작품이미지
+// 데이터 : 작가이름 (painter)
+//          이미지경로(작가이름의 객체 - workUrl)
+//          작품명(wname)
+function MakePainting({painter, wname}){
+  // 코드 리턴구역
+  return (
+    <div>
+      {/* 작가이름 타이틀 */}
+      <h2>{painter}</h2>
+      {/* 이미지 태그 출력 */}
+      <img 
+        src={workUrl[painter]}
+        alt={painter+"의 작품:"+wname}
+        style={{width:"400px"}}
+        title={wname}
+      />
+    </div>
+  );
+
+} ///////////// MakePainting 컴포넌트 ////////////
+
+// 4-2. 전체출력 컴포넌트 //////////////
+// 구성 : 전체타이틀(SetTitle 컴포넌트) + 변경버튼
+//      + 작가타이틀과 그림출력(MakePainting 컴포넌트)
+// 특이사항 : 변경버튼 클릭시 MakePainting 컴포넌트의
+// 데이터를 변경하여 다시 출력하도록 함!(Hook사용!)
+function ShowLikePinter(){
+
+  /// 리턴 코드구역 //////
+  return(
+    <React.Fragment>
+      {/* 1.큰제목 */}
+      <SetTitle title="명화" />
+      {/* 2. 변경버튼 */}
+      <button>작가변경!!!</button>
+      {/* 3. 작품출력 */}
+      <MakePainting 
+        painter="모네" 
+        wname="양산을 쓴 여인" />
+    </React.Fragment>
+  );
+
+} //////// ShowLikePinter 컴포넌트 ////////////
+
+
+// 4-3. 컴포넌트 출력하기 /////
+ReactDOM.render(<ShowLikePinter />, root[6]);
