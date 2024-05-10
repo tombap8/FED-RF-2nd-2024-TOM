@@ -539,15 +539,23 @@ const btnTotal = mFn.qs(".fbtn");
 // console.log(searchCta4,btnSearch,keyWord);
 
 // 4-5-2. 이벤트 설정하기 ////
-// 검색버튼
+// (1) 검색버튼
 mFn.addEvt(btnSearch, "click", searchingFn);
-// 전체버튼 클릭시 처음 리스트 보이기
+// (2) 전체버튼 클릭시 처음 리스트 보이기
 mFn.addEvt(btnTotal, "click", () => {
   // 처음리스트 다시 만들기
   updateCode(list2, showList4);
   // 검색어 지우기
   keyWord.value = "";
 });
+// (3) 입력창 키보드입력시 엔터키 구분하여 검색하기
+mFn.addEvt(keyWord,"keypress", (e)=>{
+  // 엔터키는 키코드가 13번임
+  if(e.keyCode==13){
+    searchingFn();
+  } ////// if //////
+});
+
 
 // 4-6. 검색함수 만들기 ////////////////
 function searchingFn() {
