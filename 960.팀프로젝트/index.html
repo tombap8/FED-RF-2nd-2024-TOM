@@ -6,37 +6,94 @@
     <title>아카이브 페이지</title>
     <link rel="stylesheet" href="./zcss/main.css" />
     <style>
-      #pg2 a{
+      #pg2 a {
         font-size: 40px;
         display: inline-block;
         text-align: center;
         font-weight: bold;
         color: darkred;
-        -webkit-text-stroke: .5px #000;
-        -webkit-text-: .5px #000;
+        -webkit-text-stroke: 0.5px #000;
+        -webkit-text-: 0.5px #000;
       }
-      #pg2 .pt1 li:nth-child(1) a{
+      #pg2 .pt1 li:nth-child(1) a {
         margin-left: 10%;
         color: lightgreen;
       }
-      #pg2 .pt1 li:nth-child(1) a::after{
+      #pg2 .pt1 li:nth-child(1) a::after {
         background-color: lightgreen;
       }
-      #pg2 .pt1 li:nth-child(2) a{
+      #pg2 .pt1 li:nth-child(2) a {
         margin-left: 80%;
         color: lightsalmon;
       }
-      #pg2 .pt1 li:nth-child(2) a::after{
+      #pg2 .pt1 li:nth-child(2) a::after {
         background-color: lightsalmon;
       }
-      #pg2 .pt2 li:nth-child(1) a{
+      #pg2 .pt2 li:nth-child(1) a {
         margin-left: 30%;
         color: aqua;
       }
-      #pg2 .pt2 li:nth-child(1) a::after{
+      #pg2 .pt2 li:nth-child(1) a::after {
         background-color: aqua;
       }
+
+      .team-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 200px;
+        aspect-ratio: 3/4;
+        display: none;
+      }
+      .team-img span {
+        position: absolute;
+        left: 0;
+        bottom: 10%;
+        width: 100%;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 35px;
+        color: #fff;
+        text-shadow: 2px 2px 2px #000;
+
+      }
+      .team-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center center;
+        border-radius: 15px;
+        box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.5);
+      }
     </style>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script>
+      $(() => {
+        ///////////// jQB /////////////////
+
+        const tgEle = $(".part ol li a");
+
+        tgEle.mouseenter((e) => {
+          $(e.target).next(".team-img").css({ display: "block" });
+        });
+        tgEle.mouseleave((e) => {
+          $(e.target).next(".team-img").css({ display: "none" });
+        });
+        tgEle.mousemove((e) => {
+          $(e.target)
+            .next(".team-img")
+            .css({
+              top: e.pageY-150 + "px",
+              left: e.pageX-200 + "px",
+            });
+        });
+      }); ///////////// jQB /////////////////
+    </script>
   </head>
   <body>
     <div id="top">
@@ -47,23 +104,6 @@
           <br />
           팀 프로젝트 발표 페이지
         </h1>
-        <!-- 네비게이션 -->
-        <!-- <nav class="gnb">
-                    <ul>
-                        <li>
-                            <a href="#pg1">공통·개별PJ</a>
-                        </li>
-                        <li>
-                            <a href="#pg2">2페이지</a>
-                        </li>
-                        <li>
-                            <a href="#pg3">3페이지</a>
-                        </li>
-                        <li>
-                            <a href="#pg4">4페이지</a>
-                        </li>
-                    </ul>
-                </nav> -->
       </header>
     </div>
 
@@ -81,27 +121,55 @@
           </h2>
           <ol>
             <li>
-              <a href="https://jaeyoonperl.github.io/TEAM-PJ-TOYSTORY/test/" target="_blank">
+              <a
+                href="https://jaeyoonperl.github.io/TEAM-PJ-TOYSTORY/test/"
+                target="_blank"
+              >
                 토이팀 : Toy Story
+
               </a>
+              <div class="team-img">
+                <img
+                  src="https://i.namu.wiki/i/I1QZ1s5Z6GX_t-KXUH359RsPwmkrSKD-jumcS4H3C-Mm-5NzCf4Jdauh9MuMu4nW35I4aw5NHqUGrAqHxYQvaQ.webp"
+                  alt="토이팀"
+                />
+              </div>
             </li>
             <li>
-              <a href="https://gieyoung.github.io/Solar-system/" target="_blank">
+              <a
+                href="https://gieyoung.github.io/Solar-system/"
+                target="_blank"
+              >
                 쏠라팀 : Solar System
               </a>
+              <div class="team-img">
+                <img
+                  src="https://i.pinimg.com/originals/28/18/17/28181771794bf7609788537306ed5c62.png"
+                  alt="쏠라팀"
+                />
+                <span>Solar&nbsp;&nbsp;&nbsp;&nbsp; <br>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;System</span>
+              </div>
             </li>
           </ol>
         </section>
         <!-- 2. 개별프로젝트 링크파트 -->
         <section class="part pt2">
-          <h2>
-              팀 프로젝트 발표!!!
-          </h2>
+          <h2>팀 프로젝트 발표!!!</h2>
           <ol>
             <li>
-              <a href="https://alrang0929.github.io/FED_2rd_star_wars/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/" target="_blank">
+              <a
+                href="https://alrang0929.github.io/FED_2rd_star_wars/%ED%8C%80%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/"
+                target="_blank"
+              >
                 스타팀 : Star Wars
               </a>
+              <div class="team-img">
+                <img
+                  src="https://cphoto.asiae.co.kr/listimglink/1/2012103110393113090_1.jpg"
+                  alt="스타팀"
+                />
+              </div>
             </li>
           </ol>
         </section>

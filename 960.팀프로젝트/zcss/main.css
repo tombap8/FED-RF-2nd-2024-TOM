@@ -193,6 +193,8 @@ body가 기준이 된다!  */
     color: #222;
     text-decoration: none;
     font-size: 2.5rem;
+    position: relative;
+    z-index: 1;
 }
 /* 다운로드 */
 .part a.dld{
