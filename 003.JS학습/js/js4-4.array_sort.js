@@ -403,17 +403,26 @@ const updateCode = (arrData, exBox) => {
         </tr>
       </thead>
       <tbody>
-        ${arrData
-          .map(
-            (v) => `
+        ${
+          arrData.length == 0
+            ? 
+          `<tr>
+            <td colspan="3">
+              검색하신 데이터가 없습니다!
+            </td>
+          </tr>`
+            : arrData
+                .map(
+                  (v) => `
               <tr>
                 <td>${v.idx}</td>
                 <td>${v.tit}</td>
                 <td>${v.cont}</td>
               </tr>
             `
-          )
-          .join("")}
+                )
+                .join("")
+        }
       </tbody>
     </table>
   `;
@@ -525,10 +534,20 @@ const searchCta4 = mFn.qs(".search-cta4");
 const btnSearch = mFn.qs(".sbtn");
 // (3) 검색어 입력창
 const keyWord = mFn.qs("#stxt");
+// (4) 전체버튼
+const btnTotal = mFn.qs(".fbtn");
 // console.log(searchCta4,btnSearch,keyWord);
 
 // 4-5-2. 이벤트 설정하기 ////
+// 검색버튼
 mFn.addEvt(btnSearch, "click", searchingFn);
+// 전체버튼 클릭시 처음 리스트 보이기
+mFn.addEvt(btnTotal, "click", () => {
+  // 처음리스트 다시 만들기
+  updateCode(list2, showList4);
+  // 검색어 지우기
+  keyWord.value = "";
+});
 
 // 4-6. 검색함수 만들기 ////////////////
 function searchingFn() {
@@ -557,7 +576,7 @@ function searchingFn() {
     // 이 조건에 리턴값을 true로 하면 해당 데이터를
     // 배열로 만들어서 순서대로 변수에 할당한다!
     // 여기서는 result변수가 결과 배열 변수가 된다!
-    // console.log(v["tit"].indexOf(kword));
+    // console.log(v[cta].indexOf(kword));
   });
   // 전체문자열.indexOf(문자열) -> 해당문자열이 전체문자열에서
   // 몇번째에 있는지 그 순번을 리턴해 주는 메서드다!
