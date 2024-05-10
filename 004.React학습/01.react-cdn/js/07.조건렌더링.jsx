@@ -118,14 +118,12 @@ function MakeList({ foodName, movieInfo }) {
       {
         // 음식 데이터가 들어온 경우
         // undefined 가 아니면 true이므로 &&뒤 코드출력!
-        foodName && 
-        "개발자는 " + foodName + "좋아해!"
+        foodName && "개발자는 " + foodName + "좋아해!"
       }
       {
         // 영화 데이터가 들어온 경우
         // undefined 가 아니면 true이므로 &&뒤 코드출력!
-        movieInfo && 
-        movieInfo.year + "년도 " + movieInfo.mtit
+        movieInfo && movieInfo.year + "년도 " + movieInfo.mtit
       }
     </li>
   );
@@ -271,7 +269,6 @@ ReactDOM.render(<MovieWishList wList={movs} />, root[4]);
 // 컴포넌트 출력하기 : 배열값 없는경우 /////
 ReactDOM.render(<MovieWishList wList={[]} />, root[5]);
 
-
 /********************************************************** 
     4. 조건 연산자(삼항연산자)를 사용하여 조건부 랜더링하기 
     비?집:놀이동산
@@ -290,22 +287,21 @@ const workUrl = {
 // 데이터 : 작가이름 (painter)
 //          이미지경로(작가이름의 객체 - workUrl)
 //          작품명(wname)
-function MakePainting({painter, wname}){
+function MakePainting({ painter, wname }) {
   // 코드 리턴구역
   return (
     <div>
       {/* 작가이름 타이틀 */}
       <h2>{painter}</h2>
       {/* 이미지 태그 출력 */}
-      <img 
+      <img
         src={workUrl[painter]}
-        alt={painter+"의 작품:"+wname}
-        style={{width:"400px"}}
+        alt={painter + "의 작품:" + wname}
+        style={{ width: "400px" }}
         title={wname}
       />
     </div>
   );
-
 } ///////////// MakePainting 컴포넌트 ////////////
 
 // 4-2. 전체출력 컴포넌트 //////////////
@@ -313,24 +309,78 @@ function MakePainting({painter, wname}){
 //      + 작가타이틀과 그림출력(MakePainting 컴포넌트)
 // 특이사항 : 변경버튼 클릭시 MakePainting 컴포넌트의
 // 데이터를 변경하여 다시 출력하도록 함!(Hook사용!)
-function ShowLikePinter(){
+function ShowLikePinter({ isChange }) {
+  // isChange - 기존작가를 변경하는 여부 전달변수
+  // true / false -> true면 바꾸겠다!
+  // 비?집:놀이동산 으로 그림 출력파트를 변경함!
 
+  // [ 후크 상태관리 변수 만들기 ]
+  const [result,setResult] = React.useState(isChange);
+  // const [변수명,set변수명] = useState(초기값)
   /// 리턴 코드구역 //////
-  return(
+  return (
     <React.Fragment>
       {/* 1.큰제목 */}
       <SetTitle title="명화" />
       {/* 2. 변경버튼 */}
       <button>작가변경!!!</button>
       {/* 3. 작품출력 */}
-      <MakePainting 
-        painter="모네" 
-        wname="양산을 쓴 여인" />
+      {
+        // 삼항연산자로 isChange값에 따라 출력변경하기
+        // isChange 가 아닌 상태관리변수를 사용한다!
+        result ? (
+          <MakePainting painter="피카소" wname="우는여인" />
+        ) : (
+          <MakePainting painter="모네" wname="양산을 쓴 여인" />
+        )
+      }
     </React.Fragment>
   );
-
 } //////// ShowLikePinter 컴포넌트 ////////////
 
-
 // 4-3. 컴포넌트 출력하기 /////
-ReactDOM.render(<ShowLikePinter />, root[6]);
+ReactDOM.render(<ShowLikePinter isChange={false} />, root[6]);
+
+
+/********************************************************* 
+    [ 리액트 훅크 : React Hook ]
+    - 일반적으로 리액트에 사용되는 변수는 처음에 
+    컴포넌트에 전달되어 초기 셋팅에 활용된다.
+    그런데 이 변수가 변경될 경우 컴포넌트의 변경이
+    자동적으로 이루어지지 않는다!
+    이런 종류의 변수 업데이트가 가상돔과 실제돔에
+    바로 반영되도록 실시간 감시역할을 하는
+    리액트의 기술내용을 담고 있는 것이 후크다!
+
+    1. 목적 : 어떤 특정 데이터가 변경될때
+        이 데이터를 할당하여 사용하고 있는 컴포넌트의
+        변경이 반영되도록 하고자 할때 후크를 사용한다!
+
+    2. 구현방법:
+        1) 노드JS SPA 개발환경에서는 상단에 
+        import useState를 한다!
+        -> CDN 에서는 React.useState 로 사용함!
+        2) 코딩법 : useState() 메서드사용
+            배열변수 = useState(초기값)
+            (CDN) -> 배열변수 = React.useState(초기값)
+
+            ((일반형))
+            const [변수명,set변수명] = useState(초기값)
+            -> set변수명 작성시 변수명 첫글자는 대문자로 씀
+            예) 변수명 myname -> setMyname
+            -> set변수명(값) : 메서드형태로 후크변수의 값을 셋팅함!
+
+        3) 작동원리 
+            - useState에 쓴 초기값이 배열변수 첫번째변수에 할당된다!
+            - 코드에서 set변수명에 값을 할당하면
+            useState메서드가 이것을 체크하여 이 변수를 사용한
+            다른부분의 업데이트를 실행한다!
+            예컨데 컴포넌트 내부에 사용한 경우 컴포넌트가 업데이트 됨!
+        4) 사용결과
+            - 별도의 메서드 호출없이 후크 상태변수를 사용한 곳이
+            자동으로 변경될대마다 다시 갱신되는 것을 확인 할 수 있다!
+
+        -> 뷰JS의 리액티브 데이터와 매우 유사함!
+
+*****************************************************************/
+
