@@ -405,8 +405,7 @@ const updateCode = (arrData, exBox) => {
       <tbody>
         ${
           arrData.length == 0
-            ? 
-          `<tr>
+            ? `<tr>
             <td colspan="3">
               검색하신 데이터가 없습니다!
             </td>
@@ -549,13 +548,12 @@ mFn.addEvt(btnTotal, "click", () => {
   keyWord.value = "";
 });
 // (3) 입력창 키보드입력시 엔터키 구분하여 검색하기
-mFn.addEvt(keyWord,"keypress", (e)=>{
+mFn.addEvt(keyWord, "keypress", (e) => {
   // 엔터키는 키코드가 13번임
-  if(e.keyCode==13){
+  if (e.keyCode == 13) {
     searchingFn();
   } ////// if //////
 });
-
 
 // 4-6. 검색함수 만들기 ////////////////
 function searchingFn() {
