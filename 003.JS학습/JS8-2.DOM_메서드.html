@@ -275,11 +275,18 @@
           let rdmNum = Math.ceil(Math.random()*5);
           console.log("랜덤수:", rdmNum);
 
+          // 이미지 alt설명 배열
+          const avenName = 
+          ["아이언맨","딱딱이","토르","닥스","스타로드"];
+
           // 메모리상에 생성된 li에 이미지요소를 
           // innerHTML로 넣기 -> DOM에 직접넣기가 아닌 메모리상
           // 태그 넣기도 가능한가?
           newEle.innerHTML = 
-          `<img src="images/ab${rdmNum}.jpg" alt="아이언맨" title="아이언맨">
+          `<img 
+              src="images/ab${rdmNum}.jpg" 
+              alt="${avenName[rdmNum-1]}" 
+              title="${avenName[rdmNum-1]}">
           `;
 
           // 변경대상에 새로운 li 넣기
