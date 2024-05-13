@@ -237,8 +237,11 @@
           6. 생성된 속성에 값넣기
           -> 생성된속성.value = 값
 
-          7. 요소의 새로운 속성 넣기
+          7. 요소의 새로운 속성 넣기 : 완벽하게 셋팅된 속성넣기
           -> 선택요소.setAttributeNode(새로운속성)
+
+          참고)직접 속성값 셋팅하기
+          -> 선택요소.setAttribute(속성명,속성값)
 
         **************************************************/
 
@@ -276,18 +279,54 @@
           console.log("랜덤수:", rdmNum);
 
           // 이미지 alt설명 배열
-          const avenName = 
+          const avengerName = 
           ["아이언맨","딱딱이","토르","닥스","스타로드"];
 
+          // [ 내부 태그넣기 방법1 ]
           // 메모리상에 생성된 li에 이미지요소를 
           // innerHTML로 넣기 -> DOM에 직접넣기가 아닌 메모리상
-          // 태그 넣기도 가능한가?
-          newEle.innerHTML = 
-          `<img 
-              src="images/ab${rdmNum}.jpg" 
-              alt="${avenName[rdmNum-1]}" 
-              title="${avenName[rdmNum-1]}">
-          `;
+          // 태그 넣기도 가능한가? OK!
+
+          // newEle.innerHTML = 
+          // `<img 
+          //     src="images/ab${rdmNum}.jpg" 
+          //     alt="${avengerName[rdmNum-1]}" 
+          //     title="${avengerName[rdmNum-1]}">
+          // `;
+          
+          // [ 내부 태그넣기 방법2 ] : 메모리상 이미지생성
+          let imgEle = document.createElement('img');
+
+          // ((이미지 속성 셋팅하기 방법1))
+          // imgEle.src = `images/ab${rdmNum}.jpg`;
+          // imgEle.alt = avengerName[rdmNum-1];
+          // imgEle.title = avengerName[rdmNum-1];
+
+          // ((이미지 속성 셋팅하기 방법2))
+          // imgEle.setAttribute("src",`images/ab${rdmNum}.jpg`);
+          // imgEle.setAttribute("alt",avengerName[rdmNum-1]);
+          // imgEle.setAttribute("title",avengerName[rdmNum-1]);
+          
+          // ((이미지 속성 셋팅하기 방법3)) -> 메모리상 속성셋팅
+          // (1) 속성객체 변수에 할당하기
+          let isrc = document.createAttribute("src");
+          let ialt = document.createAttribute("alt");
+          let itit = document.createAttribute("title");
+
+          // (2) 메모리상 속성에 값 셋팅하기 : value로 셋팅함
+          isrc.value = `images/ab${rdmNum}.jpg`;
+          ialt.value = avengerName[rdmNum-1];
+          itit.value = avengerName[rdmNum-1];
+
+          // (3) 메모리상 생성된 이미지에 메모리상셋팅된 속성 매칭하기
+          // setAttributeNode(속성객체)
+          imgEle.setAttributeNode(isrc);
+          imgEle.setAttributeNode(ialt);
+          imgEle.setAttributeNode(itit);
+
+
+          // 메모리상 생성된 li에 메모리상 생성된 img 넣기
+          newEle.appendChild(imgEle);
 
           // 변경대상에 새로운 li 넣기
           // appendChild(요소)
