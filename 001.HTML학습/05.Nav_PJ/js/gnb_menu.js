@@ -77,6 +77,12 @@ export default function makeMenu(target){
         let tg = e.currentTarget;
         console.log("오버시",tg);
 
+        // 하위 중 .smbx의 높이값을 읽어서
+        // .smenu의 높이값을 변경한다!
+        mFn.qsEl(tg,".smenu").style.height =
+        mFn.qsEl(tg,".smbx").offsetHeight + "px";
+
+
     }); /////// mouseenter //////
 
     // (2) 마우스 아웃시
@@ -84,6 +90,9 @@ export default function makeMenu(target){
         // 이벤트 대상
         let tg = e.currentTarget;
         console.log("아웃시",tg);
+        
+        // 높이값 0만들기
+        mFn.qsEl(tg,".smenu").style.height = "0";
 
     }); /////// mouseleave //////
    }); //////// forEach ///////
