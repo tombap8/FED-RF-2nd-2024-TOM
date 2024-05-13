@@ -51,8 +51,8 @@
       // querySelector 함수 짧게 만들기! ////
       const qs = (x) => document.querySelector(x);
       const qsa = (x) => document.querySelectorAll(x);
-      const qsEl = (ele,x) => ele.querySelector(x);
-      const qsaEl = (ele,x) => ele.querySelectorAll(x);
+      const qsEl = (ele, x) => ele.querySelector(x);
+      const qsaEl = (ele, x) => ele.querySelectorAll(x);
 
       // addEventListener 함수 짧게 만들기! ////
       const addEvt = (ele, evt, fn) => ele.addEventListener(evt, fn);
@@ -77,29 +77,24 @@
 
         // 2. 이벤트 설정하기
         for (let i = 0; i < cntSmenu; i++) {
+          smenu[i].onmouseenter = () => {
+            // 변경대상 : .smenu div
+            let target = qsEl(smenu[i], "div");
+            // 높이값 대상: .smenu ol
+            // 높이값은 offsetHeight 속성으로 읽어옴
+            let htVal = qsEl(smenu[i], "ol").offsetHeight;
+            console.log("하위메뉴높이:", htVal);
+            // 변경내용 : 높이값,트랜지션
+            target.style.height = htVal + "px";
+            target.style.transition = ".3s";
+          }; ///// mouseover 이벤트 함수 //////
 
-            smenu[i].onmouseenter = ()=>{
-                // 변경대상 : .smenu div
-                let target = qsEl(smenu[i],'div');
-                // 높이값 대상: .smenu ol
-                // 높이값은 offsetHeight 속성으로 읽어옴
-                let htVal = qsEl(smenu[i],'ol').offsetHeight;
-                console.log('하위메뉴높이:',htVal);
-                // 변경내용 : 높이값,트랜지션
-                target.style.height = htVal+'px';
-                target.style.transition = '.3s';
-
-            }; ///// mouseover 이벤트 함수 //////
-
-            smenu[i].onmouseleave = ()=>{
-                // 변경대상 : .smenu div
-                let target = qsEl(smenu[i],'div');
-                // 변경내용 : 높이값
-                target.style.height = '0';
-
-            }; ///// mouseout 이벤트 함수 //////
-
-
+          smenu[i].onmouseleave = () => {
+            // 변경대상 : .smenu div
+            let target = qsEl(smenu[i], "div");
+            // 변경내용 : 높이값
+            target.style.height = "0";
+          }; ///// mouseout 이벤트 함수 //////
         } /// for ///
 
         /*************************************************** 
@@ -109,6 +104,12 @@
             3. 선택요소.offsetTop : top 위치값
             4. 선택요소.offsetLeft : left 위치값            
         ***************************************************/
+       
+        // [ 이벤트 비교 ]
+        // mouseover / mouseout -> 버블링발생함!
+        // -> 요소위에 오버시 / 아웃시
+        // mouseenter / mouseleave -> 버블링발생안함!
+        // -> 요소경계선 안으로 들어갈때 / 경계선을 떠날때
 
         // [ 추가기능 : 링크 클릭시 페이지 새창이동하기 ]
         // 1. 대상선정 : .smenu ol a
@@ -116,29 +117,103 @@
 
         // 2. forEach로 순회하며 링크이동함수 호출하기
         // 클릭이벤트 설정
-        link.forEach(ele=>addEvt(ele,"click",linkFn));
+        link.forEach((ele) => addEvt(ele, "click", linkFn));
 
         // 3. 이동함수 만들기
-        function linkFn(e){
-          // 기본이동막기
+        function linkFn(e) {
+          // 1.기본이동막기
           e.preventDefault();
-          // 클릭된 a요소의 글자 데이터 읽어오기
+
+          // 2.클릭된 a요소의 글자 데이터 읽어오기
           let txt = this.innerText;
           console.log(txt);
 
+          // 3.이동할 주소 분기하여 할당하기
+          // 주소변수
+          let url;
+
+          switch (txt) {
+            case "Google":
+              url = "https://www.google.com/";
+              break;
+            case "Naver":
+              url = "http://www.naver.com";
+              break;
+            case "Daum":
+              url = "http://www.daum.net";
+              break;
+            case "Nate":
+              url = "http://www.nate.com";
+              break;
+            case "SK":
+              url = "http://www.sktelecom.com";
+              break;
+            case "KT":
+              url = "http://www.kt.com";
+              break;
+            case "Uplus":
+              url = "http://www.uplus.co.kr";
+              break;
+            case "CGV":
+              url = "http://www.cgv.co.kr";
+              break;
+            case "MEGABOX":
+              url = "http://www.megabox.co.kr";
+              break;
+            case "LOTTE CINEMA":
+              url = "https://www.lottecinema.co.kr/NLCHS";
+              break;
+            case "GMARKET":
+              url = "http://www.gmarket.co.kr";
+              break;
+            case "11번가":
+              url = "http://www.11st.co.kr";
+              break;
+            case "Auction":
+              url = "http://www.auction.co.kr";
+              break;
+            case "스토어팜":
+              url = "https://shopping.naver.com/";
+              break;
+            case "인터파크":
+              url = "http://www.interpark.co.kr";
+              break;
+            case "쿠팡":
+              url = "http://www.coopang.co.kr";
+              break;
+            case "Apple":
+              url = "http://www.apple.com";
+              break;
+            case "Samsung":
+              url = "http://www.samsung.com";
+              break;
+            case "넷마블":
+              url = "http://www.netmarble.net";
+              break;
+            case "넥슨":
+              url = "https://www.nexon.com";
+              break;
+            case "IMC":
+              url = "http://www.imc.co.kr";
+              break;
+          } /////// switch case문 ////////
+
+          // 4. 페이지 이동하기 ////
+          // (1) 현재창 이동(히스토리남음)
+          // location.href = 이동주소
+          // 참고: 히스토리가 남지 않는 창이동은
+          // location.replace(이동주소)
+          // (2) 새창이동
+          // window.open(이동주소)
+
+          if (url) {
+            // url이 할당된 경우만 이동!
+            window.open(url);
+
+            // location.href = url; -> 현재창이동(히스토리有)
+            // location.replace(url); -> 현재창이동(히스토리無)
+          } /// if ///
         } /////////////// linkFn함수 ///////////////
-
-
-
-
-
-        // [ 이벤트 비교 ]
-        // mouseover / mouseout -> 버블링발생함!
-        // -> 요소위에 오버시 / 아웃시
-        // mouseenter / mouseleave -> 버블링발생안함!
-        // -> 요소경계선 안으로 들어갈때 / 경계선을 떠날때
-
-
 
       } /////////////// loadFn 함수 /////////////////
       ////////////////////////////////////////////////
