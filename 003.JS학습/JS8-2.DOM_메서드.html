@@ -273,12 +273,12 @@
           // 1. 새로운 li를 생성하여 변수에 할당
           let newEle = document.createElement("li");
 
-          // 이미지 랜덤수 만들기 : 1~5사이수
+          // 2. 이미지 랜덤수 만들기 : 1~5사이수
           // Math.ceil(Math.random()*최대수) -> 1부터 최대수랜덤
           let rdmNum = Math.ceil(Math.random()*5);
           console.log("랜덤수:", rdmNum);
 
-          // 이미지 alt설명 배열
+          // 3. 이미지 alt설명 배열
           const avengerName = 
           ["아이언맨","딱딱이","토르","닥스","스타로드"];
 
@@ -294,7 +294,7 @@
           //     title="${avengerName[rdmNum-1]}">
           // `;
           
-          // [ 내부 태그넣기 방법2 ] : 메모리상 이미지생성
+          // 4. [ 내부 태그넣기 방법2 ] : 메모리상 이미지생성
           let imgEle = document.createElement('img');
 
           // ((이미지 속성 셋팅하기 방법1))
@@ -316,7 +316,7 @@
           // (2) 메모리상 속성에 값 셋팅하기 : value로 셋팅함
           isrc.value = `images/ab${rdmNum}.jpg`;
           ialt.value = avengerName[rdmNum-1];
-          itit.value = avengerName[rdmNum-1];
+          itit.value = "클릭하시면 지워집니다!";
 
           // (3) 메모리상 생성된 이미지에 메모리상셋팅된 속성 매칭하기
           // setAttributeNode(속성객체)
@@ -325,10 +325,13 @@
           imgEle.setAttributeNode(itit);
 
 
-          // 메모리상 생성된 li에 메모리상 생성된 img 넣기
+          // 5. 메모리상 생성된 li에 메모리상 생성된 img 넣기
           newEle.appendChild(imgEle);
 
-          // 변경대상에 새로운 li 넣기
+          // 6. 클릭시 li지우기 셋팅하기 : 클릭된 요소 지우기
+          newEle.onclick = () => newEle.remove();
+
+          // 7. 변경대상에 새로운 li 넣기
           // appendChild(요소)
           // 기존요소면 맨뒤로 이동, 새요소면 맨뒤에 추가
           box2.appendChild(newEle);
