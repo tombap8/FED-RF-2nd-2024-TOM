@@ -37,14 +37,14 @@ body{
     text-align: center;
 }
 /********* GNB박스 *********/
-.gnb {
+.gnb ul {
     display: flex;
     gap: 0 20px;
     line-height: 60px;
 }
 
 /* gnb공통 a */
-.gnb>ul>li:first-child>a{
+.gnb>ul>li>a{
     color: #fff;
 }
 /* 서브메뉴 박스 : 100%차지 서브영역 */
