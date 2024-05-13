@@ -103,3 +103,32 @@ function upDownFn(ele,idx){
     ele.style.translate = `0 ${mVal}%`;
 
 } ////////// upDownFn 함수 ////////////////
+
+
+/////////////////////////////////////////////
+// 메뉴 오버시 배경박스 따라다니기 구현 ////////
+/////////////////////////////////////////////
+
+// 1. 대상선정 ////
+// 이벤트 대상 : .gnb li
+const gnbList = mFn.qsa(".gnb li");
+// 변경대상 : .mbg
+const mbg = mFn.qs(".mbg");
+
+// 2. 이벤트 설정하기 //////
+// 이벤트 종류 : mouseenter / mouseleave
+gnbList.forEach(ele=>{
+    mFn.addEvt(ele,"mouseenter",overFn);
+    mFn.addEvt(ele,"mouseleave",outFn);
+}); ///////// forEach ///////////
+
+// 3. 함수 만들기 ///////////
+function overFn(){
+    console.log('오버:',this);
+
+} ///////////// overFn 함수 //////////////
+
+function outFn(){
+    console.log('아웃:',this);
+
+} ///////////// outFn 함수 //////////////
