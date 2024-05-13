@@ -1,3 +1,6 @@
+// 나의 함수 불러오기
+import mFn from "./my_function.js";
+
 // GNB 데이터 불러오기
 import mdata from "./mdata.js";
 console.log(mdata);
@@ -55,6 +58,37 @@ export default function makeMenu(target){
     }
     </ul>
     `;
+
+
+    /******************************************** 
+        [ 상위메뉴 li에 오버시 하위메뉴 보이기 ]
+        이벤트 대상 : .gnb ul li
+        변경대상 : .gnb ul li > .smenu
+        읽어올 높이값 대상 : .smenu > .smbx
+    ********************************************/
+   // 1. 이벤트 대상
+   const gnb = mFn.qsa(".gnb ul li");
+
+   // 2. 이벤트 설정 및 함수구현
+   gnb.forEach(ele=>{
+    // (1) 마우스 오버시
+    mFn.addEvt(ele,"mouseenter",(e)=>{
+        // 이벤트 대상
+        let tg = e.currentTarget;
+        console.log("오버시",tg);
+
+    }); /////// mouseenter //////
+
+    // (2) 마우스 아웃시
+    mFn.addEvt(ele,"mouseleave",(e)=>{
+        // 이벤트 대상
+        let tg = e.currentTarget;
+        console.log("아웃시",tg);
+
+    }); /////// mouseleave //////
+   }); //////// forEach ///////
+
+
 
 
 } /////////// makeMenu 함수 ////////////////
