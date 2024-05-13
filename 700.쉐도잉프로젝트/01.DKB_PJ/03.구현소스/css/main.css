@@ -337,3 +337,47 @@ body * {
 .btn-box.right button:first-child{
     display: none;
 }
+
+
+/* 서브 컨텐츠 박스 */
+.sub-cont{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+    color: #fff;
+    z-index: 999999;
+    overflow: hidden;
+    display: none;
+}
+.sub-cont a{
+    color: #fff;
+}
+/* 닫기버튼 */
+.cbtn{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+
+    background: none;
+    border: none;
+    font-size: 80px;
+    color: #fff;
+    cursor: pointer;
+}
+/* 서브 내부박스 */
+.sub-inbox{
+    outline: 2px dashed yellow;
+    min-height: 100vh;
+}
+/* 제목박스 */
+.sub-inbox h1{
+    font-size: 4rem;
+    text-align: center;
+}
+/* 내용박스 */
+.sub-item{
+    font-size: 3rem;
+}

@@ -17,6 +17,15 @@ import * as dkbData from "../data/dkb_data.js";
 // 드래그 슬라이드 불러오기 ///////
 import setSlide from "./drag_slide_multi.js";
 
+// 서브박스 셋팅 코드 불러오기 ////
+import showSubBox from "./sub_cont.js";
+// 박스 생성후 호출(큐로 보내면 스택실행후 호출!)
+setTimeout(showSubBox);
+// 시간을 0으로 써도, 심지어 시간을 안써도
+// setTimout()으로 함수를 호출하면
+// 스택에 실행후 큐에서 가지고 있다가
+// 스택 코드 실행이 모두 끝난후 호출하여 실행함!
+
 ///////////////////////////////////////////////
 
 /// 구현코드 파트 //////////////
