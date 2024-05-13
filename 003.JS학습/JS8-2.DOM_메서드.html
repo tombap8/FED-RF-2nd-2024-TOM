@@ -110,6 +110,28 @@
             4. 선택요소.offsetLeft : left 위치값            
         ***************************************************/
 
+        // [ 추가기능 : 링크 클릭시 페이지 새창이동하기 ]
+        // 1. 대상선정 : .smenu ol a
+        const link = qsa(".smenu ol a");
+
+        // 2. forEach로 순회하며 링크이동함수 호출하기
+        // 클릭이벤트 설정
+        link.forEach(ele=>addEvt(ele,"click",linkFn));
+
+        // 3. 이동함수 만들기
+        function linkFn(e){
+          // 기본이동막기
+          e.preventDefault();
+          // 클릭된 a요소의 글자 데이터 읽어오기
+          let txt = this.innerText;
+          console.log(txt);
+
+        } /////////////// linkFn함수 ///////////////
+
+
+
+
+
         // [ 이벤트 비교 ]
         // mouseover / mouseout -> 버블링발생함!
         // -> 요소위에 오버시 / 아웃시
