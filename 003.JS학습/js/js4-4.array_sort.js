@@ -616,6 +616,9 @@ function searchingFn() {
 
   // 6. 검색결과를 공유변수에 저장하기
   searchResult = result;
+
+  // 7. 검색후엔 항상 정렬선택값을 초기화해준다!
+  sel4.value = "0";
 } ////////////// searchingFn 함수 ///////////
 
 // 4-7. 정렬변경 이벤트 발생시 실제 정렬 변경하기 ////
