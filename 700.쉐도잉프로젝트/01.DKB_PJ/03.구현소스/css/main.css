@@ -376,8 +376,10 @@ body * {
 .sub-inbox h1{
     font-size: 4rem;
     text-align: center;
+    padding-top: 5vw;
 }
 /* 내용박스 */
 .sub-item{
     font-size: 3rem;
+    padding: 7vw;
 }
