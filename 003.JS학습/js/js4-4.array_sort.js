@@ -492,6 +492,8 @@ function sortingFn(evt, cta, arrData, exBox) {
 
   // 3. 정렬결과 리스트 업데이트하기
   updateCode(xxx, exBox);
+
+  console.log("검색결과변수값:",searchResult);
 } ////////////// sortingFn 함수 ////////////////
 
 //////////////////////////////////////////////
@@ -558,6 +560,8 @@ mFn.addEvt(btnTotal, "click", () => {
   updateCode(list2, showList4);
   // 검색어 지우기
   keyWord.value = "";
+  // 검색결과변수 초기화
+  searchResult = null;
 });
 // (3) 입력창 키보드입력시 엔터키 구분하여 검색하기
 mFn.addEvt(keyWord, "keypress", (e) => {
