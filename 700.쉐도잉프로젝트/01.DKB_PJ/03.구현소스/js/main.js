@@ -40,7 +40,7 @@ const mySmooth = new SmoothScroll(document, 30, 20);
 // 이벤트 대상 === 변경대상 : .intro-mv-img
 const introMv = myFn.qs(".intro-mv-img");
 introMv.onclick = () => {
-  console.log("인트로영상!!!");
+  // console.log("인트로영상!!!");
   // 1. 동영상 넣기
   introMv.innerHTML = `<video src="./images/intro_mv.mp4" 
     autoplay controls></video>`;
@@ -226,7 +226,7 @@ $(".spart-menu a").click((e) => {
 
   // 1. 클릭한 a요소의 글자 읽어오기
   let txt = $(e.target).text();
-  console.log(txt);
+  // console.log(txt);
 
   // 2. 이동할 위치값 알아내기
   let pos;
@@ -257,7 +257,7 @@ $(".spart-menu a").click((e) => {
   // 2-2. 해당 박스 아이디의 위치값 알아내기
   // offset().top 제이쿼리 top 위치값정보
   pos = $(pos).offset().top;
-  console.log("위치값:", pos);
+  // console.log("위치값:", pos);
 
   // 3. 스크롤 애니메이션 이동하기
   // 제이쿼리는 이것을 정말 잘한다!!!
