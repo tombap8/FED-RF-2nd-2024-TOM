@@ -567,6 +567,9 @@ mFn.addEvt(keyWord, "keypress", (e) => {
   } ////// if //////
 });
 
+// 검색결과 배열값 공유변수
+let searchResult;
+
 // 4-6. 검색함수 만들기 ////////////////
 function searchingFn() {
   // 1. 검색 기준값 읽어오기
@@ -606,6 +609,9 @@ function searchingFn() {
 
   // 5. 결과를 화면에 보여주기 : updateCode 함수호출
   updateCode(result, showList4);
+
+  // 6. 검색결과를 공유변수에 저장하기
+  searchResult = result;
 } ////////////// searchingFn 함수 ///////////
 
 // 4-7. 정렬변경 이벤트 발생시 실제 정렬 변경하기 ////
@@ -619,7 +625,10 @@ const cta4 = mFn.qs(".cta4");
 // -> 실제 정렬을 적용하여 리스트를 갱신한다!
 // -> 정렬 적용시 정렬기준 대상 선택항목을 가져가야함!
 mFn.addEvt(sel4, "change", 
-(e) => sortingFn(e, cta4.value, list2, showList4));
+(e) => sortingFn(e, cta4.value, 
+  searchResult?searchResult:list2, showList4));
+  // searchResult값에 할당되어 true 이면 이 값을 보내고
+  // 아니면 원본 list2를 보낸다!
 
 // (4) 정렬기준 대상 선택 변경시
 // -> 정렬종류 대상 초기화하기("정렬선택"으로 변경!)
