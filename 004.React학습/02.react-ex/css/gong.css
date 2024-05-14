@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* 01.공유신발 CSS - gong.css */
+body{
+    overflow-y: scroll;
+    /* 스크롤이 없어도 스크롤바 트랙이 나와 있어서
+    새로 스크롤바 트랙 생성시 화면이 약간 옆으로 움직이는
+    문제를 막아준다! */
+}
+/* 대상박스 */
+#root {
+    width: 700px;
+    padding: 20px;
+    border: 1px dashed darkblue;
+    border-radius: 20px;
+    margin: 0 auto;
+    text-align: center;
+}
+/* 제목 */
+.tit {
+    color: orangered;
+}
+/* 내용박스 */
+#root section {
+    border: 4px double gray;
+}
+/* 내용박스 이미지 */
+#root section img {
+    width: 80%;
+    border-radius: 20px;
+}
+
+/* 상품리스트박스 */
+.gwrap {
+    display: flex;
+    /* 하위 ol박스를 옆으로 흐르게함 */
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 20px;
+
+    gap: 10px 20px; /* 상하 좌우 사이간격 */
+}
+/* 리스트 하위 링크 */
+.gwrap a{
+    color: #222;
+    text-decoration: none;
+    background-color: #fff;
+    transition: .4s;
+}
+.gwrap a:hover{
+    transform: scale(1.2);
+}
+/* 개별리스트박스 */
+.glist {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+/* 상품이미지 */
+.glist img {
+    width: 120px;
+}
