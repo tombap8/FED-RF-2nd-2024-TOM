@@ -37,7 +37,7 @@ body{
 }
 
 /* 상품리스트박스 */
-.gwrap {
+.gwrap ul {
     display: flex;
     /* 하위 ol박스를 옆으로 흐르게함 */
     justify-content: center;

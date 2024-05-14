@@ -21,7 +21,7 @@ function MainComponent(){
         ㄴ> 기능버튼 : button
         4. 상품리스트박스 : div.gwrap
         ㄴ> 상품리스트 : 
-            a > ol > li > (img/text)
+            ul > li > ol > li > (img/text)
         ㄴ> 상품상세보기 :
             ol > li > (img/text/button)
     **************************************/
@@ -44,6 +44,10 @@ function MainComponent(){
             {/* 3. 기능버튼박스 */}
             <div className="btn-box">
                 <button>효진초이스 바로가기</button>
+            </div>
+            {/* 4. 상품리스트박스 */}
+            <div className="gwrap">
+
             </div>
             
 
