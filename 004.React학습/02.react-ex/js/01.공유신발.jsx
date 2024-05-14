@@ -45,3 +45,9 @@ function MainComponent(){
         </React.Fragment>
     );
 } ////////// MainComponent 컴포넌트 /////////////
+
+// 메인 컴포넌트 출력하기 ////////////
+ReactDOM.render(<MainComponent />,
+document.querySelector("#root"));
+// ReactDOM.render(어쩌구,저쩌구);
+// 어쩌구를 저쩌구에 출력해라!
