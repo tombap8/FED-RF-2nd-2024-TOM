@@ -110,7 +110,8 @@ import mFn from "./my_function.js";
       (5) 활용케이스 : 아이디검사 결과 리턴
       (6) 코드예 :
           변수 = 배열.find(v=>{
-              if(v[속성명].indexOf(검색어)!==-1) return true;
+              if(v[속성명].indexOf(검색어)!==-1) 
+              return true;
           })
           -> 배열을 자동순회하여 if문에 해당되는 데이터가 있으면
           return true 하여 할당된 변수에 저장하고 문장이 바로 끝난다!
