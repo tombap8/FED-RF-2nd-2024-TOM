@@ -28,6 +28,13 @@ body{
     width: 80%;
     border-radius: 20px;
 }
+/* 버튼박스 */
+.btn-box{
+    padding: 15px;
+}
+.btn-box button{
+    font-size: 20px;
+}
 
 /* 상품리스트박스 */
 .gwrap {

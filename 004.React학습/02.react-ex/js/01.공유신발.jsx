@@ -41,6 +41,11 @@ function MainComponent(){
                     alt="멋진공유" />
                 </div>
             </section>
+            {/* 3. 기능버튼박스 */}
+            <div className="btn-box">
+                <button>효진초이스 바로가기</button>
+            </div>
+            
 
         </React.Fragment>
     );
