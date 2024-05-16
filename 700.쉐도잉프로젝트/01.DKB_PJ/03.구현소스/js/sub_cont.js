@@ -27,7 +27,8 @@ export default function showSubBox() {
 
   // 2. 이벤트 설정 및 함수구현하기 ////
   subViewBox.click(function () {
-    let confPrt = $(this).parent().parent().is(".preview-box");
+    let confPrt = 
+    $(this).parent().parent().is(".preview-box");
     // parent() 바로위 상위요소로 이동
     // 두번 위로 이동해서 li위 ul위 div
     // 그 div박스의 클래스가 preview-box인가?
