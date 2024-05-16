@@ -36,6 +36,7 @@ export default function showSubBox() {
     // 그 div박스의 클래스가 preview-box인가?
     // is(클래스명) 메서드로 알아봄
 
+    // [ 데이터명을 data-db에 넣고 읽어오기 ]
     // 사용하고자 하는 데이터 이름을 ul태그의
     // data-db 속성에 담아 놓고 이것을 읽어온다!
     let db = $(this).parent().attr('data-db');
@@ -77,19 +78,50 @@ export default function showSubBox() {
       // 서브박스에 내용 넣기
       // 제이쿼리는 innerHTML 할당대신
       // html() 메서드를 사용한다!
-      // subContBox
-      //   .html(
-      //     `
-      //           <button class="cbtn">×</button>
-      //           <div class="sub-inbox inbox">
-      //               <h1>${selData.title}</h1>
-      //               <div class="sub-item">
-      //                   ${selData.story}
-      //               </div>
-      //           </div>
-      //       `
-      //   )
-      //   .show();
+      subContBox
+        .html(
+          // 1.미리보기 출력
+          db=="previewData"?
+          `
+            <button class="cbtn">×</button>
+            <div class="sub-inbox inbox">
+                <h1>${selData.title}</h1>
+                <div class="sub-item">
+                    ${selData.story}
+                </div>
+            </div>
+          `:
+          // 2.현장포토 출력
+          db=="liveData"?
+          `
+          <button class="cbtn">×</button>
+            <div class="sub-inbox inbox">
+                <h1>현장포토 : ${selData.title}</h1>
+                <div class="sub-item">
+                    <img 
+                      src="./images/live_photo/${
+                        selData.imgName}.jpg" 
+                      alt="${selData.title}" />
+                </div>
+            </div>
+          `:
+          // 3.대표 포스터 출력
+          db=="posterData"?
+          `
+          <button class="cbtn">×</button>
+            <div class="sub-inbox inbox">
+                <h1>대표 포스터 : ${selData.title}</h1>
+                <div class="sub-item">
+                    <img 
+                      src="./images/poster_img/${
+                        selData.imgName}.jpg" 
+                      alt="${selData.title}" />
+                </div>
+            </div>
+          `:
+          ``
+        )
+        .show();
       // show() 는 display를 보여주는 메서드
       // hide() 는 display를 숨기는 메서드
       // toggle() 는 display를 토글하는 메서드
