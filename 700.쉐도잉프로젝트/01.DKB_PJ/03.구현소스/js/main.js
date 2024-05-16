@@ -142,7 +142,7 @@ introMv.onclick = () => {
   //                 <figure>
   //                     <img src="./images/live_photo/${v.imgName}.jpg" alt="${v.title}">
   //                     <figcaption>${v.title}</figcaption>
-  //                 </figure>      
+  //                 </figure>
   //             </li>
   //         `;
   // }); /////// forEach /////////////////
@@ -156,7 +156,9 @@ introMv.onclick = () => {
   // 2. 화면출력하기 -> map()으로 데이터생성하기 ///////
   liveBox.innerHTML = `
   <ul>
-    ${lvData.map(v=>`
+    ${lvData
+      .map(
+        (v) => `
       <li data-idx="${v.idx}">
         <figure>
         <img 
@@ -165,7 +167,9 @@ introMv.onclick = () => {
         <figcaption>${v.title}</figcaption>
         </figure>  
       </li>
-    `).join('')}
+    `
+      )
+      .join("")}
   </ul>
   `;
 })(); //// 현장포토 코드랩핑구역 종료 /////////
