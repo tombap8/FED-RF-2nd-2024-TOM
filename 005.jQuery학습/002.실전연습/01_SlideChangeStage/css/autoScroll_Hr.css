@@ -223,3 +223,11 @@ h3 {
     font-size: 28px;
     padding: 3px;
 }
+
+
+/* 휠 대용 모바일 미디어쿼리 */
+@media screen and (max-width:800px) {
+    html, body{
+        overflow: auto;
+    }
+}
