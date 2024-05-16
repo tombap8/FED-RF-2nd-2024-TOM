@@ -86,6 +86,7 @@ export default function showSubBox() {
       console.log("이미지map을 위한 배열:", iarr);
     } /// if ///
 
+
     // 서브박스에 내용 넣기
     // 제이쿼리는 innerHTML 할당대신
     // html() 메서드를 사용한다!
