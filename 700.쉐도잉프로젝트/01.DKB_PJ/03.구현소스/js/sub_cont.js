@@ -100,7 +100,7 @@ export default function showSubBox() {
                 <div class="sub-item">
                     <img 
                       src="./images/live_photo/${
-                        selData.imgName}.jpg" 
+                        selData.imgName[0]}.jpg" 
                       alt="${selData.title}" />
                 </div>
             </div>
