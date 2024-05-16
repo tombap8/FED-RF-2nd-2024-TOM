@@ -22,6 +22,10 @@ let pgCnt = $(".page").length;
 // maxLimit : 최대한계값
 let winW, maxLimit;
 
+// 한번에 움직일 스크롤 이동크기
+// 상수는 모두 대문자로 쓰고 중간에 언더바로 구분함
+const MOVE_NUM = 100;
+
 // 한계값 계산함수 /////
 const chgLimit = () => {
   winW = $(window).width();
@@ -68,8 +72,8 @@ scTarget.on("wheel", (e) => {
 
   // 방향에 따를 증감은 deltaY는 양수가 아랫방향
   // wheelDelta는 음수가 아랫방향임!
-  if (delta > 0) scPos += 200;
-  else scPos -= 200;
+  if (delta > 0) scPos += MOVE_NUM;
+  else scPos -= MOVE_NUM;
 
   // 한계값 체크
   // (1) 최소한계 : 0
