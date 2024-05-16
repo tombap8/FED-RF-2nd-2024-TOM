@@ -3,6 +3,8 @@
 // 데이터 셋팅 불러오기 //////
 import * as dkbData from "../data/dkb_data.js";
 
+// console.log(dkbData);
+
 export default function showSubBox() {
   // console.log("나를 부르면 서브가 보여~!");
 
@@ -37,6 +39,8 @@ export default function showSubBox() {
     // 사용하고자 하는 데이터 이름을 ul태그의
     // data-db 속성에 담아 놓고 이것을 읽어온다!
     let db = $(this).parent().attr('data-db');
+    // $(this).parent()는 li 바로위의 부모인 ul이다!
+    // attr('data-db') 속성값 읽어오기!
 
     // JS문법에서는 아래와 같음!
     // this.parentElement.parentElement
@@ -73,19 +77,19 @@ export default function showSubBox() {
       // 서브박스에 내용 넣기
       // 제이쿼리는 innerHTML 할당대신
       // html() 메서드를 사용한다!
-      subContBox
-        .html(
-          `
-                <button class="cbtn">×</button>
-                <div class="sub-inbox inbox">
-                    <h1>${selData.title}</h1>
-                    <div class="sub-item">
-                        ${selData.story}
-                    </div>
-                </div>
-            `
-        )
-        .show();
+      // subContBox
+      //   .html(
+      //     `
+      //           <button class="cbtn">×</button>
+      //           <div class="sub-inbox inbox">
+      //               <h1>${selData.title}</h1>
+      //               <div class="sub-item">
+      //                   ${selData.story}
+      //               </div>
+      //           </div>
+      //       `
+      //   )
+      //   .show();
       // show() 는 display를 보여주는 메서드
       // hide() 는 display를 숨기는 메서드
       // toggle() 는 display를 토글하는 메서드
