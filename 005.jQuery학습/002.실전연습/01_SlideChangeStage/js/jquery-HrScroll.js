@@ -58,7 +58,7 @@ scTarget.on("wheel", (e) => {
   // 2. scrollLeft : 가로스크롤바위치
 
   // 휠방향 알아내기(전체이벤트객체로 부터 얻어옴)
-  // (1) evnet.wheelDelta 값 :
+  // (1) event.wheelDelta 값 :
   // 기본이동 100px + 앞뒤예비공백 10px*2=20px
   // 전체 표시수치 120 -> 120px을 의미
   // 방향은 마이너스가 아랫방향
