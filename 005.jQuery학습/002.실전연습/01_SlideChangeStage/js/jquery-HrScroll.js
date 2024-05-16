@@ -13,11 +13,15 @@ const scTarget = $("html,body");
 let scPos = 0;
 
 let winW = $(window).width();
-let pgCnt = $(".pg").length;
-console.log("window크기:",winW,"/페이지수:",pgCnt);
+let pgCnt = $(".page").length;
 
 // 최대한계값 : (전체이동박스크기) - 화면가로크기
 let maxLimit = (winW*pgCnt) - winW; 
+
+console.log(
+    "window크기:",winW,
+    "/페이지수:",pgCnt,
+    "/최대한계값:",maxLimit);
 
 scTarget.on("wheel",(e)=>{
     // 스크롤이동을 위한 제이쿼리 속성
@@ -32,9 +36,9 @@ scTarget.on("wheel",(e)=>{
 
     // 한계값 체크
     // (1) 최소한계 : 0
-    if(scPos<0) scPos=0;
+    if(scPos <= 0) scPos = 0;
     // (2) 최대한계 : 전체이동박스크기-화면가로크기
-    if(scPos<0) scPos=0;
+    if(scPos >= maxLimit) scPos = maxLimit;
 
     // scPos = scPost + 200;
     console.log("스위:",scPos,delta);
