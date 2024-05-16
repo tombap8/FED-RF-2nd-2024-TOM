@@ -12,16 +12,31 @@ const scTarget = $("html,body");
 // 스크롤 위치값변수
 let scPos = 0;
 
-let winW = $(window).width();
+// 페이지개수
 let pgCnt = $(".page").length;
 
-// 최대한계값 : (전체이동박스크기) - 화면가로크기
-let maxLimit = (winW*pgCnt) - winW; 
+// winW : 윈도우 가로크기
+// maxLimit : 최대한계값
+let winW, maxLimit;
 
-console.log(
-    "window크기:",winW,
-    "/페이지수:",pgCnt,
-    "/최대한계값:",maxLimit);
+// 한계값 계산함수 /////
+const chgLimit = () => {
+    winW = $(window).width();    
+    // 최대한계값 : (전체이동박스크기) - 화면가로크기
+    maxLimit = (winW*pgCnt) - winW; 
+    
+    console.log(
+        "window크기:",winW,
+        "/페이지수:",pgCnt,
+        "/최대한계값:",maxLimit);
+}; /////// chgLimit 함수 ////////
+
+// 최초 한계값 계산함수 호출
+chgLimit();
+
+// 윈도우 사이즈 변경시 한계값 업데이트
+$(window).resize(chgLimit);
+
 
 scTarget.on("wheel",(e)=>{
     // 스크롤이동을 위한 제이쿼리 속성
@@ -41,7 +56,7 @@ scTarget.on("wheel",(e)=>{
     if(scPos >= maxLimit) scPos = maxLimit;
 
     // scPos = scPost + 200;
-    console.log("스위:",scPos,delta);
+    console.log("스위:",scPos,delta,e.deltaY);
 
 
     // animate({CSS설정},시간,이징,함수)
