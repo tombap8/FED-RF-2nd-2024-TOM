@@ -106,7 +106,7 @@ introMv.onclick = () => {
 
   // 2. 화면출력하기 -> map()으로 한번에 출력하자! ///////
   previewBox.innerHTML = `
-    <ul class="fx-box">
+    <ul class="fx-box" data-db="previewData">
       ${pData
         .map(
           (v) => `
