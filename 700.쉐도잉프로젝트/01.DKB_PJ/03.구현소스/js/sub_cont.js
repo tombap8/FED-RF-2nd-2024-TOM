@@ -131,7 +131,13 @@ export default function showSubBox() {
                 </div>
             </div>
           `:
-          ``
+          // 5.위의 해당사항이 없을 경우
+          `
+          <button class="cbtn">×</button>
+          <div class="sub-inbox inbox">
+              <h1>DB정보확인필요!</h1>
+          </div>
+          `
         )
         .show();
       // show() 는 display를 보여주는 메서드
