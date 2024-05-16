@@ -126,8 +126,8 @@ export default function showSubBox() {
             <div class="sub-inbox inbox">
                 <h1>클립영상 : ${selData.title}</h1>
                 <div class="sub-item">
-                <iframe src="https://www.youtube.com/embed/${selData.mvid}?autoplay=1" allow="autoplay"></iframe>
-                <h2>${selData.subtit}</h2>
+                  <iframe src="https://www.youtube.com/embed/${selData.mvid}?autoplay=1" allow="autoplay"></iframe>
+                  <h2>${selData.subtit}</h2>
                 </div>
             </div>
           `:
