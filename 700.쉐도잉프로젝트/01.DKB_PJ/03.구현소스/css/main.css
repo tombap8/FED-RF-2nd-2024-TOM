@@ -345,7 +345,7 @@ body * {
   background-color: #000;
   color: #fff;
   z-index: 999999;
-  overflow: hidden;
+  overflow: auto;
   display: none;
 }
 .sub-cont a {
