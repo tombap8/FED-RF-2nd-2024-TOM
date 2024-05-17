@@ -1,7 +1,7 @@
 // 01.공유신발 JSX
 
 // 공유신발 데이터 불러오기
-import guData from "./data/gu_data_old";
+import guData from "./data/gu_data";
 
 // console.log(guData);
 
@@ -53,16 +53,18 @@ function MainComponent() {
             <img src="./images/vans/vans_1.jpg" alt="반스신발" />
           </li>
           <li style={{lineHeight:"2",padding:"10px",textAlign:"left"}}>
-            상품명 : {guData[0]}<br/>
-            가격 : <br/>
-            소재 : <br/>
-            색상 : <br/>
-            치수 : <br/>
-            제조자/수입자 : <br/>
-            제조국 : <br/>
-            제조연월 : <br/>
-            A/S 책임자와 전화번호 : <br/>
-            Model : <br/>
+            상품명 : {guData[0].gname}<br/>
+            가격 : {guData[0].gprice}<br/>
+            소재 : {guData[0].소재}<br/>
+            색상 : {guData[0].색상}<br/>
+            치수 : {guData[0].치수}<br/>
+            제조자/수입자 : 
+            {guData[0]["제조자/수입자"]}<br/>
+            제조국 : {guData[0].제조국}<br/>
+            제조연월 : {guData[0].제조연월}<br/>
+            A/S 책임자와 전화번호 : <br />
+            {guData[0]["A/S 책임자와 전화번호"]}<br/>
+            Model : {guData[0].Model}<br/>
 
           </li>
 
