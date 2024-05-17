@@ -20,11 +20,10 @@
         1. 배경그라데이션
         2. 배경클립 글자로 설정
         3. 텍스트필컬러 지정 */
-        background-image: 
-        linear-gradient(to bottom, yellow, red);
+        background-image: linear-gradient(to bottom, yellow, red);
         background-clip: text;
         -webkit-text-fill-color: transparent;
-        
+
         /* 글자그림자 */
         text-shadow: 2px 2px 2px #00000055;
       }
@@ -60,164 +59,196 @@
       }
     </style>
     <script>
-      /********************************************* 
-        [ 에러처리 기본구문 ]
+        /*********************************************
+          [ 에러처리 기본구문 ]
 
-        - 에러처리구문은 문법적 에러를 처리하는 것이아닌
-        논리적인 값을 흐름에서 발생할 수 있는 에러의
-        처리를 위해 만들어진 구문이다! 
+          - 에러처리구문은 문법적 에러를 처리하는 것이아닌
+          논리적인 값을 흐름에서 발생할 수 있는 에러의
+          처리를 위해 만들어진 구문이다!
 
-        try{} 실행코드블록
-        catch(err){} 오류처리를 위한 코드블록
-        finally{} 무조건 실행 코드블록
-        _______________________________
+          try{} 실행코드블록
+          catch(err){} 오류처리를 위한 코드블록
+          finally{} 무조건 실행 코드블록
+          _______________________________
 
-        -> 에러 처리를 위한 구문구성
-        try{
-            if문사용 -> throw 키워드로 에러처리!
-        }
-        catch(err){
-            throw로 들어온 메시지로 에러처리!
-        }
+          -> 에러 처리를 위한 구문구성
+          try{
+              if문사용 -> throw 키워드로 에러처리!
+          }
+          catch(err){
+              throw로 들어온 메시지로 에러처리!
+          }
 
-        -> throw 문:
-        사용자지정 오류를 기술적으로 예외처리방법
-        예외처리형태 : 문자형, 숫자형, 불린형, 객체
-    
-    *********************************************/
+          -> throw 문:
+          사용자지정 오류를 기술적으로 예외처리방법
+          예외처리형태 : 문자형, 숫자형, 불린형, 객체
 
-    /****************************************** 
-        함수명: jumsu
-        기능: 점수에 따른 평가출력하기
-            1. 점수에 따른 메시지 출력
-            2. 점수에 따른 메시지 글자색 변경
-            3. 점수에 따른 칭찬스티커 보이기
-    ******************************************/
-      function jumsu() {
-        // 1. 호출확인!
-        // // console.log('점수함보자!');
+      *********************************************/
 
-        // 2. 대상선정 //////////
-        // 2-1. 점수입력요소 : input#jumsu
-        var jumsu = document.querySelector("#jumsu");
+      /******************************************
+          함수명: jumsu
+          기능: 점수에 따른 평가출력하기
+              1. 점수에 따른 메시지 출력
+              2. 점수에 따른 메시지 글자색 변경
+              3. 점수에 따른 칭찬스티커 보이기
+      ******************************************/
+        function jumsu() {
+          // 1. 호출확인!
+          // // console.log('점수함보자!');
 
-        // 2-2. 출력요소 : #jexp
-        var jexp = document.querySelector("#jexp");
+          // 2. 대상선정 //////////
+          // 2-1. 점수입력요소 : input#jumsu
+          var jumsu = document.querySelector("#jumsu");
 
-        // 2-3. 칭찬스티커 : .jshow
-        var jshow = document.querySelector(".jshow");
+          // 2-2. 출력요소 : #jexp
+          var jexp = document.querySelector("#jexp");
 
-        // console.log("요소확인:", jumsu, jexp, jshow);
+          // 2-3. 칭찬스티커 : .jshow
+          var jshow = document.querySelector(".jshow");
 
-        // 3. 입력값 읽어오기 ////////////
-        var score = jumsu.value;
-        // value속성 - 입력된 값을 읽기/쓰기
-        // console.log("입력된값:", score);
+          // console.log("요소확인:", jumsu, jexp, jshow);
 
-        /********************************* 
-            [ 입력값 유효성검사하기! ]
-            1. 위치 : 입력값 읽은 후 
-                    메시지만들기전
+          // 3. 입력값 읽어오기 ////////////
+          var score = jumsu.value;
+          // value속성 - 입력된 값을 읽기/쓰기
+          // console.log("입력된값:", score);
 
-            2. 검사내용 : 
-                (1) 빈값인지 여부검사
-                (2) 숫자인지 여부검사
-                (3) 숫자범위 검사(0~100)
-        *********************************/
-        // 매번 검사후 메시지넣고 지우고 포커스넣고 return
-        // 같은 일을 하므로 메시지만 변경할 수 있게
-        // 함수를 만들어 준다!
+          /*********************************
+              [ 입력값 유효성검사하기! ]
+              1. 위치 : 입력값 읽은 후
+                      메시지만들기전
 
-        var validateFn = function (txt) {
-          //txt-메시지
-          // 1. 메시지 출력하기
-          jexp.innerText = txt;
-          // console.log(txt);
+              2. 검사내용 :
+                  (1) 빈값인지 여부검사
+                  (2) 숫자인지 여부검사
+                  (3) 숫자범위 검사(0~100)
+          *********************************/
+          // 매번 검사후 메시지넣고 지우고 포커스넣고 return
+          // 같은 일을 하므로 메시지만 변경할 수 있게
+          // 함수를 만들어 준다!
 
-          // 2. 기존 메시지 지우기
-          // 대상 : #jumsu -> jumsu변수
-          // input요소.value = 값
-          // 빈값을 넣으므로 값이 지워짐!
-          jumsu.value = "";
+          var validateFn = function (txt) {
+            //txt-메시지
+            // 1. 메시지 출력하기
+            jexp.innerText = txt;
+            // console.log(txt);
 
-          // 3. 포커스 입력창에 주기!(버튼클릭할 경우)
-          // 대상 : #jumsu -> jumsu변수
-          // input요소.focus()
-          jumsu.focus();
+            // 2. 기존 메시지 지우기
+            // 대상 : #jumsu -> jumsu변수
+            // input요소.value = 값
+            // 빈값을 넣으므로 값이 지워짐!
+            jumsu.value = "";
 
-          // 4. 글자색 초기화
-          // 대상: jexp
-          jexp.style.color = "#000";
+            // 3. 포커스 입력창에 주기!(버튼클릭할 경우)
+            // 대상 : #jumsu -> jumsu변수
+            // input요소.focus()
+            jumsu.focus();
 
-          // 5. 칭찬스티커 배경위치 초기화
-          // 대상: jshow
-          jshow.style.backgroundPosition = "-50% 0%";
-        }; ////////// validateFn 함수 ///////////
+            // 4. 글자색 초기화
+            // 대상: jexp
+            jexp.style.color = "#000";
 
-        /////////////////////////////////////////
-        // [ 에러처리구간 : try문 ] //////
-        
-        /////////////////////////////////////////
+            // 5. 칭찬스티커 배경위치 초기화
+            // 대상: jshow
+            jshow.style.backgroundPosition = "-50% 0%";
+          }; ////////// validateFn 함수 ///////////
 
-        // 4. 메시지 만들기 ////////////
-        // 점수에 따른 메시지를 if문으로 작성한다!
-        // if(true(1)/false(0)){코드}
-        // if문의 소괄호안이 true일때 코드가 실행됨!
+          /////////////////////////////////////////
+          // [ 에러처리구간 : try문 ] //////
+          // [ try문 : 조건문으로 에러검출 ]
+          try {
+            // (1) 빈값인지 여부검사
+            if(score.trim() == ""){
+              throw "내용을 입력해 주세요!";
+            } /// if ///
+            // (2) 숫자인지 여부검사
+            else if(isNaN(score)){
+              throw "숫자만 입력하세요!";
+            } /// else if ///
+            // (3) 숫자범위 검사(0~100)
+            else if(score < 0 || score > 100){
+              throw "0부터 100 사이의 숫자만 입력하세요!";
+            } /// else if ///
+          } /// try ///
+          // [ catch문 : try문의 에러를 받아처리 ]
+          catch (err) {
+            // err - try구문에서 throw를 받는변수
+            console.log("catch구문:",err);
 
-        // 메시지 변수
-        var message;
-        // 글자색 변수
-        var fontColor;
-        // 위치변수
-        var bgPosition;
+            // 에러처리함수 호출하기
+            validateFn(err);
 
-        // if문을 셋트로 작성시 구간처리 불필요!
-        if (score >= 90) {
-          message = "매우잘함";
-          fontColor = "blue";
-          bgPosition = "100% 50%";
-        } ////// if ////
-        else if (score >= 80) {
-          message = "잘함";
-          fontColor = "green";
-          bgPosition = "0% 100%";
-        } else if (score >= 70) {
-          message = "보통";
-          fontColor = "purple";
-          bgPosition = "50% 50%";
-        } else if (score >= 60) {
-          message = "노력요함";
-          fontColor = "orange";
-          bgPosition = "100% 100%";
-        } else {
-          message = "재시험";
-          fontColor = "red";
-          bgPosition = "100% 0%";
-        }
+            // catch문에 왔다는 것은 에러가 발생
+            // 했다는것!!! 여기서 함수를 빠져나감!
+            // 즉, return구문 사용함!
+            return;
+          } /// catch ///
+          // [ finally문 : 무조건 실행문 처리 ]
+          finally {
+            console.log("에러검사실행함!");
+          } /// finally ///
 
-        // 메시지 완성하기 : 평가결과는 어쩌구...
-        message = "평가결과는 " + message;
+          /////////////////////////////////////////
 
-        // console.log("결과:", message, fontColor, bgPosition);
+          // 4. 메시지 만들기 ////////////
+          // 점수에 따른 메시지를 if문으로 작성한다!
+          // if(true(1)/false(0)){코드}
+          // if문의 소괄호안이 true일때 코드가 실행됨!
 
-        // if문을 따로 작성하면 적용범위를 줘야함!
-        // if(score >= 80 && score < 90){
-        //     message = '';
-        // } ////// if ////
+          // 메시지 변수
+          var message;
+          // 글자색 변수
+          var fontColor;
+          // 위치변수
+          var bgPosition;
 
-        // 5. 메시지 출력하기 ///////////
-        // 출력대상 : #jexp -> jexp변수
-        jexp.innerText = message;
+          // if문을 셋트로 작성시 구간처리 불필요!
+          if (score >= 90) {
+            message = "매우잘함";
+            fontColor = "blue";
+            bgPosition = "100% 50%";
+          } ////// if ////
+          else if (score >= 80) {
+            message = "잘함";
+            fontColor = "green";
+            bgPosition = "0% 100%";
+          } else if (score >= 70) {
+            message = "보통";
+            fontColor = "purple";
+            bgPosition = "50% 50%";
+          } else if (score >= 60) {
+            message = "노력요함";
+            fontColor = "orange";
+            bgPosition = "100% 100%";
+          } else {
+            message = "재시험";
+            fontColor = "red";
+            bgPosition = "100% 0%";
+          }
 
-        // 6. 출력 글자색 변경하기 /////
-        // 대상 : #jexp -> jexp변수
-        jexp.style.color = fontColor;
+          // 메시지 완성하기 : 평가결과는 어쩌구...
+          message = "평가결과는 " + message;
 
-        // 7. 칭찬스티커 배경이미지위치 변경하기 /////
-        // 대상 : .jshow -> jshow변수
-        jshow.style.backgroundPosition = bgPosition;
-      } /////////// jumsu 함수 /////////////////////
-      /////////////////////////////////////////////
+          // console.log("결과:", message, fontColor, bgPosition);
+
+          // if문을 따로 작성하면 적용범위를 줘야함!
+          // if(score >= 80 && score < 90){
+          //     message = '';
+          // } ////// if ////
+
+          // 5. 메시지 출력하기 ///////////
+          // 출력대상 : #jexp -> jexp변수
+          jexp.innerText = message;
+
+          // 6. 출력 글자색 변경하기 /////
+          // 대상 : #jexp -> jexp변수
+          jexp.style.color = fontColor;
+
+          // 7. 칭찬스티커 배경이미지위치 변경하기 /////
+          // 대상 : .jshow -> jshow변수
+          jshow.style.backgroundPosition = bgPosition;
+        } /////////// jumsu 함수 /////////////////////
+        /////////////////////////////////////////////
     </script>
   </head>
   <body>
