@@ -345,7 +345,7 @@ body * {
   background-color: #000;
   color: #fff;
   z-index: 999999;
-  overflow: auto;
+  overflow: hidden;
   display: none;
 }
 .sub-cont a {
@@ -365,7 +365,7 @@ body * {
 }
 /* 서브 내부박스 */
 .sub-inbox {
-  outline: 2px dashed yellow;
+  /* outline: 2px dashed yellow; */
   min-height: 100vh;
 }
 /* 제목박스 */
@@ -378,4 +378,31 @@ body * {
 .sub-item {
   font-size: 3rem;
   padding: 7vw;
+  text-align: center;
+  height: calc(100vh - 200px);
+  /* outline: 1px solid yellow; */
+  overflow: auto;
+}
+/* 내용박스 하위 이미지 */
+.sub-item img {
+  max-width: 100%;
+  /* 박스가 이미지 최대크기보다 작아지면
+  이미지가 박스에 100%로 패딩 안쪽을 모두 채움 */
+}
+/* 내용박스 아이프레임 */
+.sub-item iframe {
+  width: 100%;
+  aspect-ratio: 2 / 1.15;
+  border: none;
+}
+
+@media screen and (max-width: 800px) {
+  /* 제목 */
+  .sub-cont h1 {
+    font-size: 5vw;
+  }
+  /* 내용 */
+  .sub-item {
+    font-size: 4vw;
+  }
 }
