@@ -54,7 +54,7 @@ function MainComponent() {
           // 상태관리변수 viewList값이 true이면 리스트보기
           viewList ? 
           <GoodsList viewDetail={setViewList} /> : 
-          <GoodsDetail viewList={setViewList} />
+          <GoodsDetail backList={setViewList} />
           // false이면 상품 상세리스트 보기
         }
       </div>
@@ -79,7 +79,10 @@ function GoodsList({ viewDetail }) {
             <a
               href="#"
               onClick={(e) => {
+                // a요소 기본이동막기
                 e.preventDefault();
+                // 상태변수 viewList 업데이트
+                // setViewList메서드가 viewDetail로 들어옴
                 viewDetail(false);
               }}
             >
@@ -99,7 +102,9 @@ function GoodsList({ viewDetail }) {
 } //////////// GoodsList 컴포넌트 //////////
 
 /// [ 상품 상세보기 서브컴포넌트 : GoodsDetail ] ///
-function GoodsDetail() {
+function GoodsDetail({backList}) { 
+  // backList - 부모컴포넌트가 전달해준 상태변수
+  // viewList를 업데이트하는 setViewList메서드임!
   // 코드리턴구역 ///////////
   return (
     <ol
@@ -152,6 +157,7 @@ function GoodsDetail() {
           }}
         >
           <button
+            onClick={()=>backList(true)}
             style={{
               fontSize: "24px",
             }}
