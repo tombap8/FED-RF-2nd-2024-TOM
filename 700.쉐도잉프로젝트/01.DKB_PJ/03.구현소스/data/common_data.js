@@ -32,6 +32,8 @@ const comData = {
             <nav class="gnb"></nav>
         </div>
         </div>
+        <!-- 모바일 햄버거 버튼 -->
+        <button class="ham"></button>
     </header>
     `,
     // 2. 하단영역 코드
