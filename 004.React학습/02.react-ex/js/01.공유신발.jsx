@@ -54,13 +54,11 @@ function MainComponent() {
       <div className="gwrap">
         {
           // 상태관리변수 viewList값이 true이면 리스트보기
-          viewList ? 
-          <GoodsList 
-            viewDetail={setViewList} 
-            updateIdx={setIdx} /> : 
-          <GoodsDetail 
-            backList={setViewList} 
-            gNo={idx} />
+          viewList ? (
+            <GoodsList viewDetail={setViewList} updateIdx={setIdx} />
+          ) : (
+            <GoodsDetail backList={setViewList} gNo={idx} />
+          )
           // false이면 상품 상세리스트 보기
         }
       </div>
@@ -111,7 +109,7 @@ function GoodsList({ viewDetail, updateIdx }) {
 } //////////// GoodsList 컴포넌트 //////////
 
 /// [ 상품 상세보기 서브컴포넌트 : GoodsDetail ] ///
-function GoodsDetail({backList, gNo}) { 
+function GoodsDetail({ backList, gNo }) {
   // backList - 부모컴포넌트가 전달해준 상태변수
   // (viewList를 업데이트하는 setViewList메서드임!)
   // gNo - 상품 데이터 배열순번
@@ -127,7 +125,7 @@ function GoodsDetail({backList, gNo}) {
     >
       <li>
         <img
-          src={"./images/vans/vans_"+guData[gNo].idx+".jpg"}
+          src={"./images/vans/vans_" + guData[gNo].idx + ".jpg"}
           alt="반스신발"
           style={{ width: "100%" }}
         />
@@ -168,7 +166,7 @@ function GoodsDetail({backList, gNo}) {
           }}
         >
           <button
-            onClick={()=>backList(true)}
+            onClick={() => backList(true)}
             style={{
               fontSize: "24px",
             }}
