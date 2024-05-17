@@ -1,6 +1,6 @@
 
 // 공유신발 데이터 불러오기
-import guData from "./data/gu_data.js";
+import guData from "./data/gu_data_old.js";
 
 console.log(guData);
 

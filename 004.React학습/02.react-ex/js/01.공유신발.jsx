@@ -1,7 +1,7 @@
 // 01.공유신발 JSX
 
 // 공유신발 데이터 불러오기
-import guData from "./data/gu_data";
+import guData from "./data/gu_data_old";
 
 // console.log(guData);
 
@@ -46,25 +46,58 @@ function MainComponent() {
       </div>
       {/* 4. 상품리스트박스 */}
       <div className="gwrap">
-        <ul>
-          {guData.map((v) => (
-            <li>
-              <a href="#">
-                <ol className="glist">
-                  <li>
-                    <img src={`./images/vans/vans_${v.idx}.jpg`} alt="신발" />
-                  </li>
-                  <li>{v.gname}</li>
-                  <li>가격 : {v.gprice}원</li>
-                </ol>
-              </a>
-            </li>
-          ))}
-        </ul>
+        {/* {<GoodsList />} */}
+        {/* 상세보기 구현 */}
+        <ol style={{display:"flex",listStyle:"none"}}>
+          <li>
+            <img src="./images/vans/vans_1.jpg" alt="반스신발" />
+          </li>
+          <li style={{lineHeight:"2",padding:"10px",textAlign:"left"}}>
+            상품명 : {guData[0]}<br/>
+            가격 : <br/>
+            소재 : <br/>
+            색상 : <br/>
+            치수 : <br/>
+            제조자/수입자 : <br/>
+            제조국 : <br/>
+            제조연월 : <br/>
+            A/S 책임자와 전화번호 : <br/>
+            Model : <br/>
+
+          </li>
+
+        </ol>
       </div>
     </React.Fragment>
   );
 } ////////// MainComponent 컴포넌트 /////////////
+
+// [ 상품리스트 서브컴포넌트 : GoodsList ] //
+function GoodsList() {
+  // 코드리턴구역 ////////////////
+  return (
+    <ul>
+      {
+      // 반복요소 li에 key속성을 쓸것을
+      // 리액트는 필수적이라고 함!
+      // 어디에 쓰나? 업데이트시 순번구분을 위함
+      // node.js개발환경에서는 안쓰면 에러남!
+      guData.map((v,i) => (
+        <li key={i}>
+          <a href="#">
+            <ol className="glist">
+              <li>
+                <img src={`./images/vans/vans_${v.idx}.jpg`} alt="신발" />
+              </li>
+              <li>{v.gname}</li>
+              <li>가격 : {v.gprice}원</li>
+            </ol>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+} //////////// GoodsList 컴포넌트 //////////
 
 // 메인 컴포넌트 출력하기 ////////////
 ReactDOM.render(<MainComponent />, document.querySelector("#root"));
