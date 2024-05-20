@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>JS6-1.Date객체와 Math객체</title>
+        <style>
+            .time {
+                width: 500px;
+                padding: 10px;
+                text-align: center;
+                font-size: 42px;
+                color: aqua;
+                background-color: #000;
+                margin: 0 auto;
+            }
+
+            /* 이미지박스 */
+            .imbx {
+                display: flex;
+                gap: 0 2vw;
+                width: 70vw;
+                margin: 0 auto;
+                margin-top: 100px;
+            }
+            .imbx div{
+                position: relative;
+                flex: 1;
+                aspect-ratio: 4/3;
+            }
+
+            .imbx img {
+                position: absolute;
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                /* 처음에 모두 그레이스케일 */
+                filter: grayscale(100%);
+                /* 트랜지션 */
+                transition: .4s ease-in-out;
+            }
+            /* 하위 div에 클래스 on */
+            .imbx div.on img{
+                filter: grayscale(0);
+                transform: scale(1.5);
+                z-index: 1;
+            }
+        </style>
+        <!-- 외부JS -->
+        <script type="module" src="./js/js6-1.date_math.js"></script>
+    </head>
+
+    <body>
+        <!-- 시간표시박스 -->
+        <div class="time">
+            <!-- 년도 -->
+            <span class="year tt"></span>.
+            <!-- 월 -->
+            <span class="month tt"></span>.
+            <!-- 일 -->
+            <span class="date tt"></span>.
+            <!-- 요일 -->
+            (<span class="day tt"></span>) <br />
+            <!-- 오전/오후 -->
+            <span class="noon tt"></span>
+            <!-- 시간 -->
+            <span class="hour tt"></span> :
+            <!-- 분 -->
+            <span class="minute tt"></span> :
+            <!-- 초 -->
+            <span class="second tt"></span>
+        </div>
+
+        <!-- 이미지박스 -->
+        <div class="imbx"></div>
+    </body>
+</html>
