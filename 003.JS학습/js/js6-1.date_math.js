@@ -71,3 +71,114 @@ function showTime() {
   tt[6].innerText = addZero(M);
   tt[7].innerText = addZero(S);
 } /////////// showTime 함수 /////////////
+
+/*************************************** 
+    [ Math 객체 ]
+    - 수학객체로써 다른 객체와 달리
+    new키워드 없이 바로 사용할 수 있게 설계됨
+    - 이런객체를 정적객체(Static Object)라고함
+    -> 정적객체들!
+        Array(), Object(), Math()
+    ______________________________
+
+    [ 주요 Math 객체의 메서드들 ]
+    Math.min(값들) - 최소값
+    Math.max(값들) - 최대값
+    Math.round(실수값) - 반올림
+    Math.floor(실수값) - 내림
+    Math.ceil(실수값) - 올림
+    Math.abs(양수나 음수값) - 절대값
+    ______________________________
+
+    Math.random() - 난수발생
+    -> 0~1  사이의 소수점값 17자리수
+
+***************************************/
+
+// 난수 발생시키기
+let rdm = Math.random();
+console.log(rdm);
+
+// 1~7 사이 난수발생하기
+// 방법: 난수에 발생할 최대수 곱하기 -> 올림/내림
+rdm = rdm * 7;
+console.log('난수*7:',rdm);
+console.log('난수*7 내림:',Math.floor(rdm));
+console.log('난수*7 올림:',Math.ceil(rdm));
+// -> 1부터 최대수는 올림처리 / 0부터 최대수-1은 내림처리
+
+// 중간난수는?
+// 예) 4~12 사이 난수는?
+// console.log('4~12사이 난수:',
+// Math.ceil(Math.random()*9)+3)
+
+/**************************************** 
+    [ 내가 원하는 난수 만들기 ]
+
+    1. 먼저 난수를 발생시킨다!
+    Math.random()
+
+    2. 1부터 원하는 최대수일 경우 최대수를 곱한다
+    Math.random() * 최대수
+
+    3. 원하는 범위의 난수를 올림처림함
+    Math.ceil(Math.random() * 최대수)
+
+    ________________________________
+
+    [ 중간 범위의 난수 만들기 ]
+
+    1. 1부터 최대수 랜던수를 먼저구한다
+    Math.random() * 최대수
+
+    2. 원하는 범위의 시작수 만큼 더함
+    Math.ceil(Math.random() * 최대수) + 시작수만큼
+
+    (만약 0부터 시작수로 하면 내림을 적용!
+    -> Math.floor())
+    ___________________________________
+
+    예) 4~9 사이의 난수 구하기 : 1~6먼저구함
+    -> 최대수는 6, 시작수 만큼 더할 수는 3
+    Math.ceil(Math.random() * 최대수) + 시작수만큼
+    Math.ceil(Math.random() * 6) + 3
+    ________________________________
+
+    [ 중간범위 수 계산 ]
+    작은수 ~ 큰수
+    1. 최대수 = 큰수 - 작은수 + 1
+    2. 시작수차이 = 작은수 - 1;
+
+
+****************************************/
+
+// 이미지 웹경로 배열
+const rimg = ["https://img.etnews.com/photonews/2110/1461216_20211007085904_466_0001.jpg", "https://i.namu.wiki/i/bFpYClpzX-ErL1Kdad69t09fhPPeVb2VwOB_qpH-9qxQ3Tx2Nz9zVIiLPWSMkvnVG5XWnUdQM5hHrGZ4cWneZA.webp", "https://img.imbc.com/adams/Program/202111/132804027350463581.jpg", "https://image.ytn.co.kr/general/jpg/2021/0925/202109251350012465_d.jpg"];
+
+// 1. 요구사항 : 웹경로 이미지를 화면에 넣고 랜덤하게
+// 이미지를 칼라로 약간커지게 클래스 on을 주어서 변경함!
+
+// 2. 대상선정: .imbx
+const imbx = mFn.qs(".imbx");
+
+// 3. 이미지넣기
+// 배열만큼 이미지 넣기
+
+// map으로 이미지넣기
+imbx.innerHTML = rimg.map(v=>`
+    <div>
+        <img src="${v}" alt="드라마 포스터">
+    </div>
+`).join('');
+
+// forEach로 배열을 먼저 사용하여 이미지 넣기
+// rimg.forEach(v=>{
+//     imbx.innerHTML += 
+//     `
+//         <div>
+//             <img src="${v}" alt="드라마 포스터">
+//         </div>
+//     `;
+// })
+
+
