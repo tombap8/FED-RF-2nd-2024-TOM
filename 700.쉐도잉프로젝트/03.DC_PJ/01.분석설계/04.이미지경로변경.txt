@@ -1,0 +1,33 @@
+[ 리액트 이미지 경로 변경하기 ]
+
+- 목적:  서버에 배포시 혹은 하위경로로 설정한경우
+이미지가 깨지는 것을 방지하기 위한 방법
+
+1. 모든 이미지 데이터 경로를 절대상대경로로 변경함
+
+    ((예시)) './images/' ->>> '/images/'
+
+2. 이미지를 셋팅하는 컴포넌트의 src생성 코드에
+    process.env.PUBLIC_URL 을 앞에 붙여준다
+    (이것은 package.json 환경설정파일의 "homepage"속성의 값을 읽어옴!)
+
+    ((예시)) 
+    <img 
+    src={process.env.PUBLIC_URL+v.src} 
+    alt=""/>
+
+3. 개발에서 운영할때는 package.json파일의 "homepage" 속성값을 비운다!
+    -> 배포시에만 "homepage" 속성값을 서버URL로 써준다!
+
+    ((예시)) 
+    개발시:
+    {
+        "homepage": "",
+        ...
+    }
+
+    배포시:
+    {
+        "homepage": "https://tombap8.github.io/tom-dc-pj",
+        ...
+    }
