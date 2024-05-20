@@ -151,12 +151,26 @@
       line-height: 40px;
 
       // 마지막 li돋보기 두꺼운 글자적용
-      &:last-child a{
+      &:last-child i {
         font-weight: bold;
-        padding-top: 2px;
+        cursor: pointer;
+        // i에 오버시
+        &:hover {
+          color: red;
+        }
       }
     }
   }
+  /* GNB a요소 */
+  a {
+    /* 트랜지션 */
+    transition: color 0.2s linear;
+    // a에 오버시
+    &:hover {
+      color: red;
+    }
+  }
+  
 }
 
 /****************** 2.메인영역 ******************/

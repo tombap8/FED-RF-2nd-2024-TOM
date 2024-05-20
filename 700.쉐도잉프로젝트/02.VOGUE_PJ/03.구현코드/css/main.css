@@ -310,6 +310,7 @@ body * {
   min-height: 46px;
   padding: 0 30px;
   /* GNB ul박스 */
+  /* GNB a요소 */
 }
 .gnb ul {
   /* 플렉스박스 */
@@ -330,9 +331,19 @@ body * {
   font-family: "Roboto Condensed", sans-serif;
   line-height: 40px;
 }
-.gnb ul li:last-child a {
+.gnb ul li:last-child i {
   font-weight: bold;
-  padding-top: 2px;
+  cursor: pointer;
+}
+.gnb ul li:last-child i:hover {
+  color: red;
+}
+.gnb a {
+  /* 트랜지션 */
+  transition: color 0.2s linear;
+}
+.gnb a:hover {
+  color: red;
 }
 
 /****************** 2.메인영역 ******************/
