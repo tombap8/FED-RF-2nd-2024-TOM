@@ -12,6 +12,8 @@ console.log(tt);
 
 // 시간날짜함수 최초호출
 showTime();
+// 시간날짜함수 인터발호출
+setInterval(showTime, 1000);
 
 // 시간날짜 함수 ////////
 function showTime() {
@@ -53,9 +55,9 @@ function showTime() {
   let S = today.getSeconds();
 
   // 테스트
-  H = 18;
-  M = 2;
-  S = 3;
+  //   H = 18;
+  //   M = 2;
+  //   S = 3;
 
   // 12이상이면 오후 아니면 오전
   tt[4].innerText = H >= 12 ? "오후" : "오전";
@@ -63,7 +65,7 @@ function showTime() {
   H = H > 12 ? H - 12 : H;
   // 시/분/초에서 한자리숫자는 앞에 0 자리수 넣기
   // 0붙이기 리턴함수
-  const addZero = x => x < 10 ? "0" + x : x;
+  const addZero = (x) => (x < 10 ? "0" + x : x);
 
   tt[5].innerText = addZero(H);
   tt[6].innerText = addZero(M);
