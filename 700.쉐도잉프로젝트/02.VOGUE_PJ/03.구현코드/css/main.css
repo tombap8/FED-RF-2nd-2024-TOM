@@ -300,6 +300,41 @@ body * {
   height: auto;
 }
 
+.logo {
+  height: 104px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gnb {
+  min-height: 46px;
+  padding: 0 30px;
+  /* GNB ul박스 */
+}
+.gnb ul {
+  /* 플렉스박스 */
+  display: flex;
+  /* 플렉스진행방향 정렬 */
+  justify-content: center;
+  /* 플렉스 줄바꿈설정 */
+  flex-wrap: wrap;
+  /* 사이간격 속성 -> gap: 위아래 양쪽 (flex에서 사용함)
+        -> 숫자를 하나만 쓰면 양방향이 모두같은수치 셋팅 */
+  gap: 0 45px;
+  /* GNB li 리스트 */
+}
+.gnb ul li {
+  /* padding-right: 45px; 
+    -> 사이간격을 li에 패딩으로 안주고
+    부모요소인 flex박스에서 gap속성으로 준다! */
+  font-family: "Roboto Condensed", sans-serif;
+  line-height: 40px;
+}
+.gnb ul li:last-child a {
+  font-weight: bold;
+  padding-top: 2px;
+}
+
 /****************** 2.메인영역 ******************/
 .main-area {
   /* 최소높이 : 컨텐츠가 작을 경우대비 */
