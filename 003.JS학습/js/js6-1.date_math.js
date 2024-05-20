@@ -199,13 +199,27 @@ randomAddOn();
 // 인터발호출
 setInterval(randomAddOn, 1500);
 
+// 전에 발생한 난수 저장변수
+let beNum = 99999;
+// 초기값은 해당 난수범위외의 수(처음에 통과!)
+
 // 5. 랜덤 처리함수 만들기 ///////
 function randomAddOn() {
   // 1. 먼저 난수를 발생시킨다!
   let rdm = Math.floor(Math.random() * 4);
   console.log("난수:", rdm);
 
-  // 2. 랜덤으로 발생한 난수에 해당하는 div에
+  // 2. 전에 발생한 난수와 같으면 다시한번 난수발생
+  // 직전 난수는 beNum에 저장함
+  while(rdm==beNum) {
+    rdm = Math.floor(Math.random() * 4);
+    console.log("다시난수:", rdm);
+  } //////// while ////
+
+  // 3.while문 통과후 결정된 난수를 직전난수 변수에 할당
+  beNum = rdm;
+
+  // 4. 랜덤으로 발생한 난수에 해당하는 div에
   // on클래스를 추가한다!(나머지는 on제거)
   target.forEach((ele, i) => {
     if (i == rdm) 
