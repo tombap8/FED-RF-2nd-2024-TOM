@@ -18,14 +18,15 @@
             /* 이미지박스 */
             .imbx {
                 display: flex;
-                gap: 0 2vw;
+                gap: 4vw 2vw;
                 width: 70vw;
                 margin: 0 auto;
                 margin-top: 100px;
+                flex-wrap: wrap;
             }
             .imbx div{
                 position: relative;
-                flex: 1;
+                flex-basis: calc(100%/4 - 2vw);
                 aspect-ratio: 4/3;
             }
 

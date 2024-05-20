@@ -158,7 +158,12 @@ const rimg = [
   "https://i.namu.wiki/i/bFpYClpzX-ErL1Kdad69t09fhPPeVb2VwOB_qpH-9qxQ3Tx2Nz9zVIiLPWSMkvnVG5XWnUdQM5hHrGZ4cWneZA.webp",
   "https://img.imbc.com/adams/Program/202111/132804027350463581.jpg",
   "https://image.ytn.co.kr/general/jpg/2021/0925/202109251350012465_d.jpg",
+  "https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDA0MDhfMTE0%2FMDAxNzEyNTQ1NzM5NzY4.CV2JuRLzs91cZq5shllTYdMDo3I1R_4OH1dI_YXcMQUg.f4SqGMxPZxxJK2pM7tWUUACuHuyCc4MagUl-lIgk8ugg.JPEG%2F0.jpg&type=sc960_832",
+  "https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5772%2F2024%2F05%2F13%2F0000035704_001_20240513113602787.jpg&type=sc960_832",
 ];
+
+// 배열개수
+const rimgCnt = rimg.length;
 
 // 1. 요구사항 : 웹경로 이미지를 화면에 넣고 랜덤하게
 // 이미지를 칼라로 약간커지게 클래스 on을 주어서 변경함!
@@ -194,25 +199,25 @@ imbx.innerHTML = rimg
 const target = mFn.qsa(".imbx div");
 console.log("랜덤대상:", target);
 
+// 전에 발생한 난수 저장변수(함수호출전 선언해야함!)
+let beNum = 99999;
+// 초기값은 해당 난수범위외의 수(처음에 통과!)
+
 // 함수최초호출
 randomAddOn();
 // 인터발호출
 setInterval(randomAddOn, 1500);
 
-// 전에 발생한 난수 저장변수
-let beNum = 99999;
-// 초기값은 해당 난수범위외의 수(처음에 통과!)
-
 // 5. 랜덤 처리함수 만들기 ///////
 function randomAddOn() {
   // 1. 먼저 난수를 발생시킨다!
-  let rdm = Math.floor(Math.random() * 4);
+  let rdm = Math.floor(Math.random() * rimgCnt);
   console.log("난수:", rdm);
 
   // 2. 전에 발생한 난수와 같으면 다시한번 난수발생
   // 직전 난수는 beNum에 저장함
   while(rdm==beNum) {
-    rdm = Math.floor(Math.random() * 4);
+    rdm = Math.floor(Math.random() * rimgCnt);
     console.log("다시난수:", rdm);
   } //////// while ////
 
