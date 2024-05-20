@@ -257,6 +257,8 @@ body * {
   font-family: "Roboto", nbg;
   font-size: 12px;
   /* 사이드메뉴 상위 a요소 */
+}
+.tmenu .sideMenu .smbx > li {
   /* 사이드메뉴 상위메뉴 첫번째li 사이구분선 */
 }
 .tmenu .sideMenu .smbx > li > a {
@@ -267,6 +269,32 @@ body * {
 }
 .tmenu .sideMenu .smbx > li:first-child {
   border-right: 1px solid #e5e5e5;
+}
+.tmenu .sideMenu .smbx > li .smsub {
+  position: absolute;
+  border: 1px solid #e5e5e5;
+  /* 박스숨기기 */
+  height: 0;
+  overflow: hidden;
+  /* display: none; */
+  opacity: 0;
+  /* 트랜지션 */
+  transition: 0.5s;
+}
+.tmenu .sideMenu .smbx > li .smsub a {
+  display: block;
+  padding: 7px 10px;
+  padding-right: 19px;
+  background-color: #fff;
+  color: #747474;
+}
+.tmenu .sideMenu .smbx > li .smsub a:hover {
+  background-color: pink;
+  color: #333;
+}
+.tmenu .sideMenu .smbx > li:hover .smsub {
+  opacity: 1;
+  height: auto;
 }
 
 /****************** 2.메인영역 ******************/
