@@ -270,6 +270,9 @@ body * {
 .tmenu .sideMenu .smbx > li:first-child {
   border-right: 1px solid #e5e5e5;
 }
+.tmenu .sideMenu .smbx > li:first-child > a {
+  cursor: text;
+}
 .tmenu .sideMenu .smbx > li .smsub {
   position: absolute;
   border: 1px solid #e5e5e5;
