@@ -2,19 +2,98 @@
 /* 상단, 하단 공통 모듈 CSS */
 
 /****************** 1.상단영역 ******************/
-.top-area{
-    /* 최소높이 */
-    min-height: 206px;
+.top-area {
+  /* 최소높이 */
+  min-height: 206px;
 }
+// 1-1.상단메뉴
+.tmenu {
+  display: flex;
+  max-width: 970px;
+  height: 44px;
+  margin: 0 auto;
+  // 상단 메뉴 하위 파티션 박스 1:1 비율
+  div {
+    flex: 1;
+  }
+  // 1-1-1.sns박스
+  .sns a {
+    width: 16px;
+    height: 16px;
+    /* .fi에 inline-block이 셋팅됨 */
+    font-size: 16px;
+    text-align: center;
+    line-height: 16px;
+    vertical-align: top;
+
+    /* 마진으로 사이간격주기 */
+    margin-top: 14px;
+    margin-right: 17px;
+
+    /* 트랜지션: 속시이지 */
+    transition: opacity 0.2s;
+
+    // a요소 마우스 오버시
+    &:hover {
+      opacity: 0.8;
+      color: hotpink;
+    }
+    /* 트위터 크기조정 */
+    &.fi-twitter {
+      font-size: 13px;
+    }
+    /* 유튜브 크기조정 */
+    &.fi-youtube-play {
+      font-size: 11px;
+    }
+    /* 카카오스토리 배경이미지 넣기 */
+    &.cas {
+      background: url(../images/sns_kakao.png) no-repeat center/auto 100%;
+    }
+    // 갤러리 아이콘, 로그인 아이콘
+    &.fi-camera,
+    &.fi-laptop {
+      font-size: 14px;
+    }
+  }
+  // 1-1-2. 사이드 메뉴
+  .sideMenu {
+    .smbx {
+      /* 플렉스박스 */
+      display: flex;
+      /* 플렉스 진행방향 정렬 - 오른쪽끝 */
+      justify-content: flex-end;
+
+      /* 글자체: Roboto, 나눔바른고딕 */
+      font: {
+          family: "Roboto", nbg;
+          size: 12px;
+      }
+      /* 사이드메뉴 상위 a요소 */
+      & > li > a {
+        display: block;
+        padding: 0 13px;
+        line-height: 44px;
+        color: #747474;
+      }
+      /* 사이드메뉴 상위메뉴 첫번째li 사이구분선 */
+      & > li:first-child {
+        border-right: 1px solid #e5e5e5;
+      }
+    }
+  }
+}
+// 1-2.로고박스
+// 1-3.GNB박스
 
 /****************** 2.메인영역 ******************/
-.main-area{
-    /* 최소높이 : 컨텐츠가 작을 경우대비 */
-    min-height: 600px;
+.main-area {
+  /* 최소높이 : 컨텐츠가 작을 경우대비 */
+  min-height: 600px;
 }
 
 /****************** 3.하단영역 ******************/
-.footer-area{
-    /* 최소높이 */
-    min-height: 285px;
+.footer-area {
+  /* 최소높이 */
+  min-height: 285px;
 }
