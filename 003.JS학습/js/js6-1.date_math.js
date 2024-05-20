@@ -102,9 +102,9 @@ console.log(rdm);
 // 1~7 사이 난수발생하기
 // 방법: 난수에 발생할 최대수 곱하기 -> 올림/내림
 rdm = rdm * 7;
-console.log('난수*7:',rdm);
-console.log('난수*7 내림:',Math.floor(rdm));
-console.log('난수*7 올림:',Math.ceil(rdm));
+console.log("난수*7:", rdm);
+console.log("난수*7 내림:", Math.floor(rdm));
+console.log("난수*7 올림:", Math.ceil(rdm));
 // -> 1부터 최대수는 올림처리 / 0부터 최대수-1은 내림처리
 
 // 중간난수는?
@@ -153,7 +153,12 @@ console.log('난수*7 올림:',Math.ceil(rdm));
 ****************************************/
 
 // 이미지 웹경로 배열
-const rimg = ["https://img.etnews.com/photonews/2110/1461216_20211007085904_466_0001.jpg", "https://i.namu.wiki/i/bFpYClpzX-ErL1Kdad69t09fhPPeVb2VwOB_qpH-9qxQ3Tx2Nz9zVIiLPWSMkvnVG5XWnUdQM5hHrGZ4cWneZA.webp", "https://img.imbc.com/adams/Program/202111/132804027350463581.jpg", "https://image.ytn.co.kr/general/jpg/2021/0925/202109251350012465_d.jpg"];
+const rimg = [
+  "https://img.etnews.com/photonews/2110/1461216_20211007085904_466_0001.jpg",
+  "https://i.namu.wiki/i/bFpYClpzX-ErL1Kdad69t09fhPPeVb2VwOB_qpH-9qxQ3Tx2Nz9zVIiLPWSMkvnVG5XWnUdQM5hHrGZ4cWneZA.webp",
+  "https://img.imbc.com/adams/Program/202111/132804027350463581.jpg",
+  "https://image.ytn.co.kr/general/jpg/2021/0925/202109251350012465_d.jpg",
+];
 
 // 1. 요구사항 : 웹경로 이미지를 화면에 넣고 랜덤하게
 // 이미지를 칼라로 약간커지게 클래스 on을 주어서 변경함!
@@ -165,15 +170,19 @@ const imbx = mFn.qs(".imbx");
 // 배열만큼 이미지 넣기
 
 // map으로 이미지넣기
-imbx.innerHTML = rimg.map(v=>`
+imbx.innerHTML = rimg
+  .map(
+    (v) => `
     <div>
         <img src="${v}" alt="드라마 포스터">
     </div>
-`).join('');
+`
+  )
+  .join("");
 
 // forEach로 배열을 먼저 사용하여 이미지 넣기
 // rimg.forEach(v=>{
-//     imbx.innerHTML += 
+//     imbx.innerHTML +=
 //     `
 //         <div>
 //             <img src="${v}" alt="드라마 포스터">
@@ -181,4 +190,27 @@ imbx.innerHTML = rimg.map(v=>`
 //     `;
 // })
 
+// 4. 랜덤 처리 대상 div 선택하기
+const target = mFn.qsa(".imbx div");
+console.log("랜덤대상:", target);
 
+// 함수최초호출
+randomAddOn();
+// 인터발호출
+setInterval(randomAddOn, 1500);
+
+// 5. 랜덤 처리함수 만들기 ///////
+function randomAddOn() {
+  // 1. 먼저 난수를 발생시킨다!
+  let rdm = Math.floor(Math.random() * 4);
+  console.log("난수:", rdm);
+
+  // 2. 랜덤으로 발생한 난수에 해당하는 div에
+  // on클래스를 추가한다!(나머지는 on제거)
+  target.forEach((ele, i) => {
+    if (i == rdm) 
+        ele.classList.add("on");
+    else 
+        ele.classList.remove("on");
+  });
+} //////// randomAddOn 함수 ////////
