@@ -43,7 +43,9 @@ function MainComponent() {
     console.log("테스트중~!");
   }; //////////// testFn //////////////
 
-  // [1. useEffect : 컴포넌트 생성,변경,삭제전 DOM완성후 매번 실행되는 코드구역!!! ]
+  // [ 1. useEffect : 의존성없는 경우 ]
+  // ->>> 컴포넌트 생성,변경,삭제전 DOM완성후 
+  // 매번 실행되는 코드구역임!!!
   React.useEffect(()=> {
     console.log("DOM이 완성되었어~!!!");
     // 글자커지기 테스트
