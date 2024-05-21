@@ -2,12 +2,26 @@
 
 // 공유신발 데이터 불러오기
 import guData from "../data/gu_data";
+// 효진드레스 데이터 불러오기
+import hjData from "../data/hj_data";
 // console.log(guData);
 
-export default function GoodsList({ viewDetail, updateIdx }) {
-  // viewDetail - 부모컴포넌트가 전달해준 상태변수
+export default function GoodsList({ viewDetail, updateIdx, selItem }) {
+  // (1) viewDetail - 부모컴포넌트가 전달해준 상태변수
   // (viewList를 업데이트하는 setViewList메서드임!)
-  // updateIdx - 부모컴포넌트의 setIdx 상태관리변수의 메서드
+  // (2) updateIdx - 부모컴포넌트의 setIdx 상태관리변수의 메서드
+  // (3) selItem은 부모컴포넌트에서 "공유"/"효진" 선택코드값
+  // selItem 값으로 데이터를 선택해 준다!
+  // "공유"는 guData , "효진"은 hjData
+
+  // 선택코드에 따른 데이터 선택하기
+  const selData = 
+  selItem == "공유" 
+  ? guData 
+  : selItem == "효진" 
+  ? hjData 
+  : [];
+
   // 코드리턴구역 ////////////////
   return (
     <ul>

@@ -4,7 +4,7 @@
 import GoodsList from "./components/goods_list";
 // 상품상세보기 서브컴포넌트 불러오기
 import GoodsDetail from "./components/goods_detail";
-// 주의사항!!! CDN에서 여기 import대상은 모두 
+// 주의사항!!! CDN에서 여기 import대상은 모두
 // html페이지에서 불러와야 사용할 수 있다!
 
 // [ 메인 컴포넌트 ] ////////
@@ -43,41 +43,45 @@ function MainComponent() {
     <React.Fragment>
       {/* 1. 타이틀 */}
       <h1 className="tit">
-        {
-          selItem=="공유"?
-          "공유가 신고 다닌다는!":
-          selItem=="효진"?
-          "효진이 입고 다닌다는!":
-          "없음"
-        }
-        
+        {selItem == "공유"
+          ? "공유가 신고 다닌다는!"
+          : selItem == "효진"
+          ? "효진이 입고 다닌다는!"
+          : "없음"}
       </h1>
       {/* 2. 내용박스 */}
       <section>
-        <h2>공유는 오늘도 멋찝니다!</h2>
+        <h2>
+          {selItem == "공유"
+            ? "공유는 오늘도 멋찝니다!"
+            : selItem == "효진"
+            ? "효진은 오늘도 쨍~합니다!"
+            : "없음"}
+        </h2>
         <div className="img-box">
-          <img src="./images/vans/gongyoo.jpg" alt="멋진공유" />
+          {selItem == "공유" ? (
+            <img src="./images/vans/gongyoo.jpg" alt="멋진공유" />
+          ) : selItem == "효진" ? (
+            <img src="./images/gallery/hyo.jpg" alt="엘레강스한 효진"></img>
+          ) : (
+            "없음"
+          )}
         </div>
       </section>
       {/* 3. 기능버튼박스 */}
       <div className="btn-box">
-        <button
-        onClick={()=>
-          setSelItem(selItem=="공유"?"효진":"공유")}
-        >{selItem=="공유"?"효진":"공유"}초이스 바로가기</button>
+        <button onClick={() => setSelItem(selItem == "공유" ? "효진" : "공유")}>
+          {selItem == "공유" ? "효진" : "공유"}초이스 바로가기
+        </button>
       </div>
       {/* 4. 상품리스트박스 */}
       <div className="gwrap">
         {
           // 상태관리변수 viewList값이 true이면 리스트보기
           viewList ? (
-            <GoodsList 
-            viewDetail={setViewList} 
-            updateIdx={setIdx} />
+            <GoodsList viewDetail={setViewList} updateIdx={setIdx} />
           ) : (
-            <GoodsDetail 
-            backList={setViewList} 
-            gNo={idx} />
+            <GoodsDetail backList={setViewList} gNo={idx} />
           )
           // false이면 상품 상세리스트 보기
         }
@@ -85,10 +89,6 @@ function MainComponent() {
     </React.Fragment>
   );
 } ////////// MainComponent 컴포넌트 /////////////
-
-
-
-
 
 // 메인 컴포넌트 출력하기 ////////////
 ReactDOM.render(<MainComponent />, document.querySelector("#root"));
