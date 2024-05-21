@@ -30,7 +30,7 @@ export default function GoodsList({ viewDetail, updateIdx, selItem }) {
         // 리액트는 필수적이라고 함!
         // 어디에 쓰나? 업데이트시 순번구분을 위함
         // node.js개발환경에서는 안쓰면 에러남!
-        guData.map((v, i) => (
+        selData.map((v, i) => (
           <li key={i}>
             <a
               href="#"
@@ -46,7 +46,14 @@ export default function GoodsList({ viewDetail, updateIdx, selItem }) {
             >
               <ol className="glist">
                 <li>
-                  <img src={`./images/vans/vans_${v.idx}.jpg`} alt="신발" />
+                  {
+                    selItem == "공유" 
+                    ? <img src={`./images/vans/vans_${v.idx}.jpg`} alt="신발" />
+                    : selItem == "효진" 
+                    ? <img src={`./images/gallery/${v.idx}.jpg`} alt="드레스" />
+                    : []
+                  }
+                  
                 </li>
                 <li>{v.gname}</li>
                 <li>가격 : {v.gprice}원</li>
