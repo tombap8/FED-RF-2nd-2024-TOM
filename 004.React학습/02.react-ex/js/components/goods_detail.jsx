@@ -36,7 +36,7 @@ export default function GoodsDetail({ backList, gNo, selItem }) {
         <img
           src={
             (selItem=="공유"?"./images/vans/vans_":
-            selItem=="효진"?"./images/dress/":"") + 
+            selItem=="효진"?"./images/gallery/":"") + 
             selData[gNo].idx + ".jpg"}
           alt="반스신발"
           style={{ width: "100%" }}
