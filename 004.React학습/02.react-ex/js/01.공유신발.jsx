@@ -4,6 +4,9 @@
 import GoodsList from "./components/goods_list";
 // 상품상세보기 서브컴포넌트 불러오기
 import GoodsDetail from "./components/goods_detail";
+// 공통함수 불러오기
+import * as comFn from "./common/com_fn";
+
 // 주의사항!!! CDN에서 여기 import대상은 모두
 // html페이지에서 불러와야 사용할 수 있다!
 
@@ -58,13 +61,11 @@ function MainComponent() {
   // [ 2. useEffect : 의존성있는 경우 ]
   React.useEffect(()=>{
     console.log("의존성useEffect실행 : selItem");
-    // 글자커지기 테스트
-    $(".tit span")
-      .css({ display: "inline-block" })
-      .animate({ scale: "200%" }, 1000)
-      .animate({ scale: "100%" }, 1000);
-  },[selItem,test]);
+    // 초이스 인트로 애니함수 호출
+    comFn.choiceIntroAni();
+    },[selItem,test]);
   // -> React.useEffect(함수,[의존성변수])
+  // -> 의존성변수는 반드시 상태관리변수여야 효과가 있다!
   // -> 의존성변수는 배열안에 여러개 셋팅가능!
   // -> [변수1,변수2,변수3]
   // -> 공유초이스와 효진초이스가 변경될 경우에만
@@ -75,13 +76,20 @@ function MainComponent() {
   // [ 3. useEffect : 의존성있으나 빈 경우 ]
   React.useEffect(()=>{
     console.log("useEffect의존성비어서 한번만실행!");
-    // 로고 최초한번만 애니하기
-    $("#logo")
-    .animate({scale:"200%",rotate:"360deg"},1000)
-    .animate({scale:"100%",rotate:"0deg"},1000);
+    // 로고애니함수 호출
+    comFn.logoAni();
   },[]);
   // -> React.useEffect(함수,[])
   // -> 최초로딩시 한번만 실행한다!
+
+  // [ 4. useLayoutEffect : 화면업데이트 되기 전 실행구역 ]
+  // -> 매번 화면업데이트시 사용할 경우 의존성을 셋팅하지 않는다
+  // -> 별도로 화면업데이트시 특정한 경우에만 사용하기 위해
+  // 의존성 셋팅을 통하여 useEffect와 같은 방법을 사용한다!
+  React.useLayoutEffect(()=>{
+    console.log("화면업데이트전 실행구역!");    
+    // 초기화 함수 호출
+  },[selItem]);
 
 
   ////////////////////////////////////
@@ -110,7 +118,7 @@ function MainComponent() {
       </h1>
       {/* 2. 내용박스 */}
       <section>
-        <h2>
+        <h2 className="stit">
           {selItem == "공유"
             ? "공유는 오늘도 멋찝니다!"
             : selItem == "효진"
@@ -129,7 +137,13 @@ function MainComponent() {
       </section>
       {/* 3. 기능버튼박스 */}
       <div className="btn-box">
-        <button onClick={() => setSelItem(selItem == "공유" ? "효진" : "공유")}>
+        <button onClick={() => {
+          // 초이스 종류 변경하기
+          setSelItem(selItem == "공유" ? "효진" : "공유");
+          // 초이스 변경시 무조건 리스트 페이지보기
+          // -> viewList 업데이트하기
+          setViewList(true);
+          }}>
           {selItem == "공유" ? "효진" : "공유"}초이스 바로가기
         </button>
         <br />
