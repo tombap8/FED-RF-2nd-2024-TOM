@@ -21,6 +21,19 @@ export default function GoodsList({ viewDetail, updateIdx, selItem }) {
   : selItem == "효진" 
   ? hjData 
   : [];
+  
+  //  useEffect구역 : 화면업데이트 후 실행구역
+  React.useEffect(()=>{
+    console.log("나는 리스트 컴포넌트다!");
+
+    // useEffect 함수구역에 return함수코드를 쓰면
+    // 컴포넌트 소멸시 실행된다!
+    return(()=>{
+      console.log("리스트 컴포넌트 소멸!");
+    });
+
+  }); ///////// useEffect ////////
+
 
   // 코드리턴구역 ////////////////
   return (

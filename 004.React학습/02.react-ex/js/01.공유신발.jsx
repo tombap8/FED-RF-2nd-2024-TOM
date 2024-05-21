@@ -89,6 +89,7 @@ function MainComponent() {
   React.useLayoutEffect(()=>{
     console.log("화면업데이트전 실행구역!");    
     // 초기화 함수 호출
+    comFn.initFn();
   },[selItem]);
 
 
