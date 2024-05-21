@@ -23,6 +23,8 @@ function MainComponent() {
   const [idx, setIdx] = React.useState(0);
   // 3. 선택 아이템 고유이름 상태관리변수
   const [selItem, setSelItem] = React.useState("공유");
+  // 4. 테스트용 상태관리변수(의존성 테스트용!)
+  const [test,setTest] = React.useState(true);
 
   /************************************** 
         [ 코드구성 ]
@@ -39,20 +41,48 @@ function MainComponent() {
             ol > li > (img/text/button)
     **************************************/
   // useEffect 테스트 함수 ////
-  const testFn = ()=> {
-    console.log("테스트중~!");
+  const testFn = () => {
+    // 의존성 테스트를 위한 상태변수 업데이트
+    setTest(test?false:true);
+    // true/false값 상호전환변경
+    console.log("테스트중~! test상태변수값:",test);
   }; //////////// testFn //////////////
 
   // [ 1. useEffect : 의존성없는 경우 ]
-  // ->>> 컴포넌트 생성,변경,삭제전 DOM완성후 
+  // ->>> 컴포넌트 생성,변경,삭제전 DOM완성후
   // 매번 실행되는 코드구역임!!!
-  React.useEffect(()=> {
+  React.useEffect(() => {
     console.log("DOM이 완성되었어~!!!");
-    // 글자커지기 테스트
-    $(".tit")
-    .animate({fontSize:"50px"},1000)
-    .animate({fontSize:"20px"},1000);
   });
+  
+  // [ 2. useEffect : 의존성있는 경우 ]
+  React.useEffect(()=>{
+    console.log("의존성useEffect실행 : selItem");
+    // 글자커지기 테스트
+    $(".tit span")
+      .css({ display: "inline-block" })
+      .animate({ scale: "200%" }, 1000)
+      .animate({ scale: "100%" }, 1000);
+  },[selItem,test]);
+  // -> React.useEffect(함수,[의존성변수])
+  // -> 의존성변수는 배열안에 여러개 셋팅가능!
+  // -> [변수1,변수2,변수3]
+  // -> 공유초이스와 효진초이스가 변경될 경우에만
+  // 실행하려면? useState변수중 원하는 변경에 해당하는것을
+  // 선택하여 의존성 옵션을 주면 해당 변수가 
+  // 변경될 때만 실행하는 랜더링실행구역이 만들어진다!
+
+  // [ 3. useEffect : 의존성있으나 빈 경우 ]
+  React.useEffect(()=>{
+    console.log("useEffect의존성비어서 한번만실행!");
+    // 로고 최초한번만 애니하기
+    $("#logo")
+    .animate({scale:"200%",rotate:"360deg"},1000)
+    .animate({scale:"100%",rotate:"0deg"},1000);
+  },[]);
+  // -> React.useEffect(함수,[])
+  // -> 최초로딩시 한번만 실행한다!
+
 
   ////////////////////////////////////
   // 코드리턴구역 /////////////////////
@@ -60,11 +90,23 @@ function MainComponent() {
     <React.Fragment>
       {/* 1. 타이틀 */}
       <h1 className="tit">
-        {selItem == "공유"
-          ? "공유가 신고 다닌다는!"
-          : selItem == "효진"
-          ? "효진이 입고 다닌다는!"
-          : "없음"}
+        <img
+          id="logo"
+          style={{
+            width: "50px",
+            verticalAlign: "-6px",
+            marginRight: "10px",
+          }}
+          src="./images/logo.png"
+          alt="로고"
+        />
+        <span>
+          {selItem == "공유"
+            ? "공유가 신고 다닌다는!"
+            : selItem == "효진"
+            ? "효진이 입고 다닌다는!"
+            : "없음"}
+        </span>
       </h1>
       {/* 2. 내용박스 */}
       <section>
@@ -99,7 +141,11 @@ function MainComponent() {
         {
           // 상태관리변수 viewList값이 true이면 리스트보기
           viewList ? (
-            <GoodsList viewDetail={setViewList} updateIdx={setIdx} selItem={selItem} />
+            <GoodsList
+              viewDetail={setViewList}
+              updateIdx={setIdx}
+              selItem={selItem}
+            />
           ) : (
             <GoodsDetail backList={setViewList} gNo={idx} selItem={selItem} />
           )
