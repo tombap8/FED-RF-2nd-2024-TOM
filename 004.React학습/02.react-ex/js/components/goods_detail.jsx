@@ -53,23 +53,31 @@ export default function GoodsDetail({ backList, gNo, selItem }) {
         <br />
         가격 : {selData[gNo].gprice}
         <br />
-        소재 : {selData[gNo].소재}
-        <br />
-        색상 : {selData[gNo].색상}
-        <br />
-        치수 : {selData[gNo].치수}
-        <br />
-        제조자/수입자 :{selData[gNo]["제조자/수입자"]}
-        <br />
-        제조국 : {selData[gNo].제조국}
-        <br />
-        제조연월 : {selData[gNo].제조연월}
-        <br />
-        A/S 책임자와 전화번호 : <br />
-        {selData[gNo]["A/S 책임자와 전화번호"]}
-        <br />
-        Model : {selData[gNo].Model}
-        <br />
+        {
+        // [ 리액트 조건 출력하기 ]
+        selItem=="공유" &&
+        // 코드를 가져올때 최상위를 만들어서
+        // 가져오면 쉽게 셋팅할 수 있다!!!
+        <div>
+          소재 : {selData[gNo].소재}
+          <br />
+          색상 : {selData[gNo].색상}
+          <br />
+          치수 : {selData[gNo].치수}
+          <br />
+          제조자/수입자 :{selData[gNo]["제조자/수입자"]}
+          <br />
+          제조국 : {selData[gNo].제조국}
+          <br />
+          제조연월 : {selData[gNo].제조연월}
+          <br />
+          A/S 책임자와 전화번호 : <br />
+          {selData[gNo]["A/S 책임자와 전화번호"]}
+          <br />
+          Model : {selData[gNo].Model}
+          <br />
+        </div>
+        }
         <div
           className="btnbx"
           style={{
