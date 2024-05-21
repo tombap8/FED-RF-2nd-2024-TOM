@@ -21,6 +21,8 @@ function MainComponent() {
   const [viewList, setViewList] = React.useState(true);
   // 2. 상품 데이터 인덱스값 상태관리변수
   const [idx, setIdx] = React.useState(0);
+  // 3. 선택 아이템 고유이름 상태관리변수
+  const [selItem, setSelItem] = React.useState("공유");
 
   /************************************** 
         [ 코드구성 ]
@@ -40,7 +42,16 @@ function MainComponent() {
   return (
     <React.Fragment>
       {/* 1. 타이틀 */}
-      <h1 className="tit">공유가 신고 다닌다는!</h1>
+      <h1 className="tit">
+        {
+          selItem=="공유"?
+          "공유가 신고 다닌다는!":
+          selItem=="효진"?
+          "효진이 입고 다닌다는!":
+          "없음"
+        }
+        
+      </h1>
       {/* 2. 내용박스 */}
       <section>
         <h2>공유는 오늘도 멋찝니다!</h2>
@@ -50,7 +61,10 @@ function MainComponent() {
       </section>
       {/* 3. 기능버튼박스 */}
       <div className="btn-box">
-        <button>효진초이스 바로가기</button>
+        <button
+        onClick={()=>
+          setSelItem(selItem=="공유"?"효진":"공유")}
+        >{selItem=="공유"?"효진":"공유"}초이스 바로가기</button>
       </div>
       {/* 4. 상품리스트박스 */}
       <div className="gwrap">
