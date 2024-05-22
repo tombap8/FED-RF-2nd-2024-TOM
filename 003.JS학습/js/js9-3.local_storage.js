@@ -54,4 +54,17 @@ import mFn from "./my_function.js";
 
 // [ 1. 로컬 스토리지 연습 ] ////////////////////
 // 1. 버튼 기능 이벤트 대상 : .local-box button
-const btnLocal = 
+const btnLocal = mFn.qsa(".local-box button");
+console.log("대상:",btnLocal);
+
+// 2. 버튼에 이벤트 설정하기
+btnLocal.forEach(
+    ele=>mFn.addEvt(ele,"click",localsFn));
+
+// 3. 로컬쓰 처리 함수 만들기 ///////
+function localsFn(){
+    // 1. 버튼 텍스트 읽기
+    let btxt = this.innerText;
+    console.log("로컬쓰~!",btxt);
+
+} /////////// localsFn //////////
