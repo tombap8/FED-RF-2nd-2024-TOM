@@ -193,6 +193,18 @@ function bindData(){
             
             console.log("지울순번:",idx,localData);
 
+            // 4. 메모리에 있는 배열값 지우기
+            // 배열.splice(순번,개수) 
+            // 1개삭제이므로 splice(순번,1)
+            localData.splice(idx,1);
+
+            // 5. 배열값 로컬쓰에 반영하기
+            localStorage
+           .setItem("minfo",JSON.stringify(localData));
+
+           // 6. 화면출력함수호출
+            bindData();
+
         }; ///// click /////
     }); /////// forEach ////////
 
