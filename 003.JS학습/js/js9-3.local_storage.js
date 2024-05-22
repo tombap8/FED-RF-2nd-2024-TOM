@@ -182,7 +182,27 @@ function bindData(){
 
 
 ///// 게시판 입력 버튼 클릭시 구현하기 //////
-mFn.qs(".sbtn").onclick=()=>{
-    console.log("입력!!!");
+mFn.qs("#sbtn").onclick=()=>{
+    
+    // 어디에 무엇을 입력해야하나?
+    // 로컬쓰에 제목,내용을 입력한다!
+    
+    // 1. 로컬쓰 데이터 읽어와서 배열로 변환
+    const localData = 
+    JSON.parse(localStorage.getItem("minfo"));
+    
+    console.log("입력!!!",localData);
+
+    // 2. 입력할 데이터 객체형식으로 배열에 넣기
+    // 배열.push({객체})
+    localData.push({
+        idx: localData.length+1,
+        tit: mFn.qs("#tit").value,
+        cont: mFn.qs("#cont").value
+    });
+
+    // 3. 배열 데이터를 문자화하여 로컬쓰에 입력
+    localStorage
+    .setItem("minfo", JSON.stringify(localData));
 
 }; /////// click 함수 ///////////
