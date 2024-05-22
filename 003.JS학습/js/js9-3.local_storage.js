@@ -67,4 +67,37 @@ function localsFn(){
     let btxt = this.innerText;
     console.log("로컬쓰~!",btxt);
 
+    // 2. 버튼별 기능 분기하기 //////
+    if(btxt == "처음"){
+        // (1) 로컬 스토리지 셋팅하기
+        // -> localStorage.setItem(키,값)
+        localStorage.setItem("actor-name","이정재");
+        localStorage.setItem("actor-role","박평호역");
+        localStorage.setItem("actor-cat","조직내 스파이를 색출하는 해외팀 안기부장");
+    } /// if ////
+    else if(btxt == "보여줘"){
+        // 배우이름 출력
+        mFn.qs(".local .nm").innerText = 
+        localStorage.getItem("actor-name");
+        // 역할이름 출력
+        mFn.qs(".local .role").innerText = 
+        localStorage.getItem("actor-role");
+        // 캐릭터소개 출력
+        mFn.qs(".local .cat").innerText = 
+        localStorage.getItem("actor-cat");
+    } /// else if ////
+    else if(btxt=="전체삭제"){
+        // 로컬스토리지 전체 삭제
+        // 해당 url 스토리지만 대상으로 모두 지움
+        localStorage.clear();
+
+        // 개별삭제는 removeItem(키)
+        // localStorage.removeItem("actor-name");
+        
+    } //// else if ////
+    else if(btxt == "처리"){
+        // 배열/객체 만들기
+
+    } //// else if ////
+
 } /////////// localsFn //////////
