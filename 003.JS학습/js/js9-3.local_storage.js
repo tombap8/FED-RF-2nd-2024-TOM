@@ -205,4 +205,7 @@ mFn.qs("#sbtn").onclick=()=>{
     localStorage
     .setItem("minfo", JSON.stringify(localData));
 
+    // 4. 화면출력 함수 호출하기
+    bindData();
+
 }; /////// click 함수 ///////////
