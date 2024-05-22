@@ -1,2 +1,2 @@
 [ DC PJ 미리보기 ]
-https://tombap8.github.io/dc-app/
+https://tombap8.github.io/tom-dc-pj
