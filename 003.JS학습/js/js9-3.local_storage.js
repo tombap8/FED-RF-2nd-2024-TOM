@@ -126,6 +126,13 @@ function makeObj () {
     ];
 
     // 2. 로컬 스토리지에 배열/객체데이터 넣기
-    localStorage.setItem("minfo",obj);
+    // 만약 배열데이터를 직접 넣으려고하면
+    // 로컬쓰는 문자형만 받기때문에 데이터형이름만
+    // 문자형으로 데이터를 대신 넣게된다!
+    // 즉, 배열데이터는 못들어간다! ㅠ.ㅠ
+    // 그러므로 배열데이터는 문자형으로 변환하여
+    // 넣어야 로컬쓰에 들어간다!
+    // -> JSON.stringify(배열/객체)
+    localStorage.setItem("minfo",JSON.stringify(obj));
 
 } ///////// makeObj //////
