@@ -178,7 +178,30 @@ function bindData(){
         </table>
     `;
 
+    // 4. 지우기 버튼 셋팅하기
+    mFn.qsa(".del-link a").forEach(ele=>{
+        ele.onclick = (e) => {
+            // 1.기본이동막기
+            e.preventDefault();
+
+            // 2.지울순번속성(data-idx)읽어오기
+            let idx = ele.getAttribute("data-idx");
+            
+            // 3. 로컬쓰 읽어와서 파싱하기
+            let localData = 
+            JSON.parse(localStorage.getItem("minfo"));
+            
+            console.log("지울순번:",idx,localData);
+
+        }; ///// click /////
+    }); /////// forEach ////////
+
+
+
 } ////////////// bindData //////////////////
+
+// 게시판 최초호출
+bindData();
 
 
 ///// 게시판 입력 버튼 클릭시 구현하기 //////
