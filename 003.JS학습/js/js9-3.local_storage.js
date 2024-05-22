@@ -97,7 +97,22 @@ function localsFn(){
     } //// else if ////
     else if(btxt == "처리"){
         // 배열/객체 만들기
+        // 1. 로컬쓰에 "minfo"키가 없으면 새로만들기
+        // 만약 키가 없으면 null값을 리턴함
+        // 이것은 if문에서 false처리됨!
+        // false일때 처리해야하므로 NOT(!)연산자사용
+        if(!localStorage.getItem("minfo")){
+            // 최초 객체데이터 만들기 함수 호출
+            makeObj();
+        } /// if ///
+        // console.log(localStorage.getItem("minfo"))
 
     } //// else if ////
 
 } /////////// localsFn //////////
+
+// "minfo" 로컬쓰 키가 없으면 객체를 만들어 넣기 함수 //
+function makeObj () {
+    console.log("minfo만들기!");
+
+} ///////// makeObj //////
