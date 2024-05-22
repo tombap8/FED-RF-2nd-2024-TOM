@@ -101,11 +101,17 @@ function localsFn(){
         // 만약 키가 없으면 null값을 리턴함
         // 이것은 if문에서 false처리됨!
         // false일때 처리해야하므로 NOT(!)연산자사용
-        if(!localStorage.getItem("minfo")){
+        // 또는 빈 배열값일 경우도 생성함수호출 처리
+        if(!localStorage.getItem("minfo")||
+        localStorage.getItem("minfo")=="[]"){
             // 최초 객체데이터 만들기 함수 호출
             makeObj();
         } /// if ///
-        // console.log(localStorage.getItem("minfo"))
+        console.log(localStorage.getItem("minfo"))
+
+        // 2. 화면에 출력하기 : 데이터 바인딩하기
+        bindData();
+
 
     } //// else if ////
 
@@ -136,3 +142,34 @@ function makeObj () {
     localStorage.setItem("minfo",JSON.stringify(obj));
 
 } ///////// makeObj //////
+
+//// 화면에 게시판을 뿌려주는 바인딩함수 ///////
+function bindData(){
+    // 1. 로컬쓰 데이터 읽어오기 : minfo
+    let localData = localStorage.getItem("minfo");
+
+    console.log("게시판 화면 뿌리기!",localData);
+
+
+
+    // 출력대상 : .board
+    mFn.qs(".board").innerHTML = `
+        <table>
+            <tr>
+                <th>번호</th>
+                <th>제목</th>
+                <th>내용</th>
+                <th>삭제</th>
+            </tr>
+            <!-- 데이터에 따른 반복바인딩 -->
+            
+            <tr>
+                <td>번호</td>
+                <td>제목</td>
+                <td>내용</td>
+                <td>삭제</td>
+            </tr>
+        </table>
+    `;
+
+} ////////////// bindData //////////////////
