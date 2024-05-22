@@ -115,4 +115,17 @@ function localsFn(){
 function makeObj () {
     console.log("minfo만들기!");
 
+    // 1. 게시판 형식의 객체 생성하기 ///
+    // 배열안에 객체데이터 한개 넣기 [{},]
+    let obj = [
+        {
+            idx: 1,
+            tit: "내가 왕이될 상인가?",
+            cont: "이정재형님은 진정한 왕이십니다!"
+        },
+    ];
+
+    // 2. 로컬 스토리지에 배열/객체데이터 넣기
+    localStorage.setItem("minfo",obj);
+
 } ///////// makeObj //////
