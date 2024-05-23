@@ -237,10 +237,14 @@ mFn.qs("#sbtn").onclick=()=>{
         return;
      } ////// if //////
 
+    console.log("idx값배열:",localData.map(v=>v.idx));
+
     // 3. 입력할 데이터 객체형식으로 배열에 넣기
     // 배열.push({객체})
     localData.push({
-        idx: localData.length+1,
+        // 순번은 배열객체 idx값중 최대값을 구하여 1더한다!
+        // apply(보낼객체,배열) -> 보낼객체가 여기서는 null
+        idx: Math.max.apply(null,localData.map(v=>v.idx))+1,
         tit: mFn.qs("#tit").value,
         cont: mFn.qs("#cont").value
     });
