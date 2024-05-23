@@ -219,10 +219,40 @@
       color: #747474;
       font-size: 13px;
     }
-    
+
     // 마지막li a만 두꺼운글자
     li:last-child a{
       font-weight: bold;
     }
+  }
+}
+
+/* 위로가기 버튼 */
+.tbtn {
+  position: fixed;
+  bottom: -35px; /* 아랫쪽에 나가있음 */
+  right: 75px;
+  width: 48px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  background-color: #333;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+  z-index: 9999;
+  font-size: 12px;
+  opacity: 0; /* 처음에 투명 */
+  /* 트랜지션 - bottom엔 적용되면 안되므로 별도지정함 */
+  transition: background-color 0.3s, opacity 0.3s;
+
+  // 클래스 on추가시 디자인변경
+  &.on {
+    opacity: 1;
+    bottom: 0;
+  }
+
+  // 마우스 오버시 디자인
+  &:hover {
+    background-color: red;
   }
 }
