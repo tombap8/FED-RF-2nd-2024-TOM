@@ -212,8 +212,9 @@ function bindData(){
 
 } ////////////// bindData //////////////////
 
-// 게시판 최초호출
-bindData();
+// 게시판 최초호출 : 로컬쓰 minfo 존재여부에 따라 처리
+if(localStorage.getItem("minfo")) bindData();
+else makeObj();
 
 
 ///// 게시판 입력 버튼 클릭시 구현하기 //////
@@ -228,7 +229,15 @@ mFn.qs("#sbtn").onclick=()=>{
     
     console.log("입력!!!",localData);
 
-    // 2. 입력할 데이터 객체형식으로 배열에 넣기
+    // 2. 입력값이 비었으면 돌려보내기!
+    // trim() - 앞뒤공백 제거 메서드
+    if(mFn.qs("#tit").value.trim() == ""
+     || mFn.qs("#cont").value.trim() == ""){
+        alert("제목과 내용입력은 필수입니다!");
+        return;
+     } ////// if //////
+
+    // 3. 입력할 데이터 객체형식으로 배열에 넣기
     // 배열.push({객체})
     localData.push({
         idx: localData.length+1,
@@ -236,11 +245,11 @@ mFn.qs("#sbtn").onclick=()=>{
         cont: mFn.qs("#cont").value
     });
 
-    // 3. 배열 데이터를 문자화하여 로컬쓰에 입력
+    // 4. 배열 데이터를 문자화하여 로컬쓰에 입력
     localStorage
     .setItem("minfo", JSON.stringify(localData));
 
-    // 4. 화면출력 함수 호출하기
+    // 5. 화면출력 함수 호출하기
     bindData();
 
 }; /////// click 함수 ///////////
