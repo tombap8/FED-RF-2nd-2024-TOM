@@ -257,3 +257,30 @@ mFn.qs("#sbtn").onclick=()=>{
     bindData();
 
 }; /////// click 함수 ///////////
+
+// CRUD 크루드!!!
+// Create(만들기) / Read(읽기) / Update(수정) / Delete(삭제)
+
+///////// 수정기능 구현하기 //////////////
+
+// 수정항목 선택박스 업데이트함수 호출
+updateItemList();
+
+// 수정할 항목 업데이트 함수 /////
+function updateItemList(){
+    // 대상: 수정선택박스 - #sel
+    const selBox = mFn.qs("#sel");
+
+    // 데이터의 idx를 순회하며 option만들기
+    const localData = 
+    JSON.parse(localStorage.getItem("minfo"));
+
+    selBox.innerHTML = 
+    localData.map(
+        v=>`
+            <option value="${v.idx}">
+                ${v.idx}</option>
+        `).join('');
+
+
+} //////////// updateItemList 함수 ///////////
