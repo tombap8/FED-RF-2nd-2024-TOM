@@ -2,6 +2,67 @@
 /* 상단, 하단 공통 모듈 CSS */
 
 /****************** 1.상단영역 ******************/
+// 상단영역 겉박스
+#top-area {
+  position: relative;
+  z-index: 1;
+  // 박스그림자가 위로 올라오게함
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+
+  // 상단영역 겉박스에 클래스 on줄경우 슬림메뉴
+  &.on {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff;
+    z-index: 999;
+
+    /* 1. 상단영역 최소높이 해제 */
+    .top-area {
+      min-height: 50px;
+    }
+    /* 2. 상단메뉴 없애기 */
+    .tmenu {
+      display: none;
+    }
+    /* 4. 로고 박스 */
+    .logo {
+      position: absolute;
+      left: 0;
+      /* 부모는? #top-area */
+      padding: 10px;
+      height: auto;
+      margin-bottom: 0;
+
+      /* 로고 이미지 */
+      img {
+        width: 100px;
+      }
+    }
+    /* 5. GNB박스 */
+    .gnb {
+      min-height: 45px;
+      padding-top: 5px;
+
+      // GNB ul
+      ul{
+        gap: 0 35px;
+      }
+
+      /* GNB메뉴 a */
+      a {
+        color: #333;
+        font-size: 14px;
+        // 오버시 빨간색글자
+        &:hover{
+          color: red;
+        }
+      }
+    }
+  }
+}
+// 상단영역 속박스
 .top-area {
   /* 최소높이 */
   min-height: 206px;
@@ -188,14 +249,14 @@
   // 박스크기유지
   box-sizing: border-box;
   /* 글씨체 공통 */
-  font-family: "Roboto",nbg;
+  font-family: "Roboto", nbg;
 
   // 3-1. 하단로고
-  .blogo{
+  .blogo {
     text-align: center;
   }
   // 3-2. 회사주소
-  .addr{    
+  .addr {
     color: #747474;
     text-align: center;
     font-size: 11px;
@@ -204,7 +265,7 @@
     margin: 20px 0 10px;
   }
   // 3-3. 하단링크
-  .blink{    
+  .blink {
     /* 플렉스박스 */
     display: flex;
     /* 진행방향정렬 : 중앙 */
@@ -215,13 +276,13 @@
     gap: 0 12px;
 
     // 하위 a요소
-    a{
+    a {
       color: #747474;
       font-size: 13px;
     }
 
     // 마지막li a만 두꺼운글자
-    li:last-child a{
+    li:last-child a {
       font-weight: bold;
     }
   }
