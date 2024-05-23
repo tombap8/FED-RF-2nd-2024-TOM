@@ -1,30 +1,26 @@
 // 보그 PJ 메인 JS - main.js
 
 // [1] 메인 페이지 전체 레이아웃 로딩 컴포넌트 ///
-function Layout(){
-    <div>
-        // 1. 상단영역 컴포넌트
-        <TopArea />
-        // 2. 메인영역 컴포넌트
-        <MainArea />
-        // 3. 하단영역 컴포넌트
-        <FooterArea />
-
-    </div>
-
+function Layout() {
+  <div>
+    // 1. 상단영역 컴포넌트
+    <TopArea />
+    // 2. 메인영역 컴포넌트
+    <MainArea />
+    // 3. 하단영역 컴포넌트
+    <FooterArea />
+  </div>;
 } ///////// Layout 컴포넌트 /////////
 
 // 상단영역만 넣어보기
 // ReactDOM.render(어쩌구,저쩌구);
-ReactDOM.render(<TopArea />,document.querySelector("#top-area"));
-
+ReactDOM.render(<TopArea />, document.querySelector("#top-area"));
 
 // [2] 상단영역 서브 컴포넌트 /////
-function TopArea(){
-    // 코드 리턴구역 /////
-    return(
-        
-      <header className="top-area ibx common-area">
+function TopArea() {
+  // 코드 리턴구역 /////
+  return (
+    <header className="top-area ibx common-area">
       {/* <!-- 1-1.상단메뉴 --> */}
       <div className="tmenu">
         {/* <!-- 1-1-1.sns박스 --> */}
@@ -121,23 +117,49 @@ function TopArea(){
         </ul>
       </nav>
     </header>
-  
-    );
-
+  );
 } ///////// TopArea 컴포넌트 ///////////
 
 // [3] 메인영역 서브 컴포넌트 /////
-function MainArea(){
-// 코드 리턴구역 /////
-    // return(
-        
-    // );
+function MainArea() {
+  // 코드 리턴구역 /////
+  // return(
+  // );
 } ///////// MainArea 컴포넌트 ///////////
 
+// 하단영역 넣어보기
+ReactDOM.render(<FooterArea />, 
+document.querySelector("#footer-area"));
+
 // [4] 하단영역 서브 컴포넌트 /////
-function FooterArea(){
-// 코드 리턴구역 /////
-// return(
-        
-//     );
+function FooterArea() {
+  // 코드 리턴구역 /////
+  return (
+    <footer className="footer-area ibx common-area">
+      {/* <!-- 3-1.하단로고 --> */}
+      <div className="blogo">
+        <img src="./images/footer_logo.png" alt="하단로고" />
+      </div>
+      {/* <!-- 3-2.회사주소 --> */}
+      <address className="addr">
+        WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC. ALL RIGHTS RESERVED.
+        VOGUE.COM KOREA IS OPERATED BY DOOSAN MAGAZINE.
+      </address>
+      {/* <!-- 3-3.하단링크 --> */}
+      <ul className="blink">
+        <li>
+          <a href="#">정기구독</a>
+        </li>
+        <li>
+          <a href="#">회사소개</a>
+        </li>
+        <li>
+          <a href="#">광고 및 제휴</a>
+        </li>
+        <li>
+          <a href="#">개인정보 처리방침</a>
+        </li>
+      </ul>
+    </footer>
+  );
 } ///////// FooterArea 컴포넌트 ///////////
