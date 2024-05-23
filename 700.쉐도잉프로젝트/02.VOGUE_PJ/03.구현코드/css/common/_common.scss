@@ -170,7 +170,6 @@
       color: red;
     }
   }
-  
 }
 
 /****************** 2.메인영역 ******************/
@@ -180,7 +179,14 @@
 }
 
 /****************** 3.하단영역 ******************/
+// 하단속박스
 .footer-area {
   /* 최소높이 */
   min-height: 285px;
+  background-color: #000;
+  padding: 70px;
+  // 박스크기유지
+  box-sizing: border-box;
+  /* 글씨체 공통 */
+  font-family: "Roboto",nbg;
 }

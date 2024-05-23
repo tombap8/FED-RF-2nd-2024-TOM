@@ -356,6 +356,11 @@ body * {
 .footer-area {
   /* 최소높이 */
   min-height: 285px;
+  background-color: #000;
+  padding: 70px;
+  box-sizing: border-box;
+  /* 글씨체 공통 */
+  font-family: "Roboto", nbg;
 }
 
 /* 개별배경이미지 */
