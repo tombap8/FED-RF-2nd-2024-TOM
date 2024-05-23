@@ -189,4 +189,38 @@
   box-sizing: border-box;
   /* 글씨체 공통 */
   font-family: "Roboto",nbg;
+
+  // 3-1. 하단로고
+  .blogo{
+    text-align: center;
+  }
+  // 3-2. 회사주소
+  .addr{    
+    color: #747474;
+    text-align: center;
+    font-size: 11px;
+    /* address 요소 기본 이탤릭해제 */
+    font-style: normal;
+    margin: 20px 0 10px;
+  }
+  // 3-3. 하단링크
+  .blink{    
+    /* 플렉스박스 */
+    display: flex;
+    /* 진행방향정렬 : 중앙 */
+    justify-content: center;
+    /* 플렉스 랩핑박스 */
+    flex-wrap: wrap;
+    /* 사이간격 gap: 위아래 양쪽 */
+    gap: 0 12px;
+    // 하위 a요소
+    a{
+      color: #747474;
+      font-size: 13px;
+    }
+    // 마지막li a만 두꺼운글자
+    li:last-child a{
+      font-weight: bold;
+    }
+  }
 }
