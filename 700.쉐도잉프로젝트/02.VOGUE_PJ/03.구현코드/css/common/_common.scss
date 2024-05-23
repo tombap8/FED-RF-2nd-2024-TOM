@@ -213,11 +213,13 @@
     flex-wrap: wrap;
     /* 사이간격 gap: 위아래 양쪽 */
     gap: 0 12px;
+
     // 하위 a요소
     a{
       color: #747474;
       font-size: 13px;
     }
+    
     // 마지막li a만 두꺼운글자
     li:last-child a{
       font-weight: bold;
