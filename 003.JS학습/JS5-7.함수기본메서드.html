@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS5-7. 함수 기본 메서드 : call() / apply() / bind()</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+      body {
+        background-image: linear-gradient(
+          45deg,
+          lightcoral,
+          lightgreen,
+          pink,
+          lightblue
+        );
+        background-attachment: fixed;
+        text-align: center;
+
+        font-family: "Jua", sans-serif;
+        padding-bottom: 100px;
+      }
+      h1 {
+        font-weight: normal;
+      }
+      .mainTit {
+        font-size: max(40px, 3vw);
+      }
+      .ex {
+        color: aqua;
+        -webkit-text-stroke: 0.5px #222;
+        text-shadow: 2px 2px 2px #000000c2;
+      }
+      .bindWrap {
+        display: flex;
+        justify-content: center;
+        gap: 0 100px;
+      }
+    </style>
+    <script>
+    /************************************************ 
+      [      전달값 없이 this키워드로     ]
+      [ 객체값을 전달할때 사용하는 기본함수 ]
+      ______________________________________
+
+      1. call() 메서드
+
+       (1) 목적 : 
+        함수나 메서드에 전달변수 없이 객체를 전달함
+
+       (2) 사용법 :
+         - 전달값 1개사용시 : 
+           함수명.call(객체)
+         -> 받는 함수에서 this키워드로 객체값사용
+
+         - 전달값 2개이상 사용시 : 
+           함수명.call(객체, 전달값1, 전달값2,...)
+         -> 받는 함수에서 객체외에 전달변수 별도로 사용
+
+      2. apply() 메서드 : call() 메서드와 동일하나
+        전달값을 배열로 전달한다!
+        함수명.apply(객체, [전달값1, 전달값2,...])
+
+      3. bind() 메서드
+       (1) 목적 : 기존 객체 내의 속성의 this를 교체하여 함수를 호출함
+
+       (2) 사용법 :
+         - 전달값 1개사용시 : 
+           함수명.bind(객체)
+         -> 받는 함수에서 this키워드로 객체값사용하면
+         기존 내부의 속성이 아닌 새로운 속성값으로 대체됨
+
+        (3) 다른사용
+
+       
+
+    *************************************************/
+
+    </script>
+  </head>
+  <body>
+    <h1 class="mainTit">JS5-7. 함수 기본 메서드 : call() / apply() / bind()</h1>
+
+    <b class="iam" title="킬디스럽" id="홍야홍야"></b>
+    <h1>🎯 call(객체) / appply(객체) : 객체메서드로 구현</h1>
+    <h1 class="ex"></h1>
+    <h1 class="ex"></h1>
+    <hr />
+
+    <h1>
+      🎯 call(객체,추가변수) / appply(객체,[추가변수]) : 객체메서드로 구현
+    </h1>
+    <h1 class="ex"></h1>
+    <h1 class="ex"></h1>
+    <hr />
+
+    <h1>🎯 call(객체,추가변수) / appply(객체,[추가변수]) : 일반함수로 구현</h1>
+    <h1 class="ex"></h1>
+    <h1 class="ex"></h1>
+    <hr />
+
+    <h1>🎯 Math.max.appply(null,배열변수) 응용</h1>
+    <h1 class="ex"></h1>
+
+    <h1>🎯 bind() 사용법</h1>
+    <h1>합격자 명단발표</h1>
+    <div class="bindWrap">
+      <h1 class="ex"></h1>
+      <h1 class="ex"></h1>
+      <h1 class="ex"></h1>
+      <h1 class="ex"></h1>
+    </div>
+  </body>
+</html>
