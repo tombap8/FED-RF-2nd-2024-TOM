@@ -1,0 +1,468 @@
+@charset "UTF-8";
+/* 보그 PJ 리셋 CSS - reset.css */
+/* 요소의 초기화 */
+/* 1. 마진,패딩 없애기 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300&display=swap");
+html, body, h1, h2, h3, h4, h5, h6, ul, ol, dt, dd, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* 가로스크롤 생김 방지!(특히 모바일) */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 2. a요소 리셋 */
+a {
+  color: #000;
+  /* 글자색 */
+  text-decoration: none;
+  /* 밑줄없앰 */
+}
+
+/* 3. ul,ol 리셋 */
+ul, ol {
+  list-style: none;
+  /* 블릿/숫자 제거 */
+}
+
+/* 4. h요소 글자크기 리셋 */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  /* html의 기본글자크기(16px)와 일치 초기화 */
+}
+
+/* 5. 이미지 리셋 */
+img {
+  border: none;
+  /* 이미지 링크시 서버에서 볼때 파란색 자동보더 없애기 */
+  vertical-align: bottom;
+  /* 박스 이미지 하단간극 없애기(약4px)
+  값으로 top, middle등 도 효과있음! */
+}
+
+/* 보그 PJ 공통핵심 CSS - core.css */
+/* 웹폰트, 공용클래스 */
+/*********** 1. 웹폰트 ***********/
+/* Roboto체 + Roboto Condensed체 - CDN */
+/* 
+font-family: 'Roboto', sans-serif;
+font-family: 'Roboto Condensed', sans-serif;
+*/
+/* 나눔바른고딕 */
+@font-face {
+  font-family: nbg;
+  src: url(../fonts/NanumBarunGothicLightSubset.woff) format("woff");
+}
+/* Pistilli체 */
+@font-face {
+  font-family: pist;
+  src: url(../fonts/Pistilli-Roman.woff) format("woff");
+}
+/* 
+  [ 공통 클래스 이름정의 ]
+  1. ibx - inside box 속박스
+  2. pt1, pt2 - part1, part2 각 부분박스(비율적용)
+  3. cbx - content box 내용박스
+  4. bgi - background image 관련 속성
+*/
+/* 공사중 표시 */
+/************* 2. 공통 class *************/
+/* 2-1. 중앙 속박스 */
+.ibx {
+  max-width: 1300px;
+  margin: 0 auto;
+}
+
+/* 2-2. 컨텐츠 박스 유형별 클래스 */
+/* 유형1 - 1개박스구성 : .pt1 */
+.pt1 {
+  /* 비율 적용시 height값은 주지않는다! */
+  /* height: 724px; */
+  /* 1300 : 724 비율 */
+  aspect-ratio: 1300/724;
+}
+
+/* 유형1 컨텐츠박스 */
+.pt1 .cbx {
+  /* 부모박스 높이값에 맞춤! */
+  height: 100%;
+}
+
+/* 유형2 - 3개박스구성 : .pt2 */
+.pt2 {
+  /* 플렉스박스 */
+  display: flex;
+  /* 비율 적용시 height값은 주지않는다! */
+  /* height: 650px; */
+  /* 1300 : 650 비율 */
+  aspect-ratio: 1300/650;
+}
+
+/* 유형2 컨텐츠박스 : 등분할 가로정렬박스 */
+.pt2 .cbx {
+  /* 플렉스 자식요소 동일분할 설정!
+  -> 높이값 100% 설정불필요! 자동맞춤된다! */
+  flex: 1;
+}
+
+/* 2-3. 배경이미지 공통셋팅 클래스 */
+.bgi {
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* 컨텐츠박스 */
+.cbx {
+  position: relative;
+  /* 부모자격 */
+}
+
+/* 가상요소로 컨텐츠 박스 배경 그라데이션 넣기 */
+.cbx::before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50%;
+  background-image: linear-gradient(to top, #000, rgba(0, 0, 0, 0));
+}
+
+/* 가상요소로 컨텐츠 박스 오버시 보더 테두리 애니 만들기 */
+.cbx::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  border: 0px solid #f00;
+  cursor: pointer;
+  /* 트랜지션: 속시이지 */
+  transition: border 0.2s ease-in-out;
+}
+
+/* .cbx에 오버시 */
+.cbx:hover::after {
+  border-width: 20px;
+}
+
+/* 3. 컨텐츠 타이틀 박스(h2) */
+.cbx h2 {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding: min(50px, 3.4vw);
+  box-sizing: border-box;
+  /* 글자설정 - 영문체, 한글체 */
+  font-family: pist, nbg;
+  font-size: min(33px, 3vw);
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+}
+
+/* 런웨이파트 타이틀 중 small요소 */
+.cbx h2 small {
+  font-size: 14px;
+}
+
+/* 4. 스크롤 등장액션 클래스 */
+.scAct {
+  transform: translateY(20%);
+  opacity: 0;
+  transition: 1.2s cubic-bezier(0.45, 0.05, 0.55, 0.95);
+}
+
+/* 등장클래스+.on */
+.scAct.on {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* 글자 숨김 클래스(IR배경이미지 설명 등  숨기기) */
+.ir {
+  display: block;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+/* 공통배경색 클래스 */
+.bgc {
+  background-color: #f9f9f9;
+}
+
+/* 보그 PJ 공통 CSS - common.css */
+/* 상단, 하단 공통 모듈 CSS */
+/****************** 1.상단영역 ******************/
+#top-area {
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+  /****************************************** 
+    상단영역 겉박스에 클래스 on줄경우 슬림메뉴
+  ******************************************/
+}
+#top-area.on {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #fff;
+  z-index: 999;
+  /* 1. 상단영역 최소높이 해제 */
+  /* 2. 상단메뉴 없애기 */
+  /* 4. 로고 박스 */
+  /* 5. GNB박스 */
+}
+#top-area.on .top-area {
+  min-height: 50px;
+}
+#top-area.on .tmenu {
+  display: none;
+}
+#top-area.on .logo {
+  position: absolute;
+  left: 0;
+  /* 부모는? #top-area */
+  padding: 10px;
+  height: auto;
+  margin-bottom: 0;
+  /* 로고 이미지 */
+}
+#top-area.on .logo img {
+  width: 100px;
+}
+#top-area.on .gnb {
+  min-height: 45px;
+  padding-top: 5px;
+  /* GNB메뉴 a */
+}
+#top-area.on .gnb ul {
+  gap: 0 35px;
+}
+#top-area.on .gnb a {
+  color: #333;
+  font-size: 14px;
+}
+#top-area.on .gnb a:hover {
+  color: red;
+}
+
+.top-area {
+  /* 최소높이 */
+  min-height: 206px;
+}
+
+.tmenu {
+  display: flex;
+  max-width: 970px;
+  height: 44px;
+  margin: 0 auto;
+}
+.tmenu div {
+  flex: 1;
+}
+.tmenu .sns a {
+  width: 16px;
+  height: 16px;
+  /* .fi에 inline-block이 셋팅됨 */
+  font-size: 16px;
+  text-align: center;
+  line-height: 16px;
+  vertical-align: top;
+  /* 마진으로 사이간격주기 */
+  margin-top: 14px;
+  margin-right: 17px;
+  /* 트랜지션: 속시이지 */
+  transition: opacity 0.2s;
+  /* 트위터 크기조정 */
+  /* 유튜브 크기조정 */
+  /* 카카오스토리 배경이미지 넣기 */
+}
+.tmenu .sns a:hover {
+  opacity: 0.8;
+  color: hotpink;
+}
+.tmenu .sns a.fi-twitter {
+  font-size: 13px;
+}
+.tmenu .sns a.fi-youtube-play {
+  font-size: 11px;
+}
+.tmenu .sns a.cas {
+  background: url(../images/sns_kakao.png) no-repeat center/auto 100%;
+}
+.tmenu .sns a.fi-camera, .tmenu .sns a.fi-laptop {
+  font-size: 14px;
+}
+.tmenu .sideMenu .smbx {
+  /* 플렉스박스 */
+  display: flex;
+  /* 플렉스 진행방향 정렬 - 오른쪽끝 */
+  justify-content: flex-end;
+  /* 글자체: Roboto, 나눔바른고딕 */
+  font-family: "Roboto", nbg;
+  font-size: 12px;
+  /* 사이드메뉴 상위 a요소 */
+}
+.tmenu .sideMenu .smbx > li {
+  /* 사이드메뉴 상위메뉴 첫번째li 사이구분선 */
+}
+.tmenu .sideMenu .smbx > li > a {
+  display: block;
+  padding: 0 13px;
+  line-height: 44px;
+  color: #747474;
+}
+.tmenu .sideMenu .smbx > li:first-child {
+  border-right: 1px solid #e5e5e5;
+}
+.tmenu .sideMenu .smbx > li:first-child > a {
+  cursor: text;
+}
+.tmenu .sideMenu .smbx > li .smsub {
+  position: absolute;
+  border: 1px solid #e5e5e5;
+  /* 박스숨기기 */
+  height: 0;
+  overflow: hidden;
+  /* display: none; */
+  opacity: 0;
+  /* 트랜지션 */
+  transition: 0.5s;
+}
+.tmenu .sideMenu .smbx > li .smsub a {
+  display: block;
+  padding: 7px 10px;
+  padding-right: 19px;
+  background-color: #fff;
+  color: #747474;
+}
+.tmenu .sideMenu .smbx > li .smsub a:hover {
+  background-color: pink;
+  color: #333;
+}
+.tmenu .sideMenu .smbx > li:hover .smsub {
+  opacity: 1;
+  height: auto;
+}
+
+.logo {
+  height: 104px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.gnb {
+  min-height: 46px;
+  padding: 0 30px;
+  /* GNB ul박스 */
+  /* GNB a요소 */
+}
+.gnb ul {
+  /* 플렉스박스 */
+  display: flex;
+  /* 플렉스진행방향 정렬 */
+  justify-content: center;
+  /* 플렉스 줄바꿈설정 */
+  flex-wrap: wrap;
+  /* 사이간격 속성 -> gap: 위아래 양쪽 (flex에서 사용함)
+        -> 숫자를 하나만 쓰면 양방향이 모두같은수치 셋팅 */
+  gap: 0 45px;
+  /* GNB li 리스트 */
+}
+.gnb ul li {
+  /* padding-right: 45px; 
+    -> 사이간격을 li에 패딩으로 안주고
+    부모요소인 flex박스에서 gap속성으로 준다! */
+  font-family: "Roboto Condensed", sans-serif;
+  line-height: 40px;
+}
+.gnb ul li:last-child i {
+  font-weight: bold;
+  cursor: pointer;
+}
+.gnb ul li:last-child i:hover {
+  color: red;
+}
+.gnb a {
+  /* 트랜지션 */
+  transition: color 0.2s linear;
+}
+.gnb a:hover {
+  color: red;
+}
+
+/****************** 2.메인영역 ******************/
+.main-area {
+  /* 최소높이 : 컨텐츠가 작을 경우대비 */
+  min-height: 600px;
+}
+
+/****************** 3.하단영역 ******************/
+.footer-area {
+  /* 최소높이 */
+  min-height: 285px;
+  background-color: #000;
+  padding: 70px;
+  box-sizing: border-box;
+  /* 글씨체 공통 */
+  font-family: "Roboto", nbg;
+}
+.footer-area .blogo {
+  text-align: center;
+}
+.footer-area .addr {
+  color: #747474;
+  text-align: center;
+  font-size: 11px;
+  /* address 요소 기본 이탤릭해제 */
+  font-style: normal;
+  margin: 20px 0 10px;
+}
+.footer-area .blink {
+  /* 플렉스박스 */
+  display: flex;
+  /* 진행방향정렬 : 중앙 */
+  justify-content: center;
+  /* 플렉스 랩핑박스 */
+  flex-wrap: wrap;
+  /* 사이간격 gap: 위아래 양쪽 */
+  gap: 0 12px;
+}
+.footer-area .blink a {
+  color: #747474;
+  font-size: 13px;
+}
+.footer-area .blink li:last-child a {
+  font-weight: bold;
+}
+
+/* 위로가기 버튼 */
+.tbtn {
+  position: fixed;
+  bottom: -35px; /* 아랫쪽에 나가있음 */
+  right: 75px;
+  width: 48px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  background-color: #333;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+  z-index: 9999;
+  font-size: 12px;
+  opacity: 0; /* 처음에 투명 */
+  /* 트랜지션 - bottom엔 적용되면 안되므로 별도지정함 */
+  transition: background-color 0.3s, opacity 0.3s;
+}
+.tbtn.on {
+  opacity: 1;
+  bottom: 0;
+}
+.tbtn:hover {
+  background-color: red;
+}/*# sourceMappingURL=items.css.map */
