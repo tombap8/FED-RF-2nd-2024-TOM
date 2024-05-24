@@ -440,28 +440,9 @@ function sessionsFn() {
     sessionStorage.clear();
 
     // 개별삭제는 removeItem(키)
-    // localStorage.removeItem("actor-name");
+    // sessionStorage.removeItem("actor-name");
   } //// else if ////
-  else if (btxt == "처리") {
-    // 배열/객체 만들기
-    // 1. 로컬쓰에 "minfo"키가 없으면 새로만들기
-    // 만약 키가 없으면 null값을 리턴함
-    // 이것은 if문에서 false처리됨!
-    // false일때 처리해야하므로 NOT(!)연산자사용
-    // 또는 빈 배열값일 경우도 생성함수호출 처리
-    if (
-      !localStorage.getItem("minfo") ||
-      localStorage.getItem("minfo") == "[]"
-    ) {
-      // 최초 객체데이터 만들기 함수 호출
-      makeObj();
-    } /// if ///
-    console.log(localStorage.getItem("minfo"));
-
-    // 2. 화면에 출력하기 : 데이터 바인딩하기
-    bindData();
-  } //// else if ////
-} /////////// localsFn //////////
+} /////////// sessionsFn //////////
 
 
 
