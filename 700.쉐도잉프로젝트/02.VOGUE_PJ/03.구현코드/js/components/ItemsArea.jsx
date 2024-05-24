@@ -21,17 +21,21 @@ export default function ItemsArea({ catName }) {
           {/* 데이터적용2 : 제목넣기 */}
           <h2 className="cat-tit">{selData.제목}</h2>
           {/* <!-- 2-1-2. 서브메뉴(LNB:Local Navigation Bar) --> */}
-          <nav className="lnb">
-            {
-              <ul>
-                {selData.메뉴.map((v) => (
-                  <li>
-                    <a href="#">{v}</a>
-                  </li>
-                ))}                
-              </ul>
-            }
-          </nav>
+
+          {
+            // 메뉴가 "없음"이 아닐때만 배열돌아 출력함!
+            selData.메뉴 != "없음" && (
+              <nav className="lnb">
+                <ul>
+                  {selData.메뉴.map((v) => (
+                    <li>
+                      <a href="#">{v}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            )
+          }
         </header>
         {/* <!-- 2-2. 카테고리 페이지 컨텐츠영역 --> */}
         <div className="cat-cont-area">
