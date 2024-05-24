@@ -44,182 +44,47 @@
 
 /********* 2-2. 카테고리 페이지 컨텐츠영역 *********/
 
+// 믹스인으로 반복코드 리턴하여 사용하기 /////
+// @mixin 믹스인이름 (전달변수) {반복할 코드}
+// 믹스인의 전달변수를 값파트에 단일값을 쓰는것은 문제없음
+// 그러나 속성명 또는 선택자 파트 또는 복합적인 값에 변수를 쓰려면
+// 사스용 보간법을 사용해야함! -> #{변수}
+@mixin make-bgi($itemName) {
+  .#{$itemName} .bg1-1 {
+    background-image: url(../images/#{$itemName}/cont1-1a.jpg);
+  }
+  .#{$itemName} .bg1-2 {
+    background-image: url(../images/#{$itemName}/cont1-2a.jpg);
+  }
+  .#{$itemName} .bg1-3 {
+    background-image: url(../images/#{$itemName}/cont1-3a.jpg);
+  }
+  .#{$itemName} .bg2-1 {
+    background-image: url(../images/#{$itemName}/cont2-1a.jpg);
+  }
+  .#{$itemName} .bg2-2 {
+    background-image: url(../images/#{$itemName}/cont2-2a.jpg);
+  }
+  .#{$itemName} .bg2-3 {
+    background-image: url(../images/#{$itemName}/cont2-3a.jpg);
+  }
+}
+
+// 믹스인을 호출하여 동일한 패턴의 코드를 생성해준다!
 /******************** fashion ********************/
-.fashion .bg1-1 {
-  background-image: url(../images/fashion/cont1-1a.jpg);
-}
-.fashion .bg1-2 {
-  background-image: url(../images/fashion/cont1-2a.jpg);
-}
-.fashion .bg1-3 {
-  background-image: url(../images/fashion/cont1-3a.jpg);
-}
-.fashion .bg2-1 {
-  background-image: url(../images/fashion/cont2-1a.jpg);
-}
-.fashion .bg2-2 {
-  background-image: url(../images/fashion/cont2-2a.jpg);
-}
-.fashion .bg2-3 {
-  background-image: url(../images/fashion/cont2-3a.jpg);
-}
-
+@include make-bgi("fashion");
 /******************** beauty ********************/
-.beauty .bg1-1 {
-  background-image: url(../images/beauty/cont1-1a.jpg);
-}
-.beauty .bg1-2 {
-  background-image: url(../images/beauty/cont1-2a.jpg);
-}
-.beauty .bg1-3 {
-  background-image: url(../images/beauty/cont1-3a.jpg);
-}
-.beauty .bg2-1 {
-  background-image: url(../images/beauty/cont2-1a.jpg);
-}
-.beauty .bg2-2 {
-  background-image: url(../images/beauty/cont2-2a.jpg);
-}
-.beauty .bg2-3 {
-  background-image: url(../images/beauty/cont2-3a.jpg);
-}
-
+@include make-bgi("beauty");
 /******************** living ********************/
-.living .bg1-1 {
-  background-image: url(../images/living/cont1-1a.jpg);
-}
-.living .bg1-2 {
-  background-image: url(../images/living/cont1-2a.jpg);
-}
-.living .bg1-3 {
-  background-image: url(../images/living/cont1-3a.jpg);
-}
-.living .bg2-1 {
-  background-image: url(../images/living/cont2-1a.jpg);
-}
-.living .bg2-2 {
-  background-image: url(../images/living/cont2-2a.jpg);
-}
-.living .bg2-3 {
-  background-image: url(../images/living/cont2-3a.jpg);
-}
-
+@include make-bgi("living");
 /******************** people ********************/
-.people .bg1-1 {
-  background-image: url(../images/people/cont1-1a.jpg);
-}
-.people .bg1-2 {
-  background-image: url(../images/people/cont1-2a.jpg);
-}
-.people .bg1-3 {
-  background-image: url(../images/people/cont1-3a.jpg);
-}
-.people .bg2-1 {
-  background-image: url(../images/people/cont2-1a.jpg);
-}
-.people .bg2-2 {
-  background-image: url(../images/people/cont2-2a.jpg);
-}
-.people .bg2-3 {
-  background-image: url(../images/people/cont2-3a.jpg);
-}
-
+@include make-bgi("people");
 /******************** video ********************/
-.video .bg1-1 {
-  background-image: url(../images/video/cont1-1a.jpg);
-}
-.video .bg1-2 {
-  background-image: url(../images/video/cont1-2a.jpg);
-}
-.video .bg1-3 {
-  background-image: url(../images/video/cont1-3a.jpg);
-}
-.video .bg2-1 {
-  background-image: url(../images/video/cont2-1a.jpg);
-}
-.video .bg2-2 {
-  background-image: url(../images/video/cont2-2a.jpg);
-}
-.video .bg2-3 {
-  background-image: url(../images/video/cont2-3a.jpg);
-}
-
+@include make-bgi("video");
 /******************** runway ********************/
-.runway .bg1-1 {
-  background-image: url(../images/runway/cont1-1a.jpg);
-}
-.runway .bg1-2 {
-  background-image: url(../images/runway/cont1-2a.jpg);
-}
-.runway .bg1-3 {
-  background-image: url(../images/runway/cont1-3a.jpg);
-}
-.runway .bg2-1 {
-  background-image: url(../images/runway/cont2-1a.jpg);
-}
-.runway .bg2-2 {
-  background-image: url(../images/runway/cont2-2a.jpg);
-}
-.runway .bg2-3 {
-  background-image: url(../images/runway/cont2-3a.jpg);
-}
-
+@include make-bgi("runway"); 
 /******************** shopping ********************/
-.shopping .bg1-1 {
-  background-image: url(../images/shopping/cont1-1a.jpg);
-}
-.shopping .bg1-2 {
-  background-image: url(../images/shopping/cont1-2a.jpg);
-}
-.shopping .bg1-3 {
-  background-image: url(../images/shopping/cont1-3a.jpg);
-}
-.shopping .bg2-1 {
-  background-image: url(../images/shopping/cont2-1a.jpg);
-}
-.shopping .bg2-2 {
-  background-image: url(../images/shopping/cont2-2a.jpg);
-}
-.shopping .bg2-3 {
-  background-image: url(../images/shopping/cont2-3a.jpg);
-}
-
-/******************** shopping ********************/
-.shopping .bg1-1 {
-  background-image: url(../images/shopping/cont1-1a.jpg);
-}
-.shopping .bg1-2 {
-  background-image: url(../images/shopping/cont1-2a.jpg);
-}
-.shopping .bg1-3 {
-  background-image: url(../images/shopping/cont1-3a.jpg);
-}
-.shopping .bg2-1 {
-  background-image: url(../images/shopping/cont2-1a.jpg);
-}
-.shopping .bg2-2 {
-  background-image: url(../images/shopping/cont2-2a.jpg);
-}
-.shopping .bg2-3 {
-  background-image: url(../images/shopping/cont2-3a.jpg);
-}
-
+@include make-bgi("shopping");
 /******************** time-gem ********************/
-.time-gem .bg1-1 {
-  background-image: url(../images/time-gem/cont1-1a.jpg);
-}
-.time-gem .bg1-2 {
-  background-image: url(../images/time-gem/cont1-2a.jpg);
-}
-.time-gem .bg1-3 {
-  background-image: url(../images/time-gem/cont1-3a.jpg);
-}
-.time-gem .bg2-1 {
-  background-image: url(../images/time-gem/cont2-1a.jpg);
-}
-.time-gem .bg2-2 {
-  background-image: url(../images/time-gem/cont2-2a.jpg);
-}
-.time-gem .bg2-3 {
-  background-image: url(../images/time-gem/cont2-3a.jpg);
-}
+@include make-bgi("time-gem");
+

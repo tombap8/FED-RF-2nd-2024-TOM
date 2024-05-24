@@ -681,31 +681,6 @@ font-family: 'Roboto Condensed', sans-serif;
   background-image: url(../images/shopping/cont2-3a.jpg);
 }
 
-/******************** shopping ********************/
-.shopping .bg1-1 {
-  background-image: url(../images/shopping/cont1-1a.jpg);
-}
-
-.shopping .bg1-2 {
-  background-image: url(../images/shopping/cont1-2a.jpg);
-}
-
-.shopping .bg1-3 {
-  background-image: url(../images/shopping/cont1-3a.jpg);
-}
-
-.shopping .bg2-1 {
-  background-image: url(../images/shopping/cont2-1a.jpg);
-}
-
-.shopping .bg2-2 {
-  background-image: url(../images/shopping/cont2-2a.jpg);
-}
-
-.shopping .bg2-3 {
-  background-image: url(../images/shopping/cont2-3a.jpg);
-}
-
 /******************** time-gem ********************/
 .time-gem .bg1-1 {
   background-image: url(../images/time-gem/cont1-1a.jpg);

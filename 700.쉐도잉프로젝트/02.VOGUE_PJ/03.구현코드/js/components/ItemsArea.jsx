@@ -4,7 +4,7 @@ export default function ItemsArea() {
   // 코드 리턴구역 /////
   return (
     <div id="main-area">
-      <main className="main-area ibx">
+      <main className="main-area ibx fashion">
         {/* <!-- 2-1. 카테고리 페이지 상단영역 --> */}
         <header className="cat-top-area">
           {/* <!-- 2-1-1. 서브타이틀 --> */}
