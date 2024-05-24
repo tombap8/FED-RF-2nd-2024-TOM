@@ -1,6 +1,13 @@
 // 아이템 페이지영역 컴포넌트 ///////
 
-export default function ItemsArea() {
+// 아이템 카테고리 데이터 불러오기
+import catData from "../data/category";
+
+export default function ItemsArea({catName}) {
+
+  console.log(catData[catName]);
+
+
   // 코드 리턴구역 /////
   return (
     <div id="main-area">
