@@ -256,6 +256,13 @@ mFn.qs("#sbtn").onclick=()=>{
     // 5. 화면출력 함수 호출하기
     bindData();
 
+    // 6. 기존 입력데이터 지워주기
+    mFn.qs("#tit").value = "";
+    mFn.qs("#cont").value = "";
+
+    // 7. 수정선택박스 업데이트하기
+    updateItemList();
+
 }; /////// click 함수 ///////////
 
 // CRUD 크루드!!!
@@ -268,13 +275,14 @@ updateItemList();
 
 // 수정할 항목 업데이트 함수 /////
 function updateItemList(){
-    // 대상: 수정선택박스 - #sel
+    // 1. 대상선정 : 수정선택박스 - #sel
     const selBox = mFn.qs("#sel");
 
-    // 데이터의 idx를 순회하며 option만들기
+    // 2. 로컬쓰 데이터 읽어와서 배열로 변환
     const localData = 
     JSON.parse(localStorage.getItem("minfo"));
-
+    
+    // 2. 데이터의 idx를 순회하며 option만들기
     selBox.innerHTML = 
     localData.map(
         v=>`
