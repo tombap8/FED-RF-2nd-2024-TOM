@@ -278,34 +278,40 @@ const selBox = mFn.qs("#sel");
 updateItemList();
 
 // ♣ 수정선택박스 선택변경시 이벤트 설정하기
-mFn.addEvt(selBox,"change",(e)=>{
-    // 1. 옵션값 읽어오기
-    let optVal = e.target.value;
-    console.log("선택값:",optVal);
+mFn.addEvt(selBox, "change", (e) => {
+  // 1. 옵션값 읽어오기
+  let optVal = e.target.value;
+  console.log("선택값:", optVal);
 
-    // 2. 선택항목이 아닌 경우 걸러내기
-    if(optVal == "opt"){
-        alert("수정할 항목을 선택하세요!");
-        return; // 여기서나감!
-    } /// if /// 
+  // 2. 선택항목이 아닌 경우 걸러내기
+  if (optVal == "opt") {
+    alert("수정할 항목을 선택하세요!");
+    // 입력창 초기화
+    mFn.qs("#tit2").value = "";
+    mFn.qs("#cont2").value = "";
+    return; // 여기서나감!
+  } /// if ///
 
-    // 3. 로컬쓰 데이터 읽어와서 배열로 변환
-    const localData = 
-    JSON.parse(localStorage.getItem("minfo"));
+  // 3. 로컬쓰 데이터 읽어와서 배열로 변환
+  const localData = JSON.parse(localStorage.getItem("minfo"));
 
-    console.log(localData);
+  console.log(localData);
 
-    // 4. 배열데이터에서 읽어온 옵션값 idx와 비교하여
-    // 데이터 선택하기 
-    // -> 변수 = 배열.find(v=>{if(조건){return true}})
-    let selRec = localData.find(v=>{
-        if(v.idx == optVal) return true;
-        // 선택idx와 순회하는 배열idx와 일치할 경우
-        // 이것을 저장하는 시그널은 return true다!
-    }); //// find ////
+  // 4. 배열데이터에서 읽어온 옵션값 idx와 비교하여
+  // 데이터 선택하기
+  // -> 변수 = 배열.find(v=>{if(조건){return true}})
+  let selRec = localData.find((v) => {
+    console.log(v.idx);
+    if (v.idx == optVal) return true;
+    // 선택idx와 순회하는 배열idx와 일치할 경우
+    // 이것을 저장하는 시그널은 return true다!
+  }); //// find ////
 
-    console.log("선택data:",selRec);
+  console.log("선택data:", selRec);
 
+  // 5. 선택 데이터로 수정창에 기존데이터 넣기
+  mFn.qs("#tit2").value = selRec.tit;
+  mFn.qs("#cont2").value = selRec.cont;
 }); ///////////// change ////////////
 
 //////////////////////////////////
