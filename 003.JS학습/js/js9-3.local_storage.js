@@ -395,3 +395,74 @@ function updateItemList() {
       )
       .join("");
 } //////////// updateItemList 함수 ///////////
+
+//******************************************** */
+///////////////////////////////////////////////
+// [ 2. 세션 스토리지 연습 ] ////////////////////
+// 1. 버튼 기능 이벤트 대상 : .session-box button
+const btnSession = mFn.qsa(".session-box button");
+console.log("대상:", btnSession);
+
+// 2. 버튼에 이벤트 설정하기
+btnSession.forEach((ele) => mFn.addEvt(ele, "click", sessionsFn));
+
+// 3. 세션쓰 처리 함수 만들기 ///////
+function sessionsFn() {
+  // 1. 버튼 텍스트 읽기
+  let btxt = this.innerText;
+  console.log("세션쓰~!", btxt);
+
+  // 2. 버튼별 기능 분기하기 //////
+  if (btxt == "처음") {
+    // (1) 세션 스토리지 셋팅하기
+    // -> sessionStorage.setItem(키,값)
+    sessionStorage.setItem("actor-name", "정우성");
+    sessionStorage.setItem("actor-role", "김정도역");
+    sessionStorage.setItem(
+      "actor-cat",
+      "국내팀 안기부팀장, 박평호랑 사이나쁨"
+    );
+  } /// if ////
+  else if (btxt == "보여줘") {
+    // 배우이름 출력
+    mFn.qs(".session .nm").innerText = 
+    sessionStorage.getItem("actor-name");
+    // 역할이름 출력
+    mFn.qs(".session .role").innerText = 
+    sessionStorage.getItem("actor-role");
+    // 캐릭터소개 출력
+    mFn.qs(".session .cat").innerText = 
+    sessionStorage.getItem("actor-cat");
+  } /// else if ////
+  else if (btxt == "전체삭제") {
+    // 로컬스토리지 전체 삭제
+    // 해당 url 스토리지만 대상으로 모두 지움
+    sessionStorage.clear();
+
+    // 개별삭제는 removeItem(키)
+    // localStorage.removeItem("actor-name");
+  } //// else if ////
+  else if (btxt == "처리") {
+    // 배열/객체 만들기
+    // 1. 로컬쓰에 "minfo"키가 없으면 새로만들기
+    // 만약 키가 없으면 null값을 리턴함
+    // 이것은 if문에서 false처리됨!
+    // false일때 처리해야하므로 NOT(!)연산자사용
+    // 또는 빈 배열값일 경우도 생성함수호출 처리
+    if (
+      !localStorage.getItem("minfo") ||
+      localStorage.getItem("minfo") == "[]"
+    ) {
+      // 최초 객체데이터 만들기 함수 호출
+      makeObj();
+    } /// if ///
+    console.log(localStorage.getItem("minfo"));
+
+    // 2. 화면에 출력하기 : 데이터 바인딩하기
+    bindData();
+  } //// else if ////
+} /////////// localsFn //////////
+
+
+
+
