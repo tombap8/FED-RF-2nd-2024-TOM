@@ -283,6 +283,29 @@ mFn.addEvt(selBox,"change",(e)=>{
     let optVal = e.target.value;
     console.log("선택값:",optVal);
 
+    // 2. 선택항목이 아닌 경우 걸러내기
+    if(optVal == "opt"){
+        alert("수정할 항목을 선택하세요!");
+        return; // 여기서나감!
+    } /// if /// 
+
+    // 3. 로컬쓰 데이터 읽어와서 배열로 변환
+    const localData = 
+    JSON.parse(localStorage.getItem("minfo"));
+
+    console.log(localData);
+
+    // 4. 배열데이터에서 읽어온 옵션값 idx와 비교하여
+    // 데이터 선택하기 
+    // -> 변수 = 배열.find(v=>{if(조건){return true}})
+    let selRec = localData.find(v=>{
+        if(v.idx == optVal) return true;
+        // 선택idx와 순회하는 배열idx와 일치할 경우
+        // 이것을 저장하는 시그널은 return true다!
+    }); //// find ////
+
+    console.log("선택data:",selRec);
+
 }); ///////////// change ////////////
 
 //////////////////////////////////
