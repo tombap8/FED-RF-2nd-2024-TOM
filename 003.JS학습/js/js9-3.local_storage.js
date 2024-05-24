@@ -314,6 +314,46 @@ mFn.addEvt(selBox, "change", (e) => {
   mFn.qs("#cont2").value = selRec.cont;
 }); ///////////// change ////////////
 
+// ♣ 수정버튼 클릭시 이벤트 설정하기
+mFn.qs("#mobtn").onclick = () => {
+  // 1. 선택박스 선택값 읽어오기
+  let optVal = selBox.value;
+  console.log("수정해라~!", optVal);
+
+  // 2. 선택항목이 아닌 경우 걸러내기
+  if (optVal == "opt") {
+    alert("수정할 항목을 선택하세요!");
+    // 입력창 초기화
+    mFn.qs("#tit2").value = "";
+    mFn.qs("#cont2").value = "";
+    return; // 여기서나감!
+  } /// if ///
+
+  // 3. 로컬쓰 데이터 읽어와서 배열로 변환
+  const localData = JSON.parse(localStorage.getItem("minfo"));
+
+  console.log(localData);
+
+  // 4. 배열데이터에서 읽어온 옵션값 idx와 비교하여
+  // 데이터 업데이트 하기
+  // -> 배열.find(v=>{if(조건){변경코드;return true}})
+  localData.find((v) => {
+    console.log(v.idx);
+    if (v.idx == optVal){ 
+        // 해당항목값 업데이트 하기
+        v.tit = mFn.qs("#tit2").value;
+        v.cont = mFn.qs("#cont2").value;
+        // 변수에 find()할당시 저장하거나
+        // 여기서 순회를 끝낸다는 의미임!
+        return true;
+    }
+  }); //// find ////
+
+  console.log("변경후 배열:",localData);
+
+
+}; //////////// click //////////////
+
 //////////////////////////////////
 // ♣ 수정할 항목 업데이트 함수 /////
 //////////////////////////////////
