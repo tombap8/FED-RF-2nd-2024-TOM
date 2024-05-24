@@ -339,19 +339,30 @@ mFn.qs("#mobtn").onclick = () => {
   // -> 배열.find(v=>{if(조건){변경코드;return true}})
   localData.find((v) => {
     console.log(v.idx);
-    if (v.idx == optVal){ 
-        // 해당항목값 업데이트 하기
-        v.tit = mFn.qs("#tit2").value;
-        v.cont = mFn.qs("#cont2").value;
-        // 변수에 find()할당시 저장하거나
-        // 여기서 순회를 끝낸다는 의미임!
-        return true;
+    if (v.idx == optVal) {
+      // 해당항목값 업데이트 하기
+      v.tit = mFn.qs("#tit2").value;
+      v.cont = mFn.qs("#cont2").value;
+      // 변수에 find()할당시 저장하거나
+      // 여기서 순회를 끝낸다는 의미임!
+      return true;
     }
   }); //// find ////
 
-  console.log("변경후 배열:",localData);
+  console.log("변경후 배열:", localData);
 
+  // 5. 변경된 배열 로컬쓰에 저장하기!
+  localStorage.setItem("minfo", JSON.stringify(localData));
 
+  // 6. 데이터 바인딩 함수호출
+  bindData();
+
+  // 7. 선택박스 초기화
+  selBox.value = "opt";
+
+  // 8. 입력창 초기화
+  mFn.qs("#tit2").value = "";
+  mFn.qs("#cont2").value = "";
 }; //////////// click //////////////
 
 //////////////////////////////////
