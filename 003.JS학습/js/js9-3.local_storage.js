@@ -315,7 +315,8 @@ mFn.addEvt(selBox, "change", (e) => {
 }); ///////////// change ////////////
 
 // ♣ 수정버튼 클릭시 이벤트 설정하기
-mFn.qs("#mobtn").onclick = () => {
+mFn.qs("#mobtn").onclick = () => {    
+
   // 1. 선택박스 선택값 읽어오기
   let optVal = selBox.value;
   console.log("수정해라~!", optVal);
@@ -329,12 +330,20 @@ mFn.qs("#mobtn").onclick = () => {
     return; // 여기서나감!
   } /// if ///
 
-  // 3. 로컬쓰 데이터 읽어와서 배열로 변환
+  // 3. 입력값이 비었으면 돌려보내기!
+  // trim() - 앞뒤공백 제거 메서드
+  if (mFn.qs("#tit2").value.trim() == "" || 
+  mFn.qs("#cont2").value.trim() == "") {
+    alert("제목과 내용입력은 필수입니다!");
+    return;
+  } ////// if //////
+
+  // 4. 로컬쓰 데이터 읽어와서 배열로 변환
   const localData = JSON.parse(localStorage.getItem("minfo"));
 
   console.log(localData);
 
-  // 4. 배열데이터에서 읽어온 옵션값 idx와 비교하여
+  // 5. 배열데이터에서 읽어온 옵션값 idx와 비교하여
   // 데이터 업데이트 하기
   // -> 배열.find(v=>{if(조건){변경코드;return true}})
   localData.find((v) => {
@@ -351,16 +360,16 @@ mFn.qs("#mobtn").onclick = () => {
 
   console.log("변경후 배열:", localData);
 
-  // 5. 변경된 배열 로컬쓰에 저장하기!
+  // 6. 변경된 배열 로컬쓰에 저장하기!
   localStorage.setItem("minfo", JSON.stringify(localData));
 
-  // 6. 데이터 바인딩 함수호출
+  // 7. 데이터 바인딩 함수호출
   bindData();
 
-  // 7. 선택박스 초기화
+  // 8. 선택박스 초기화
   selBox.value = "opt";
 
-  // 8. 입력창 초기화
+  // 9. 입력창 초기화
   mFn.qs("#tit2").value = "";
   mFn.qs("#cont2").value = "";
 }; //////////// click //////////////
