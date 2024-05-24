@@ -182,26 +182,31 @@ function bindData() {
       // 1.기본이동막기
       e.preventDefault();
 
-      // 2.지울순번속성(data-idx)읽어오기
+      // 2. 지울지 여부 확인하기(confirm대화창 사용)
+      if(!confirm("정말정말정말정말로 지우시게요?")) return;
+      // confirm(메시지) -> 확인(true)/취소(false)
+      // confirm() 앞에 Not연산자를 써서 false 일때 리턴한다!
+
+      // 3.지울순번속성(data-idx)읽어오기
       let idx = ele.getAttribute("data-idx");
 
-      // 3. 로컬쓰 읽어와서 파싱하기
+      // 4. 로컬쓰 읽어와서 파싱하기
       let localData = JSON.parse(localStorage.getItem("minfo"));
 
       console.log("지울순번:", idx, localData);
 
-      // 4. 메모리에 있는 배열값 지우기
+      // 5. 메모리에 있는 배열값 지우기
       // 배열.splice(순번,개수)
       // 1개삭제이므로 splice(순번,1)
       localData.splice(idx, 1);
 
-      // 5. 배열값 로컬쓰에 반영하기
+      // 6. 배열값 로컬쓰에 반영하기
       localStorage.setItem("minfo", JSON.stringify(localData));
 
-      // 6. 화면출력함수호출
+      // 7. 화면출력함수호출
       bindData();
 
-      // 7. 수정선택박스 업데이트하기
+      // 8. 수정선택박스 업데이트하기
       updateItemList();
     }; ///// click /////
   }); /////// forEach ////////
