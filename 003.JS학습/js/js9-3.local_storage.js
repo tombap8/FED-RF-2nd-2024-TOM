@@ -183,7 +183,7 @@ function bindData() {
       e.preventDefault();
 
       // 2. 지울지 여부 확인하기(confirm대화창 사용)
-      if(!confirm("정말정말정말정말로 지우시게요?")) return;
+      if (!confirm("정말정말정말정말로 지우시게요?")) return;
       // confirm(메시지) -> 확인(true)/취소(false)
       // confirm() 앞에 Not연산자를 써서 false 일때 리턴한다!
 
@@ -271,26 +271,38 @@ mFn.qs("#sbtn").onclick = () => {
 
 ///////// 수정기능 구현하기 //////////////
 
-// 수정항목 선택박스 업데이트함수 호출
+// ♣ 수정선택박스 - #sel
+const selBox = mFn.qs("#sel");
+
+// ♣ 수정항목 선택박스 업데이트함수 호출
 updateItemList();
 
-// 수정할 항목 업데이트 함수 /////
+// ♣ 수정선택박스 선택변경시 이벤트 설정하기
+mFn.addEvt(selBox,"change",(e)=>{
+    // 1. 옵션값 읽어오기
+    let optVal = e.target.value;
+    console.log("선택값:",optVal);
+
+}); ///////////// change ////////////
+
+//////////////////////////////////
+// ♣ 수정할 항목 업데이트 함수 /////
+//////////////////////////////////
 function updateItemList() {
-  // 1. 대상선정 : 수정선택박스 - #sel
-  const selBox = mFn.qs("#sel");
+  // 1. 대상선정 : 수정선택박스 - #sel -> selBox변수
 
   // 2. 로컬쓰 데이터 읽어와서 배열로 변환
   const localData = JSON.parse(localStorage.getItem("minfo"));
 
   // 2. 데이터의 idx를 순회하며 option만들기
-  selBox.innerHTML = 
-  `<option value="opt">수정항목선택</option>`+
-  localData
-    .map(
-      (v) => `
+  selBox.innerHTML =
+    `<option value="opt">수정항목선택</option>` +
+    localData
+      .map(
+        (v) => `
             <option value="${v.idx}">
                 ${v.idx}</option>
         `
-    )
-    .join("");
+      )
+      .join("");
 } //////////// updateItemList 함수 ///////////
