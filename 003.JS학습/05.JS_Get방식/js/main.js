@@ -1,5 +1,8 @@
 // JS 페이지간 데이터 전달하기 : 메인페이지 JS - main.js
 
+// 내함수 가져오기 ///
+import mFn from "./my_function.js";
+
 /********************************************************* 
 [ 웹 페이지간 데이터 전달방식 ]
 - 원래 html의 기본특성은 "비연결성"이다.
@@ -28,20 +31,21 @@ Post방식은 데이터 크기에 제한이 없다!)
 // 서브 샵페이지를 호출하기 위한 GNB링크 셋팅하기!
 // 호출시 Get02.html?키=값 형태로 호출함!
 // 1. 대상선정 : #gnb a
-
+const gnb = mFn.qsa("#gnb a");
 
 // 2. 이벤트 설정
-
+gnb.forEach(ele=>mFn.addEvt(ele,"click",goSub));
 
 // 3. 함수만들기
 function goSub(){
     // 1. 샵명 글자읽기
-    
+    let atxt = this.innerText;
+    console.log("서브로 고고씽~!",atxt);
 
     // 2. 서브 페이지로 이동하기
     // location.href = 페이지URL
     // 현재 브라우저창에서 URL이동함!
-    
+    location.href = "Get02.html?shop="+atxt;
 
 } ///////// goSub 함수 ////////////
 
