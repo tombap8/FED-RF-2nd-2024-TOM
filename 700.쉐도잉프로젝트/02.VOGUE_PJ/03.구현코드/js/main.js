@@ -13,9 +13,7 @@ import FooterArea from "./components/FooterArea";
 function Layout() {
   // 상태관리변수 설정구역 ////////
   // [1] 메뉴 변경 상태변수
-  const [menu, setMenu] = React.useState("people");
-
-
+  const [menu, setMenu] = React.useState("home");
 
   // 코드 리턴구역 ////////////
   return (

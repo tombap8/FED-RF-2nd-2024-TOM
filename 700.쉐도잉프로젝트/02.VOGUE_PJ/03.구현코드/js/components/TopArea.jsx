@@ -20,7 +20,7 @@ export default function TopArea({ changeMenu }) {
 
     console.log(v);
 
-    // 전달값 변경하기 : 소문자,특수문자 변경
+    // 전달값 변경하기 : 소문자 변경
     v = v.toLowerCase();
 
     // 부모 메뉴변경 상태메서드로 메뉴변경
