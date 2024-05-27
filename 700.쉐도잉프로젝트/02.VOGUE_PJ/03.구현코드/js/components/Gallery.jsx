@@ -12,16 +12,21 @@ export default function Gallery() {
               el: ".swiper-pagination",
               clickable: true,
             },
-            breakpoints: {
-              640: {
+
+            /* 가로 사이즈별 스와이퍼 설정변경 */
+            breakpoints: {                
+              // 가로 200px이상
+              200: {
                 slidesPerView: 1,
                 spaceBetween: 0,
               },
-              768: {
+              // 가로 700px이상
+              700: {
                 slidesPerView: 2,
                 spaceBetween: 10,
               },
-              1024: {
+              // 가로 1000px이상
+              1000: {
                 slidesPerView: 3,
                 spaceBetween: 20,
               },
