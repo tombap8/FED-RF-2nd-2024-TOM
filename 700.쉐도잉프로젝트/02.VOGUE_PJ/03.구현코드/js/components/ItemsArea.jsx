@@ -21,7 +21,7 @@ export default function ItemsArea({ catName }) {
           {/* 데이터적용2 : 제목넣기 */}
           <h2 className="cat-tit">{selData.제목}</h2>
           {/* <!-- 2-1-2. 서브메뉴(LNB:Local Navigation Bar) --> */}
-
+          {/* 데이터적용2 : 제목넣기 */}
           {
             // 메뉴가 "없음"이 아닐때만 배열돌아 출력함!
             selData.메뉴 != "없음" && (
@@ -39,26 +39,27 @@ export default function ItemsArea({ catName }) {
         </header>
         {/* <!-- 2-2. 카테고리 페이지 컨텐츠영역 --> */}
         <div className="cat-cont-area">
+          {/* 데이터적용4 : 컨텐츠 타이틀 넣기 */}
           <section className="pt2">
             <div className="cbx bgi bg1-1">
-              <h2></h2>
+              <h2>{selData.타이틀[0]}</h2>
             </div>
             <div className="cbx bgi bg1-2">
-              <h2></h2>
+              <h2>{selData.타이틀[1]}</h2>
             </div>
             <div className="cbx bgi bg1-3">
-              <h2></h2>
+              <h2>{selData.타이틀[2]}</h2>
             </div>
           </section>
           <section className="pt2">
             <div className="cbx bgi bg2-1">
-              <h2></h2>
+              <h2>{selData.타이틀[3]}</h2>
             </div>
             <div className="cbx bgi bg2-2">
-              <h2></h2>
+              <h2>{selData.타이틀[4]}</h2>
             </div>
             <div className="cbx bgi bg2-3">
-              <h2></h2>
+              <h2>{selData.타이틀[5]}</h2>
             </div>
           </section>
         </div>

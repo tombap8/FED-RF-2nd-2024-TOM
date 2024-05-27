@@ -71,12 +71,12 @@ const catData = {
         "메뉴": "없음",
         "경로": "runway",
         "타이틀": [
-            "<small>Ready To Wear 2021 F/W</small><br>Rick Owens",
-            "<small>Ready To Wear 2021 F/W</small><br>We11done",
-            "<small>Ready To Wear 2021 F/W</small><br>Comme des Garçons",
-            "<small>Ready To Wear 2021 F/W</small><br>Chloé",
-            "<small>Ready To Wear 2021 F/W</small><br>Balmain",
-            "<small>Ready To Wear 2021 F/W</small><br>Loewe"
+            ["Ready To Wear 2021 F/W","Rick Owens"],
+            ["Ready To Wear 2021 F/W","We11done"],
+            ["Ready To Wear 2021 F/W","Comme des Garçons"],
+            ["Ready To Wear 2021 F/W","Chloé"],
+            ["Ready To Wear 2021 F/W","Balmain"],
+            ["Ready To Wear 2021 F/W","Loewe"]
         ]
     },
     "shopping": {
