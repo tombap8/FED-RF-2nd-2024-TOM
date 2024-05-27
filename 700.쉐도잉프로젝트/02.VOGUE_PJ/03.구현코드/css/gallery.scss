@@ -1,0 +1,34 @@
+// 보그 JS 갤러리 페이지 SCSS 
+
+// 공통 부분파일 불러오기
+// 부분 사스파일도 언더바를 생략하여 부를 수 있다
+// 확장자가 scss/sass 가 기본이므로 생략함!
+@import "./common/reset";
+@import "./common/core";
+@import "./common/common";
+
+
+// 갤러리페이지용 CSS
+
+/* 컨텐츠 영역 속박스 */
+.main-area {
+    min-height: 1000px;
+    padding: 15px;
+}
+
+/* 2-1-1. 서브타이틀 */
+.stit {
+    font-family: pist;
+    font-weight: normal;
+    font-size: 50px;
+    text-align: center;
+    padding: 40px 0 20px;
+}
+
+/* 2-2. 서브 컨텐츠 박스 */
+.scont {
+    min-height: 600px;
+    /* 드래그선택 안되게하기 */
+    user-select: none;
+    -webkit-user-drag: none;
+}

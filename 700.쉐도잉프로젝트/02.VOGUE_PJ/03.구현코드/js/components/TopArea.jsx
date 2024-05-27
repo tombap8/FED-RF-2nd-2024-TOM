@@ -55,7 +55,8 @@ export default function TopArea({ changeMenu }) {
             <a href="#" className="fi fi-user-secret" title="회원가입">
               <span className="ir">회원가입</span>
             </a>
-            <a href="#" className="fi fi-camera" title="갤러리">
+            <a href="#" className="fi fi-camera" title="갤러리" 
+            onClick={()=>chgMenuFn("gallery")}>
               <span className="ir">갤러리</span>
             </a>
             <a href="#" className="fi cas" title="카카오스토리">

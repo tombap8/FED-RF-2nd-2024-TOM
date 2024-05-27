@@ -8,6 +8,7 @@ import MainArea from "./components/MainArea";
 import ItemsArea from "./components/ItemsArea";
 // 하단영역 불러오기
 import FooterArea from "./components/FooterArea";
+import Gallery from "./components/Gallery";
 
 // [1] 메인 페이지 전체 레이아웃 로딩 컴포넌트 ///
 function Layout() {
@@ -20,7 +21,14 @@ function Layout() {
     // menu 상태변수에 의존시킨다!
     // 메인 css 대상요소 : #main-css
     document.querySelector("#main-css").href=
-    menu=="home" ? "./css/main.css" : "./css/items.css";
+    menu=="home" 
+    ? "./css/main.css" 
+    : menu=="gallery" 
+    ? "./css/gallery.css" 
+    : "./css/items.css";
+    // menu값이 "home"인 경우 main.css를 로딩하고
+    // menu값이 "gallery"인 경우 gallery.css를 로딩하고
+    // 기타 메뉴인 경우 items.css를 로딩한다!
 
   },[menu]);
 
@@ -30,7 +38,13 @@ function Layout() {
       {/* 1. 상단영역 컴포넌트 */}
       <TopArea changeMenu={setMenu} />
       {/* 2. 메인영역 컴포넌트 */}
-      {menu=="home"?<MainArea />:<ItemsArea catName={menu} />}
+      {
+      menu=="home"
+      ?<MainArea />
+      :menu=="gallery"
+      ?<Gallery />
+      :<ItemsArea catName={menu} />
+      }
       {/* 3. 하단영역 컴포넌트 */}
       <FooterArea />
     </React.Fragment>
