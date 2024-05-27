@@ -1,0 +1,47 @@
+@charset "utf-8";
+/* JS 페이지간 데이터 전달하기 : 메인페이지 CSS - main.css */
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    padding: 0;
+    width: 800px;
+    height: 100px;
+    margin: 0 auto;
+    font: bold 28px/100px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+    color: blue;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+nav {
+    width: 800px;
+    height: 100px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: #333;
+}
+
+nav a:hover {
+    text-decoration: overline;
+}
+
+section {
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+}
+
+section img {
+    width: 49%;
+    height: 50%;
+}

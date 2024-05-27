@@ -1,0 +1,33 @@
+@charset "utf-8";
+/* JS 페이지간 데이터 전달하기 : 서브페이지 CSS - sub.css */
+
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+#home,
+#title {
+    padding: 0;
+    width: 800px;
+    height: 100px;
+    margin: 0 auto;
+    font: bold 28px/100px "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+    color: blue;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+#title {
+    color: #fff !important;
+    /*타이틀 글자색 흰색*/
+}
+
+#main {
+    width: 800px;
+    height: 500px;
+    margin: 0 auto;
+    background: url(../images/shop_red.jpg) no-repeat 0/100% 100%;
+}
