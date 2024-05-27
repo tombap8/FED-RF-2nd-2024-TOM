@@ -15,6 +15,15 @@ function Layout() {
   // [1] 메뉴 변경 상태변수
   const [menu, setMenu] = React.useState("home");
 
+  // 화면 랜더링 직전에 CSS로딩 변경하기 /////
+  React.useLayoutEffect(()=>{
+    // menu 상태변수에 의존시킨다!
+    // 메인 css 대상요소 : #main-css
+    document.querySelector("#main-css").href=
+    menu=="home" ? "./css/main.css" : "./css/items.css";
+
+  },[menu]);
+
   // 코드 리턴구역 ////////////
   return (
     <React.Fragment>
