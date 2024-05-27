@@ -15,7 +15,7 @@ function Layout() {
       {/* 1. 상단영역 컴포넌트 */}
       <TopArea />
       {/* 2. 아이템영역 컴포넌트 */}
-      <ItemsArea catName="runway" />
+      <ItemsArea catName="fashion" />
       {/* 3. 하단영역 컴포넌트 */}
       <FooterArea />
     </React.Fragment>

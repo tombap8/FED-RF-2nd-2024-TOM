@@ -13,7 +13,24 @@ export default function ItemsArea({ catName }) {
 
   // 태그 처리 구분 코드 생성함수
   const makeCode = (data) => {
-    console.log("배열인가?",Array.isArray(data));
+    // console.log("배열인가?",Array.isArray(data));
+    // 배열 데이터는 태그 구성이 다름!
+    // runway 카테고리만 다름
+    if(Array.isArray(data)){
+      return(
+        <h2>
+          <small>{data[0]}</small>
+          <br />
+          {data[1]}
+        </h2>
+      );
+    } ////// if //////
+    // 배열이 아닌경우 ///
+    else{
+      return(
+        <h2>{data}</h2>
+      );
+    } ///// else //////
 
   }; ///////// makeCode 함수 //////
 
