@@ -11,7 +11,11 @@ let pm = location.href;
 // 없으면 자르기전에 첫 페이지로 돌려보낸다!
 // indexOf('?') -> 물음표 문자열의 순번리턴
 // 찾는문자열이 없으면 -1리턴함 -> 이것으로 존재유무 판별함
-
+if(pm.indexOf("?") == -1) {
+    alert("올바른 접근이 아닙니다~!");
+    // 없으면 첫페이지로 돌아가라!
+    location.href = "Get01.html";
+} /////// if /////
 // console.log(pm.indexOf('?'));
 
 // ?(물음표) 로 잘라서 뒤엣것!
@@ -68,5 +72,6 @@ title.innerText = pm;
 // 2-2. 타이틀 배경색 넣기
 title.style.backgroundColor = sdata[pm].배경색;
 
-
-// 2-3. 메인 배경이미지 변경하기
+// 2-3. 메인 배경이미지 변경하기(경로주의!)
+main.style.backgroundImage = 
+`url(./images/${sdata[pm].이미지})`;
