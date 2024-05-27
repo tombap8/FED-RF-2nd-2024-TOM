@@ -10,6 +10,14 @@ export default function ItemsArea({ catName }) {
   const selData = catData[catName];
   console.log(selData);
 
+
+  // 태그 처리 구분 코드 생성함수
+  const makeCode = (data) => {
+    console.log("배열인가?",Array.isArray(data));
+
+  }; ///////// makeCode 함수 //////
+
+
   // 코드 리턴구역 /////
   return (
     <div id="main-area">
@@ -42,24 +50,24 @@ export default function ItemsArea({ catName }) {
           {/* 데이터적용4 : 컨텐츠 타이틀 넣기 */}
           <section className="pt2">
             <div className="cbx bgi bg1-1">
-              <h2>{selData.타이틀[0]}</h2>
+              {makeCode(selData.타이틀[0])}
             </div>
             <div className="cbx bgi bg1-2">
-              <h2>{selData.타이틀[1]}</h2>
+              {makeCode(selData.타이틀[1])}
             </div>
             <div className="cbx bgi bg1-3">
-              <h2>{selData.타이틀[2]}</h2>
+              {makeCode(selData.타이틀[2])}
             </div>
           </section>
           <section className="pt2">
             <div className="cbx bgi bg2-1">
-              <h2>{selData.타이틀[3]}</h2>
+              {makeCode(selData.타이틀[3])}
             </div>
             <div className="cbx bgi bg2-2">
-              <h2>{selData.타이틀[4]}</h2>
+              {makeCode(selData.타이틀[4])}
             </div>
             <div className="cbx bgi bg2-3">
-              <h2>{selData.타이틀[5]}</h2>
+              {makeCode(selData.타이틀[5])}
             </div>
           </section>
         </div>
