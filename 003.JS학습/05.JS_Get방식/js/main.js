@@ -45,7 +45,8 @@ function goSub(){
     // 2. 서브 페이지로 이동하기
     // location.href = 페이지URL
     // 현재 브라우저창에서 URL이동함!
-    location.href = "Get02.html?shop="+atxt;
+    location.href = 
+    "Get02.html?shop="+encodeURIComponent(atxt);
 
 } ///////// goSub 함수 ////////////
 
