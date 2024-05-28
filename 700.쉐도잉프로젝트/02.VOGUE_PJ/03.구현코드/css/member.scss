@@ -25,7 +25,7 @@
 .scont {
   /* 처음에 회원가입 박스안보임 
     -> 대신 동의박스가 보임 */
-  display: none;
+//   display: none;
   max-width: 700px;
   min-height: 275px;
   margin: 0 auto;
@@ -165,7 +165,7 @@ select:focus {
 
 /* 약관동의박스 */
 #conf {
-  /* display: none; */
+  display: none;
   max-width: 700px;
   min-height: 600px;
   border: 2px solid #ccc;
