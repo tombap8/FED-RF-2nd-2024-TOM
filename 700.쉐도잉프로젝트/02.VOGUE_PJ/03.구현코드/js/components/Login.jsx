@@ -25,7 +25,7 @@ export default function Login() {
           <form action="process.php" method="post" className="logF">
             {/* <!-- 아이디박스 --> */}
             <div className="minput">
-              <label for="mid">아이디</label>
+              <label htmlFor="mid">아이디</label>
               <input
                 type="text"
                 name="mid"
@@ -36,7 +36,7 @@ export default function Login() {
             </div>
             {/* <!-- 비밀번호박스 --> */}
             <div className="minput">
-              <label for="mpw">비밀번호</label>
+              <label htmlFor="mpw">비밀번호</label>
               <input
                 type="password"
                 name="mpw"
@@ -56,7 +56,7 @@ export default function Login() {
             <div className="addbx">
               <span>
                 <input type="checkbox" id="chkbx" name="chkbx" />
-                <label for="chkbx">아이디저장</label>
+                <label htmlFor="chkbx">아이디저장</label>
               </span>
               {/* <!-- 모바일에서 보일바 .bar1 --> */}
               <b className="bar bar1"> | </b>

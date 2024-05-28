@@ -53,7 +53,8 @@ export default function TopArea({ changeMenu }) {
             onClick={()=>chgMenuFn("login")}>
               <span className="ir">로그인</span>
             </a>
-            <a href="#" className="fi fi-user-secret" title="회원가입">
+            <a href="#" className="fi fi-user-secret" title="회원가입"
+            onClick={()=>chgMenuFn("member")}>
               <span className="ir">회원가입</span>
             </a>
             <a href="#" className="fi fi-camera" title="갤러리" 
