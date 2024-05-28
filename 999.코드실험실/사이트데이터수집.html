@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+        let my = [];
+      window.addEventListener("load", () => {
+        document.querySelectorAll("ul li")
+        .forEach
+        (ele=>{
+            my.push([
+                ele.querySelector("img").src,
+                ele.querySelector("p.category").innerText,
+                ele.querySelector("h3").innerText,
+                ele.querySelector("p.date").innerText,
+            ]);
+        })
+
+        console.log(my);
+      });
+    </script>
+  </head>
+  <body>
+    <ul>
+      <li slot="view_relate_content">
+        <a
+          href="https://www.vogue.co.kr/2024/04/30/%eb%b6%80%ec%b8%a0%ec%bb%b7-%eb%a6%ac%eb%b6%80%ed%8a%b8-%ec%9d%b4%eb%b2%88-%ec%8b%9c%ec%a6%8c-%eb%8d%b0%eb%8b%98-%ed%8a%b8%eb%a0%8c%eb%93%9c-%eb%b6%80%ec%b8%a0%ec%bb%b7-%ec%b2%ad%eb%b0%94%ec%a7%80/"
+        >
+          <div class="thum">
+            <img
+              decoding="async"
+              src="https://img.vogue.co.kr/vogue/2024/04/style_6630ab4f984ce-500x500.jpg?x=1196&amp;y=1123"
+              alt=""
+              class="lazyloaded ls-is-cached"
+              width="500"
+              height="500"
+              data-src="https://img.vogue.co.kr/vogue/2024/04/style_6630ab4f984ce-500x500.jpg?x=1196&amp;y=1123"
+            /><noscript
+              ><img
+                decoding="async"
+                src="https://img.vogue.co.kr/vogue/2024/04/style_6630ab4f984ce-500x500.jpg?x=1196&#038;y=1123"
+                alt=""
+                class="lazyload"
+                width="500"
+                height="500"
+                data-eio="l"
+            /></noscript>
+          </div>
+          <div class="content">
+            <p class="category">패션 아이템</p>
+            <h3>부츠컷 리부트! 이번 시즌 데님 트렌드 부츠컷 청바지 입는 법</h3>
+            <p class="date">
+              2024.04.30<span>by 황혜원, Alice Cary, Joy Montgomery</span>
+            </p>
+          </div>
+        </a>
+      </li>
+      <li slot="view_relate_content">
+        <a
+          href="https://www.vogue.co.kr/2024/03/13/%ec%9d%b4%eb%b2%88-%ec%9d%bc%ec%9a%94%ec%9d%bc%ec%97%90-%ec%9e%85%ea%b3%a0-%ec%8b%b6%ec%9d%80-%eb%8b%a4%ec%bd%94%ed%83%80-%ec%a1%b4%ec%8a%a8%ec%9d%98-%ed%9d%b0%ec%83%89-%ec%b2%ad%eb%b0%94%ec%a7%80/"
+        >
+          <div class="thum">
+            <img
+              decoding="async"
+              src="https://img.vogue.co.kr/vogue/2024/03/style_65f029d07cfbb-500x500.jpg?x=1106&amp;y=1073"
+              alt=""
+              class="lazyloaded ls-is-cached"
+              width="500"
+              height="500"
+              data-src="https://img.vogue.co.kr/vogue/2024/03/style_65f029d07cfbb-500x500.jpg?x=1106&amp;y=1073"
+            /><noscript
+              ><img
+                decoding="async"
+                src="https://img.vogue.co.kr/vogue/2024/03/style_65f029d07cfbb-500x500.jpg?x=1106&#038;y=1073"
+                alt=""
+                class="lazyload"
+                width="500"
+                height="500"
+                data-eio="l"
+            /></noscript>
+          </div>
+          <div class="content">
+            <p class="category">셀러브리티 스타일</p>
+            <h3>
+              이번 일요일에 입고 싶은 다코타 존슨의 흰색 청바지와 스니커즈 조합
+            </h3>
+            <p class="date">2024.03.13<span>by 황혜원</span></p>
+          </div>
+        </a>
+      </li>
+      <li slot="view_relate_content">
+        <a
+          href="https://www.vogue.co.kr/2024/03/25/%ec%b2%ad%eb%b0%94%ec%a7%80%ec%97%90-%ec%83%8c%eb%93%a4%eb%a1%9c-%ec%99%84%eb%b2%bd%ed%95%98%ea%b2%8c-%ec%b2%ad%ec%88%9c%ed%95%b4%ec%a7%84-%ec%95%a4-%ed%95%b4%ec%84%9c%ec%9b%a8%ec%9d%b4%ec%9d%98/"
+        >
+          <div class="thum">
+            <img
+              decoding="async"
+              src="https://img.vogue.co.kr/vogue/2024/03/style_66013041472df-500x500.jpg?x=1634&amp;y=1435"
+              alt=""
+              class="ls-is-cached lazyloaded"
+              width="500"
+              height="500"
+              data-src="https://img.vogue.co.kr/vogue/2024/03/style_66013041472df-500x500.jpg?x=1634&amp;y=1435"
+            /><noscript
+              ><img
+                decoding="async"
+                src="https://img.vogue.co.kr/vogue/2024/03/style_66013041472df-500x500.jpg?x=1634&#038;y=1435"
+                alt=""
+                class="lazyload"
+                width="500"
+                height="500"
+                data-eio="l"
+            /></noscript>
+          </div>
+          <div class="content">
+            <p class="category">셀러브리티 스타일</p>
+            <h3>청바지에 샌들로 완벽하게 청순해진 앤 해서웨이의 스프링 룩</h3>
+            <p class="date">2024.03.25<span>by 황혜원</span></p>
+          </div>
+        </a>
+      </li>
+      <li slot="view_relate_content">
+        <a
+          href="https://www.vogue.co.kr/2024/03/12/%ec%a7%80%ec%a0%a4-%eb%b2%88%ec%b2%9c%ec%9d%84-%eb%8d%94%ec%9a%b1-%ea%b8%b8%ea%b3%a0-%eb%8a%98%ec%94%ac%ed%95%98%ea%b2%8c-%eb%a7%8c%eb%93%a4%ec%96%b4%ec%a4%80-%ec%b2%ad%eb%b0%94%ec%a7%80/"
+        >
+          <div class="thum">
+            <img
+              decoding="async"
+              src="https://img.vogue.co.kr/vogue/2024/03/style_65efc366d5b53-500x500.jpg?x=1522&amp;y=1451"
+              alt=""
+              class="ls-is-cached lazyloaded"
+              width="500"
+              height="500"
+              data-src="https://img.vogue.co.kr/vogue/2024/03/style_65efc366d5b53-500x500.jpg?x=1522&amp;y=1451"
+            /><noscript
+              ><img
+                decoding="async"
+                src="https://img.vogue.co.kr/vogue/2024/03/style_65efc366d5b53-500x500.jpg?x=1522&#038;y=1451"
+                alt=""
+                class="lazyload"
+                width="500"
+                height="500"
+                data-eio="l"
+            /></noscript>
+          </div>
+          <div class="content">
+            <p class="category">Fashion</p>
+            <h3>지젤 번천을 더욱 길고 늘씬하게 만들어준 청바지</h3>
+            <p class="date">
+              2024.03.12<span>by 황혜원, Héloïse Salessy</span>
+            </p>
+          </div>
+        </a>
+      </li>
+      <li slot="view_relate_content">
+        <a
+          href="https://www.vogue.co.kr/2023/09/07/%ea%b0%80%ec%9d%84%ec%97%90%eb%8f%84-%ec%b2%ad%ec%88%9c%ed%95%a0-%ec%88%98-%ec%9e%88%ec%96%b4%ec%9a%94/"
+        >
+          <div class="thum">
+            <img
+              decoding="async"
+              src="https://img.vogue.co.kr/vogue/2023/09/style_64f82c51bd9e7-500x500.jpg?x=3680&amp;y=4950"
+              alt=""
+              class="lazyloaded ls-is-cached"
+              width="500"
+              height="500"
+              data-src="https://img.vogue.co.kr/vogue/2023/09/style_64f82c51bd9e7-500x500.jpg?x=3680&amp;y=4950"
+            /><noscript
+              ><img
+                decoding="async"
+                src="https://img.vogue.co.kr/vogue/2023/09/style_64f82c51bd9e7-500x500.jpg?x=3680&#038;y=4950"
+                alt=""
+                class="lazyload"
+                width="500"
+                height="500"
+                data-eio="l"
+            /></noscript>
+          </div>
+          <div class="content">
+            <p class="category">셀러브리티 스타일</p>
+            <h3>가을에도 청순할 수 있어요</h3>
+            <p class="date">2023.09.07<span>by 황혜원</span></p>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </body>
+</html>
