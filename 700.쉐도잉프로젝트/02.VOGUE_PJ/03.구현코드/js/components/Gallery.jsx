@@ -64,8 +64,8 @@ export default function Gallery() {
       // 변수에 담은 스와이퍼 인스턴스의
       // 구체적인 API 메서드를 호출하여
       // 기능을 수행한다!
-      // swiper.slideNext();
-      swiper.slidePrev();
+      swiper.slideNext();
+      // swiper.slidePrev();
       // 스와이퍼 API는 여기서 참조
       // https://swiperjs.com/swiper-api
     });
