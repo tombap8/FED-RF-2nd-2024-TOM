@@ -49,7 +49,8 @@ export default function TopArea({ changeMenu }) {
               <span className="ir">유튜브</span>
             </a>
 
-            <a href="#" className="fi fi-laptop" title="로그인">
+            <a href="#" className="fi fi-laptop" title="로그인"
+            onClick={()=>chgMenuFn("login")}>
               <span className="ir">로그인</span>
             </a>
             <a href="#" className="fi fi-user-secret" title="회원가입">
