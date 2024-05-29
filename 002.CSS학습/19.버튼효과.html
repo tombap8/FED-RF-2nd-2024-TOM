@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>버튼 효과 CSS</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            text-align: center;
+            background-image:
+                linear-gradient(-45deg, rgb(192, 125, 0), rgb(140, 174, 185), rgb(180, 81, 70));
+            background-attachment: fixed;
+        }
+
+        /* 버튼공통 */
+        .btn {
+            position: relative;
+            /* 부모자격 */
+            display: inline-block;
+            width: 120px;
+            height: 50px;
+            padding: 2px;
+            box-sizing: border-box;
+            cursor: pointer;
+
+            background-color: lightgreen;
+            text-align: center;
+            font: bold 12px/50px Verdana, "맑은 고딕";
+        }
+
+        /* 버튼 공통 속박스 */
+        .btn>span {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+
+        /* 보더 애니메이션 - 가상요소로 테두리 애니구현하기 */
+        /* 위쪽보더 가상요소 */
+        .bt1::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background-color: blue;
+        }
+
+        /* 오른쪽보더 가상요소 */
+        .bt1::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 4px;
+            height: 0%;
+            background-color: blue;
+        }
+
+        /* 아래쪽보더 가상요소 */
+        .bt1>span::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0%;
+            height: 4px;
+            background-color: blue;
+        }
+
+        /* 왼쪽보더 가상요소 */
+        .bt1>span::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 4px;
+            height: 0%;
+            background-color: blue;
+        }
+
+        /* .bt1에 마우스 오버시 보더 트랜지션! */
+        /* 1.위쪽 */
+        .bt1:hover::before {
+            width: 100%;
+            transition: width .1s linear;
+        }
+
+        /* 나갈때 : 4번째 나감(0.3초 기다림) */
+        .bt1::before {
+            transition: width .1s linear .3s;
+        }
+
+        /* 2.오른쪽 : 0.1초 기다림! */
+        .bt1:hover::after {
+            height: 100%;
+            transition: height .1s linear .1s;
+        }
+
+        /* 나갈때 : 3번째나감(0.2초 기다림) */
+        .bt1::after {
+            transition: height .1s linear .2s;
+        }
+
+        /* 3.아랫쪽 : 0.2초 기다림 */
+        .bt1:hover>span::before {
+            width: 100%;
+            transition: width .1s linear .2s;
+        }
+
+        /* 나갈때 : 두번째 나감(0.1초 기다림) */
+        .bt1>span::before {
+            transition: width .1s linear .1s;
+        }
+
+        /* 4.왼쪽 : 0.3초 기다림 */
+        .bt1:hover>span::after {
+            height: 100%;
+            transition: height .1s linear .3s;
+        }
+
+        /* 나갈때 : 먼저나감(기다림없음!) */
+        .bt1>span::after {
+            transition: height .1s linear;
+        }
+
+        /* 파동애니메이션 버튼 */
+        .bt2>span {
+            border: 10px solid lightgreen;
+            box-sizing: border-box;
+        }
+
+        /* 마우스 오버시에 scale을 키우면서 투명하게 변경 애니메이션 */
+        .bt2:hover>span {
+            transform: scaleX(1.2) scaleY(1.4);
+            opacity: 0;
+            transition: all .5s ease-out;
+        }
+
+        /* 떠오르며 그림자 생기는 버튼효과 */
+        .bt3{
+            background-color: transparent;
+        }
+        .bt3 span{
+            background-color: lightgreen;
+            transition: all .3s ease-out;
+        }
+        .bt3:hover span {
+            transform: translateY(-20px);
+        }
+        /* 가상요소로 버튼 그림자 만들기 */
+        .bt3::before{
+            content: '';
+            display: block;
+            position: absolute;
+            /* 부모는? .bt3 */
+            width: 100%;
+            height: 30%;
+            bottom: -17%;
+            background-image: 
+            radial-gradient(#666 40%, transparent 70%);
+            /* 원형 그라데이션은 중앙에서 출발함 
+            transparent는 투명임*/
+            opacity: 0;
+            transform: scale(.9);
+            transition: .3s ease-out;
+
+            /* outline: 1px solid red; */
+        }
+        /* 버튼에 마우스 오버시 그림자 보이기 */
+        .bt3:hover::before{
+            opacity: .9;
+            transform: scale(1.1);
+        }
+
+        /* 펼쳐지는 배경효과 애니메이션 */
+        .bt4 span{
+            background-color: darkviolet;
+            transform: scaleX(0);
+            transition: .5s;
+        }
+        /* 마우스 오버시 펼쳐짐 */
+        .bt4:hover span{
+            transform: scaleX(1);
+        }
+        /* 글자가 위로 오도록 포지션주기 */
+        .bt4 b{
+            position: relative;
+            transition: .5s;
+        }
+        /* 마우스 오버시 글자색 */
+        .bt4:hover b{
+            color: #fff;
+        }
+
+        /* 펼쳐지는 배경효과 애니메이션2 */
+        .bt5 {
+            border-radius: 25px;
+            overflow: hidden;
+        }
+        .bt5 span{
+            background-color: darkviolet;
+            width: 0;
+            transition: .5s;
+        }
+        /* 마우스 오버시 펼쳐짐 */
+        .bt5:hover span{
+            width: 100%;
+        }
+        /* 글자가 위로 오도록 포지션주기 */
+        .bt5 b{
+            position: relative;
+            transition: .5s;
+        }
+        /* 마우스 오버시 글자색 */
+        .bt5:hover b{
+            color: #fff;
+        }
+
+
+    </style>
+</head>
+
+<body>
+    <h1>버튼 효과 CSS</h1>
+
+    <h2>Border Transition</h2>
+
+    <div class="btn bt1">
+        <span>돌아갑니다!</span>
+    </div>
+
+    <br><br>
+
+    <div class="btn bt2">
+        파동갑니다!
+        <span></span>
+    </div>
+
+    <h2>Shadow Transition</h2>
+
+    <div class="btn bt3">
+        <span>떠오릅니다!</span>
+    </div>
+
+    <br><br>
+
+    <h2>BG Transition</h2>
+
+    <div class="btn bt4">
+        <span></span>
+        <b>날개폅니다!</b>
+    </div>
+
+    <br><br>
+    
+    <div class="btn bt5">
+        <span></span>
+        <b>날개폅니다!</b>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+</body>
+
+</html>
