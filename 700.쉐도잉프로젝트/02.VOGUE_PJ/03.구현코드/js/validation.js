@@ -33,12 +33,15 @@ form.logF input[type=password]`).blur(function () {
 
     // trim()은 중간 공백 제거는 안하므로
     // 모든공백을 제거하는 함수를 만들어쓴다!
-    const groSpace = x => x.replace(/\s/g,"");
+    const groSpace = (x) => x.replace(/\s/g, "");
+    // get rid of space 즉, 공백제거함수
     // 정규식은 슬래쉬(/) 사이에 쓰며
     // \s는 스페이스기호이고 g는 전역(global) 플래그다!
     // 플래그(flag)는 기술용어로 처리표시기호를 뜻함
 
-    cv = groSpace(cv);
+    // 이름(#mnm)일 경우 중간공백은 있어야하므로
+    // 삼항연산자로 trim()을 함께 사용한다!
+    cv = cid == "mnm" ? cv.trim() : groSpace(cv);
 
     // 공백제거후 입력창에 반영시켜준다!
     $(this).val(cv);
