@@ -1,0 +1,336 @@
+@charset "utf-8";
+
+/* 스프라이츠 애니 CSS - main.css */
+
+/* 웹폰트 CDN */
+@import url(https://fonts.googleapis.com/css?family=Gloria+Hallelujah|ZCOOL+KuaiLe&display=swap);
+/*
+    웹폰트체
+    font-family: 'Gloria Hallelujah', cursive;
+    font-family: 'ZCOOL KuaiLe', cursive;
+*/
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #8cc63e;
+}
+
+/* 공통class */
+.ir {
+    /* IR(배경설명숨기기) */
+    display: block;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+/* 1. 타이틀 */
+.mtit{
+    position: absolute;
+    top: 2vh;
+    left: 50%;
+    transform: translateX(-50%);
+    color: #fff;
+    font-family: 'Gloria Hallelujah', cursive;
+    font-size: 52px;
+    z-index: 1;
+}
+
+/* 2.메뉴 */
+.gnb{
+    position: absolute;
+    top: 15vh;
+    left: 2vw;
+    z-index: 1;
+}
+.gnb ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.gnb a{
+    color: #fff;
+    text-decoration: none;
+    font-family: 'ZCOOL KuaiLe', cursive;
+    font-size: 32px;
+    line-height: 3;
+}
+/* 마우스 오버시 */
+.gnb a:hover{
+    color: #f00;
+    text-decoration: line-through;
+}
+
+/* 3. TV셋 */
+.tvset{
+    position: relative;
+    /* 부모자격 - .screen */
+    width: 1280px;
+    height: 720px;
+    background: url(../images/tvset.png) no-repeat;
+    /* 배경위치조정 */
+    background-position: -36px 0;
+    /* 마영오! */
+    margin: 0 auto;
+}
+
+/* 스크린 */
+.screen{
+    position: absolute;
+    top: 212px;
+    left: 414px;
+    width: 453px;
+    height: 228px;
+
+    /* 배경넣기 */
+    background: url(../images/street.jpg) repeat-x;
+    background-size: auto 100%;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: street 4s linear infinite;
+}
+
+/* 스크린배경이동 키프레임 */
+@keyframes street {
+    to{
+        background-position: -388px 0;
+    }
+}
+/* 키프레임 */
+
+/* 3-1.걷는존 */
+.spani1{
+    position: relative;
+    width: 100px;
+    height: 176px;
+    margin: 0 auto;
+    margin-top: 25px;
+
+    background: url(../images/spAni03.png) no-repeat;
+    background-size: auto 100%;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: spani1 1s steps(8) infinite;
+
+    /* outline: 5px solid red; */
+}
+
+/* 걷는존 키프레임 */
+@keyframes spani1 {
+    to{
+       background-position-x: -797px;
+    }
+    /* 배경이미지 x축 이동일 경우
+    줄였을때 이미지 전체 가로크기를
+    마이너스 값으로 써주면된다! */
+}
+
+/* 키프레임 */
+
+/* 
+    [ 스프라이츠를 이용한 장면 넘기기 애니를 하려면? ]
+    1. 배경이미지 전체 길이를 알아야함
+    -> 이유: 이동셋팅시 가로이동일 경우에 전체길이값을 써야함!
+
+    (비율이 유지되는 이미지이므로 가로/세로중 한쪽값을 변경하면
+    다른쪽값은 자동으로 변경된다!)
+
+    참고) 비례식사용
+        가로 : 세로 = 1472px : 325px = x : 176px
+        x = 1472*176/325 = 797.14
+        전체가 8장면 이므로 한 장면당 100px(99.625px)로 정해짐
+    
+    -> 더 편한 방법은 그림판에서 축소/확대를 사용하여
+    길이를 알아내면 된다!    
+    
+    2. 코딩법:
+
+    animation: 이름 시간 steps(장면개수) infinite;
+
+    -> 장면찍는 steps를 사용할때는 이징(가속도)불필요!
+
+    [ 여러줄 애니메이션 처리법 ]
+    배경이미지 이동을 x,y축으로 분리하여 셋팅함
+
+    -> 시간설정은 x축은 적당히 설정후
+    y축은 x축애니시간*줄수 로 설정한다!
+
+    예) x축 애니를 2초로 설정후 y축은 5줄이면 
+    -> 2초*5줄=10초
+
+    1. x축이동 : steps(장면수)
+        background-position-x : 값;
+
+    2. y축이동 : steps(줄수)
+        background-position-y : 값;
+ */
+
+/* 3-2.꼬마 */
+.spani2{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 72px;
+    background: url(../images/spAni01.png) no-repeat;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: spani2 1s steps(10) infinite;
+   
+}
+
+/* 꼬마 키프레임 */
+@keyframes spani2 {
+    to{
+        background-position-x: -500px;
+    }
+}
+/* 키프레임 */
+
+/* 3-3.몬스터 */
+.spani3{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 118px;
+    height: 118px;
+    background: url(../images/spAni02.png) no-repeat;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: 
+    spani3X 1s steps(6) infinite,
+    spani3Y 3s steps(3) infinite;
+    /* 
+        x축은 6장면을 1초간 작동
+        y축은 3줄을 3초간 작동
+    */
+    
+}
+
+/* 몬스터 키프레임 X축 */
+@keyframes spani3X {
+    to{
+        background-position-x: -710px;
+    }
+    /* x축은 가로크기를 마이너스로 씀 */
+}
+/* 몬스터 키프레임 Y축 */
+@keyframes spani3Y {
+    to{
+        background-position-y: -355px;
+    }
+    /* y축은 세로크기를 마이너스로 씀 */
+}
+
+/* 웃는여자 */
+.spani4{
+    position: absolute;
+    top: 7vh;
+    right: 0;
+    width: 256px;
+    /* 전체 width 1280px / 5장면 */
+    height: 407px;
+    /* 전체 height 1222px / 3줄 */
+    background: url(../images/girl_frames.png) no-repeat;
+
+    border: 20px ridge brown;
+    transform: scale(.5);
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: 
+    spani4X .8s steps(5) infinite,
+    spani4Y 2.4s steps(3) infinite;    
+
+
+}
+/* 웃는여자 키프레임 X축 */
+@keyframes spani4X {
+    to{
+       background-position-x: -1280px;
+    }
+}
+/* 웃는여자 키프레임 Y축 */
+@keyframes spani4Y {
+    to{
+        background-position-y: -1222px;
+    }
+}
+
+/* 확대애니메이션 class */
+.big{
+    transition: .8s;
+}
+.big:hover{
+    /* 오버시 확대,멈춤,위로 */
+    transform: scale(3);
+    animation-play-state: paused;
+    z-index: 1;
+}
+/* 웃는여자용 */
+.big2:hover{
+    transform: scale(.7);
+}
+
+/* 
+[ z-index 사용의 일반용법 ]
+1. z-index는 static이 아닌 포지션에 적용된다!
+2. z-index는 부모요소에 설정되지 않은 경우
+    자식요소급에 설정된 요소와 비교한다!
+3. z-index는 부모요소에 설정된 경우 자식요소의
+    z-index를 높여도 부모급요소보다 올라갈 수 없다!
+
+-> 테스트는 h1.mtit 요소와 .spani1요소를 비교해보라!
+*/
+
+/* 3-4. 흐르는 자막 */
+.fcap{
+    position: absolute;
+    /* 가로크기는 스크린만큼 */
+    width: 100%;
+    /* 넘치는 자식요소 숨기기 */
+    overflow: hidden;
+}
+/* 이동애니메이션은 ol */
+.fcap ol{
+    position: relative;
+    left: 0;
+    /* 플렉스박스 */
+    display: flex;
+    /* 두배크기 */
+    width: 200%;
+
+    /* 줄바꿈방지 */
+    white-space: nowrap;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    /* 애니메이션: 이시이지반방마 */
+    animation: fcap 5s linear infinite;
+
+    /* outline: 4px dashed red; */
+}
+.fcap li{
+    flex: 1;
+    /* 플렉스자식요소 등분할 */
+    text-align: center;
+
+    font: bold 14px/20px Verdana;
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+
+    /* outline: 2px dotted lime; */
+}
+
+/* 흐르는 글자 키프레임 */
+@keyframes fcap {
+    to{
+        left: -100%;
+    }
+}
+/* 키프레임 */
