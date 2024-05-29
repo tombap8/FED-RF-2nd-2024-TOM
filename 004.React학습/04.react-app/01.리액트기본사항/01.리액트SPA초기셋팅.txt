@@ -35,6 +35,8 @@ npm 명령어 사용 - (node package manager)
 
 2. 기존에 리액트앱이 글로벌로 설치되었다면 삭제
 npm uninstall -g create-react-app
+(아래 3번 명령어 실행시 에러가 발생한다면 이 명령어로
+기존 글로벌 리액트앱을 삭제한다!)
 
 3. 새로운 리액트 어플리케이션을 만든다!
 (npx 명령어사용!)
