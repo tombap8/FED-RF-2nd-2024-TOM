@@ -22,14 +22,24 @@ form.logF input[type=password]`).blur(function () {
     let cid = $(this).attr("id");
     // attr(속성명) -> 속성값 읽어오기
     // cid는 current id 즉, 현재 아이디
+
     /****************************************** 
     2. 현재 블러가 발생한 요소의 값은?
     ******************************************/
-    let cv = $(this).val().trim();
+    let cv = $(this).val();
     // val() -> 입력값 읽어오기
     // trim() -> 앞뒤공백제거
     // cv는 current value 즉, 현재값
-    
+
+    // trim()은 중간 공백 제거는 안하므로
+    // 모든공백을 제거하는 함수를 만들어쓴다!
+    const groSpace = x => x.replace(/\s/g,"");
+    // 정규식은 슬래쉬(/) 사이에 쓰며
+    // \s는 스페이스기호이고 g는 전역(global) 플래그다!
+    // 플래그(flag)는 기술용어로 처리표시기호를 뜻함
+
+    cv = groSpace(cv);
+
     // 공백제거후 입력창에 반영시켜준다!
     $(this).val(cv);
 
