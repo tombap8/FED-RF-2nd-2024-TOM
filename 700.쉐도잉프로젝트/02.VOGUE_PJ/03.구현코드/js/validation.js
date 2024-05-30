@@ -166,12 +166,31 @@ form.logF input[type=password]`).blur(function () {
     제이쿼리 메서드 : change()
     이벤트 대상 : #seleml -> seleml변수
   ********************************************/
- seleml.change(function(){
-  // 1. 선택박스 변경된 값 읽어오기
-  let cv = seleml.val();
-  console.log("선택값:",cv);
+  seleml.change(function () {
+    // 1. 선택박스 변경된 값 읽어오기
+    let cv = seleml.val();
+    console.log("선택값:", cv);
 
- }); /////////////// change ////////////////
+    // 2. 선택옵션별 분기
+    // 2-1."선택해주세요"일 경우
+    if (cv == "init") {
+      // 1. 메시지 출력
+      eml1.siblings(".msg")
+      .text("이메일 옵션선택 필수!");
+    } /////// if : 선택해주세요 ///////
+
+    // 2-2.'직접입력'일 경우
+    else if (cv == "free") {
+      // 1. 직접입력창 보이기
+      eml2.fadeIn(300);
+      // fadeIn(시간,이징,함수)
+      // -> 페이드인효과 메서드
+    } ////// else if : 직접입력 //////
+
+    // 2-3. 기타 이메일주소 선택일 경우
+    else {
+    } ////// else : 기타 이메일주소 ////
+  }); /////////////// change ////////////////
 
   /****************************************** 
     함수명 : resEml (result Email)
@@ -193,7 +212,6 @@ form.logF input[type=password]`).blur(function () {
         .removeClass("on");
     } //////// else : 불통과시 ////////
   }; ///////////// resEml /////////////////
-
 
   /************************************** 
       비밀번호 글자 보이기/숨기기 셋팅
