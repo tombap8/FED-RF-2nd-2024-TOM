@@ -177,6 +177,10 @@ form.logF input[type=password]`).blur(function () {
       // 1. 메시지 출력
       eml1.siblings(".msg")
       .text("이메일 옵션선택 필수!");
+      // 2. 직접입력창 숨기기
+      eml2.fadeOut(300);
+      // fadeOut(시간,이징,함수)
+      // -> 페이드아웃효과 메서드
     } /////// if : 선택해주세요 ///////
 
     // 2-2.'직접입력'일 경우
@@ -189,6 +193,8 @@ form.logF input[type=password]`).blur(function () {
 
     // 2-3. 기타 이메일주소 선택일 경우
     else {
+      // 1. 직접입력창 숨기기
+      eml2.fadeOut(300);
     } ////// else : 기타 이메일주소 ////
   }); /////////////// change ////////////////
 
