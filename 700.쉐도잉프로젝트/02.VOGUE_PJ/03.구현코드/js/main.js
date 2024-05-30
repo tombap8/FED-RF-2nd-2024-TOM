@@ -41,6 +41,9 @@ function Layout() {
     // menu값이 "member"인 경우 member.css를 로딩하고
     // 기타 메뉴인 경우 items.css를 로딩한다!
 
+    // 페이지 최상단이동코드
+    window.scrollTo(0,0);
+
   },[menu]);
 
   // 코드 리턴구역 ////////////
