@@ -131,7 +131,7 @@ form.logF input[type=password]`).blur(function () {
     else if (cid == "email1") {
       // 1. 이메일 주소 만들기 : 앞주소@뒷주소
       let comp = eml1.val() + "@" + 
-      (seleml.val()=="free"?eml2.val():seleml.val());
+      (seleml.val()=="free" ? eml2.val() : seleml.val());
       // 이메일 뒷주소는 직접입력("free")이면 뒷주소입력창
       // 아니면 선택박스 option value 을 가져온다!
       console.log("이메일:",comp);
