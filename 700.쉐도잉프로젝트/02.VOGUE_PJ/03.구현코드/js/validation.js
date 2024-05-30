@@ -94,7 +94,7 @@ form.logF input[type=password]`).blur(function () {
       // 검사결과
       // console.log("비번:",vReg(cv,cid));
       if (!vReg(cv, cid)) {
-        // 아이디검사 불통과시
+        // 비밀번호검사 불통과시
         // false결과시 들어와야 하므로 Not(!)연산자사용
         //  메시지 지우기
         $(this).siblings(".msg")
@@ -112,6 +112,19 @@ form.logF input[type=password]`).blur(function () {
         - 검사기준: 비빌번호 항목과 일치여부
     ****************************************/
     else if (cid == "mpw2") {
+      if (cv != $("#mpw").val()) {
+        // 비밀번호확인검사 불통과시
+        // false결과시 들어와야 하므로 Not(!)연산자사용
+        //  메시지 지우기
+        $(this).siblings(".msg")
+        .text("비밀번호가 일치하지 않습니다!");
+      } /////////// if //////////
+      else{ // 맞으면 메시지 삭제
+        $(this).siblings(".msg").empty();
+        // empty() - 내용지우기
+        // $(this).siblings(".msg").text("");
+      } ///////////// else ////////////
+
     } ///////////// else if //////////
     /**************************************** 
         7. 이메일 유효성 검사
