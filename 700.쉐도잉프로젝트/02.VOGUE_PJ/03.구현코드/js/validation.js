@@ -64,7 +64,7 @@ form.logF input[type=password]`).blur(function () {
     ****************************************/
     else if (cid == "mid") {
       // 검사결과
-      //    console.log(vReg(cv,cid));
+      // console.log(vReg(cv,cid));
       if (!vReg(cv, cid)) {
         // 아이디검사 불통과시
         // false결과시 들어와야 하므로 Not(!)연산자사용
@@ -91,6 +91,21 @@ form.logF input[type=password]`).blur(function () {
         특수문자,문자,숫자포함 형태의 5~15자리
     ****************************************/
     else if (cid == "mpw") {
+      // 검사결과
+      // console.log("비번:",vReg(cv,cid));
+      if (!vReg(cv, cid)) {
+        // 아이디검사 불통과시
+        // false결과시 들어와야 하므로 Not(!)연산자사용
+        //  메시지 지우기
+        $(this).siblings(".msg")
+        .text("특수문자,문자,숫자포함 형태의 5~15자리");
+      } /////////// if //////////
+      else{ // 맞으면 메시지 삭제
+        $(this).siblings(".msg").empty();
+        // empty() - 내용지우기
+        // $(this).siblings(".msg").text("");
+      } ///////////// else ////////////
+
     } ///////////// else if //////////
     /**************************************** 
         6. 비밀번호확인일 경우 유효성 검사
