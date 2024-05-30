@@ -1,6 +1,14 @@
 // 보고 JS 로그인 컴포넌트 ///////
 
+// 로그인 유효성검사 JS 불러오기
+import validateLogin from "../valid_login";
+
 export default function Login() {
+
+  // 페이지 랜더링 후 실행구역 ///
+  React.useEffect(()=>validateLogin(),[]);
+
+
   // 코드 리턴구역 //////////
   return (
     <div id="main-area">
