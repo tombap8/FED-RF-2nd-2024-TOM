@@ -3,10 +3,10 @@
 // 로그인 유효성검사 JS 불러오기
 import validateLogin from "../valid_login";
 
-export default function Login() {
+export default function Login({changeMenu}) {
 
   // 페이지 랜더링 후 실행구역 ///
-  React.useEffect(()=>validateLogin(),[]);
+  React.useEffect(()=>validateLogin(changeMenu),[]);
 
 
   // 코드 리턴구역 //////////

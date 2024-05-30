@@ -55,7 +55,7 @@ function Layout() {
       :menu=="gallery"
       ?<Gallery />
       :menu=="login"
-      ?<Login />
+      ?<Login changeMenu={setMenu} />
       :menu=="member"
       ?<Member changeMenu={setMenu} />
       :<ItemsArea catName={menu} />
