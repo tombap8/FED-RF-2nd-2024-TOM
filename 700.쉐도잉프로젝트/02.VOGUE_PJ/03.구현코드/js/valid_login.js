@@ -1,6 +1,7 @@
 // 로그인 페이지 유효성검사 JS
 
 export default function validateLogin(changeMenu) {
+  // changeMenu - 상태변수메서드 setMenu전달
   console.log("로그인 검사!");
 
   /**************************************** 
@@ -37,7 +38,7 @@ export default function validateLogin(changeMenu) {
       // 3. 로그인 성공 : 첫페이지로 이동(로그인표시)
       // -> '로그인에 성공하였습니다!'
       alert("로그인에 성공하였습니다!");
-      
+
       // 리액트 상태관리변수 업데이트로 페이지이동하기
       changeMenu("home"); // 첫페이지
     } /////// else : 통과시 ////////

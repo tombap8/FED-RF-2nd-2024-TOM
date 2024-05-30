@@ -3,7 +3,8 @@
 // 로그인 유효성검사 JS 불러오기
 import validateLogin from "../valid_login";
 
-export default function Login({changeMenu}) {
+export default function Login({changeMenu}) {  
+  // changeMenu - 상태변수메서드 setMenu전달
 
   // 페이지 랜더링 후 실행구역 ///
   React.useEffect(()=>validateLogin(changeMenu),[]);
