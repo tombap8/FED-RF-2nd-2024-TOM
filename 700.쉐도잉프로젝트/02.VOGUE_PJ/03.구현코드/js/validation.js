@@ -24,8 +24,11 @@ export default function validateFn() {
     [id!=email2] !=은 같지않다(제이쿼리용문법)
 
 **********************************************/
-  $(`form.logF input[type=text][id!=email2],
-form.logF input[type=password]`).blur(function () {
+// 대상요소 변수할당 ///
+const tgInput = `form.logF input[type=text][id!=email2],
+form.logF input[type=password]`;
+
+  $(tgInput).blur(function () {
     /****************************************** 
         1. 현재 블러가 발생한 요소의 아이디는?
     ******************************************/
@@ -65,6 +68,9 @@ form.logF input[type=password]`).blur(function () {
       $(this).siblings(".msg").text("필수입력");
       // 형제요소들 중 .msg인 요소에 글자를 출력함
       // 형제요소 선택은 siblings(특정이름)
+
+      // [불통과 pass변수 업데이트!]
+      pass = false;
     } //////////// if //////////
 
     /**************************************** 
@@ -83,6 +89,9 @@ form.logF input[type=password]`).blur(function () {
           .siblings(".msg")
           .text("영문자로 시작하는 6~20글자 영문자/숫자")
           .removeClass("on");
+
+        // [불통과 pass변수 업데이트!]
+        pass = false;
       } /////////// if //////////
       else {
         // 아이디검사 통과시
@@ -108,6 +117,9 @@ form.logF input[type=password]`).blur(function () {
         // false결과시 들어와야 하므로 Not(!)연산자사용
         //  메시지 지우기
         $(this).siblings(".msg").text("특수문자,문자,숫자포함 형태의 5~15자리");
+
+        // [불통과 pass변수 업데이트!]
+        pass = false;
       } /////////// if //////////
       else {
         // 맞으면 메시지 삭제
@@ -126,6 +138,9 @@ form.logF input[type=password]`).blur(function () {
         // false결과시 들어와야 하므로 Not(!)연산자사용
         //  메시지 지우기
         $(this).siblings(".msg").text("비밀번호가 일치하지 않습니다!");
+
+        // [불통과 pass변수 업데이트!]
+        pass = false;
       } /////////// if //////////
       else {
         // 맞으면 메시지 삭제
@@ -272,6 +287,9 @@ $("#email1, #email2").on("keyup",function(){
         .siblings(".msg")
         .text("맞지않는 이메일 형식입니다!")
         .removeClass("on");
+
+        // [불통과 pass변수 업데이트!]
+        pass = false;
     } //////// else : 불통과시 ////////
   }; ///////////// resEml /////////////////
 
@@ -296,6 +314,53 @@ $("#email1, #email2").on("keyup",function(){
         opacity: opa == "0.5" ? "1" : "0.5",
       }); /// css ///
     }); ///// click /////
+
+
+    /********************************************* 
+    가입하기(submit) 버튼 클릭시 처리하기 
+    __________________________________
+
+    - form요소 내부의 submit버튼을 클릭하면
+    기본적으로 form요소에 설정된 action속성값인
+    페이지로 전송된다! 전체검사를 위해 이를 중지해야함!
+    -> 중지방법은? event.preventDefault()!!!
+
+    전체검사의 원리 : 
+    전역변수 pass를 설정하여 true를 할당하고
+    검사중간에 불통과 사유발생시 false로 변경!
+    유효성 검사 통과여부를 판단한다!
+
+    검사방법 :
+    기존 이벤트 blur 이벤트를 강제로 발생시킨다!
+    이벤트를 강제로 발생시키는 제이쿼리 메서드는?
+    ->>> trigger(이벤트명)
+
+  *********************************************/
+// 통과여부변수(true/false값)
+let pass;
+
+ $("#btnj").click((e)=>{
+
+  console.log("가입해~!");
+
+  // 1. 기본이동(서브밋) 막기
+  e.preventDefault();
+
+  // 2. pass통과여부 변수에 true할당하기
+  pass = true;
+
+  // 3. 입력창 blur이벤트 강제발생하기
+  $(tgInput).trigger("blur");
+
+  console.log("통과여부:",pass);
+
+
+ }); //////////// click ///////////////////
+
+
+
+
+
 } ////////////////// validateFn /////////////////
 
 /*//////////////////////////////////////////////////////
