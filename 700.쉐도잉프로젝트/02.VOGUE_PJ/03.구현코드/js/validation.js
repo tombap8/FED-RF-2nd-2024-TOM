@@ -177,6 +177,7 @@ form.logF input[type=password]`).blur(function () {
       // 1. 메시지 출력
       eml1.siblings(".msg")
       .text("이메일 옵션선택 필수!");
+
       // 2. 직접입력창 숨기기
       eml2.fadeOut(300);
       // fadeOut(시간,이징,함수)
@@ -185,16 +186,30 @@ form.logF input[type=password]`).blur(function () {
 
     // 2-2.'직접입력'일 경우
     else if (cv == "free") {
-      // 1. 직접입력창 보이기
-      eml2.fadeIn(300);
+      // 1. 직접입력창 보이기 + 값지우기 + 포커스
+      eml2.fadeIn(300).val("").focus();
       // fadeIn(시간,이징,함수)
       // -> 페이드인효과 메서드
+
+      // 2. 메시지 지우기
+      eml1.siblings(".msg").empty();
     } ////// else if : 직접입력 //////
 
     // 2-3. 기타 이메일주소 선택일 경우
     else {
       // 1. 직접입력창 숨기기
       eml2.fadeOut(300);
+
+      // 2. 메시지 지우기
+      eml1.siblings(".msg").empty();
+
+      // 3. 이메일 전체 주소 만들기
+      let comp = eml1.val() + "@" + cv;
+      // 이메일 뒷주소는 이미 cv에 담겨있음!
+
+      // 4. 이메일 유효성 검사함수 호출
+      resEml(comp);
+
     } ////// else : 기타 이메일주소 ////
   }); /////////////// change ////////////////
 
