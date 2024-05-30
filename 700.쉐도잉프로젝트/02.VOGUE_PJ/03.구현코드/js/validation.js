@@ -176,7 +176,8 @@ form.logF input[type=password]`).blur(function () {
     if (cv == "init") {
       // 1. 메시지 출력
       eml1.siblings(".msg")
-      .text("이메일 옵션선택 필수!");
+      .text("이메일 옵션선택 필수!")
+      .removeClass("on");
 
       // 2. 직접입력창 숨기기
       eml2.fadeOut(300);
