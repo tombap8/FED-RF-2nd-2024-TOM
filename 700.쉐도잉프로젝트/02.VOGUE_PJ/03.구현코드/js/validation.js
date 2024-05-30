@@ -232,14 +232,18 @@ form.logF input[type=password]`).blur(function () {
 $("#email1, #email2").on("keyup",function(){
   // 1. 현재 이벤트 발생 대상 아이디 읽어오기
   let cid = $(this).attr("id");
-  console.log("입력창id:",cid);
+  // console.log("입력창id:",cid);
 
   // 2. 이메일 뒷주소 셋팅하기 (선택!)
   let backEml = 
-  cid == "email1" ? seleml.val() : eml2.val();
-  // 현재입력 아이디가 "email1"이면 선택박스값을 읽고
-  // 아니면 두번째 이메일창에 입력하는 것이므로
-  // 두번재 이메일 입력값을 뒷주소로 설정함!
+  cid == "email2" 
+  ? eml2.val()
+  : seleml.val() != "free" 
+  ? seleml.val()
+  : eml2.val();
+  // 현재입력 아이디가 "email2"이면 직접입력창을 읽고  
+  // 아니면 선택박스값이 "free"가 아닌 경우 선택박스값 읽고
+  // 아니면 직접입력창값을 뒷주소로 설정함!
 
   // 이메일 전체주소 만들기
   let comp = eml1.val() + "@" + backEml;
@@ -247,7 +251,7 @@ $("#email1, #email2").on("keyup",function(){
   // 이메일 유효성 검사함수 호출하기
   resEml(comp);
 
-  console.log($(this).val());
+  // console.log($(this).val());
 }); //////////////////  keyup  //////////////////
 
   /****************************************** 
@@ -256,7 +260,7 @@ $("#email1, #email2").on("keyup",function(){
   ******************************************/
   const resEml = (comp) => {
     // comp - 이메일주소
-    // console.log('이메일주소:',comp);
+    console.log('이메일주소:',comp);
     // console.log('이메일검사결과:',vReg(comp,'eml'));
 
     // 이메일 정규식 검사에 따른 메시지 보이기
