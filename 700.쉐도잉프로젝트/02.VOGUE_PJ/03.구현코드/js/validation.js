@@ -140,6 +140,30 @@ form.logF input[type=password]`).blur(function () {
       $(this).siblings(".msg").text("");
     } ///// else ////////
   }); //////////////// blur함수 ////////////////
+
+
+  /************************************** 
+        비밀번호 글자 보이기/숨기기 셋팅
+  **************************************/
+ $(".eye")
+ .css({
+  textDecoration:"line-through",
+  opacity: 0.5,
+  cursor: "pointer",
+ })
+ .click(e=>{
+  // 투명도값 읽기
+  let opa = $(e.target).css("opacity");
+  console.log(opa);
+  // 1. 글자 보이기 전환 (투명도가 0.5일때 보이게함!)
+  $("#mpw").attr("type",opa=="0.5"?"text":"password");
+  // 2. CSS 디자인 전환
+  $(e.target).css({
+    textDecoration: opa=="0.5"?"none":"line-through",
+    opacity: opa=="0.5"?"1":"0.5",
+  });
+ });
+
 } ////////////////// validateFn /////////////////
 
 /*//////////////////////////////////////////////////////
