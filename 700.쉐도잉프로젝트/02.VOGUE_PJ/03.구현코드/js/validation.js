@@ -130,12 +130,14 @@ form.logF input[type=password]`).blur(function () {
     ****************************************/
     else if (cid == "email1") {
       // 1. 이메일 주소 만들기 : 앞주소@뒷주소
-      let comp = eml1.val() + "@" + 
-      (seleml.val()=="free" ? eml2.val() : seleml.val());
+      let comp =
+        eml1.val() + "@" + (seleml.val() == "free" ? eml2.val() : seleml.val());
       // 이메일 뒷주소는 직접입력("free")이면 뒷주소입력창
       // 아니면 선택박스 option value 을 가져온다!
-      console.log("이메일:",comp);
+      console.log("이메일:", comp);
 
+      // 2. 이메일 검사함수 호출하기
+      resEml(comp);
     } ///////////// else if //////////
     /**************************************** 
         8. 모두 통과일 경우 메시지 지우기
@@ -146,13 +148,34 @@ form.logF input[type=password]`).blur(function () {
     } ///// else ////////
   }); //////////////// blur함수 ////////////////
 
+  /****************************************** 
+    함수명 : resEml (result Email)
+    기능 : 이메일 검사결과 처리
+  ******************************************/
+  const resEml = (comp) => {
+    // comp - 이메일주소
+    // console.log('이메일주소:',comp);
+    // console.log('이메일검사결과:',vReg(comp,'eml'));
+
+    // 이메일 정규식 검사에 따른 메시지 보이기
+    if (vReg(comp, "eml")) {
+      eml1.siblings(".msg").text("적합한 이메일 형식입니다!").addClass("on");
+    } //////// if : 통과시 //////////
+    else {
+      eml1
+        .siblings(".msg")
+        .text("맞지않는 이메일 형식입니다!")
+        .removeClass("on");
+    } //////// else : 불통과시 ////////
+  }; ///////////// resEml /////////////////
+
   /////////// 이메일 관련 대상선정 /////////////
   // 이메일 앞주소
-  const eml1 = $('#email1');
+  const eml1 = $("#email1");
   // 이메일 뒷주소
-  const eml2 = $('#email2');
+  const eml2 = $("#email2");
   // 이메일 뒷주소 선택박스
-  const seleml = $('#seleml');
+  const seleml = $("#seleml");
   ////////////////////////////////////////////
 
   /************************************** 
