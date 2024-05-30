@@ -1,6 +1,7 @@
 // 회원가입 유효성 검사 JS
 
-export default function validateFn() {
+export default function validateFn(changeMenu) {
+  // changeMenu - 상태변수메서드 setMenu전달
   console.log("검사해~!!!");
 
   /////////// 이메일 관련 대상선정 /////////////
@@ -359,15 +360,11 @@ let pass;
     alert("회원가입을 축하드립니다! 짝짝짝!");
     // 원래는 POST방식으로 DB에 회원가입정보를
     // 전송하여 입력후 DB처리완료시 성공메시지나
-    // 로그인 페이지로 넘겨준다!
+    // 로그인 페이지로 넘겨준다! 그런데 개별 페이지가 아닌
+    // 리액트 SPA방식이므로 일반적인 페이지 이동이 불가하다!
+    // 어떻게하나? -> 리액트 페이지변경에 사용하는
+    // 상태변수를 업데이트하여 페이지 이동을 해야함!!!
 
-    // 로그인 페이지로 리디렉션!
-    // location.href = 'login.html';
-
-    // 민감한 입력 데이터 페이지가 다시 돌아와서
-    // 보이면 안되기 때문에 히스토리를 지우는
-    // replace()로 이동한다!
-    // location.replace("login.html");
   } //////// if : 통과시 ///////////
   else {
     ///// 불통과시 //////
