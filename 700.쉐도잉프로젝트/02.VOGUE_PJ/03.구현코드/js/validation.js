@@ -69,19 +69,19 @@ form.logF input[type=password]`).blur(function () {
         // 아이디검사 불통과시
         // false결과시 들어와야 하므로 Not(!)연산자사용
         //  메시지 지우기
-        $(this).siblings(".msg")
-        .text("영문자로 시작하는 6~20글자 영문자/숫자")
-        .removeClass("on");
+        $(this)
+          .siblings(".msg")
+          .text("영문자로 시작하는 6~20글자 영문자/숫자")
+          .removeClass("on");
       } /////////// if //////////
-
-      else { // 아이디검사 통과시      
+      else {
+        // 아이디검사 통과시
         // 1. DB에 조회하여 같은 아이디가 있다면
         // '이미 사용중인 아이디입니다' 와 같은 메시지출력
         // 2. 만약 DB조회하여 같은 아이다가 없다면
         // '멋진 아이디네요~!'와 같은 메시지출력
-        // 여기서 우선은 DB조회 못하므로 통과시 메시지로 출력        
-        $(this).siblings(".msg")
-        .text("멋진아이디네요!").addClass("on");
+        // 여기서 우선은 DB조회 못하므로 통과시 메시지로 출력
+        $(this).siblings(".msg").text("멋진아이디네요!").addClass("on");
         // 클래스 on을 넣으면 녹색글자임!
       } //////// else ////////
     } ///////////// else if //////////
@@ -97,15 +97,14 @@ form.logF input[type=password]`).blur(function () {
         // 비밀번호검사 불통과시
         // false결과시 들어와야 하므로 Not(!)연산자사용
         //  메시지 지우기
-        $(this).siblings(".msg")
-        .text("특수문자,문자,숫자포함 형태의 5~15자리");
+        $(this).siblings(".msg").text("특수문자,문자,숫자포함 형태의 5~15자리");
       } /////////// if //////////
-      else{ // 맞으면 메시지 삭제
+      else {
+        // 맞으면 메시지 삭제
         $(this).siblings(".msg").empty();
         // empty() - 내용지우기
         // $(this).siblings(".msg").text("");
       } ///////////// else ////////////
-
     } ///////////// else if //////////
     /**************************************** 
         6. 비밀번호확인일 경우 유효성 검사
@@ -116,21 +115,27 @@ form.logF input[type=password]`).blur(function () {
         // 비밀번호확인검사 불통과시
         // false결과시 들어와야 하므로 Not(!)연산자사용
         //  메시지 지우기
-        $(this).siblings(".msg")
-        .text("비밀번호가 일치하지 않습니다!");
+        $(this).siblings(".msg").text("비밀번호가 일치하지 않습니다!");
       } /////////// if //////////
-      else{ // 맞으면 메시지 삭제
+      else {
+        // 맞으면 메시지 삭제
         $(this).siblings(".msg").empty();
         // empty() - 내용지우기
         // $(this).siblings(".msg").text("");
       } ///////////// else ////////////
-
     } ///////////// else if //////////
     /**************************************** 
         7. 이메일 유효성 검사
         - 검사기준: 이메일 형식에 맞는지 여부
     ****************************************/
     else if (cid == "email1") {
+      // 1. 이메일 주소 만들기 : 앞주소@뒷주소
+      let comp = eml1.val() + "@" + 
+      (seleml.val()=="free"?eml2.val():seleml.val());
+      // 이메일 뒷주소는 직접입력("free")이면 뒷주소입력창
+      // 아니면 선택박스 option value 을 가져온다!
+      console.log("이메일:",comp);
+
     } ///////////// else if //////////
     /**************************************** 
         8. 모두 통과일 경우 메시지 지우기
@@ -141,29 +146,36 @@ form.logF input[type=password]`).blur(function () {
     } ///// else ////////
   }); //////////////// blur함수 ////////////////
 
+  /////////// 이메일 관련 대상선정 /////////////
+  // 이메일 앞주소
+  const eml1 = $('#email1');
+  // 이메일 뒷주소
+  const eml2 = $('#email2');
+  // 이메일 뒷주소 선택박스
+  const seleml = $('#seleml');
+  ////////////////////////////////////////////
 
   /************************************** 
-        비밀번호 글자 보이기/숨기기 셋팅
+      비밀번호 글자 보이기/숨기기 셋팅
   **************************************/
- $(".eye")
- .css({
-  textDecoration:"line-through",
-  opacity: 0.5,
-  cursor: "pointer",
- })
- .click(e=>{
-  // 투명도값 읽기
-  let opa = $(e.target).css("opacity");
-  console.log(opa);
-  // 1. 글자 보이기 전환 (투명도가 0.5일때 보이게함!)
-  $("#mpw").attr("type",opa=="0.5"?"text":"password");
-  // 2. CSS 디자인 전환
-  $(e.target).css({
-    textDecoration: opa=="0.5"?"none":"line-through",
-    opacity: opa=="0.5"?"1":"0.5",
-  });
- });
-
+  $(".eye")
+    .css({
+      textDecoration: "line-through",
+      opacity: 0.5,
+      cursor: "pointer",
+    })
+    .click((e) => {
+      // 투명도값 읽기
+      let opa = $(e.target).css("opacity");
+      console.log(opa);
+      // 1. 글자 보이기 전환 (투명도가 0.5일때 보이게함!)
+      $("#mpw").attr("type", opa == "0.5" ? "text" : "password");
+      // 2. CSS 디자인 전환
+      $(e.target).css({
+        textDecoration: opa == "0.5" ? "none" : "line-through",
+        opacity: opa == "0.5" ? "1" : "0.5",
+      }); /// css ///
+    }); ///// click /////
 } ////////////////// validateFn /////////////////
 
 /*//////////////////////////////////////////////////////
