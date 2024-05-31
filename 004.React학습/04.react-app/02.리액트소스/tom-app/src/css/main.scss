@@ -1,0 +1,12 @@
+// 메인 페이지 css
+
+// 사이즈 변수 불러오기
+@import "./variables/size-set";
+// 색상 변수 불러오기
+@import "./variables/color-set";
+
+h1{
+    width: $box-wz;
+    height: $box-hz;
+    border: 3px dotted $bd-color1;
+}

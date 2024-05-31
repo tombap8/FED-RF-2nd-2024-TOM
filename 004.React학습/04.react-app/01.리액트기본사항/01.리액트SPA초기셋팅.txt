@@ -114,7 +114,6 @@ import 'jquery-ui-dist/jquery-ui';
 모바일까지 커버하기 위해 터치펀치 설치
 npm i jquery-ui-touch-punch
 
-
 사용: 
 -> 아래처럼 제이쿼리 $외에 jQuery함수명도 사용가능하게 써줄것!
 아래처럼 안쓰면 jQuery is not defined... 에러남
@@ -125,6 +124,19 @@ import $ from 'jquery';
 window.jQuery = $;
 require('jquery-ui-dist/jquery-ui');
 require('jquery-ui-touch-punch/jquery.ui.touch-punch');
+
+
+11. 사스(Sass)를 사용하기 위한 설치
+npm i sass
+
+-> 설치후 컴포넌트 파일에서 import "사스파일.scss"로 불러오면
+css 변환없이 바로 사스 코딩을 적용할 수 있다!!!^^
+빌드시 소스에 본 CSS파일로 변환해 준다!
+
+
+
+
+
 
 ______________________________________________
 참고) 
