@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Promise 적용연습2 - async, await</title>
+        <script>
+
+
+        /****************************************** 
+            [ await 사용시 주의사항! ]
+            await에서 프라미스 인스턴스를 변수에
+            담지 않고 사용하면 Pending처리(보류처리)된
+            인스턴스가 전달되는 경우가 생긴다!
+
+            따라서 변수에 await 프라미스 인스턴스를
+            담아서 그 리턴값을 확정한 후
+            (변수할당이란 값을 특정주소지에 넣고
+            사용할 준비를 하는것!)
+            
+            그 값으로 함수를 다시 호출하던지
+            후속코드 작업을 하면 된다!
+            -> await를 담은 변수에 값이 할당되기전엔
+            그 값을 이용하는 코드도 모두 대기상태다!!!
+        ******************************************/
+                
+
+            
+        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+            body {
+                background-image: linear-gradient(to bottom, #494949, gray);
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                text-align: center;
+            }
+            #show {
+                font-family: "Gamja Flower", cursive;
+                font-size: 4vw;
+                background-image: linear-gradient(to bottom, lightgreen, pink, orangered, aquamarine);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-repeat: no-repeat;
+                font-weight: bold;
+            }
+            #doc{
+                width: 50%;
+                height: 50vh;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="show"></div>
+        <div id="doc"></div>
+    </body>
+</html>

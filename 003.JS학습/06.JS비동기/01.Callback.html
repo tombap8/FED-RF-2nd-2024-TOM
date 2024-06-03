@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS비동기 : 1. 콜백함수</title>
+    <script>
+      /*************************************************************** 
+         [콜백함수란?  "나중에 다시 호출할께!"]
+        콜백은 다른 함수에 인수로 전달되는 함수다.
+        이 방법을 사용하면 함수가 다른 함수를 호출할 수 있다.
+        다른 함수가 완료된 후 콜백 함수를 실행할 수 있다.
+
+        ______________________________________
+
+        [ 콜백은 언제 사용하나?]
+
+        콜백이 정말 빛을 발하는 곳은 하나의 함수가 
+        다른 함수를 기다려야 하는 비동기 함수다!(예: 파일 로드 대기).
+        비동기 함수는 2번 async.html에서 연습한다!
+    ***************************************************************/
+
+      function 화면뿌려(이거) {
+        document.querySelector("#show").innerHTML += 이거 + "<br>";
+      }
+
+      function 다음이야() {
+        화면뿌려("고요의 바다다!");
+      }
+
+      function 먼저해() {
+        화면뿌려("공유의 최신작은...");
+      }
+
+      function 발표년도계산해(수1, 수2) {
+        // 함수내부에 코드 순서에 따라 실행순서가 정해짐!
+        let 합 = 수1 + 수2;
+        화면뿌려(합);
+      }
+
+      function 포스터보기(경로, 크기, 전달함수) {
+        let 태그 = `<img src="${경로}" style="width:${크기}px" alt="포스터">`;
+
+        // 전달받은 함수를 실행한다! 콜백함수!!!
+        전달함수(태그);
+      }
+
+      // 배열변수
+      const 지역관객수 = [78, 134, 245, 789, 990, 287, 790, 887, 45, 231];
+
+      // 조건 분리를 위한 콜백함수 전달호출
+      const 출력넘버 = 오백이하제거(지역관객수, (숫자) => 숫자 >= 500);
+
+      // 콜백조건분기 함수
+      function 오백이하제거(받은배열, 처리콜백) {
+        const 내배열 = [];
+        for (const x of 받은배열) {
+          if (처리콜백(x)) {
+            내배열.push(x);
+          } // if //
+        } /// for //
+        return 내배열;
+        // 배열값 리턴
+      } /// function ///
+
+      ///////////// 로드구역 ///////////////
+      window.addEventListener("load", () => {
+        // 1. 순서대로 함수 호출하기
+        먼저해();
+        다음이야();
+
+        // 2. 순서제어(시퀀스제어) - 계산후 출력
+        // 발표년도계산해(2000, 21);
+
+        const 포스터이미지 =
+          "https://image.ytn.co.kr/general/jpg/2021/1129/202111290942307028_d.jpg";
+
+        // 3. 함수를 2개호출할 경우 콜백함수로 함수에 전달! -> 진정한 콜백함수의 개념
+        // 포스터보기(포스터이미지, 500, 화면뿌려);
+        // 주의: 함수를 콜백으로 전달할때는 이름만 던짐!
+
+        // 4. 콜백함수를 통한 조건분기하기 결과출력
+        // 화면뿌려(출력넘버);
+      }); ///////////// load /////////////////////
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap");
+      body {
+        background-image: linear-gradient(to bottom, #494949, gray);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+      }
+      #show {
+        font-family: "Roboto Condensed", sans-serif;
+        font-size: 5vw;
+        background-image: linear-gradient(
+          to bottom,
+          orange,
+          lime,
+          lightblue,
+          aqua
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="show"></div>
+  </body>
+</html>

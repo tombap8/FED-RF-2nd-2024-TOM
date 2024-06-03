@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Promise 적용연습1</title>
+        <script>
+
+            /*************************************************************** 
+                [ 제이슨 파일 내부형식에 관하여... ]
+
+                1. 제이슨 파일은 내부형식이 객체형식이지만
+                자바스크립트에서 속성명을 변수형으로 쓰는 것처럼
+                사용할 수 없다! 반드시 쌍따옴표로 싸서 문자형으로
+                표현해야만 한다!
+
+                2. 제이슨 파일 내부에 JS주석문은 쓸 수 없다!
+                (vscode의 settings.json에서 주석문은 vscode에서
+                별도의 처리를 하므로 사용가능했던것임...)
+
+                3. 제이슨은 최상위 형식으로 객체/배열로써 하나만 존재할 수 있다!
+                    예) {속성명:값,...} / [{속성명:값,...},{속성명:값,...}]
+
+                4. 제이슨 맨 마지막 항목 뒤에 콤마를 남길 수 없다!(에러!)
+                -> 자바스크립트에서는 마지막콤마 허용함!
+            ***************************************************************/
+
+            
+        </script>
+        <style>
+            @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+            body {
+                background-image: linear-gradient(to bottom, #494949, gray);
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+                text-align: center;
+            }
+            #show {
+                font-family: "Gamja Flower", cursive;
+                font-size: 4vw;
+                background-image: linear-gradient(to bottom, lightgreen, pink, orangered, aquamarine);
+                background-clip: text;
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-repeat: no-repeat;
+                font-weight: bold;
+            }
+            #doc{
+                width: 50%;
+                height: 50vh;
+                margin: 0 auto;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="show"></div>
+        <div id="doc"></div>
+    </body>
+</html>

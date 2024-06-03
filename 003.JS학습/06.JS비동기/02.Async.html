@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS비동기 : 2. 비동기호출</title>
+    <script>
+      /*********************************************** 
+        비동기 호출이란?  "나중에 끝낼께!"
+
+        다른 함수와 병렬 로 실행되는 함수를 비동기 라고 한다.
+        좋은 예는 자바스크립트 내장함수인 
+        setTimeout() / setInterval()이다.
+        ___________________________________________________________
+
+        [ 콜백 대안 ]
+        비동기 프로그래밍을 통해 JavaScript 
+        프로그램은 장기 실행 작업을 시작하고 
+        병렬로 다른 작업을 계속 실행할 수 있다.
+
+        그러나 비동기 프로그램은 작성하기 
+        어렵고 디버깅하기 어렵다!!!
+
+        이 때문에 대부분의 최신 비동기 JavaScript 메서드는 
+        콜백을 사용하지 않음! 
+        대신 JavaScript에서 비동기 프로그래밍은 
+        Promise를 대신 사용하여 해결됨!
+    *************************************************/
+      function 화면뿌려(이거) {
+        document.querySelector("#show").innerHTML += 이거 + "<br>";
+      }
+
+      function 킬링타임() {
+        let d = new Date();
+        document.querySelector("#time").innerHTML =
+          d.getHours() + ":" + d.getMinutes() + ":" + d.getSeconds();
+      }
+
+      // 일정시간 후 함수실행 -> 비동기함수 호출!
+      setTimeout(() => setInterval(킬링타임, 1000), 6000);
+      setTimeout(() => {
+        // 화면뿌려(`킬링타임<div id="time" style="font-size:5vh"></div>`);
+      }, 5000);
+      setTimeout(() => {
+        // 화면뿌려(
+        //   `<img src="https://images.khan.co.kr/article/2023/03/03/news-p.v1.20230303.139d5a1324fd43e9b750689a1c57af4e_P1.jpg" style="height:70vh" alt="길복순">`
+        // );
+      }, 4000);
+      setTimeout(() => {
+        // 화면뿌려("나는 전도연이다!");
+      }, 2000);
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&display=swap");
+      body {
+        background-image: linear-gradient(to bottom, #494949, gray);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+      }
+      #show {
+        font-family: "Nanum Brush Script", cursive;
+        font-size: 5vw;
+        background-image: linear-gradient(to bottom, red, orange, pink, aqua);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="show"></div>
+  </body>
+</html>

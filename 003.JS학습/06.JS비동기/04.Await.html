@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS비동기 : 4. Async / Await 사용법</title>
+    <script>
+      /******************************************************************* 
+         [Async/Await란? "약속을 좀 더 쉽게!"]
+
+        1. async는 함수가 Promise를 반환하도록 설정한다!
+        2. await는 함수가 Promise를 기다리게 설정한다!
+
+        [ async 구문 사용법 ]
+        ___________________________________
+
+        -> 함수앞에 async 키워드를 써준다!
+        ___________________________________
+
+        async function 내함수() {
+            return "우리지금만나!";
+        }
+        ____________________________________
+
+        -> 위의 코드는 아래의 코드와 동일하다!
+        ____________________________________
+
+        function 내함수() {
+            return Promise.resolve("우리지금만나!");
+        }
+        _______________________________________________________
+
+        -> async키워드를 사용한 함수호출코드 뒤에 
+        .then을 사용하여
+            성공시/실패시코드를 작성한다!
+        _______________________________________________________
+
+        내함수().then(
+            function(value) { 성공시코드 },
+            function(error) { 실패시코드 }
+        );
+        ____________________________________
+        *********************
+        [ await 구문 사용법 ]
+        ___________________________________
+
+        -> await키워드는 
+            async함수 내에서만 사용가능함.
+        -> await키워드 는 
+            함수실행을 일시 중지하고 계속하기 
+            전에 Promise의 결과를 기다림
+        ___________________________________
+
+        async function 보여줘() {
+        let 내약속 = new Promise(function(성공함수) {
+                성공함수("내메세지");
+            });
+            document.getElementById("mydiv").innerHTML = 
+            await 내약속;
+        }
+
+        보여줘();
+        ___________________________________
+
+        ((단어뜻))
+        * resolve 해결하다
+        * asynchronous 동시에 존재하지 않는
+        * await 기다리다
+    *******************************************************************/
+      function 화면뿌려(이거) {
+        document.querySelector("#show").innerHTML += 이거 + "<br>";
+      }
+
+      // 1. async / await  기본구문 사용하기
+      
+
+      
+      // 2. 파일을 전송 받은 후 실행하는 약속객체 생성하기
+      
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+      body {
+        background-image: linear-gradient(to bottom, #494949, gray);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+      }
+      #show {
+        font-family: "Gamja Flower", cursive;
+        font-size: 4vw;
+        background-image: linear-gradient(
+          to bottom,
+          lightgreen,
+          pink,
+          orangered,
+          aquamarine
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        font-weight: bold;
+      }
+      #doc {
+        width: 50%;
+        height: 50vh;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="show"></div>
+    <div id="doc"></div>
+  </body>
+</html>
