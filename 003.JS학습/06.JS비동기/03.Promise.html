@@ -120,13 +120,8 @@
         // 약속객체를 만들어서 사용한다!
         const 처음약속 = new Promise(
           function(성공함수,실패함수){
-            let 통과 = true; 
-            // true - 성공시 , false - 실패시
-
-            // 시간이 걸리는 코드위치
-            setTimeout(()=>{
-              console.log("코드가 실행되는데 3초걸림!");
-            },3000)
+            let 통과 = true;
+            // true - 성공시 , false - 실패시           
 
             if(통과){
               성공함수("성공했음!!! ㅎㅎㅎ");
@@ -146,13 +141,27 @@
           function(전달변수){ // 성공시
             화면뿌려(전달변수);
           },
-          function(){ // 실패시
+          function(전달변수){ // 실패시
             화면뿌려(전달변수);
           }); ///// then 메서드 /////////
         
 
         // 2. 시간이 걸리는 코드를 약속객체에 넣고 처리하기
-        
+        // new Promise(function(변수){코드})
+        // -> 하나의 변수만 쓰면 성공처리함수다!
+        const 약속기다림 = new Promise(
+          function(성공){
+            // 시간이 걸리는 코드
+            setTimeout(()=>{
+              성공("오마이갓김치!!!");
+            },3000);
+          });
+
+          // 성공시 실행 코드 then()메서드
+          약속기다림.then(function(값){
+            화면뿌려("와우!~"+값);
+            화면뿌려(`<img src="https://ojsfile.ohmynews.com/STD_IMG_FILE/2014/0103/IE001663873_STD.jpg" style="height:70vh" alt="약속">`);
+          }); ///// then 메서드 /////
 
         // 3. 파일을 전송 받은 후 실행하는 약속객체 생성하기
         
