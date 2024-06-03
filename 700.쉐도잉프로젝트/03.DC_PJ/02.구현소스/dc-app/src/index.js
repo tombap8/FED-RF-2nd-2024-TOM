@@ -40,12 +40,17 @@ export default function MainComponent() {
     // 라우터 루트로 라우터 구성시작
     <BrowserRouter>
       <Routes>
-        {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정! */}
-        <Route path="/" element={<Layout />} />
-        {/* 하위 라우트 셋팅 
-        -> path설정대신 index키워드를 쓰면 첫페이지로 구성됨*/}
-        <Route index element={<Main />} />
-        <Route path="character" element={<Charactor />} />
+        {/* 중요!!! 레이아웃 컴포넌트를 루트로 설정!
+        루트 Route 는 홀로닫지말고 반드시 다른
+        하위 라우트를 감싸도록한다!!! */}
+        <Route path="/" element={<Layout />}>
+          {/* 하위 라우트 셋팅 
+        -> path설정대신 index키워드를 쓰면 
+        첫페이지로 구성됨 -> MainArea 컴포넌트 <Outlet/>에
+        출력된다!*/}
+          <Route index element={<Main />} />
+          <Route path="character" element={<Charactor />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
