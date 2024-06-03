@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
 import Charactor from "./components/pages/Charactor";
 import Main from "./components/pages/Main";
+import Comics from "./components/pages/Comics";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -50,7 +51,9 @@ export default function MainComponent() {
         출력된다!*/}
           <Route index element={<Main />} />
           <Route path="character" element={<Charactor />} />
+          <Route path="comics" element={<Comics />} />
         </Route>
+        {/* Layout 루트 Route로 하위 Route를 감싼다! */}
       </Routes>
     </BrowserRouter>
   );
