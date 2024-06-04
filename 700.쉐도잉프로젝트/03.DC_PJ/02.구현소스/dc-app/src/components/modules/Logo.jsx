@@ -26,8 +26,8 @@ export default function Logo({logoStyle}){
 
     // 로고 이미지 스타일 객체
     const imgStyle = {
-        top: "45px",
-        bottom: "80px",
+        top: {width:"45px"},
+        bottom: {width:"80px"},
     };
 
 
@@ -35,7 +35,7 @@ export default function Logo({logoStyle}){
     return (        
         <h1 style={myStyle[logoStyle]}>
             <img
-            style={imgStyle}
+            style={imgStyle[logoStyle]}
             src={isrc.logo} alt="DC Logo" />
         </h1>
     );
