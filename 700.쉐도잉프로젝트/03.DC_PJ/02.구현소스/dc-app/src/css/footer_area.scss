@@ -1,0 +1,36 @@
+// 하단영역 CSS - footer_area.scss
+
+/* 하단영역 */
+.info {
+  text-align: center;
+  padding: 30px;
+  background-color: #000;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.info > ul > li:last-child {
+  font-weight: bold;
+}
+/* 하단 ol>li>a 링크박스 */
+ol.bmenu {
+  font-family: "Ubuntu Condensed", sans-serif;
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+.bmenu li {
+  padding: 0 10px;
+}
+.bmenu li + li {
+  border-left: 2px solid #fff;
+}
+.bmenu a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+.bmenu a:hover {
+  color: #007aff;
+}
