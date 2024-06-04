@@ -17,11 +17,43 @@
       }
 
       // 프라미스로 실행 제어하기 ///////////
-      const myPromise = new Promise((sFn)=>{
+      // 프라미스 객체 생성시 함수내부 코드는 바로 실행됨!
+      const myPromise = new Promise((sFn) => {
+        // sFn성공함수
         setTimeout(() => {
           화면뿌려("나는 전도연이다!");
+          // 성공함수를 호출해야만 then 메서드 연결코드실행됨!
+          sFn("약속1"); // 2초후 호출!
         }, 2000);
       }); /////////// myPromise ////////////
+
+      // 프라미스 후에 실행할 코드는 then() 메서드에 연결한다!
+      myPromise
+        .then((v) => { // v - 프라미스 전달변수
+          // 다음 then메서드를 생성코드로 이어서
+          // 기다렸다가 나오게 하려면 return을 할때
+          // 프라미스객체를 생성해 준다!
+          return new Promise((sFn) => {
+            setTimeout(() => {
+              console.log(v,"에서 전달!");
+              화면뿌려(
+                `<img src="https://images.khan.co.kr/article/2023/03/03/news-p.v1.20230303.139d5a1324fd43e9b750689a1c57af4e_P1.jpg" style="height:70vh" alt="길복순">`
+              );
+              // 다음의 then메서드를 호출함!
+              sFn("약속2");
+            }, 1000);
+          }); //// Promise //////////
+        })
+        // 프라미스 체이닝(then메서드를 이어붙임!)
+        // -> 개별적으로 프라미스에 붙여사용할 것을
+        // 더 쉽게 이어붙이는 방법의 코딩임!
+        // myPromise.then(() => {
+        .then((v) => { // v - 프라미스 전달변수
+          setTimeout(() => {
+            console.log(v,"에서 전달!");
+            화면뿌려(`킬링타임<div id="time" style="font-size:5vh"></div>`);
+          }, 1000);
+        });
 
       // 일정시간 후 함수실행 -> 비동기함수 호출!
       // setTimeout(() => setInterval(킬링타임, 1000), 6000);
