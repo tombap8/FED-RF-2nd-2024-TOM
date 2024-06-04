@@ -1,0 +1,11 @@
+// 전체 공통 CSS 불러오기
+
+@import "../css/common/core";
+@import "../css/common/reset";
+
+
+main.cont{
+    /* 최소높이 상단,하단제외 채우기
+    - 하단 여백이 생기는 일이 없어짐! */
+    min-height: calc(100vh - 58px - 210px);
+}
