@@ -48,7 +48,7 @@
 
                 (2) 인스턴스를 열어서 전송준비를 한다
                 -> open(방식,요청URL,아이디,비번,비동기옵션)
-                -> 핵심: open(방식,요소URL)
+                -> 핵심: open(방식,요청URL)
                     1) 방식: GET/POST -> GET방식을 더 선호함
                         이유는 가볍고 빠르게 처리함
                         POST방식은 민감한 데이터 처리시 사용!
@@ -79,9 +79,12 @@
                         -> statusText 로 받으면 위의 문자형으로 리턴한다!
 
                     [ response 결과내용 종류 ]
-                        1) responseText : 데이터를 문자형식 받기
-                        2) responseXML : 데이터를 XML형식 받기
-                        3) responseURL : 데이터 전송 URL 받기
+                        1) responseText : 
+                          데이터를 문자형식 받기
+                        2) responseXML : 
+                          데이터를 XML형식 받기(JSON형식도가능)
+                        3) responseURL : 
+                          데이터 전송 URL 받기
 
                 (4) 오픈 셋팅된 요청객체를 전송한다!
                     인스턴스변수.send()
