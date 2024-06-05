@@ -8,6 +8,10 @@ import Character from "./components/pages/Character";
 
 // 전체 공통 CSS 불러오기
 import "../src/css/index.scss";
+import Movies from "./components/pages/Movies";
+import Series from "./components/pages/Series";
+import Games from "./components/pages/Games";
+import News from "./components/pages/News";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -36,6 +40,11 @@ import "../src/css/index.scss";
     2. Layout.jsx 레이아웃 컴포넌트를 루트로 선택
     3. 상단영역 GNB에 <Link to> 셋팅
     4. 메인영역에 <Outlet /> 셋팅
+    5. 라우터 연결흐름:
+      (1) Route 의 path 정보셋팅
+      (2) Link to 정보 클릭시 1번정보와 대조
+      (3) 1번정보 일치시 element에 등록된 컴포넌트로딩
+      (4) Outlet 표시 컴포넌트에 삽입
     
 *********************************************/
 
@@ -55,6 +64,10 @@ export default function MainComponent() {
           <Route index element={<Main />} />
           <Route path="character" element={<Character />} />
           <Route path="comics" element={<Comics />} />
+          <Route path="movies" element={<Movies />} />
+          <Route path="movies/series" element={<Series />} />
+          <Route path="games" element={<Games />} />
+          <Route path="news" element={<News />} />
         </Route>
         {/* Layout 루트 Route로 하위 Route를 감싼다! */}
       </Routes>
