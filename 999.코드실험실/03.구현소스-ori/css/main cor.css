@@ -1,0 +1,237 @@
+/* 메인 css - index.html  */
+
+@import url(./reset.css);
+@import url(./core.css);
+@import url(./common.css);
+
+body * {
+  /* outline: 2px dashed red; */
+}
+/****************************** 상단영역 ****************************/
+/* .header-area {  
+  position: relative;
+  max-width: 1600px;
+  height: 60px;
+  margin: 0 auto;
+  background-color: red;
+  
+}
+.tmenu {
+position: fixed;
+  top: 0;
+  max-width: 1600px;
+  height: 60px;
+  margin: 0 auto;
+  width: 100%;
+
+  display: flex;
+  z-index: 1;
+
+  background-color: orange;
+}
+.smbx{
+  display: flex;
+} */
+/****************************** 메인영역 ****************************/
+/* ---------------------첫번째 페이지--------------------- */
+.main1 {
+  background: no-repeat url(../img/main_bg_1.png) center/cover;
+  font-family: "Noto Sans KR", sans-serif;
+}
+.main-wrap {
+  max-width: 1500px;
+  min-width: 600px;
+  margin: 0 auto;
+
+  display: flex;
+  gap: 30px;
+  justify-content: space-between;
+}
+.main-wrap > section {
+  width: 50%;
+  height: 100vh;
+  position: relative;
+}
+
+/* 메인 이미지 구역 */
+.main-img {
+  position: absolute;
+  right: 12rem;
+  top: 47.6%;
+  transform: translateY(-50%) rotate(350deg);
+
+  /* width: min(700px, 50vh); */
+  width: 23vw;
+  aspect-ratio: 430 / 620;
+  border-radius: 50px;
+  overflow: hidden;
+  z-index: 1;
+  /* opacity: 1; */
+  transition: .6s ease-in-out;
+}
+/* .main-img.on {
+  right: 25rem;
+  transition: .6s ease-in-out;
+  opacity: 0;
+} */
+.main-card-area img {
+  width: 100%;
+}
+.main-card-area img:first-child {
+  width: 106%;
+}
+.back-card {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* width: min(700px, 50vh); */
+  width: 23vw;
+  aspect-ratio: 430 / 620;
+  border-radius: 50px;
+  overflow: hidden;
+  background-color: #370c51;
+}
+.back-card img {
+  opacity: 0;
+}
+.back-card span {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  font-size: 5rem;
+  color: white;
+
+  writing-mode: tb-rl;
+
+  padding: 2rem;
+  padding-top: 5rem;
+}
+/* 메인글자 구역 */
+.text-area-wrap {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.text-area-wrap h2 {
+  font-size: 8rem;
+  line-height: 1.2;
+  font-weight: 500;
+}
+.text-area-wrap h3 {
+  font-size: 4rem;
+  letter-spacing: -4px;
+  font-weight: 300;
+}
+
+/* 자세히보기 버튼 */
+.more-btn {
+  position: relative;
+  width: 160px;
+  height: 50px;
+  background-color: #ffffff00;
+
+  margin-top: 1.8rem;
+  cursor: pointer;
+}
+.more-btn span {
+  color: #000;
+  transition: color 0.3s;
+}
+.more-btn::before {
+  content: "";
+  width: 0;
+  height: 100%;
+  background-color: #e30613;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: width 0.3s;
+}
+.more-btn:hover::before {
+  width: 100%;
+}
+.more-btn:hover {
+  border-color: #e30613;
+}
+.more-btn:hover span {
+  position: relative;
+  color: white;
+  border-color: #e30613;
+}
+
+/* 이미지 순서 */
+.indic {
+  position: absolute;
+  left: 100%;
+  transform: translateX(-100%);
+  bottom: 8%;
+
+  display: flex;
+  font-size: 3rem;
+}
+
+.indic li:last-child {
+  margin-left: 55px;
+}
+
+.indic li a{
+  color: black;
+  transition: 2s ease-in-out;
+}
+.indic li.on a{
+  color: red;
+  transition: 2s ease-in-out;
+}
+
+/* ---------------------두번째 페이지--------------------- */
+.main2 {
+  max-width: 1500px;
+  min-width: 600px;
+  margin: 7rem auto;
+}
+/* 제목 */
+.main2-tit {
+  text-align: center;
+}
+.main2-tit h2 {
+  font-size: 5rem;
+}
+.main2-tit span {
+  font-size: 2rem;
+}
+/* 내용 */
+.main2-cont {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 20px;
+}
+.main2-cont-area {
+  position: relative;
+  width: calc(40% - 2rem);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+.main2-cont img {
+  width: 100%;
+  /* width: 500px; */
+  border-radius: 50px;
+
+}
+
+
+.main2-cont span {
+  position: absolute;
+  margin-top: 10px;
+  font-size: 3rem;
+  color: white;
+}
+
+
+/****************************** 하단영역 ****************************/

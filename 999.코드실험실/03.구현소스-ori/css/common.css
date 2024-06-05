@@ -1,0 +1,311 @@
+@charset "utf-8";
+
+/* 도깨비 PJ : 공통 모듈 CSS - common.css */
+/* 공유기능 요소 셋팅 */
+
+/* 공사중 표시 */
+/* body * {
+  outline: 2px dashed #424242;
+} */
+
+
+/************* 상단영역 *************/
+#header-area {
+  height: 90px;
+  background-color: rgba(0, 0, 0, 0);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  transition: 0.3s;
+}
+#header-area.on{
+  background-color: white;
+}
+
+
+
+/* 상단 내부박스 */
+#header-area .inbox {
+  width: 95%;
+  height: 100%;
+  /* outline: 1px solid red; */
+  margin: 0 auto;
+}
+
+.header-area {
+  /* 플렉스로 가로 정렬 */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* 로고 */
+h1.logo {
+    width: 194px;
+}
+.logo a {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+.logo img {
+  width: 100%;
+}
+
+/* 메뉴 */
+
+#gnb {
+  width: 100%;
+}
+#gnb ul {
+  display: flex;
+  justify-content: space-between;
+
+  margin: 0 25px;
+}
+#gnb ol {
+  display: flex;
+  gap: 15px;
+}
+
+#gnb ul li a {
+  color: rgba(0, 0, 0, 0.529);
+  font-size: 2rem;
+  font-family: "Kanit", sans-serif;
+}
+
+/* 메뉴 마우스 오버시 글자 네온효과 */
+#gnb ul li a:hover{
+  /* display: block; */
+  font-weight: 700;
+  color: #e30613;
+}
+
+/* 우측 상단영역에 아이콘 */
+.gnb img {
+  width: 40px;
+  height: 40px;
+}
+
+
+/* 기타 */
+.etc{
+  display: flex;
+  align-items: center;
+
+}
+
+
+
+
+/* 검색*/
+
+/* 검색버튼 */
+.search {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  transition: 0.3s linear;
+  border-radius: 50px;
+}
+
+/* input창 */
+.input-box {
+  border: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+  background-color: #193f93;
+  text-indent: 20px;
+  transition: 0.3s;
+  color: #fff;
+  box-sizing: border-box;
+}
+.input-box:focus {
+  outline: none;
+}
+
+/* 검색 아이콘 */
+.icon {
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background-color: #193f93;
+}
+/* 클릭시 on */
+.search.on {
+  width: 20rem;
+  background-color: #193f93;
+}
+
+/* 아이콘 */
+.fa-magnifying-glass:before,
+.fa-search:before {
+  content: "\f002";
+}
+
+
+/* 모바일 햄버거 버튼 */
+.mobile-btn{
+  width: 40px;
+  height: 40px;
+  transition: 0.3s linear;
+  border-radius: 50px;
+  margin-left: 10px;
+  display: none;
+}
+
+/* 햄버거 아이콘 */
+.icon2 {
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background-color: #193f93;
+
+
+}
+
+.icon2.on{
+  display: none;
+}
+
+.icon3 {
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  font-size: 1.8rem;
+  cursor: pointer;
+  background-color: #193f93;
+  display: none;
+
+}
+
+.icon3.on{
+  display: block;
+}
+
+
+/* 모바일 사이트맵 */
+
+.m-sitemap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 90px;
+  background: #fff;
+  left:100%;
+  transition: all 0.3s ease-in-out;
+
+  
+
+}
+
+.m-sitemap.on{
+  left:0;
+}
+
+.m-sitemap li{
+  position: relative;
+
+}
+
+.m-sitemap li a{
+  display: block;
+  width: 100%;
+  line-height:11rem;
+  font-size: 4rem;
+  text-align: center;
+  color:#333;
+  font-weight: bold;
+  border-bottom:1px solid #c8c8c8;
+  
+
+}
+
+.m-sitemap li a:hover{
+  color:#fff;
+  background-color: #193f93;
+}
+
+
+
+
+/************* 하단영역 *************/
+
+#footer-area {
+  /* background: url(../images/common/space.jpg) no-repeat top / cover; */
+  background-color: #000;
+}
+
+.footer-area{
+  width: 90%;
+  margin: 0 auto;
+  
+  font-family: 'Noto Sans KR', sans-serif;
+  color: #666;
+}
+
+.foot{
+  padding: 3rem 0px;
+  border-bottom: 1px solid #66666686;
+}
+
+.bottom1 {
+  color: white;
+  font-size: 2.5rem;
+}
+
+.bottom2 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  font-size: 1.3rem;
+}
+.bottom2 td{
+  padding-right: 10px;
+}
+.sns-icon{ 
+  display: flex;
+  gap: 30px;
+  margin-top: 10px;
+  color: #999;
+  font-size: 3rem;
+}
+
+.info-area span{
+  color: #999;
+  font-weight: bold;
+}
+
+.bottom4{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-size: 1.1rem;
+}
+.bottom4 img{
+  margin-bottom: 15px;
+}
+.bottom4 ul{
+  display: flex;
+}
+
