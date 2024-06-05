@@ -10,12 +10,11 @@ import "../../css/banner.scss";
 import $ from "jquery";
 import "jquery-ui-dist/jquery-ui";
 
-function Banner({catName}) {
-    // catName 배너 데이터 카테고리이름
+function Banner({ catName }) {
+  // catName 배너 데이터 카테고리이름
 
-    // 선택 데이터
-    const selData = banData[catName];
-
+  // 선택 데이터
+  const selData = banData[catName];
 
   // 코드 리턴구역 /////////
   return (
@@ -35,11 +34,20 @@ function Banner({catName}) {
         ))}
       </ul>
 
-      {/* 양쪽이동버튼 */}
-      <button className="abtn lb">＜</button>
-      <button className="abtn rb">＞</button>
-      {/* 블릿 인디케이터 - 선택데이터의 개수만큼 만들기 */}
-      <ol className="indic"></ol>
+      {
+        // 배너 데이터가 1개면 양쪽이동버튼 출력안함
+        // 배열.length 로 배열개수가 1 이상일때만 출력
+        selData.length > 1 && (
+          <>
+            {/* 양쪽이동버튼 */}
+            {/* 양쪽이동버튼 */}
+            <button className="abtn lb">＜</button>
+            <button className="abtn rb">＞</button>
+            {/* 블릿 인디케이터 - 선택데이터의 개수만큼 만들기 */}
+            <ol className="indic"></ol>
+          </>
+        )
+      }
     </div>
   );
 }
