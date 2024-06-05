@@ -14,7 +14,7 @@
         + button.abtn 
         + ol.indic
         
-    (2) 객체화 :
+    (2) 객체화 : data/banner.js
         {
             "src": 배너이미지경로
             "tit1": 작은타이틀
