@@ -166,7 +166,45 @@
             화면뿌려(`<img src="https://ojsfile.ohmynews.com/STD_IMG_FILE/2014/0103/IE001663873_STD.jpg" style="height:70vh" alt="약속">`);
           }); ///// then 메서드 /////
 
+
+        // 샘플 제이슨 (사이트제공)
+        // https://jsonplaceholder.typicode.com/comments
+
+
         // 3. 파일을 전송 받은 후 실행하는 약속객체 생성하기
+        const 파일약속 = new Promise((성공함수,실패함수)=>{
+          // (1) XMLHttpRequest 객체 인스턴스 만들기
+          const myAjax = new XMLHttpRequest();
+
+          // (2) 비동기 파일요소 열기
+          // 전송기능 메모리 생성
+          myAjax.open("GET", "https://jsonplaceholder.typicode.com/comments");
+
+          // (3) 결과를 리턴받는 onload 이벤트 함수구역 만들기
+          myAjax.onload = function(){
+            console.log("전송결과:",
+            myAjax.status,
+            myAjax.response);
+
+            // 성공시 처리하기
+            if(myAjax.status == 200){
+              성공함수(myAjax.response);
+              // 프라미스 성공후 then 메서드 실행은 
+              // 성공함수호출로 함!
+            } /// if ///
+            // 실패시 처리하기
+            else {
+              실패함수(myAjax.status);
+            } /// else ///
+
+          }; ////////// onload 함수 /////////
+
+          // (4) 비동기 요청보내기 : send()
+          myAjax.send();
+
+        }); /////////////// Promise /////////////
+
+        
         
       }); /////////////// load //////////////
     </script>
