@@ -41,6 +41,17 @@
           (v)=>{
             let res = JSON.parse(v);
             console.log(res);
+
+            // 화면에 보여주기
+            document.querySelector(".wrap")
+            .innerHTML = res.map(v=>
+              `
+                <div 
+                class="page"
+                style="background-image: url(${v["download_url"]})"
+                >${v["author"]}</div>
+              `
+            ).join('');
             
           }
         ); /////////////// Promise /////////////
