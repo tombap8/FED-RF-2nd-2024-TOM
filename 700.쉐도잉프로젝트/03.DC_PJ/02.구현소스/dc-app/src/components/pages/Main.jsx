@@ -8,7 +8,7 @@ export default function Main(){
     return(
         <>
            {/* 1. 배너 컴포넌트 */}
-           <Banner />
+           <Banner catName="main3" />
         </>
     );
 
