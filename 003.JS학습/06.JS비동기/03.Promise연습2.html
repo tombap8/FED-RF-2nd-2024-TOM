@@ -41,6 +41,7 @@
           (v)=>{
             let res = JSON.parse(v);
             console.log(res);
+            
           }
         ); /////////////// Promise /////////////
 
@@ -50,38 +51,34 @@
       }); /////////////// load //////////////
     </script>
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+      @import url('https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap');
+
+      html,body{
+        margin: 0;
+        padding: 0;
+      }
+
       body {
-        background-image: linear-gradient(to bottom, #494949, gray);
-        background-repeat: no-repeat;
-        background-attachment: fixed;
+        font-family: "Poetsen One", sans-serif;
+      }
+
+      .page{
+        height: 100vh;
         text-align: center;
-      }
-      #show {
-        font-family: "Gamja Flower", cursive;
-        font-size: 4vw;
-        background-image: linear-gradient(
-          to bottom,
-          lightgreen,
-          pink,
-          orangered,
-          aquamarine
-        );
-        background-clip: text;
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        line-height: 100vh;
+        font-size: 3vw;
+        color: #fff;
+        white-space: nowrap;
+
         background-repeat: no-repeat;
-        font-weight: bold;
+        background-size: cover;
+        background-position: center;
+
       }
-      #doc {
-        width: 50%;
-        height: 50vh;
-        margin: 0 auto;
-      }
+      
     </style>
   </head>
   <body>
-    <div id="show"></div>
-    <div id="doc"></div>
+    <div class="wrap"></div>
   </body>
 </html>
