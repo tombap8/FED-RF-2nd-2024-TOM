@@ -7,6 +7,9 @@ import { banData } from "../data/banner";
 // 배너 CSS
 import "../../css/banner.scss";
 
+// 배너 슬라이드 기능 함수
+import goSlide from "../func/go_slide";
+
 function Banner({ catName }) {
   // catName 배너 데이터 카테고리이름
 
@@ -38,8 +41,8 @@ function Banner({ catName }) {
           <>
             {/* 양쪽이동버튼 */}
             {/* 양쪽이동버튼 */}
-            <button className="abtn lb">＜</button>
-            <button className="abtn rb">＞</button>
+            <button className="abtn lb" onClick={goSlide}>＜</button>
+            <button className="abtn rb" onClick={goSlide}>＞</button>
             {/* 블릿 인디케이터 
             - 선택데이터의 개수만큼 만들기
             map메서드의 반복기능만 이용하여 태그생성

@@ -9,6 +9,9 @@ export default function Main(){
         <>
            {/* 1. 배너 컴포넌트 */}
            <Banner catName="THE FLASH" />
+
+           {/* 배너 컴포넌트 */}
+           <Banner catName="CHARACTERS" />
         </>
     );
 
