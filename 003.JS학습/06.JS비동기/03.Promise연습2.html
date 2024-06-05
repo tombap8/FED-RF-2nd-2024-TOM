@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS비동기 : 3. Promise 연습2</title>
+    <script>
+        
+      function 화면뿌려(이거) {
+        document.querySelector("#show").innerHTML += 이거 + "<br>";
+      }
+
+      ////////// 로드구역 //////////////
+      window.addEventListener("load", () => {
+
+        // 이미지 정보 데이터 사이트
+        // https://picsum.photos/v2/list/
+
+        const myPromise = new Promise((sFn)=>{
+          const myAjax = new XMLHttpRequest();
+
+          // 비동기 전송파일 열기 
+          myAjax.open("GET","https://picsum.photos/v2/list/");
+
+          // 비동기 전송파일 로드하기
+          myAjax.onload = ()=>{
+            // console.log(myAjax.response);
+            if(myAjax.status === 200) 
+              sFn(myAjax.response);
+            else alert("전송실패");
+          };
+
+          // 비동기 전송파일 전송하기
+          myAjax.send();
+
+        }); ////  Promise /////
+
+        // 약속받기
+        myPromise.then(
+          (v)=>{
+            let res = JSON.parse(v);
+            console.log(res);
+          }
+        ); /////////////// Promise /////////////
+
+
+
+        
+      }); /////////////// load //////////////
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+      body {
+        background-image: linear-gradient(to bottom, #494949, gray);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+      }
+      #show {
+        font-family: "Gamja Flower", cursive;
+        font-size: 4vw;
+        background-image: linear-gradient(
+          to bottom,
+          lightgreen,
+          pink,
+          orangered,
+          aquamarine
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        font-weight: bold;
+      }
+      #doc {
+        width: 50%;
+        height: 50vh;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="show"></div>
+    <div id="doc"></div>
+  </body>
+</html>
