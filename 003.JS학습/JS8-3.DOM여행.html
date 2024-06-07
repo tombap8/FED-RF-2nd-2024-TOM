@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS8-3. DOM여행</title>
+    <style>
+      .tit {
+        text-align: center;
+      }
+      .stage {
+        border: 3px dotted blue;
+        padding: 20px;
+      }
+
+      .stage ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+      .stage ul.on {
+        background-color: pink;
+      }
+
+      .stage li {
+        width: 50px;
+        height: 50px;
+        border: 5px dashed red;
+        border-radius: 50%;
+        margin: 0 10px;
+      }
+
+      .stage li.on {
+        background: lime url(images/num/num_05.png) no-repeat center/cover;
+      }
+    </style>
+    <script>
+      window.addEventListener("load", () => {
+        let stage = document.querySelector(".stage");
+        let tgs = stage.querySelectorAll("li");
+        let btns = document.querySelectorAll(".btns button");
+        btns.forEach((ele) => {
+          ele.onclick = () => {
+            console.log(ele.innerText);
+            let txt = ele.innerText;
+            let cele;
+            let isNow;
+
+            if (
+              stage.querySelector("ul").classList.contains("on") &&
+              txt !== "부모로"
+            ) {
+              stage.querySelector("ul").classList.remove("on");
+              tgs[0].classList.add("on");
+            }
+
+            switch (txt) {
+              case "맨앞으로":
+                tgs.forEach((ele) => {
+                  if (ele.classList.contains("on")) {
+                    ele.classList.remove("on");
+                  }
+                }); //// forEach //////
+                tgs.item(0).classList.add("on");
+                break;
+              case "뒤로":
+                tgs.forEach((ele) => {
+                  if (ele.classList.contains("on")) {
+                    // 요소.isSameNode(비교요소)
+                    // 특정요소가 비교요소와 같으면 true
+                    // 같지 않으면 false
+                    isNow = ele.isSameNode(tgs.item(tgs.length - 1));
+                    console.log(isNow);
+                    if (isNow) return;
+                    // -> 마지막노드와 같으면 return
+                    // cele = ele;
+                    ele.classList.remove("on");
+                    // ele.nextElementSibling.classList.add("on")
+
+                    // 바로 다음것을 on변경하면 forEach문에서
+                    // 다음요소를 돌때 다시 on이 걸리게되고
+                    // if문에 들어오게 된다! 그래서 계속걸림!
+                    // 해결책: on을 조금있다가 넣어준다(setTimeout)
+                    setTimeout(
+                      () => ele.nextElementSibling.classList.add("on"),
+                      10
+                    );
+                  }
+                }); //// forEach //////
+                // if (!isNow)
+                // nextElementSibling 선택요소의 다음요소
+                break;
+              case "앞으로":
+                tgs.forEach((ele) => {
+                  if (ele.classList.contains("on")) {
+                    isNow = ele.isSameNode(tgs.item(0));
+                    console.log(isNow);
+                    if (isNow) return;
+                    // -> 첫번째 요소가 같으면 return!
+                    // cele = ele;
+                    ele.classList.remove("on");
+                    ele.previousElementSibling.classList.add("on");
+                    // previousElementSibling 이전요소선택
+                  }
+                }); //// forEach //////
+                break;
+              case "맨뒤로":
+                tgs.forEach((ele) => {
+                  if (ele.classList.contains("on")) {
+                    ele.classList.remove("on");
+                  }
+                }); //// forEach //////
+                tgs.item(tgs.length - 1).classList.add("on");
+                break;
+              case "부모로":
+                tgs.forEach((ele) => {
+                  if (ele.classList.contains("on")) {
+                    ele.classList.remove("on");
+                    ele.parentElement.classList.add("on");
+                    // parentElement 부모요소선택
+                  }
+                }); //// forEach //////
+                break;
+            } ////// switch ////
+          }; //////// click /////
+        }); ///// forEach //////////
+      }); /////////// load ///////////////////
+    </script>
+  </head>
+
+  <body>
+    <h1 class="tit">JS8-3. DOM여행</h1>
+    <div class="stage">
+      <ul>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li class="on"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <div class="btns">
+      <button>맨앞으로</button>
+      <button>앞으로</button>
+      <button>뒤로</button>
+      <button>맨뒤로</button>
+      <button>부모로</button>
+    </div>
+  </body>
+</html>
