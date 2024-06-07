@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Date 객체 사용 테스트</title>
+    <script>
+        // 콘솔찍기함수
+        const cg = x => document.write(`<h1>${x}</h1>`);
+        //console.log(x);
+        // 날짜찍기 형식변경함수(yyyy-mm-dd시간)
+        const fm = x => `
+        ${x.getFullYear()}-${
+            x.getMonth()+1 < 10 ?
+            '0' + (x.getMonth() + 1) :
+            x.getMonth() + 1
+        }-${
+            x.getDate() < 10 ?
+            '0' + x.getDate() : x.getDate()
+        }(${week[x.getDay()]})`;
+        // 요일변경배열
+        const week = ["일","월","화","수","목","금","토"];
+
+        // 달력객체 생성(인스턴스 생성!)
+
+        // 최종변경 날짜객체
+        const myDate = new Date();
+        // 변경할 날짜객체
+        const tempDate = new Date();
+
+
+        // 달력구성에 필요한 정보들 /////
+        // 1. 전달 끝날짜
+        // 2. 전달 끝날짜 요일
+        // 3. 현재달 첫날짜(요일정보때문에 구함!)
+        // 4. 현재달 끝날짜
+
+        // -> 전달  끝날짜, 첫날짜 알아오기
+        // new Date(년도,월,옵션)
+        // 전달값
+        // (1) 년도
+        // (2) 월
+        // (3) 옵션 : 0 - 현재달끝날짜 / 1 - 다음달첫날짜
+
+        let test = new Date(2023,2,0);
+        // let test = new Date(2023,2,1);
+
+        // 1.올해 2월 끝날짜
+        cg('2023년 2월끝날짜:'+fm(test));
+
+        test = new Date(
+            tempDate.getFullYear(),
+            tempDate.getMonth(),
+            0);
+
+        // 2.전달 끝날짜 : 월정보를 숫자로 가져오면 전달이 됨!
+        cg('전달끝날짜:'+fm(test));
+
+        // 3.전달 끝날짜 요일
+        // -> 요일정보는 getDay()
+        // 0부터 시작 (일요일부터 시작)
+        cg('전달끝날짜요일:'+week[test.getDay()]);
+
+        test = new Date(
+            tempDate.getFullYear(),
+            tempDate.getMonth(),1);
+            // tempDate.getMonth() 전달임!
+
+        // 4. 현재달 첫날짜
+        // new Date(년도,월,0-현재달끝날짜/1-다음달첫날짜)
+        // 현재달 첫날짜는 전달로 처리하면 나옴!
+        cg('현재달 첫날짜:'+fm(test));
+
+        test = new Date(
+            tempDate.getFullYear(),
+            tempDate.getMonth()+1,0);
+        //tempDate.getMonth()+1 현재달
+
+        // 5. 현재달 끝날짜
+        cg('현재달 끝날짜:'+fm(test));
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

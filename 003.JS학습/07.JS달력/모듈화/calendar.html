@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>달력 구현</title>
+    <link rel="stylesheet" href="./css/calendar.css" />
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- 메인 JS -->
+    <script src="./js/main.js" type="module"></script>
+    <style>
+      /* 전체배경색 */
+      body{
+        background-color: #515151;
+      }
+      /* 타이틀 */
+      h1{
+        text-align: center;
+        color: #fff;
+        font-size: 5vh;
+        margin-bottom: 10vh;
+      }
+
+      /* 컴포넌트 사용전체박스 */
+      .dalcom {
+        display: flex;
+      }
+      .dalcom > div {
+        flex: 1;
+        height: 50px;
+        border: 4px dotted mediumspringgreen;
+        padding-left: 10vw;
+      }
+      /* 컴포넌트 입력창 */
+      .dalcom input{
+        padding: 7px;
+        font-size: 24px;
+      }
+      /* 달력 조정은 트랜스폼으로~! */
+      .calendar{
+        transform: scale(.8);
+        transform-origin: left top;
+        /* display: none; */
+      }
+
+      /* css자체로 달력 보이기 
+      -> input에 포커스 가상클래스
+      -> 그.러.나... 너무빨리사라져서 
+      이벤트 정보처리가 미쳐되기전에 없어지므로
+      CSS로는 하지 못함ㅠ.ㅠ;;; */
+
+      /* .dalcom input:focus + div > .calendar{
+        display: block;
+      } */
+    </style>
+  </head>
+  <body>
+    <h1>달력 컴포넌트 활용</h1>
+
+    <div class="dalcom">
+      <!-- 달력 첫번째 영역 -->
+      <div>
+        <!-- readonly는 읽기전용! -->
+        <input type="text" readonly />
+        <div class="dalcom1"></div>
+      </div>
+      <!-- 달력 두번째 영역 -->
+      <div>
+        <input type="text" readonly />
+        <div class="dalcom2"></div>
+      </div>
+    </div>
+  </body>
+</html>
