@@ -59,17 +59,36 @@ function Layout() {
 
     // 슬림적용 대상: #top-area
     const topMenu = document.querySelector("#top-area");
+    // 상단이동 버튼 대상 : .tbtn
+    const tbtn = document.querySelector(".tbtn");
+    // 상단이동기능
+    tbtn.onclick = (e)=>{
+      // 기본이동막기
+      e.preventDefault();
+      // 상단이동하기 : 부드러운스크롤 위치값 업데이트
+      setPos(0);
+      // 위치값 이동하기
+      window.scrollTo(0, 0);
+
+    }; ///// click ///////
 
     // 슬림메뉴 적용하기 : "home"에서만 적용
-    const chkSlim = (e) => {
-      e.preventDefault();
-      
-      // 스크롤 위치값 구하기
-      let scTop = window.scrollY;
-      console.log("슬림적용!!!", scTop);
+    const chkSlim = () => {    
+      console.log("현재메뉴:",menu);  
+      // 메뉴 "home"일때만 적용 //////////
+      if(menu == "home"){
+        // 스크롤 위치값 구하기
+        let scTop = window.scrollY;
+        console.log("슬림적용!!!", scTop);
 
-      if (scTop > 200) topMenu.classList.add("on");
-      else topMenu.classList.remove("on");
+        // 슬림메뉴 적용
+        if (scTop > 200) topMenu.classList.add("on");
+        else topMenu.classList.remove("on");
+  
+        // 상단이동버튼 적용
+        if (scTop > 300) tbtn.classList.add("on");
+        else tbtn.classList.remove("on");
+      } ///////// 메뉴 "home"일때만 적용 /////
     }; //////// chkSlim 함수 /////////
 
 
