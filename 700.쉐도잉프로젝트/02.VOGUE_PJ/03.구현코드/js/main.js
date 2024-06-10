@@ -101,7 +101,7 @@ function Layout() {
 
     }
     else{
-      console.log("서브야~!");
+      console.log("서브야~!",menu);
       setPos(0);
       window.removeEventListener("scroll", chkSlim);
 

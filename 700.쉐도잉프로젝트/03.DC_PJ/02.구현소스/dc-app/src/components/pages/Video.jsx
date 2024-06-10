@@ -1,11 +1,14 @@
 // 비디오 페이지 컴포넌트 ///
 
+import VidIntro from "../modules/VidIntro";
+
 export default function Video(){
 
     //// 코드 리턴구역 //////////////
     return(
         <>
-           <h1>비디오페이지</h1>
+           {/* 1. 비디오소개 컴포넌트 */}
+           <VidIntro catName="VIDEO" clsName="on" />
         </>
     );
 

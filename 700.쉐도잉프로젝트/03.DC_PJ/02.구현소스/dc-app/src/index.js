@@ -2,16 +2,18 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./components/layout/Layout";
+import Character from "./components/pages/Character";
+import Movies from "./components/pages/Movies";
+import Series from "./components/pages/Series";
+import Video from "./components/pages/Video";
+import Games from "./components/pages/Games";
+import News from "./components/pages/News";
 import Main from "./components/pages/Main";
 import Comics from "./components/pages/Comics";
-import Character from "./components/pages/Character";
+import Board from "./components/pages/Board";
 
 // 전체 공통 CSS 불러오기
 import "../src/css/index.scss";
-import Movies from "./components/pages/Movies";
-import Series from "./components/pages/Series";
-import Games from "./components/pages/Games";
-import News from "./components/pages/News";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -66,8 +68,10 @@ export default function MainComponent() {
           <Route path="comics" element={<Comics />} />
           <Route path="movies" element={<Movies />} />
           <Route path="movies/series" element={<Series />} />
+          <Route path="video" element={<Video />} />
           <Route path="games" element={<Games />} />
           <Route path="news" element={<News />} />
+          <Route path="board" element={<Board />} />
         </Route>
         {/* Layout 루트 Route로 하위 Route를 감싼다! */}
       </Routes>
