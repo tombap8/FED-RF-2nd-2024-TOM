@@ -2,6 +2,7 @@
 
 import Banner from "../modules/Banner";
 import SecIntro from "../modules/SecIntro";
+import VidIntro from "../modules/VidIntro";
 
 export default function Main(){
 
@@ -14,6 +15,10 @@ export default function Main(){
 
            {/* 2. 섹션소개 컴포넌트 */}
            <SecIntro />
+
+           {/* 3. 비디오 소개 컴포넌트
+           catName 카테고리명, clsName 배경색넣을 클래스(on/off) */}
+           <VidIntro catName="main" clsName="off" />
 
         </>
     );
