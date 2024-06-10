@@ -67,7 +67,7 @@ function Layout() {
       e.preventDefault();
       // 상단이동하기 : 부드러운스크롤 위치값 업데이트
       setPos(0);
-      // 위치값 이동하기
+      // 위치값 이동하기 : scrollTo(가로스크롤, 세로스크롤)
       window.scrollTo(0, 0);
 
     }; ///// click ///////
