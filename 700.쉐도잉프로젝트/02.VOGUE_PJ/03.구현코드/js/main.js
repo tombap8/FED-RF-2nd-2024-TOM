@@ -50,16 +50,20 @@ function Layout() {
     // [ 이벤트의 해제는 removeEventListener()를 사용한다!!! ]
     // 부드러운 스크롤은 "home"에서만 적용함!
     if (menu == "home")
-      document.addEventListener("wheel", scrolled, { passive: false });
+      document.addEventListener("wheel", scrolled, 
+    { passive: false });
     // "home"이 아닌경우는 모두 이벤트를 해재한다!
-    else document.removeEventListener("wheel", scrolled, { passive: false });
+    else document.removeEventListener("wheel", scrolled, 
+    { passive: false });
     /////////////////////////////////////////////////////////
 
     // 슬림적용 대상: #top-area
     const topMenu = document.querySelector("#top-area");
 
     // 슬림메뉴 적용하기 : "home"에서만 적용
-    const chkSlim = () => {
+    const chkSlim = (e) => {
+      e.preventDefault();
+      
       // 스크롤 위치값 구하기
       let scTop = window.scrollY;
       console.log("슬림적용!!!", scTop);
@@ -68,10 +72,21 @@ function Layout() {
       else topMenu.classList.remove("on");
     }; //////// chkSlim 함수 /////////
 
+
     // 스크롤 이벤트 적용하기 : scroll이벤트
     // "home"에서만 적용하기
-    if (menu == "home") window.addEventListener("scroll", chkSlim);
-    else window.removeEventListener("scroll", chkSlim);
+    if (menu == "home") {
+      console.log("홈이야~!");
+      setPos(0);
+      window.addEventListener("scroll", chkSlim);
+
+    }
+    else{
+      console.log("서브야~!");
+      setPos(0);
+      window.removeEventListener("scroll", chkSlim);
+
+    } 
   }, [menu]);
 
   // 코드 리턴구역 ////////////
