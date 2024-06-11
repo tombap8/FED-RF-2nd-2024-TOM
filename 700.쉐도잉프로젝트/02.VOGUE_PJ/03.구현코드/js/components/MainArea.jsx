@@ -81,6 +81,9 @@ export default function MainArea() {
       // 컴포넌트가 소멸해도 그대로 존재하게 되므로
       // 이벤트를 removeEventListener로 지운다!
 
+      // 부드러운 스크롤 초기값 0
+      setPos(0);
+
       // [1] 부드러운 스크롤 이벤트 삭제
       document.removeEventListener("wheel", scrolled, { passive: false });
       // [2] 슬림 스크롤 이벤트 삭제
