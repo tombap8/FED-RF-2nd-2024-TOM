@@ -84,7 +84,24 @@
             ( section.vidbx > 
                 div.playvid >
                     h2.ifrtit + iframe + button )
+
+        ->> [ SwiperVid 플러그인 모듈 구조 ]
+        Root>
+        div.swiper-slide.swiper-slide-active
+            > section.sw-inbox
+                > (div.vid-img > img + 폰트어썸 아이콘)
+                + (div.vid-tit > h4 + h3)
+                    
+                
+
     (2) 객체화 :
+        1) 비디오 스와이프 모듈 정보 : data/vid_swipe.js
+        (catTit)    
+        {
+            카테고리명: 타이틀정보
+        }
+
+        2) 스와이퍼 리스트 정보 : data/swiper_vid.js
         {
             isrc:"",
             vsrc:"",

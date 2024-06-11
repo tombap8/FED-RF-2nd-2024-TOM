@@ -30,9 +30,9 @@ export default function TopArea({ changeMenu }) {
   return (
     <div id="top-area">
       <header className="top-area ibx common-area">
-        {/* <!-- 1-1.상단메뉴 --> */}
+        {/* 1-1.상단메뉴 */}
         <div className="tmenu">
-          {/* <!-- 1-1-1.sns박스 --> */}
+          {/* 1-1-1.sns박스 */}
           <div className="sns">
             <a href="#" className="fi fi-instagram" title="인스타그램">
               <span className="ir">인스타그램</span>
@@ -75,12 +75,12 @@ export default function TopArea({ changeMenu }) {
               <span className="ir">카카오스토리</span>
             </a>
           </div>
-          {/* <!-- 1-1-2.사이드메뉴 --> */}
+          {/* 1-1-2.사이드메뉴 */}
           <div className="sideMenu">
             <ul className="smbx">
               <li>
                 <a href="#">SIDE MENU</a>
-                {/* <!-- 서브메뉴 --> */}
+                {/* 서브메뉴 */}
                 <ol className="smsub">
                   <li>
                     <a href="#">회사 소개</a>
@@ -99,13 +99,13 @@ export default function TopArea({ changeMenu }) {
             </ul>
           </div>
         </div>
-        {/* <!-- 1-2.로고박스 --> */}
+        {/* 1-2.로고박스 */}
         <h1 className="logo">
           <a href="#" onClick={() => chgMenuFn("home")}>
             <img src="./images/mlogo.png" alt="메인로고" />
           </a>
         </h1>
-        {/* <!-- 1-3.GNB박스 --> */}
+        {/* 1-3.GNB박스 */}
         <nav className="gnb">
           <ul>
             {menuArr.map((v) => (
@@ -122,7 +122,7 @@ export default function TopArea({ changeMenu }) {
             ))}
 
             <li>
-              {/* <!-- 돋보기 검색버튼 --> */}
+              {/* 돋보기 검색버튼 */}
               <i href="#" className="fi fi-search">
                 <span className="ir">search</span>
               </i>
@@ -134,15 +134,15 @@ export default function TopArea({ changeMenu }) {
   );
 } ///////// TopArea 컴포넌트 ///////////
 
-//// 모바일용 버튼 컴포넌트 : header.top-area 안에 /////
+// //// 모바일용 버튼 컴포넌트 : header.top-area 안에 /////
 // function MobBtns() {
 //   return (
 //     <>
-//       {/* <!-- 모바일용 햄버거버튼 --> */}
+//       {/* 모바일용 햄버거버튼 */}
 //       <a href="#" className="mobtn hbtn fi fi-nav-icon">
 //         <span className="ir">GNB button</span>
 //       </a>
-//       {/* <!-- 모바일용 검색버튼 --> */}
+//       {/* 모바일용 검색버튼 */}
 //       <a href="#" className="mobtn sbtn fi fi-search">
 //         <span className="ir">search</span>
 //       </a>
@@ -155,23 +155,23 @@ export default function TopArea({ changeMenu }) {
 // function MobMenu() {
 //   return (
 //     <>
-//     {/* <!-- 1.4.모바일 검색박스 --> */}
+//     {/* 1.4.모바일 검색박스 */}
 //         <div className="mos">
 //             <div className="mwrap">
-//                 {/* <!-- 입력창박스 --> */}
+//                 {/* 입력창박스 */}
 //                 <div id="search">
 //                     <input type="text" className="search"/>
 //                 </div>
-//                 {/* <!-- 검색버튼 --> */}
+//                 {/* 검색버튼 */}
 //                 <button className="scbtn fi fi-search">
 //                     <span className="ir">돋보기검색아이콘</span>
 //                 </button>
 //             </div>
 //         </div>
 
-//         {/* <!-- 1.5.모바일 전체메뉴 --> */}
+//         {/* 1.5.모바일 전체메뉴 */}
 //         <div id="mobx">
-//             {/* <!-- 1.5-1.모바일 GNB 메뉴 --> */}
+//             {/* 1.5-1.모바일 GNB 메뉴 */}
 //             <nav className="mognb">
 //                 <ul>
 //                     <li>
@@ -197,7 +197,7 @@ export default function TopArea({ changeMenu }) {
 //                     </li>
 //                 </ul>
 //             </nav>
-//             {/* <!-- 1.5-2.모바일 sns 메뉴 --> */}
+//             {/* 1.5-2.모바일 sns 메뉴 */}
 //             <div className="mosns">
 //                 <a href="#" className="fi fi-instagram">
 //                     <span className="ir">인스타그램</span>
@@ -216,21 +216,21 @@ export default function TopArea({ changeMenu }) {
 //                 </a>
 
 //             </div>
-//             {/* <!-- 1.5-3.매거진박스 --> */}
+//             {/* 1.5-3.매거진박스 */}
 //             <figure className="magbox">
-//                 {/* <!-- 잡지커버이미지 --> */}
+//                 {/* 잡지커버이미지 */}
 //                 <a className="mcover" href="#">
 //                     <img src="./images/cover.jpg" alt="보그표지"/>
 //                 </a>
-//                 {/* <!-- 잡지설명 --> */}
+//                 {/* 잡지설명 */}
 //                 <figcaption>
 //                     정기구독을 신청하면 최대 30% 할인혜택을 드립니다!
 //                 </figcaption>
-//                 {/* <!-- 정기구독버튼 --> */}
+//                 {/* 정기구독버튼 */}
 //                 <button className="magbtn">정기구독 신청</button>
 //             </figure>
 
-//             {/* <!-- 하단링크박스 --> */}
+//             {/* 하단링크박스 */}
 //             <ul className="moblink">
 //                 <li>
 //                     <a href="#">회사소개 /</a>
