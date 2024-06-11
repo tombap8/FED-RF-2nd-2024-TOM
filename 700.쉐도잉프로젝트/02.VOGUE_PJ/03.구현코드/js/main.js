@@ -14,8 +14,6 @@ import Gallery from "./components/Gallery";
 import Login from "./components/Login";
 // 회원가입 모듈 불러오기
 import Member from "./components/Member";
-// 부드러운 스크롤 불러오기
-import { scrolled, setPos } from "./smoothScroll24";
 
 // [1] 메인 페이지 전체 레이아웃 로딩 컴포넌트 ///
 function Layout() {
