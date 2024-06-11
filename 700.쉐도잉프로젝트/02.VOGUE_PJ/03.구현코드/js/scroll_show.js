@@ -1,5 +1,4 @@
 // 보그 PJ 스크롤 등장함수 - scroll_show.js
-
 export default function scrollShowFn() {
   // DOM 함수 객체 //////////////
   const myFn = {

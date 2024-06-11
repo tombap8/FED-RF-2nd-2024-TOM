@@ -3,9 +3,25 @@
 // 부드러운 스크롤 불러오기
 import { scrolled, setPos } from "../../js/smoothScroll24";
 
+// 스크롤 등장 함수 불러오기
+import scrollShowFn from "../scroll_show";
+
+import "../../css/scroll_show.css";
 export default function MainArea() {
   // 컴포넌트 화면 랜더링직전 로드구역 //////
   React.useLayoutEffect(() => {
+    // 스크롤 등장 대상에 클래스 넣기 : .hide-el
+    // [제이쿼리용 forEach메서드]
+    // each((idx,ele)=>{코드})
+    // idx - 순번 / ele - 요소자신
+    $(".main-area>section").each((idx, ele) => {
+      // 첫번째를 제외한 나머지 모두 클래스 넣기
+      if (idx != 0) $(ele).addClass("hide-el");
+    }); ///////// each ////////
+
+    // 스크롤 등장함수 호출
+    scrollShowFn();
+
     ////////////////////////////////////////////////////////
     // [ 이벤트의 해제는 removeEventListener()를 사용한다!!! ]
     // 부드러운 스크롤은 "home"에서만 적용함!
@@ -70,12 +86,19 @@ export default function MainArea() {
       // [2] 슬림 스크롤 이벤트 삭제
       window.removeEventListener("scroll", chkSlim);
 
+      // [3] 클래스가 들어가있을 수 있으므로 삭제코드 실행
+      topMenu.classList.remove("on");
+      tbtn.classList.remove("on");
+
+      // [4] 스크롤 위치값 초기화
+      window.scrollTo(0, 0);
+
       // 참고로 이벤트를 개별 셋팅한 요소의 이벤트를 지울경우
-      // 속성할당방식의 이벤트는 빈값을 할당해서 지우거나      
+      // 속성할당방식의 이벤트는 빈값을 할당해서 지우거나
       // 예) tbtn.onclick = "";
       // 제이쿼리일 경우 off() 메서드로 삭제한다!
       // 예) $(".my").off("click");
-      // 이벤트 등록으로 설정한 것은 
+      // 이벤트 등록으로 설정한 것은
       // removeEventListener로 삭제
     }; ////// 소멸시 return함수 ///////
   }, []); ////// useLayoutEffect 구역 ////////

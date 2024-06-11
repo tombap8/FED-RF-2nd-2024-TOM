@@ -533,4 +533,14 @@ font-family: 'Roboto Condensed', sans-serif;
 
 .bg15 {
   background-image: url(../images/cont7-3.jpg);
+}
+
+.hide-el {
+  opacity: 0;
+  translate: 0 20%;
+  transition: 0.6s ease-in-out;
+}
+.hide-el.on {
+  opacity: 1;
+  translate: 0 0;
 }/*# sourceMappingURL=main.css.map */
