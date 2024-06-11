@@ -4,7 +4,11 @@ import React from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
-// 스와이퍼 비디오 모듈 CSS
+// Import Swiper styles : 모듈용 기본 CSS파일 로딩!
+import "swiper/css";
+import "swiper/css/navigation";
+
+// 스와이퍼 비디오 모듈 CSS : 내가 작성한 CSS
 import "./css/swiper_vid.scss";
 
 // 데이터 불러오기
@@ -15,7 +19,7 @@ import { swVidData } from "../data/swiper_vid";
 // (여기서는 네비게이션 - 양쪽이동버튼)
 import { Navigation } from "swiper/modules";
 
-export function SwiperApp({ catName }) {
+export function SwiperVid({ catName }) {
   // catName - 카테고리명
 
   // 선택데이터 변수할당
@@ -36,7 +40,7 @@ export function SwiperApp({ catName }) {
             <section className="sw-inbox">
               {/* 동영상이미지박스 */}
               <div className="vid-img">
-                <img src={v.src} alt={v.tit} />
+                <img src={v.isrc} alt={v.tit} />
                 {/* 폰트어썸 아이콘 */}
               </div>
               {/* 동영상 타이틀 박스 */}
@@ -50,4 +54,4 @@ export function SwiperApp({ catName }) {
       </Swiper>
     </>
   );
-} /////////// SwiperApp 컴포넌트 ///////////
+} /////////// SwiperVid 컴포넌트 ///////////
