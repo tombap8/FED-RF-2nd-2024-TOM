@@ -81,20 +81,18 @@ export default function MainArea() {
       // 컴포넌트가 소멸해도 그대로 존재하게 되므로
       // 이벤트를 removeEventListener로 지운다!
 
-      // 부드러운 스크롤 초기값 0
+      // [0] 부드러운 스크롤 초기값 0
       setPos(0);
 
       // [1] 부드러운 스크롤 이벤트 삭제
       document.removeEventListener("wheel", scrolled, { passive: false });
+      
       // [2] 슬림 스크롤 이벤트 삭제
       window.removeEventListener("scroll", chkSlim);
 
       // [3] 클래스가 들어가있을 수 있으므로 삭제코드 실행
       topMenu.classList.remove("on");
       tbtn.classList.remove("on");
-
-      // [4] 스크롤 위치값 초기화
-      window.scrollTo(0, 0);
 
       // 참고로 이벤트를 개별 셋팅한 요소의 이벤트를 지울경우
       // 속성할당방식의 이벤트는 빈값을 할당해서 지우거나
