@@ -41,7 +41,7 @@ export const swVidData = {
     },
     {
       isrc: "/images/vidswp/vidswp5.jpg",
-      vsrc: "https://www.youtube.com/embed/fVWdbPczJuQ",
+      vsrc: "https://www.youtube.com/embed/6fKpdtyoLJE",
       cat: "Exclusive Clip",
       tit: `Justice League x RWBY: Super Heroes & Huntsmen, Part One - "Leadership"`,
     },
@@ -77,7 +77,7 @@ export const swVidData = {
     },
     {
       isrc: "/images/vidswp/vidswp11.jpg",
-      vsrc: "https://www.youtube.com/embed/Qyv0jxOyUl0",
+      vsrc: "https://www.youtube.com/embed/vPib9KwCBGs",
       cat: "Movies & TV",
       tit: `Titans: The Final Episodes - Official Trailer`,
     },
