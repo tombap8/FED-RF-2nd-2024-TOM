@@ -8,6 +8,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 
+// 폰트어썸 불러오기
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
+
 // 스와이퍼 비디오 모듈 CSS : 내가 작성한 CSS
 import "./css/swiper_vid.scss";
 
@@ -42,6 +46,16 @@ export function SwiperVid({ catName }) {
               <div className="vid-img">
                 <img src={v.isrc} alt={v.tit} />
                 {/* 폰트어썸 아이콘 */}
+                <FontAwesomeIcon
+                  icon={faCirclePlay}
+                  style={{
+                    position: "absolute",
+                    bottom: "55%",
+                    left: "10%",
+                    color: "#fff",
+                    fontSize: "50px",
+                  }}
+                />
               </div>
               {/* 동영상 타이틀 박스 */}
               <div className="vid-tit">
