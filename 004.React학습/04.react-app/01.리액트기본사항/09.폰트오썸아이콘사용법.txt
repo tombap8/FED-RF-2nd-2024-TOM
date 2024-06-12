@@ -29,6 +29,32 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default () => <FontAwesomeIcon icon={faCamera} />;
 
+[4] 편리한 사용 (24/6/12)
+
+1. https://fontawesome.com/icons 검색
+2. 검색후 "Free"선택
+3. 아이콘 클릭 별창에서 "React"탭 클릭
+4. "Global Import"에서 분류명을 알 수 있다!
+<FontAwesomeIcon icon="fa-regular fa-circle-play" />
+<FontAwesomeIcon icon="fa-brands fa-google-play" />
+<FontAwesomeIcon icon="fa-solid fa-hand" />
+-> 아이콘명 앞에 있는 클래스명이 대분류임
+
+fa-regular -> regular
+import { 아이콘명 } from "@fortawesome/free-regular-svg-icons";
+
+fa-brands -> brands
+import { 아이콘명 } from "@fortawesome/free-brands-svg-icons";
+
+fa-solid -> solid
+import { 아이콘명 } from "@fortawesome/free-solid-svg-icons";
+
+5. Individual Import에서 코드를 클릭하여 복사함
+<FontAwesomeIcon icon={faHand} />
+
+
+
+
 
 
 

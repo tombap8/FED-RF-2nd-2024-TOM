@@ -11,6 +11,8 @@ import "swiper/css/navigation";
 // 폰트어썸 불러오기
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay } from "@fortawesome/free-regular-svg-icons";
+// import { faHand } from "@fortawesome/free-solid-svg-icons";
+// import { faGooglePlay } from "@fortawesome/free-brands-svg-icons";
 
 // 스와이퍼 비디오 모듈 CSS : 내가 작성한 CSS
 import "./css/swiper_vid.scss";
@@ -55,6 +57,7 @@ export function SwiperVid({ catName }) {
                     color: "#fff",
                     fontSize: "50px",
                   }}
+                  
                 />
               </div>
               {/* 동영상 타이틀 박스 */}
