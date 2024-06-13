@@ -134,9 +134,6 @@
                         section.sw-inbox2 > img
                         +
                         div.cat-tit2 > h3
-
-
-
         
     (2) 객체화 :
         {
