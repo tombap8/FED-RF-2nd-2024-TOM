@@ -1,4 +1,4 @@
-// 스와이퍼 플러그인 컴포넌트
+// 비디오스와이프모듈 스와이퍼 플러그인 컴포넌트
 
 import React, { useEffect } from "react";
 // Import Swiper React components
