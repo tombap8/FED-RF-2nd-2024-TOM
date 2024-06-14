@@ -52,7 +52,9 @@ function MainCont(props) {
       </section>
 
       {/* 4. 스타일패션 영역 */}
-      <section className="page">스타일패션 영역</section>
+      <section className="page">
+        <FashionIntro catName="style" subCat="etc" opt={false} />
+      </section>
 
       {/* 메인에만 나오는 사이드 인디케이터 */}
       <nav className="indic">
