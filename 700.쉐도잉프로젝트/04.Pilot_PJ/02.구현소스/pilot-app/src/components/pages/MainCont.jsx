@@ -4,7 +4,6 @@ import Banner from "../modules/Banner";
 // 자동휠 함수 불러오기
 import * as wFn from "../../js/func/auto_wheel";
 
-console.log(wFn.pno);
 function MainCont(props) {
 
   // 화면 랜더링 실행구역 ///////
