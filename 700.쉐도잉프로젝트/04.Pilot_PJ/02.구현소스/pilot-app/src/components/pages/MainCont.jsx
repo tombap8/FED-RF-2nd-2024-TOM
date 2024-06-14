@@ -15,11 +15,14 @@ function MainCont(props) {
 
     // document / body / window 이 세가지는
     // 이벤트를 등록하고 삭제할 수 있도록
-    // 여기서 이벤트를 걸어준다!
+    // 1. 자동 휠함수 이벤트 연결하기
     window.addEventListener("wheel", wFn.wheelFn);
 
-    // 메뉴+인디케이터 이벤트 기능설정함수 호출
+    // 2. 메뉴+인디케이터 이벤트 기능설정함수 호출
     wFn.evtFn();
+
+    // 3. 등장요소 CSS초기화 함수호출
+    wFn.initSet();
 
     // 컴포넌트 소멸시 이벤트삭제하기
     return () => {
