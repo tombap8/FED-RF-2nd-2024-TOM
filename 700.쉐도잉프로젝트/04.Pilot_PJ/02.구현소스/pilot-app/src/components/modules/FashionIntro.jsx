@@ -26,20 +26,34 @@ function FashionIntro({ catName, subCat, opt }) {
           flexDirection: opt ? "row-reverse" : "row",
         }}
       >
+        {/* 1. 첫번째 이미지 박스 */}
         <li className="imgc">
-          <img src={selData.isrc} alt={selData.ialt} />
+          <img src={selData.isrc[0]} alt={selData.ialt[0]} />
         </li>
+        {/* 2. 두번째 글자 박스 */}
         <li className="txtc">
-          <h2>
+          <h2 className={catName == "style" ? "tm" : ""}>
             {/* (참고) 데이터에 태그가 있어서 이를 html로 넣으려면
             dangerouslySetInnerHTML={{__html:데이터}} 
             속성을 사용한다! */}
             <a href="#">
-              {selData.tit[0]}
+              {selData.tit[0][0]}
               <br />
-              {selData.tit[1]}
+              {selData.tit[0][1]}
             </a>
           </h2>
+          {
+            // 스타일인 경우 글자박스 하나더 출력됨
+            catName == "style" && (
+              <h2 className="tw">
+                <a href="#">
+                  {selData.tit[1][0]}
+                  <br />
+                  {selData.tit[1][1]}
+                </a>
+              </h2>
+            )
+          }
         </li>
       </ul>
     </div>

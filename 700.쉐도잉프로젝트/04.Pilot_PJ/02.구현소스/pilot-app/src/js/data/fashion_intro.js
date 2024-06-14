@@ -2,14 +2,14 @@
 
 export const fsData = {
   men: {
-    isrc: "./images/men02.png",
-    ialt: "공유다!",
-    tit: ["MEN'S", "ESSENTIALS"],
+    isrc: ["./images/men02.png"],
+    ialt: ["공유다!"],
+    tit: [["MEN'S", "ESSENTIALS"]],
   },
   women: {
-    isrc: "./images/women01.png",
-    ialt: "여자",
-    tit: ["WOMEN'S", "ESSENTIALS"],
+    isrc: ["./images/women01.png"],
+    ialt: ["여자"],
+    tit: [["WOMEN'S", "ESSENTIALS"]],
   },
   // 스타일 데이터는 배열로 2개를 사용함!
   style: {
