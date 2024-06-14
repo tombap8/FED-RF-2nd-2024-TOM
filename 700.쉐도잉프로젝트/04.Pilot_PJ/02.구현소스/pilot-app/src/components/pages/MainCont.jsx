@@ -43,12 +43,12 @@ function MainCont(props) {
       </section>
       {/* 2. 남성패션 영역 */}
       <section className="page">
-        <FashionIntro catName="men" subCat="etc" />
+        <FashionIntro catName="men" subCat="etc" opt={false} />
       </section>
 
       {/* 3. 여성패션 영역 */}
       <section className="page">
-        <FashionIntro catName="women" subCat="etc" />
+        <FashionIntro catName="women" subCat="etc" opt={true} />
       </section>
 
       {/* 4. 스타일패션 영역 */}

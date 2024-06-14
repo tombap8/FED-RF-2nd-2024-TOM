@@ -7,17 +7,25 @@ import { fsData } from "../../js/data/fashion_intro";
 // CSS불러오기
 import "../../css/fashion_intro.scss";
 
-function FashionIntro({catName, subCat}) {
-    // catName - 카테고리명
-    // subCat - 서브 카테고리명
-    // 서브가 아닌경우 subCat의 값은 "etc"임!
+function FashionIntro({ catName, subCat, opt }) {
+  // 1. catName - 카테고리명
+  // 2. subCat - 서브 카테고리명
+  //  (서브가 아닌경우 subCat의 값은 "etc"임!)
+  // 3. opt - 방향옵션(역방향은 true / 정방향은 false)
+  //  (역방향은 flex-direction: row-reverse 적용!)
 
-    // 선택 데이터 변수할당
-    const selData = fsData[catName];
+  // 선택 데이터 변수할당
+  const selData = fsData[catName];
 
   return (
     <div id={catName} className="fs-page">
-      <ul className="pgc">
+      <ul
+        className="pgc"
+        style={{
+          // 정방향, 역방향 적용코드
+          flexDirection: opt ? "row-reverse" : "row",
+        }}
+      >
         <li className="imgc">
           <img src={selData.isrc} alt={selData.ialt} />
         </li>
@@ -27,8 +35,9 @@ function FashionIntro({catName, subCat}) {
             dangerouslySetInnerHTML={{__html:데이터}} 
             속성을 사용한다! */}
             <a href="#">
-             {selData.tit[0]}<br />
-             {selData.tit[1]}
+              {selData.tit[0]}
+              <br />
+              {selData.tit[1]}
             </a>
           </h2>
         </li>
