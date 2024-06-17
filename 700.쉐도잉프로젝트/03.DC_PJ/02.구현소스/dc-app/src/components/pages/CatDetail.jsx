@@ -18,7 +18,7 @@ function CatDetail() {
   const cname = loc.state.cname;
   const cdesc = loc.state.cdesc;
   const facts = loc.state.facts;
-  console.log(cname, cdesc, facts);
+  // console.log(cname, cdesc, facts);
 
   return (
     <>
@@ -32,7 +32,15 @@ function CatDetail() {
           <h2>{cname}</h2>
           {/* 캐릭터소개 */}
           <div className="cdesc">
-            <p>{cdesc}</p>
+            {
+              // 문자데이터 중 "^"로 잘라서
+              // 배열로 만들고 각각 p태그로
+              // 랩핑해 준다! -> split(문자열)
+              cdesc.split("^").map((v) => (
+                <p>{v}</p>
+              ))
+              // console.log(cdesc.split("^"))
+            }
           </div>
         </div>
         {/* 2-2.캐릭터명세 */}
