@@ -13,6 +13,15 @@ export default function TopArea() {
   const goNav = useNavigate();
   // 사용시 goNav(라우터주소,{전달객체})
   // 전달객체 없으면 비워놓음!
+  // 사용법: 반드시 useNavigate()메서드를 변수에 담아
+    // 이동할 라우터 주소를 쓰면 이동한다
+    // 예) goNav('/news') -> 뉴스페이지이동
+    // 예) goNav('news') -> 뉴스페이지이동
+    // 예) goNav('/') -> 첫페이지이동
+    // 예) goNav('') -> 첫페이지이동
+    // 이동주소는 대소문자 구분없음!
+    // 슬래쉬 없이 써도 루트로 인식함
+    // -> 빈값이면 루트로 이동함!
 
   //// 코드 리턴구역 //////////////
   return (
@@ -26,7 +35,17 @@ export default function TopArea() {
           <ul>
             {/* 1. 로고 컴포넌트 */}
             <li>
-              <Logo logoStyle="top" />
+              <a
+                href="#"
+                onClick={(e) => {
+                  // 기본이동막기
+                  e.preventDefault();
+                  // 라우터 이동 메서드호출
+                  goNav("");
+                }}
+              >
+                <Logo logoStyle="top" />
+              </a>
               {/* <Link to="/">
                 <Logo logoStyle="top" />
               </Link> */}
