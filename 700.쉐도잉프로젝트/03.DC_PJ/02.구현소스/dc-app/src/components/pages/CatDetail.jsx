@@ -1,7 +1,7 @@
 // DC PJ 캐릭터 상세페이지
 // -> 캐릭터 리스트로 부터 라우팅 이동하여 보이는 페이지
 
-import React from "react";
+import React, { useEffect } from "react";
 
 // 라우터로 전달한 state값을 읽기위한 객체
 import { useLocation } from "react-router-dom";
@@ -20,6 +20,14 @@ function CatDetail() {
   const facts = loc.state.facts;
   // console.log(cname, cdesc, facts);
 
+  // 화면랜더링 실행구역 ////
+  // 매번실행해야 이미 생성된 컴포넌트의
+  // 랜더링 실행구역이 업데이트시에도 작동한다!
+  useEffect(()=>{
+    window.scrollTo(0,0);
+  });
+
+  // 코드리턴구역 //////////////////
   return (
     <>
       {/* 1.배너모듈 */}
@@ -53,10 +61,10 @@ function CatDetail() {
                 {facts.split("^").map((v, i) => (
                   <tr key={i}>
                     {v.split(":").map((v, i) => (
-                      <>
-                        <td key={i}>{v}</td>
-                        {i == 0 && ":"}
-                      </>
+                      <td key={i}>
+                        {v}
+                        {i == 0 && " : "}
+                      </td>
                     ))}
                   </tr>
                 ))}
