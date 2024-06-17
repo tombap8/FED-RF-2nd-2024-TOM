@@ -36,8 +36,8 @@ function CatDetail() {
               // 문자데이터 중 "^"로 잘라서
               // 배열로 만들고 각각 p태그로
               // 랩핑해 준다! -> split(문자열)
-              cdesc.split("^").map((v) => (
-                <p>{v}</p>
+              cdesc.split("^").map((v, i) => (
+                <p key={i}>{v}</p>
               ))
               // console.log(cdesc.split("^"))
             }
@@ -50,9 +50,16 @@ function CatDetail() {
             {/* 테이블로 명세배열만큼 tr을 만들어준다! */}
             <table>
               <tbody>
-                <tr>
-                  <td>{facts}</td>
-                </tr>
+                {facts.split("^").map((v, i) => (
+                  <tr key={i}>
+                    {v.split(":").map((v, i) => (
+                      <>
+                        <td key={i}>{v}</td>
+                        {i == 0 && ":"}
+                      </>
+                    ))}
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
