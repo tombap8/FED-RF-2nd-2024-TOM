@@ -60,7 +60,8 @@ function Searching({kword}) {
               title="Open search"
             />
             {/* 입력창 */}
-            <input id="schin" type="text" placeholder="Filter by Keyword" />
+            <input id="schin" type="text" placeholder="Filter by Keyword"
+            defaultValue={kword} />
           </div>
           {/* 1-2. 체크박스구역 */}
           <div className="chkbx">
