@@ -16,13 +16,19 @@ import SearchingCat from "./SearchingCat";
 
 function Searching({kword}) {
     // kword - 전달받은 키워드
+    console.log("kword:", kword);
+    console.log("data:", catListData);
+
 
     // 검색어가 있는 데이터 필터하기
     const newList = catListData.filter(v=>{
         // 속성중 캐릭터 이름 중 검색(v.cname)
         // 검색어는 모두 영어일 경우 소문자처리함
         let newVal = v.cname.toLocaleLowerCase();
-        if(newVal.indexOf(kword) !== -1) return true;
+        // 전달받은 키워드도 소문자처리
+        let key = kword.toLocaleLowerCase();
+        // 문자열이 있는 값만 배열로 재수집!
+        if(newVal.indexOf(key) !== -1) return true;
         // 문자열.indexOf(문자) 문자열위치번호 리턴함
         // 그런데 결과가 없으면 -1을 리턴함!
         // 그래서 -1이 아닐경우 true를 리턴하면
@@ -106,7 +112,7 @@ function Searching({kword}) {
           </aside>
           {/* 2-3. 캐릭터 리스트 컴포넌트 : 
             데이터 상태변수 중 첫번째값만 보냄 */}
-            <SearchingCat />
+            <SearchingCat dt={newList} />
         </div>
       </section>
     </>
