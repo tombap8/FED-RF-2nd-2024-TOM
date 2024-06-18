@@ -4,6 +4,9 @@ import React from "react";
 // CSS불러오기
 import "../../css/searching_cat.scss";
 
+// 라우터돔 Link
+import { Link } from "react-router-dom";
+
 function SearchingCat({ dt, total }) {
   // dt - 검색된 배열데이터
   // total - 검색된 배열데이터 개수

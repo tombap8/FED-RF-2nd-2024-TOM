@@ -14,7 +14,30 @@ import { catListData } from "../data/swiper_cat";
 // 캐릭터 리스트 결과 컴포넌트
 import SearchingCat from "./SearchingCat";
 
-function Searching(props) {
+function Searching({kword}) {
+    // kword - 전달받은 키워드
+
+    // 검색어가 있는 데이터 필터하기
+    const newList = catListData.filter(v=>{
+        // 속성중 캐릭터 이름 중 검색(v.cname)
+        // 검색어는 모두 영어일 경우 소문자처리함
+        let newVal = v.cname.toLocaleLowerCase();
+        if(newVal.indexOf(kword) !== -1) return true;
+        // 문자열.indexOf(문자) 문자열위치번호 리턴함
+        // 그런데 결과가 없으면 -1을 리턴함!
+        // 그래서 -1이 아닐경우 true를 리턴하면
+        // filter에서 변수에 저장할 배열로 수집된다!
+    }); //////////////// filter ///////////////////
+    console.log("newList:", newList);
+    /* 
+        변수 = 배열.filter(v=>{
+            if(v.속성명.indexOf(검색어)!=-1) return true
+        })
+
+        -> 결과는 검색어가 있는 경우 변수에 모아서 담아준다!
+        -> 결과값도 배열, 결과가 없어도 빈배열!
+    */
+
   // 코드 리턴구역 ////////////////////////
   return (
     <>
