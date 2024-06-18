@@ -7,6 +7,13 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 // CSS불러오기
 import "../../css/searching.scss";
 
+// 데이터 불러오기 : 캐릭터 리스트 데이터
+import { catListData } from "../data/swiper_cat";
+
+
+// 캐릭터 리스트 결과 컴포넌트
+import SearchingCat from "./SearchingCat";
+
 function Searching(props) {
   // 코드 리턴구역 ////////////////////////
   return (
@@ -76,6 +83,7 @@ function Searching(props) {
           </aside>
           {/* 2-3. 캐릭터 리스트 컴포넌트 : 
             데이터 상태변수 중 첫번째값만 보냄 */}
+            <SearchingCat />
         </div>
       </section>
     </>
