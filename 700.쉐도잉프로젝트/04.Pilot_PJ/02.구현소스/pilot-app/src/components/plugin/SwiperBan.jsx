@@ -32,7 +32,7 @@ export function SwiperBan({ cat }) {
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             //   muted
               loop
-              className={"vid"}
+              className={cat+"-vid"}
             //   autoPlay
             />
           ) : (
@@ -67,14 +67,21 @@ export function SwiperBan({ cat }) {
         /* 사용할 모듈을 여기에 적용시킨다 */
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
+        // 슬라이드 이동후 실행코드구역
         onSlideChange={(swp)=>{
             // swp는 내부로 전달되는 스와이퍼 자신객체
-            console.log("슬라이드순번:",swp.realIndex);
-            if(swp.realIndex==2){
-                document.querySelector(".vid").play();
+            // activeIndex는 loop시 오류있음
+            // realIndex는 loop에도 잘 나옴!
+
+            // 현재 진짜순번
+            let idx = swp.realIndex;
+            console.log("슬라이드순번:",idx);
+            
+            if(idx == 0){
+                document.querySelector(`.${cat}-vid`).play();
             }
             else{
-                document.querySelector(".vid").pause();
+                document.querySelector(`.${cat}-vid`).pause();
             }
         }}
       >
