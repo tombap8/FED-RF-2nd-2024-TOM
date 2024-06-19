@@ -26,13 +26,13 @@ export function SwiperBan({ cat }) {
     for (let x = 0; x < num; x++) {
       temp[x] = (
         <SwiperSlide key={x}>
-          {cat == "men" && x == 2 ? (
+          {(cat == "men" || cat == "women") && x == 0 ? (
             <video
-              src={"./images/sub/" + cat + "/banner/cgv.mp4"}
+              src={"./images/sub/" + cat + "/banner/mv.mp4"}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
             //   muted
               loop
-              className="vid"
+              className={"vid"}
             //   autoPlay
             />
           ) : (
@@ -62,15 +62,15 @@ export function SwiperBan({ cat }) {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        // loop={true}
+        loop={true}
         navigation={true}
         /* 사용할 모듈을 여기에 적용시킨다 */
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
         onSlideChange={(swp)=>{
             // swp는 내부로 전달되는 스와이퍼 자신객체
-            console.log("슬라이드순번:",swp.activeIndex);
-            if(swp.activeIndex==2){
+            console.log("슬라이드순번:",swp.realIndex);
+            if(swp.realIndex==2){
                 document.querySelector(".vid").play();
             }
             else{
