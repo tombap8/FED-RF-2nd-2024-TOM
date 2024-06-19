@@ -1,10 +1,10 @@
-import React, { useLayoutEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect } from "react";
 
 // 부드러운 스크롤 JS
 import { scrolled, setPos } from "../../js/func/smoothScroll24";
 
 // 컨텍스트 API 불러오기
-import { pCon } from "./pCon";
+import { pCon } from "../modules/pCon";
 
 // 제이쿼리 불러오기
 import $ from "jquery";
@@ -17,6 +17,9 @@ function Fashion(props) {
   const myCon = useContext(pCon);
 
   // 화면랜더링 실행구역
+  // 실제DOM이 화면출력전 가상 DOM에서 태그가
+  // 모두 만들어진 후가 useLayoutEffect임!
+  // 뭔가 미리 DOM셋팅이 필요한 코드는 여기서작성!
   useLayoutEffect(() => {
     document.addEventListener("wheel", scrolled, { passive: false });
     // 이벤트 설정시 passive:false 설정의 이유는
@@ -38,17 +41,33 @@ function Fashion(props) {
       overflowX: "hidden",
     });
 
+    // 소멸자 구역 //////////
+    return () => {
+      // 부드러운 스크롤 해제하기
+      document.removeEventListener("wheel", scrolled, { passive: false });
+
+      // 스크롤바 없애기
+      $("html,body").css({
+        overflow: "hidden",
+      });
+
+      // 부드러운 스크롤 위치초기화
+      setPos(0);
+
+      // 실제 스크롤위치값 초기화
+      window.scrollTo(0, 0);
+    };
+  }, []);
+
+  // 화면랜더링 코드 구역 ///////////////
+  // -> 화면에 요소가 실제로 출력된후 ////
+  // DOM이벤트 설정시 여기서 코딩해야 적용됨!
+  useEffect(() => {
     // 로고 클릭시 페이지 이동하기
     $("#logo a").on("click", (e) => {
       e.preventDefault();
       myCon.setPgName("main");
     }); ////////// click ////////////
-
-    // 소멸자 구역 //////////
-    return () => {
-      // 부드러운 스크롤 해제하기
-      document.removeEventListener("wheel", scrolled, { passive: false });
-    };
   }, []);
 
   // 코드리턴구역 //////////////////
