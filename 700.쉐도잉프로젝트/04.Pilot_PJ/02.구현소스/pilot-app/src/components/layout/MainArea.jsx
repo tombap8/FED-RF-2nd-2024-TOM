@@ -1,17 +1,20 @@
-import React, { useState } from 'react';
-import MainCont from '../pages/MainCont';
+import React from "react";
+import MainCont from "../pages/MainCont";
+import Fashion from "../pages/Fashion";
 
-function MainArea(props) {
-    // 상태관리 변수 셋팅 ///////
-    // 1. 페이지변경 상태변수
-    const [pgName, setPgName] = useState("main");
+function MainArea({ page, xxx }) {
+  // page 페이지변경 문자값전달
+  // 5가지 값 : main / glist / men / women / style
+  console.log("메인전달page:",page);
 
-    // 코드 리턴구역 /////////////
-    return (
-        <>
-            <MainCont />
-        </>
-    );
+  // 코드 리턴구역 /////////////
+  return (
+    <>
+      {/* 조건출력으로 페이지별 분기 */}
+      {page == "main" && <MainCont />}
+      {page == "fashion" && <Fashion />}
+    </>
+  );
 }
 
 export default MainArea;
