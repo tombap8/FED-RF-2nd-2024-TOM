@@ -30,9 +30,10 @@ export function SwiperBan({ cat }) {
             <video
               src={"./images/sub/" + cat + "/banner/cgv.mp4"}
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              muted
+            //   muted
               loop
-              autoPlay
+              className="vid"
+            //   autoPlay
             />
           ) : (
             <img
@@ -61,11 +62,21 @@ export function SwiperBan({ cat }) {
           delay: 3000,
           disableOnInteraction: false,
         }}
-        loop={true}
+        // loop={true}
         navigation={true}
         /* 사용할 모듈을 여기에 적용시킨다 */
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
+        onSlideChange={(swp)=>{
+            // swp는 내부로 전달되는 스와이퍼 자신객체
+            console.log("슬라이드순번:",swp.activeIndex);
+            if(swp.activeIndex==2){
+                document.querySelector(".vid").play();
+            }
+            else{
+                document.querySelector(".vid").pause();
+            }
+        }}
       >
         {makeList(cat == "style" ? 5 : 3)}
       </Swiper>
