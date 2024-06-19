@@ -11,7 +11,7 @@ import { fsData } from "../../js/data/fashion_intro";
 import "../../css/fashion_intro.scss";
 
 function FashionIntro({ catName, subCat, opt }) {
-  // 1. catName - 카테고리명
+  // 1. catName - 카테고리명 (men/women/style)
   // 2. subCat - 서브 카테고리명
   //  (서브가 아닌경우 subCat의 값은 "etc"임!)
   // 3. opt - 방향옵션(역방향은 true / 정방향은 false)
@@ -44,7 +44,7 @@ function FashionIntro({ catName, subCat, opt }) {
             속성을 사용한다! */}
             <a href="#" onClick={(e)=>{
               e.preventDefault();
-              myCon.setPgName("fashion");
+              myCon.setPgName(catName);
             }}>
               {selData.tit[0][0]}
               <br />

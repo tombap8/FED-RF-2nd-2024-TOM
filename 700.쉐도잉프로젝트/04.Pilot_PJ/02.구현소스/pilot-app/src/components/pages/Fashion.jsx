@@ -11,12 +11,16 @@ import $ from "jquery";
 
 // CSS불러오기
 import "../../css/fashion.scss";
+import { SwiperBan } from "../plugin/SwiperBan";
 
-function Fashion(props) {
+function Fashion({subCat}) {
+    // subCat - 서브 카테고리명
+    // 값: men / women / style
+
   // 컨텍스트 API사용하기
   const myCon = useContext(pCon);
 
-  // 화면랜더링 실행구역
+  // (( 화면랜더링 실행구역 : useLayoutEffect ))
   // 실제DOM이 화면출력전 가상 DOM에서 태그가
   // 모두 만들어진 후가 useLayoutEffect임!
   // 뭔가 미리 DOM셋팅이 필요한 코드는 여기서작성!
@@ -59,7 +63,7 @@ function Fashion(props) {
     };
   }, []);
 
-  // 화면랜더링 코드 구역 ///////////////
+  // (( 화면랜더링 실행구역 : useEffect ))
   // -> 화면에 요소가 실제로 출력된후 ////
   // DOM이벤트 설정시 여기서 코딩해야 적용됨!
   useEffect(() => {
@@ -74,7 +78,9 @@ function Fashion(props) {
   return (
     <>
       {/* 1. 배너영역 */}
-      <section id="ban" className="page"></section>
+      <section id="ban" className="page">
+        <SwiperBan cat={subCat} />
+      </section>
       {/* 2. 신상품영역 */}
       <section id="c1" className="cont sc-ani c1"></section>
       {/* 2.5. 상세보기박스 */}
