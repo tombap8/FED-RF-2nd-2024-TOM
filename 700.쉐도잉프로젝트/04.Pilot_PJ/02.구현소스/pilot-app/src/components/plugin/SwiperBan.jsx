@@ -76,7 +76,7 @@ export function SwiperBan({ cat }) {
             // 현재 진짜순번
             let idx = swp.realIndex;
             console.log("슬라이드순번:",idx);
-            
+
             if(idx == 0){
                 document.querySelector(`.${cat}-vid`).play();
             }
