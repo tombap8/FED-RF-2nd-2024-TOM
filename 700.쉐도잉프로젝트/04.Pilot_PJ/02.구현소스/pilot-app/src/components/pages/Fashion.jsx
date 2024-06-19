@@ -3,6 +3,9 @@ import React, { useLayoutEffect } from "react";
 // 부드러운 스크롤 JS
 import { scrolled, setPos } from "../../js/func/smoothScroll24";
 
+// 컨텍스트 API 불러오기
+import { pCon } from "./pCon";
+
 // 제이쿼리 불러오기
 import $ from "jquery";
 
@@ -10,6 +13,9 @@ import $ from "jquery";
 import "../../css/fashion.scss";
 
 function Fashion(props) {
+  // 컨텍스트 API사용하기
+  const myCon = useContext(pCon);
+
   // 화면랜더링 실행구역
   useLayoutEffect(() => {
     document.addEventListener("wheel", scrolled, { passive: false });
@@ -28,20 +34,21 @@ function Fashion(props) {
 
     // 스크롤바 생성하기(x축은 숨김)
     $("html,body").css({
-        overflow:"visible",
-        overflowX:"hidden",
+      overflow: "visible",
+      overflowX: "hidden",
     });
 
     // 로고 클릭시 페이지 이동하기
-    $("#logo a").on("click",(e)=>{
-        e.preventDefault();
+    $("#logo a").on("click", (e) => {
+      e.preventDefault();
+      myCon.setPgName("main");
     }); ////////// click ////////////
 
     // 소멸자 구역 //////////
-    return(()=>{
-        // 부드러운 스크롤 해제하기
-        document.removeEventListener("wheel", scrolled, { passive: false });
-    });
+    return () => {
+      // 부드러운 스크롤 해제하기
+      document.removeEventListener("wheel", scrolled, { passive: false });
+    };
   }, []);
 
   // 코드리턴구역 //////////////////
