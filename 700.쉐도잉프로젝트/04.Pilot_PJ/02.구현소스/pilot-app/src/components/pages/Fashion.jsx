@@ -21,7 +21,8 @@ function Fashion(props) {
     // 에 대한 기본 막기가 가능함!(여기서는 스크롤 기능임!)
 
     // 부드러운 스크롤 위치초기화
-    setPos(0);
+    // setPos(0);
+
     // 실제 스크롤위치값 초기화
     window.scrollTo(0, 0);
 
@@ -30,6 +31,11 @@ function Fashion(props) {
         overflow:"visible",
         overflowX:"hidden",
     });
+
+    // 로고 클릭시 페이지 이동하기
+    $("#logo a").on("click",(e)=>{
+        e.preventDefault();
+    }); ////////// click ////////////
 
     // 소멸자 구역 //////////
     return(()=>{

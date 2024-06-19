@@ -5,6 +5,9 @@ import React, { useEffect, useLayoutEffect } from "react";
 import Banner from "../modules/Banner";
 import FashionIntro from "../modules/FashionIntro";
 
+// 제이쿼리
+import $ from "jquery";
+
 // 자동휠 함수 불러오기
 import * as wFn from "../../js/func/auto_wheel";
 
@@ -29,6 +32,9 @@ function MainCont(props) {
       console.log("메인소멸!");
       // 1. 자동 휠함수 이벤트 삭제하기
       window.removeEventListener("wheel", wFn.wheelFn);
+      // 2. 상단이동 이벤트 제거하기
+      // 제이쿼리 이벤트 제거는 off(이벤트명) 메서드
+      $("#logo a").off("click");
     };
   }, []);
   // useLayoutEffect(()=>{
