@@ -47,9 +47,24 @@ function Searching({kword}) {
         // filter에서 변수에 저장할 배열로 수집된다!
     }); //////////////// filter ///////////////////
 
-    // [ 정렬기능 추가하기 ]
+    // [ 정렬기능 추가하기 ] /////////
+    // (1) 오름차순일 경우
+    if(sort == "asc"){
+      newList.sort((a,b)=>
+        a.cname > b.cname 
+        ? 1 : a.cname < b.cname 
+        ? -1 : 0
+      );
 
-
+    } /// if ///////////////////////
+    // (2) 내림차순일 경우
+    else if(sort == "desc"){
+      newList.sort((a,b)=>
+      a.cname > b.cname 
+      ? -1 : a.cname < b.cname 
+      ? 1 : 0
+    );
+    } /// else if ///////////////////
 
 
 
@@ -135,9 +150,19 @@ function Searching({kword}) {
           <h2 className="restit">BROWSE CHARACTERS</h2>
           {/* 2-2. 정렬선택박스 */}
           <aside className="sortbx">
-            <select name="sel" id="sel" className="sel">
-              <option value="0">A-Z</option>
-              <option value="1">Z-A</option>
+            <select 
+            name="sel" 
+            id="sel" 
+            className="sel"
+            // 값을 변경할때 이벤트발생
+            onChange={(e)=>{
+              console.log(e.target.value);
+              // 정렬기준 상태변수 업데이트
+              setSort(e.target.value);
+            }}
+            >
+              <option value="asc">A-Z</option>
+              <option value="desc">Z-A</option>
             </select>
           </aside>
           {/* 2-3. 캐릭터 리스트 컴포넌트 : 
