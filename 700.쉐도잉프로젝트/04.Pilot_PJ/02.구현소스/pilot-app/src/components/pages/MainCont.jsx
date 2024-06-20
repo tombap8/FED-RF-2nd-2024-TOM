@@ -27,6 +27,9 @@ function MainCont(props) {
     // 3. 등장요소 CSS초기화 함수호출
     wFn.initSet();
 
+    // 4. 페이지번호 초기화 함수호출
+    wFn.zeroPno();
+
     // 컴포넌트 소멸시 이벤트삭제하기
     return () => {
       console.log("메인소멸!");
