@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 // 폰트어썸
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -19,14 +19,21 @@ function Searching({kword}) {
     console.log("kword:", kword);
     console.log("data:", catListData);
 
+    // 키워드에 따라 검색결과가 달라지므로
+    // 핵심 데이터인 검색어를 상태관리변수로 만든다!!!
+    const [kw,setKw] = useState(kword);
+    // 초기값으로 전달받은 검색어 변수를 넣어준다!
+
 
     // 검색어가 있는 데이터 필터하기
+    // filter()는 검색결과가 항상 배열로 나옴!
     const newList = catListData.filter(v=>{
         // 속성중 캐릭터 이름 중 검색(v.cname)
         // 검색어는 모두 영어일 경우 소문자처리함
         let newVal = v.cname.toLocaleLowerCase();
         // 전달받은 키워드도 소문자처리
-        let key = kword.toLocaleLowerCase();
+        // ((중요!!!)) 상태변수인 kw로 대체한다!!!
+        let key = kw.toLocaleLowerCase();
         // 문자열이 있는 값만 배열로 재수집!
         if(newVal.indexOf(key) !== -1) return true;
         // 문자열.indexOf(문자) 문자열위치번호 리턴함
@@ -60,8 +67,18 @@ function Searching({kword}) {
               title="Open search"
             />
             {/* 입력창 */}
-            <input id="schin" type="text" placeholder="Filter by Keyword"
-            defaultValue={kword} />
+            <input 
+            id="schin" 
+            type="text" 
+            placeholder="Filter by Keyword"
+            defaultValue={kword} 
+            // 엔터키를 눌렀을때 검색실행!
+            // 검색어 상태변수만 업데이트하면 끝!!!
+            // -> setKw(검색어)
+            onKeyUp={(e)=>{
+              if(e.key=="Enter") setKw(e.target.value);
+            }}
+            />
           </div>
           {/* 1-2. 체크박스구역 */}
           <div className="chkbx">
