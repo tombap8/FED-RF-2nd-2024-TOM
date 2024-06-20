@@ -18,6 +18,8 @@
 const myRef = useRef(null);
 ********************************************************/
 
+let what = "난뭐임?";
+
 // 메인 컴포넌트
 function MainComp() {
   console.log("컴포넌트 랜더링");
@@ -31,35 +33,38 @@ function MainComp() {
     let ele = document.querySelectorAll(".name");
     ele[1].innerText = varName;
     ele[2].innerText = refName.current;
+
+    console.log("useState랜더링:", stsName)
   });
 
   // 이름바꾸기 함수
-  const changeName = React.useCallback(
+  const changeName = 
     (e) => {
       let txt = e.target.innerText;
       let val = e.target.previousElementSibling.value;
       switch (txt) {
         case "이름바꿔 : useState":
-          console.log("변경전:", stsName);
+          console.log("useState변경전:", stsName);
           setStsName(val);
-          console.log("변경후:", stsName);
+          console.log("useState변경후:", stsName);
           break;
         case "이름바꿔 : let":
-          console.log("변경전:", varName);
+          console.log("let변경전:", varName);
           varName = val;
-          console.log("변경후:", varName);
-
+          console.log("let변경후:", varName);
           break;
         case "이름바꿔 : useRef":
-          console.log("변경전:", refName.current);
+          console.log("useRef변경전:", refName.current);
           refName.current = val;
-          console.log("변경후:", refName.current);
-
+          console.log("useRef변경후:", refName.current);
+          break;
+        case "이름바꿔 : outside":
+          console.log("outside변경전:", what);
+          what = val;
+          console.log("outside변경후:", what);
           break;
       }
-    },
-    [stsName]
-  );
+    };
 
   // 코드리턴 /////////////////
   return (
@@ -82,6 +87,11 @@ function MainComp() {
             <br />
             나는 <span className="name">{refName.current}</span> 좋아해!
           </h1>
+          <h1>
+            4. 바깥 let 출력
+            <br />
+            나는 <span className="name">{what}</span> 좋아해!
+          </h1>
         </div>
         <div>
           <h2>1. useState 이름변경</h2>
@@ -93,6 +103,9 @@ function MainComp() {
           <h2>3. useRef 이름변경</h2>
           <input type="text" className="ip-name3" /> &nbsp;
           <button onClick={changeName}>이름바꿔 : useRef</button>
+          <h2>4. 바깥let 이름변경</h2>
+          <input type="text" className="ip-name3" /> &nbsp;
+          <button onClick={changeName}>이름바꿔 : outside</button>
         </div>
       </div>
     </React.Fragment>
