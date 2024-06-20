@@ -21,8 +21,13 @@ function Searching({kword}) {
 
     // 키워드에 따라 검색결과가 달라지므로
     // 핵심 데이터인 검색어를 상태관리변수로 만든다!!!
+    // ((상태관리변수)) //////////////
+    // [1] 검색어 상태관리변수
     const [kw,setKw] = useState(kword);
     // 초기값으로 전달받은 검색어 변수를 넣어준다!
+    // [2] 정렬기준 상태관리변수
+    const [sort,setSort] = useState("asc");
+    // 값: 오름차순 - asc / 내림차순 - desc
 
 
     // 검색어가 있는 데이터 필터하기
@@ -41,6 +46,13 @@ function Searching({kword}) {
         // 그래서 -1이 아닐경우 true를 리턴하면
         // filter에서 변수에 저장할 배열로 수집된다!
     }); //////////////// filter ///////////////////
+
+    // [ 정렬기능 추가하기 ]
+
+
+
+
+
     console.log("newList:", newList);
     /* 
         변수 = 배열.filter(v=>{
