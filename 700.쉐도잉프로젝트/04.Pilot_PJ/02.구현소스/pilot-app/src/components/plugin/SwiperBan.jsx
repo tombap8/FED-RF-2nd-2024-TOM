@@ -14,11 +14,39 @@ import "./css/swiper_ban.scss";
 // 사용할 스와이퍼 모듈을 불러온다
 // (여기서는 페이지네이션,네비게이션,자동넘김)
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export function SwiperBan({ cat }) {
   // cat - 카테고리명
   console.log("배너카테고리명:",cat);
+
+  // 스와이퍼 객체를 담기위한 참조변수
+  const swpObj = useRef(null);
+
+  
+  // 화면 랜더링구역 ///////////
+  useEffect(()=>{
+    // 스와이퍼 배너 첫페이지로 이동하기
+    // 스와이퍼 객체
+    let objSwp = swpObj.current.swiper;
+    // 스와이퍼 페이지이동 메서드: slideTo(순번,시간)
+    objSwp.slideTo(0,0);
+    // 첫번째 슬라이드는 0번, 애니시간은 0으로 안보이게
+
+
+    // 스와이퍼객체는 어디있지?
+    console.log("랜더링:",swpObj);
+    console.log("Swiper:",swpObj.current.swiper);
+    // 플러그인 스와이퍼 컴포넌트 객체 생성시
+    // ref속성에 useRef변수를 넣으면 거기에
+    // 스와이퍼 객체가 담겨진다! -> 외부에서 사용가능!!!
+    // 사용법: 
+    // (1) 요소로 사용할때 : 참조변수.current
+    // (2) 객체로 사용할때 : 참조변수.current.swiper
+
+    // 참고) ref속성에 useRef변수를 사용한 객체사용법은
+    // 다른 컴포넌트에서도 사용할 수 있는 방법이다!!!
+  }); ////// useEffect //////////////
 
   // 리스트만들기 함수 ////
   const makeList = (num) => {
@@ -53,16 +81,22 @@ export function SwiperBan({ cat }) {
   return (
     <>
       <Swiper
-        /* ref 속성에 useRef 할당변수를 넣어서 외부에 연결함 */
+        ref={swpObj}
+        /* ref 속성에 useRef 할당변수를 넣어서 
+        외부에 연결함 */
+        onInit={(swp)=>{
+          console.log("스와이퍼 처음셋팅!",swp);
+        }}
         slidesPerView={1}
         spaceBetween={0}
         pagination={{
           clickable: true,
         }}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
+        // -> 자동플레이는 코딩으로 대체!
+        // autoplay={{
+        //   delay: 3000,
+        //   disableOnInteraction: false,
+        // }}
         loop={true}
         navigation={true}
         /* 사용할 모듈을 여기에 적용시킨다 */
@@ -77,15 +111,18 @@ export function SwiperBan({ cat }) {
             // style에는 없으므로 여기서 리턴
             if(cat == "style") return;
 
+            // 선택 동영상 //
+            let mvEle = document.querySelector(`.${cat}-vid`);
+
             // 현재 진짜순번
             let idx = swp.realIndex;
             console.log("슬라이드순번:",idx);
 
             if(idx == 0){
-                document.querySelector(`.${cat}-vid`).play();
+                mvEle.play();
             }
             else{
-                document.querySelector(`.${cat}-vid`).pause();
+                mvEle.pause();
             }
         }}
       >
