@@ -1,20 +1,27 @@
-import React from "react";
+import React, { useRef } from "react";
 
 // 제이쿼리 불러오기
 import $ from "jquery";
 
 // 신상 함수 불러오기 ////
-import { showInfo,removeInfo,flowList } from "../../js/func/sinsang_fn";
+import { showInfo, removeInfo, flowList } from "../../js/func/sinsang_fn";
 
 // 신상 데이터 불러오기 /////
 import { sinsangData } from "../../js/data/sinsang";
 
-function SinSang({cat, chgItemFn}) {
-    // cat - 카테고리 분류명 (men/women/style)
-    // chgItemFn - 선택상품정보 변경 부모함수
+function SinSang({ cat, chgItemFn }) {
+  // cat - 카테고리 분류명 (men/women/style)
+  // chgItemFn - 선택상품정보 변경 부모함수
 
-    // 신상품 선택 데이터 만들기
-    const selData = sinsangData[cat];
+  // 신상품 리스트 이동함수 사용변수 ///
+  // 위치값변수(left값) -> 리랜더링시 기존값을 유지하도록
+  // ->  useRef를 사용한다!! -> 변수명.current로 사용!
+  const lpos = useRef(0);
+  // 재귀호출 상태값(1-호출,0-멈춤)
+  const callSts = useRef(1);
+
+  // 신상품 선택 데이터 만들기
+  const selData = sinsangData[cat];
 
   // [신상품 리스트 코드생성 함수] //////////
   const makeList = () => {
@@ -26,7 +33,7 @@ function SinSang({cat, chgItemFn}) {
         <li
           className={"m" + (x + 1)}
           key={x}
-          onMouseEnter={()=>showInfo(selData)}
+          onMouseEnter={(e) => showInfo(e, selData)}
           onMouseLeave={removeInfo}
         >
           <a
@@ -55,12 +62,13 @@ function SinSang({cat, chgItemFn}) {
         NEW MEN'S ARRIVAL
         <button>전체리스트</button>
       </h2>
-      <div className="flowbx"      
-      onMouseEnter={() => {}}
-      onMouseLeave={() => {
-        // callSts.current = 1;
-        flowList($(".flist"));
-      }}
+      <div
+        className="flowbx"
+        onMouseEnter={() => {}}
+        onMouseLeave={() => {
+          // callSts.current = 1;
+          flowList($(".flist"), lpos, callSts);
+        }}
       >
         <ul className="flist">{makeList()}</ul>
       </div>

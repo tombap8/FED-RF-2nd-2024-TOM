@@ -3,12 +3,11 @@
 // 제이쿼리
 import $ from "jquery";
 
-
 // 상품에 오버시 상품정보를 보여주는 함수 /////
-const showInfo = (selData) => {
-  event.preventDefault();
+const showInfo = (e,selData) => {
+  e.preventDefault();
   // 대상
-  const tg = $(event.currentTarget);
+  const tg = $(e.currentTarget);
   // 1. 이벤트가 발생한 li의 class읽어오기(상품정보객체의 키)
   let gKey = tg.attr("class");
   // console.log('나야나!',selData[gKey]);
@@ -51,7 +50,7 @@ const removeInfo = (e) => {
 };
 
 // [ 신상품 리스트 이동함수 ] //////
-const flowList = (ele) => {
+const flowList = (ele,lpos,callSts) => {
   // ele-움직일대상
   // console.log(ele);
   // 대상의 left값을 1씩 감소함
@@ -69,7 +68,8 @@ const flowList = (ele) => {
   ele.css({ left: lpos.current + "px" });
 
   // 재귀호출
-  if (callSts.current) setTimeout(() => flowList(ele), 40);
+  if (callSts.current) 
+  setTimeout(() => flowList(ele,lpos,callSts), 40);
 }; ////////// flowList ////////////
 
 // 내보내기 /////
