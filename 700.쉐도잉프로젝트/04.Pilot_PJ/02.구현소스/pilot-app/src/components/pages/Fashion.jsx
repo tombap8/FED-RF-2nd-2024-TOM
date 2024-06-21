@@ -12,6 +12,7 @@ import $ from "jquery";
 // CSS불러오기
 import "../../css/fashion.scss";
 import { SwiperBan } from "../plugin/SwiperBan";
+import SinSang from "../modules/SinSang";
 
 function Fashion({subCat}) {
     // subCat - 서브 카테고리명
@@ -74,6 +75,22 @@ function Fashion({subCat}) {
     }); ////////// click ////////////
   }, []);
 
+  
+
+  // 후크 상태변수
+  const [item, setItem] = useState("m1");
+
+  // 신상컴포넌트에서 상세컴포넌트로 값을 전하기 위한
+  // 상태변수를 셋팅하여 함수로 이것을 변경하게 해준다!
+  // 프롭스 펑션다운~!!
+  const chgItem = (v) => {
+    console.log("상품정보:", v);
+    // 상태변수 업데이트
+    setItem(v);
+    // 상세박스 슬라이드 애니로 보이기
+    $(".bgbx").slideDown(400);
+  }; /////////// chgItem 함수 //////
+
   // 코드리턴구역 //////////////////
   return (
     <>
@@ -82,7 +99,9 @@ function Fashion({subCat}) {
         <SwiperBan cat={subCat} />
       </section>
       {/* 2. 신상품영역 */}
-      <section id="c1" className="cont sc-ani c1"></section>
+      <section id="c1" className="cont sc-ani c1">
+        <SinSang cat={subCat} chgItemFn={chgItem} />
+      </section>
       {/* 2.5. 상세보기박스 */}
       <div className="bgbx"></div>
       {/* 3. 패럴랙스 영역 : 리액트용 패럴랙스 적용 */}

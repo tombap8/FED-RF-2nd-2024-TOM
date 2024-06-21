@@ -3,9 +3,15 @@ import React from "react";
 // 신상 함수 불러오기 ////
 import { showInfo,removeInfo,flowList } from "../../js/func/sinsang_fn";
 
+// 신상 데이터 불러오기 /////
+import { sinsangData } from "../../js/data/sinsang";
+
 function SinSang({cat, chgItemFn}) {
     // cat - 카테고리 분류명 (men/women/style)
     // chgItemFn - 선택상품정보 변경 부모함수
+
+    // 신상품 선택 데이터 만들기
+    const selData = sinsangData[cat];
 
   // [신상품 리스트 코드생성 함수] //////////
   const makeList = () => {
@@ -17,7 +23,7 @@ function SinSang({cat, chgItemFn}) {
         <li
           className={"m" + (x + 1)}
           key={x}
-          onMouseEnter={showInfo}
+          onMouseEnter={()=>showInfo(selData)}
           onMouseLeave={removeInfo}
         >
           <a
