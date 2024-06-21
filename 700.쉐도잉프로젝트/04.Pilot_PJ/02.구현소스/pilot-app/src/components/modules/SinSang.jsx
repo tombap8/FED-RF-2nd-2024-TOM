@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useLayoutEffect, useRef } from "react";
 
 // 제이쿼리 불러오기
 import $ from "jquery";
@@ -19,6 +19,14 @@ function SinSang({ cat, chgItemFn }) {
   const lpos = useRef(0);
   // 재귀호출 상태값(1-호출,0-멈춤)
   const callSts = useRef(1);
+
+  // 전달변수 cat 카테고리명이 다를 경우에만 업데이트!
+  useLayoutEffect(()=>{
+    // 신상 흘러가기 변수 초기화
+    lpos.current = 0;
+    // 신상 멈춤/가기 상태변수 초기화
+    callSts.current = 1;
+  },[cat]); /////// cat이 다를때
 
   // 신상품 선택 데이터 만들기
   const selData = sinsangData[cat];
