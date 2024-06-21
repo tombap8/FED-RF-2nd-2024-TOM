@@ -107,7 +107,14 @@ export function SwiperBan({ cat }) {
           // realIndex는 loop에도 잘 나옴!
 
           // style에는 없으므로 여기서 리턴
-          if (cat == "style") return;
+          if (cat == "style"){ 
+            // 자동넘김 시작
+            swp.autoplay.start();
+            // 자동넘김 속성 true전환!
+            swp.autoplay.running = true;
+            // 여기서 리턴
+            return;
+          } ///// if ////
 
           // 선택 동영상 //
           let mvEle = document.querySelector(`.${cat}-vid`);
