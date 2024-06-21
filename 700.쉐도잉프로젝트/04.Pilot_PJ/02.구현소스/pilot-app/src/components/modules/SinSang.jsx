@@ -1,5 +1,8 @@
 import React from "react";
 
+// 제이쿼리 불러오기
+import $ from "jquery";
+
 // 신상 함수 불러오기 ////
 import { showInfo,removeInfo,flowList } from "../../js/func/sinsang_fn";
 
@@ -55,7 +58,7 @@ function SinSang({cat, chgItemFn}) {
       <div className="flowbx"      
       onMouseEnter={() => {}}
       onMouseLeave={() => {
-        callSts.current = 1;
+        // callSts.current = 1;
         flowList($(".flist"));
       }}
       >

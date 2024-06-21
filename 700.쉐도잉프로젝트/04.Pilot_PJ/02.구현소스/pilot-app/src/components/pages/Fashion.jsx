@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useLayoutEffect } from "react";
+import React, { useContext, useEffect, useLayoutEffect, useState } from "react";
 
 // 부드러운 스크롤 JS
 import { scrolled, setPos } from "../../js/func/smoothScroll24";

@@ -5,10 +5,10 @@ import $ from "jquery";
 
 
 // 상품에 오버시 상품정보를 보여주는 함수 /////
-const showInfo = (e,selData) => {
-  e.preventDefault();
+const showInfo = (selData) => {
+  event.preventDefault();
   // 대상
-  const tg = $(e.currentTarget);
+  const tg = $(event.currentTarget);
   // 1. 이벤트가 발생한 li의 class읽어오기(상품정보객체의 키)
   let gKey = tg.attr("class");
   // console.log('나야나!',selData[gKey]);
