@@ -49,12 +49,18 @@ function Searching({kword}) {
           // 1.검색어 조건 (cname속성)
           (newVal.indexOf(key) !== -1) &&
           // 2. 체크박스항목 조건 (alignment속성)
+          // 주의: 조건문 내의 삼항연산자는 반드시 소괄호로
+          // 묶어서 논리연산자(&&,||,!)와의 충돌을 막아줘야함!
+          // OR문의 결과가 false이려면 모두 false여야함!
+          // 체크박스 모두 불체크시 false로 처리!
           (
-           chk[0]?v.alignment=="hero":true ||
-           chk[1]?v.alignment=="comp":true ||
-           chk[3]?v.alignment=="villain":true
+           (chk[0]?v.alignment=="hero":false) ||
+           (chk[1]?v.alignment=="comp":false) ||
+           (chk[2]?v.alignment=="villain":false)
           )
-          //true && (true||true||true)
+          //true && (true||false||false)
+          // -> &&문은 모두 true여야 true
+          // -> ||문은 하나만 true면 true
           
           ) return true;
         // 문자열.indexOf(문자) 문자열위치번호 리턴함
@@ -122,10 +128,12 @@ function Searching({kword}) {
             // -> setKw(검색어)
             onKeyUp={(e)=>{
               if(e.key=="Enter"){ 
-                // 검색어 상태값 변경
+                // 1. 검색어 상태값 변경
                 setKw(e.target.value);
-                // 처음 검색시 정렬은 기본정렬 오름차순(asc)
+                // 2. 처음검색시 정렬은 기본정렬 오름차순(asc)
                 setSort("asc");
+                // 3. 처음검색시 모두체크
+                setChk([true,true,true]);
                 // 정렬선택박스 선택값변경(DOM에서 보이기변경)
                 document.querySelector("#sel").value = "asc";
               } /// if ///
