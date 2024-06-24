@@ -31,7 +31,9 @@ function SearchingCat({ dt }) {
                     facts: v.facts, // 캐릭터상세
                   }}
                 >
-                  <img src={v.tmsrc} alt={v.cname} />
+                  <img 
+                  src={process.env.PUBLIC_URL+v.tmsrc} 
+                  alt={v.cname} />
                   <h3>{v.cname}</h3>
                 </Link>
               </li>

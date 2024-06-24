@@ -71,7 +71,9 @@ export function SwiperCat() {
                   <section className="sw-inbox2">
                     {/* 캐릭터이미지영역 */}
                     <div className="cat-img2">
-                      <img src={v.tmsrc} alt={v.cname} />
+                      <img 
+                      src={process.env.PUBLIC_URL+v.tmsrc} 
+                      alt={v.cname} />
                     </div>
                     {/* 캐릭터타이틀영역 */}
                     <div className="cat-tit2">
