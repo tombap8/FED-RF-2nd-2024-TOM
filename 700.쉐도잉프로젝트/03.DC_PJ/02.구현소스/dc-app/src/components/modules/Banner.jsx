@@ -26,7 +26,9 @@ function Banner({ catName }) {
       <ul className="slider">
         {selData.map((v, i) => (
           <li key={i}>
-            <img src={v.src} alt={v.tit1 == "" ? "banner image" : v.tit1} />
+            <img 
+            src={process.env.PUBLIC_URL+v.src} 
+            alt={v.tit1 == "" ? "banner image" : v.tit1} />
             <section className="bantit">
               <h2>{v.tit1}</h2>
               <p>{v.tit2}</p>
