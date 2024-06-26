@@ -1,0 +1,37 @@
+[ 리액트에서 가끔 나는 에러인데 실제 에러 메시지는 없고 화면에만 나오는 에러해결 ]
+
+1. 메시지:
+"ResizeObserver loop completed with undelivered notifications."
+
+2. 원인: 브라우저에 있는 기본 객체중 화면 리사이즈를 감시하는 것이 있음
+여기서 리액트의 가상돔과 실제 돔 사이의 이벤트발생시 크기변화 불일치로
+이런 에러가 발생하지만 콘솔창에는 안나오는 실제 어플리케이션 에러가 아님!!!
+그런데 화면에는 개발환경(웹팩)에서만 나옴
+
+3. 해결: 실제 해결은 없다! 왜? 어플리케이션 에러가 아니니까!
+그래서 무조건 에러 발생시 에러메시지를 무시하게 하는 소스만 
+useEffect구역에 써준다!
+
+4. 코드: 아래 코드를 모두 복사하여 사용할것!
+__________________________________________________
+
+useEffect(() => {
+    // 윈도우 원본 이벤트 중 error 이벤트가 있음!!!
+    window.addEventListener(
+      "error",
+      (e) => {
+        // 여기서 메시지 찍으면 null나옴
+        console.log("윈도우만의 에러발생!", e.mesaage);
+        // if (e.mesaage === "ResizeObserver loop completed with undelivered notifications.") {
+        // 그래서 위의 if문에서 메시지 걸러주는게 의미 없음!
+
+        // 아래코드는 모두 메시지 꺼버리는 코드임!
+        const aDiv = document.getElementById(
+          "webpack-dev-server-client-overlay-div"
+        );
+        const a = document.getElementById("webpack-dev-server-client-overlay");
+        if (aDiv) aDiv.setAttribute("style", "display: none");
+        if (a) a.setAttribute("style", "display: none");
+      }
+      // } // 메시지 걸러내는 if문 주석처리함
+  }, []); // 컴포넌트 한번 실행시 셋팅함!
