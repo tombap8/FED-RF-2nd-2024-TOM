@@ -40,11 +40,11 @@ function Searching({kword}) {
     // 참조변수는 객체이다! 그래서 하위속성중
     // current속성으로 값을 읽거나 업데이트 한다!
     console.log("참조변수객체:",beforeKword);
-    console.log(beforeKword.current,"==?",kword);
-
+    
     // 만약 조금전 저장된 검색어와 지금 검색어가
     // 다르다면 검색어 상태변수를 업데이트 한다!
     if(beforeKword.current != kword){
+      console.log(beforeKword.current,"==?",kword);
       // 컴포넌트 리랜더링 (검색결과변경)
       setKw(kword);
       // 다음검색을 위해 다시 현재 검색어를 참조변수에 저장
