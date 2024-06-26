@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 
 // 폰트어썸
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -32,6 +32,25 @@ function Searching({kword}) {
     const [chk,setChk] = useState([true,true,true]);
     // 배열로 만들고 체크박스 상태를 묶어서 관리함
     console.log("체크훅배열:",chk);
+
+    // 상단메뉴 검색창에서 다시 검색할 경우
+    // 검색 가능하도록 검색어 비교를 위한 검색어를 저장한다!
+    // 리랜더링 없이 값만 저장하는 후크는? useRef 참조변수사용!
+    const beforeKword = useRef(kword);
+    // 참조변수는 객체이다! 그래서 하위속성중
+    // current속성으로 값을 읽거나 업데이트 한다!
+    console.log("참조변수객체:",beforeKword);
+    console.log(beforeKword.current,"==?",kword);
+
+    // 만약 조금전 저장된 검색어와 지금 검색어가
+    // 다르다면 검색어 상태변수를 업데이트 한다!
+    if(beforeKword.current != kword){
+      // 컴포넌트 리랜더링 (검색결과변경)
+      setKw(kword);
+      // 다음검색을 위해 다시 현재 검색어를 참조변수에 저장
+      beforeKword.current = kword;
+
+    } /////// if //////////
 
 
     // 검색어가 있는 데이터 필터하기
