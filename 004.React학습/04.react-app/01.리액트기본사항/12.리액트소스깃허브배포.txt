@@ -94,6 +94,9 @@ basename={process.env.PUBLIC_URL}
 메시지를 뿌려주는 용도로 사용할 수 있다.
 우리는 여기에 JS를 사용하여 첫페이지가 보이는 경로 주소로 보내준다!
 
+->>> 주의사항 : 404.html 페이지는 반드시 깃허브 page 서비스 root 즉,
+최상위 폴더에 위치해야만 읽혀진다!!!
+
 (스크립트)
 <script>
     location.replace("/dc-app/")
