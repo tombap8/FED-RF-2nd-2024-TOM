@@ -28,7 +28,8 @@ const comData = {
                 </li>
             </ul>
             </nav>
-            
+            <!-- GNB메뉴 -->
+            <nav class="gnb"></nav>
         </div>
         </div>
         <!-- 모바일 햄버거 버튼 -->
