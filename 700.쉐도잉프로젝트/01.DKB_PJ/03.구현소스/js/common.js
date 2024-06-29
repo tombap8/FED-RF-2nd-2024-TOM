@@ -99,6 +99,7 @@ function makeMenu() {
       $(".ham").click(()=>{
         console.log("나야나!");
         $(".top-area").toggleClass("on");
+        $(".gnb").toggleClass("on");
         // 제이쿼리 클래스 관련 메서드:
         // addClass()/removeClass()/toggleClass()
         // -> js의 classList객체 하위 메서드와 유사
