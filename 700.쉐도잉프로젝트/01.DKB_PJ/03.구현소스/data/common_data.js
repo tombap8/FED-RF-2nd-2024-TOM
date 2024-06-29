@@ -34,8 +34,6 @@ const comData = {
         <!-- 모바일 햄버거 버튼 -->
         <button class="ham"></button>
     </header>
-    <!-- GNB메뉴 -->
-    <nav class="gnb"></nav>
     `,
     // 2. 하단영역 코드
     footerArea:`    
