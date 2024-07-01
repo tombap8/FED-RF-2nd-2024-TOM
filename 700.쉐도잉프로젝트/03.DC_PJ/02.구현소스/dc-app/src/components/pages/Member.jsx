@@ -80,7 +80,7 @@ function Member(props) {
     // 유효성 검사방법: 정규식.test(값)
 
     // 2. 입력값 확인 : e.target
-    console.log(val);
+    // console.log(val);
 
     // 3. 에러상태 분기하기
     // 3-1. 에러 아닐때 (유효성검사만 통과한 경우)
@@ -109,18 +109,16 @@ function Member(props) {
       console.log("중복id있어?", isT);
 
       // 4. true 일 경우 중복데이터 메시지 표시
-      if(isT){
-          // 에러 메시지 업데이트
-          setIdMsg(msgId[1]);
-          // 에러상태값 업데이트
-          setUserIdError(true);
-        } ///// if /////
-        // 5. false 일 경우 성공 메시지 표시
-        else{
-          // 에러 메시지 업데이트
-          setIdMsg(msgId[2]);
-          // 에러상태값 업데이트
-          setUserIdError(true);
+      if (isT) {
+        // 에러 메시지 업데이트
+        setIdMsg(msgId[1]);
+        // 에러상태값 업데이트
+        setUserIdError(true);
+      } ///// if /////
+      // 5. false 일 경우 [성공 메시지] 표시
+      else {
+        // 에러상태값 업데이트 : 에러가 아님!(false)
+        setUserIdError(false);
       } ///// else //////
 
       // [ 새로운 배열메서드 : some() ]
@@ -135,13 +133,14 @@ function Member(props) {
       //     return v.uid===val;
       // });
 
-
       // 아이디 에러상태 업데이트(false)
-    //   setUserIdError(false);
-    } /// if ///
-    // 3-2. 에러일때
+      //   setUserIdError(false);
+    } /// if /////////////////////////
+    // 3-2. 에러일때 : 유효성 검사 에러
     else {
       console.log("에러~!");
+      // 에러 메시지 업데이트
+      setIdMsg(msgId[0]);
       // 아이디 에러상태 업데이트(true)
       setUserIdError(true);
     } /// else ///
@@ -171,7 +170,9 @@ function Member(props) {
               {
                 //   에러일 경우 메시지 출력
                 // 조건문 && 출력요소
-                userIdError && (
+                // 조건추가 : userId가 입력전일때 안보임처리
+                // userId가 입력전엔 false로 리턴됨!
+                (userIdError && userId) &&(
                   <div className="msg">
                     <small
                       style={{
@@ -180,6 +181,24 @@ function Member(props) {
                       }}
                     >
                       {idMsg}
+                    </small>
+                  </div>
+                )
+              }
+              {
+                // 통과시 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : userId가 입력전일때 안보임처리
+                // userId가 입력전엔 false로 리턴됨!
+                (!userIdError && userId) && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "green",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {msgId[2]}
                     </small>
                   </div>
                 )
