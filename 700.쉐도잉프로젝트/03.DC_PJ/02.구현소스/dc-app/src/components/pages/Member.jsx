@@ -106,11 +106,22 @@ function Member(props) {
       // 기존 배열값으로 있는지 검사함!
       // 있으면 true, 없으면 false
       let isT = memData.some((v) => v.uid === val);
+      console.log("중복id있어?", isT);
 
       // 4. true 일 경우 중복데이터 메시지 표시
       if(isT){
-
-      } ///// if /////
+          // 에러 메시지 업데이트
+          setIdMsg(msgId[1]);
+          // 에러상태값 업데이트
+          setUserIdError(true);
+        } ///// if /////
+        // 5. false 일 경우 성공 메시지 표시
+        else{
+          // 에러 메시지 업데이트
+          setIdMsg(msgId[2]);
+          // 에러상태값 업데이트
+          setUserIdError(true);
+      } ///// else //////
 
       // [ 새로운 배열메서드 : some() ]
       // -> 조건에 맞는 값이 하나만 나오면 true처리함
@@ -124,10 +135,9 @@ function Member(props) {
       //     return v.uid===val;
       // });
 
-      console.log("중복id있어?", isT);
 
       // 아이디 에러상태 업데이트(false)
-      setUserIdError(false);
+    //   setUserIdError(false);
     } /// if ///
     // 3-2. 에러일때
     else {
