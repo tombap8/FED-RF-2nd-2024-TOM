@@ -148,7 +148,7 @@ function Member(props) {
     // 실제 userId 상태변수값이 업데이트 돼야만
     // 화면에 출력된다!
     setUserId(val);
-  };
+  }; ////////// changeUserId 함수 ////////////
 
   // 2. 비밀번호 유효성 검사 ///////////
   const changePwd = (e) => {
@@ -167,7 +167,20 @@ function Member(props) {
 
     // 4. 기존입력값 반영하기
     setPwd(val);
-  }; ///////// changeUserId 함수 //////////
+  }; ///////// changePwd 함수 //////////
+
+  // 3. 비밀번호확인 유효성 검사 ///////////
+  const changeChkPwd = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+
+    // 1. 비밀번호 입력내용과 일치여부 확인
+    if (pwd === val) setChkPwdError(false);
+    else setChkPwdError(true);
+
+    // 2. 기존입력값 반영하기
+    setChkPwd(val);
+  }; ///////// changeChkPwd 함수 //////////
 
   // 코드리턴 구역 //////////////////
   return (
@@ -257,7 +270,27 @@ function Member(props) {
                 type="password"
                 maxLength="20"
                 placeholder="Please enter your Confirm Password"
+                value={chkPwd}
+                onChange={changeChkPwd}
               />
+              {
+                // 에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : chkPwd가 입력전일때 안보임처리
+                // chkPwd가 입력전엔 false로 리턴됨!
+                chkPwdError && chkPwd && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {msgEtc.confPwd}
+                    </small>
+                  </div>
+                )
+              }
             </li>
             <li>
               <label>User Name : </label>
