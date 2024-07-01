@@ -42,8 +42,11 @@ function Member(props) {
 
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
+    // 1. 최소 5글자 이상 입력할것
     "User ID must contain a minimum of 5 characters",
+    // 2. 이미 사용중인 아이디임
     "This ID is already in use!",
+    // 3. 훌륭한 아이디!
     "That's a great ID!",
   ];
 
@@ -59,7 +62,8 @@ function Member(props) {
     email: "Please enter a valid email format",
   }; ///// msgEtc ///////
 
-  // [3] 에러메시지 상태변수
+  // [3] 에러메시지 상태변수 : 초기값 msgId[0]
+  // -> 기본 메시지가 출력됨
   const [idMsg, setIdMsg] = useState(msgId[0]);
 
   // [ 유효성 검사 함수 ] ///////
