@@ -182,6 +182,19 @@ function Member(props) {
     setChkPwd(val);
   }; ///////// changeChkPwd 함수 //////////
 
+  // 4. 사용자이름 유효성 검사 ///////////
+  const changeUserName = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+
+    // 1. 빈값체크
+    if (val !== "") setUserNameError(false);
+    else setUserNameError(true);
+
+    // 2. 기존입력값 반영하기
+    setUserName(val);
+  }; ///////// changeUserName 함수 //////////
+
   // 코드리턴 구역 //////////////////
   return (
     <div className="outbx">
@@ -298,7 +311,27 @@ function Member(props) {
                 type="text"
                 maxLength="20"
                 placeholder="Please enter your Name"
+                value={userName}
+                onChange={changeUserName}
               />
+              {
+                // 에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : userName가 입력전일때 안보임처리
+                // userName가 입력전엔 false로 리턴됨!
+                userNameError && userName && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {msgEtc.req}
+                    </small>
+                  </div>
+                )
+              }
             </li>
             <li>
               <label>Email : </label>
