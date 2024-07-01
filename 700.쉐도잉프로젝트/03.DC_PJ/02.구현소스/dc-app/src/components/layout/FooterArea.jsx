@@ -9,6 +9,7 @@ import { bmData } from "../data/bmenu";
 import "../../css/footer_area.scss";
 
 export default function FooterArea() {
+  console.log("푸터!");
   //// 코드 리턴구역 //////////////
   return (
     <footer className="info">
