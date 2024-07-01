@@ -195,6 +195,26 @@ function Member(props) {
     setUserName(val);
   }; ///////// changeUserName 함수 //////////
 
+  // 5. 이메일 유효성 검사 ///////////
+  const changeEmail = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+
+    // 1. 이메일 유효성 검사식(따옴표로 싸지 말것!)
+    const valid =
+      /^(([^<>()\[\].,;:\s@"]+(\.[^<>()\[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i;
+
+    // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
+    // console.log(val);
+
+    // 3. 에러에 따른 상태값 변경
+    if (valid.test(val)) setEmailError(false);
+    else setEmailError(true);
+
+    // 4. 기존입력값 반영하기
+    setEmail(val);
+  }; ///////// changeEmail 함수 //////////
+
   // 코드리턴 구역 //////////////////
   return (
     <div className="outbx">
@@ -339,7 +359,27 @@ function Member(props) {
                 type="text"
                 maxLength="50"
                 placeholder="Please enter your Email"
+                value={email}
+                onChange={changeEmail}
               />
+              {
+                // 에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : email가 입력전일때 안보임처리
+                // email가 입력전엔 false로 리턴됨!
+                emailError && email && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {msgEtc.email}
+                    </small>
+                  </div>
+                )
+              }
             </li>
             <li style={{ overflow: "hidden" }}>
               <button className="sbtn">Submit</button>
