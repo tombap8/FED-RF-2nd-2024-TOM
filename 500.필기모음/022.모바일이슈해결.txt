@@ -1,0 +1,29 @@
+[ 모바일 이슈 해결 : ios 이슈 ]
+
+- 모바일 중 아이폰에서 발생하는 이슈가 있다
+
+1. 동영상 임베드 플레이
+
+(1) 현상: 비디오 태그를 페이지에 삽입시
+ios 브라우저에서는 새창을 열어서 플레이함
+
+(2) 해결: 비디오 태그에 playsinline 속성씀
+<video src="" autoplay muted loop playsinline>
+
+2. 화면높이값 설정 100%(100vh) 이슈
+
+(1) 현상: 높이값을 채우는 CSS설정시 ios 
+브라우저에서는 하단 유동적 컨트롤러 때문에
+처음 설정된 full 채우기가 컨트롤러로 가려짐
+
+(2) 해결: CSS설정시 속성을 추가함
+height: 100vh;
+height: -webkit-fill-available;
+height: fill-available;
+
+3. fixed 포지션 버그
+(1) 현상:  ios에서는 fixed 포지션을 내부에서 
+사용할 경우 디스플레이에 문제가 발생
+
+(2) 해결: fixed포지션을 쓰는 요소는 반드시 다른 
+fixed포지션 내부에 쓰지 말고 독립적으로 외부에 사용
