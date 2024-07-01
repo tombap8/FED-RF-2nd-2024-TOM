@@ -281,7 +281,12 @@ function Member(props) {
         eml: email,
       };
 
-      
+      // 5. 데이터 추가하기 : 배열에 데이터 추가 push()
+      memData.push(newData);
+
+      // 6. 로컬스에 반영하기 : 문자화해서 넣어야함!
+      localStorage.setItem(
+        "mem-data",JSON.stringify(memData));
 
 
 
