@@ -150,6 +150,25 @@ function Member(props) {
     setUserId(val);
   };
 
+  // 2. 비밀번호 유효성 검사 ///////////
+  const changePwd = (e) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+
+    // 1. 비밀번호 유효성 검사식(따옴표로 싸지 말것!)
+    const valid = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+
+    // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
+    // console.log(val);
+
+    // 3. 에러에 따른 상태값 변경
+    if (valid.test(val)) setPwdError(false);
+    else setPwdError(true);
+
+    // 4. 기존입력값 반영하기
+    setPwd(val);
+  }; ///////// changeUserId 함수 //////////
+
   // 코드리턴 구역 //////////////////
   return (
     <div className="outbx">
@@ -172,7 +191,7 @@ function Member(props) {
                 // 조건문 && 출력요소
                 // 조건추가 : userId가 입력전일때 안보임처리
                 // userId가 입력전엔 false로 리턴됨!
-                (userIdError && userId) &&(
+                userIdError && userId && (
                   <div className="msg">
                     <small
                       style={{
@@ -190,7 +209,7 @@ function Member(props) {
                 // 조건문 && 출력요소
                 // 조건추가 : userId가 입력전일때 안보임처리
                 // userId가 입력전엔 false로 리턴됨!
-                (!userIdError && userId) && (
+                !userIdError && userId && (
                   <div className="msg">
                     <small
                       style={{
@@ -210,7 +229,27 @@ function Member(props) {
                 type="password"
                 maxLength="20"
                 placeholder="Please enter your Password"
+                value={pwd}
+                onChange={changePwd}
               />
+              {
+                // 에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : pwd가 입력전일때 안보임처리
+                // pwd가 입력전엔 false로 리턴됨!
+                pwdError && pwd && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {msgEtc.pwd}
+                    </small>
+                  </div>
+                )
+              }
             </li>
             <li>
               <label>Confirm Password : </label>
