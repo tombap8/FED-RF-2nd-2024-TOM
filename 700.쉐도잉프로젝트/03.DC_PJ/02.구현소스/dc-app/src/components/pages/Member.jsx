@@ -43,6 +43,8 @@ function Member(props) {
   // 5. 이메일변수
   const [emailError, setEmailError] = useState(false);
 
+  console.log(">>>>", userIdError);
+
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
     // 1. 최소 5글자 이상 입력할것
@@ -248,16 +250,59 @@ function Member(props) {
     // 1. 기본서브밋 막기
     e.preventDefault();
 
+    console.log("최종검사:", totalValid());
+
     // 2. 유효성검사 전체 통과시
     if (totalValid()) {
-        console.log("모두통과! 저장!");
+      console.log("모두통과! 저장!");
+
+      // [회원정보를 로컬스토리지에 저장하기]
+
+      // 1. 로컬스 체크함수호출(없으면 생성!)
+      initData();
+
+      // 2. 로컬스 변수할당
+      let memData = localStorage.getItem("mem-data");
+
+      // 3. 로컬스 객체변환
+      memData = JSON.parse(memData);
+
+      // 최대수를 위한 배열값 뽑기 (idx항목)
+      let temp = memData.map(v=>v.idx);
+      // 다음 번호는 항상 최대수+1이다!
+      console.log("다음번호:",Math.max(...temp)+1);
+
+      // 4. 새로운 데이터 구성하기
+      let newData = {
+        idx: Math.max(...temp)+1,
+        uid: userId,
+        pwd: pwd,
+        unm: userName,
+        eml: email,
+      };
+
+      
+
+
 
     } ///////// if /////////
     // 3. 불통과시 /////
-    else{
-        alert("Change your input!");
+    else {
+      alert("Change your input!");
     } //// else ///////////
   }; /////////// onSubmit 함수 //////////
+
+  // 최대수 테스트
+//   const arr = [{"idx":"100"}, {"idx":"77"}, {"idx":"3"}, {"idx":"44"}, {"idx":"5"}];
+//   const newArr = arr.map(v=>v.idx);
+//   // ...배열변수 -> 스프레드 연산자로 배열값만 가져온다!
+//   const maxValue = Math.max(...newArr);
+//   const minValue = Math.min(...newArr);
+// //   const maxValue = Math.max("77","55","33");
+//   console.log(newArr);
+//   console.log("최대수:",maxValue);
+//   console.log("최소수:",minValue);
+
 
   // 코드리턴 구역 //////////////////
   return (
