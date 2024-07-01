@@ -81,8 +81,9 @@
     /* 트랜지션 */
     transition: left 0.4s ease-in-out;
   }
-  /* 메뉴박스 등장 */
-  .top-area.on .gnb {
+  /* 메뉴박스 등장
+  - .gnb에 클래스 on넣으면 등장 */
+  .gnb.on {
     left: 0;
   }
 
