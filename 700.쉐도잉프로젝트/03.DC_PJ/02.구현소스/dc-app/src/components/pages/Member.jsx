@@ -215,6 +215,45 @@ function Member(props) {
     setEmail(val);
   }; ///////// changeEmail 함수 //////////
 
+  // [ 전체 유효성검사 체크함수 ] ///////////
+  const totalValid = () => {
+    // 1. 모든 상태변수에 빈값일때 에러상태값 업데이트!
+    if (!userId) setUserIdError(true);
+    if (!pwd) setPwdError(true);
+    if (!chkPwd) setChkPwdError(true);
+    if (!userName) setUserNameError(true);
+    if (!email) setEmailError(true);
+
+    // 2. 통과시 true, 불통과시 false 리턴처리
+    // 통과조건 : 빈값아님 + 에러후크변수가 모두 false
+    if (
+      userId &&
+      pwd &&
+      chkPwd &&
+      userName &&
+      email &&
+      !userIdError &&
+      !pwdError &&
+      !chkPwdError &&
+      !userNameError &&
+      !emailError
+    )
+      return true;
+    // 하나라도 false이면 false를 리턴함!
+    else return false;
+  }; /////////// totalValid 함수 ///////////
+
+  // [ 서브밋 기능함수 ] ////////////////
+  const onSubmit = (e) => {
+    // 1. 기본서브밋 막기
+    e.preventDefault();
+
+    // 2. 유효성검사 전체 통과시
+    if (totalValid()) {
+        
+    } ///////// if /////////
+  }; /////////// onSubmit 함수 //////////
+
   // 코드리턴 구역 //////////////////
   return (
     <div className="outbx">
@@ -382,7 +421,9 @@ function Member(props) {
               }
             </li>
             <li style={{ overflow: "hidden" }}>
-              <button className="sbtn">Submit</button>
+              <button className="sbtn" onClick={onSubmit}>
+                Submit
+              </button>
             </li>
             <li>
               Are you already a Member?
