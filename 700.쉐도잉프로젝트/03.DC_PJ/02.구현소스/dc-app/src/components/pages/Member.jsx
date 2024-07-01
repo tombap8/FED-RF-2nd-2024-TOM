@@ -250,8 +250,13 @@ function Member(props) {
 
     // 2. 유효성검사 전체 통과시
     if (totalValid()) {
-        
+        console.log("모두통과! 저장!");
+
     } ///////// if /////////
+    // 3. 불통과시 /////
+    else{
+        alert("Change your input!");
+    } //// else ///////////
   }; /////////// onSubmit 함수 //////////
 
   // 코드리턴 구역 //////////////////
