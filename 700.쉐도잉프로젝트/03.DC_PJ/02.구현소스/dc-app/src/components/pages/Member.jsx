@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
+
+// 로컬스토리지 생성 JS
+import { initData } from "../func/mem_fn";
 
 // 회원가입 CSS 불러오기
 import "../../css/member.scss";
-import { Link } from "react-router-dom";
 
 function Member(props) {
   // [ 회원가입 페이지 요구사항 ]
@@ -68,7 +71,7 @@ function Member(props) {
 
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ////////////
-  const changeUserId  = e => {
+  const changeUserId = (e) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -80,23 +83,63 @@ function Member(props) {
     console.log(val);
 
     // 3. 에러상태 분기하기
-    // 3-1. 에러 아닐때
-    if(valid.test(val)){
-        console.log("통과!");
-        setUserIdError(false);
+    // 3-1. 에러 아닐때 (유효성검사만 통과한 경우)
+    if (valid.test(val)) {
+      console.log("통과했지만...!");
+      // 아이디 검사를 위해 기본 데이터 생성호출!
+      initData();
+      // 로컬스토리지에 "mem-data"가 없으면 초기셋팅함!
+
+      // 이제 중복 아이디 검사를 실행한다!!!
+      // 1. 로컬스 변수할당
+      let memData = localStorage.getItem("mem-data");
+      console.log(memData);
+
+      // 2. 로컬스 객체변환 (왜? 문자형이니까!)
+      memData = JSON.parse(memData);
+      console.log(memData);
+      // -> 배열데이터로 변환!
+      // 주의: JSON 파싱할때 원본형식이 제이슨 파일형식으로
+      // 엄격하게 작성되어야 에러가 없음(마지막콤마 불허용 등)
+
+      // 3. 배열이니까 현재 입력데이터의 아이디가
+      // 기존 배열값으로 있는지 검사함!
+      // 있으면 true, 없으면 false
+      let isT = memData.some((v) => v.uid === val);
+
+      // 4. true 일 경우 중복데이터 메시지 표시
+      if(isT){
+
+      } ///// if /////
+
+      // [ 새로운 배열메서드 : some() ]
+      // -> 조건에 맞는 값이 하나만 나오면 true처리함
+      // 비교참고) every() 는 하나만 false이면 false리턴
+      // let isT = memData.some(v=>{
+      //     console.log("돌아!",v.uid);
+      //     return v.uid===val;
+      // });
+      // let isT = memData.every(v=>{
+      //     console.log("돌아!",v.uid);
+      //     return v.uid===val;
+      // });
+
+      console.log("중복id있어?", isT);
+
+      // 아이디 에러상태 업데이트(false)
+      setUserIdError(false);
     } /// if ///
     // 3-2. 에러일때
-    else{
-        console.log("에러~!");
-        setUserIdError(true);
+    else {
+      console.log("에러~!");
+      // 아이디 에러상태 업데이트(true)
+      setUserIdError(true);
     } /// else ///
 
     // 실제 userId 상태변수값이 업데이트 돼야만
     // 화면에 출력된다!
     setUserId(val);
   };
-
-
 
   // 코드리턴 구역 //////////////////
   return (
@@ -106,7 +149,7 @@ function Member(props) {
         <form action="process.php" method="post">
           <ul>
             <li>
-                {/* 1. 아이디 */}
+              {/* 1. 아이디 */}
               <label>ID : </label>
               <input
                 type="text"
@@ -116,22 +159,21 @@ function Member(props) {
                 onChange={changeUserId}
               />
               {
-            //   에러일 경우 메시지 출력
-            // 조건문 && 출력요소
-            userIdError &&
-            <div className="msg">
-                <small
-                style={{
-                    color: "red",
-                    fontSize:"10px"
-                }}>
-                    {idMsg}
-                </small>
-            </div>
-
-
+                //   에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                userIdError && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {idMsg}
+                    </small>
+                  </div>
+                )
               }
-
             </li>
             <li>
               <label>Password : </label>
@@ -139,7 +181,6 @@ function Member(props) {
                 type="password"
                 maxLength="20"
                 placeholder="Please enter your Password"
-                
               />
             </li>
             <li>
@@ -148,7 +189,6 @@ function Member(props) {
                 type="password"
                 maxLength="20"
                 placeholder="Please enter your Confirm Password"
-                
               />
             </li>
             <li>
@@ -157,7 +197,6 @@ function Member(props) {
                 type="text"
                 maxLength="20"
                 placeholder="Please enter your Name"
-                
               />
             </li>
             <li>
@@ -166,7 +205,6 @@ function Member(props) {
                 type="text"
                 maxLength="50"
                 placeholder="Please enter your Email"
-                
               />
             </li>
             <li style={{ overflow: "hidden" }}>
