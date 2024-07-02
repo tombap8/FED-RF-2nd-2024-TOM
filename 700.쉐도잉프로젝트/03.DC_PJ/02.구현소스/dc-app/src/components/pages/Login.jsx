@@ -45,16 +45,16 @@ function Login(props) {
     // 입력된 값읽기
     let val = e.target.value;
 
-    // 1. 빈값 체크 : 
+    // 1. 빈값 체크 :
     // 1-1.빈값아니면 에러아님(false)
-    if(val !== "") setUserIdError(false);
+    if (val !== "") setUserIdError(false);
     // 1-2.빈값이면 에러임(true)
-    else{
-        // (1) 메시지 띄우기(필수입력메시지)
-        setIdMsg(msgId[0]);
-        // (2) 에러상태값 변경하기
-        setUserIdError(true);
-    } /////// else ///////////    
+    else {
+      // (1) 메시지 띄우기(필수입력메시지)
+      setIdMsg(msgId[0]);
+      // (2) 에러상태값 변경하기
+      setUserIdError(true);
+    } /////// else ///////////
 
     // 실제 userId 상태변수값이 업데이트 돼야만
     // 화면에 출력된다!
@@ -66,20 +66,20 @@ function Login(props) {
     // 입력된 값읽기
     let val = e.target.value;
 
-    // 1. 빈값 체크 : 
+    // 1. 빈값 체크 :
     // 1-1.빈값아니면 에러아님(false)
-    if(val !== "") setPwdError(false);
+    if (val !== "") setPwdError(false);
     // 1-2.빈값이면 에러임(true)
-    else{
-        // (1) 메시지 띄우기(필수입력메시지)
-        setPwdMsg(msgPwd[0]);
-        // (2) 에러상태값 변경하기
-        setPwdError(true);
+    else {
+      // (1) 메시지 띄우기(필수입력메시지)
+      setPwdMsg(msgPwd[0]);
+      // (2) 에러상태값 변경하기
+      setPwdError(true);
     } /////// else ///////////
 
     // 4. 기존입력값 반영하기
     setPwd(val);
-  }; ///////// changePwd 함수 //////////  
+  }; ///////// changePwd 함수 //////////
 
   // [ 전체 유효성검사 체크함수 ] ///////////
   const totalValid = () => {
@@ -89,13 +89,7 @@ function Login(props) {
 
     // 2. 통과시 true, 불통과시 false 리턴처리
     // 통과조건 : 빈값아님 + 에러후크변수가 모두 false
-    if (
-      userId &&
-      pwd &&
-      !userIdError &&
-      !pwdError
-    )
-      return true;
+    if (userId && pwd && !userIdError && !pwdError) return true;
     // 하나라도 false이면 false를 리턴함!
     else return false;
   }; /////////// totalValid 함수 ///////////
@@ -121,8 +115,18 @@ function Login(props) {
 
       // 3. 로컬스 객체변환
       memData = JSON.parse(memData);
+      console.log(memData);
 
-      
+      // 4. 아이디 존재 여부 검사하기
+      let result = memData.find((v) => {
+        if (v.uid === userId) return true;
+      }); /////// find ///////
+      console.log("결과:", result);
+
+      // 배열.find() -> 있을 경우 레코드 저장
+      // find는 filter와 달리 배열로 저장하지 않고
+      // 값만 저장함. 그래서 결과값이 없으면
+      // undefined 를 리턴함!
     } ///////// if /////////
     // 3. 불통과시 /////
     else {
@@ -190,10 +194,9 @@ function Login(props) {
               }
             </li>
             <li style={{ overflow: "hidden" }}>
-              <button 
-              className="sbtn"
-              onClick={onSubmit}
-              >Submit</button>
+              <button className="sbtn" onClick={onSubmit}>
+                Submit
+              </button>
             </li>
           </ul>
         </form>
