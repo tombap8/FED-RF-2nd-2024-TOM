@@ -1,8 +1,11 @@
 // 로그인 페이지 컴포넌트 - Login.jsx
-import React from "react";
+import React, { useState } from "react";
 
 // CSS 불러오기 (회원가입과 동일)
 import "../../css/member.scss";
+
+// 로컬 스토리지 셋팅 함수 호출!
+import { initData } from "../func/mem_fn";
 
 function Login(props) {
   // [ 상태관리변수 ] /////////////
@@ -57,59 +60,40 @@ function Login(props) {
     // 화면에 출력된다!
     setUserId(val);
   }; ////////// changeUserId 함수 ////////////
+
   // 2. 비밀번호 유효성 검사 ///////////
   const changePwd = (e) => {
     // 입력된 값읽기
     let val = e.target.value;
 
-    // 1. 비밀번호 유효성 검사식(따옴표로 싸지 말것!)
-    const valid = /^.*(?=^.{5,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
-
-    // 2. 입력값 확인 : e.target -> 이벤트가 발생한 요소
-    // console.log(val);
-
-    // 3. 에러에 따른 상태값 변경
-    if (valid.test(val)) setPwdError(false);
-    else setPwdError(true);
+    // 1. 빈값 체크 : 
+    // 1-1.빈값아니면 에러아님(false)
+    if(val !== "") setPwdError(false);
+    // 1-2.빈값이면 에러임(true)
+    else{
+        // (1) 메시지 띄우기(필수입력메시지)
+        setPwdMsg(msgPwd[0]);
+        // (2) 에러상태값 변경하기
+        setPwdError(true);
+    } /////// else ///////////
 
     // 4. 기존입력값 반영하기
     setPwd(val);
-  }; ///////// changePwd 함수 //////////
+  }; ///////// changePwd 함수 //////////  
 
-  // 3. 비밀번호확인 유효성 검사 ///////////
-  const changeChkPwd = (e) => {
-    // 입력된 값읽기
-    let val = e.target.value;
-
-    // 1. 비밀번호 입력내용과 일치여부 확인
-    if (pwd === val) setChkPwdError(false);
-    else setChkPwdError(true);
-
-    // 2. 기존입력값 반영하기
-    setChkPwd(val);
-  }; ///////// changeChkPwd 함수 //////////
   // [ 전체 유효성검사 체크함수 ] ///////////
   const totalValid = () => {
     // 1. 모든 상태변수에 빈값일때 에러상태값 업데이트!
     if (!userId) setUserIdError(true);
     if (!pwd) setPwdError(true);
-    if (!chkPwd) setChkPwdError(true);
-    if (!userName) setUserNameError(true);
-    if (!email) setEmailError(true);
 
     // 2. 통과시 true, 불통과시 false 리턴처리
     // 통과조건 : 빈값아님 + 에러후크변수가 모두 false
     if (
       userId &&
       pwd &&
-      chkPwd &&
-      userName &&
-      email &&
       !userIdError &&
-      !pwdError &&
-      !chkPwdError &&
-      !userNameError &&
-      !emailError
+      !pwdError
     )
       return true;
     // 하나라도 false이면 false를 리턴함!
@@ -125,7 +109,7 @@ function Login(props) {
 
     // 2. 유효성검사 전체 통과시
     if (totalValid()) {
-      console.log("모두통과! 저장!");
+      console.log("모두통과! 데이터조회!");
 
       // [회원정보를 로컬스토리지에 저장하기]
 
@@ -138,25 +122,7 @@ function Login(props) {
       // 3. 로컬스 객체변환
       memData = JSON.parse(memData);
 
-      // 최대수를 위한 배열값 뽑기 (idx항목)
-      let temp = memData.map((v) => v.idx);
-      // 다음 번호는 항상 최대수+1이다!
-      console.log("다음번호:", Math.max(...temp) + 1);
-
-      // 4. 새로운 데이터 구성하기
-      let newData = {
-        idx: Math.max(...temp) + 1,
-        uid: userId,
-        pwd: pwd,
-        unm: userName,
-        eml: email,
-      };
-
-      // 5. 데이터 추가하기 : 배열에 데이터 추가 push()
-      memData.push(newData);
-
-      // 6. 로컬스에 반영하기 : 문자화해서 넣어야함!
-      localStorage.setItem("mem-data", JSON.stringify(memData));
+      
     } ///////// if /////////
     // 3. 불통과시 /////
     else {
@@ -177,8 +143,27 @@ function Login(props) {
                 type="text"
                 maxLength="20"
                 placeholder="Please enter your ID"
-                value=""
+                value={userId}
+                onChange={changeUserId}
               />
+              {
+                //   에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : userId가 입력전일때 안보임처리
+                // userId가 입력전엔 false로 리턴됨!
+                userIdError && userId && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {idMsg}
+                    </small>
+                  </div>
+                )
+              }
             </li>
             <li>
               <label>Password : </label>
@@ -186,8 +171,27 @@ function Login(props) {
                 type="password"
                 maxLength="20"
                 placeholder="Please enter your Password"
-                value=""
+                value={pwd}
+                onChange={changePwd}
               />
+              {
+                // 에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                // 조건추가 : pwd가 입력전일때 안보임처리
+                // pwd가 입력전엔 false로 리턴됨!
+                pwdError && pwd && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {pwdMsg}
+                    </small>
+                  </div>
+                )
+              }
             </li>
             <li style={{ overflow: "hidden" }}>
               <button className="sbtn">Submit</button>
