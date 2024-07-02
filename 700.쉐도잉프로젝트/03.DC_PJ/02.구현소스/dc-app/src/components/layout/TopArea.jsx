@@ -12,11 +12,23 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // 제이쿼리
 import $ from "jquery";
-import { useContext } from "react";
+import { memo, useContext } from "react";
 
 import { dCon } from "../modules/dCon";
 
-export default function TopArea() {
+// 메모이제이션 적용하기! /////
+// -> 그.러.나... 단순히 적용하면 효과가 없음!
+// 이유는? 컨텍스트 API가 전역적인 함수/변수를 전달하고 있어서
+// 매번 새롭게 리랜더린 됨으므로 인해 메모이제이션 갱신을
+// 하게끔 하기에 효가가 없는것!!!
+// ->>> 방법은? 컨텍스트API를 사용하지 말고
+// props로 전달하는 방식으로 전환하면 효과를 볼 수 있다!
+// -> React.memo는 전달속성이 변경됨을 기준하여
+// 메모이제이션 기능를 제공하기 때문이다!
+// -> 전달되는 함수가 반드시 useCallback() 처리가 되어야 한다!!!
+
+export const TopArea = memo(() => {
+  console.log("상단영역!!!");
   // 컨텍스트 사용하기
   const myCon = useContext(dCon);
 
@@ -202,4 +214,4 @@ export default function TopArea() {
       </header>
     </>
   );
-} /////////// TopArea /////////////////////
+}) /////////// TopArea /////////////////////

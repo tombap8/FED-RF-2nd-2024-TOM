@@ -1,9 +1,9 @@
 // 전체 레이아웃 컴포넌트 ///
 
-import { useEffect, useState } from "react";
-import FooterArea from "./FooterArea";
+import { useCallback, useEffect, useState } from "react";
+import {FooterArea} from "./FooterArea";
 import MainArea from "./MainArea";
-import TopArea from "./TopArea";
+import {TopArea} from "./TopArea";
 
 // 컨텍스트 API 불러오기
 import { dCon } from "../modules/dCon";
@@ -19,24 +19,24 @@ export default function Layout() {
 
   // 2. 로그인 환영 메시지 상태변수
   const [loginMsg, setLoginMsg] = useState(null);
-  console.log(loginMsg);
+  // console.log(loginMsg);
 
   // [ 공통 함수 ] ///
   // 1. 라우팅 이동함수
   const goPage = useNavigate();
   
   // 2. 로그인 환영메시지 생성함수
-  const makeMsg = (name) => {
+  const makeMsg = useCallback((name) => {
     // 유저아이콘
     let usrIcon = ["🙍‍♂️","🧏‍♀️","🦸‍♂","👨‍🎤","🦸‍♀"];
     // 랜덤수 : 0~4사이의 수
     let rdm = Math.floor(Math.random()*5);
     // 로그인 메시지 상태변수 업데이트
     setLoginMsg(`Welcome ${name} ${usrIcon[rdm]}`);
-  }; /////// makeMsg 함수 /////////
+  },[]); /////// makeMsg 함수 /////////
 
   // 3. 로그아웃 함수 /////////
-  const logoutFn = () => {
+  const logoutFn = useCallback(() => {
     // 1. 로그인 상태값 null
     setLoginSts(null);
     // 2. 세션스 지우기 : minfo
@@ -45,7 +45,7 @@ export default function Layout() {
     setLoginMsg(null);
     // 4. 메인 페이지로 돌아가기
     goPage("/");
-  }; //////// logoutFn 함수 /////////
+  },[]); //////// logoutFn 함수 /////////
 
   
   // 화면 랜더링 구역 ////////
@@ -65,7 +65,7 @@ export default function Layout() {
     } ///// if ///////
 
   },[]);
-  
+
 
   //// 코드 리턴구역 //////////////
   return (

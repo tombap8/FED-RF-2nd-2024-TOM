@@ -7,7 +7,7 @@ import { isrc } from "../data/img_src";
 export default function Logo({logoStyle}){
     // logoStyle : 상단, 하단 로고 구분코드
     // 코드 값 : top(상단), bottom(하단)
-    console.log(isrc.logo, logoStyle);
+    // console.log(isrc.logo, logoStyle);
 
     // 객체형 스타일 적용
     const myStyle = {

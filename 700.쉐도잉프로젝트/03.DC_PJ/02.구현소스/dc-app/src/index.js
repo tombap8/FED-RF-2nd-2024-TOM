@@ -107,7 +107,7 @@ const ScrollTop = () => {
     // 스크롤 최상단 이동
     window.scrollTo(0,0);
     // 변경된 라우터 경로값 확인
-    console.log("라우터경로:",pathname);
+    // console.log("라우터경로:",pathname);
   },[pathname]);
   // 의존성을 라우터 경로 변수로 설정한다!
 
