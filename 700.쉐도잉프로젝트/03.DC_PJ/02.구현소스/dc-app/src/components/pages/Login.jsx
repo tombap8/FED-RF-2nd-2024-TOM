@@ -135,6 +135,8 @@ function Login(props) {
       } ////////// if ////////
       // 4-2. 결과값이 있으면 비밀번호검사
       else{
+        // (1) 아이디 에러메시지 숨기기
+        setUserIdError(false);
 
       } ////// else //////
 
