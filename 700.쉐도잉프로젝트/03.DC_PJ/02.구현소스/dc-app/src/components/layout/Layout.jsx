@@ -33,6 +33,14 @@ export default function Layout() {
     setLoginMsg(`Welcome ${name} ${usrIcon[rdm]}`);
   }; /////// makeMsg 함수 /////////
 
+  // 3. 로그아웃 함수 /////////
+  const logoutFn = () => {
+    // 1. 로그인 상태값 null
+    setLoginSts(null);
+    // 2. 세션스 지우기 : minfo
+    sessionStorage.removeItem("minfo");
+  }; //////// logoutFn 함수 /////////
+
   //// 코드 리턴구역 //////////////
   return (
     // Provider value속성으로 전역노출 변수를 설정함!

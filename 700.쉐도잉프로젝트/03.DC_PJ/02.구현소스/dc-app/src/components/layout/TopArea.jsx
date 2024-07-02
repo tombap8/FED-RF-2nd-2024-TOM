@@ -12,8 +12,14 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // 제이쿼리
 import $ from "jquery";
+import { useContext } from "react";
+
+import dCon from "../modules/dCon";
 
 export default function TopArea() {
+  // 컨텍스트 사용하기
+  const myCon = useContext(dCon);
+
   // 이동함수 ////
   const goNav = useNavigate();
   // 사용시 goNav(라우터주소,{전달객체})
@@ -30,7 +36,7 @@ export default function TopArea() {
 
   // 검색 관련 함수들 ///////////
   // 1. 검색창 보이기함수
-  const showSearch = (e)=>{
+  const showSearch = (e) => {
     // 기본기능막기
     e.preventDefault();
     // 1. 검색창 보이기
@@ -41,31 +47,29 @@ export default function TopArea() {
   }; ////// showSearch 함수 ///////
 
   // 2. 검색창에 엔터키 누르면 검색함수 호출
-  const enterKey = e => {
+  const enterKey = (e) => {
     // e.keyCode는 숫자, e.key문자로 리턴함
     // console.log(e.key,e.keyCode);
-    if(e.key == "Enter"){
+    if (e.key == "Enter") {
       // 입력창의 입력값 읽어오기 : val()사용
       let txt = $(e.target).val().trim();
       console.log(txt);
       // 빈값이 아니면 검색함수 호출(검색어전달!)
-      if(txt!=''){
+      if (txt != "") {
         // 입력창 비우고 부모박스 닫기
         $(e.target).val("").parent().hide();
         // 검색 보내기
         goSearch(txt);
-
       } /// if ///
     } //// if ////
-
   }; ///////// enterKey //////////
 
   // 3. 검색페이지로 검색어와 함께 이동하기함수
-  const goSearch = txt => {
+  const goSearch = (txt) => {
     console.log("나는 검색하러 간다규~!!!");
     // 라우터 이동함수로 이동하기
     // 네비게이트메서드(라우터주소,{state:{보낼객체}})
-    goNav("search",{state:{keyword:txt}});
+    goNav("search", { state: { keyword: txt } });
   }; /////////// goSearch //////////////
 
   //// 코드 리턴구역 //////////////
@@ -137,15 +141,13 @@ export default function TopArea() {
                   icon={faSearch}
                   className="schbtnGnb"
                   title="Open search"
-                  onClick={(e)=>{
+                  onClick={(e) => {
                     // 검색어 읽기
-                    let stxt = 
-                    e.currentTarget.nextElementSibling.value;
-                    if(stxt.trim()!=""){
+                    let stxt = e.currentTarget.nextElementSibling.value;
+                    if (stxt.trim() != "") {
                       // 검색하기
                       goSearch(stxt);
-                    }
-                    else{
+                    } else {
                       // 검색어 비었을때 메시지
                       alert("Please enter a search term!");
                     }
@@ -165,13 +167,35 @@ export default function TopArea() {
                 <FontAwesomeIcon icon={faSearch} />
               </a>
             </li>
-            {/* 회원가입, 로그인 버튼 */}
-            <li>
-              <Link to="/member">JOIN US</Link>
-            </li>
-            <li>
-              <Link to="/login">LOGIN</Link>
-            </li>
+            {
+              /* 회원가입, 로그인 버튼은
+              로그인 상태가 null일때 나옴 */
+              myCon.loginSts === null &&
+              <>
+                <li>
+                  <Link to="/member">JOIN US</Link>
+                </li>
+                <li>
+                  <Link to="/login">LOGIN</Link>
+                </li>
+              </>
+            }
+            {
+              /* 로그인 상태이면 로그아웃버튼 보임 */
+              myCon.loginSts !== null &&
+              <>
+                <li>
+                  <a href="#" 
+                  onClick={(e)=>{
+                    // 기본이동 막기
+                    e.preventDefault();
+                    // 로그아웃처리함수 호출
+                  }}>
+                    LOGOUT
+                  </a>
+                </li>
+              </>
+            }
           </ul>
         </nav>
       </header>
