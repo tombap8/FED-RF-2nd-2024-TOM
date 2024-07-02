@@ -146,7 +146,7 @@ function Login(props) {
         // (2) 비밀번호 검사 : 입력비번 == 결과비번
         if(pwd === result.pwd){
             // 같을 경우 로그인 성공처리
-            alert("Login Success!");
+            // alert("Login Success!");
 
             // ****** [ 로그인 후 셋팅작업 ] ****** //
             // 1. 로그인한 회원정보를 세션스에 셋팅!
