@@ -161,6 +161,18 @@ function Login(props) {
                 sessionStorage.getItem("minfo"));
             // -> 업데이트된 minfo 세션스값을 넣음!
 
+            // 3. 로그인 환영메시지 셋팅함수 호출
+            myCon.makeMsg(result.unm);
+
+            // 4. 로그인 성공 메시지 버튼에 출력하기
+            document.querySelector(".sbtn").innerText =
+            "넌 로그인 된거야~!";
+
+            // 5. 라우팅 페이지 이동
+            // 1초후 메인 페이지로 이동
+            setTimeout(() => {
+                myCon.goPage("/");
+            }, 1000);
 
 
 
