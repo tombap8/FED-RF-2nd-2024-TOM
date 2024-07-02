@@ -137,6 +137,22 @@ function Login(props) {
       else{
         // (1) 아이디 에러메시지 숨기기
         setUserIdError(false);
+        // (2) 비밀번호 검사 : 입력비번 == 결과비번
+        if(pwd === result.pwd){
+            // 같을 경우 로그인 성공처리
+            alert("Login Success!");
+        } //// if /////
+        // 로그인 실패시 메시지 출력!
+        else{
+            // (1) 비밀번호 에러메시지 선택하기
+            setPwdMsg(msgPwd[1]);
+            // (2) 비밀번호 에러메시지 보이기
+            pwdError(true);
+        } ////// else //////
+
+
+        // -> 원래 비밀번호는 암호화 되어 있으므로
+        // 백엔드 비밀번호 검사 모듈로 대부분 검사한다!
 
       } ////// else //////
 
