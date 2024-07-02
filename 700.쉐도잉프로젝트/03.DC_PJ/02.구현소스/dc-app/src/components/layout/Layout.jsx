@@ -48,9 +48,11 @@ export default function Layout() {
       value={{
         loginSts,
         setLoginSts,
+        loginMsg,
         setLoginMsg,
         goPage,
         makeMsg,
+        logoutFn,
       }}
     >
       {/* 1.상단영역 */}
