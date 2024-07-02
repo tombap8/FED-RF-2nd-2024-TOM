@@ -1,3 +1,4 @@
+// 회원가입 페이지 컴포넌트 - Member.jsx
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -7,7 +8,7 @@ import { initData } from "../func/mem_fn";
 // 회원가입 CSS 불러오기
 import "../../css/member.scss";
 
-function Member(props) {
+function Member() {
   // [ 회원가입 페이지 요구사항 ]
   // 1. 각 입력항목별로 유효성검사를 실행함
   // 2. 상태체크를 통하여 적절한 유효성검사시
@@ -268,13 +269,13 @@ function Member(props) {
       memData = JSON.parse(memData);
 
       // 최대수를 위한 배열값 뽑기 (idx항목)
-      let temp = memData.map(v=>v.idx);
+      let temp = memData.map((v) => v.idx);
       // 다음 번호는 항상 최대수+1이다!
-      console.log("다음번호:",Math.max(...temp)+1);
+      console.log("다음번호:", Math.max(...temp) + 1);
 
       // 4. 새로운 데이터 구성하기
       let newData = {
-        idx: Math.max(...temp)+1,
+        idx: Math.max(...temp) + 1,
         uid: userId,
         pwd: pwd,
         unm: userName,
@@ -285,11 +286,10 @@ function Member(props) {
       memData.push(newData);
 
       // 6. 로컬스에 반영하기 : 문자화해서 넣어야함!
-      localStorage.setItem(
-        "mem-data",JSON.stringify(memData));
+      localStorage.setItem("mem-data", 
+      JSON.stringify(memData));
 
-
-
+      
     } ///////// if /////////
     // 3. 불통과시 /////
     else {
@@ -298,16 +298,15 @@ function Member(props) {
   }; /////////// onSubmit 함수 //////////
 
   // 최대수 테스트
-//   const arr = [{"idx":"100"}, {"idx":"77"}, {"idx":"3"}, {"idx":"44"}, {"idx":"5"}];
-//   const newArr = arr.map(v=>v.idx);
-//   // ...배열변수 -> 스프레드 연산자로 배열값만 가져온다!
-//   const maxValue = Math.max(...newArr);
-//   const minValue = Math.min(...newArr);
-// //   const maxValue = Math.max("77","55","33");
-//   console.log(newArr);
-//   console.log("최대수:",maxValue);
-//   console.log("최소수:",minValue);
-
+  //   const arr = [{"idx":"100"}, {"idx":"77"}, {"idx":"3"}, {"idx":"44"}, {"idx":"5"}];
+  //   const newArr = arr.map(v=>v.idx);
+  //   // ...배열변수 -> 스프레드 연산자로 배열값만 가져온다!
+  //   const maxValue = Math.max(...newArr);
+  //   const minValue = Math.min(...newArr);
+  // //   const maxValue = Math.max("77","55","33");
+  //   console.log(newArr);
+  //   console.log("최대수:",maxValue);
+  //   console.log("최소수:",minValue);
 
   // 코드리턴 구역 //////////////////
   return (
@@ -323,6 +322,7 @@ function Member(props) {
                 type="text"
                 maxLength="20"
                 placeholder="Please enter your ID"
+                // defaultValue="ㅎㅎㅎ"
                 value={userId}
                 onChange={changeUserId}
               />
