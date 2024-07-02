@@ -147,10 +147,8 @@ function Login(props) {
                 onChange={changeUserId}
               />
               {
-                //   에러일 경우 메시지 출력
+                // 에러일 경우 메시지 출력
                 // 조건문 && 출력요소
-                // 조건추가 : userId가 입력전일때 안보임처리
-                // userId가 입력전엔 false로 리턴됨!
                 userIdError && (
                   <div className="msg">
                     <small
@@ -177,8 +175,6 @@ function Login(props) {
               {
                 // 에러일 경우 메시지 출력
                 // 조건문 && 출력요소
-                // 조건추가 : pwd가 입력전일때 안보임처리
-                // pwd가 입력전엔 false로 리턴됨!
                 pwdError && (
                   <div className="msg">
                     <small
@@ -194,7 +190,10 @@ function Login(props) {
               }
             </li>
             <li style={{ overflow: "hidden" }}>
-              <button className="sbtn">Submit</button>
+              <button 
+              className="sbtn"
+              onClick={onSubmit}
+              >Submit</button>
             </li>
           </ul>
         </form>
