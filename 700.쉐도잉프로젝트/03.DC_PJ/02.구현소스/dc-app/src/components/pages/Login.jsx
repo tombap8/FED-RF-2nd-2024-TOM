@@ -1,13 +1,19 @@
 // 로그인 페이지 컴포넌트 - Login.jsx
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 // CSS 불러오기 (회원가입과 동일)
 import "../../css/member.scss";
 
 // 로컬 스토리지 셋팅 함수 호출!
 import { initData } from "../func/mem_fn";
+import { dCon } from "../modules/dCon";
 
 function Login(props) {
+    // 컨텍스 사용
+    const myCon = useContext(dCon);
+    console.log(myCon.loginSts);
+
+
   // [ 상태관리변수 ] /////////////
   // [1] 입력요소 상태변수
   // 1. 아이디변수
@@ -147,7 +153,7 @@ function Login(props) {
             // (1) 비밀번호 에러메시지 선택하기
             setPwdMsg(msgPwd[1]);
             // (2) 비밀번호 에러메시지 보이기
-            pwdError(true);
+            setPwdError(true);
         } ////// else //////
 
 
@@ -169,6 +175,12 @@ function Login(props) {
     } //// else ///////////
   }; /////////// onSubmit 함수 //////////
 
+  // 화면랜더링 구역 /////////
+  useEffect(()=>{
+    // 아이디입력창 포커스
+    document.querySelector("#user-id").focus();
+  },[]);
+
   // 코드 리턴구역 ////////////////////////
   return (
     <div className="outbx">
@@ -179,6 +191,7 @@ function Login(props) {
             <li>
               <label>ID : </label>
               <input
+                id="user-id"
                 type="text"
                 maxLength="20"
                 placeholder="Please enter your ID"
