@@ -128,9 +128,9 @@ function Login(props) {
 
         // (1) 에러메시지 선택하기
         setIdMsg(msgId[1]);
-        
+
         // (2) 에러메시지 보이기
-        userIdError(true);
+        setUserIdError(true);
 
       } ////////// if ////////
       // 4-2. 결과값이 있으면 비밀번호검사
