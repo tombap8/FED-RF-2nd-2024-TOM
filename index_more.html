@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>깃허브 첫페이지</title>
+    <style>
+        html,body{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            height: 3000px;
+            background: url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?cs=srgb&dl=pexels-padrinan-255379.jpg&fm=jpg) repeat-y 0/100%;
+        }
+        .wrap
+        {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: var(--app-height);
+            background-color: #20b2ab74;
+            box-sizing: border-box;
+        }
+        h1{
+            font-size: 12vw;
+            text-align: center;
+            color: #fff;
+        }
+        button{
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            font-size: 7vw;
+            transform: translateX(-50%);
+            background-color: darkred;
+            color: #fff;
+            padding: 20px;
+            white-space: nowrap;
+            border-radius: 20px;
+        }
+    </style>
+    <script>
+        const changeHeight = () => {
+            const { innerHeight } = window;
+            document.documentElement.style.setProperty("--app-height",`${innerHeight}px`);
+
+        };
+        window.addEventListener("DOMContentLoaded", changeHeight);
+        window.addEventListener("resize", changeHeight);
+      </script>
+</head>
+<body>
+    <div class="wrap">
+        <h1>ios 테스트</h1>
+        <button>나는 버튼이닷!</button>
+    </div>
+</body>
+</html>
