@@ -9,7 +9,7 @@ import { initData } from "../func/mem_fn";
 import { dCon } from "../modules/dCon";
 
 function Login(props) {
-    // 컨텍스 사용
+    // 컨텍스트 사용
     const myCon = useContext(dCon);
     console.log(myCon.loginSts);
 
