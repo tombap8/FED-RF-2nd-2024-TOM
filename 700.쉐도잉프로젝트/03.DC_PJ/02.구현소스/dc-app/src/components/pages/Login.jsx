@@ -151,7 +151,7 @@ function Login(props) {
                 // 조건문 && 출력요소
                 // 조건추가 : userId가 입력전일때 안보임처리
                 // userId가 입력전엔 false로 리턴됨!
-                userIdError && userId && (
+                userIdError && (
                   <div className="msg">
                     <small
                       style={{
@@ -179,7 +179,7 @@ function Login(props) {
                 // 조건문 && 출력요소
                 // 조건추가 : pwd가 입력전일때 안보임처리
                 // pwd가 입력전엔 false로 리턴됨!
-                pwdError && pwd && (
+                pwdError && (
                   <div className="msg">
                     <small
                       style={{
