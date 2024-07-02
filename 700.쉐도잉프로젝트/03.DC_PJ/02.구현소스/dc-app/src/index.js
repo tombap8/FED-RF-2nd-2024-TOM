@@ -17,6 +17,7 @@ import "../src/css/index.scss";
 import CatDetail from "./components/pages/CatDetail";
 import SearchPage from "./components/pages/SearchPage";
 import Member from "./components/pages/Member";
+import Login from "./components/pages/Login";
 
 /********************************************* 
     [ 리액트 라우터 ]
@@ -83,6 +84,7 @@ export default function MainComponent() {
           <Route path="detail" element={<CatDetail />} />
           <Route path="search" element={<SearchPage />} />
           <Route path="member" element={<Member />} />
+          <Route path="login" element={<Login />} />
         </Route>
         {/* Layout 루트 Route로 하위 Route를 감싼다! */}
       </Routes>
