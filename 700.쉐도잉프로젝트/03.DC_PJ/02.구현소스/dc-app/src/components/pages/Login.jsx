@@ -147,6 +147,23 @@ function Login(props) {
         if(pwd === result.pwd){
             // 같을 경우 로그인 성공처리
             alert("Login Success!");
+
+            // ****** [ 로그인 후 셋팅작업 ] ****** //
+            // 1. 로그인한 회원정보를 세션스에 셋팅!
+            // -> 서버 세션을 대신하여 사용함!
+            // -> 결과가 result에 배열로 담김
+            // -> 넣을때는 JSON.stringify()
+            sessionStorage.setItem("minfo",
+            JSON.stringify(result));
+
+            // 2. 컨텍스트 API의 로그인상태 업데이트
+            myCon.setLoginSts(
+                sessionStorage.getItem("minfo"));
+            // -> 업데이트된 minfo 세션스값을 넣음!
+
+
+
+
         } //// if /////
         // 로그인 실패시 메시지 출력!
         else{
