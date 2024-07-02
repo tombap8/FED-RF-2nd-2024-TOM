@@ -127,7 +127,8 @@ function Login(props) {
       if(!result){
 
         // (1) 에러메시지 선택하기
-        setUserIdMsg(msgId[1]);
+        setIdMsg(msgId[1]);
+        
         // (2) 에러메시지 보이기
         userIdError(true);
 
