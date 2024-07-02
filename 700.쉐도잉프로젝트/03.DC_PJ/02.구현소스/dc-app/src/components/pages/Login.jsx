@@ -123,6 +123,22 @@ function Login(props) {
       }); /////// find ///////
       console.log("결과:", result);
 
+      // 4-1. 결과값이 없으면 메시지 보이기
+      if(!result){
+
+        // (1) 에러메시지 선택하기
+        setUserIdMsg(msgId[1]);
+        // (2) 에러메시지 보이기
+        userIdError(true);
+
+      } ////////// if ////////
+      // 4-2. 결과값이 있으면 비밀번호검사
+      else{
+
+      } ////// else //////
+
+
+
       // 배열.find() -> 있을 경우 레코드 저장
       // find는 filter와 달리 배열로 저장하지 않고
       // 값만 저장함. 그래서 결과값이 없으면
