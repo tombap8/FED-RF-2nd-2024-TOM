@@ -19,6 +19,10 @@
             top: 0;
             left: 0;
             width: 100vw;
+            /* JS에서 window의 innerHeight를 측정하여
+            모바일 변수로 넣어주면 높이값이 설정된다.
+            이때 높이값은 ios 브라우저에서 컨트롤러를 
+            제외한 높이가 된다! */
             height: var(--app-height);
             background-color: #20b2ab74;
             box-sizing: border-box;
@@ -42,12 +46,27 @@
         }
     </style>
     <script>
+        /******************************* 
+            화면 전체 높이값 설정함수
+        *******************************/
         const changeHeight = () => {
+            // 구조분해할당 방식으로 객체의 속성값을 쓸 수 있다!
+            // const { 객체의 속성명 } = 해당객체;
             const { innerHeight } = window;
             document.documentElement.style.setProperty("--app-height",`${innerHeight}px`);
 
-        };
+            // JS에서 CSS의 전역 변수값을 넣는 코드
+            // document.documentElement.style.setProperty(CSS변수명,변수값)
+            // -> 여기서 지정한 CSS변수를 CSS에서 사용하면 동적인 값을 넣을 수 있다!
+
+        }; /////////// changeHeight 함수 ////////////
+
+        /************************************************ 
+            이벤트 설정 : DOMContentLoaded + resize
+        ************************************************/
+        // 1. 태그만 다 그리고 나면 처음 실행하여 CSS변수값 설정
         window.addEventListener("DOMContentLoaded", changeHeight);
+        // 2. 컨트롤러가 올라오거나 내려가면 화면크기가 변하므로 리사이즈 때도 호출!
         window.addEventListener("resize", changeHeight);
       </script>
 </head>
