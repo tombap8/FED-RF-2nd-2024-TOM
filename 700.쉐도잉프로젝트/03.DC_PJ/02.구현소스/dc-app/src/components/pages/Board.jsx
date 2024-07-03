@@ -1,5 +1,5 @@
 // 오피니언 페이지 컴포넌트 ///
-import { useRef, useState } from "react";
+import { Fragment, useRef, useState } from "react";
 
 // 사용자 기본정보 생성 함수
 import { initData } from "../func/mem_fn";
@@ -102,6 +102,28 @@ export default function Board() {
     "나머지개수:",
     totalCount.current % unitSize);
 
+    // 링크코드 만들기 ///
+    const pgCode = [];
+
+    // 1부터 페이지 끝번호까지 돌면서 코드만들기
+    for(let i=1; i<=pagingCount;i++){
+        pgCode.push(
+        <Fragment key={i}>
+            <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPageNum(i);
+                }}
+              >
+                2
+              </a>
+        </Fragment>
+        )
+    } ////// for /////
+
+    // 코드리턴
+    return pgCode;
 
 
  }; ////////// pagingList 함수 //////////////
