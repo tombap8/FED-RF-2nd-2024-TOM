@@ -26,17 +26,17 @@ export default function Layout() {
   const goPage = useNavigate();
   
   // 2. 로그인 환영메시지 생성함수
-  const makeMsg = useCallback((name) => {
+  const makeMsg = (name) => {
     // 유저아이콘
     let usrIcon = ["🙍‍♂️","🧏‍♀️","🦸‍♂","👨‍🎤","🦸‍♀"];
     // 랜덤수 : 0~4사이의 수
     let rdm = Math.floor(Math.random()*5);
     // 로그인 메시지 상태변수 업데이트
     setLoginMsg(`Welcome ${name} ${usrIcon[rdm]}`);
-  },[]); /////// makeMsg 함수 /////////
+  }; /////// makeMsg 함수 /////////
 
   // 3. 로그아웃 함수 /////////
-  const logoutFn = useCallback(() => {
+  const logoutFn = () => {
     // 1. 로그인 상태값 null
     setLoginSts(null);
     // 2. 세션스 지우기 : minfo
@@ -45,7 +45,7 @@ export default function Layout() {
     setLoginMsg(null);
     // 4. 메인 페이지로 돌아가기
     goPage("/");
-  },[]); //////// logoutFn 함수 /////////
+  }; //////// logoutFn 함수 /////////
 
   
   // 화면 랜더링 구역 ////////
