@@ -20,12 +20,18 @@
             left: 0;
             width: 100vw;
             /* 
-            [ svh 단위 : vh 와 달리 short vh로써 컨트롤러 제외 높이단위 ] 
-            100svh는 ios에서 컨트롤러를 제외한 화면 높이가되어서
-            하단부분이 모두 보인다! 단, 컨트롤러가 내려가면 빈 공간이
-            생기므로 min-height: -webkit-fill-available 속성과
-            함께 사용해야 컨트롤러가 내려가지 않게된다. */
+            [ svh 단위 : short vh로써 컨트롤러 제외 높이단위 ] 
+            컨트롤러가 올라온 상태의 작은 화면 사이즈
+
+            [ lvh 단위 : large vh ] 
+            컨트롤로가 내려간 상태의 큰 화면 사이즈
+            */
             height: 100dvh;
+            /* 
+            [ dvh 단위 : dynamic ]
+            컨트롤러가 올라오면 svh를 적용하고 
+            컨트롤러가 내려가면 lvh를 적용하여 
+            크기에 자동으로 적응하게 해준다! */
             background-color: #20b2ab74;
             box-sizing: border-box;
         }
