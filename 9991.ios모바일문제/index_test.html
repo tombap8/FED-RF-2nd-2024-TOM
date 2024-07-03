@@ -1,65 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>ios에서 전체 높이값이 100dvh로 해결!</title>
     <style>
-        html,body{
-            margin: 0;
-            padding: 0;
-        }
-        body{
-            height: 3000px;
-            background: url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?cs=srgb&dl=pexels-padrinan-255379.jpg&fm=jpg) repeat-y 0/100%;
-        }
-        .wrap
-        {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            /***********************************
-            [ svh 단위 : short vh ] 
-            컨트롤러가 올라온 상태의 작은 화면 사이즈
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        height: 3000px;
+        background: url(https://images.pexels.com/photos/255379/pexels-photo-255379.jpeg?cs=srgb&dl=pexels-padrinan-255379.jpg&fm=jpg)
+          repeat-y 0/100%;
+      }
+      .wrap {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        /***********************************
+        [ svh 단위 : short vh ] 
+        컨트롤러가 올라온 상태의 작은 화면 사이즈
 
-            [ lvh 단위 : large vh ] 
-            컨트롤로가 내려간 상태의 큰 화면 사이즈
+        [ lvh 단위 : large vh ] 
+        컨트롤로가 내려간 상태의 큰 화면 사이즈
 
-            [ dvh 단위 : dynamic vh ]
-            컨트롤러가 올라오면 svh를 적용하고 
-            컨트롤러가 내려가면 lvh를 적용하여 
-            크기에 자동으로 적응하게 해준다! 
-            *********************************/
-            height: 100dvh; 
-            /* 결론 : 유동적이 높이값이 되는경우
+        [ dvh 단위 : dynamic vh ]
+        컨트롤러가 올라오면 svh를 적용하고 
+        컨트롤러가 내려가면 lvh를 적용하여 
+        크기에 자동으로 적응하게 해준다! 
+        *********************************/
+        height: 100dvh;
+        /* 결론 : 유동적이 높이값이 되는경우
             ios 브라우저인 경우 dvh를 쓰자! */
-            background-color: #20b2ab74;
-            box-sizing: border-box;
-        }
-        h1{
-            font-size: 12vw;
-            text-align: center;
-            color: #fff;
-        }
-        button{
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            font-size: 7vw;
-            transform: translateX(-50%);
-            background-color: darkred;
-            color: #fff;
-            padding: 20px;
-            white-space: nowrap;
-            border-radius: 20px;
-        }
+        background-color: #20b2ab74;
+        box-sizing: border-box;
+      }
+      h1 {
+        font-size: 12vw;
+        text-align: center;
+        color: #fff;
+      }
+      button {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        font-size: 7vw;
+        transform: translateX(-50%);
+        background-color: darkred;
+        color: #fff;
+        padding: 20px;
+        white-space: nowrap;
+        border-radius: 20px;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <div class="wrap">
-        <h1>ios 테스트</h1>
-        <button>나는 버튼이닷!</button>
+      <h1>ios 테스트</h1>
+      <button>나는 버튼이닷!</button>
     </div>
-</body>
+  </body>
 </html>
