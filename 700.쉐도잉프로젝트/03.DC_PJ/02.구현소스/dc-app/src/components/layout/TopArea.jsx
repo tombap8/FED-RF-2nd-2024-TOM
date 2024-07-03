@@ -12,9 +12,11 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // 제이쿼리
 import $ from "jquery";
-import { memo, useContext } from "react";
 
-import { dCon } from "../modules/dCon";
+// 메모이제이션
+import { memo } from "react";
+
+// import { dCon } from "../modules/dCon";
 
 // 메모이제이션 적용하기! /////
 // -> 그.러.나... 단순히 적용하면 효과가 없음!
@@ -26,14 +28,23 @@ import { dCon } from "../modules/dCon";
 // -> React.memo는 전달속성이 변경됨을 기준하여
 // 메모이제이션 기능를 제공하기 때문이다!
 // -> 전달되는 함수가 반드시 useCallback() 처리가 되어야 한다!!!
+// ->> 객체, 배열, 함수는 모두 값저장이 아니고 주소저장임!
+// 그래서 이 주소를 고정해 줘야 같은 값으로 인식하여
+// 메모이제이션 된다!!!
 
-export const TopArea = memo(() => {
+export const TopArea = memo(({loginMsg,loginSts,logoutFn,goPage}) => {
+  // 전달값
+  // 1. loginMsg - 로그인 메시지변수
+  // 2. loginSts - 로그인 상태변수
+  // 3. logoutFn - 로그아웃 함수!!!
+
   console.log("상단영역!!!");
-  // 컨텍스트 사용하기
-  const myCon = useContext(dCon);
+  // 컨텍스트 사용하기 -> 메모이제이션을 위해 사용안함!
+  // const myCon = useContext(dCon);
+
 
   // 이동함수 ////
-  const goNav = useNavigate();
+  // const goNav = useNavigate();
   // 사용시 goNav(라우터주소,{전달객체})
   // 전달객체 없으면 비워놓음!
   // 사용법: 반드시 useNavigate()메서드를 변수에 담아
@@ -81,7 +92,7 @@ export const TopArea = memo(() => {
     console.log("나는 검색하러 간다규~!!!");
     // 라우터 이동함수로 이동하기
     // 네비게이트메서드(라우터주소,{state:{보낼객체}})
-    goNav("search", { state: { keyword: txt } });
+    goPage("search", { state: { keyword: txt } });
   }; /////////// goSearch //////////////
 
   //// 코드 리턴구역 //////////////
@@ -90,7 +101,7 @@ export const TopArea = memo(() => {
       {/* 1.상단영역 */}
       <header className="top-area">
         {/* 로그인 환영메시지 박스 */}
-        <div className="logmsg">{myCon.loginMsg}</div>
+        <div className="logmsg">{loginMsg}</div>
         {/* 네비게이션 GNB파트 */}
         <nav className="gnb">
           <ul>
@@ -102,7 +113,7 @@ export const TopArea = memo(() => {
                   // 기본이동막기
                   e.preventDefault();
                   // 라우터 이동 메서드호출
-                  goNav("");
+                  goPage("");
                 }}
               >
                 <Logo logoStyle="top" />
@@ -182,7 +193,7 @@ export const TopArea = memo(() => {
             {
               /* 회원가입, 로그인 버튼은
               로그인 상태가 null일때 나옴 */
-              myCon.loginSts === null &&
+              loginSts === null &&
               <>
                 <li>
                   <Link to="/member">JOIN US</Link>
@@ -194,7 +205,7 @@ export const TopArea = memo(() => {
             }
             {
               /* 로그인 상태이면 로그아웃버튼 보임 */
-              myCon.loginSts !== null &&
+              loginSts !== null &&
               <>
                 <li>
                   <a href="#" 
@@ -202,7 +213,7 @@ export const TopArea = memo(() => {
                     // 기본이동 막기
                     e.preventDefault();
                     // 로그아웃처리함수 호출
-                    myCon.logoutFn();
+                    logoutFn();
                   }}>
                     LOGOUT
                   </a>
