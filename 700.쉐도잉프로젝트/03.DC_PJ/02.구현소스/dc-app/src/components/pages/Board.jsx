@@ -14,8 +14,16 @@ import $ from "jquery";
 // 게시판용 CSS
 import "../../css/board.scss";
 import "../../css/board_file.scss";
+import { useState } from "react";
 
 export default function Board() {
+  // [ 상태관리 변수 ] ///
+  // [1] 페이지 번호
+  const [pageNum, setPageNum] = useState(1);
+
+  // 페이지당 개수
+  const unitSize = 10;
+
   /********************************************** 
         함수명: bindList
         기능 : 페이지별 리스트를 생성하여 바인딩함
@@ -36,23 +44,16 @@ export default function Board() {
     // 한페이지당 10개라면...
     // 페이지 번호와 연관시켜 본다!
     // 1,2,3,4,...
+
     // 시작번호 = (페이지번호-1)*단위수
+    let sNum = (pageNum - 1) * unitSize;
     // 끝번호 = 페이지번호*단위수
-
-    // 페이지 번호
-    const pageNum = 3;
-    // 페이지당 개수
-    const unitSize = 10;
-
+    let eNum = pageNum * unitSize;
+    // 결과배열
     const selData = [];
-    for (
-      // 시작값
-      let i = (pageNum - 1) * unitSize;
-      // 한계값
-      i < pageNum * unitSize;
-      // 증감
-      i++
-    ) {
+
+    // for문으로 배열 만들기
+    for (let i = sNum; i < eNum; i++) {
       selData.push(orgData[i]);
     }
 
@@ -104,9 +105,18 @@ export default function Board() {
         <tfoot>
           <tr>
             <td colSpan="5" className="paging">
-              <b>1</b> | <a href="#">2</a> | <a href="#">3</a> |{" "}
-              <a href="#">4</a> | <a href="#">5</a> | <a href="#">6</a> |{" "}
-              <a href="#">7</a> | <a href="#">8</a>
+              <b>1</b> |
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPageNum(2);
+                }}
+              >
+                2
+              </a>{" "}
+              | <a href="#">3</a> | <a href="#">4</a> | <a href="#">5</a> |{" "}
+              <a href="#">6</a> | <a href="#">7</a> | <a href="#">8</a>
             </td>
           </tr>
         </tfoot>
