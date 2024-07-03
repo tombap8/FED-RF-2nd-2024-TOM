@@ -54,19 +54,25 @@ export default function Board() {
     let sNum = (pageNum - 1) * unitSize;
     // 끝번호 = 페이지번호*단위수
     let eNum = pageNum * unitSize;
+    console.log("첫번호:", sNum, "/끝번호:", eNum);
     // 결과배열
     const selData = [];
 
     // for문으로 배열 만들기
     for (let i = sNum; i < eNum; i++) {
+        console.log(i);
+      // 끝번호가 전체 개수보다 크면 나가라!
+      if (i >= totalCount.current) break;
+      // 대상배열값 추가
       selData.push(orgData[i]);
-    }
+    } ///// for //////
 
     console.log("일부데이터:", selData);
 
     return selData.map((v, i) => (
       <tr key={i}>
-        <td>{i + 1}</td>
+        {/* 시작번호를 더하여 페이지별 순번을 변경 */}
+        <td>{i + 1 + sNum}</td>
         <td>
           <a href="#" data-idx="51">
             {v.cont}
@@ -110,21 +116,23 @@ export default function Board() {
     for (let i = 1; i <= pagingCount; i++) {
       pgCode.push(
         <Fragment key={i}>
-          { // 페이징번호와 현재페이지번호 일치시 b요소
-          i === pageNum ? (
-            <b>{i}</b>
-          ) : (
-            // 불일치시에 모드 링크코드
-            <a
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                setPageNum(i);
-              }}
-            >
-              {i}
-            </a>
-          )}
+          {
+            // 페이징번호와 현재페이지번호 일치시 b요소
+            i === pageNum ? (
+              <b>{i}</b>
+            ) : (
+              // 불일치시에 모드 링크코드
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  setPageNum(i);
+                }}
+              >
+                {i}
+              </a>
+            )
+          }
           {/* 사이에 바넣기 */}
           {i !== pagingCount && " | "}
         </Fragment>
