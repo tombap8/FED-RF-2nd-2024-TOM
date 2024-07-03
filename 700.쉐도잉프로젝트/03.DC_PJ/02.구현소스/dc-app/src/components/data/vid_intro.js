@@ -54,7 +54,7 @@ export const vidIntroData = {
     ],
   },
   VIDEO: {
-    vsrc: "https://www.youtube.com/embed/uJ1IEYeHCgE",
+    vsrc: "https://www.youtube.com/embed/tjt4vBog9QU",
     stit: "FEATURED VIDEO",
     btit: "THE FLASH - DRONE SHOW AT VIVID SYDNEY",
     sum: "In case you missed it - The Flash was included as part of the biggest ever opening weekend of * where 1,053 drones were used to create the largest drone show in the southern hemisphere!",
