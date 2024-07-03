@@ -1,4 +1,5 @@
 // 오피니언 페이지 컴포넌트 ///
+import { useRef, useState } from "react";
 
 // 사용자 기본정보 생성 함수
 import { initData } from "../func/mem_fn";
@@ -14,15 +15,19 @@ import $ from "jquery";
 // 게시판용 CSS
 import "../../css/board.scss";
 import "../../css/board_file.scss";
-import { useState } from "react";
 
 export default function Board() {
   // [ 상태관리 변수 ] ///
   // [1] 페이지 번호
   const [pageNum, setPageNum] = useState(1);
 
+  // [ 참조변수 ] ///
+  // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
+  const totalCount = useRef(baseData.length);
+  console.log("전체개수:",totalCount);
+
   // 페이지당 개수
-  const unitSize = 10;
+  const unitSize = 8;
 
   /********************************************** 
         함수명: bindList
@@ -74,6 +79,33 @@ export default function Board() {
     ));
   }; /////////// bindList 함수 /////////////////
 
+  /****************************************** 
+    함수명 : pagingList
+    기능 : 게시판 리스트의 페이징 기능 목록
+  ******************************************/
+ const pagingList = ()=>{
+    // 전체 페이징 개수 : 전체레코드수 / 페이지당개수
+    // 유의점: 나머지가 있는지 검사해서 있으면 +1
+
+    // 1. 페이징 개수
+    let pagingCount = 
+    Math.floor(totalCount.current / unitSize);
+
+    // 나머지가 있으면 다음 페이지가 필요함!
+    // 나머지가 0이 아니면 1더하기
+    if (totalCount.current % unitSize > 0) {
+      pagingCount++;
+    }
+
+    console.log("페이징개수:",
+    pagingCount,
+    "나머지개수:",
+    totalCount.current % unitSize);
+
+
+
+ }; ////////// pagingList 함수 //////////////
+
   //// 코드 리턴구역 //////////////
   return (
     <main className="cont">
@@ -105,18 +137,7 @@ export default function Board() {
         <tfoot>
           <tr>
             <td colSpan="5" className="paging">
-              <b>1</b> |
-              <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPageNum(2);
-                }}
-              >
-                2
-              </a>{" "}
-              | <a href="#">3</a> | <a href="#">4</a> | <a href="#">5</a> |{" "}
-              <a href="#">6</a> | <a href="#">7</a> | <a href="#">8</a>
+                {pagingList()}
             </td>
           </tr>
         </tfoot>
