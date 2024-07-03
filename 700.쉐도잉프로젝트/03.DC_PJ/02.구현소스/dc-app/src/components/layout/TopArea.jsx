@@ -27,12 +27,14 @@ import { memo } from "react";
 // props로 전달하는 방식으로 전환하면 효과를 볼 수 있다!
 // -> React.memo는 전달속성이 변경됨을 기준하여
 // 메모이제이션 기능를 제공하기 때문이다!
+
+// [메모이제이션 중요체크]
 // -> 전달되는 함수가 반드시 useCallback() 처리가 되어야 한다!!!
 // ->> 객체, 배열, 함수는 모두 값저장이 아니고 주소저장임!
 // 그래서 이 주소를 고정해 줘야 같은 값으로 인식하여
 // 메모이제이션 된다!!!
 
-export const TopArea = memo(({loginMsg,loginSts,logoutFn,goPage}) => {
+export const TopArea = memo(({ loginMsg, loginSts, logoutFn, goPage }) => {
   // 전달값
   // 1. loginMsg - 로그인 메시지변수
   // 2. loginSts - 로그인 상태변수
@@ -41,7 +43,6 @@ export const TopArea = memo(({loginMsg,loginSts,logoutFn,goPage}) => {
   console.log("상단영역!!!");
   // 컨텍스트 사용하기 -> 메모이제이션을 위해 사용안함!
   // const myCon = useContext(dCon);
-
 
   // 이동함수 ////
   // const goNav = useNavigate();
@@ -193,36 +194,40 @@ export const TopArea = memo(({loginMsg,loginSts,logoutFn,goPage}) => {
             {
               /* 회원가입, 로그인 버튼은
               로그인 상태가 null일때 나옴 */
-              loginSts === null &&
-              <>
-                <li>
-                  <Link to="/member">JOIN US</Link>
-                </li>
-                <li>
-                  <Link to="/login">LOGIN</Link>
-                </li>
-              </>
+              loginSts === null && (
+                <>
+                  <li>
+                    <Link to="/member">JOIN US</Link>
+                  </li>
+                  <li>
+                    <Link to="/login">LOGIN</Link>
+                  </li>
+                </>
+              )
             }
             {
               /* 로그인 상태이면 로그아웃버튼 보임 */
-              loginSts !== null &&
-              <>
-                <li>
-                  <a href="#" 
-                  onClick={(e)=>{
-                    // 기본이동 막기
-                    e.preventDefault();
-                    // 로그아웃처리함수 호출
-                    logoutFn();
-                  }}>
-                    LOGOUT
-                  </a>
-                </li>
-              </>
+              loginSts !== null && (
+                <>
+                  <li>
+                    <a
+                      href="#"
+                      onClick={(e) => {
+                        // 기본이동 막기
+                        e.preventDefault();
+                        // 로그아웃처리함수 호출
+                        logoutFn();
+                      }}
+                    >
+                      LOGOUT
+                    </a>
+                  </li>
+                </>
+              )
             }
           </ul>
         </nav>
       </header>
     </>
   );
-}) /////////// TopArea /////////////////////
+}); /////////// TopArea /////////////////////
