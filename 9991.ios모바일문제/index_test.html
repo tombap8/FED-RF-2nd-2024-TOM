@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ios에서 전체 높이값이 100svh로 컨트롤러 제외한 경우</title>
+    <title>ios에서 전체 높이값이 100dvh로 해결!</title>
     <style>
         html,body{
             margin: 0;
@@ -19,19 +19,21 @@
             top: 0;
             left: 0;
             width: 100vw;
-            /* 
-            [ svh 단위 : short vh로써 컨트롤러 제외 높이단위 ] 
+            /***********************************
+            [ svh 단위 : short vh ] 
             컨트롤러가 올라온 상태의 작은 화면 사이즈
 
             [ lvh 단위 : large vh ] 
             컨트롤로가 내려간 상태의 큰 화면 사이즈
-            */
-            height: 100dvh;
-            /* 
-            [ dvh 단위 : dynamic ]
+
+            [ dvh 단위 : dynamic vh ]
             컨트롤러가 올라오면 svh를 적용하고 
             컨트롤러가 내려가면 lvh를 적용하여 
-            크기에 자동으로 적응하게 해준다! */
+            크기에 자동으로 적응하게 해준다! 
+            *********************************/
+            height: 100dvh; 
+            /* 결론 : 유동적이 높이값이 되는경우
+            ios 브라우저인 경우 dvh를 쓰자! */
             background-color: #20b2ab74;
             box-sizing: border-box;
         }
