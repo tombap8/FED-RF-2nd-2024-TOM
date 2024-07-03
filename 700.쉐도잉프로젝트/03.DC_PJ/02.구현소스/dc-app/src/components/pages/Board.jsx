@@ -24,7 +24,7 @@ export default function Board() {
   // [ 참조변수 ] ///
   // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
   const totalCount = useRef(baseData.length);
-  console.log("전체개수:",totalCount);
+  console.log("전체개수:", totalCount);
 
   // 페이지당 개수
   const unitSize = 8;
@@ -83,13 +83,12 @@ export default function Board() {
     함수명 : pagingList
     기능 : 게시판 리스트의 페이징 기능 목록
   ******************************************/
- const pagingList = ()=>{
+  const pagingList = () => {
     // 전체 페이징 개수 : 전체레코드수 / 페이지당개수
     // 유의점: 나머지가 있는지 검사해서 있으면 +1
 
     // 1. 페이징 개수
-    let pagingCount = 
-    Math.floor(totalCount.current / unitSize);
+    let pagingCount = Math.floor(totalCount.current / unitSize);
 
     // 나머지가 있으면 다음 페이지가 필요함!
     // 나머지가 0이 아니면 1더하기
@@ -97,36 +96,44 @@ export default function Board() {
       pagingCount++;
     }
 
-    console.log("페이징개수:",
-    pagingCount,
-    "나머지개수:",
-    totalCount.current % unitSize);
+    console.log(
+      "페이징개수:",
+      pagingCount,
+      "나머지개수:",
+      totalCount.current % unitSize
+    );
 
     // 링크코드 만들기 ///
     const pgCode = [];
 
     // 1부터 페이지 끝번호까지 돌면서 코드만들기
-    for(let i=1; i<=pagingCount;i++){
-        pgCode.push(
+    for (let i = 1; i <= pagingCount; i++) {
+      pgCode.push(
         <Fragment key={i}>
+          { // 페이징번호와 현재페이지번호 일치시 b요소
+          i === pageNum ? (
+            <b>{i}</b>
+          ) : (
+            // 불일치시에 모드 링크코드
             <a
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPageNum(i);
-                }}
-              >
-                2
-              </a>
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                setPageNum(i);
+              }}
+            >
+              {i}
+            </a>
+          )}
+          {/* 사이에 바넣기 */}
+          {i !== pagingCount && " | "}
         </Fragment>
-        )
+      );
     } ////// for /////
 
     // 코드리턴
     return pgCode;
-
-
- }; ////////// pagingList 함수 //////////////
+  }; ////////// pagingList 함수 //////////////
 
   //// 코드 리턴구역 //////////////
   return (
@@ -159,7 +166,7 @@ export default function Board() {
         <tfoot>
           <tr>
             <td colSpan="5" className="paging">
-                {pagingList()}
+              {pagingList()}
             </td>
           </tr>
         </tfoot>
