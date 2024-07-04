@@ -5,6 +5,7 @@ import $ from "jquery";
 
 // 상품에 오버시 상품정보를 보여주는 함수 /////
 const showInfo = (e,selData) => {
+  console.log(selData);
   e.preventDefault();
   // 대상
   const tg = $(e.currentTarget);

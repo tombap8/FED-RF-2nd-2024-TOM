@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef } from "react";
+import React, { useContext, useLayoutEffect, useRef } from "react";
 
 // 제이쿼리 불러오기
 import $ from "jquery";
@@ -8,10 +8,14 @@ import { showInfo, removeInfo, flowList } from "../../js/func/sinsang_fn";
 
 // 신상 데이터 불러오기 /////
 import { sinsangData } from "../../js/data/sinsang";
+import { pCon } from "./pCon";
 
 function SinSang({ cat, chgItemFn }) {
   // cat - 카테고리 분류명 (men/women/style)
   // chgItemFn - 선택상품정보 변경 부모함수
+
+  // 전역컨텍스트 사용하기
+  const myCon = useContext(pCon);
 
   // 신상품 리스트 이동함수 사용변수 ///
   // 위치값변수(left값) -> 리랜더링시 기존값을 유지하도록
@@ -68,7 +72,9 @@ function SinSang({ cat, chgItemFn }) {
     <>
       <h2 className="c1tit">
         NEW MEN'S ARRIVAL
-        <button>전체리스트</button>
+        <button 
+        onClick={()=>
+        myCon.setPgName("item-list")}>전체리스트</button>
       </h2>
       <div
         className="flowbx"

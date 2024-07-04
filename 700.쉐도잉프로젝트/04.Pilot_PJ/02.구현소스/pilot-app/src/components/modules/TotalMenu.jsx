@@ -15,6 +15,8 @@ export function TotalMenu() {
     // 2.이동할 서브 페이지명 : a요소의 글자를 소문자로!
     let pgName = e.target.innerText.toLowerCase();
     console.log("이동할 페이지:", pgName);
+    // -> 아이템 리스트 페이지는 중간 공백을 데쉬로 변경
+    pgName = pgName.replace(" ","-");
     // 3.서브페이지 이동위해 상태변수업데이트
     myCon.setPgName(pgName);
     // 4.햄버거버튼 클릭이벤트 발생하여 전체메뉴 닫기
@@ -88,6 +90,14 @@ export function TotalMenu() {
             <dd>
               <a href="#">MAIN ITEM</a>
             </dd>
+          </dl>
+          <dl>
+            <dt>
+              <a href="#" onClick={goSub}>
+                ITEM LIST
+              </a>
+            </dt>
+            <dd></dd>
           </dl>
         </nav>
       </div>
