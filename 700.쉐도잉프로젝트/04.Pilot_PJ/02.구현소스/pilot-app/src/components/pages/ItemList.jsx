@@ -4,7 +4,6 @@ import React, { useEffect } from "react";
 // 상품 데이터 불러오기 : 원본데이터
 import itemListData from "../../js/data/item_list";
 
-
 // 컴포넌트 CSS
 import "../../css/item_list.scss";
 
@@ -12,15 +11,13 @@ import "../../css/item_list.scss";
 import $ from "jquery";
 
 function ItemList(props) {
+  // 화면랜더링구역 ////////
+  useEffect(() => {
+    // 전체 스크롤바 살리기
+    $("html,body").css({ overflow: "visible" });
+  }, []); ////// useEffect ///////
 
-    // 화면랜더링구역 ////////
-    useEffect(()=>{
-        // 전체 스크롤바 살리기
-        $("html,body").css({overflow: "visible"});
-
-    },[]); ////// useEffect ///////
-
-    // 코드리턴구역 //////////////////
+  // 코드리턴구역 //////////////////
   return (
     <main id="cont">
       <h1 className="tit">All ITEMS LIST</h1>
@@ -34,16 +31,21 @@ function ItemList(props) {
           <input type="checkbox" className="chkbx" id="style" defaultChecked />
         </div>
         <div className="grid">
-        <div>
-            <a href="#">
-              [1]
-              <img src="./images/goods/men/m1.png" alt="dress" />
-              <aside>
-                <h2>[남성]카모전판프린트 PQ 티셔츠</h2>
-                <h3>99,000원</h3>
-              </aside>
-            </a>
-          </div>
+          {itemListData.map((v, i) => (
+            <div key={i}>
+              <a href="#">
+                [1]
+                <img
+                  src={process.env.PUBLIC_URL + `/images/goods/${v.cat}/${v.ginfo[0]}.png`}
+                  alt="dress"
+                />
+                <aside>
+                  <h2>{v.ginfo[1]}</h2>
+                  <h3>{v.ginfo[3]}원</h3>
+                </aside>
+              </a>
+            </div>
+          ))}
         </div>
       </section>
 
