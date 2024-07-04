@@ -4,21 +4,20 @@ import React from "react";
 // 컴포넌트 CSS
 import "../../css/item_list.scss";
 
-
 function ItemList(props) {
   return (
     <main id="cont">
-      <h1 class="tit">All ITEMS LIST</h1>
+      <h1 className="tit">All ITEMS LIST</h1>
       <section>
         <div id="optbx">
-          <label for="men">남성</label>
-          <input type="checkbox" class="chkbx" id="men" checked="" />
-          <label for="women">여성</label>
-          <input type="checkbox" class="chkbx" id="women" checked="" />
-          <label for="style">스타일</label>
-          <input type="checkbox" class="chkbx" id="style" checked="" />
+          <label htmlFor="men">남성</label>
+          <input type="checkbox" className="chkbx" id="men" defaultChecked />
+          <label htmlFor="women">여성</label>
+          <input type="checkbox" className="chkbx" id="women" defaultChecked />
+          <label htmlFor="style">스타일</label>
+          <input type="checkbox" className="chkbx" id="style" defaultChecked />
         </div>
-        <div class="grid">
+        <div className="grid">
           <div>
             <a href="#">
               [1]
@@ -292,17 +291,24 @@ function ItemList(props) {
         </div>
       </section>
       <div
-        class="bgbx"
-        style="position: fixed; top: 0px; padding-top: 12vh; backdrop-filter: blur(8px); height: 100vh; z-index: 9999;"
+        className="bgbx"
+        style={{
+          position: "fixed",
+          top: "0px",
+          paddingTop: "12vh",
+          backdropFilter: "blur(8px)",
+          height: "100vh",
+          zIndex: "9999",
+        }}
       >
-        <a href="#" class="cbtn">
-          <span class="ir">닫기버튼</span>
+        <a href="#" className="cbtn">
+          <span className="ir">닫기버튼</span>
         </a>
         <div id="imbx">
-          <div class="inx">
-            <section class="gim/g">
+          <div className="inx">
+            <section className="gim/g">
               <img src="./images/goods/men/m1.png" alt="큰 이미지" />
-              <div class="small">
+              <div className="small">
                 <a href="#">
                   <img src="./images/goods/men/m1.png" alt="썸네일 이미지" />
                   <img src="./images/goods/men/m2.png" alt="썸네일 이미지" />
@@ -313,7 +319,7 @@ function ItemList(props) {
                 </a>
               </div>
             </section>
-            <section class="gdesc scbar">
+            <section className="gdesc scbar">
               <h1>HOME &gt; MEN</h1>
               <div>
                 <ol>
@@ -360,8 +366,8 @@ function ItemList(props) {
                   <li>
                     <span>구매수량</span>
                     <span>
-                      <input type="text" id="sum" value="1" />
-                      <b class="chg_num">
+                      <input type="text" id="sum" defaultValue="1" />
+                      <b className="chg_num">
                         <img src="./images/cnt_up.png" alt="증가" />
                         <img src="./images/cnt_down.png" alt="감소" />
                       </b>
@@ -373,16 +379,16 @@ function ItemList(props) {
                   <li>
                     <span>권장계절</span> <span>여름</span>
                   </li>
-                  <li class="tot">
+                  <li className="tot">
                     <span>총합계</span>
                     <span id="total">99,000원</span>
                   </li>
                 </ol>
               </div>
               <div>
-                <button class="btn btn1">BUY NOW</button>
-                <button class="btn">SHOPPING CART</button>
-                <button class="btn">WISH LIST</button>
+                <button className="btn btn1">BUY NOW</button>
+                <button className="btn">SHOPPING CART</button>
+                <button className="btn">WISH LIST</button>
               </div>
             </section>
           </div>
