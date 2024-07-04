@@ -56,7 +56,7 @@ function SinSang({ cat, chgItemFn }) {
             }}
           >
             <img
-              src={"./images/goods/" + cat + "/m" + (x + 1) + ".png"}
+              src={process.env.PUBLIC_URL+"/images/goods/" + cat + "/m" + (x + 1) + ".png"}
               alt="신상품"
             />
           </a>

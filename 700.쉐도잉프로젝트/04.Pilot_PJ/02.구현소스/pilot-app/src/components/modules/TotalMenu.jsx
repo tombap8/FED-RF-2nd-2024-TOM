@@ -28,7 +28,7 @@ export function TotalMenu() {
     <>
       <div className="mbox">
         <video
-          src="./images/disc2018.mp4"
+          src={process.env.PUBLIC_URL+"/images/disc2018.mp4"}
           loop="loop"
           muted="muted"
           className="bgm"
