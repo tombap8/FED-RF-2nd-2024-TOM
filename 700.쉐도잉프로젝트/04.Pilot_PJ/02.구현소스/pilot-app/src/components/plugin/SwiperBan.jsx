@@ -151,9 +151,7 @@ export function SwiperBan({ cat }) {
           } /// if ///
           // 기타 페이지는 영상멈춤
           else {
-            let playPromise = mvEle.play();
-            if(playPromise !== undefined) playPromise.then(()=>mvEle.pause());
-            // mvEle.pause();
+            mvEle.pause();
           } /// else ///
         }}
       >
