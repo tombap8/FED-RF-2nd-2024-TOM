@@ -23,6 +23,9 @@ export function SwiperBan({ cat }) {
   // 스와이퍼 객체를 담기위한 참조변수
   const swpObj = useRef(null);
 
+  // 스와이퍼 슬라이드의 동영상변수
+  let mvEle;
+
   // 화면 랜더링구역 ///////////
   useEffect(() => {
     // 스와이퍼 배너 첫페이지로 이동하기
@@ -87,6 +90,10 @@ export function SwiperBan({ cat }) {
   // 소멸자 만들기 ////////////
   useEffect(()=>{
     return(()=>{
+      // 동영상변수가 null이 아닐때만 이벤트삭제
+      if(mvEle)
+      mvEle.removeEventListener("timeupdate", actionVideo); 
+    
       console.log("난 스와이퍼 소멸자!!!");
     });
   },[]); /////// useEffect //////////
@@ -152,8 +159,8 @@ export function SwiperBan({ cat }) {
             return;
           } ///// if ////
 
-          // 선택 동영상 //
-          let mvEle = document.querySelector(`.${cat}-vid`);
+          // 선택 동영상 : 상단 전역변수로 선언 //
+          mvEle = document.querySelector(`.${cat}-vid`);
 
           // 현재 진짜순번
           let idx = swp.realIndex;
