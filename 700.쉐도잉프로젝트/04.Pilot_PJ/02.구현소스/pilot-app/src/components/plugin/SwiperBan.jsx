@@ -18,7 +18,7 @@ import { useEffect, useRef, useState } from "react";
 
 export function SwiperBan({ cat }) {
   // cat - 카테고리명
-  console.log("배너카테고리명:", cat);
+  // console.log("배너카테고리명:", cat);
 
   // 스와이퍼 객체를 담기위한 참조변수
   const swpObj = useRef(null);
@@ -33,8 +33,8 @@ export function SwiperBan({ cat }) {
     // 첫번째 슬라이드는 0번, 애니시간은 0으로 안보이게
 
     // 스와이퍼객체는 어디있지?
-    console.log("랜더링:", swpObj);
-    console.log("Swiper:", swpObj.current.swiper);
+    // console.log("랜더링:", swpObj);
+    // console.log("Swiper:", swpObj.current.swiper);
     // 플러그인 스와이퍼 컴포넌트 객체 생성시
     // ref속성에 useRef변수를 넣으면 거기에
     // 스와이퍼 객체가 담겨진다! -> 외부에서 사용가능!!!
@@ -55,7 +55,9 @@ export function SwiperBan({ cat }) {
         <SwiperSlide key={x}>
           {(cat == "men" || cat == "women") && x == 0 ? (
             <video
-              src={process.env.PUBLIC_URL+"/images/sub/" + cat + "/banner/mv.mp4"}
+              src={
+                process.env.PUBLIC_URL + "/images/sub/" + cat + "/banner/mv.mp4"
+              }
               style={{ width: "100%", height: "100%", objectFit: "cover" }}
               muted
               // loop ->루프는 동영상멈춤이벤트체크시 주석
@@ -64,7 +66,14 @@ export function SwiperBan({ cat }) {
             />
           ) : (
             <img
-              src={process.env.PUBLIC_URL+"/images/sub/" + cat + "/banner/ban" + (x + 1) + ".png"}
+              src={
+                process.env.PUBLIC_URL +
+                "/images/sub/" +
+                cat +
+                "/banner/ban" +
+                (x + 1) +
+                ".png"
+              }
             />
           )}
         </SwiperSlide>
@@ -74,6 +83,20 @@ export function SwiperBan({ cat }) {
     // 배열을 리턴
     return temp;
   }; ///////////// makeList 함수 //////////
+
+  // 소멸자 만들기 ////////////
+  useEffect(()=>{
+    return(()=>{
+      console.log("난 스와이퍼 소멸자!!!");
+    });
+  },[]); /////// useEffect //////////
+
+  // 동영상 재생시 작동 함수 ////////
+  const actionVideo = (e) => {
+
+  }; ///////// actionVideo //////////
+
+
 
   // 리턴코드 ///////////////////
   return (
@@ -107,7 +130,7 @@ export function SwiperBan({ cat }) {
           // realIndex는 loop에도 잘 나옴!
 
           // style에는 없으므로 여기서 리턴
-          if (cat == "style"){ 
+          if (cat == "style") {
             // 자동넘김 시작
             swp.autoplay.start();
             // 자동넘김 속성 true전환!
@@ -121,7 +144,7 @@ export function SwiperBan({ cat }) {
 
           // 현재 진짜순번
           let idx = swp.realIndex;
-          console.log("슬라이드순번:", idx);
+          // console.log("슬라이드순번:", idx);
 
           // men / women 일때 첫페이지 영상플레이
           if (idx == 0) {
@@ -137,7 +160,7 @@ export function SwiperBan({ cat }) {
             mvEle.addEventListener("timeupdate", (e) => {
               // 비디오가 멈추면 멈춤속성값이 true임
               // 멈춤속성 -> paused
-              console.log("비디오재생중~!!!", e.target.paused);
+              // console.log("비디오재생중~!!!", e.target.paused);
               // 비디오가 멈추면 슬라이드 이동
               if (e.target.paused) {
                 // 슬라이드 이동
@@ -151,7 +174,13 @@ export function SwiperBan({ cat }) {
           } /// if ///
           // 기타 페이지는 영상멈춤
           else {
-            mvEle.pause();
+            // mvEle.pause(); // -> 에러남
+            let playPromise = mvEle.play();
+            if (playPromise !== undefined)
+              playPromise.then(() => mvEle.pause());
+            // 원래 then() 메서드는 Promise객체를 만들고 쓰는것!
+            // 플레이 메서드가 기본적으로 프라미스를 구성하고 있음!
+            // 그래서 then()메서드 사용가능!
           } /// else ///
         }}
       >
