@@ -77,6 +77,14 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
     // 참고) 제거용 -> numBtn.off("click");
   }, []); /// 현재컴포넌트 처음생성시 한번만 실행구역 ///
 
+  // [ 화면랜더링구역 : 매번 ] ///
+  useEffect(()=>{
+    // 매번 리랜더링 될때마다 수량초기화!
+    $("#sum").val(1);
+    // 총합계 초기화
+    $("#total").text(addComma(ginfo[3])+"원");
+  }); ////////// useEffect //////
+
   // 코드리턴구역 /////////////
   return (
     <>
