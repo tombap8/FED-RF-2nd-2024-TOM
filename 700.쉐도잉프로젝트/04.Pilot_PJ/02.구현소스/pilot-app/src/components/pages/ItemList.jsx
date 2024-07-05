@@ -77,14 +77,24 @@ function ItemList() {
         style={{
           position: "fixed",
           top: "0px",
-          paddingTop: "12vh",
+          padding: "12vh 4vw 0",
+          boxSizing: "border-box",
           backdropFilter: "blur(8px)",
+          width: "100%",
           height: "100vh",
           zIndex: "9999",
         }}
       >
-        {/* 아이템 디테일 컴포넌트 불러오기 */}
-        <ItemDetail cat={cat} ginfo={ginfo} />
+        {/* 아이템 디테일 컴포넌트 불러오기
+          cat - 카테고리, ginfo - 상품정보, 
+          dt - 상품데이터, setGinfo - ginfo값 변경메서드
+        */}
+        <ItemDetail 
+          cat={cat} 
+          ginfo={ginfo} 
+          dt={itemListData} 
+          setGinfo={setGinfo}
+        />
       </div>
     </main>
   );

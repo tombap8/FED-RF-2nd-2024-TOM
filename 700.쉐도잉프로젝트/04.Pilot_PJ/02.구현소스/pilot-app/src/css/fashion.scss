@@ -237,9 +237,12 @@ body {
 /* 속박스 : 플렉스박스 */
 .inx {
   display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
   height: 100%;
   border: 4px double gray;
 }
+
 /* 하위 2개 section박스 등분할 */
 .inx > section {
   flex: 1;
