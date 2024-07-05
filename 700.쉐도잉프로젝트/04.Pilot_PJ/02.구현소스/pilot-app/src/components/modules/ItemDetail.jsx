@@ -76,6 +76,7 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
                             v.ginfo[0]=="m"+(i+1))
                             return true;
                         }); //// find /////
+                        console.log(res);
                         // 상품상세모듈 전달 상태변수 변경
                         setGinfo(res.ginfo);
                       }
