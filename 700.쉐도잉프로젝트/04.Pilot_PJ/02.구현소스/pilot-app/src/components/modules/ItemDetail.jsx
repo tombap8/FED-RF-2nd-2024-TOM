@@ -59,9 +59,21 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
             map을 사용하여 코드를 만들어보자!!!
             */}
             <div className="small">
-              {Array(5)
+              {
+              
+              Array(5)
                 .fill("")
                 .map((v, i) => {
+
+                  // 한줄리스트와 같은번호면 6번오게함!
+                  // 1~5까지니까!
+                  let num = 
+                  ginfo[0].substr(1)==i+1?6:i+1;
+                  // 현재상품번호가 1~5중 같은게 있으면 6번
+                  // substr(시작순번,개수)->개수없으면 순번부터 전부다가져옴
+                  console.log("검사번호:",ginfo[0].substr(1));
+                  console.log("변경번호:",num);
+
                   return (
                     <a href="#" key={i}
                     onClick={
@@ -73,18 +85,21 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
                         let res = dt.find(v=>{
                           if(
                             v.cat==cat&&
-                            v.ginfo[0]=="m"+(i+1))
+                            v.ginfo[0]=="m"+num)
                             return true;
                         }); //// find /////
                         console.log(res);
                         // 상품상세모듈 전달 상태변수 변경
+                        // find에서 받은값은 객체값
+                        // 그중 ginfo속성값만 필요함!
                         setGinfo(res.ginfo);
+                        // 카테고리값은 바꿀필요없음!
                       }
                     }>
                       <img
                         src={
                           process.env.PUBLIC_URL +
-                          `/images/goods/${cat}/m${i+1}.png`
+                          `/images/goods/${cat}/m${num}.png`
                         }
                         alt="썸네일 이미지"
                       />
