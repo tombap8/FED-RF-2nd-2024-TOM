@@ -93,7 +93,20 @@ export function SwiperBan({ cat }) {
 
   // 동영상 재생시 작동 함수 ////////
   const actionVideo = (e) => {
-
+    // 스와이퍼 객체
+    let swp = swpObj.current.swiper;
+    // 비디오가 멈추면 멈춤속성값이 true임
+    // 멈춤속성 -> paused
+    // console.log("비디오재생중~!!!", e.target.paused);
+    // 비디오가 멈추면 슬라이드 이동
+    if (e.target.paused) {
+      // 슬라이드 이동
+      swp.slideNext();
+      // 자동넘김 시작
+      swp.autoplay.start();
+      // 자동넘김 속성 true전환!
+      swp.autoplay.running = true;
+    } ///// if ////////
   }; ///////// actionVideo //////////
 
 
@@ -157,20 +170,8 @@ export function SwiperBan({ cat }) {
 
             // 비디오가 재생시 발생이벤트 체크
             // timeupdate : 비디오재생 이벤트
-            mvEle.addEventListener("timeupdate", (e) => {
-              // 비디오가 멈추면 멈춤속성값이 true임
-              // 멈춤속성 -> paused
-              // console.log("비디오재생중~!!!", e.target.paused);
-              // 비디오가 멈추면 슬라이드 이동
-              if (e.target.paused) {
-                // 슬라이드 이동
-                swp.slideNext();
-                // 자동넘김 시작
-                swp.autoplay.start();
-                // 자동넘김 속성 true전환!
-                swp.autoplay.running = true;
-              } ///// if ////////
-            }); ///////// timeupdate /////////
+            mvEle.addEventListener("timeupdate", actionVideo); 
+            ///////// timeupdate /////////
           } /// if ///
           // 기타 페이지는 영상멈춤
           else {
