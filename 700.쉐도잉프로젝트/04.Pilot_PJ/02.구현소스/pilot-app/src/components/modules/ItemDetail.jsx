@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import { addComma } from "../../js/func/common_fn";
 
 import $ from "jquery";
@@ -9,6 +9,11 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
   // dt - 상품데이터
   // setGinfo - ginfo값 변경메서드
   console.log(cat, ginfo);
+  // 제이쿼리 이벤트함수에 전달할 ginfo값 참조변수
+  const getGinfo = useRef(ginfo);
+  // getGinfo참조변수는 새로들어온 ginfo전달값이 달라진 경우
+  // 업데이트한다!
+  if(getGinfo.current!=ginfo) getGinfo.current = ginfo;
 
   // [ 배열 생성 테스트 ]
   // 1. 배열변수 = [] -> 배열리터럴
@@ -28,39 +33,49 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
   // console.log(Array(10).fill(7, 2, 5));
 
   // 화면랜더링구역 : 한번만 //////////
-  useEffect(()=>{
-    // 수량증감 버튼클릭시 증감기능구현
-    // 숫자출력 input
+  useEffect(() => {
+    // [ 수량증감 버튼클릭시 증감기능구현 ]
+
+    // 1. 대상요소 ///////
+    // (1) 숫자출력 input
     const sum = $("#sum");
-    // 수량증감 이미지버튼
+    // (2) 수량증감 이미지버튼
     const numBtn = $(".chg_num img");
+    // (3) 총합계 요소
+    const total = $("#total");
     // console.log(sum,numBtn);
 
-    // 수량증감 이벤트함수 ///
-    numBtn.on("click",(e)=>{
-      // 1. 이미지순번(구분하려고)
-      let seq = $(e.target).index();
-      // console.log("버튼순번:",seq);
+    // 2. 수량증감 이벤트함수 ///
+    numBtn.on("click", (e) => {
+      // (1) 이미지순번(구분하려고)
+      let seq = $(e.currentTarget).index();
+      console.log("버튼순번:", seq, e.target);
       // 0은 증가 / 1은 감소
 
-      // 2. 기존 숫자값 읽기
+      // (2) 기존 숫자값 읽기
       let num = Number(sum.val());
-      console.log("현재숫자:",num);
+      console.log("현재숫자:", num);
 
-      // 3. 증감반영하기(0은 false,1은 true 처리)
-      sum.val(seq?--num:++num);
+      // (3) 증감반영하기(0은 false,1은 true 처리)
+      sum.val(seq == 0 ? ++num : num == 1 ? 1 : --num);
+      // seq가0이냐?그럼 증가:아니면 (num이 1이냐)
+      // 그럼1 아니면 감소 -> num이 1이하면 안되니까!
       // 증감기호가 변수 앞에 있어야 먼저증감하고 할당함!
+      console.log("ginfo 전달변수확인:", ginfo);
+      console.log("getGinfo 참조변수확인:", getGinfo.current);
+      // [ 문제!!! ginfo값으로 읽으면 최초에 셋팅된 값이
+      // 그대로 유지된다! 왜? 본 함수는 최초한번만 셋팅되기때문! ]
+      // [ 해결책 : 새로들어오는 ginfo값을 참조변수에 넣어서
+      // 본 함수에서 그 값을 읽으면 된다! ]
 
-
-
+      // (4) 총합계 반영하기
+      // 원가격은 컴포넌트 전달변수 ginfo[3] -> 갱신안됨!
+      // 원가격은 참조변수 getGinfo 사용 -> 매번 업데이트됨!
+      total.text(addComma(getGinfo.current[3] * num) + "원");
     }); //////// click ////////
 
-
-
     // 참고) 제거용 -> numBtn.off("click");
-
-
-  },[]);
+  }, []); /// 현재컴포넌트 처음생성시 한번만 실행구역 ///
 
   // 코드리턴구역 /////////////
   return (
@@ -95,33 +110,28 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
             map을 사용하여 코드를 만들어보자!!!
             */}
             <div className="small">
-              {
-              
-              Array(5)
+              {Array(5)
                 .fill("")
                 .map((v, i) => {
-
                   // 한줄리스트와 같은번호면 6번오게함!
                   // 1~5까지니까!
-                  let num = 
-                  ginfo[0].substr(1)==i+1?6:i+1;
+                  let num = ginfo[0].substr(1) == i + 1 ? 6 : i + 1;
                   // 현재상품번호가 1~5중 같은게 있으면 6번
                   // substr(시작순번,개수)->개수없으면 순번부터 전부다가져옴
                   // console.log("검사번호:",ginfo[0].substr(1));
                   // console.log("변경번호:",num);
 
                   return (
-                    <a href="#" key={i}
-                    onClick={
-                      (e)=>{
+                    <a
+                      href="#"
+                      key={i}
+                      onClick={(e) => {
                         // 기본이동막기
                         e.preventDefault();
                         // 선택 데이터 찾기
                         // -> cat항목값 + ginfo[0]항목
-                        let res = dt.find(v=>{
-                          if(
-                            v.cat==cat&&
-                            v.ginfo[0]=="m"+num)
+                        let res = dt.find((v) => {
+                          if (v.cat == cat && v.ginfo[0] == "m" + num)
                             return true;
                         }); //// find /////
                         console.log(res);
@@ -130,8 +140,8 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
                         // 그중 ginfo속성값만 필요함!
                         setGinfo(res.ginfo);
                         // 카테고리값은 바꿀필요없음!
-                      }
-                    }>
+                      }}
+                    >
                       <img
                         src={
                           process.env.PUBLIC_URL +
