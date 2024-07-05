@@ -100,7 +100,7 @@ function Fashion({subCat}) {
       </section>
       {/* 2. 신상품영역 */}
       <section id="c1" className="cont sc-ani c1">
-        <SinSang cat={subCat} chgItemFn={chgItem} />
+        <SinSang cat={subCat} chgItemFn={chgItem} setPos={setPos} />
       </section>
       {/* 2.5. 상세보기박스 */}
       <div className="bgbx"></div>
