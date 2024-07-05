@@ -68,8 +68,16 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
                       (e)=>{
                         // 기본이동막기
                         e.preventDefault();
-
-
+                        // 선택 데이터 찾기
+                        // -> cat항목값 + ginfo[0]항목
+                        let res = dt.find(v=>{
+                          if(
+                            v.cat==cat&&
+                            v.ginfo[0]=="m"+(i+1))
+                            return true;
+                        }); //// find /////
+                        // 상품상세모듈 전달 상태변수 변경
+                        setGinfo(res.ginfo);
                       }
                     }>
                       <img
