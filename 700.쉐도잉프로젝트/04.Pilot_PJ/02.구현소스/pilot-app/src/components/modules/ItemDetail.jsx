@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { addComma } from "../../js/func/common_fn";
 
 import $ from "jquery";
@@ -27,6 +27,42 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
   // console.log(Array(10).fill(7, 2));
   // console.log(Array(10).fill(7, 2, 5));
 
+  // 화면랜더링구역 : 한번만 //////////
+  useEffect(()=>{
+    // 수량증감 버튼클릭시 증감기능구현
+    // 숫자출력 input
+    const sum = $("#sum");
+    // 수량증감 이미지버튼
+    const numBtn = $(".chg_num img");
+    // console.log(sum,numBtn);
+
+    // 수량증감 이벤트함수 ///
+    numBtn.on("click",(e)=>{
+      // 1. 이미지순번(구분하려고)
+      let seq = $(e.target).index();
+      // console.log("버튼순번:",seq);
+      // 0은 증가 / 1은 감소
+
+      // 2. 기존 숫자값 읽기
+      let num = Number(sum.val());
+      console.log("현재숫자:",num);
+
+      // 3. 증감반영하기(0은 false,1은 true 처리)
+      sum.val(seq?--num:++num);
+      // 증감기호가 변수 앞에 있어야 먼저증감하고 할당함!
+
+
+
+    }); //////// click ////////
+
+
+
+    // 참고) 제거용 -> numBtn.off("click");
+
+
+  },[]);
+
+  // 코드리턴구역 /////////////
   return (
     <>
       <a
