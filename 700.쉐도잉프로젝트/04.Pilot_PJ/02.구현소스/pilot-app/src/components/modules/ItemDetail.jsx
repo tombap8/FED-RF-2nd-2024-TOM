@@ -71,8 +71,8 @@ function ItemDetail({ cat, ginfo, dt, setGinfo }) {
                   ginfo[0].substr(1)==i+1?6:i+1;
                   // 현재상품번호가 1~5중 같은게 있으면 6번
                   // substr(시작순번,개수)->개수없으면 순번부터 전부다가져옴
-                  console.log("검사번호:",ginfo[0].substr(1));
-                  console.log("변경번호:",num);
+                  // console.log("검사번호:",ginfo[0].substr(1));
+                  // console.log("변경번호:",num);
 
                   return (
                     <a href="#" key={i}
