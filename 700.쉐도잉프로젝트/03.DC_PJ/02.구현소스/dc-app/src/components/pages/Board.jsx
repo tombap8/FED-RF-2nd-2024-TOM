@@ -4,8 +4,8 @@ import { Fragment, useRef, useState } from "react";
 // 사용자 기본정보 생성 함수
 import { initData } from "../func/mem_fn";
 
-// 로컬스토리지 게시판 기본데이터 제이슨
-import baseData from "../data/board.json";
+// 로컬스토리지 게시판 기본데이터 제이슨 -> 로컬쓰로 대체!!!
+// import baseData from "../data/board.json";
 // 리액트 웹펙에서 제이슨은 이름을 지어서 불러오면된다!
 // 제이슨 파일 처리는 다르므로 확장자는 반드시 씀!
 
@@ -16,10 +16,25 @@ import $ from "jquery";
 import "../../css/board.scss";
 import "../../css/board_file.scss";
 
+// 로컬스토리지 확인 JS
+import { initBoardData } from "../func/board_fn";
+
 export default function Board() {
+  // 로컬스토리지 게시판 데이터 정보확인! //
+  initBoardData();
+
+  // 로컬스 데이터 변수할당하기!
+  const baseData = JSON.parse(localStorage.getItem("board-data"));
+
   // [ 상태관리 변수 ] ///
   // [1] 페이지 번호
   const [pageNum, setPageNum] = useState(1);
+  // [2] 기능모드
+  const [mode, setMode] = useState("L");
+  // (1) 리스트 모드(L) : List Mode
+  // (2) 글보기 모드(R) : Read Mode
+  // (3) 글쓰기 모드(W) : Write Mode
+  // (4) 수정 모드(M) : Modify Mode (삭제포함)
 
   // [ 참조변수 ] ///
   // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
@@ -60,7 +75,7 @@ export default function Board() {
 
     // for문으로 배열 만들기
     for (let i = sNum; i < eNum; i++) {
-        console.log(i);
+      console.log(i);
       // 끝번호가 전체 개수보다 크면 나가라!
       if (i >= totalCount.current) break;
       // 대상배열값 추가
@@ -147,6 +162,35 @@ export default function Board() {
   return (
     <main className="cont">
       <h1 className="tit">OPINION</h1>
+      {
+        // 1. 리스트 모드일 경우 리스트 출력하기
+        mode=="L" && 
+        <ListMode 
+          bindList={bindList} 
+          pagingList={pagingList} />
+      }
+      <br />
+      <table className="dtbl btngrp">
+        <tbody>
+          <tr>
+            <td>
+              <button>
+                <a href="#">Write</a>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </main>
+  );
+} /////////// Board /////////////////////
+
+/****************************************** 
+        리스트 모드 서브 컴포넌트
+******************************************/
+const ListMode = ({bindList,pagingList}) => {
+  return (
+    <>
       <div className="selbx">
         <select name="cta" id="cta" className="cta">
           <option value="tit">Title</option>
@@ -179,18 +223,6 @@ export default function Board() {
           </tr>
         </tfoot>
       </table>
-      <br />
-      <table className="dtbl btngrp">
-        <tbody>
-          <tr>
-            <td>
-              <button>
-                <a href="#">Write</a>
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
+    </>
   );
-} /////////// Board /////////////////////
+}; //////////// ListMode ///////////////////

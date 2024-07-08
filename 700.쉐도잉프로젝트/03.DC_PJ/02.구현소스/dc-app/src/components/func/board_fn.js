@@ -15,13 +15,13 @@
 import orgData from "../data/board.json";
 
 // [ 로컬쓰 클리어 ] /////////
-const clearData = () => {
+const clearBoardData = () => {
     localStorage.removeItem("board-data");
     console.log("게시판 로컬쓰 클리어!");
   }; /////////// clearData //////////////
   
   // [ 로컬쓰 초기체크셋팅! ] ////////////
-  const initData = () => {
+  const initBoardData = () => {
     // 만약 로컬스 "mem-data"가 null이면 만들어준다!
     if (localStorage.getItem("board-data") === null) {
       localStorage.setItem(
@@ -30,5 +30,5 @@ const clearData = () => {
     }
   }; ///////////// initData /////////////////
   
-  export { clearData, initData };
+  export { clearBoardData, initBoardData };
   
