@@ -1,7 +1,7 @@
 [ DC PJ 설치스크립트 ]
 1. 리액트 앱 설치하기
 - 설치위치: 03.DC_PJ\02.구현소스
-- 설치이름: dc-app
+- 설치이름: +-app
 - 스크립트: npx create-react-app dc-app
 
 2. 팩키지 모듈 설치하기
@@ -12,6 +12,7 @@
     (3) npm i jquery-ui-dist
     (4) npm i jquery-ui-touch-punch
     (5) npm i swiper
+    (6) npm i scss
 
 3. 설치확인
 - 파일명: package.json
