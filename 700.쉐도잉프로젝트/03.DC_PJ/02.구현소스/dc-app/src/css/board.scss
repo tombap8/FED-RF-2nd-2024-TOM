@@ -190,12 +190,12 @@
   border: none;
   border: 1px solid #000;
   margin: 5px;
-}
-.btngrp button:hover {
-  background-color: #0074e8;
-}
-.btngrp button:hover a {
-  color: #fff;
+
+  // 버튼 오버시 ///
+  &:hover {
+    background-color: #0074e8;
+    color: #fff;
+  }
 }
 
 @media screen and (max-width: 700px) {
