@@ -40,6 +40,9 @@ export default function Board() {
   // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
   const totalCount = useRef(baseData.length);
   console.log("전체개수:", totalCount);
+  // [2] 선택 데이터 저장
+  const selRecord = useRef(null);
+  // -> 특정리스트 글 제목 클릭시 데이터 저장함!
 
   // 페이지당 개수
   const unitSize = 8;
@@ -93,6 +96,8 @@ export default function Board() {
             e.preventDefault();
             // 읽기모드로 변경!
             setMode("R");
+            // 해당 데이터 저장하기
+            selRecord.current = v;
           }}>
             {v.cont}
           </a>
@@ -168,11 +173,13 @@ export default function Board() {
       <h1 className="tit">OPINION</h1>
       {
         // 1. 리스트 모드일 경우 리스트 출력하기
-        mode == "L" && <ListMode bindList={bindList} pagingList={pagingList} />
+        mode == "L" && 
+        <ListMode bindList={bindList} pagingList={pagingList} />
       }
       {
         // 2. 읽기 모드일 경우 상세보기 출력하기
-        mode == "R" && <ReadMode />
+        mode == "R" && 
+        <ReadMode selRecord={selRecord} />
       }
       <br />
       <table className="dtbl btngrp">
@@ -235,7 +242,12 @@ const ListMode = ({ bindList, pagingList }) => {
 /****************************************** 
         읽기 모드 서브 컴포넌트
 ******************************************/
-const ReadMode = () => {
+const ReadMode = ({selRecord}) => {
+  // 읽기 모드가 호출되었다는 것은
+  // 리스트의 제목이 클릭되었다는 것을 의미!
+  // 따라서 현재 레코드 값도 저장되었다는 의미!
+  console.log("전달된 참조변수:",selRecord.current);
+
   return (
     <>
       <table className="dtblview readone">
