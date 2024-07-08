@@ -47,7 +47,7 @@ export default function Board() {
   /********************************************** 
         함수명: bindList
         기능 : 페이지별 리스트를 생성하여 바인딩함
-    **********************************************/
+  **********************************************/
   const bindList = () => {
     // console.log(baseData);
 
@@ -89,7 +89,11 @@ export default function Board() {
         {/* 시작번호를 더하여 페이지별 순번을 변경 */}
         <td>{i + 1 + sNum}</td>
         <td>
-          <a href="#" data-idx="51">
+          <a href="#" onClick={e=>{
+            e.preventDefault();
+            // 읽기모드로 변경!
+            setMode("R");
+          }}>
             {v.cont}
           </a>
         </td>
@@ -164,10 +168,11 @@ export default function Board() {
       <h1 className="tit">OPINION</h1>
       {
         // 1. 리스트 모드일 경우 리스트 출력하기
-        mode=="L" && 
-        <ListMode 
-          bindList={bindList} 
-          pagingList={pagingList} />
+        mode == "L" && <ListMode bindList={bindList} pagingList={pagingList} />
+      }
+      {
+        // 2. 읽기 모드일 경우 상세보기 출력하기
+        mode == "R" && <ReadMode />
       }
       <br />
       <table className="dtbl btngrp">
@@ -188,7 +193,7 @@ export default function Board() {
 /****************************************** 
         리스트 모드 서브 컴포넌트
 ******************************************/
-const ListMode = ({bindList,pagingList}) => {
+const ListMode = ({ bindList, pagingList }) => {
   return (
     <>
       <div className="selbx">
@@ -226,3 +231,50 @@ const ListMode = ({bindList,pagingList}) => {
     </>
   );
 }; //////////// ListMode ///////////////////
+
+/****************************************** 
+        읽기 모드 서브 컴포넌트
+******************************************/
+const ReadMode = () => {
+  return (
+    <>
+      <table className="dtblview readone">
+        <caption>OPINION : Read</caption>
+        <tbody>
+          <tr>
+            <td>Name</td>
+            <td>
+              <input
+                type="text"
+                className="name"
+                size="20"
+                readOnly
+              />
+            </td>
+          </tr>
+          <tr>
+            <td>Title</td>
+            <td>
+              <input type="text" className="subject" size="60" readOnly />
+            </td>
+          </tr>
+          <tr>
+            <td>Content</td>
+            <td>
+              <textarea
+                className="content"
+                cols="60"
+                rows="10"
+                readOnly
+              ></textarea>
+            </td>
+          </tr>
+          <tr>
+            <td>Attachment</td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </>
+  );
+}; ///////////// ReadMode //////////////////
