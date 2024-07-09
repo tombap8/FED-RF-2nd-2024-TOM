@@ -246,6 +246,16 @@ export default function Board() {
         "cnt":"0"
       }
       console.log("글쓰기 서브밋:",data);
+
+      // [로컬스에 입력하기]
+      // 1. 로컬스 파싱
+      let locals = localStorage.getItem("board-data");
+      locals = JSON.parse(locals);
+      // 2. 파싱배열에 push
+      locals.push(data);
+      // 3. 새배열을 문자화하여 로컬스에 넣기 
+      localStorage.setItem(
+        "board-data",JSON.stringify(locals));
       
     } /// if ///
     // 3. 수정모드 서브밋 (mode=="M")
