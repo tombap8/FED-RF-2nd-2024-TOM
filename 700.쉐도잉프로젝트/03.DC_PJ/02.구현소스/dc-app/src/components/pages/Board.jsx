@@ -227,12 +227,20 @@ export default function Board() {
       // 시간까지 나오므로 앞에 10자리만 가져감!
       // 문자열.substr(0,10)
 
+      // 글번호 만들기
+      // 전체 데이터중 idx 만 모아서 배열만들기
+      let arrIdx = baseData.map(v=>parseInt(v.idx));
+      console.log(arrIdx);
+      // 최대값 찾기 : 스프레드 연산자로 배열값만 넣음!
+      let maxNum = Math.max(...arrIdx);
+      console.log(maxNum);
+      
       let data = {
-        "idx":"글idx최대값+1",
+        "idx":maxNum+1,
         "tit":title,
         "cont":cont,
         "att":"",
-        "date":today.toJSON(),
+        "date":today.toJSON().substr(0,10),
         "uid":sts.uid,
         "unm":sts.unm,
         "cnt":"0"
