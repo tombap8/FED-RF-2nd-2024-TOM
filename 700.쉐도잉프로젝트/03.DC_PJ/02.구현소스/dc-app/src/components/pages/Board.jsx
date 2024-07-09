@@ -218,17 +218,26 @@ export default function Board() {
 
     // 2. 글쓰기 서브밋 (mode=="W")
     if(mode=="W") {
+      
+      // 오늘날짜
+      let today = new Date();
+      // yy-mm-dd 형식으로 구하기
+      // 제이슨 날짜형식 : toJSON()
+      // ISO 표준형식 : toISOString()
+      // 시간까지 나오므로 앞에 10자리만 가져감!
+      // 문자열.substr(0,10)
 
-      let aa = {
-        "idx":"",
-        "tit":"",
-        "cont":"",
+      let data = {
+        "idx":"글idx최대값+1",
+        "tit":title,
+        "cont":cont,
         "att":"",
-        "date":"",
-        "uid":"",
-        "unm":"",
-        "cnt":""
+        "date":today.toJSON(),
+        "uid":sts.uid,
+        "unm":sts.unm,
+        "cnt":"0"
       }
+      console.log("글쓰기 서브밋:",data);
       
     } /// if ///
     // 3. 수정모드 서브밋 (mode=="M")
