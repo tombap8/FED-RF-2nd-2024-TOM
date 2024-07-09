@@ -256,6 +256,9 @@ export default function Board() {
       // 3. 새배열을 문자화하여 로컬스에 넣기 
       localStorage.setItem(
         "board-data",JSON.stringify(locals));
+
+      // 로컬스 확인!
+      console.log(localStorage.getItem("board-data"));
       
     } /// if ///
     // 3. 수정모드 서브밋 (mode=="M")
