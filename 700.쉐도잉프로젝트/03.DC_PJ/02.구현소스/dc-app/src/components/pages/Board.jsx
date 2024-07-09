@@ -192,12 +192,48 @@ export default function Board() {
       case "List":
         setMode("L");
         break;
-      // 글쓰기 모드일 경우 서브밋
+      // 서브밋일 경우 함수호출!
       case "Submit":
-        console.log("서브밋",mode);
+        submitFn();
       break;
     }
   }; ////////// clickButton //////////
+
+  // 서브밋 처리함수 //////////////
+  const submitFn = () => {
+
+    // 제목입력항목
+    let title = $(".subject").val().trim();
+    // 내용입력항목
+    let cont = $(".content").val().trim();
+    // trim()으로 앞뒤공백 제거후 검사!
+
+    // 1. 공통 유효성검사
+    // 제목,내용 모두 비었으면 리턴!
+    if(title=='' ||cont=='') {
+      alert("Insert title or content!");
+      return; // 서브밋없이 함수나가기!
+    } ////// if ////
+
+
+    // 2. 글쓰기 서브밋 (mode=="W")
+    if(mode=="W") {
+
+      let aa = {
+        "idx":"",
+        "tit":"",
+        "cont":"",
+        "att":"",
+        "date":"",
+        "uid":"",
+        "unm":"",
+        "cnt":""
+      }
+      
+    } /// if ///
+    // 3. 수정모드 서브밋 (mode=="M")
+
+  }; ////////// submitFn //////////////
 
   //// 코드 리턴구역 //////////////
   return (
