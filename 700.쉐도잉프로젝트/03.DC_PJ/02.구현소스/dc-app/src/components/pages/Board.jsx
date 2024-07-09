@@ -218,6 +218,8 @@ export default function Board() {
 
     // 2. 글쓰기 서브밋 (mode=="W")
     if(mode=="W") {
+      // 0.현재 로그인 사용자 정보 파싱하기
+      let person = JSON.parse(sts);
       
       // 1. 오늘날짜 생성하기 /////
       let today = new Date();
@@ -242,8 +244,8 @@ export default function Board() {
         "cont":cont,
         "att":"",
         "date":today.toJSON().substr(0,10),
-        "uid":sts.uid,
-        "unm":sts.unm,
+        "uid":person.uid,
+        "unm":person.unm,
         "cnt":"0"
       }
       // console.log("글쓰기 서브밋:",data);
