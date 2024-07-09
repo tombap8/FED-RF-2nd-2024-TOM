@@ -25,7 +25,7 @@ export default function Board() {
   const myCon = useContext(dCon);
   // 전역 로그인 상태 변수 확인(변수할당!)
   const sts = myCon.loginSts;
-  console.log("로그인상태:",sts);
+  console.log("로그인상태:", sts);
 
   // 로컬스토리지 게시판 데이터 정보확인! //
   initBoardData();
@@ -195,13 +195,12 @@ export default function Board() {
       // 서브밋일 경우 함수호출!
       case "Submit":
         submitFn();
-      break;
+        break;
     }
   }; ////////// clickButton //////////
 
   // 서브밋 처리함수 //////////////
   const submitFn = () => {
-
     // 제목입력항목
     let title = $(".subject").val().trim();
     // 내용입력항목
@@ -210,17 +209,16 @@ export default function Board() {
 
     // 1. 공통 유효성검사
     // 제목,내용 모두 비었으면 리턴!
-    if(title=='' ||cont=='') {
+    if (title == "" || cont == "") {
       alert("Insert title or content!");
       return; // 서브밋없이 함수나가기!
     } ////// if ////
 
-
     // 2. 글쓰기 서브밋 (mode=="W")
-    if(mode=="W") {
+    if (mode == "W") {
       // 0.현재 로그인 사용자 정보 파싱하기
       let person = JSON.parse(sts);
-      
+
       // 1. 오늘날짜 생성하기 /////
       let today = new Date();
       // yy-mm-dd 형식으로 구하기
@@ -231,23 +229,23 @@ export default function Board() {
 
       // 2. 글번호 만들기 /////
       // 전체 데이터중 idx 만 모아서 배열만들기
-      let arrIdx = baseData.map(v=>parseInt(v.idx));
+      let arrIdx = baseData.map((v) => parseInt(v.idx));
       // console.log(arrIdx);
       // 최대값 찾기 : 스프레드 연산자로 배열값만 넣음!
       let maxNum = Math.max(...arrIdx);
       // console.log(maxNum);
-      
+
       // 3. 입력 데이터 객체형식으로 구성하기 ////
       let data = {
-        "idx":maxNum+1,
-        "tit":title,
-        "cont":cont,
-        "att":"",
-        "date":today.toJSON().substr(0,10),
-        "uid":person.uid,
-        "unm":person.unm,
-        "cnt":"0"
-      }
+        idx: maxNum + 1,
+        tit: title,
+        cont: cont,
+        att: "",
+        date: today.toJSON().substr(0, 10),
+        uid: person.uid,
+        unm: person.unm,
+        cnt: "0",
+      };
       // console.log("글쓰기 서브밋:",data);
 
       // 4. 로컬스에 입력하기 //////
@@ -256,9 +254,8 @@ export default function Board() {
       locals = JSON.parse(locals);
       // (2) 파싱배열에 push
       locals.push(data);
-      // (3) 새배열을 문자화하여 로컬스에 넣기 
-      localStorage.setItem(
-        "board-data",JSON.stringify(locals));
+      // (3) 새배열을 문자화하여 로컬스에 넣기
+      localStorage.setItem("board-data", JSON.stringify(locals));
 
       // 로컬스 확인!
       // console.log(localStorage.getItem("board-data"));
@@ -266,10 +263,8 @@ export default function Board() {
       // 5. 리스트로 돌아가기 /////
       // -> 모드변경! "L"
       setMode("L");
-      
     } /// if ///
     // 3. 수정모드 서브밋 (mode=="M")
-
   }; ////////// submitFn //////////////
 
   //// 코드 리턴구역 //////////////
@@ -297,11 +292,9 @@ export default function Board() {
             <td>
               {
                 // 1. 글쓰기 버튼은 로그인상태이고 "L"이면출력
-                mode == "L" && sts && 
-                <button 
-                onClick={clickButton}>
-                  Write
-                  </button>
+                mode == "L" && sts && (
+                  <button onClick={clickButton}>Write</button>
+                )
               }
               {
                 // 2. 읽기상태 "R" 일 경우
@@ -309,15 +302,12 @@ export default function Board() {
               }
               {
                 // 3. 쓰기상태 "W" 일 경우
-                mode == "W" && 
-                <>
-                <button onClick={clickButton}>
-                  Submit
-                </button>
-                <button onClick={clickButton}>
-                  List
-                </button>
-                </>
+                mode == "W" && (
+                  <>
+                    <button onClick={clickButton}>Submit</button>
+                    <button onClick={clickButton}>List</button>
+                  </>
+                )
               }
             </td>
           </tr>
@@ -431,7 +421,6 @@ const ReadMode = ({ selRecord }) => {
   );
 }; ///////////// ReadMode //////////////////
 
-
 /****************************************** 
         쓰기 모드 서브 컴포넌트
 ******************************************/
@@ -474,21 +463,13 @@ const WriteMode = ({ sts }) => {
           <tr>
             <td>Title</td>
             <td>
-              <input
-                type="text"
-                className="subject"
-                size="60"
-              />
+              <input type="text" className="subject" size="60" />
             </td>
           </tr>
           <tr>
             <td>Content</td>
             <td>
-              <textarea
-                className="content"
-                cols="60"
-                rows="10"
-              ></textarea>
+              <textarea className="content" cols="60" rows="10"></textarea>
             </td>
           </tr>
           <tr>
