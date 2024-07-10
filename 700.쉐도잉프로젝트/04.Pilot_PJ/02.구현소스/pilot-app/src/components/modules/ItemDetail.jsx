@@ -109,6 +109,11 @@ function ItemDetail({ tot, setTot, dt }) {
           e.preventDefault();
           // 창닫기
           $(".bgbx").hide();
+          // 창닫을때 초기화하기!  
+          // 수량초기화!
+          $("#sum").val(1);
+          // 총합계 초기화
+          $("#total").text(addComma(ginfo[3]) + "원");
         }}
       >
         <span className="ir">닫기버튼</span>
@@ -293,7 +298,7 @@ function ItemDetail({ tot, setTot, dt }) {
                     idx: gIdx,
                     cat: cat,
                     ginfo: ginfo,
-                    cnt: 1
+                    cnt: $("#sum").val()
                   });
                   /************************** 
                     [데이터 구조정의]
