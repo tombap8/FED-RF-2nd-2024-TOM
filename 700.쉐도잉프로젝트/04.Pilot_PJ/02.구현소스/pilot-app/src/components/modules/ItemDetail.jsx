@@ -294,7 +294,6 @@ function ItemDetail({ tot, setTot, dt }) {
 
                   // 로컬스에 객체 데이터 추가하기
                   locals.push({
-                    num: locals.length+1,
                     idx: gIdx,
                     cat: cat,
                     ginfo: ginfo,
@@ -302,11 +301,10 @@ function ItemDetail({ tot, setTot, dt }) {
                   });
                   /************************** 
                     [데이터 구조정의]
-                    1. num : 카트리스트 순번
-                    2. idx : 상품고유번호
-                    3. cat : 카테고리
-                    4. ginfo : 상품정보
-                    5. cnt : 상품개수
+                    1. idx : 상품고유번호
+                    2. cat : 카테고리
+                    3. ginfo : 상품정보
+                    4. cnt : 상품개수
                   **************************/
 
                   // 로컬스에 문자화하여 입력하기

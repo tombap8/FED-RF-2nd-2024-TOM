@@ -1,9 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 // 카트 리스트 CSS
 import "../../css/cart_list.scss";
 import { pCon } from "./pCon";
 import { addComma } from "../../js/func/common_fn";
+
+// 제이쿼리
+import $ from "jquery";
 
 function CartList(props) {
   // 컨텍스트 사용
@@ -12,6 +15,30 @@ function CartList(props) {
   // 로컬스 데이터 가져오기
   const selData = JSON.parse(localStorage.getItem("cart-data"));
   console.log("로컬스:", selData);
+
+  // 총합계함수 /////////////
+  const totalFn = () => {
+    // 합계금액은 모든 합계 히든필드 값을 더한다!
+    // 제이쿼리 forEach는 each((순번,요소)=>{}) 메서드다!
+
+    let result = 0;
+
+    $(".sum-num2").each((idx,ele)=>{
+      console.log("값:",$(ele).val());
+      // 숫자로 변환후 기존값에 더하기함!
+      result += Number($(ele).val());
+    });
+
+    // 호출한 곳에 합계리턴
+    return result;
+  }; ////////// totalFn ///////////
+
+  // 화면랜더링 구역 : 한번만 /////////////
+  useEffect(()=>{
+    // 총합계 찍기 : 3자리마다 콤마함수호출도함
+    $(".total-num").text(addComma(totalFn()));
+
+  },[]); /////// useEffect /////////////
 
   ///// 코드리턴구역 /////////////
   return (
@@ -65,7 +92,7 @@ function CartList(props) {
                 className="scbar"
                 style={{
                   overflowY: "auto",
-                  height: "40vh",
+                  height: "60vh",
                   width: "100%",
                 }}
               >
@@ -78,11 +105,10 @@ function CartList(props) {
           {/* 카트데이터 연동파트
           ************************** 
             [데이터 구조정의]
-            1. num : 카트리스트 순번
-            2. idx : 상품고유번호
-            3. cat : 카테고리
-            4. ginfo : 상품정보
-            5. cnt : 상품개수
+            1. idx : 상품고유번호
+            2. cat : 카테고리
+            3. ginfo : 상품정보
+            4. cnt : 상품개수
           **************************          
           */}
             {selData.map((v, i) => (
@@ -132,7 +158,16 @@ function CartList(props) {
                     </span>
                   </div>
                 </td>
-                <td>{addComma(v.ginfo[3] * v.cnt)}원</td>
+                <td>
+                  <span 
+                  className="sum-num1">{addComma(v.ginfo[3] * v.cnt)}</span>원
+                  {/* 계산된 합계금액 숫자만 히든필드에 넣어놓고 총합계 계산에 사용함! */}
+                  <input 
+                    className="sum-num2"
+                    type="hidden" 
+                    defaultValue={v.ginfo[3] * v.cnt} 
+                  />
+                </td>
                 <td>
                   <button className="cfn" data-idx="20">
                     ×
@@ -150,7 +185,7 @@ function CartList(props) {
         <tfoot>
           <tr>
             <td colSpan="6">총합계 :</td>
-            <td>662,000원</td>
+            <td><span className="total-num"></span>원</td>
             <td></td>
           </tr>
           <tr>
