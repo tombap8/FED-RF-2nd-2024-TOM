@@ -4,12 +4,20 @@ import { addComma } from "../../js/func/common_fn";
 import $ from "jquery";
 import { pCon } from "./pCon";
 
-function ItemDetail({ cat, ginfo, dt, setGinfo, gIdx }) {
+function ItemDetail({ tot, dt, setTot }) {
+  // tot - 상품토탈정보
+  // setTot - 상품토탈정보 업데이트함수
+
+  // 상품정보 개별 셋업 ////
   // cat - 카테고리
+  let cat = tot.cat;
   // ginfo - 상품정보
+  let ginfo = tot.ginfo;
+  // gIdx - 상품고유번호
+  let gIdx = tot.idx;
+
   // dt - 상품데이터
   // setGinfo - ginfo값 변경메서드
-  // gIdx - 상품고유번호
   console.log(cat, ginfo, gIdx);
 
   // 전역 카트 사용여부값 업데이트 사용위해 전역 컨텍스트 사용
