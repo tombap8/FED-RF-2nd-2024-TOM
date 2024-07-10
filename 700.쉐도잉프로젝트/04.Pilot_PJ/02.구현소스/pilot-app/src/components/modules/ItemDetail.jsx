@@ -4,9 +4,10 @@ import { addComma } from "../../js/func/common_fn";
 import $ from "jquery";
 import { pCon } from "./pCon";
 
-function ItemDetail({ tot, dt, setTot }) {
+function ItemDetail({ tot, setTot, dt }) {
   // tot - 상품토탈정보
   // setTot - 상품토탈정보 업데이트함수
+  // dt - 상품데이터
 
   // 상품정보 개별 셋업 ////
   // cat - 카테고리
@@ -16,8 +17,6 @@ function ItemDetail({ tot, dt, setTot }) {
   // gIdx - 상품고유번호
   let gIdx = tot.idx;
 
-  // dt - 상품데이터
-  // setGinfo - ginfo값 변경메서드
   console.log(cat, ginfo, gIdx);
 
   // 전역 카트 사용여부값 업데이트 사용위해 전역 컨텍스트 사용
@@ -159,9 +158,8 @@ function ItemDetail({ tot, dt, setTot }) {
                         console.log(res);
                         // 상품상세모듈 전달 상태변수 변경
                         // find에서 받은값은 객체값
-                        // 그중 ginfo속성값만 필요함!
-                        setGinfo(res.ginfo);
-                        // 카테고리값은 바꿀필요없음!
+                        // 상품토탈정보로 모든 객체값을 업데이트함
+                        setTot(res);
                       }}
                     >
                       <img
@@ -295,7 +293,16 @@ function ItemDetail({ tot, dt, setTot }) {
                     idx: gIdx,
                     cat: cat,
                     ginfo: ginfo,
+                    cnt: 1
                   });
+                  /************************** 
+                    [데이터 구조정의]
+                    1. num : 카트리스트 순번
+                    2. idx : 상품고유번호
+                    3. cat : 카테고리
+                    4. ginfo : 상품정보
+                    5. cnt : 상품개수
+                  **************************/
 
                   // 로컬스에 문자화하여 입력하기
                   localStorage.setItem(
