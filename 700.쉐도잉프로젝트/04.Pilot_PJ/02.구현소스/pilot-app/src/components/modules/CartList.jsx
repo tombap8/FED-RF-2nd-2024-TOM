@@ -47,16 +47,21 @@ function CartList(props) {
         <tbody>
           <tr>
             <td colSpan={8}>
+              {/* 내부 스크롤박스 div */}
               <div
+                className="scbar"
                 style={{
                   overflowY: "auto",
                   height: "40vh",
                   width: "100%",
                 }}
               >
-          {/* 내부용 스크롤되는 테이블 */}
-          <table>
-            <tbody>
+            {/* 내부용 스크롤되는 테이블 */}
+            <table style={{
+              margin:"0",
+              width:"100%"
+            }}>
+              <tbody>
           {/* 카트데이터 연동파트
           ************************** 
             [데이터 구조정의]
