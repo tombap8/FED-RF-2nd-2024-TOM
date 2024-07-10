@@ -289,7 +289,7 @@ function ItemDetail({ tot, setTot, dt }) {
 
                   // 로컬스에 객체 데이터 추가하기
                   locals.push({
-                    num: 1,
+                    num: locals.length+1,
                     idx: gIdx,
                     cat: cat,
                     ginfo: ginfo,
