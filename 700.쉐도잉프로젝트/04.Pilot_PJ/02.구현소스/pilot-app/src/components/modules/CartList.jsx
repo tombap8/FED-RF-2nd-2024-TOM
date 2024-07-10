@@ -28,9 +28,22 @@ function CartList(props) {
         <span>닫기버튼</span>
       </a>
       <table>
+        {/* 항목별 세로 비율설정 */}
+        <colgroup>
+          <col span="1" style={{width: "8%"}}/>
+          <col span="1" style={{width: "5%"}}/>
+          <col span="1" style={{width: "38%"}}/>
+          <col span="1" style={{width: "14%"}}/>
+          <col span="1" style={{width: "10%"}}/>
+          <col span="1" style={{width: "8%"}}/>
+          <col span="1" style={{width: "11%"}}/>
+          <col span="1" style={{width: "5%"}}/>
+        </colgroup>
+        {/* 테이블 제목 */}
         <caption>
           <h1> 카트 리스트</h1>
         </caption>
+        {/* 테이블 상단영역 : 분류항목 출력 */}
         <thead>
           <tr>
             <th>상품</th>
