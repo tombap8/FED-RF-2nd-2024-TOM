@@ -37,16 +37,19 @@ function CartList(props) {
     return result;
   }; ////////// totalFn ///////////
 
-  // 화면랜더링 구역 : selData의존성 /////////
+  // 화면랜더링 구역 : dataCnt의존성 /////////
   useEffect(()=>{
     console.log("selData의존성");
     // 카트버튼 나타나기
       $("#mycart").removeClass("on")
+      .delay(500)//애니메이션 지연시간
       .fadeIn(300, function(){
         // 나타난후 클래스 넣으면 오른쪽이동+작아짐
         $(this).addClass("on");
       }); ///// fadeIn /////
-  },[selData]);
+  },[dataCnt]); //-> 숫자값은 값할당이므로 변함없음!
+  // },[selData]); //-> 리랜더링시 객체주소값이 변경되어
+  // 매번 새로운값이 업데이트 되기때문에 부적격임!
 
   // 화면랜더링 구역 : 한번만 /////////////
   useEffect(()=>{
