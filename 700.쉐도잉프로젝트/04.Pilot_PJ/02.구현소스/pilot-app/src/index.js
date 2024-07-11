@@ -16,7 +16,7 @@ function MainComponent(props) {
   // 로컬스 카트 존재여부변수
   let cartTemp = false;
 
-  // 로컬스 카트 데이터 상태변수
+  // [ 로컬스 카트 데이터 상태변수 ] ///
   const [localsCart,setLocalsCart] = 
   useState(localStorage.getItem("cart-data"));
 
