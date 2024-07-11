@@ -301,6 +301,12 @@ function ItemDetail({ tot, setTot, dt }) {
                   });
 
                   console.log("중복상태:",retSts);
+                  if(retSts){
+                    // 메시지 보이기
+                    alert("이미 선택하신 상품입니다!");
+                    // 함수 나가기
+                    return;
+                  } ///// if //////
 
                   // 4.로컬스에 객체 데이터 추가하기
                   locals.push({
