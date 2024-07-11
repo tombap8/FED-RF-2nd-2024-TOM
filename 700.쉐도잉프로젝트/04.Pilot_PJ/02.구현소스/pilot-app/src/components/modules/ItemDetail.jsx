@@ -314,6 +314,8 @@ function ItemDetail({ tot, setTot, dt }) {
                   // 로컬스 카트데이터 상태값 변경!
                   myCon.setLocalsCart(
                     localStorage.getItem("cart-data"));
+                  // 카트리스트 생성 상태값 변경!
+                  myCon.setCartSts(true);
                 }}
               >
                 SHOPPING CART
