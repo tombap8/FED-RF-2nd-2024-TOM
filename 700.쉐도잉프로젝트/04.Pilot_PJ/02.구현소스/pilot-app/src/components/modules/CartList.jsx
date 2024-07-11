@@ -39,7 +39,12 @@ function CartList(props) {
 
   // 화면랜더링 구역 : 매번 /////////
   useEffect(()=>{
-    $("#cartlist").animate({right:"-60vw"},400);
+    // 카트버튼 나타나기
+    $("#mycart").removeClass("on")
+    .fadeIn(300, function(){
+      // 나타난후 클래스 넣으면 오른쪽이동+작아짐
+      $(this).addClass("on");
+    }); ///// fadeIn /////
   });
 
   // 화면랜더링 구역 : 한번만 /////////////
