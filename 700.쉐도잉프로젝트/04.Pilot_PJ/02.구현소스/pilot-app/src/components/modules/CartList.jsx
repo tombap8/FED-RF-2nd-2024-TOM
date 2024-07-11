@@ -39,7 +39,7 @@ function CartList(props) {
 
   // 화면랜더링 구역 : dataCnt의존성 /////////
   useEffect(()=>{
-    console.log("selData의존성");
+    console.log("dataCnt의존성");
     // 카트버튼 나타나기
       $("#mycart").removeClass("on")
       .delay(500)//애니메이션 지연시간
