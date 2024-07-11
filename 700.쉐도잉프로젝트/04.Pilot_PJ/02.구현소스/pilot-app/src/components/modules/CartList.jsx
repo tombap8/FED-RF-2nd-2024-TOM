@@ -47,22 +47,17 @@ function CartList(props) {
         // 나타난후 클래스 넣으면 오른쪽이동+작아짐
         $(this).addClass("on");
       }); ///// fadeIn /////
+      
+      // 총합계 찍기 : 3자리마다 콤마함수호출도함
+      $(".total-num").text(addComma(totalFn()));
+      
   },[dataCnt]); //-> 숫자값은 값할당이므로 변함없음!
   // },[selData]); //-> 리랜더링시 객체주소값이 변경되어
   // 매번 새로운값이 업데이트 되기때문에 부적격임!
 
   // 화면랜더링 구역 : 한번만 /////////////
-  useEffect(()=>{
-    // 카트버튼 나타나기
-    $("#mycart").fadeIn(300,
-      function(){ // 나타난후 클래스 넣기
-        $(this).addClass("on");
-    })
-
-    // 총합계 찍기 : 3자리마다 콤마함수호출도함
-    $(".total-num").text(addComma(totalFn()));
-
-  },[]); /////// useEffect /////////////
+  // useEffect(()=>{
+  // },[]); /////// useEffect /////////////
 
   ///// 코드리턴구역 /////////////
   return (
@@ -84,8 +79,8 @@ function CartList(props) {
         <table>
           {/* 항목별 세로 비율설정 */}
           <colgroup>
-            <col span="1" style={{width: "8%"}}/>
             <col span="1" style={{width: "5%"}}/>
+            <col span="1" style={{width: "8%"}}/>
             <col span="1" style={{width: "38%"}}/>
             <col span="1" style={{width: "14%"}}/>
             <col span="1" style={{width: "10%"}}/>
@@ -95,13 +90,13 @@ function CartList(props) {
           </colgroup>
           {/* 테이블 제목 */}
           <caption>
-            <h1> 카트 리스트</h1>
+            <h1> 카트 리스트 ({dataCnt})</h1>
           </caption>
           {/* 테이블 상단영역 : 분류항목 출력 */}
           <thead>
             <tr>
-              <th>상품</th>
               <th>번호</th>
+              <th>상품</th>
               <th>상품명</th>
               <th>상품코드</th>
               <th>단가</th>
@@ -140,6 +135,9 @@ function CartList(props) {
             */}
               {selData.map((v, i) => (
                 <tr key={i}>
+                  {/* 일련번호 */}
+                  <td>{i+1}</td>
+                  {/* 상품이미지 */}
                   <td>
                     <img
                       src={
@@ -149,7 +147,6 @@ function CartList(props) {
                       alt="item"
                     />
                   </td>
-                  <td>{v.num}</td>
                   <td>{v.ginfo[1]}</td>
                   <td>{v.ginfo[2]} </td>
                   <td>{addComma(v.ginfo[3])}원</td>
@@ -196,7 +193,41 @@ function CartList(props) {
                     />
                   </td>
                   <td>
-                    <button className="cfn" data-idx="20">
+                    {/* 데이터 삭제기능 버튼 */}
+                    <button className="cfn" 
+                    onClick={()=>{
+                      // confirm()의 "확인"클릭시 true
+                      if(window.confirm("정말정말정말로 지우시겠습니까? 할인도하는데???")){
+                        console.log("삭제함!!!");
+                        console.log("현재객체:",selData);
+                        console.log("지울순번:",i);
+                        // splice 자체를 찍으면 지워진 요소가 찍힘
+                        console.log("지우기:",
+                        selData.splice(i,1));
+
+                        // 지울 배열 순번은 map()에서 i로 들어옴
+                        // 지울 배열은 selData임
+                        // 1.데이터 지우기
+                        let res = selData.splice(i,1);
+
+                        // 2. 데이터 문자화하기
+                        res = JSON.stringify(res);
+
+                        // 3.로컬스 "cart-data"반영하기
+                        localStorage.setItem("cart-data",res);
+
+                        // 4. 카트리스트 전역상태변수 변경
+                        myCon.setLocalsCart(res);
+
+
+                        
+                        // let aa = [];
+                        // aa.splice(지울순번,지울개수)
+
+                        
+                      }//// if /////
+                    }}
+                    >
                       ×
                     </button>
                   </td>
