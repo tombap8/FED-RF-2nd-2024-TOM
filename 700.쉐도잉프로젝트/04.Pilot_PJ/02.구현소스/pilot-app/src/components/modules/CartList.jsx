@@ -6,7 +6,7 @@ import { pCon } from "./pCon";
 import { addComma } from "../../js/func/common_fn";
 
 // 제이쿼리
-import $, { data } from "jquery";
+import $ from "jquery";
 
 function CartList(props) {
   // 컨텍스트 사용
