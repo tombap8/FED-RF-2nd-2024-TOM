@@ -282,17 +282,27 @@ function ItemDetail({ tot, setTot, dt }) {
               <button
                 className="btn"
                 onClick={() => {
-                  // 로컬스에 넣기
-                  // 로컬스 없으면 만들어라!
+                  // [ 로컬스 카트 데이터 넣기 ]
+                  // 1. 로컬스 없으면 만들어라!
                   if (!localStorage.getItem("cart-data")) {
                     localStorage.setItem("cart-data", "[]");
                   } //// if /////
 
-                  // 로컬스 읽어와서 파싱하기
+                  // 2. 로컬스 읽어와서 파싱하기
                   let locals = localStorage.getItem("cart-data");
                   locals = JSON.parse(locals);
 
-                  // 로컬스에 객체 데이터 추가하기
+                  // 3. 기존 데이터 중 동일한 데이터 거르기
+                  // 파싱된 로컬스 데이터 중 idx항목을 검사하여
+                  // gIdx로 넣을 상품 idx와 같은 것이 있으면
+                  // 메시지와 함께 리턴처리하여 입력을 막아준다!
+                  let retSts = locals.some(v=>{
+                    if(v.idx==gIdx) return true;
+                  });
+
+                  console.log("중복상태:",retSts);
+
+                  // 4.로컬스에 객체 데이터 추가하기
                   locals.push({
                     idx: gIdx,
                     cat: cat,
