@@ -12,11 +12,28 @@ import "./css/index.scss";
 import CartList from './components/modules/CartList';
 
 function MainComponent(props) {
+
+  // 로컬스 카트 존재여부변수
+  let cartTemp = false;
+  // 로컬스 카트 데이터
+  let localsCart = localStorage.getItem("cart-data");
+  
+  // 로컬스 카트 데이터 존재여부에 따라 상태값 변경
+  if(localsCart){
+    // 데이터가 있으면 cartTemp값 true로 변경
+    // 데이터 개수가 0이 아니어야함!
+    let cartCnt = JSON.parse(localsCart).length;
+    console.log("카트 데이터수:",cartCnt);
+    if(cartCnt > 0) cartTemp = true;
+  } //////////// 카트존재여부 if ////////
+
+
+
   // 상태관리 변수 셋팅 ///////
   // 1. 페이지변경 상태변수
   const [pgName, setPgName] = useState("main");
   // 2. 카트리스트 사용여부 : true 일때 사용
-  const [cartSts,setCartSts] = useState(false);
+  const [cartSts,setCartSts] = useState(cartTemp);
 
   /**************************************** 
     [ 컨텍스트 API 공개 변수들 ]
