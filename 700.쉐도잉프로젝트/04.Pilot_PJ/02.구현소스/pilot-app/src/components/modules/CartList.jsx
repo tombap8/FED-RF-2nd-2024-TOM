@@ -13,7 +13,7 @@ function CartList(props) {
   const myCon = useContext(pCon);
 
   // 로컬스 데이터 가져오기
-  const selData = JSON.parse(localStorage.getItem("cart-data"));
+  const selData = JSON.parse(myCon.localsCart);
   console.log("로컬스:", selData);
 
   // 전체 데이터 개수

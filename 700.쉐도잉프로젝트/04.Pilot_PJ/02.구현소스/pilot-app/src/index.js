@@ -47,12 +47,17 @@ function MainComponent(props) {
       1. setPgName - 페이지이름 셋팅
       2. setCartSts - 카트 사용여부 셋팅
       3. setLocalsCart - 로컬스 카트 데이터 변경함수
-    
+      4. localsCart - 로컬스 카트 데이터 변수    
     ***************************************/
 
   // 코드 리턴구역 /////////////
   return (
-    <pCon.Provider value={{setPgName,setCartSts,setLocalsCart}}>
+    <pCon.Provider value={{
+      setPgName,
+      setCartSts,
+      setLocalsCart,
+      localsCart,
+      }}>
       <TopArea />
       <MainArea page={pgName} />
       <FooterArea />
