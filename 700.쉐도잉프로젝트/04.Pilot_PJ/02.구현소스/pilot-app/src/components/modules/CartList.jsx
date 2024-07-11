@@ -37,6 +37,11 @@ function CartList(props) {
     return result;
   }; ////////// totalFn ///////////
 
+  // 화면랜더링 구역 : 매번 /////////
+  useEffect(()=>{
+    $("#cartlist").animate({right:"-60vw"},400);
+  });
+
   // 화면랜더링 구역 : 한번만 /////////////
   useEffect(()=>{
     // 카트버튼 나타나기
