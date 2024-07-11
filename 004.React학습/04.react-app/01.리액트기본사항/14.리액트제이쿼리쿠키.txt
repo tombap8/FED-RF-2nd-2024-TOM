@@ -6,6 +6,11 @@ https://www.npmjs.com/package/jquery.cookie
 2. 설치 :
 npm i jquery.cookie
 
+((페이지에서 import하기)) 
+-> 제이쿼리 import 아래서 패키지만씀!
+import $ from "jquery";
+import "jquery.cookie";
+
 3. 사용법 : 
 (1) 쿠키 생성하기:
 $.cookie('the_cookie', 'the_value');
