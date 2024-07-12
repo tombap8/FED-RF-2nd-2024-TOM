@@ -189,6 +189,9 @@ function CartList(props) {
 
                                     // 5. 반영버튼 숨기기
                                     $(e.currentTarget).css({width:"0"});
+
+                                    // 6. 전체 총합계 계산 다시하기
+                                    $(".total-num").text(addComma(totalFn()));
                                   }}
                                 >
                                   반영
