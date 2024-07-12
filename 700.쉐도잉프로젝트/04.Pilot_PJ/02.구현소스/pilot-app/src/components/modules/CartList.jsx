@@ -163,20 +163,39 @@ function CartList(props) {
                                   className="item-cnt"
                                   readOnly
                                   defaultValue={v.cnt}
-                                  onBlur={()=>{
+                                  onBlur={() => {
                                     console.log("ㅎㅎㅎ");
                                   }}
-                                  />
-                                <button 
-                                className="btn-insert" 
-                                onClick={(e)=>{}}
+                                />
+                                {/* 반영버튼 */}
+                                <button
+                                  className="btn-insert"
+                                  onClick={(e) => {
+                                    /// 1. 클릭시 실제 데이터 수량변경 반영하기
+                                    // 대상: selData -> 배열변환데이터
+                                    // i는 배열순번임!(map 돌때 i가 들어옴)
+                                    selData[i].cnt = $(e.currentTarget)
+                                      .siblings(".item-cnt")
+                                      .val();
+                                    console.log("수량업데이트:", selData);
+                                    // 2. 데이터 문자화하기 : 변경된 원본을 문자화
+                                    let res = JSON.stringify(selData);
+
+                                    // 3.로컬스 "cart-data"반영하기
+                                    localStorage.setItem("cart-data", res);
+
+                                    // 4. 카트리스트 전역상태변수 변경
+                                    myCon.setLocalsCart(res);
+
+                                    // 5. 반영버튼 숨기기
+                                    $(e.currentTarget).css({width:"0"});
+                                  }}
                                 >
                                   반영
                                 </button>
                                 <b
                                   className="btn-cnt"
                                   onClick={(e) => {
-
                                     // 업데이트 대상(input박스)
                                     let tg = $(e.currentTarget).siblings(
                                       "input"
@@ -184,7 +203,7 @@ function CartList(props) {
 
                                     // 입력창의 blur이벤트 발생을 위해
                                     // 강제로 포커스를 준다!
-                                    tg.focus();
+                                    // tg.focus();
 
                                     // 하위 클릭된 이미지 종류파악하기
                                     // e.target으로 설정하여 하위요소인
@@ -209,11 +228,9 @@ function CartList(props) {
                                     } ///// else if ////////
 
                                     // 클릭시 반영버튼 나타나기
-                                    $(e.currentTarget).siblings(".btn-insert")
-                                    .css({width:"auto"});
-
-
-
+                                    $(e.currentTarget)
+                                      .siblings(".btn-insert")
+                                      .css({ width: "auto" });
                                   }}
                                 >
                                   <img
