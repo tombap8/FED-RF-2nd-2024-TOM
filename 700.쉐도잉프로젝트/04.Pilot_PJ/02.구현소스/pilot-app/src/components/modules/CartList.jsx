@@ -162,9 +162,11 @@ function CartList(props) {
                                   type="text"
                                   className="item-cnt"
                                   readOnly
-                                  value={v.cnt}
-                                  onChange={() => {}}
-                                />
+                                  defaultValue={v.cnt}
+                                  onBlur={()=>{
+                                    console.log("ㅎㅎㅎ");
+                                  }}
+                                  />
                                 <button 
                                 className="btn-insert" 
                                 onClick={(e)=>{}}
@@ -174,10 +176,15 @@ function CartList(props) {
                                 <b
                                   className="btn-cnt"
                                   onClick={(e) => {
+
                                     // 업데이트 대상(input박스)
                                     let tg = $(e.currentTarget).siblings(
                                       "input"
                                     );
+
+                                    // 입력창의 blur이벤트 발생을 위해
+                                    // 강제로 포커스를 준다!
+                                    tg.focus();
 
                                     // 하위 클릭된 이미지 종류파악하기
                                     // e.target으로 설정하여 하위요소인
