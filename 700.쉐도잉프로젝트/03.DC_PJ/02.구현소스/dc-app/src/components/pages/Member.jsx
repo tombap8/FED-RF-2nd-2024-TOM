@@ -5,6 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 // 로컬스토리지 생성 JS
 import { initData } from "../func/mem_fn";
 
+import $ from "jquery";
+
 // 회원가입 CSS 불러오기
 import "../../css/member.scss";
 
@@ -307,6 +309,7 @@ function Member() {
     } ///////// if /////////
     // 3. 불통과시 /////
     else {
+      console.log($(".msg").eq(0).text());
       alert("Change your input!");
     } //// else ///////////
   }; /////////// onSubmit 함수 //////////
@@ -339,6 +342,7 @@ function Member() {
                 // defaultValue="ㅎㅎㅎ"
                 value={userId}
                 onChange={changeUserId}
+                onBlur={changeUserId}
               />
               {
                 //   에러일 경우 메시지 출력
@@ -383,6 +387,7 @@ function Member() {
                 placeholder="Please enter your Password"
                 value={pwd}
                 onChange={changePwd}
+                onBlur={changePwd}
               />
               {
                 // 에러일 경우 메시지 출력
@@ -409,6 +414,7 @@ function Member() {
                 placeholder="Please enter your Confirm Password"
                 value={chkPwd}
                 onChange={changeChkPwd}
+                onBlur={changeChkPwd}
               />
               {
                 // 에러일 경우 메시지 출력
@@ -435,6 +441,7 @@ function Member() {
                 placeholder="Please enter your Name"
                 value={userName}
                 onChange={changeUserName}
+                onBlur={changeUserName}
               />
               {
                 // 에러일 경우 메시지 출력
@@ -461,6 +468,7 @@ function Member() {
                 placeholder="Please enter your Email"
                 value={email}
                 onChange={changeEmail}
+                onBlur={changeEmail}
               />
               {
                 // 에러일 경우 메시지 출력
