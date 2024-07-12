@@ -197,9 +197,9 @@ function CartList(props) {
                                     
                                     // 5. 반영버튼 숨기기
                                     $(e.currentTarget)
-                                    .css({width:"0"}) // 숨기기
+                                    .hide() // 숨기기
                                     .next() // "취소"버튼
-                                    .css({width:"0"}); // 숨기기
+                                    .hide(); // 숨기기
 
                                     // -> 아래 6번은 리랜더링 되면 해결됨
                                     // 그리고 데이터변경 sync가 맞지 않는 경우가
@@ -221,9 +221,9 @@ function CartList(props) {
                                   className="btn-cancel"
                                   onClick={(e)=>{
                                     $(e.currentTarget)
-                                    .css({width:"0"})
+                                    .hide()
                                     .prev() // "반영"버튼
-                                    .css({width:"0"})
+                                    .hide()
                                     .siblings("input")
                                     .val(v.cnt);
                                     // 취소버튼 자신의
@@ -274,9 +274,9 @@ function CartList(props) {
                                     // 클릭시 반영,취소버튼 나타나기
                                     $(e.currentTarget)
                                       .siblings(".btn-insert")
-                                      .css({ width: "auto" })
+                                      .show()
                                       .next() // 취소버튼
-                                      .css({ width: "auto" });
+                                      .show();
                                   }}
                                 >
                                   <img
