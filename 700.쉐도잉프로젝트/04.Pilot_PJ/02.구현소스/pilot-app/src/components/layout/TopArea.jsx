@@ -6,7 +6,8 @@ import { TotalMenu } from "../modules/TotalMenu";
 // 제이쿼리
 import $ from "jquery";
 
-function TopArea(props) {
+function TopArea({pgName}) {
+  // pgName - 이동할 페이지 이름
 
   // 전체 메뉴 열기닫기 함수 ////
   const showHideMenu = (e)=>{
@@ -58,7 +59,7 @@ function TopArea(props) {
           <nav className="gnb">
             <ul>
               <li className="bld">배너순번 li 숨기기</li>
-              {gnbData.main.map((v, i) => (
+              {gnbData[pgName].map((v, i) => (
                 <li key={i}>
                   <a href="#">{v}</a>
                 </li>

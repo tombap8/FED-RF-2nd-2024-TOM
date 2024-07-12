@@ -58,7 +58,7 @@ function MainComponent(props) {
       setLocalsCart,
       localsCart,
       }}>
-      <TopArea />
+      <TopArea pgName={pgName} />
       <MainArea page={pgName} />
       <FooterArea />
       {/* 카트리스트 : 카트상태값 true 출력 */}
