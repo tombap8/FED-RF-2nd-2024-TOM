@@ -140,6 +140,17 @@
   transition: 0.1s 0.1s;
   /* display: none; */
 }
+/* 취소 버튼 */
+.btn-cancel {
+  position: absolute;
+  margin-left: 74px;
+  white-space: nowrap;
+  padding: 0;
+  overflow: hidden;
+  width: 0;
+  transition: 0.1s 0.1s;
+  /* display: none; */
+}
 /* 입력창에 포커스 갈때 다음형제요소 반영버튼 보이기 */
 .item-cnt:focus + .btn-insert {
   /* outline: 10px dotted red; */
