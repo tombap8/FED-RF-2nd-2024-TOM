@@ -196,7 +196,10 @@ function CartList(props) {
                                     myCon.setLocalsCart(res);
                                     
                                     // 5. 반영버튼 숨기기
-                                    $(e.currentTarget).css({width:"0"});
+                                    $(e.currentTarget)
+                                    .css({width:"0"}) // 숨기기
+                                    .next() // "취소"버튼
+                                    .css({width:"0"}); // 숨기기
 
                                     // -> 아래 6번은 리랜더링 되면 해결됨
                                     // 그리고 데이터변경 sync가 맞지 않는 경우가
