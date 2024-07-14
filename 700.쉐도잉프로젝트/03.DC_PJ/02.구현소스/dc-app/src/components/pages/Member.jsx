@@ -9,6 +9,7 @@ import $ from "jquery";
 
 // 회원가입 CSS 불러오기
 import "../../css/member.scss";
+import AddressInput from "../modules/AddressInput";
 
 function Member() {
   // 라우터 이동 네비게이트
@@ -36,6 +37,10 @@ function Member() {
   const [userName, setUserName] = useState("");
   // 5. 이메일변수
   const [email, setEmail] = useState("");
+  // 6. 주소변수
+  const [addr, setAddr] = useState("");
+  // 7. 우편번호변수
+  const [zipcode, setZipcode] = useState("");
 
   // [2] 에러상태관리 변수
   // -> 에러상태값 초기값은 에러아님(false)
@@ -49,8 +54,10 @@ function Member() {
   const [userNameError, setUserNameError] = useState(false);
   // 5. 이메일변수
   const [emailError, setEmailError] = useState(false);
+  // 6. 주소변수
+  const [addrError, setAddrError] = useState("");
 
-  console.log(">>>>", userIdError);
+  // console.log(">>>>", userIdError);
 
   // [ 아이디관련 메시지 프리셋 ] ////
   const msgId = [
@@ -224,6 +231,25 @@ function Member() {
     setEmail(val);
   }; ///////// changeEmail 함수 //////////
 
+
+  // 6. 주소 유효성 검사 ///////////
+  const changeAddr = (e,adress,zc) => {
+    // 입력된 값읽기
+    let val = e.target.value;
+    console.log(val);
+
+    // 2. 기존입력값 반영하기
+    setAddr(adress+" "+val);
+console.log(addr);
+setZipcode(zc);
+console.log(zipcode);
+
+    // 1. 빈값체크
+    if (val !== "" && addr !== "" && zipcode !== "") setAddrError(false);
+    else setAddrError(true);
+    
+  }; ///////// changeUserName 함수 //////////
+
   // [ 전체 유효성검사 체크함수 ] ///////////
   const totalValid = () => {
     // 1. 모든 상태변수에 빈값일때 에러상태값 업데이트!
@@ -232,6 +258,7 @@ function Member() {
     if (!chkPwd) setChkPwdError(true);
     if (!userName) setUserNameError(true);
     if (!email) setEmailError(true);
+    if (!addr && !zipcode) setAddrError(true);
 
     // 2. 통과시 true, 불통과시 false 리턴처리
     // 통과조건 : 빈값아님 + 에러후크변수가 모두 false
@@ -241,11 +268,13 @@ function Member() {
       chkPwd &&
       userName &&
       email &&
+      addr &&
       !userIdError &&
       !pwdError &&
       !chkPwdError &&
       !userNameError &&
-      !emailError
+      !emailError &&
+      !addrError
     )
       return true;
     // 하나라도 false이면 false를 리턴함!
@@ -286,6 +315,8 @@ function Member() {
         pwd: pwd,
         unm: userName,
         eml: email,
+        zcode: zipcode,
+        addr: addr,
       };
 
       // 5. 데이터 추가하기 : 배열에 데이터 추가 push()
@@ -447,6 +478,26 @@ function Member() {
                 // 에러일 경우 메시지 출력
                 // 조건문 && 출력요소
                 userNameError && (
+                  <div className="msg">
+                    <small
+                      style={{
+                        color: "red",
+                        fontSize: "10px",
+                      }}
+                    >
+                      {msgEtc.req}
+                    </small>
+                  </div>
+                )
+              }
+            </li>
+            <li>
+              <label>Address</label>
+              <AddressInput changeAddr={changeAddr} />
+              {
+                // 에러일 경우 메시지 출력
+                // 조건문 && 출력요소
+                addrError && (
                   <div className="msg">
                     <small
                       style={{
