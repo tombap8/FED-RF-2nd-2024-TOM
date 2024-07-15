@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import DaumPostcode from "react-daum-postcode";
 
 const AddressInput = ({changeAddr}) => {
@@ -61,10 +61,13 @@ const AddressInput = ({changeAddr}) => {
         setIsOpen((prevOpenState) => !prevOpenState);
     };
 
-    //   const inputChangeHandler = (event) => {
-    //     setDetailedAddress(event.target.value);
-    //   };
+    // 랜더링 구역 ////////////
+    useEffect(()=>{
+        changeAddr();
+    }); ////// useEffect //////////
 
+
+    // 코드리턴구역 //////////////////////
     return (
         <div style={wholeBoxStyle}>
             <div>
@@ -91,13 +94,7 @@ const AddressInput = ({changeAddr}) => {
                 onClick={toggleHandler}
                 style={{ width: "100%" }} placeholder="Click 'Search Address'" />
                 <input className="addr2" placeholder="input detail adress" style={{ width: "100%" }}
-                onChange={(e)=>{
-                    changeAddr(e,
-                        document.querySelector(".addr1").value,
-                        document.querySelector(".zipcode").value,
-                    );
-                    // console.log(document.querySelector(".addr1").value);
-                }}
+                onChange={changeAddr}
                 onBlur={changeAddr}
                 />
             </div>

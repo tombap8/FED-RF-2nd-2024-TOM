@@ -233,20 +233,22 @@ function Member() {
 
 
   // 6. 주소 유효성 검사 ///////////
-  const changeAddr = (e,adress,zc) => {
+  const changeAddr = () => {
     // 입력된 값읽기
-    let val = e.target.value;
-    console.log(val);
+    let address1 = $(".addr1").val();
+    let address2 = $(".addr2").val();
+    let zc = $(".zipcode").val();
 
-    // 2. 기존입력값 반영하기
-    setAddr(adress+" "+val);
-console.log(addr);
-setZipcode(zc);
-console.log(zipcode);
-
-    // 1. 빈값체크
-    if (val !== "" && addr !== "" && zipcode !== "") setAddrError(false);
+    // 2. 빈값체크
+    if (address1 !== "" && address2 !== "" && zc !== "") 
+    setAddrError(false);
     else setAddrError(true);
+
+    // 3. 기존입력값 반영하기
+    setAddr(address1+" "+address2);
+    console.log(addr);
+    setZipcode(zc);
+    console.log(zipcode);
     
   }; ///////// changeUserName 함수 //////////
 
@@ -258,7 +260,8 @@ console.log(zipcode);
     if (!chkPwd) setChkPwdError(true);
     if (!userName) setUserNameError(true);
     if (!email) setEmailError(true);
-    if (!addr && !zipcode) setAddrError(true);
+    if (!addr) setAddrError(true);
+    if (!zipcode) setAddrError(true);
 
     // 2. 통과시 true, 불통과시 false 리턴처리
     // 통과조건 : 빈값아님 + 에러후크변수가 모두 false

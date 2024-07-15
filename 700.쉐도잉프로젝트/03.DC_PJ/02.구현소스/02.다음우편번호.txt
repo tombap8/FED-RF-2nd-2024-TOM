@@ -1,0 +1,18 @@
+[ 다음 우편번호 컴포넌트 사용하기 ]
+
+* 다음가이드문서
+https://postcode.map.daum.net/guide
+
+1. 설치
+npm i react-daum-postcode
+
+2. 불러오기
+import DaumPostcode from 'react-daum-postcode';
+
+3. 코드예시 : dc PJ 의 Member.jsx파일을 보라!
+
+-> 다음 주소와 우편번호 찾는 모듈
+<DaumPostcode
+	style={postCodeStyle}
+	onComplete={onCompletePost}
+></DaumPostcode> // 컴포넌트 내에서 사용한 code
