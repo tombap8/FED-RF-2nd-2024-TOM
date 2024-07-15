@@ -207,8 +207,26 @@ export default function Board() {
       case "Modify":
         setMode("M");
         break;
+      // 삭제일 경우 삭제함수 호출
+      case "Delete":
+        deleteFn();
+        break;
     }
   }; ////////// clickButton //////////
+
+  // 삭제 처리함수 //////////////
+  const deleteFn = () => {
+    // 삭제여부확인
+    if(window.confirm("Are you sure you want to delete?")){
+      // 1. 해당항목 idx담기
+      let currIdx = selRecord.current.idx;
+      // 2. find()로 순회하여 해당항목 삭제하기
+
+
+    } ///////// if ///////////////
+
+
+  };
 
   // 서브밋 처리함수 //////////////
   const submitFn = () => {
@@ -278,9 +296,6 @@ export default function Board() {
 
     // 3. 수정모드 서브밋 (mode=="M")
     else if (mode == "M") {
-      // 0.현재 로그인 사용자 정보 파싱하기
-      let person = JSON.parse(sts);
-
       // 1. 오늘날짜 생성하기 /////
       // -> 수정시 수정날짜 항목을 새로 만들고 입력함!
       let today = new Date();
