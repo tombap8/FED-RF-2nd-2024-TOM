@@ -235,18 +235,23 @@ function Member() {
   // 6. 주소 유효성 검사 ///////////
   const changeAddr = () => {
     // 입력된 값읽기
+    // 앞주소(자동입력값)
     let address1 = $(".addr1").val();
+    // 뒷주소(직접입력값)
     let address2 = $(".addr2").val();
+    // 우편번호(자동입력값)
     let zc = $(".zipcode").val();
 
-    // 2. 빈값체크
+    // 2. 빈값체크 : 세 값 모두 빈값이 아니면 에러아님!
     if (address1 !== "" && address2 !== "" && zc !== "") 
     setAddrError(false);
     else setAddrError(true);
 
-    // 3. 기존입력값 반영하기
+    // 3. 기존입력값 반영하기 : 상태변수에 반영함
+    // (1) 전체주소값 저장 (앞주소+뒷주소)
     setAddr(address1+" "+address2);
     console.log(addr);
+    // (2) 우편번호 저장
     setZipcode(zc);
     console.log(zipcode);
     
@@ -260,7 +265,10 @@ function Member() {
     if (!chkPwd) setChkPwdError(true);
     if (!userName) setUserNameError(true);
     if (!email) setEmailError(true);
+    // 주소체크 추가
     if (!addr) setAddrError(true);
+    // 우편번호체크 추가 
+    // -> 주소에러로 등록(우편번호에러값이 따로없음)
     if (!zipcode) setAddrError(true);
 
     // 2. 통과시 true, 불통과시 false 리턴처리
@@ -277,6 +285,7 @@ function Member() {
       !chkPwdError &&
       !userNameError &&
       !emailError &&
+      // 주소에러항목추가
       !addrError
     )
       return true;
@@ -318,7 +327,9 @@ function Member() {
         pwd: pwd,
         unm: userName,
         eml: email,
+        // 추가항목1 : 우편번호
         zcode: zipcode,
+        // 추가항목2 : 주소
         addr: addr,
       };
 
@@ -496,6 +507,9 @@ function Member() {
             </li>
             <li>
               <label>Address</label>
+              {/* 다음우편번호 모듈
+              - 보내줄값은 내가 정해야함!
+              - 변경체크함수를 프롭스다운시킴! */}
               <AddressInput changeAddr={changeAddr} />
               {
                 // 에러일 경우 메시지 출력
