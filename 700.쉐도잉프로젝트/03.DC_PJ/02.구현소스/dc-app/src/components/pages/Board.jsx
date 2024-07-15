@@ -97,7 +97,9 @@ export default function Board() {
       selData.push(orgData[i]);
     } ///// for //////
 
-    // console.log("일부데이터:", selData);
+    console.log("일부데이터:", selData);
+console.log("여기:",selData.length);
+if(selData.length == 0) setPageNum(pageNum-1);
 
     return selData.map((v, i) => (
       <tr key={i}>
@@ -243,6 +245,8 @@ export default function Board() {
       // 4. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
       setMode("L");
+      // 삭제후 첫페이지로 이동!
+      setPageNum(1);
     } ///////// if ///////////////
   }; //////// deleteFn ///////////////
 
@@ -309,7 +313,8 @@ export default function Board() {
 
       // 4. 추가후 리스트 리랜더링시 리스트 불일치로 인한
       // 에러를 방지하기 위하여 전체 개수를 바로 업데이트한다!
-      totalCount.current = baseData.length;
+      // 이때 실제로 업데이트된 locals 배열객체의 개수를 센다!
+      totalCount.current = locals.length;
 
       // 5. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
