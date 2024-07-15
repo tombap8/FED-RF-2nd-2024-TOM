@@ -298,7 +298,27 @@ export default function Board() {
               }
               {
                 // 2. 읽기상태 "R" 일 경우
-                mode == "R" && <button onClick={clickButton}>List</button>
+                <>
+                {mode == "R" && 
+                <button onClick={clickButton}>List</button>}
+
+                {
+                  console.log("비교:",
+                  JSON.parse(sts).uid,
+                  "==?",
+                  selRecord.current.uid)
+                }
+                
+                { // 로그인한 상태이고 글쓴이와 일치할때
+                // 수정보드 이동버튼이 노출됨!
+                // 현재글은 selRecord 참조변수에 저장됨
+                // 글정보 항목중 uid 가 사용자 아이디임!
+                // 로그인 상태정보하위의 sts.uid와 비교함
+                (mode == "R" && sts && 
+                JSON.parse(sts).uid==selRecord.current.uid) && 
+                <button onClick={clickButton}>Modify</button>
+                }
+                </>
               }
               {
                 // 3. 쓰기상태 "W" 일 경우

@@ -10,6 +10,7 @@ import $ from "jquery";
 // 회원가입 CSS 불러오기
 import "../../css/member.scss";
 import AddressInput from "../modules/AddressInput";
+import Modal from "react-modal";
 
 function Member() {
   // 라우터 이동 네비게이트
@@ -24,6 +25,11 @@ function Member() {
   // -> 특이사항 :
   // 글자를 입력할때마다 검사
   // + submit버튼 작동시 검사
+
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const showModal = () => {
+    setModalIsOpen(!modalIsOpen);
+  };
 
   // [ 상태관리변수 ] /////////////
   // [1] 입력요소 상태변수
@@ -231,7 +237,6 @@ function Member() {
     setEmail(val);
   }; ///////// changeEmail 함수 //////////
 
-
   // 6. 주소 유효성 검사 ///////////
   const changeAddr = () => {
     // 입력된 값읽기
@@ -243,18 +248,16 @@ function Member() {
     let zc = $(".zipcode").val();
 
     // 2. 빈값체크 : 세 값 모두 빈값이 아니면 에러아님!
-    if (address1 !== "" && address2 !== "" && zc !== "") 
-    setAddrError(false);
+    if (address1 !== "" && address2 !== "" && zc !== "") setAddrError(false);
     else setAddrError(true);
 
     // 3. 기존입력값 반영하기 : 상태변수에 반영함
     // (1) 전체주소값 저장 (앞주소+뒷주소)
-    setAddr(address1+" "+address2);
+    setAddr(address1 + " " + address2);
     console.log(addr);
     // (2) 우편번호 저장
     setZipcode(zc);
     console.log(zipcode);
-    
   }; ///////// changeUserName 함수 //////////
 
   // [ 전체 유효성검사 체크함수 ] ///////////
@@ -267,7 +270,7 @@ function Member() {
     if (!email) setEmailError(true);
     // 주소체크 추가
     if (!addr) setAddrError(true);
-    // 우편번호체크 추가 
+    // 우편번호체크 추가
     // -> 주소에러로 등록(우편번호에러값이 따로없음)
     if (!zipcode) setAddrError(true);
 
@@ -337,25 +340,23 @@ function Member() {
       memData.push(newData);
 
       // 6. 로컬스에 반영하기 : 문자화해서 넣어야함!
-      localStorage.setItem("mem-data", 
-      JSON.stringify(memData));
+      localStorage.setItem("mem-data", JSON.stringify(memData));
 
       // 7. 회원가입 환영메시지 + 로그인 페이지 이동
       // 버튼 텍스트에 환영메시지
-      document.querySelector(".sbtn").innerText = 
-      "Thank you for joining us!";
+      document.querySelector(".sbtn").innerText = "Thank you for joining us!";
       // 1초후 페이지 이동 : 라우터 Navigate로 이동함
-      setTimeout(()=>{
+      setTimeout(() => {
         goNav("/login");
         // 주의: 경로앞에 슬래쉬(/) 안쓰면
         // 현재 Memeber 경로 하위 경로를 불러옴
-      },1000);
-      
+      }, 1000);
     } ///////// if /////////
     // 3. 불통과시 /////
     else {
       console.log($(".msg").eq(0).text());
       alert("Change your input!");
+      // showModal();
     } //// else ///////////
   }; /////////// onSubmit 함수 //////////
 
@@ -567,6 +568,19 @@ function Member() {
           </ul>
         </form>
       </section>
+      {
+        <>
+          ​modalIsOpen &&
+          <Modal
+            isOpen={true}
+            ariaHideApp={false}
+            onRequestClose={() => setModalIsOpen(false)}
+          >
+            <h1>제목</h1>
+            <div>내용</div>
+          </Modal>
+        </>
+      }
     </div>
   );
 }
