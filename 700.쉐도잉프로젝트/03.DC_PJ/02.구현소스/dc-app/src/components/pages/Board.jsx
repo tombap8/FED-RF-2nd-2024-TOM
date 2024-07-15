@@ -288,6 +288,10 @@ export default function Board() {
         // sts값은 문자열이므로 파싱하여 객체로 보냄
         mode == "W" && <WriteMode sts={JSON.parse(sts)} />
       }
+      {
+        // 4. 수정 모드일 경우 상세보기 출력하기
+        mode == "M" && <ModifyMode selRecord={selRecord} />
+      }
       <br />
       {/* 모드별 버튼출력 박스 */}
       <table className="dtbl btngrp">
@@ -329,6 +333,16 @@ export default function Board() {
                 mode == "W" && (
                   <>
                     <button onClick={clickButton}>Submit</button>
+                    <button onClick={clickButton}>List</button>
+                  </>
+                )
+              }
+              {
+                // 4. 수정상태 "M" 일 경우
+                mode == "M" && (
+                  <>
+                    <button onClick={clickButton}>Submit</button>
+                    <button onClick={clickButton}>Delete</button>
                     <button onClick={clickButton}>List</button>
                   </>
                 )
