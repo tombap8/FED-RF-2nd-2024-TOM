@@ -33,12 +33,10 @@ export default function Board() {
   // 로컬스 데이터 변수할당하기!
   const baseData = JSON.parse(localStorage.getItem("board-data"));
 
-  
   // 원본 데이터에 정렬 적용하기 : 내림차순
   baseData.sort((a, b) =>
     Number(a.idx) > Number(b.idx) ? -1 : Number(a.idx) < Number(b.idx) ? 1 : 0
   );
-
 
   // [ 상태관리 변수 ] ///
   // [1] 페이지 번호
@@ -217,16 +215,31 @@ export default function Board() {
   // 삭제 처리함수 //////////////
   const deleteFn = () => {
     // 삭제여부확인
-    if(window.confirm("Are you sure you want to delete?")){
+    if (window.confirm("Are you sure you want to delete?")) {
       // 1. 해당항목 idx담기
       let currIdx = selRecord.current.idx;
-      // 2. find()로 순회하여 해당항목 삭제하기
+      // 2. some()로 순회하여 해당항목 삭제하기
+      // find()와 달리 some()은 결과값을 boolean값으로
+      // 리턴하여 처리한다! 이것을 이용하여 코드처리해보자!
+      baseData.some((v, i) => {
+        if (v.idx == currIdx) {
+          // 해당순번 배열값을 삭제하자!
+          // 배열삭제는  splice(순번,1)
+          baseData.splice(i, 1);
 
+          // 리턴true할 경우 종료!
+          return true;
+        } ///// if ////
+      }); ///// some ///////
 
+      // 3. 로컬스에 업데이트하기 //////
+      localStorage.setItem("board-data", JSON.stringify(baseData));
+
+      // 4. 리스트로 돌아가기 /////
+      // -> 모드변경! "L"
+      setMode("L");
     } ///////// if ///////////////
-
-
-  };
+  }; //////// deleteFn ///////////////
 
   // 서브밋 처리함수 //////////////
   const submitFn = () => {
@@ -312,33 +325,32 @@ export default function Board() {
       // : 로컬스 데이터 -> baseData
       // find()는 특정항목을 찾아서 리턴하여 데이터를 가져
       // 오기도 하지만 업데이트 등 작업도 가능함!
-      baseData.find(v=>{
+      baseData.find((v) => {
         // console.log(v,selRecord);
-        if(v.idx == currIdx){
+        if (v.idx == currIdx) {
           // [ 업데이트 작업하기 ]
           // 기존항목변경 : tit, cont
           // 이미 선택된 selRecord 참조변수의 글번호인 idx로
           // 원본 데이터를 조회하여 기존 데이터를 업데이트함!
 
           // (1) 글제목 : tit
-          v.tit = title;    
+          v.tit = title;
           // (2) 글내용 : cont
           v.cont = cont;
-          // 추가항목 
+          // 추가항목
           // (원래는 확정된 DB스키마에 따라 입력해야하지만
           // 우리가 사용하는 로컬스토리지의 확장성에 따라 필요한
           // 항목을 추가하여 넣는다!)
           // (3) 수정일 : mdate
-          v.mdate = today.toJSON().substr(0,10);
+          v.mdate = today.toJSON().substr(0, 10);
 
           // 해당항목을 만나면 끝남!
           return true;
         } /// if ///
-      }); /////// find 메서드 /////////  
+      }); /////// find 메서드 /////////
 
       // 4. 로컬스에 업데이트하기 //////
-      localStorage.setItem("board-data", 
-      JSON.stringify(baseData));
+      localStorage.setItem("board-data", JSON.stringify(baseData));
 
       // 로컬스 확인!
       // console.log(localStorage.getItem("board-data"));
@@ -385,25 +397,27 @@ export default function Board() {
               {
                 // 2. 읽기상태 "R" 일 경우
                 <>
-                {mode == "R" && 
-                <button onClick={clickButton}>List</button>}
+                  {mode == "R" && <button onClick={clickButton}>List</button>}
 
-                {
-                  // console.log("비교:",
-                  // JSON.parse(sts).uid,
-                  // "==?",
-                  // selRecord.current.uid)
-                }
-                
-                { // 로그인한 상태이고 글쓴이와 일치할때
-                // 수정보드 이동버튼이 노출됨!
-                // 현재글은 selRecord 참조변수에 저장됨
-                // 글정보 항목중 uid 가 사용자 아이디임!
-                // 로그인 상태정보하위의 sts.uid와 비교함
-                (mode == "R" && sts && 
-                JSON.parse(sts).uid==selRecord.current.uid) && 
-                <button onClick={clickButton}>Modify</button>
-                }
+                  {
+                    // console.log("비교:",
+                    // JSON.parse(sts).uid,
+                    // "==?",
+                    // selRecord.current.uid)
+                  }
+
+                  {
+                    // 로그인한 상태이고 글쓴이와 일치할때
+                    // 수정보드 이동버튼이 노출됨!
+                    // 현재글은 selRecord 참조변수에 저장됨
+                    // 글정보 항목중 uid 가 사용자 아이디임!
+                    // 로그인 상태정보하위의 sts.uid와 비교함
+                    mode == "R" &&
+                      sts &&
+                      JSON.parse(sts).uid == selRecord.current.uid && (
+                        <button onClick={clickButton}>Modify</button>
+                      )
+                  }
                 </>
               }
               {

@@ -568,19 +568,18 @@ function Member() {
           </ul>
         </form>
       </section>
-      {
-        <>
-          ​modalIsOpen &&
-          <Modal
+          { <>!​modalIsOpen &&
+         
+          {/* <Modal
             isOpen={true}
             ariaHideApp={false}
             onRequestClose={() => setModalIsOpen(false)}
+            style={{width:"30vw",height:"30vh"}}
           >
             <h1>제목</h1>
             <div>내용</div>
-          </Modal>
-        </>
-      }
+          </Modal> */}
+          </>}
     </div>
   );
 }
