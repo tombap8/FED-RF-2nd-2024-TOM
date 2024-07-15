@@ -1,5 +1,5 @@
 // 오피니언 페이지 컴포넌트 ///
-import { Fragment, useContext, useRef, useState } from "react";
+import { Fragment, useContext, useEffect, useRef, useState } from "react";
 
 // 사용자 기본정보 생성 함수
 import { initData } from "../func/mem_fn";
@@ -235,7 +235,12 @@ export default function Board() {
       // 3. 로컬스에 업데이트하기 //////
       localStorage.setItem("board-data", JSON.stringify(baseData));
 
-      // 4. 리스트로 돌아가기 /////
+      // 4. 삭제후 리스트 리랜더링시 리스트 불일치로 인한
+      // 에러를 방지하기 위하여 전체 개수를 바로 업데이트한다!
+      totalCount.current = baseData.length;
+
+
+      // 4. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
       setMode("L");
     } ///////// if ///////////////
@@ -302,7 +307,11 @@ export default function Board() {
       // 로컬스 확인!
       // console.log(localStorage.getItem("board-data"));
 
-      // 5. 리스트로 돌아가기 /////
+      // 4. 추가후 리스트 리랜더링시 리스트 불일치로 인한
+      // 에러를 방지하기 위하여 전체 개수를 바로 업데이트한다!
+      totalCount.current = baseData.length;
+
+      // 5. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
       setMode("L");
     } /// if ///
@@ -360,6 +369,7 @@ export default function Board() {
       setMode("L");
     }
   }; ////////// submitFn //////////////
+
 
   //// 코드 리턴구역 //////////////
   return (
