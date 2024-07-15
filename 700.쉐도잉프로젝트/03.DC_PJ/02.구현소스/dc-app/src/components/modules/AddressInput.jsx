@@ -2,8 +2,12 @@ import React, { useEffect, useState } from "react";
 import DaumPostcode from "react-daum-postcode";
 
 const AddressInput = ({changeAddr}) => {
+    // 상태관리변수
+    // [1] 우편번호
     const [zonecode, setZonecode] = useState("");
+    // [2] 주소
     const [address, setAddress] = useState("");
+    // [3] 주소찾기 창 보이기여부
     const [isOpen, setIsOpen] = useState(false);
 
     const themeObj = {
