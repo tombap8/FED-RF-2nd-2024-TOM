@@ -51,7 +51,7 @@ class Weather extends Component {
   componentDidMount() {
     // [ 날씨조회 정보 사이트 ]
     // https://openweathermap.org/
-
+console.log(window.navigator.geolocation.getCurrentPosition);
     // 1. 지정도시명
     const cityName = "Seoul";
     // 2. 날씨정보조회 키코드(로그인사용자 키복사)
