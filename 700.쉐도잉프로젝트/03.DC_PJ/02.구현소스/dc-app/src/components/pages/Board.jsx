@@ -510,11 +510,6 @@ const ListMode = ({ bindList, pagingList }) => {
         읽기 모드 서브 컴포넌트
 ******************************************/
 const ReadMode = ({ selRecord }) => {
-  // 전역 조회글저장 변수 불러오기
-  const myCon = useContext(dCon);
-  // 사용할 참조변수 : myCon.bdRec
-  console.log("조회글:",myCon.bdRec.current);
-
   // 읽기 모드가 호출되었다는 것은
   // 리스트의 제목이 클릭되었다는 것을 의미!
   // 따라서 현재 레코드 값도 저장되었다는 의미!
@@ -528,9 +523,22 @@ const ReadMode = ({ selRecord }) => {
   // 규칙3 : 로그인한 상태에서 한번만 증가한다!
 
   // ((조회된 글 저장방법))
-  // -> 1.세션스토리지 / 2.쿠키 / 3.참조변수(전역)
-  myCon.bdRec.current.push(data.idx);
+  // -> 세션스토리지는 적합! 창을 닫으면 사라지니까!
+  // -> 쿠키는 삭제방법이 즉각적이지 못하므로 제외!
+  // -> 참조변수는 새로고침하면 초기화 되므로 제외!
 
+  // 1.없으면 세션스 만들기
+  if(!sessionStorage.getItem("bd-rec")){
+    sessionStorage.setItem("bd-rec","[]");
+  }
+  // 2.세션스에 글번호 저장하기
+  let rec = JSON.parse(sessionStorage.getItem("bd-rec"));
+
+  rec.push(data.idx);
+
+  sessionStorage.setItem("bd-rec",JSON.stringify(rec));
+
+  /////// 코드리턴 구역 ///////////
   return (
     <>
       <table className="dtblview readone">
