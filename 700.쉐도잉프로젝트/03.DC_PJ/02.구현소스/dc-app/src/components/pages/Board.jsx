@@ -245,7 +245,7 @@ if(selData.length == 0) setPageNum(pageNum-1);
       // 4. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
       setMode("L");
-      // 삭제후 첫페이지로 이동!
+      // -> 삭제후 첫페이지로 이동!
       setPageNum(1);
     } ///////// if ///////////////
   }; //////// deleteFn ///////////////
@@ -319,6 +319,8 @@ if(selData.length == 0) setPageNum(pageNum-1);
       // 5. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
       setMode("L");
+      // -> 추가후 첫페이지로 이동!
+      setPageNum(1);
     } /// if ///
 
     // 3. 수정모드 서브밋 (mode=="M")
@@ -508,12 +510,26 @@ const ListMode = ({ bindList, pagingList }) => {
         읽기 모드 서브 컴포넌트
 ******************************************/
 const ReadMode = ({ selRecord }) => {
+  // 전역 조회글저장 변수 불러오기
+  const myCon = useContext(dCon);
+  // 사용할 참조변수 : myCon.bdRec
+  console.log("조회글:",myCon.bdRec.current);
+
   // 읽기 모드가 호출되었다는 것은
   // 리스트의 제목이 클릭되었다는 것을 의미!
   // 따라서 현재 레코드 값도 저장되었다는 의미!
   // console.log("전달된 참조변수:", selRecord.current);
   // 전달된 데이터 객체를 변수에 할당
   const data = selRecord.current;
+
+  // [ 조회수 증가하기 ]
+  // 규칙1 : 자신의 글은 증가하지 않는다!
+  // 규칙2 : 타인의 글은 증가한다!
+  // 규칙3 : 로그인한 상태에서 한번만 증가한다!
+
+  // ((조회된 글 저장방법))
+  // -> 1.세션스토리지 / 2.쿠키 / 3.참조변수(전역)
+  myCon.bdRec.current.push(data.idx);
 
   return (
     <>

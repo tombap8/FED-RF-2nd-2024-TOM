@@ -1,6 +1,6 @@
 // 전체 레이아웃 컴포넌트 ///
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { FooterArea } from "./FooterArea";
 import MainArea from "./MainArea";
 import { TopArea } from "./TopArea";
@@ -25,6 +25,11 @@ export default function Layout() {
   // 2. 로그인 환영 메시지 상태변수
   const [loginMsg, setLoginMsg] = useState(null);
   // console.log(loginMsg);
+
+  // [ 참조변수 ] /////
+  // 1. 게시판 조회글 저장 변수 : 초기값 빈배열
+  const bdRec = useRef([]);
+  // bdRec -> board Record
 
   // [ 공통 함수 ] ///
   // 1. 라우팅 이동함수 : 라우터 이동후크인 useNavigate는
@@ -90,6 +95,7 @@ export default function Layout() {
         goPage,
         makeMsg,
         logoutFn,
+        bdRec,
       }}
     >
       {/* 1.상단영역 : 메모이제이션을 위해 직접값전달! */}
