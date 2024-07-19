@@ -324,7 +324,15 @@ export default function Board() {
       <h1 className="tit">OPINION</h1>
       {
         // 1. 리스트 모드일 경우 리스트 출력하기
-        mode == "L" && <ListMode bindList={bindList} pagingList={pagingList} />
+        mode == "L" && (
+          <ListMode
+            bindList={bindList}
+            totalCount={totalCount}
+            unitSize={unitSize}
+            pageNum={pageNum}
+            setPageNum={setPageNum}
+          />
+        )
       }
       {
         // 2. 읽기 모드일 경우 상세보기 출력하기
@@ -407,13 +415,7 @@ export default function Board() {
 /****************************************** 
         리스트 모드 서브 컴포넌트
 ******************************************/
-const ListMode = ({
-  bindList,
-  totalCount,
-  unitSize,
-  pageNum,
-  setPageNum,
-}) => {
+const ListMode = ({ bindList, totalCount, unitSize, pageNum, setPageNum }) => {
   /******************************************* 
     [ 전달변수 ] - 2~5까지 4개는 페이징전달변수
     1. bindList : 리스트 결과 요소
@@ -422,6 +424,8 @@ const ListMode = ({
     4. pageNum : 현재 페이지번호
     5. setPageNum : 현재 페이지번호 변경 메서드
   *******************************************/
+
+  // 코드리턴구역 //////////////////////
   return (
     <>
       <div className="selbx">
