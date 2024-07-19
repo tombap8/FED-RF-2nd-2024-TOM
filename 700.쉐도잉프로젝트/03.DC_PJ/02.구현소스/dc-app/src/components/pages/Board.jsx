@@ -780,6 +780,8 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
       pgPgCount++;
    } /// if ////
 
+   console.log("페이징의 페이징개수:",pgPgCount);
+
    // (2) 리스트 시작값 / 한계값 구하기
    // 시작값 : (페페넘-1)*페페단
    let initNum = (pgPgNum.current -1) * pgPgSize;
@@ -793,6 +795,7 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
 
   // [ 페이징의 페이징에 맞게 돌면서 코드만들기 ]
   // 계산된 시작값, 한계값을 기준으로 코드를 생성!
+  // [1] for : 페이징 리스트 출력 시작 ///////////
   for (let i = initNum; i < limitNum; i++) {
     pgCode.push(
       <Fragment key={i}>
@@ -817,7 +820,46 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
         {i+1 !== limitNum && " | "}
       </Fragment>
     );
-  } ////// for /////
+  } ////// [1] for : 페이징 리스트 출력 끝 /////
+
+  {
+    // [2] 페이징 이전블록 이동버튼 만들기
+    // 기준: 1페이지가 아니면 보여라!
+    // 배열 맨앞추가는 unshift()
+  }
+  {
+    // [3] 페이징 다음블록 이동버튼 만들기
+    // 기준: 끝페이지가 아니면 보여라!
+    // 배열 맨뒤추가는 push()
+    pgCode.push(
+      pgPgNum.current === pgPgCount ? "" :
+      // for문으로 만든 리스트에 추가하는 것이므로
+      // key 값이 있어야함! 단, 중복되면 안됨!
+      // 중복안되는 수인 마이너스로 셋팅한다!
+      <Fragment key={-2}>
+        &nbsp;&nbsp;
+        <a 
+          href="#" 
+          onClick={()=>{}}
+          title="move next"
+          style={{marginLeft:"10px"}}
+        >
+          ▶
+        </a>
+        <a 
+          href="#" 
+          onClick={()=>{}}
+          title="move next end"
+          style={{marginLeft:"10px"}}
+        >
+          »
+        </a>
+      </Fragment>
+    );
+  }
+
+
+
 
   // 코드리턴
   return pgCode;
