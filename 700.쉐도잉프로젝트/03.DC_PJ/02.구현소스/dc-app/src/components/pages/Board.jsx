@@ -840,7 +840,10 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
         &nbsp;&nbsp;
         <a 
           href="#" 
-          onClick={()=>{}}
+          onClick={(e)=>{
+            e.preventDefault();
+            goPaging(1,true);
+          }}
           title="move next"
           style={{marginLeft:"10px"}}
         >
@@ -848,7 +851,10 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
         </a>
         <a 
           href="#" 
-          onClick={()=>{}}
+          onClick={(e)=>{
+            e.preventDefault();
+            goPaging(1,false);
+          }}
           title="move next end"
           style={{marginLeft:"10px"}}
         >
@@ -857,6 +863,15 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
       </Fragment>
     );
   }
+
+
+  // [ 블록이동함수 ] //////
+  const goPaging = (dir, opt) => {
+    // dir - 이동방향(오른쪽:+1, 왼쪽:-1)
+    // opt - 일반이동(true), 끝이동(false)
+    console.log("방향:",dir,"/옵션:",opt);
+
+  }; //////////// goPaging /////////////
 
 
 
