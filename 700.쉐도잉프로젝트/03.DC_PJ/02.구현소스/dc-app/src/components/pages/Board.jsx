@@ -768,20 +768,26 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
   // [2] 페이징의 페이징 현재번호
   // - pgPgNum 변수(기본값1)
 
-  // 2페이지의 페이징 한계수 구하기
-   // 1. 페이징의 페이징 개수
-   let pgPgCount = Math.floor(totalCount.current / unitSize);
+  // 2. 페이지의 페이징 한계수 구하기
+   // (1) 페이징의 페이징 개수
+   // 전체 페이징 개수 / 페이징의 페이징 단위수
+   let pgPgCount = Math.floor(pagingCount / pgPgSize);
 
-   // 나머지가 있으면 다음 페이지가 필요함!
+   // 페이징 개수를 페이징의 페이징 단위수로
+   // 나눈 나머지가 있으면 다음 페이징의 번호가 필요함!
    // 나머지가 0이 아니면 1더하기
-   if (totalCount.current % unitSize > 0) {
-     pagingCount++;
-   }
+   if (pagingCount % pgPgSize > 0) {
+      pgPgCount++;
+   } /// if ////
+
+   // (2) 리스트 시작값 / 한계값 구하기
+   // 시작값 : (페페넘-1)*페페단
+   let initNum = (pgPgNum.current -1) * pgPgSize;
+   // 한계값 : 페페넘*페페단
+   let limitNum = pgPgNum.current * pgPgSize;
 
 
-
-
-  // 링크코드 만들기 ///
+  ///// [ 링크코드 만들기 ] /////////////////
   const pgCode = [];
 
   // 1부터 페이지 끝번호까지 돌면서 코드만들기
