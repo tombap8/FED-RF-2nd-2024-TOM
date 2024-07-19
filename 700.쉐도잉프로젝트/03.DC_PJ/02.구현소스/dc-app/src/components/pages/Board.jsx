@@ -797,6 +797,10 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
   // 계산된 시작값, 한계값을 기준으로 코드를 생성!
   // [1] for : 페이징 리스트 출력 시작 ///////////
   for (let i = initNum; i < limitNum; i++) {
+    // 전체 페이징 번호를 만드는 i가 페이징 전체개수보다
+    // 클 경우 나가야함!
+    if(i >= pagingCount) break;
+
     pgCode.push(
       <Fragment key={i}>
         {
@@ -817,7 +821,7 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
           )
         }
         {/* 사이에 바넣기 */}
-        {i+1 !== limitNum && " | "}
+        {(i+1 !== limitNum && i+1 < pagingCount) && " | "}
       </Fragment>
     );
   } ////// [1] for : 페이징 리스트 출력 끝 /////
@@ -870,6 +874,25 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
     // dir - 이동방향(오른쪽:+1, 왼쪽:-1)
     // opt - 일반이동(true), 끝이동(false)
     console.log("방향:",dir,"/옵션:",opt);
+
+    // 새 페이징의 페이징번호
+    let newPgPgNum;
+
+    // 1. opt 옵션에 따라 페이징의 페이징이동번호 만들기
+    // (1) 일반 페이징이동은 현재페이징번호에 증감
+    if(opt) newPgPgNum = pgPgNum.current + dir;
+
+    // 2.페이징의 페이징 번호 업데이트하기
+    pgPgNum.current = newPgPgNum;
+
+    // 3. 새로운 페이지의 페이징 구역의 
+    // 첫번째 페이지번호 업데이트하기
+    // -> 항상 이전블록의 마지막번호 + 1 이 다음페이지 첫번호임!
+    // 이동할 페이지번호
+    let landingPage = ((pgPgNum.current-1)*pgPgSize)+1;
+    console.log("도착페이지번호:",landingPage);
+    // 페이지번호 상태변수 업데이트로 전체 리랜더링!!!
+    setPageNum(landingPage);
 
   }; //////////// goPaging /////////////
 
