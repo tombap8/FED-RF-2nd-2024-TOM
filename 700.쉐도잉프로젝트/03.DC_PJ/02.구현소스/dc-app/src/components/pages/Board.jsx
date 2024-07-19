@@ -791,29 +791,30 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
   ///// [ 링크코드 만들기 ] /////////////////
   const pgCode = [];
 
-  // 1부터 페이지 끝번호까지 돌면서 코드만들기
-  for (let i = 1; i <= pagingCount; i++) {
+  // [ 페이징의 페이징에 맞게 돌면서 코드만들기 ]
+  // 계산된 시작값, 한계값을 기준으로 코드를 생성!
+  for (let i = initNum; i < limitNum; i++) {
     pgCode.push(
       <Fragment key={i}>
         {
           // 페이징번호와 현재페이지번호 일치시 b요소
-          i === pageNum ? (
-            <b>{i}</b>
+          i+1 === pageNum ? (
+            <b>{i+1}</b>
           ) : (
             // 불일치시에 모드 링크코드
             <a
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                setPageNum(i);
+                setPageNum(i+1);
               }}
             >
-              {i}
+              {i+1}
             </a>
           )
         }
         {/* 사이에 바넣기 */}
-        {i !== pagingCount && " | "}
+        {i+1 !== limitNum && " | "}
       </Fragment>
     );
   } ////// for /////
