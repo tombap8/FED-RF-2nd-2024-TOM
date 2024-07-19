@@ -62,7 +62,7 @@ export default function Board() {
   // 페이지당 개수 : 페이지당 레코드수
   const unitSize = 4;
   // 페이징의 페이징 개수 : 한번에 보여줄 페이징개수
-  const pgPgSize = 4;
+  const pgPgSize = 3;
 
   /********************************************** 
         함수명: bindList
