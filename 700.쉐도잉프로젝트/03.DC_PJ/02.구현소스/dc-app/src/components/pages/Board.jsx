@@ -407,7 +407,21 @@ export default function Board() {
 /****************************************** 
         리스트 모드 서브 컴포넌트
 ******************************************/
-const ListMode = ({ bindList, pagingList }) => {
+const ListMode = ({
+  bindList,
+  totalCount,
+  unitSize,
+  pageNum,
+  setPageNum,
+}) => {
+  /******************************************* 
+    [ 전달변수 ] - 2~5까지 4개는 페이징전달변수
+    1. bindList : 리스트 결과 요소
+    2. totalCount : 전체 레코드 개수
+    3. unitSize : 게시판 리스트 당 레코드 개수
+    4. pageNum : 현재 페이지번호
+    5. setPageNum : 현재 페이지번호 변경 메서드
+  *******************************************/
   return (
     <>
       <div className="selbx">
@@ -437,7 +451,14 @@ const ListMode = ({ bindList, pagingList }) => {
         <tfoot>
           <tr>
             <td colSpan="5" className="paging">
-              {pagingList()}
+              {
+                <PagingList
+                  totalCount={totalCount}
+                  unitSize={unitSize}
+                  pageNum={pageNum}
+                  setPageNum={setPageNum}
+                />
+              }
             </td>
           </tr>
         </tfoot>
@@ -701,7 +722,14 @@ const ModifyMode = ({ selRecord }) => {
 /****************************************** 
     PagingList : 페이징 기능 컴포넌트
 ******************************************/
-const PagingList = ({}) => {
+const PagingList = ({ totalCount, unitSize, pageNum, setPageNum }) => {
+  /******************************************* 
+    [ 전달변수 ]
+    1. totalCount : 전체 레코드 개수
+    2. unitSize : 게시판 리스트 당 레코드 개수
+    3. pageNum : 현재 페이지번호
+    4. setPageNum : 현재 페이지번호 변경 메서드
+  *******************************************/
   // 전체 페이징 개수 : 전체레코드수 / 페이지당개수
   // 유의점: 나머지가 있는지 검사해서 있으면 +1
 
