@@ -786,6 +786,7 @@ const PagingList = ({ totalCount, unitSize, pageNum, setPageNum, pgPgNum, pgPgSi
    // 한계값 : 페페넘*페페단
    let limitNum = pgPgNum.current * pgPgSize;
 
+   console.log("시작값:",initNum,"/한계값:",limitNum);
 
   ///// [ 링크코드 만들기 ] /////////////////
   const pgCode = [];
