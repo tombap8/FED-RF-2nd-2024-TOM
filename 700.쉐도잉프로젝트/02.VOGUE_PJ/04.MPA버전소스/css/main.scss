@@ -1,0 +1,12 @@
+@import "./common/reset";
+@import "./common/core";
+@import "./common/common";
+@import "./common/variables";
+
+/* 개별배경이미지 */
+/* 1번 - 1개 */
+@each $className, $imageName in $mainBgImage {
+    .#{$className}{
+        background-image: $imageName;
+    }
+  }
