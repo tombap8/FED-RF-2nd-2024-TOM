@@ -15,7 +15,7 @@
       }
 
       body {
-        background: url(images/3rd/bg.webp) no-repeat center/cover;
+        background: url(images/3rd/bg.jpg) no-repeat center/cover;
         overflow: hidden;
         perspective: 480px;
         font-family: "Poor Story", sans-serif;
@@ -47,7 +47,7 @@
         transform: translateX(-50%) rotateY(5deg);
         width: 40vw;
         text-align: center;
-        background: url(images/3rd/cyberpan.jpg) no-repeat center/cover;
+        background: url(./images/3rd/title_bg.png) no-repeat center/cover;
         border-radius: 20px;
         border: 10px double rgb(0, 208, 255);
         color: #fff;
@@ -149,7 +149,6 @@
         transform: translate(-50%, -50%);
         display: flex;
         flex-wrap: wrap;
-        justify-content: center;
         gap: 2vw 2%;
         width: 800px;
         z-index: 9999;
@@ -158,7 +157,7 @@
       .sbox li {
         position: relative;
         flex-shrink: 0;
-        flex-basis: 18%;
+        flex-basis: calc(100% / 4 - 2%);
       }
 
       .cbox {
@@ -234,22 +233,23 @@
         line-height: 90px;
         text-shadow: 0 0 2px #777;
         z-index: 1;
+        box-shadow: 5px 5px 5px #0000008a;
       }
 
       .s1 > li .kw {
         background-image: radial-gradient(
-          farthest-side at 110% 110%,
-          #b2d0f8 10%,
-          #2047c7 70%
+          closest-corner at 30px 15px,
+          #fff,
+          blue
         );
         animation: updown2 0.5s ease-in-out infinite alternate;
       }
 
       .s2 > li .kw {
         background-image: radial-gradient(
-          farthest-side at 110% 110%,
-          #a2b8ff 10%,
-          #2047c7 70%
+          closest-corner at 30px 15px,
+          #fff,
+          blue
         );
         animation: updown2 0.5s ease-in-out infinite alternate;
       }
@@ -263,10 +263,10 @@
       }
 
       /*
-        .s1>li .cbox>div:first-child::before {
-            animation: rot .5s ease-in-out infinite alternate;
-        }
-*/
+         .s1>li .cbox>div:first-child::before {
+             animation: rot .5s ease-in-out infinite alternate;
+         }
+ */
 
       .sbox > li .cbox > div:first-child::before {
         animation: rot2 0.5s ease-in-out infinite alternate;
@@ -393,6 +393,7 @@
         padding: 0;
         box-sizing: border-box;
         cursor: pointer;
+        filter: drop-shadow(5px 5px 5px #0000008a);
       }
 
       .mtit::before {
@@ -410,7 +411,7 @@
         width: 100%;
         height: 100%;
         border-radius: 50%;
-        background: url(images/3rd/circle.jpg) no-repeat center/cover;
+        background: url(images/3rd/circle.png) no-repeat center/cover;
       }
 
       /* 내부글자 */
@@ -421,9 +422,9 @@
         right: 0;
         bottom: 0;
         font: bold 3vw/20vw Verdana;
-        color: darkblue;
+        color: #f6ff10;
         text-align: center;
-        text-shadow: 0 0 3px #777;
+        text-shadow: 0 0 10px #000;
         white-space: nowrap;
         z-index: 1;
       }
@@ -530,9 +531,6 @@
       }
 
       @media only screen and (max-width: 1200px) {
-        body {
-          overflow: auto;
-        }
         /*큰제목*/
         .mainTit {
           position: absolute;
@@ -541,7 +539,7 @@
           transform: translateX(-50%) rotateY(5deg);
           width: max(40vw, 370px);
           text-align: center;
-          background: url(images/cyberpan.jpg) no-repeat center/cover;
+          background: url(./images/3rd/title_bg.png) no-repeat center/cover;
           color: #fff;
           font-size: max(2vw, 20px);
           line-height: max(4vw, 30px);
@@ -644,7 +642,7 @@
           left: 0;
           width: 100%;
           height: 0px;
-          background: #000 url(images/cyberpan.jpg) no-repeat center 50px/100%;
+          background: #000 url(./images/3rd/title_bg.png) no-repeat center 50px/100%;
           border: 2px solid #00ffeb;
           color: #fff;
           text-shadow: 0 1px #000, 0 -1px #000, 1px 0 #000, -1px 0 #000;
@@ -687,9 +685,9 @@
 
         .s2 > li .kw {
           background-image: radial-gradient(
-            farthest-side at 110% 110%,
-            #a2b8ff 10%,
-            #2047c7 70%
+            farthest-corner at 96% 86%,
+            #009e96 6%,
+            #b1ffed 90%
           );
           animation: updown2 0.5s ease-in-out infinite alternate;
         }
@@ -874,7 +872,7 @@
         var tg = document.getElementsByClassName("mtit");
         var tg2 = document.getElementsByClassName("sbox");
         tg[0].addEventListener("click", function () {
-          // alert("하하");
+          //                alert("하하");
           this.style.top = "10%";
           this.style.left = "70%";
           this.style.transform = "translateY(-50%) scale(.4)";
@@ -892,54 +890,64 @@
     <h1 class="mainTit">
       프론트엔드(React, PHP), <br />
       플러터(Flutter)활용 <br />
-      웹&앱개발 양성과정 1회차 <br />
-      <span>2023.07.27~2024.01.19</span>
+      웹&앱개발 양성과정 2회차 <br />
+      <span>2024.02.07~2024.07.31</span>
     </h1>
 
-    <ul class="sbox s1">      
+    <ul class="sbox s1">
       <li>
-        <a href="#" class="kw">권영혜</a>
+        <a href="#" class="kw">고현우</a>
         <div class="cbox">
           <div></div>
           <div>
-            <h2 class="tit">Pomme Verte</h2>
-            <img src="images/3rd/pf2.png" alt="권영혜PJ" />
+            <h2 class="tit">ZARA</h2>
+            <img src="images/3rd/pf1.png" alt="고현우PJ" />
             <p class="desc">
-              <a href="https://kwonyounghye.github.io/PommeVerte/#/"
+              <a href="https://kohyunwooo.github.io/FED-RF-2nd-PJ-KO/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/02.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/3rd-pj-ko/build/"
                 >1. 사이트</a
               >
-              <a href="https://kwonyounghye.github.io/PommeVerte/ppt/2%EC%B0%A8%ED%8F%AC%ED%8A%B8%ED%8F%B4%EB%A6%AC%EC%98%A4.pptx" download>2. 가이드 문서</a>
+              <a
+                href="https://kohyunwooo.github.io/FED-RF-2nd-PJ-KO/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/02.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/3rd-pj-ko/build/"
+                >2. 가이드 문서</a
+              >
             </p>
           </div>
         </div>
       </li>
       <li>
-        <a href="#" class="kw">김내우</a>
+        <a href="#" class="kw">김민지</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">포폴소개사이트</h2>
+            <img src="images/3rd/pf2.png" alt="김민지PJ" />
+            <p class="desc">
+              <a
+                href="https://minjifirefox.github.io/MJ_PJ_LIVE/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.html"
+                >1. 사이트</a
+              >
+              <a
+                href="https://minjifirefox.github.io/MJ_PJ_LIVE/pdf/1%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8ppt.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">김지현</a>
         <div class="cbox leega1">
           <div></div>
           <div>
-            <h2 class="tit">Tottenham</h2>
-            <img src="images/3rd/pf3.png" alt="김내우PJ" />
+            <h2 class="tit">Seulmit</h2>
+            <img src="images/3rd/pf3.png" alt="김지현PJ" />
             <p class="desc">
-              <a href="https://kimnaewoo.github.io/kimnaewoo-react-pj/"
+              <a
+                href="https://alrang0929.github.io/FED-RF-2th-PJ-jihyeon/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/seulmit-app/build/"
                 >1. 사이트</a
               >
-              <a href="https://kimnaewoo.github.io/kimnaewoo-react-pj/ppt/%EA%B9%80%EB%82%B4%EC%9A%B0%203%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8.pdf" download>2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#" class="kw">김민정</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">converse</h2>
-            <img src="images/3rd/pf4.png" alt="김민정PJ" />
-            <p class="desc">
-              <a href="https://minjxx.github.io/converse/">1. 사이트</a>
               <a
-                href="https://minjxx.github.io/converse/pdf"
+                href="https://alrang0929.github.io/FED-RF-2th-PJ-jihyeon/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/seulmit-app/build/doc/240723_FED_3%EC%B0%A8_%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C_%EA%B9%80%EC%A7%80%ED%98%84.pdf"
                 >2. 가이드 문서</a
               >
             </p>
@@ -947,126 +955,16 @@
         </div>
       </li>
       <li>
-        <a href="#" class="kw">김범서</a>
+        <a href="#" class="kw">박노영</a>
         <div class="cbox">
           <div></div>
           <div>
-            <h2 class="tit">XEXYMIX</h2>
-            <img src="images/3rd/pf5.png" alt="김범서PJ" />
+            <h2 class="tit">PENHALIGON'S</h2>
+            <img src="images/3rd/pf4.png" alt="박노영PJ" />
             <p class="desc">
-              <a href="https://bumstop.github.io/react_xexymix_clone/"
-                >1. 사이트</a
-              >
-              <a href="https://bumstop.github.io/react_xexymix_clone/pdf/3rd/pf5.pdf">2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <!-- <li>
-                <a href="#" class="kw">김윤민</a>
-                <div class="cbox">
-                    <div></div>
-                    <div>
-                        <h2 class="tit">위스키정보사이트</h2>
-                        <img src="images/1st/pf6.png" alt="김윤민PJ" />
-                        <p class="desc">
-                            <a
-                                href="https://yoonminkim.github.io/FED-RF-2023-Project-KYM/05.%20New/HTML_01.Main_new.html"
-                                >1. 사이트</a
-                            >
-                            <a
-                                href="https://yoonminkim.github.io/FED-RF-2023-KYM/999.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/FED-RF-2023-%EA%B9%80%EC%9C%A4%EB%AF%BC-%EB%B0%9C%ED%91%9C%EB%AC%B8%EC%84%9C.pdf"
-                                >2. 가이드 문서</a
-                            >
-                        </p>
-                    </div>
-                </div>
-            </li> -->
-      <li>
-        <a href="#" class="kw">문승준</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">최강야구</h2>
-            <img src="images/3rd/pf7.png" alt="문승준PJ" />
-            <p class="desc">
-              <a href="https://moonlyong.github.io/react-app/first/"
-                >1. 사이트</a>
-              <a href="https://moonlyong.github.io/react-app/3ppt.pdf" download>2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#" class="kw">박서진</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">Expedia</h2>
-            <img src="images/3rd/pf8.png" alt="박서진PJ" />
-            <p class="desc">
-              <a href="https://rumblerum.github.io/FED-RF-2023-Project-PSJ/"
-                >1. 사이트</a
-              >
-              <a href="pdf/2nd/pf8.pdf">2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <!-- <li>
-                <a href="#" class="kw">박수민</a>
-                <div class="cbox">
-                    <div></div>
-                    <div>
-                        <h2 class="tit">사이트</h2>
-                        <img src="images/1st/pf9.png" alt="박수민PJ" />
-                        <p class="desc">
-                            <a
-                                href="https://parksumin0611.github.io/my_project/900.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/start.html"
-                                >1. 사이트</a
-                            >
-                            <a
-                                href="https://parksumin0611.github.io/my_project/900.%EA%B0%9C%EC%9D%B8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/01.%EC%9B%B9%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/04.%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C/%EB%B0%95%EC%88%98%EB%AF%BC-%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C.pdf"
-                                >2. 가이드 문서</a
-                            >
-                        </p>
-                    </div>
-                </div>
-            </li> -->
-      <!-- <li>
-                <a href="#" class="kw">박정현</a>
-                <div class="cbox">
-                    <div></div>
-                    <div>
-                        <h2 class="tit">메가박스</h2>
-                        <img src="images/1st/pf10.png" alt="박정현PJ" />
-                        <p class="desc">
-                            <a
-                                href="https://parkjjung79.github.io/FED-RF-2023-Project-PJH/"
-                                >1. 사이트</a
-                            >
-                            <a
-                                href="https://parkjjung79.github.io/FED-RF-2023-Project-PJH/PJH_project01_guide.pdf"
-                                >2. 가이드 문서</a
-                            >
-                        </p>
-                    </div>
-                </div>
-            </li> -->
-      <li>
-        <a href="#" class="kw">신용진</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">NEXIS</h2>
-            <img src="images/3rd/pf11.png" alt="신용진PJ" />
-            <p class="desc">
+              <a href="https://meow-u.github.io/FED-RF-2nd-PJ-park_no_yoeng/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/nypj-app/build/">1. 사이트</a>
               <a
-                href="https://novall9633.github.io/syj-react-pj/"
-                >1. 사이트</a
-              >
-              <a
-                href="https://novall9633.github.io/syj-react-pj/ppt/NEXIS%20%EA%B0%80%EC%9D%B4%EB%93%9C.pdf"
+                href="https://meow-u.github.io/FED-RF-2nd-PJ-park_no_yoeng/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/nypj-app/public/doc/FED-NY-PJ.pdf"
                 >2. 가이드 문서</a
               >
             </p>
@@ -1074,173 +972,147 @@
         </div>
       </li>
       <li>
-        <a href="#" class="kw">안주현</a>
+        <a href="#" class="kw">유지영</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">ShinHan Art</h2>
+            <img src="images/3rd/pf5.png" alt="유지영PJ" />
+            <p class="desc">
+              <a href="https://jiyeong00.github.io/FED-RF-2nd-PJ-Yu_ji_yeong/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/art-app/build/">1. 사이트</a>
+              <a
+                href="https://jiyeong00.github.io/FED-RF-2nd-PJ-Yu_ji_yeong/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/art-app/build/doc/3%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C_%EC%9C%A0%EC%A7%80%EC%98%81.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">이수진</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">SW19</h2>
+            <img src="images/3rd/pf6.png" alt="이수진PJ" />
+            <p class="desc">
+              <a href="http://localhost:3000/FED-RF-2nd-PJ-SUJIN/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/sw-app/build">1. 사이트</a>
+              <a href="https://nyx-430.github.io/FED-RF-2nd-PJ-SUJIN/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/sw-app/build/doc/SW19_%EA%B0%80%EC%9D%B4%EB%93%9C%EB%AC%B8%EC%84%9C_PPT_%EC%9D%B4%EC%88%98%EC%A7%84.pdf">2. 가이드 문서</a>
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">이우진</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">Plants To The Rescue</h2>
+            <img src="images/3rd/pf7.png" alt="이우진PJ" />
+            <p class="desc">
+              <a href="https://woojin999.github.io/FED-RF-2nd-PJ-LEE_WOO_JIN/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/plants-app/build/">1. 사이트</a>
+              <a
+                href="https://woojin999.github.io/FED-RF-2nd-PJ-LEE_WOO_JIN/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/plants-app/build/doc/3%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8ppt_%EC%9D%B4%EC%9A%B0%EC%A7%84.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">이은경</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">GNC</h2>
+            <img src="images/3rd/pf8.png" alt="이은경PJ" />
+            <p class="desc">
+              <a
+                href="https://lee-eun-kyoung.github.io/FED-RF-2nd-PJ-EK/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/0.3%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/gnc-app/build/"
+                >1. 사이트</a
+              >
+              <a
+                href="https://lee-eun-kyoung.github.io/FED-RF-2nd-PJ-EK/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/0.3%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/gnc-app/build/doc/GNC%20Media_%EC%9D%B4%EC%9D%80%EA%B2%BD.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">이재윤</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">NEXON</h2>
+            <img src="images/3rd/pf9.png" alt="이재윤PJ" />
+            <p class="desc">
+              <a
+                href="https://jaeyoonperl.github.io/FED-RF-2nd-PJ-LEEJAEYOON/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/nexon-app/build/"
+                >1. 사이트</a
+              >
+              <a
+                href="https://jaeyoonperl.github.io/FED-RF-2nd-PJ-LEEJAEYOON/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/nexon-app/build/doc/Nx_PJ_ppt.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">이지영</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">네니아</h2>
+            <img src="images/3rd/pf10.png" alt="이지영PJ" />
+            <p class="desc">
+              <a href="https://gieyoung.github.io/FED-RF-2nd-PJ-gieyoung/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%20%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/nenia-app/build/"
+                >1. 사이트</a
+              >
+              <a
+                href="https://gieyoung.github.io/FED-RF-2nd-PJ-gieyoung/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%20%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/nenia-app/public/doc/%5B%EC%9D%B4%EC%A7%80%EC%98%81%5D%20%EB%84%A4%EB%8B%88%EC%95%84%203%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EB%B0%9C%ED%91%9C%EC%9E%90%EB%A3%8C.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">임도연</a>
+        <div class="cbox">
+          <div></div>
+          <div>
+            <h2 class="tit">새미네부엌</h2>
+            <img src="images/3rd/pf11.png" alt="임도연PJ" />
+            <p class="desc">
+              <a href="https://doyeun93.github.io/FED-RF-2nd-PJ-IDY/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/idy-app/build/"
+                >1. 사이트</a
+              >
+              <a
+                href="https://doyeun93.github.io/FED-RF-2nd-PJ-IDY/2%EC%B0%A8%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/03.%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/idy-app/build/doc/%EC%83%88%EB%AF%B8%EB%84%A4%20%EB%B6%80%EC%97%8C%20%ED%94%8C%EB%9E%AB%ED%8F%BC.pdf"
+                >2. 가이드 문서</a
+              >
+            </p>
+          </div>
+        </div>
+      </li>
+      <li>
+        <a href="#" class="kw">정윤철</a>
         <div class="cbox leega1">
           <div></div>
           <div>
-            <h2 class="tit">LEOPOLO</h2>
-            <img src="images/3rd/pf12.png" alt="안주현PJ" />
+            <h2 class="tit">BOSE</h2>
+            <img src="images/3rd/pf12.png" alt="정윤철PJ" />
             <p class="desc">
               <a
-                href="https://itjuh.github.io/ajh-fed-react-pj/intro/intro.html"
+                href="https://iron-yun.github.io/FED-RF-2nd-PJ-YUN-CHEOL-/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/bose-pj-app/build/"
                 >1. 사이트</a
               >
-              <a href="https://itjuh.github.io/ajh-fed-react-pj/guide/leopold.pdf">2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#" class="kw">유승환</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">MR.STREET</h2>
-            <img src="images/3rd/pf13.png" alt="유승환PJ" />
-            <p class="desc">
               <a
-                href="https://yush0723.github.io/FED-RF-2023-YUSH/999.%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82/glist.html#/glist"
-                >1. 사이트</a
-              >
-              <a href="https://yush0723.github.io/FED-RF-2023-YUSH/999.%EA%B0%9C%EC%9D%B8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B82/pdf/tt_final.pdf"
+                href="https://iron-yun.github.io/FED-RF-2nd-PJ-YUN-CHEOL-/2%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/%EA%B5%AC%ED%98%84%EC%86%8C%EC%8A%A4/bose-pj-app/build/doc/Bose-PJ.pdf"
                 >2. 가이드 문서</a
               >
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#" class="kw">유혜경</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">AIR BNB</h2>
-            <img src="images/3rd/pf14.png" alt="유혜경PJ" />
-            <p class="desc">
-              <a href="https://hyeppyday.github.io/hg-react-pj/">1. 사이트</a>
-              <a href="https://hyeppyday.github.io/hg-react-pj/Airbnb.pdf">2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#" class="kw">이동엽</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">THE BLACK LABEL</h2>
-            <img src="images/3rd/pf15.png" alt="이동엽PJ" />
-            <p class="desc">
-              <a href="https://zdzd3643.github.io/nick-theblack-pj/"
-                >1. 사이트</a
-              >
-              <a href="ttps://zdzd3643.github.io/nick-theblack-pj//pdf/3rd/pf15.pdf">2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <!-- <li>
-        <a href="#" class="kw">이조은</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">ANIMAX</h2>
-            <img src="images/3rd/pf16.png" alt="이조은PJ" />
-            <p class="desc">
-              <a href="https://zoe-world.github.io/FED-RF-2023-Dist-LJE/#"
-                >1. 사이트</a
-              >
-              <a
-                href="https://zoe-world.github.io/FED-RF-2023-Project-LJE/04.%EB%B0%9C%ED%91%9C/MDLA_%EA%B8%B0%ED%9A%8D%EC%84%9C.pdf"
-                >2. 가이드 문서</a
-              >
-            </p>
-          </div>
-        </div>
-      </li> -->
-      <!-- <li>
-                <a href="#" class="kw">임경은</a>
-                <div class="cbox">
-                    <div></div>
-                    <div>
-                        <h2 class="tit">kairos</h2>
-                        <img src="images/3rd/pf17.png" alt="임경은PJ" />
-                        <p class="desc">
-                            <a
-                                href="https://imlimge.github.io/LKE-kairos/"
-                                >1. 사이트</a
-                            >
-                            <a
-                                href="./pdf/3rd/pf17.pdf"
-                                >2. 가이드 문서</a
-                            >
-                        </p>
-                    </div>
-                </div>
-            </li> -->
-      <li>
-        <a href="#" class="kw">최정우</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">vercel</h2>
-            <img src="images/3rd/pf18.png" alt="최정우PJ" />
-            <p class="desc">
-              <a href="https://next-weather-app-13.vercel.app/">1. 사이트</a>
-              <a
-                href="https://docs.google.com/presentation/d/18Z0f4UJ2cr2uax62JKVgJvnZ_r_8iV8p/edit#slide=id.p1"
-                >2. 가이드 문서</a
-              >
-            </p>
-          </div>
-        </div>
-      </li>
-      <!-- <li>
-                <a href="#" class="kw">최수진</a>
-                <div class="cbox">
-                    <div></div>
-                    <div>
-                        <h2 class="tit">쉑쉑버거</h2>
-                        <img src="images/1st/pf1.png" alt="최수진PJ" />
-                        <p class="desc">
-                            <a
-                                href="https://choisj01.github.io/sj-pj-3rd/"
-                                >1. 사이트</a
-                            >
-                            <a
-                                href="https://choisj01.github.io/FED_RF-2023-Project-CSJ/FED_RF_2023_Project_CSJ/1%EC%B0%A8%20%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20SHAKESHACK(%EC%B5%9C%EC%88%98%EC%A7%84)_230922.pdf"
-                                >2. 가이드 문서</a
-                            >
-                        </p>
-                    </div>
-                </div>
-            </li> -->
-      <li>
-        <a href="#" class="kw">최지민</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">유니버셜스튜디오</h2>
-            <img src="images/3rd/pf19.png" alt="최지민PJ" />
-            <p class="desc">
-              <a href="https://ogreencakeo.github.io/ogreencakeo-react-pj/"
-                >1. 사이트</a
-              >
-              <a href="https://ogreencakeo.github.io/ogreencakeo-react-pj/%EC%B5%9C%EC%A7%80%EB%AF%BC(%EC%9C%A0%EB%8B%88%EB%B2%84%EC%84%A4%EC%8A%A4%ED%8A%9C%EB%94%94%EC%98%A4).pdf">2. 가이드 문서</a>
-            </p>
-          </div>
-        </div>
-      </li>
-      <li>
-        <a href="#" class="kw">최진구</a>
-        <div class="cbox">
-          <div></div>
-          <div>
-            <h2 class="tit">Jin Goo Choi</h2>
-            <img src="images/3rd/pf20.png" alt="최진구PJ" />
-            <p class="desc">
-              <a href="https://jingoochoi.github.io/person/">1. 사이트</a>
-              <a href="./pdf/3rd/pf20.pdf">2. 가이드 문서</a>
             </p>
           </div>
         </div>
