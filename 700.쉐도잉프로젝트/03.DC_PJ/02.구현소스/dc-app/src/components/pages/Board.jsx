@@ -181,6 +181,8 @@ export default function Board() {
       // 리스트모드로 변경
       case "List":
         setMode("L");
+        // 검색시에도 전체 데이터나오게 함
+        setKeyword(['','']);
         break;
       // 서브밋일 경우 함수호출!
       case "Submit":
