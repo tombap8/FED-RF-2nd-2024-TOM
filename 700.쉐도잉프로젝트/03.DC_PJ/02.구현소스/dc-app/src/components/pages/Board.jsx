@@ -130,7 +130,12 @@ export default function Board() {
 
     console.log("일부데이터:", selData);
     console.log("여기:", selData.length);
-    if (selData.length == 0) setPageNum(pageNum - 1);
+
+    // if (selData.length == 0) setPageNum(pageNum - 1);
+    // -> ListMode컴포넌트가 업데이트 되는동안에
+    // 리스트 관련 상태변수를 업데이트하면 
+    // 업데이트 불가 에러 메시지가 발생한다!
+    // 따라서 이런 코드는 다른 방식으로 변경해야함!
 
     return (
       // 전체 데이터 개수가 0 초과일 경우 출력
@@ -508,6 +513,10 @@ const ListMode = ({
               console.log("검색해!");
               // [검색기준,검색어] -> setKeyword 업데이트
               setKeyword([creteria, txt]);
+              // 검색후엔 첫페이지로 보내기
+              setPageNum(1);
+              // 검색후엔 페이지의 페이징 번호 초기화(1)
+              pgPgNum.current = 1;
             }
             // 빈값일 경우
             else {
@@ -533,6 +542,8 @@ const ListMode = ({
           <tr>
             <td colSpan="5" className="paging">
               {
+                // 데이터 개수가 0이상일때만 출력
+                totalCount.current > 0 &&
                 <PagingList
                   totalCount={totalCount}
                   unitSize={unitSize}
@@ -832,12 +843,14 @@ const PagingList = ({
     pagingCount++;
   }
 
-  // console.log(
-  //   "페이징개수:",
-  //   pagingCount,
-  //   "나머지개수:",
-  //   totalCount.current % unitSize
-  // );
+  console.log(
+    "페이징개수:",
+    pagingCount,
+    "전체레코드수:",
+    totalCount.current,
+    "나머지개수:",
+    totalCount.current % unitSize
+  );
 
   // [ 페이징의 페이징 하기 ]
   // [1] 페이징 블록
@@ -858,6 +871,8 @@ const PagingList = ({
   } /// if ////
 
   console.log("페이징의 페이징개수:", pgPgCount);
+  console.log("페이징의 페이징번호:", pgPgNum.current);
+  // 검색시 페이징번호 초기화필요!
 
   // (2) 리스트 시작값 / 한계값 구하기
   // 시작값 : (페페넘-1)*페페단
