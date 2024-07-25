@@ -48,8 +48,8 @@ export default function Board() {
   // (3) 글쓰기 모드(W) : Write Mode
   // (4) 수정 모드(M) : Modify Mode (삭제포함)
   // [3] 검색어 저장변수 : 배열 [기준,검색어]
-  const [keyword, setKeyword] = useState(['','']);
-  console.log("[기준,키워드]",keyword);
+  const [keyword, setKeyword] = useState(["", ""]);
+  console.log("[기준,키워드]", keyword);
 
   // [ 참조변수 ] ///
   // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
@@ -74,20 +74,26 @@ export default function Board() {
   const bindList = () => {
     // console.log(baseData);
 
-    // 1. 전체 원본데이터 선택    
+    // 1. 전체 원본데이터 선택
     let orgData;
-    
+
     // 1-1.검색어가 있는경우 필터하기
     // keyword[0] : 검색기준 / keyword[1] : 검색어
-    if(keyword[1] != ''){
-      orgData = baseData.filter(v=>{
-        console.log(v[keyword[0]].indexOf(keyword[1]));
-        if(v[keyword[0]].indexOf(keyword[1]) != -1) 
-        return true;
+    if (keyword[1] != "") {
+      orgData = baseData.filter((v) => {
+        // 1. 소문자 처리하기
+        // (1) 검색원본 데이터
+        let orgTxt = v[keyword[0]].toLowerCase();
+        // (2) 검색어 데이터
+        let txt = keyword[1].toLowerCase();
+
+        // console.log(v[keyword[0]].indexOf(keyword[1]));
+        // 2. 필터 검색조건에 맞는 데이터 수집하기
+        if (orgTxt.indexOf(txt) != -1) return true;
       });
     } /////// if //////////
     // 1-2.검색어가 없는경우 전체넣기
-    else{
+    else {
       orgData = baseData;
     } //////// else ///////
 
@@ -126,29 +132,39 @@ export default function Board() {
     console.log("여기:", selData.length);
     if (selData.length == 0) setPageNum(pageNum - 1);
 
-    return selData.map((v, i) => (
-      <tr key={i}>
-        {/* 시작번호를 더하여 페이지별 순번을 변경 */}
-        <td>{i + 1 + sNum}</td>
-        <td>
-          <a
-            href="#"
-            onClick={(e) => {
-              e.preventDefault();
-              // 읽기모드로 변경!
-              setMode("R");
-              // 해당 데이터 저장하기
-              selRecord.current = v;
-            }}
-          >
-            {v.tit}
-          </a>
-        </td>
-        <td>{v.unm}</td>
-        <td>{v.date}</td>
-        <td>{v.cnt}</td>
-      </tr>
-    ));
+    return (
+      // 전체 데이터 개수가 0 초과일 경우 출력
+      // 0초과 ? map돌기코드 : 없음코드
+      totalCount.current > 0 ? (
+        selData.map((v, i) => (
+          <tr key={i}>
+            {/* 시작번호를 더하여 페이지별 순번을 변경 */}
+            <td>{i + 1 + sNum}</td>
+            <td>
+              <a
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // 읽기모드로 변경!
+                  setMode("R");
+                  // 해당 데이터 저장하기
+                  selRecord.current = v;
+                }}
+              >
+                {v.tit}
+              </a>
+            </td>
+            <td>{v.unm}</td>
+            <td>{v.date}</td>
+            <td>{v.cnt}</td>
+          </tr>
+        ))
+      ) : (// 데이터가 없을 때 출력 /////////
+        <tr>
+          <td colSpan="5">There is no data.</td>
+        </tr>
+      )
+    ); //// return /////
   }; /////////// bindList 함수 /////////////////
 
   // 버튼 클릭시 변경함수 ////////
@@ -476,26 +492,29 @@ const ListMode = ({
           <option value="1">Ascending</option>
         </select>
         <input id="stxt" type="text" maxLength="50" />
-        <button className="sbtn" 
-        onClick={(e)=>{
-          // 검색기준값 읽어오기
-          let creteria = $(e.target).siblings('.cta').val();
-          console.log("기준값:",creteria);
-          // 검색어 읽어오기
-          let txt = $(e.target).prev().val();
-          console.log(typeof txt, "/검색어:", txt);
-          // input값은 안쓰면 빈스트링이 넘어옴!
-          if(txt!=''){
-            console.log("검색해!");
-            // [검색기준,검색어] -> setKeyword 업데이트
-            setKeyword([creteria,txt]);  
-          }
-          // 빈값일 경우
-          else{
-            alert("Please enter a keyword!");
-          }
-
-        }}>Search</button>
+        <button
+          className="sbtn"
+          onClick={(e) => {
+            // 검색기준값 읽어오기
+            let creteria = $(e.target).siblings(".cta").val();
+            console.log("기준값:", creteria);
+            // 검색어 읽어오기
+            let txt = $(e.target).prev().val();
+            console.log(typeof txt, "/검색어:", txt);
+            // input값은 안쓰면 빈스트링이 넘어옴!
+            if (txt != "") {
+              console.log("검색해!");
+              // [검색기준,검색어] -> setKeyword 업데이트
+              setKeyword([creteria, txt]);
+            }
+            // 빈값일 경우
+            else {
+              alert("Please enter a keyword!");
+            }
+          }}
+        >
+          Search
+        </button>
       </div>
       <table className="dtbl" id="board">
         <thead>
