@@ -47,6 +47,9 @@ export default function Board() {
   // (2) 글보기 모드(R) : Read Mode
   // (3) 글쓰기 모드(W) : Write Mode
   // (4) 수정 모드(M) : Modify Mode (삭제포함)
+  // [3] 검색어 저장변수 : 배열 [기준,검색어]
+  const [keyword, setKeyword] = useState(['','']);
+  console.log(keyword);
 
   // [ 참조변수 ] ///
   // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
@@ -454,7 +457,24 @@ const ListMode = ({
           <option value="1">Ascending</option>
         </select>
         <input id="stxt" type="text" maxLength="50" />
-        <button className="sbtn">Search</button>
+        <button className="sbtn" 
+        onClick={(e)=>{
+          // 검색기준값 읽어오기
+          let creteria = $(e.target).siblings('.cta').val();
+          console.log("기준값:",creteria);
+          // 검색어 읽어오기
+          let txt = $(e.target).prev().val();
+          console.log(typeof txt, "/검색어:", txt);
+          // input값은 안쓰면 빈스트링이 넘어옴!
+          if(txt!=''){
+            console.log("검색해!");
+          }
+          // 빈값일 경우
+          else{
+            alert("Please enter a keyword!");
+          }
+
+        }}>Search</button>
       </div>
       <table className="dtbl" id="board">
         <thead>
