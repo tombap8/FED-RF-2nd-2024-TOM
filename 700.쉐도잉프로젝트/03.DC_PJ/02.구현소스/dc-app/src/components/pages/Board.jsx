@@ -1,8 +1,8 @@
 // 오피니언 페이지 컴포넌트 ///
-import { Fragment, useContext, useEffect, useRef, useState } from "react";
+import { Fragment, useContext, useRef, useState } from "react";
 
 // 사용자 기본정보 생성 함수
-import { initData } from "../func/mem_fn";
+// import { initData } from "../func/mem_fn";
 
 // 로컬스토리지 게시판 기본데이터 제이슨 -> 로컬쓰로 대체!!!
 // import baseData from "../data/board.json";
@@ -49,7 +49,7 @@ export default function Board() {
   // (4) 수정 모드(M) : Modify Mode (삭제포함)
   // [3] 검색어 저장변수 : 배열 [기준,검색어]
   const [keyword, setKeyword] = useState(['','']);
-  console.log(keyword);
+  console.log("[기준,키워드]",keyword);
 
   // [ 참조변수 ] ///
   // [1] 전체 개수 - 매번 계산하지 않도록 참조변수로!
@@ -74,8 +74,25 @@ export default function Board() {
   const bindList = () => {
     // console.log(baseData);
 
-    // 1. 전체 원본데이터 선택
-    let orgData = baseData;
+    // 1. 전체 원본데이터 선택    
+    let orgData;
+    
+    // 1-1.검색어가 있는경우 필터하기
+    // keyword[0] : 검색기준 / keyword[1] : 검색어
+    if(keyword[1] != ''){
+      orgData = baseData.filter(v=>{
+        console.log(v[keyword[0]].indexOf(keyword[1]));
+        if(v[keyword[0]].indexOf(keyword[1]) != -1) 
+        return true;
+      });
+    } /////// if //////////
+    // 1-2.검색어가 없는경우 전체넣기
+    else{
+      orgData = baseData;
+    } //////// else ///////
+
+    // 1-3. 새로 데이터를 담은 후 바로 전체개수 업데이트 필수!
+    totalCount.current = orgData.length;
 
     // 2. 정렬 적용하기 : 내림차순
     orgData.sort((a, b) =>
@@ -341,6 +358,7 @@ export default function Board() {
             setPageNum={setPageNum}
             pgPgNum={pgPgNum}
             pgPgSize={pgPgSize}
+            setKeyword={setKeyword}
           />
         )
       }
@@ -433,6 +451,7 @@ const ListMode = ({
   setPageNum,
   pgPgNum,
   pgPgSize,
+  setKeyword,
 }) => {
   /******************************************* 
     [ 전달변수 ] - 2~5까지 4개는 페이징전달변수
@@ -468,6 +487,8 @@ const ListMode = ({
           // input값은 안쓰면 빈스트링이 넘어옴!
           if(txt!=''){
             console.log("검색해!");
+            // [검색기준,검색어] -> setKeyword 업데이트
+            setKeyword([creteria,txt]);  
           }
           // 빈값일 경우
           else{
