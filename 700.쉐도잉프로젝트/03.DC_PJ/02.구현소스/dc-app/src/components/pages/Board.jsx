@@ -116,7 +116,11 @@ export default function Board() {
 
     // "idx"정렬항목일 경우만 Number()처리함수
     const chgVal = x => 
-    sortCta=="idx"?Number(x[sortCta]):x[sortCta];
+    sortCta=="idx"
+    // idx는 숫자형으로 정렬
+    ?Number(x[sortCta])
+    // "tit"는 문자형이고 소문자로 비교
+    :x[sortCta].toLowerCase();
 
     orgData.sort((a, b) =>
       chgVal(a) > chgVal(b) 
@@ -402,8 +406,11 @@ export default function Board() {
             pgPgNum={pgPgNum}
             pgPgSize={pgPgSize}
             setKeyword={setKeyword}
+            keyword={keyword}
             sort={sort}
             setSort={setSort}
+            sortCta={sortCta}
+            setSortCta={setSortCta}
           />
         )
       }
@@ -496,6 +503,7 @@ const ListMode = ({
   setPageNum,
   pgPgNum,
   pgPgSize,
+  keyword,
   setKeyword,
   sort,
   setSort,
@@ -511,11 +519,12 @@ const ListMode = ({
     5. setPageNum : 현재 페이지번호 변경 메서드
     6. pgPgNum : 페이지번호
     7. pgPgSize : 페이징의 페이지 크기
-    8. setKeyword : 검색어
-    9. sort : 정렬기준
-    10. setSort : 정렬기준셋팅
-    11. sortCta : 정렬항목
-    12. setSortCta : 정렬항목셋팅
+    8. keyword : 검색어
+    9. setKeyword : 검색어셋팅
+    10. sort : 정렬기준
+    11. setSort : 정렬기준셋팅
+    12. sortCta : 정렬항목
+    13. setSortCta : 정렬항목셋팅
   *******************************************/
 
   // 코드리턴구역 //////////////////////
@@ -566,9 +575,27 @@ const ListMode = ({
         >
           Search
         </button>
+        {
+          // 키워드가 있는 경우에 전체 리스트 돌아가기 버튼출력
+          keyword[0] !== '' &&
+          <button className="back-total-list"
+            onClick={(e)=>{
+              // 검색어 초기화
+              setKeyword(['','']);
+              // 검색어삭제
+              $(e.currentTarget).siblings("#stxt").empty();
+              // 첫페이지번호변경
+              setPageNum(1);
+            }}
+          >
+            Back to Total List
+          </button>
+
+        }
         
         {/* 정렬기준선택박스 */}
         <select name="sort_cta" id="sort_cta" className="sort_cta"
+        onChange={(e)=>setSortCta(e.currentTarget.value)}
         style={{float:"right",translate:"0 5px"}}>
           <option value="idx" 
           selected={sortCta=="idx"?true:false}>Recent</option>
