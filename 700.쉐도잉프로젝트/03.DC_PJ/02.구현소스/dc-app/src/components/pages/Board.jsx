@@ -547,7 +547,15 @@ const ListMode = ({
           selected={sort==-1?true:false}>
             Ascending</option>
         </select>
-        <input id="stxt" type="text" maxLength="50" />
+        <input id="stxt" type="text" maxLength="50"
+        onKeyUp={(e)=>{
+          // e.keyCode는 번호로 13이 엔터
+          // e.key 는 문자로 "Enter"가 엔터
+          console.log(e.key,e.keyCode);
+          if(e.key=="Enter")
+          {$(e.currentTarget).next().trigger("click")}
+        }}
+        />
         <button
           className="sbtn"
           onClick={(e) => {
@@ -584,6 +592,12 @@ const ListMode = ({
               setKeyword(['','']);
               // 검색어삭제
               $(e.currentTarget).siblings("#stxt").empty();
+              // 검색항목초기화
+              $(e.currentTarget).siblings("#cta").val("tit");
+              // 정렬초기화
+              setSort(1);
+              // 정렬항목초기화
+              setSortCta('idx');
               // 첫페이지번호변경
               setPageNum(1);
             }}
