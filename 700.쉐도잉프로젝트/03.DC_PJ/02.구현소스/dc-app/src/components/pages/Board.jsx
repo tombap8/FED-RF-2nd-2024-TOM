@@ -551,7 +551,7 @@ const ListMode = ({
         onKeyUp={(e)=>{
           // e.keyCode는 번호로 13이 엔터
           // e.key 는 문자로 "Enter"가 엔터
-          console.log(e.key,e.keyCode);
+          // console.log(e.key,e.keyCode);
           if(e.key=="Enter")
           {$(e.currentTarget).next().trigger("click")}
         }}
@@ -590,8 +590,8 @@ const ListMode = ({
             onClick={(e)=>{
               // 검색어 초기화
               setKeyword(['','']);
-              // 검색어삭제
-              $(e.currentTarget).siblings("#stxt").empty();
+              // 검색어삭제(input이니까 val())
+              $(e.currentTarget).siblings("#stxt").val('');
               // 검색항목초기화
               $(e.currentTarget).siblings("#cta").val("tit");
               // 정렬초기화
