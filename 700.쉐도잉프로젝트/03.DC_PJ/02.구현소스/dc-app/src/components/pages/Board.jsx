@@ -20,10 +20,8 @@ import "../../css/board_file.scss";
 import { initBoardData } from "../func/board_fn";
 import { dCon } from "../modules/dCon";
 
-
 // 엑시오스 가져오기 : 파일전송 요청용
-import axios from 'axios';
-
+import axios from "axios";
 
 export default function Board() {
   // 컨텍스트 사용하기
@@ -78,7 +76,7 @@ export default function Board() {
   const uploadFile = useRef(null);
 
   // 파일저장변수 업데이트 함수
-  const updateFileInfo = x => uploadFile.current = x;
+  const updateFileInfo = (x) => (uploadFile.current = x);
 
   // [ 일반 변수로 매번 같은값을 유지하면 되는 변수 ]
   // 페이지당 개수 : 페이지당 레코드수
@@ -125,18 +123,15 @@ export default function Board() {
     // 정렬항목은 sortCta값에 따름("idx"/"tit")
 
     // "idx"정렬항목일 경우만 Number()처리함수
-    const chgVal = x => 
-    sortCta=="idx"
-    // idx는 숫자형으로 정렬
-    ?Number(x[sortCta])
-    // "tit"는 문자형이고 소문자로 비교
-    :x[sortCta].toLowerCase();
+    const chgVal = (x) =>
+      sortCta == "idx"
+        ? // idx는 숫자형으로 정렬
+          Number(x[sortCta])
+        : // "tit"는 문자형이고 소문자로 비교
+          x[sortCta].toLowerCase();
 
     orgData.sort((a, b) =>
-      chgVal(a) > chgVal(b) 
-      ? -1 * sort 
-      : chgVal(a) < chgVal(b) 
-      ? 1 * sort : 0
+      chgVal(a) > chgVal(b) ? -1 * sort : chgVal(a) < chgVal(b) ? 1 * sort : 0
     );
 
     // 3. 일부 데이터만 선택
@@ -167,7 +162,7 @@ export default function Board() {
 
     // if (selData.length == 0) setPageNum(pageNum - 1);
     // -> ListMode컴포넌트가 업데이트 되는동안에
-    // 리스트 관련 상태변수를 업데이트하면 
+    // 리스트 관련 상태변수를 업데이트하면
     // 업데이트 불가 에러 메시지가 발생한다!
     // 따라서 이런 코드는 다른 방식으로 변경해야함!
 
@@ -198,7 +193,8 @@ export default function Board() {
             <td>{v.cnt}</td>
           </tr>
         ))
-      ) : (// 데이터가 없을 때 출력 /////////
+      ) : (
+        // 데이터가 없을 때 출력 /////////
         <tr>
           <td colSpan="5">There is no data.</td>
         </tr>
@@ -221,7 +217,7 @@ export default function Board() {
       case "List":
         setMode("L");
         // 검색시에도 전체 데이터나오게 함
-        setKeyword(['','']);
+        setKeyword(["", ""]);
         break;
       // 서브밋일 경우 함수호출!
       case "Submit":
@@ -317,8 +313,7 @@ export default function Board() {
         idx: maxNum + 1,
         tit: title,
         cont: cont,
-        att: uploadFile.current?
-        uploadFile.current.name:'',
+        att: uploadFile.current ? uploadFile.current.name : "",
         date: today.toJSON().substr(0, 10),
         uid: person.uid,
         unm: person.unm,
@@ -330,50 +325,47 @@ export default function Board() {
       let isFail = false;
 
       // [선택파일 서버전송]
-        // 파일이 있을 때만 전송
-        if(uploadFile.current){
+      // 파일이 있을 때만 전송
+      if (uploadFile.current) {
+        // 원래는 form 태그로 싸여있어서 서버전송을 하지만
+        // 없어도 form 전송을 서버에 할 수 있는 객체가 있다!
+        // FormData() 클래스 객체임!
+        const formData = new FormData();
+        // 전송할 데이터 추가하기
+        formData.append("file", uploadFile.current);
 
-          // 원래는 form 태그로 싸여있어서 서버전송을 하지만
-          // 없어도 form 전송을 서버에 할 수 있는 객체가 있다!
-          // FormData() 클래스 객체임!
-          const formData = new FormData();
-          // 전송할 데이터 추가하기
-          formData.append("file", uploadFile.current);
-  
-          // 폼데이터에는 키값이 있음 확인하자!
-          for (const key of formData) console.log(key);
-  
-          // 서버전송은 엑시오스로 하자!
-          // server.js에 서버에서 post방식으로 전송받는
-          // 셋팅이 익스프레스에서 되어 있어야함!
-          // 첫번째 셋팅값 전송url에는 서버에 셋팅된
-          // path값과 같은 upload라는 하위 경로를 써준다!
-          // 두번째 셋팅값은 서버로 전송될 파일정보를 써준다!
-          axios
-            .post("http://localhost:8080/xxx", formData)
-            .then((res) => {
-              // res는 성공결과 리턴값 변수
-              const { fileName } = res.data;
-              console.log("전송성공!!!", fileName);
-            })
-            .catch((err) => {
-              // err은 에러발생시 에러정보 변수
-              console.log("에러발생:", err);
-              // 실패 했으므로 업로드 실패상태 변수업데이트
-              isFail = true;
-            });
-  
-            // 파일참조변수 초기화필수!!!
-            uploadFile.current = null;
-  
-          } ///////////////// if ///////////////
+        // 폼데이터에는 키값이 있음 확인하자!
+        for (const key of formData) console.log(key);
 
-          // 파일업로드 실패시 아래 코드는 실행하지 않음!
-          // 즉, DB 에 입력하지 않는다!
-          if(isFail) {
-            alert("파일전송에 실패하였습니다~!!!");
-            return;
-          } /////// if //////////
+        // 서버전송은 엑시오스로 하자!
+        // server.js에 서버에서 post방식으로 전송받는
+        // 셋팅이 익스프레스에서 되어 있어야함!
+        // 첫번째 셋팅값 전송url에는 서버에 셋팅된
+        // 포스트 방식 전송명인 /xxx를 하위경로에 써준다!
+        axios
+          .post("http://localhost:8080/xxx", formData)
+          .then((res) => {
+            // res는 성공결과 리턴값 변수
+            const { fileName } = res.data;
+            console.log("전송성공!!!", fileName);
+          })
+          .catch((err) => {
+            // err은 에러발생시 에러정보 변수
+            console.log("에러발생:", err);
+            // 실패 했으므로 업로드 실패상태 변수업데이트
+            isFail = true;
+          });
+
+        // 파일참조변수 초기화필수!!!
+        uploadFile.current = null;
+      } ///////////////// if ///////////////
+
+      // 파일업로드 실패시 아래 코드는 실행하지 않음!
+      // 즉, DB 에 입력하지 않는다!
+      if (isFail) {
+        alert("파일전송에 실패하였습니다~!!!");
+        return;
+      } /////// if //////////
 
       // 4. 로컬스에 입력하기 //////
       // (1) 로컬스 파싱
@@ -484,7 +476,9 @@ export default function Board() {
       {
         // 3. 쓰기 모드일 경우 로그인 정보 보내기
         // sts값은 문자열이므로 파싱하여 객체로 보냄
-        mode == "W" && <WriteMode sts={JSON.parse(sts)} updateFileInfo={updateFileInfo} />
+        mode == "W" && (
+          <WriteMode sts={JSON.parse(sts)} updateFileInfo={updateFileInfo} />
+        )
       }
       {
         // 4. 수정 모드일 경우 상세보기 출력하기
@@ -599,25 +593,32 @@ const ListMode = ({
           <option value="cont">Contents</option>
           <option value="unm">Writer</option>
         </select>
-        
-        <select name="sel" id="sel" className="sel"
-        onChange={()=>setSort(sort*-1)}
+
+        <select
+          name="sel"
+          id="sel"
+          className="sel"
+          onChange={() => setSort(sort * -1)}
         >
-          <option value="0" 
-          selected={sort==1?true:false}>
-            Descending</option>
-          <option value="1"
-          selected={sort==-1?true:false}>
-            Ascending</option>
+          <option value="0" selected={sort == 1 ? true : false}>
+            Descending
+          </option>
+          <option value="1" selected={sort == -1 ? true : false}>
+            Ascending
+          </option>
         </select>
-        <input id="stxt" type="text" maxLength="50"
-        onKeyUp={(e)=>{
-          // e.keyCode는 번호로 13이 엔터
-          // e.key 는 문자로 "Enter"가 엔터
-          // console.log(e.key,e.keyCode);
-          if(e.key=="Enter")
-          {$(e.currentTarget).next().trigger("click")}
-        }}
+        <input
+          id="stxt"
+          type="text"
+          maxLength="50"
+          onKeyUp={(e) => {
+            // e.keyCode는 번호로 13이 엔터
+            // e.key 는 문자로 "Enter"가 엔터
+            // console.log(e.key,e.keyCode);
+            if (e.key == "Enter") {
+              $(e.currentTarget).next().trigger("click");
+            }
+          }}
         />
         <button
           className="sbtn"
@@ -648,36 +649,43 @@ const ListMode = ({
         </button>
         {
           // 키워드가 있는 경우에 전체 리스트 돌아가기 버튼출력
-          keyword[0] !== '' &&
-          <button className="back-total-list"
-            onClick={(e)=>{
-              // 검색어 초기화
-              setKeyword(['','']);
-              // 검색어삭제(input이니까 val())
-              $(e.currentTarget).siblings("#stxt").val('');
-              // 검색항목초기화
-              $(e.currentTarget).siblings("#cta").val("tit");
-              // 정렬초기화
-              setSort(1);
-              // 정렬항목초기화
-              setSortCta('idx');
-              // 첫페이지번호변경
-              setPageNum(1);
-            }}
-          >
-            Back to Total List
-          </button>
-
+          keyword[0] !== "" && (
+            <button
+              className="back-total-list"
+              onClick={(e) => {
+                // 검색어 초기화
+                setKeyword(["", ""]);
+                // 검색어삭제(input이니까 val())
+                $(e.currentTarget).siblings("#stxt").val("");
+                // 검색항목초기화
+                $(e.currentTarget).siblings("#cta").val("tit");
+                // 정렬초기화
+                setSort(1);
+                // 정렬항목초기화
+                setSortCta("idx");
+                // 첫페이지번호변경
+                setPageNum(1);
+              }}
+            >
+              Back to Total List
+            </button>
+          )
         }
-        
+
         {/* 정렬기준선택박스 */}
-        <select name="sort_cta" id="sort_cta" className="sort_cta"
-        onChange={(e)=>setSortCta(e.currentTarget.value)}
-        style={{float:"right",translate:"0 5px"}}>
-          <option value="idx" 
-          selected={sortCta=="idx"?true:false}>Recent</option>
-          <option value="tit" 
-          selected={sortCta=="tit"?true:false}>Title</option>
+        <select
+          name="sort_cta"
+          id="sort_cta"
+          className="sort_cta"
+          onChange={(e) => setSortCta(e.currentTarget.value)}
+          style={{ float: "right", translate: "0 5px" }}
+        >
+          <option value="idx" selected={sortCta == "idx" ? true : false}>
+            Recent
+          </option>
+          <option value="tit" selected={sortCta == "tit" ? true : false}>
+            Title
+          </option>
         </select>
       </div>
       <table className="dtbl" id="board">
@@ -696,15 +704,16 @@ const ListMode = ({
             <td colSpan="5" className="paging">
               {
                 // 데이터 개수가 0이상일때만 출력
-                totalCount.current > 0 &&
-                <PagingList
-                  totalCount={totalCount}
-                  unitSize={unitSize}
-                  pageNum={pageNum}
-                  setPageNum={setPageNum}
-                  pgPgNum={pgPgNum}
-                  pgPgSize={pgPgSize}
-                />
+                totalCount.current > 0 && (
+                  <PagingList
+                    totalCount={totalCount}
+                    unitSize={unitSize}
+                    pageNum={pageNum}
+                    setPageNum={setPageNum}
+                    pgPgNum={pgPgNum}
+                    pgPgSize={pgPgSize}
+                  />
+                )
               }
             </td>
           </tr>
@@ -793,6 +802,9 @@ const ReadMode = ({ selRecord, sts }) => {
     localStorage.setItem("board-data", JSON.stringify(bdData));
   } /// if : (!isRec) ///
 
+  // 이미지 미리보기 대상 이미지 확장자 배열변수
+  const imgExt = ["jpg", "png", "gif"];
+
   /////// 코드리턴 구역 ///////////
   return (
     <>
@@ -837,7 +849,36 @@ const ReadMode = ({ selRecord, sts }) => {
           </tr>
           <tr>
             <td>Attachment</td>
-            <td></td>
+            <td>
+              {
+                // 첨부파일 데이터가 빈값이 아닐때만 출력!
+                data.att != "" && (
+                  <>
+                    <a
+                      href={
+                        process.env.PUBLIC_URL + "/uploads/" + data.att
+                      }
+                      download={data.att}
+                    >
+                      {data.att}
+                    </a>
+                    {imgExt.includes(data.att.split(".")[1]) && (
+                      <div>
+                        <img
+                          src={
+                            process.env.PUBLIC_URL +
+                            "/uploads/" +
+                            data.att
+                          }
+                          alt="image"
+                          style={{ width: "100%" }}
+                        />
+                      </div>
+                    )}
+                  </>
+                )
+              }
+            </td>
           </tr>
         </tbody>
       </table>
@@ -1189,13 +1230,13 @@ const PagingList = ({
   return pgCode;
 }; ////////// pagingList 함수 //////////////
 
-
 /////////////////////////////////////////////
 // 업로드 기능 서브 컴포넌트 및 메서드 만들기 ///
 //////////////////////////////////////////////
 
 // 업로드 모듈을 리턴하는 서브컴포넌트 ////////
-const AttachBox = ({saveFile}) => { // saveFile 프롭스펑션다운!
+const AttachBox = ({ saveFile }) => {
+  // saveFile 프롭스펑션다운!
   // [상태관리변수] //////////////
   // 1.드래그 또는 파일을 첨부할때 활성화 여부관리 변수
   // 값: true 이면 활성화, false이면 비활성화
@@ -1232,7 +1273,6 @@ const AttachBox = ({saveFile}) => { // saveFile 프롭스펑션다운!
     saveFile(fileInfo);
 
     // 서버전송은 서브밋 버튼 클릭후 실행!!!
-
   }; ///////// controlDrop 메서드 ////////
 
   // 드롭된 파일 정보를 화면 뿌려주는 메서드 //////
@@ -1252,13 +1292,13 @@ const AttachBox = ({saveFile}) => { // saveFile 프롭스펑션다운!
     // -> 변경시 리랜더링으로 업로드구역에 반영됨!
   }; //////////// setFileInfo 메서드 //////////
 
-
   // 파일선택 입력창 클릭시 파일선택으로 상태가 변경될때
   // 파일정보 업데이트하기 함수 ///
-  const changeUpload = ({target}) => {// target은 이벤트타겟!
+  const changeUpload = ({ target }) => {
+    // target은 이벤트타겟!
     // 파일정보 읽어오기
     const fileInfo = target.files[0];
-    console.log('클릭파일:',fileInfo);
+    console.log("클릭파일:", fileInfo);
 
     // 파일정보셋팅 메서드 호출!
     setFileInfo(fileInfo);
@@ -1268,7 +1308,6 @@ const AttachBox = ({saveFile}) => { // saveFile 프롭스펑션다운!
     // 함수인 updateFileInfo() 를 호출하는 속성인
     // saveFile() 속성 함수를 사용하여 업데이트한다!
     saveFile(fileInfo);
-
   }; /////////// changeUpload 함수 ///////////
 
   /* 
@@ -1289,8 +1328,7 @@ const AttachBox = ({saveFile}) => { // saveFile 프롭스펑션다운!
     >
       {/* 파일을 클릭하여 선택창이 뜰때 파일을 선택하면
       현재 상태가 변경되기때문에 onChange이벤트 속성을씀! */}
-      <input type="file" className="file"
-      onChange={changeUpload} />
+      <input type="file" className="file" onChange={changeUpload} />
       {
         // 업로드 정보가 null이 아니면 파일정보 출력
         uploadedInfo && <FileInfo uploadedInfo={uploadedInfo} />
@@ -1339,4 +1377,3 @@ const UpIcon = () => (
     />
   </svg>
 ); //////////// UpIcon 컴포넌트 ////////
-
