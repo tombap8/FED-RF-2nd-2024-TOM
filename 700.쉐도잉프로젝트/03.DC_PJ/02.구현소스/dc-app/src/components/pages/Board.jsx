@@ -20,6 +20,11 @@ import "../../css/board_file.scss";
 import { initBoardData } from "../func/board_fn";
 import { dCon } from "../modules/dCon";
 
+
+// 엑시오스 가져오기 : 파일전송 요청용
+import axios from 'axios';
+
+
 export default function Board() {
   // 컨텍스트 사용하기
   const myCon = useContext(dCon);
@@ -304,18 +309,71 @@ export default function Board() {
       let maxNum = Math.max(...arrIdx);
       // console.log(maxNum);
 
+      // 파일업데이트 정보찍기
+      console.log(uploadFile.current);
+
       // 3. 입력 데이터 객체형식으로 구성하기 ////
       let data = {
         idx: maxNum + 1,
         tit: title,
         cont: cont,
-        att: "",
+        att: uploadFile.current?
+        uploadFile.current.name:'',
         date: today.toJSON().substr(0, 10),
         uid: person.uid,
         unm: person.unm,
         cnt: "0",
       };
       // console.log("글쓰기 서브밋:",data);
+
+      // 파일전송 실패상태변수
+      let isFail = false;
+
+      // [선택파일 서버전송]
+        // 파일이 있을 때만 전송
+        if(uploadFile.current){
+
+          // 원래는 form 태그로 싸여있어서 서버전송을 하지만
+          // 없어도 form 전송을 서버에 할 수 있는 객체가 있다!
+          // FormData() 클래스 객체임!
+          const formData = new FormData();
+          // 전송할 데이터 추가하기
+          formData.append("file", uploadFile.current);
+  
+          // 폼데이터에는 키값이 있음 확인하자!
+          for (const key of formData) console.log(key);
+  
+          // 서버전송은 엑시오스로 하자!
+          // server.js에 서버에서 post방식으로 전송받는
+          // 셋팅이 익스프레스에서 되어 있어야함!
+          // 첫번째 셋팅값 전송url에는 서버에 셋팅된
+          // path값과 같은 upload라는 하위 경로를 써준다!
+          // 두번째 셋팅값은 서버로 전송될 파일정보를 써준다!
+          axios
+            .post("http://localhost:8080/xxx", formData)
+            .then((res) => {
+              // res는 성공결과 리턴값 변수
+              const { fileName } = res.data;
+              console.log("전송성공!!!", fileName);
+            })
+            .catch((err) => {
+              // err은 에러발생시 에러정보 변수
+              console.log("에러발생:", err);
+              // 실패 했으므로 업로드 실패상태 변수업데이트
+              isFail = true;
+            });
+  
+            // 파일참조변수 초기화필수!!!
+            uploadFile.current = null;
+  
+          } ///////////////// if ///////////////
+
+          // 파일업로드 실패시 아래 코드는 실행하지 않음!
+          // 즉, DB 에 입력하지 않는다!
+          if(isFail) {
+            alert("파일전송에 실패하였습니다~!!!");
+            return;
+          } /////// if //////////
 
       // 4. 로컬스에 입력하기 //////
       // (1) 로컬스 파싱
@@ -329,12 +387,12 @@ export default function Board() {
       // 로컬스 확인!
       // console.log(localStorage.getItem("board-data"));
 
-      // 4. 추가후 리스트 리랜더링시 리스트 불일치로 인한
+      // 5. 추가후 리스트 리랜더링시 리스트 불일치로 인한
       // 에러를 방지하기 위하여 전체 개수를 바로 업데이트한다!
       // 이때 실제로 업데이트된 locals 배열객체의 개수를 센다!
       totalCount.current = locals.length;
 
-      // 5. 리스트로 돌아가기 -> 리랜더링 /////
+      // 6. 리스트로 돌아가기 -> 리랜더링 /////
       // -> 모드변경! "L"
       setMode("L");
       // -> 추가후 첫페이지로 이동!
