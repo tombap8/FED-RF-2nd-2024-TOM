@@ -25,9 +25,9 @@ export const fsData = {
   sub: {
     men: [
       {
-        isrc: "/images/sub/men/03.disc.png",
-        ialt: "공유가 해변에 있다!",
-        tit: ["MEN'S", "BEACH STYLE"],
+        isrc: ["/images/sub/men/03.disc.png"],
+        ialt: ["공유가 해변에 있다!"],
+        tit: [["MEN'S", "BEACH STYLE"]],
       },
       {
         isrc: ["/images/sub/men/04.disc.png", "/images/sub/men/05.disc.png"],
@@ -40,9 +40,9 @@ export const fsData = {
     ],
     women: [
       {
-        isrc: "/images/sub/women/03.disc.png",
-        ialt: "여자들의 자유로움이 있다!",
-        tit: ["WOMEN'S", "FREE STYLE"],
+        isrc: ["/images/sub/women/03.disc.png"],
+        ialt: ["여자들의 자유로움이 있다!"],
+        tit: [["WOMEN'S", "FREE STYLE"]],
       },
       {
         isrc: [
@@ -59,9 +59,9 @@ export const fsData = {
     // 스타일 데이터는 배열로 2개를 사용함!
     style: [
       {
-        isrc: "/images/sub/style/03.disc.png",
-        ialt: "공유가 캠핑을 한다!",
-        tit: ["STYLE'S", "CAMPING STYLE"],
+        isrc: ["/images/sub/style/03.disc.png"],
+        ialt: ["공유가 캠핑을 한다!"],
+        tit: [["STYLE'S", "CAMPING STYLE"]],
       },
       {
         isrc: [
