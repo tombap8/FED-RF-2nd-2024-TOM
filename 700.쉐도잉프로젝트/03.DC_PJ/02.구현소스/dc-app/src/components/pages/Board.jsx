@@ -83,16 +83,16 @@ export default function Board() {
     const pgPgSize = 3;
 
     const reducerFn = (state, action) => {
-        const [key, e] = action.type;
-        console.log("key:", key, "\ne:", e);
+        const [key, ele] = action.type;
+        console.log("key:", key, "\ne:", ele);
         switch (key) {
             case "search":
                 {
                     // 검색기준값 읽어오기
-                    let creteria = $(e.target).siblings(".cta").val();
+                    let creteria = $(ele).siblings(".cta").val();
                     console.log("기준값:", creteria);
                     // 검색어 읽어오기
-                    let txt = $(e.target).prev().val();
+                    let txt = $(ele).prev().val();
                     console.log(typeof txt, "/검색어:", txt);
                     // input값은 안쓰면 빈스트링이 넘어옴!
                     if (txt != "") {
@@ -115,9 +115,9 @@ export default function Board() {
                     // 검색어 초기화
                     setKeyword(["", ""]);
                     // 검색어삭제(input이니까 val())
-                    $(e.currentTarget).siblings("#stxt").val("");
+                    $(ele).siblings("#stxt").val("");
                     // 검색항목초기화
-                    $(e.currentTarget).siblings("#cta").val("tit");
+                    $(ele).siblings("#cta").val("tit");
                     // 정렬초기화
                     setSort(1);
                     // 정렬항목초기화
@@ -125,7 +125,7 @@ export default function Board() {
                     // 첫페이지번호변경
                     setPageNum(1);
                 }
-                return true;
+                return false;
         }
     };
 
@@ -648,11 +648,12 @@ const ListMode = ({ bindList, totalCount, unitSize, pageNum, setPageNum, pgPgNum
                     <option value="unm">Writer</option>
                 </select>
 
-                <select name="sel" id="sel" className="sel" onChange={() => setSort(sort * -1)}>
-                    <option value="0" selected={sort == 1 ? true : false}>
+                <select name="sel" id="sel" className="sel" onChange={() => setSort(sort * -1)}
+                    value={sort == 1 ? "0" : "1"} >
+                    <option value="0">
                         Descending
                     </option>
-                    <option value="1" selected={sort == -1 ? true : false}>
+                    <option value="1">
                         Ascending
                     </option>
                 </select>
@@ -672,7 +673,7 @@ const ListMode = ({ bindList, totalCount, unitSize, pageNum, setPageNum, pgPgNum
                 <button
                     className="sbtn"
                     onClick={(e) => {
-                        dispach({ type: ["search", e] });
+                        dispach({ type: ["search", e.target] });
                     }}
                 >
                     Search
@@ -683,7 +684,7 @@ const ListMode = ({ bindList, totalCount, unitSize, pageNum, setPageNum, pgPgNum
                         <button
                             className="back-total-list"
                             onClick={(e) => {
-                                dispach({ type: ["back", e] });
+                                dispach({ type: ["back", e.target] });
                             }}
                         >
                             Back to Total List
@@ -692,11 +693,14 @@ const ListMode = ({ bindList, totalCount, unitSize, pageNum, setPageNum, pgPgNum
                 }
 
                 {/* 정렬기준선택박스 */}
-                <select name="sort_cta" id="sort_cta" className="sort_cta" onChange={(e) => setSortCta(e.currentTarget.value)} style={{ float: "right", translate: "0 5px" }}>
-                    <option value="idx" selected={sortCta == "idx" ? true : false}>
+                <select name="sort_cta" id="sort_cta" className="sort_cta" 
+                onChange={(e) => setSortCta(e.currentTarget.value)} 
+                value={sortCta}
+                style={{ float: "right", translate: "0 5px" }}>
+                    <option value="idx">
                         Recent
                     </option>
-                    <option value="tit" selected={sortCta == "tit" ? true : false}>
+                    <option value="tit">
                         Title
                     </option>
                 </select>
