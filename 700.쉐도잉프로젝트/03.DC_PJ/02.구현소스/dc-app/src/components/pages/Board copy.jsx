@@ -599,13 +599,10 @@ const ListMode = ({
           id="sel"
           className="sel"
           onChange={() => setSort(sort * -1)}
+          value={sort == 1 ? "0" : "1"}
         >
-          <option value="0" selected={sort == 1 ? true : false}>
-            Descending
-          </option>
-          <option value="1" selected={sort == -1 ? true : false}>
-            Ascending
-          </option>
+          <option value="0">Descending</option>
+          <option value="1">Ascending</option>
         </select>
         <input
           id="stxt"
@@ -679,13 +676,10 @@ const ListMode = ({
           className="sort_cta"
           onChange={(e) => setSortCta(e.currentTarget.value)}
           style={{ float: "right", translate: "0 5px" }}
+          value={sortCta}
         >
-          <option value="idx" selected={sortCta == "idx" ? true : false}>
-            Recent
-          </option>
-          <option value="tit" selected={sortCta == "tit" ? true : false}>
-            Title
-          </option>
+          <option value="idx">Recent</option>
+          <option value="tit">Title</option>
         </select>
       </div>
       <table className="dtbl" id="board">
@@ -956,10 +950,9 @@ const ModifyMode = ({ selRecord }) => {
   // console.log("전달된 참조변수:", selRecord.current);
   // 전달된 데이터 객체를 변수에 할당
   const data = selRecord.current;
-  
+
   // 이미지 미리보기 대상 이미지 확장자 배열변수
   const imgExt = ["jpg", "png", "gif"];
-
 
   return (
     <>
