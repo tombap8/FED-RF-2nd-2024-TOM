@@ -86,7 +86,12 @@ export default function Board() {
 
 
   // 검색 기능을 위한 리듀서 함수 ////
-  const reducerFn = (state, action) => {
+  const reducerFn = (gval, action) => {
+    // gval - 지가 벨류레...의 줄임말...
+    // -> 리듀서변수가 들어옴 (왜 들어와???)
+    // 기존값을 활용하여 업데이트 하기 위해 들어옴!
+    console.log("지발:",gval);
+
     // 1. 구조분해 할당으로 객체의 배열값 받기
     const [ key, ele ] = action.type;
     // 배열값 구조 : [구분문자열, 이벤트발생대상요소]
@@ -117,9 +122,9 @@ export default function Board() {
           else {
             alert("Please enter a keyword!");
           }
+          // 리턴코드값은 리듀서 변수에 할당!
+          return gval+(gval!=''?"*":"")+txt;
         }
-        // 리턴코드값은 리듀서 변수에 할당!
-        return true;
         // (2) 전체리스트 돌아기기 실행코드
         case "back" : 
         {
@@ -137,13 +142,13 @@ export default function Board() {
           setPageNum(1);
         }
         // 리턴코드값은 리듀서 변수에 할당!
-        return false;
+        return gval;
     }
 
   };
 
   // 검색기능 지원 후크 리듀서 : useReducer
-  const [state, dispach] = useReducer(reducerFn, null);
+  const [memory, dispach] = useReducer(reducerFn, '');
 
   /*********************************************** 
  * [ 리듀서 후크 : useReducer ]
@@ -561,6 +566,7 @@ function 컴포넌트() {
             sortCta={sortCta}
             setSortCta={setSortCta}
             dispach={dispach}
+            memory={memory}
           />
         )
       }
@@ -662,6 +668,7 @@ const ListMode = ({
   sortCta,
   setSortCta,
   dispach,
+  momory,
 }) => {
   /******************************************* 
     [ 전달변수 ] - 2~5까지 4개는 페이징전달변수
@@ -752,6 +759,7 @@ const ListMode = ({
           <option value="idx">Recent</option>
           <option value="tit">Title</option>
         </select>
+        <b>{momory}</b>
       </div>
       <table className="dtbl" id="board">
         <thead>
