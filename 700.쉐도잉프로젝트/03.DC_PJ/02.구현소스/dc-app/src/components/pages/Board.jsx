@@ -668,7 +668,7 @@ const ListMode = ({
   sortCta,
   setSortCta,
   dispach,
-  momory,
+  memory,
 }) => {
   /******************************************* 
     [ 전달변수 ] - 2~5까지 4개는 페이징전달변수
@@ -759,7 +759,7 @@ const ListMode = ({
           <option value="idx">Recent</option>
           <option value="tit">Title</option>
         </select>
-        <b>{momory}</b>
+        <b>{memory}</b>
       </div>
       <table className="dtbl" id="board">
         <thead>
