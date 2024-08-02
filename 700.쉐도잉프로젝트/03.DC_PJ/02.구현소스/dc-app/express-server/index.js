@@ -8,9 +8,6 @@ const path = require("path");
 const app = express();
 const PORT = 80;
 
-app.listen(PORT, () => {
-  console.log(`API listening on PORT ${PORT} `)
-});
 
 app.get('/', (req, res) => {
   res.send('Hey this is my API running 🥳:'+PORT)
@@ -27,7 +24,7 @@ const multer = require("multer");
 // 멀터 스토리지의 저장소를 사용함!
 const storage = multer.diskStorage({
   destination: function (req, file, setPath) {
-    setPath(null, "uploads/");
+    setPath(null, "/public/uploads/");
   },
   // 파일명이 원래 이름으로 들어가도록 변경하기
   filename: function (req, file, setName) {
@@ -43,10 +40,13 @@ app.post("/xxx", upload.single("file"), (req, res) => {
   console.log(req.file);
 });
 
-app.use(express.static(path.join(__dirname, "/")));
+app.listen(PORT, () => {
+  console.log(`API listening on PORT ${PORT} `)
+});
+app.use(express.static(path.join(__dirname, "/public")));
 
 app.get("/", function (request, response) {
-  response.sendFile(path.join(__dirname), "/index.html");
+  response.sendFile(path.join(__dirname), "/public/index.html");
 });
 
 
