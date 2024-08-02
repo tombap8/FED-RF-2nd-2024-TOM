@@ -38,7 +38,7 @@ app.post("/xxx", upload.single("file"), (req, res) => {
   console.log(req.file);
 });
 
-app.use(express.static(path.join(__dirname, "/public")));
+// app.use(express.static(path.join(__dirname, "/public")));
 
 // app.get("/", function (request, response) {
 //   response.sendFile(path.join(__dirname), "/public/index.html");
