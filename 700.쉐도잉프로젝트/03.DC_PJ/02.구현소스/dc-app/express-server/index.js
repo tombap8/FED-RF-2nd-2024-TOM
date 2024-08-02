@@ -11,6 +11,8 @@ const app = express();
 // 멀터 미들웨어를 불러온다!왜? 파일전송처리를 위해!
 const multer = require("multer");
 
+const server = "https://fed-rf-2nd-2024-qn3mg44o8-tombap8s-projects.vercel.app/";
+
 // 멀터를 이용하여 업로드 셋업을 한다!
 // multer() 에 업로드할 폴더위치를 정해준다!
 // dest 속성에 값으로 셋팅!
@@ -29,7 +31,7 @@ const storage = multer.diskStorage({
   // 폴더경로를 여기 설정함(dest설정은 지원준다!)
   destination: function (req, file, setPath) {
     // 여기에 파일저장위치를 지정함!
-    setPath(null, "/uploads/");
+    setPath(null, server+"/public/uploads/");
     // -> 아래는 실서버 배포시 변경용코드![1]
     // setPath(null,"build/uploads/");
     // 여기지정하면 자동으로 uploads파일을 만들지 않음!
@@ -67,7 +69,7 @@ app.listen(8080, function () {
 // 서버 루트폴더 정적연결하기!(루트 정하기)
 // -> SPA에서 빌드하면 배포용 소스가 build폴더에 생성되므로
 // 이 배포용 폴더를 Root로 잡으면 편하다!!!
-app.use(express.static(path.join(__dirname, "/")));
+app.use(express.static(path.join(__dirname, server+"/public")));
 // -> 아래는 실서버 배포시 변경용코드![2]
 // app.use(express.static(path.join(__dirname, "/build")));
 // -> SPA 앱 빌드시 유의사항 : package.json파일에
@@ -76,9 +78,9 @@ app.use(express.static(path.join(__dirname, "/")));
 
 // 첫페이지 설정하기! -> url로 쳐서 들어가는 경로를 설정함!
 // -> get방식으로 연결하기 때문에 get()메서드 사용!
-app.get("/", function (request, response) {
+app.get(server, function (request, response) {
   // 내부로 전달되는 값은 처음것이 요청, 두번째가 응답임!
-  response.sendFile(path.join(__dirname), "/index.html");
+  response.sendFile(path.join(__dirname), server+"/index.html");
   // -> 아래는 실서버 배포시 변경용코드![3]
   // response.sendFile(path.join(__dirname), "/build/index.html");
   // 첫페이지는 요청에 대한 응답임! 파일을 내려보내주니까
