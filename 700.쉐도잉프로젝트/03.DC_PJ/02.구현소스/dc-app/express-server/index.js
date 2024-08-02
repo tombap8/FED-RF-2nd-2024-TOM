@@ -43,10 +43,10 @@ app.post("/xxx", upload.single("file"), (req, res) => {
   console.log(req.file);
 });
 
-app.use(express.static(path.join(__dirname, "/")));
+app.use(express.static(path.join(process.cwd(), "/")));
 
 app.get("/", function (request, response) {
-  response.sendFile(path.join(__dirname), "/index.html");
+  response.sendFile(path.join(process.cwd()), "/index.html");
 });
 
 
