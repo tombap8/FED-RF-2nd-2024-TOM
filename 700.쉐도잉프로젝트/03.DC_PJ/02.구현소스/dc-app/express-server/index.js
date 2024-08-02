@@ -78,7 +78,7 @@ app.use(express.static(path.join(__dirname, "/")));
 // -> get방식으로 연결하기 때문에 get()메서드 사용!
 app.get("/", function (request, response) {
   // 내부로 전달되는 값은 처음것이 요청, 두번째가 응답임!
-  response.sendFile(path.join(__dirname), "/index.html");
+  response.sendFile(path.join(__dirname), "fed-rf-2nd-2024-tom.vercel.app/index.html");
   // -> 아래는 실서버 배포시 변경용코드![3]
   // response.sendFile(path.join(__dirname), "/build/index.html");
   // 첫페이지는 요청에 대한 응답임! 파일을 내려보내주니까
