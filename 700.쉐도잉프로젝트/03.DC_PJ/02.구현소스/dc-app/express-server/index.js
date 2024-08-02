@@ -1,6 +1,10 @@
 // index.js
 const express = require('express')
 
+
+// 서버경로를 위한 import
+const path = require("path");
+
 const app = express()
 const PORT = 8080
 
@@ -38,11 +42,11 @@ app.post("/xxx", upload.single("file"), (req, res) => {
   console.log(req.file);
 });
 
-// app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "/public")));
 
-// app.get("/", function (request, response) {
-//   response.sendFile(path.join(__dirname), "/public/index.html");
-// });
+app.get("/", function (request, response) {
+  response.sendFile(path.join(__dirname), "/public/index.html");
+});
 
 
 
