@@ -3,10 +3,6 @@
   "name": "dc-app",
   "version": "0.1.0",
   "private": true,
-  "main": "index.js",
-  "engines": {
-    "node": "20.x"
-  },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-brands-svg-icons": "^6.5.2",
@@ -34,7 +30,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node index.js", 
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
