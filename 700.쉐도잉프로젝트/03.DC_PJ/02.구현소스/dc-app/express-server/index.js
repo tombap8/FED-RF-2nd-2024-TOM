@@ -20,5 +20,24 @@ app.get('/about', (req, res) => {
 // 멀터 미들웨어를 불러온다!왜? 파일전송처리를 위해!
 const multer = require("multer");
 
+// 멀터 스토리지의 저장소를 사용함!
+const storage = multer.diskStorage({
+  destination: function (req, file, setPath) {
+    setPath(null, "public/uploads/");
+  },
+  // 파일명이 원래 이름으로 들어가도록 변경하기
+  filename: function (req, file, setName) {
+    setName(null, file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+
+app.post("/xxx", upload.single("file"), (req, res) => {
+  console.log(req.file);
+});
+
+
 // Export the Express API
 module.exports = app
