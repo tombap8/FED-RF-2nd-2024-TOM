@@ -442,7 +442,7 @@ function 컴포넌트() {
         // 첫번째 셋팅값 전송url에는 서버에 셋팅된
         // 포스트 방식 전송명인 /xxx를 하위경로에 써준다!
         axios
-          .post("https://express-server-mdkix93kp-tombap8s-projects.vercel.app:8080/xxx", formData)
+          .post("https://express-server-mdkix93kp-tombap8s-projects.vercel.app/xxx", formData)
           .then((res) => {
             // res는 성공결과 리턴값 변수
             const { fileName } = res.data;
