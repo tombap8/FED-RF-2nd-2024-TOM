@@ -1,24 +1,24 @@
 // index.js
-const express = require('express')
+const express = require('express');
 
 
 // 서버경로를 위한 import
 const path = require("path");
 
-const app = express()
-const PORT = 8080
+const app = express();
+const PORT = 8080;
 
 app.listen(PORT, () => {
   console.log(`API listening on PORT ${PORT} `)
-})
+});
 
 app.get('/', (req, res) => {
   res.send('Hey this is my API running 🥳')
-})
+});
 
 app.get('/about', (req, res) => {
   res.send('This is my about route..... ')
-})
+});
 
 
 // 멀터 미들웨어를 불러온다!왜? 파일전송처리를 위해!
@@ -51,5 +51,4 @@ app.get("/", function (request, response) {
 
 
 // Export the Express API
-module.exports = app
-module.exports = upload
+module.exports = app;
