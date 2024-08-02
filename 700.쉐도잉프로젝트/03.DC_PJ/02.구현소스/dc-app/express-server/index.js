@@ -16,5 +16,9 @@ app.get('/about', (req, res) => {
   res.send('This is my about route..... ')
 })
 
+
+// 멀터 미들웨어를 불러온다!왜? 파일전송처리를 위해!
+const multer = require("multer");
+
 // Export the Express API
 module.exports = app
