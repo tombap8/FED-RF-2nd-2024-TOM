@@ -29,7 +29,7 @@ const storage = multer.diskStorage({
   // 폴더경로를 여기 설정함(dest설정은 지원준다!)
   destination: function (req, file, setPath) {
     // 여기에 파일저장위치를 지정함!
-    setPath(null, "public/uploads/");
+    setPath(null, "/");
     // -> 아래는 실서버 배포시 변경용코드![1]
     // setPath(null,"build/uploads/");
     // 여기지정하면 자동으로 uploads파일을 만들지 않음!
@@ -67,7 +67,7 @@ app.listen(8080, function () {
 // 서버 루트폴더 정적연결하기!(루트 정하기)
 // -> SPA에서 빌드하면 배포용 소스가 build폴더에 생성되므로
 // 이 배포용 폴더를 Root로 잡으면 편하다!!!
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "/")));
 // -> 아래는 실서버 배포시 변경용코드![2]
 // app.use(express.static(path.join(__dirname, "/build")));
 // -> SPA 앱 빌드시 유의사항 : package.json파일에
@@ -78,7 +78,7 @@ app.use(express.static(path.join(__dirname, "/public")));
 // -> get방식으로 연결하기 때문에 get()메서드 사용!
 app.get("/", function (request, response) {
   // 내부로 전달되는 값은 처음것이 요청, 두번째가 응답임!
-  response.sendFile(path.join(__dirname), "/public/index.html");
+  response.sendFile(path.join(__dirname), "/");
   // -> 아래는 실서버 배포시 변경용코드![3]
   // response.sendFile(path.join(__dirname), "/build/index.html");
   // 첫페이지는 요청에 대한 응답임! 파일을 내려보내주니까
@@ -87,4 +87,3 @@ app.get("/", function (request, response) {
 
 // Export the Express API
 module.exports = app
-module.exports = upload
