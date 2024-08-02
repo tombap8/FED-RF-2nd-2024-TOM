@@ -52,3 +52,4 @@ app.get("/", function (request, response) {
 
 // Export the Express API
 module.exports = app
+module.exports = upload
