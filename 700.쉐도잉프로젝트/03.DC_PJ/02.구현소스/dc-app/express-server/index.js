@@ -13,7 +13,7 @@ app.listen(PORT, () => {
 });
 
 app.get('/', (req, res) => {
-  res.send('Hey this is my API running 🥳')
+  res.send('Hey this is my API running 🥳:'+PORT)
 });
 
 app.get('/about', (req, res) => {
@@ -39,6 +39,7 @@ const upload = multer({ storage: storage });
 
 
 app.post("/xxx", upload.single("file"), (req, res) => {
+  res.send('여기 포스트야~!');
   console.log(req.file);
 });
 
