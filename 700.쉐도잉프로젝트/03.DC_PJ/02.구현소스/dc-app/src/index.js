@@ -54,7 +54,6 @@ import Login from "./components/pages/Login";
     
 *********************************************/
 
-export default function MainComponent() {
     // server.js 파일은 Express 서버에서
     // 구동을 위한 기본 설정을 읽어들이는 파일임!
 
@@ -142,6 +141,7 @@ export default function MainComponent() {
         // sendFile() 메서드사용!
     });
 
+export default function MainComponent() {
     return (
         // 라우터 루트로 라우터 구성시작
         // basename 속성은 package.json의 "homepage"속성값을
