@@ -27,7 +27,7 @@ const multer = require("multer");
 // 멀터 스토리지의 저장소를 사용함!
 const storage = multer.diskStorage({
   destination: function (req, file, setPath) {
-    setPath(null, "public/uploads/");
+    setPath(null, "uploads/");
   },
   // 파일명이 원래 이름으로 들어가도록 변경하기
   filename: function (req, file, setName) {
@@ -39,14 +39,14 @@ const upload = multer({ storage: storage });
 
 
 app.post("/xxx", upload.single("file"), (req, res) => {
-  res.send('여기 포스트야~!');
+  console.log('여기 포스트야~!');
   console.log(req.file);
 });
 
-app.use(express.static(path.join(__dirname, "/public")));
+app.use(express.static(path.join(__dirname, "/")));
 
 app.get("/", function (request, response) {
-  response.sendFile(path.join(__dirname), "/public/index.html");
+  response.sendFile(path.join(__dirname), "/index.html");
 });
 
 
