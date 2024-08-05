@@ -1,0 +1,141 @@
+[ ####### 뷰JS를 위한 기본 설치 ####### ]
+
+1. node.js 를 설치하자!
+
+    -> 왜 노드JS인가?
+    (서버에서 작동하는 JS가 바로 노드JS다! 
+    Javascript v8로 개발되어 성능이 탁월함함)
+    -> 요즘 개발환경 대세임~!(성능좋고 결과확인 탁월하다!)
+
+    (1) 노드JS 사이트에서 다운로드후 설치
+        https://nodejs.org/ko/download/
+        위의 주소는 공식홈페이지 다운로드 페이지임
+
+    (2) 설치후 확인 폴더는 아래와 같다
+        C:\Program Files\nodejs
+
+    (3) 시스템 환경변수에 등록해준다!
+        PATH에 추가등록!
+        (노드설치시 자동등록된다! 그러나 확인필요!)
+        예) C:\Program Files\nodejs 
+        중요) 재부팅필수!!! -> 그래야 명령어가 사용됨!
+        - 간혹 재부팅없이도 되는경우가 있으나 재부팅하자!
+
+#########################################################
+
+[ ####### VSCODE에서 작업 ####### ]
+
+1. cmd 명령어 사용하기
+
+    (1) 기본 명령어
+
+        1) cd 명령어 (change directory)
+            -> cd 폴더명 => 특정폴더이동
+            -> cd ../ => 상위폴더이동(../다중사용가능!)
+            -> cd / => 최상위이동
+            -> cd 드라이브명:/ => 해당드라이브이동
+
+        2) md 명령어 (make directory)
+            -> md 폴더명 => 새폴더만들기
+
+        3) del 명령어 (delete)
+            -> del 존재하는폴더
+            -> 명령어를 내리면 삭제 옵션을 물어봄(엔터치면 기본값 Y)
+                [Y] 예(Y)  [A] 모두 예(A)  [N] 아니요(N)  
+                [L] 모두 아니요(L)  [S] 일시 중단(S)  [?] 도움말
+
+        4) cls 명령어 (clear) => 이전명령어 cmd창 지우기
+
+        5) exit 명령어 => cmd창닫기
+        
+    (2) VSCODE에서 터미널 열기 : ctrl+`(백틱)
+
+        1) 처음에 열면 프로젝트 Root폴더부터 나옴
+
+        2) 이때 기본 Powershell이 뜸 (구분법-터미널에 표시됨)
+            Powershell안에서 cmd 사용법 -> 씨엠디 씨/ 벌 (cmd c/ ver)
+
+        3) 불편하다면? 기본프로필을 변경하자!
+        -> 터미널 옵션에서 "기본프로필" 선택후 상단창에서 Command Prompt 선택!
+        -> 결과: Command Prompt(기본값) 으로 변경됨!
+
+
+    (참고: cmd와 Powershell은 CLI 인터페이스로 컴퓨터 초창기부터
+    있어온 명령어입력으로 컴퓨터기능을 수행하는 입력수단이다.
+    cmd가 처음부터 있었고 Powershell은 나중에 나와서 명령어를
+    더 폭넓게 사용할 수 있다. 다만 명령어 사용법이 좀 다르므로
+    간단한 설치나 실행 명령어는 cmd를 기반으로 사용하도록 한다!)
+
+
+    2. 작업할 폴더까지 이동한다!
+    -> cd 이동할 폴더명 (react-app까지 이동)
+    -> 더 쉽게! cd 명령어뒤에 폴더를 드래그함!(자동입력됨!)
+
+3. npm 명령어 사용 - (node package management)
+    (1) 전역 Vue CLI 설치 명령어
+        npm install -g vue-cli
+    (2) 설치후 버전확인
+        vue --version
+
+4. VueJS 프로젝트 생성하기
+
+    (1) 프로젝트 생성명령어
+        vue init webpack 프로젝트명
+        예) vue init webpack my-vue-app
+
+        (webpack은 무엇인가?)
+        -> Vue CLI의 코드제작 템플릿(하나의 파일구성틀)이다!
+        -> webpack 보다 가벼운 webpack-simple 로 스터디용도 있음
+
+    (2) 생성명령후 질문사항과 답변
+
+        [1] 프로젝트 이름확인
+            ? Project name (내가 입력한 프로젝트명) => 엔터!
+
+        [2] 프로젝트 설명확인
+            ? Project description (A Vue.js project) => 엔터!
+
+        [3] 제작자 이름/메일주소확인
+            ? Author (이름 메일주소) => 엔터!
+
+        [4] 뷰JS 모드선택
+            > Runtime + Compiler:recommended for most users
+              Runtime-only:about 6kb lighter min+gzip,...
+            => 기본선택된 런타임 + 컴파일러 선택으로 바로 엔터!
+
+        [5] 라우터 설치여부 : n으로 선택안함(나중쓸때설치)
+            ? Install vue-router? (Y/n) => n 선택후 엔터!
+
+        [6] ESLint 설치여부 : n으로 선택안함
+            ? Use ESLint to lint your code? (Y/n) => n 선택후 엔터!
+        
+        [7] 자동테스트 도구 설치여부 : n으로 선택안함
+            ? Set up unit tests? (Y/n) => n 선택후 엔터!
+
+        [7] 자동테스트 추가도구 설치여부 : n으로 선택안함
+            ? Setup e2e tests with Nightwatch? (Y/n) => n 선택후 엔터!
+
+        [8] 자동으로 모듈 설치여부 : NPM설치선택(첫번째것)
+            Should we run `npm install` for you 
+            after the project has been created? 
+            (recommended) (Use arrow keys) 
+            > Yes, use NPM
+              Yes, use Yarn
+              No, I will handle that myself
+              (옵션:NPM으로설치/Yarn으로설치/수동으로나중설치)
+            
+        =>>> [8] 번 수행후 설치에 시간이 소요됨!(약2분정도)
+
+        (3) 설치후 메시지 :
+            To get started:
+            cd my-vue-app
+            npm run dev
+
+            Documentation can be found 
+            at https://vuejs-templates.github.io/webpack
+
+        (4) 설치후 설치프로젝트 용량 : 134MB 정도 (비교:react는 200MB이상)
+
+(3) 라우터를 수동 설치해야할 경우
+    npm i vue-router@3
+

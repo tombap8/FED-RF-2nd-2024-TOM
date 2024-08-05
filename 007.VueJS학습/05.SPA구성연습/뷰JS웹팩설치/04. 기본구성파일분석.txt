@@ -1,0 +1,123 @@
+[  ######## webpack 기본구성파일 분석 ######## ]
+
+[ 1. index.html - 기본 root에 위치 ] ##############
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>my-vue-app</title>
+  </head>
+  <body>
+    <div id="app"></div> ==> 컴포넌트 Root 부모요소
+    <!-- built files will be auto injected -->
+  </body>
+</html>
+
+==> 기본적으로 src/main.js를 로딩한다!
+
+################################################
+
+[ 2. src/main.js ==> 가장먼저 읽히는 외부파일 ]
+
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from 'vue' ==> 뷰관련 모듈 불러오기
+import App from './App' ==> src에 있는 App.vue 파일 불러오기(확장자생략가능)
+
+Vue.config.productionTip = false 
+==> Vue앱이 처음실행될때 나오는 경고문을 출력할지 말지 여부(false는 출력안함)
+
+/* eslint-disable no-new */
+new Vue({
+  el: '#app', ==> index.html의 뷰인스턴스 Root요소
+  components: { App }, ==> 컴포넌트 취합용 중간vue파일 이름
+  template: '<App/>' ==> 컴포넌트가 들어갈 사용자정의태그
+})
+
+#############################################################
+
+[ 3. src/App.vue ==> 중간 컴포넌트 취합 vue파일 ]
+_______________________________
+
+< vue 단일페이지 컴포넌트형식 >
+1. template태그 : html구성요소
+2. script태그 : JS코딩영역(외부JS처럼취급!)
+3. style태그 : 스타일시트영역
+    -> scoped 옵션을 쓰면 컴포넌트별 개별적용됨!
+    (같은영역의 같은요소를 코딩해도 다르게 적용됨!)
+
+_______________________________
+
+
+
+<template> ==> template 태그는 기본 템플릿 영역임!
+  <div id="app">
+    <img src="./assets/logo.png">
+    <HelloWorld/> ==> components폴더하위 vue 컴포넌트요소
+    <MyReal/>==> components폴더하위 vue 컴포넌트요소
+  </div>
+</template>
+
+<script> ==> 외부JS처럼 취급되므로 import,export모두 사용
+import HelloWorld from './components/HelloWorld'
+import MyReal from './components/MyComp.vue'
+
+export default {
+  name: 'App', ==> main.js 파일의 <App/> 자리의 이름
+  components: {
+    HelloWorld, ==> 외부컴포넌트1
+    MyReal ==> 외부컴포넌트2 (콤마로 계속추가 가능!)
+  }
+}
+</script>
+
+<style> ==> 전역 스타일시트 (scoped가 있으면 지역CSS)
+#app {
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+</style>
+
+#################################################
+
+[ 4. 추가 컴포넌트 그룹 폴더 : src/components ]
+-> 이 폴더에 vue파일을 생성하여 계속 추가할 수 있다!
+-> 단일파일컴포넌트 기본 구성과 동일하다!
+[ 차이점 ]
+JS코딩영역에서 내보내기 설정:
+
+==> 우리가 코딩하지 않아도 await 키워드에 import('vue')
+코드가 삽입되는데 이는 실행시 vue모듈을 모두 로딩후에
+로딩에의한 에러없이 실행할 수 있도록 Vue 자체에서
+넣어주는 것인데 복사하면 복사되지 않고 또 코드에
+색깔이 표시되는 것은 내가 한 코딩이 아니라는 말이다......!
+
+export default(await import('vue'))
+.defineComponent({
+  name: 'HelloWorld',
+  data () {
+    return {
+      msg: '나는 진짜 뷰를 잘하고 시프다~~!'
+    }
+  }
+}) 
+++++++++++++++++++++++++++++++++++++++++++++
+==> 실제코딩내용:
+
+export default {
+  name: 'HelloWorld',
+  data () {
+    return {
+      msg: '나는 진짜 뷰를 잘하고 시프다~~!'
+    }
+  }
+}
+
+
+

@@ -1,0 +1,20 @@
+[ ####### 개발서버작업 ####### ]
+
+1. 서버실행하기
+    (1) 루트폴더로 이동한다! 또는 VSCODE에서 루트를 잡아준다!
+    (2) 서버실행 명령어를 cmd에 입력한다!
+        npm run dev
+    (3) 결과리턴:
+        DONE  Compiled successfully in 3989ms 
+        I  Your application is running here: http://localhost:8080
+    (4) 웹 브라우저 주소창에 localhost:8080 를 넣고 열어준다
+        (또는 cmd창의 링크주소에 ctrl키를 누르고 클릭!)
+    (5) 개발중 변경사항이 반영되는 개발창이다!
+
+2. 프로젝트 빌드하기
+    (1) 루트폴더로 이동한다
+    (2) 빌드 명령어를 cmd에 입력한다
+        npm run build
+    (3) 명령어 실행후 dist 폴더가 생성된다!
+        (dist폴더는 distribute:배포/분배 라는 단어에서 옴)
+    (4) 이 dist폴더를 실제 서버호스팅시에 실서버에 배포하면 완료임!

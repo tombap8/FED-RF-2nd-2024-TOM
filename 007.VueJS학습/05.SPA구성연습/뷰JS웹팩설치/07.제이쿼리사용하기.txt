@@ -1,0 +1,13 @@
+[ 07.SPA 개발환경에서 제이쿼리 사용하기 ]
+
+1. 제이쿼리 팩키지를 npm설치한다
+ -> npm install --save jquery
+
+2. 사용할 컴포넌트 JS구역에 import한다!
+   import $ from "jquery";
+
+3. 제이쿼리를 사용할 mounted() 메서드 혹은
+   실행함수에 제이쿼리 코드를 작성한다!
+
+4. 제이쿼리 UI 설치
+npm install jquery-ui

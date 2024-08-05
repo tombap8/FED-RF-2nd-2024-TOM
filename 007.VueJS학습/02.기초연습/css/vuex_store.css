@@ -1,0 +1,76 @@
+/* 뷰엑스 스토어 CSS - vuex_store.css */
+#app {
+    width: 500px;
+    margin: 0 auto;
+}
+header {
+    padding: 15px;
+    border: 2px solid #ccc;
+}
+header ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 0 15px;
+}
+header a {
+    font-size: 30px;
+    color: #222;
+    text-decoration: none;
+}
+header li+li a:hover,
+header a.on {
+    color: orangered;
+    text-decoration: overline;
+    text-decoration-style: wavy;
+}
+
+main {
+    padding: 10px;
+}
+main img {
+    width: 100%;
+}
+footer {
+    border: 1px solid #ccc;
+    text-align: center;
+    padding: 20px;
+}
+
+
+/* 라우터 */
+.router{
+    text-align: center;
+    color: #fff;
+    background: #fff no-repeat center/cover;
+    height: 30vh;
+    line-height: 30vh;
+    font-size: 24px;
+    text-shadow: 2px 2px 2px #000;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #0000008b;
+}
+.trip{
+    background-image: url(https://as2.ftcdn.net/v2/jpg/03/73/40/29/1000_F_373402961_zHwVILZu4UNblYegPKkKTsyiuHdtRscG.jpg);
+}
+.foods{
+    background-image: url(https://cdn.georgeinstitute.org/sites/default/files/styles/width1920_fallback/public/2020-10/world-food-day-2020.png);
+}
+.asso{
+    text-align: center;
+    border-top: 4px double darkgreen;
+}
+.asso a{
+    color: green;
+    display: inline-block;
+    padding: 10px;
+    text-decoration: none;
+}
+
+/* 선택된 라우터 선택메뉴 클래스 */
+.router-link-active {
+    text-decoration: overline !important;
+    font-weight: bold;
+}

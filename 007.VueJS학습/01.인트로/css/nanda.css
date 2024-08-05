@@ -1,0 +1,94 @@
+/* 난다 사이트 구성 CSS */
+
+/* 뷰대상박스 */
+#vue-app {
+  max-width: 1920px;
+  width: 98%;
+  padding: 20px;
+  border: 1px dashed darkblue;
+  border-radius: 20px;
+  margin: 0 auto;
+  text-align: center;
+  /* 패딩,보더포함 */
+  box-sizing: border-box;
+}
+/* 제목 */
+.tit {
+  color: orangered;
+  font-size: 40px;
+}
+/* 내용박스 */
+#vue-app p {
+  border: 4px double gray;
+  background-image: linear-gradient(-45deg, #27dbfa, #bc22f5, #67004a);
+  color: lightgreen;
+  padding: 50px;
+}
+/* 내용박스 이미지 */
+#vue-app p img {
+  max-width: 800px;
+  width: 90%;
+  border-radius: 20px;
+}
+
+/* 상품리스트박스 */
+.gwrap {
+  display: flex;
+  /* 하위 ol박스를 옆으로 흐르게함 */
+  justify-content: center;
+  flex-wrap: wrap;
+
+  gap: 10px 20px; /* 상하 좌우 사이간격 */
+}
+/* 개별리스트박스 */
+.glist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  width: 20%;
+}
+.glist li {
+  position: relative;
+}
+/* 이미지li 배경색 */
+.glist li:first-child{
+  background-image: 
+  linear-gradient(to bottom,#f3f3f3,#cacaca);
+}
+/* 상품이미지 */
+.glist img {
+  width: 100%;
+  transition: opacity .3s;
+  cursor: pointer;
+}
+/* 오버시 이미지셋팅 */
+.glist img:last-child{
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+/* 오버시 설정하기 */
+.glist li:hover img:first-child{
+  opacity: 0;
+}
+.glist li:hover img:last-child{
+  opacity: 1;
+}
+/*  */
+@media screen and (max-width: 1024px) {
+  .glist {
+    width: 30%;
+  }
+}
+@media screen and (max-width: 800px) {
+  .glist {
+    width: 48%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .glist {
+    width: 98%;
+  }
+}
