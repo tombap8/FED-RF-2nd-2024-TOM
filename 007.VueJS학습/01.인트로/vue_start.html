@@ -77,9 +77,31 @@
                             코드: "pros3388",
                             가격: "256,000원",
                         },
-                    ],
-                },
-            });
+                    ], /// goods ///
+                }, /// data ///
+            }); // Vue //////
+
+            // 3. 이벤트 사용하기 //////////////
+            new Vue({
+                // 1. 대상
+                el: "#app3",
+                // 2. 메서드
+                methods: {
+                    myClick(e){
+                        let tg = e.target;
+                        console.log("버튼클릭!",tg);
+                        // 1. 버튼글자변경
+                        tg.innerText = "놀랐지?";
+                        // 2. 2초후에 해당 요소 아래에
+                        // 새로운 html넣기
+                        setTimeout(()=>{
+                            // 뷰인스턴스 자신은 this
+                            this.$el.innerHTML +=
+                            '<div>하하하</div>';
+                        },2000);
+                    },/// myClick ///
+                },/// methods ////
+            }); //// Vue ///
 
 
 
@@ -185,7 +207,15 @@
     <hr />
 
     <h2>3. 이벤트 사용하기</h2>
-    
+    <div id="app3">
+        <!-- <button v-on:click="myClick">클릭해봐~!</button> -->
+        <button @click="myClick">클릭해봐~!</button>
+        <!-- 
+            v-on:이벤트명="값"
+            축약형
+            @이벤트명="값"
+         -->
+    </div>
     <hr />
 
     <h2>4. 입력 양식과 동기화하기</h2>
