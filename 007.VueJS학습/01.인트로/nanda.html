@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>뷰JS 기본구현 연습</title>
+    <!-- 메인 CSS -->
+    <link rel="stylesheet" href="./css/nanda.css">
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- 뷰JS 구성 메인 JS -->
+    <script src="./js/nanda.js" defer></script>
+</head>
+<body>
+    <!-- 뷰JS 대상요소는 하나! -->
+    <div id="vue-app">
+        <!-- 원래는 컴포넌트 구성하지만
+        여기서는 연습용으로 태그를 직접구성함! -->
+
+        <!-- 1. 타이틀 로고 파트 -->
+        <section class="part">
+            <!-- 1-1.샵명 -->
+            <h1 class="tit" v-text="bigTit"></h1>
+            <!-- v-text 디렉티브 : 텍스트출력속성 -->
+            <!-- 1-2.로고 -->
+            <div class="logo" v-html="logo"></div>
+            <!-- v-html 디렉티브 : 태그출력속성 -->
+        </section>
+
+        <!-- 2. 배너파트 -->
+        <section class="part"></section>
+
+        <!-- 3. 상품리스트파트 -->
+        <section class="part"></section>
+    </div>
+    <!-- 
+        기본구성 : 3단구성
+        1. 타이틀 로고 파트
+        2. 배너파트
+        3. 상품리스트파트
+     -->
+    
+</body>
+</html>
