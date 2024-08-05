@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue JS 시작하기</title>
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+    <style>
+        body{
+            font-size: 2.5vw !important;
+        }
+    </style>
+    <script>
+        window.addEventListener("DOMContentLoaded",()=>{
+
+            console.log("로딩완료!");
+
+            // 1. 텍스트 바인딩 /////////
+            new Vue({
+                // (1) 적용할 요소 설정 속성 : el
+                // el 속성명은 element에서 나온말
+                // 이것은 정해진 이름이다!
+                el: "#app",
+                // (2) 데이터 설정 속성 : data
+                // 데이터 변수 셋팅구역
+                data: {
+                    // 여기는 객체형식으로 데이터를
+                    // 내가 셋팅한다!
+                    message : "나는 뷰JS를 잘 쓰는 프론트엔드 개발자다!",
+                },
+                // (3) 함수설정 속성 : methods
+                methods: {
+                    // 글자변경함수
+                    // [형식]
+                    // 함수명 : function(){구현부}
+                    // 함수명 : ()=>{구현부}
+                    // 함수명(){구현부}
+                    // changeTxt: function(){},
+                    // changeTxt: ()=>{},
+                    changeTxt(){
+                        console.log("나야나!");
+                    },
+                },
+            });
+
+
+        }); //////// load //////////////
+    </script>
+  </head>
+  <body>
+    <h1>Vue JS 기초연습</h1>
+    <div id="app1">
+        <p></p>
+    </div>
+
+    <hr />
+
+    <h2>1. 텍스트 바인딩(binding->데이터넣기!)</h2>
+    <hr />
+
+    <h2>2. 반복 렌더링</h2>
+    <hr />
+
+    <h2>3. 이벤트 사용하기</h2>
+    <hr />
+
+    <h2>4. 입력 양식과 동기화하기</h2>
+    <hr />
+
+    <h2>5. 조건분기</h2>
+  </body>
+</html>
