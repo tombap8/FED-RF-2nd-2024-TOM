@@ -141,6 +141,34 @@ export default function Board() {
         }
         // 리턴코드값은 리듀서 변수에 할당!
         return gval;
+
+        // (3) 기존 키워드 재검색일 경우 실행코드
+      case "again": {
+        // 검색기준값 읽어오기
+        let creteria = $(ele).siblings(".cta").val();
+        console.log("기준값:", creteria);
+        // 검색어 읽어오기
+        let txt = $(ele).text();
+        console.log(typeof txt, "/검색어:", txt);
+        // 검색어 input 검색어 존에 넣기
+        $("#stxt").val(txt);
+        // input값은 안쓰면 빈스트링이 넘어옴!
+        if (txt != "") {
+          console.log("검색해!");
+          // [검색기준,검색어] -> setKeyword 업데이트
+          setKeyword([creteria, txt]);
+          // 검색후엔 첫페이지로 보내기
+          setPageNum(1);
+          // 검색후엔 페이지의 페이징 번호 초기화(1)
+          pgPgNum.current = 1;
+        }
+        // 빈값일 경우
+        else {
+          alert("Please enter a keyword!");
+        }
+        // 리턴코드값은 리듀서 변수에 할당!
+        return gval + (gval != "" ? "*" : "") + txt;
+      }
     }
   };
 
@@ -760,14 +788,22 @@ const ListMode = ({
         </select>
         <button style={{ position: "relative" }}>
           History
-          <b 
+          <ol 
           style={
             {position:"absolute",lineHeight:"1.7"}}>
           {
             memory.indexOf("*")!==-1 &&
             memory.split("*").map(
-              v=><div><a href="#">{v}</a></div>)
-          }</b>
+              v=><li>
+                  <b
+                    onClick={(e)=>{
+                      // 리듀서 메서드 호출
+            dispach({ type: ["again", e.target] });
+            // 보낼값구성 : [구분문자열, 이벤트발생요소]
+                    }}
+                  >{v}</b>
+                </li>)
+          }</ol>
         </button>
       </div>
       <table className="dtbl" id="board">
