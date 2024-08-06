@@ -108,7 +108,7 @@ const vm = new Vue({
     },
   }, /////// methods ////////////////
 
-  // 4. 뷰인트턴스 초기화 완료단계 : created
+  // [ 4. 뷰인트턴스 초기화 완료단계 : created ]
   // -> 이 단계에서 데이터 셋팅함!!!
   created() {
     // 상품 데이터 클래스를 호출하여 객체를 생성하자!
@@ -141,5 +141,27 @@ const vm = new Vue({
       // 생성된 데이터 확인
       console.log("itemData:", this.itemData);
     } //////// for ////////
-  }, // created ///
+  }, // created /////////////////////
+
+  // [ 5. 뷰 랜더링 완료 단계 : mounted ] ////
+  // -> 이 단계에서 DOM관련 스트립트 코딩을 해준다!
+  mounted() {
+    // 랜더링후 자동실행구역 ///////
+    // 1. 제목 숨겼다 보이기
+    $(".tit").hide().delay(1000).slideDown(300);
+
+    // 2. 로고 왼쪽에서 날아오기
+    $(".logo")
+      .css({
+        translate: "-100vw",
+      })
+      .delay(2000)
+      .animate(
+        {
+          translate: "0",
+        },
+        800,
+        "easeOutElastic"
+      );
+  }, // mounted //////////////////////
 }); /////// Vue ///////////////////
