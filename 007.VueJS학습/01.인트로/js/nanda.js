@@ -91,7 +91,20 @@ const vm = new Vue({
             let rdm2 = Math.ceil(Math.random()*17)+3;
             // 먼저 1~17난수를 만들고 3을 더해 4~20만든다!
 
-            console.log("랜덤1:",rdm1,"/랜덤2:",rdm2);
+            // console.log("랜덤1:",rdm1,"/랜덤2:",rdm2);
+
+            // 2-3. 뷰인스턴스의 itemData 배열값 넣기
+            // this키워드로 접근한다! this.itemData
+            this.itemData.push(
+                new GetList(
+                    i, // 일련번호
+                    goods[rdm1]+i, // 상품명
+                    `nanda_${i}`, // 이미지명
+                    20000 * rdm2 // 상품가격
+                )
+            ); // push ///
+            // 생성된 데이터 확인
+            console.log("itemData:",this.itemData);
 
         } //////// for ////////
 
