@@ -45,8 +45,11 @@
         <section class="part gwrap">
             <ol class="glist" 
             v-for="(item,idx) in itemData">
-                <li></li>
-            </ol>
+                <li v-html="makeImg(item.img)"></li>
+                <li>Item : {{item.name}}</li>
+                <li>Price : ￦{{addCommas(item.price)}}</li>
+            </li>
+        </ol>
         </section>
     </div>
     <!-- 
