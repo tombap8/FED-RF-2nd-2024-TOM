@@ -161,7 +161,18 @@ const vm = new Vue({
           translate: "0",
         },
         800,
-        "easeOutElastic"
+        "easeOutElastic",
+        // 애니메이션 후 실행구역
+        ()=>{
+            // 3. 상품리스트로 스크롤 이동하기
+            // -> 상품리스트 박스위치로 이동
+            // $(상품리스트박스).offset().top
+            $("html,body")
+            .animate({
+                scrollTop: 
+                $(".gwrap").offset().top+"px"
+            }, 600, "easeInOutExpo")
+        }
       );
   }, // mounted //////////////////////
 }); /////// Vue ///////////////////
