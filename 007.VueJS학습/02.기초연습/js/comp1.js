@@ -31,12 +31,10 @@ Vue.component("list-comp",{
     // 변수를 사용할 수 있는 속성재구성해줌!
     template:`
       <div>
-        <img v-bind:src="
-          './images/' + n + '.jpg'
-        " alt="의류아이템">
+        <img v-bind:src="gsrc" alt="의류아이템">
         <aside>
-          <h2>aa</h2>
-          <h3>aa</h3>
+          <h2 v-text="gname"></h2>
+          <h3 v-text="gprice"></h3>
         </aside>
       </div>
     `, // template ////
@@ -46,7 +44,17 @@ Vue.component("list-comp",{
     // 그래서 함수의 리턴되는 객체값이
     // 컴포넌트 내부에 전달된다!
     // data: function(){}
-    data(){},
+    data(){
+        // 객체리턴필수!!!(중요!!!)
+        return{
+            // 이미지 src
+            gsrc: `./images/1.jpg`,
+            // 상품명
+            gname: "ㅎㅎㅎ",
+            // 상품가격
+            gprice: 100000,
+        };
+    },
 }); ///// component ////////////
 
 
