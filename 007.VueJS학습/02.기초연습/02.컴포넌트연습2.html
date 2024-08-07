@@ -26,8 +26,10 @@
     <!-- 유튜브 동영상박스 -->
     <div class="you-box">
       <!-- 아이프레임 컴포넌트 -->
-      <ifr-comp></ifr-comp>
-      <ifr-comp></ifr-comp>
+      <ifr-comp v-bind:mv-code="'ZH1Y1l1OmTY'"></ifr-comp>
+      <ifr-comp v-bind:mv-code="'ZaQNTfKbngI'"></ifr-comp>
+      <ifr-comp v-bind:mv-code="'Qz2QFUHbHQc'"></ifr-comp>
+      <ifr-comp v-bind:mv-code="'iV-tLF7U-n0'"></ifr-comp>
     </div>
 
     <!-- 2.그리드 레이아웃 박스 -->
@@ -36,9 +38,18 @@
       (숫자증가,순번) in 개수 -->
       <list-comp 
       v-for="(n,i) in 50"
+      v-bind:key="n"
       v-bind:data-item="'item No.'+n"
       v-bind:list-num="n"
+      v-bind:my-seq="i"
+      v-bind:end-let="'DE'"
       ></list-comp>
+      <!-- 
+        v-bind:key 설정은 반복 컴포넌트일 경우
+        유일값으로 설정되는 필수 속성이다!
+        웹팩으로 설치된 개발환경에서는 에러가 발생함!
+        주의) key값은 프롭스다운 하여 사용하지 않는다!
+       -->
     <!-- 
       w3c 문법 규칙에 따라 내가만든 속성으로
       태그에 출력하려면 이름규칙이 "data-"로
