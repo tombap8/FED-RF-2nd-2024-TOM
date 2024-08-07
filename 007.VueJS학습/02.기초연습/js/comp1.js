@@ -26,10 +26,11 @@ makeVue(".tit");
 
 // 2. 갤러리 리스트에 넣을 전역 컴포넌트 만들기
 Vue.component("list-comp",{
+    // 2-1. template 옵션 : 태그구성
+    // v-bind:속성 디렉티브
+    // 변수를 사용할 수 있는 속성재구성해줌!
     template:`
       <div>
-        <!-- v-bind:속성 디렉티브
-        변수를 사용할 수 있는 속성재구성해줌! -->
         <img v-bind:src="
           './images/' + n + '.jpg'
         " alt="의류아이템">
@@ -38,7 +39,14 @@ Vue.component("list-comp",{
           <h3>aa</h3>
         </aside>
       </div>
-    `,
+    `, // template ////
+    // 2-2. data 옵션 : 컴포넌트 내부 변수셋팅
+    // 실행원리 : 컴포넌트가 빌드할때
+    // data 속성의 함수를 호출한다!
+    // 그래서 함수의 리턴되는 객체값이
+    // 컴포넌트 내부에 전달된다!
+    // data: function(){}
+    data(){},
 }); ///// component ////////////
 
 
