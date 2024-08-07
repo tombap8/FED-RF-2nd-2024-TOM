@@ -128,7 +128,11 @@ export default function Board() {
           // 등록하지 않는다를 코드로 작성할것!
           // 힌트1: 등록않는다는 gval만 넣으면 됨
           // 힌트2: 배열값 중 단순비교는 includes()사용!
-          gval + (gval != "" ? "*" : "") + txt
+          gval.indexOf("*")!==-1
+          ? gval.split("*").includes(txt)
+          ? gval
+          : gval + (gval != "" ? "*" : "") + txt
+          : gval + (gval != "" ? "*" : "") + txt
         );
       }
       // (2) 전체리스트 돌아기기 실행코드
@@ -175,7 +179,20 @@ export default function Board() {
           alert("Please enter a keyword!");
         }
         // 리턴코드값은 리듀서 변수에 할당!
-        return gval + (gval != "" ? "*" : "") + txt;
+        // 리턴코드값은 리듀서 변수에 할당!
+        return (
+          // 숙제: *문자열이 있으면 split으로 잘라서
+          // 배열로 만들고 배열값중 현재 입력된 txt가
+          // 배열중에 없으면 새로 등록하고 있으면
+          // 등록하지 않는다를 코드로 작성할것!
+          // 힌트1: 등록않는다는 gval만 넣으면 됨
+          // 힌트2: 배열값 중 단순비교는 includes()사용!
+          gval.indexOf("*")!==-1
+          ? gval.split("*").includes(txt)
+          ? gval
+          : gval + (gval != "" ? "*" : "") + txt
+          : gval + (gval != "" ? "*" : "") + txt
+        );
       }
     }
   };
