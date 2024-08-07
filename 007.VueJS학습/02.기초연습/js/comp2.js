@@ -47,7 +47,10 @@ Vue.component("list-comp", {
 
   // [ 상위 컴포넌트 전달변수 설정속성 : props ]
   props: ["list-num"],
-  
+  // 이 변수를 사용할때는 캐믈케이스 변수로 사용함!
+  // "list-num" -> this.listNum
+  // -> 내부용 변수이므로 this 키워드 반드시 사용!
+
   // 2-2. data 옵션 : 컴포넌트 내부 변수셋팅
   // 실행원리 : 컴포넌트가 빌드할때
   // data 속성의 함수를 호출한다!
@@ -58,7 +61,7 @@ Vue.component("list-comp", {
     // 객체리턴필수!!!(중요!!!)
     return {
       // 이미지 src
-      gsrc: `./images/${this.setNum()}.jpg`,
+      gsrc: `./images/${this.listNum}.jpg`,
       // 상품명
       gname: this.setName(),
       // 상품가격
