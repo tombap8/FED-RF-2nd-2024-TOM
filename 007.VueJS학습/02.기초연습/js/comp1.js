@@ -20,5 +20,31 @@ Vue.component("tit-comp",{
 
 // 컴포넌트를 먼저 만들고나서 뷰인스턴스 생성함!
 
-// 뷰인스턴스 생성하기
+// 뷰인스턴스 생성하기 : 타이틀 컴포넌트
 makeVue(".tit");
+
+
+// 2. 갤러리 리스트에 넣을 전역 컴포넌트 만들기
+Vue.component("list-comp",{
+    template:`
+    <!-- v-for 숫자돌리기
+      (숫자증가,순번) in 개수 -->
+
+      <div v-for="(n,i) in 50">
+        <!-- v-bind:속성 디렉티브
+        변수를 사용할 수 있는 속성재구성해줌! -->
+        <img v-bind:src="
+          './images/' + n + '.jpg'
+        " alt="의류아이템">
+        <aside>
+          <h2>aa</h2>
+          <h3>aa</h3>
+        </aside>
+      </div>
+    `,
+}); ///// component ////////////
+
+
+
+// 뷰인스턴스 생성하기 : 리스트 컴포넌트
+makeVue(".grid");

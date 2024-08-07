@@ -138,9 +138,9 @@ const vm = new Vue({
           20000 * rdm2 // 상품가격
         )
       ); // push ///
-      // 생성된 데이터 확인
-      console.log("itemData:", this.itemData);
     } //////// for ////////
+    // 생성된 데이터 확인
+    // console.log("itemData:", this.itemData);
   }, // created /////////////////////
 
   // [ 5. 뷰 랜더링 완료 단계 : mounted ] ////
@@ -171,7 +171,7 @@ const vm = new Vue({
             .animate({
                 scrollTop: 
                 $(".gwrap").offset().top+"px"
-            }, 600, "easeInOutExpo")
+            }, 600, "easeInOutExpo");
         }
       );
   }, // mounted //////////////////////
