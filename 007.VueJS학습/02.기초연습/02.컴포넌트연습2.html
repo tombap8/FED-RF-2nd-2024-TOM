@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02.컴포넌트 연습2</title>
+    <link rel="stylesheet" href="./css/comp1.css" />
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- 메인 JS -->
+    <script src="./js/comp2.js" defer></script>
+  </head>
+  <body>
+    <!-- 1.타이틀 -->
+    <h1 class="tit">
+        <!-- 타이틀 컴포넌트 -->
+        <tit-comp></tit-comp>
+    </h1>
+    <!-- 유튜브 동영상박스 -->
+    <div class="you-box">
+      <!-- 아이프레임 컴포넌트 -->
+      <ifr-comp></ifr-comp>
+      <ifr-comp></ifr-comp>
+    </div>
+
+    <!-- 2.그리드 레이아웃 박스 -->
+    <div class="grid">
+      <!-- v-for 숫자돌리기
+      (숫자증가,순번) in 개수 -->
+      <list-comp 
+      v-for="(n,i) in 50"
+      v-bind:list-num="n"
+      ></list-comp>
+      <!-- 중요포인트!!! v-bind 등 디렉티브를
+      사용할경우 값을 쓰는 따옴표구역은 코딩구역으로
+    내부에 다른 따옴표를 사용하지 않으면 모두 변수다!
+    리액트에서는 중괄호를 사용하여 표현식구역을
+    만들어 준것과 같다!
+  -->
+      <!-- 
+        부모컴포넌트의 변수를 
+        자식요소에 어떻게 전달하나?
+        예컨데 v-for에 설정된 n,i 변수가 자식요소에
+        전달되지 않는다!!!
+        프롭스 다운 시키면 된다!
+
+        [ 프롭스 다운 방법 ]
+        (1) 공유할 변수를 v-bind로 설정함
+        이때 변수명은 캐밥케이스로 맘대로설정!
+        예) v-bind:my-name="변수or'값'"
+
+        (2) 전역 컴포넌트 설정에서 props속성을 셋팅
+        Vue.component("컴포넌트명",{
+          template:"",
+          props: [바인드된 변수명]
+        })
+
+        (3) 사용시엔 캐밥케이스명칭을 캐믈케이스로 사용
+        예) props: ['my-name']
+        -> data(){return{mymy:myName}}
+        가져온 my-name을 myName으로 사용함!
+       -->
+    </div>
+    <!-- 3.하단정보 -->
+    <div class="tit2">
+      <!-- 하단정보 컴포넌트 -->
+      <footer-comp></footer-comp>
+    </div>
+  </body>
+</html>
