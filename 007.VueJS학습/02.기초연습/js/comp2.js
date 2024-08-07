@@ -44,6 +44,10 @@ Vue.component("list-comp", {
         </aside>
       </div>
     `, // template ////
+
+  // [ 상위 컴포넌트 전달변수 설정속성 : props ]
+  props: ["list-num"],
+  
   // 2-2. data 옵션 : 컴포넌트 내부 변수셋팅
   // 실행원리 : 컴포넌트가 빌드할때
   // data 속성의 함수를 호출한다!
