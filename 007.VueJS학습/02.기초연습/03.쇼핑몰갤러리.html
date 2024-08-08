@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>03.쇼핑몰갤러리</title>
+    <link rel="stylesheet" href="./css/small.css" />
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- 메인 JS -->
+    <script src="./js/small.js" type="module"></script>
+  </head>
+  <body>
+    <!-- 1.타이틀 -->
+    <h1 class="tit">
+        <!-- 타이틀 컴포넌트 -->
+        <tit-comp></tit-comp>
+    </h1>
+    <!-- 유튜브 동영상박스 -->
+    <div class="you-box">
+        <!-- 아이프레임 컴포넌트 : 주의! 문자값은 따옴표! -->
+        <ifr-comp v-bind:data-id="'ZH1Y1l1OmTY'"></ifr-comp>
+        <ifr-comp v-bind:data-id="'Whj5j3RQmFc'"></ifr-comp>
+    </div>
+
+    <!-- 2.그리드 레이아웃 박스 -->
+    <div class="grid">
+        <!-- 그리드리스트 컴포넌트
+        반복문은 상위에 해준다!
+        단순반복은 in 뒤에 숫자를 쓰면됨!
+            v-for="(일련번호,순번) in 횟수"
+            -> 순번은 0부터, 일련번호는 1부터
+    -->
+        <list-comp 
+            v-for="(n,i) in 50" 
+            v-bind:data-num="n"
+            v-bind:key="n"
+            v-bind:my-seq="i"
+            v-bind:end-let="'WT'"
+            v-on:hull="goMsg"
+            v-on:got-kimchi="overMsg"
+        ></list-comp>
+        <!-- 
+          v-bind:속성명="값"
+          쌍따옴표 안의 값은 변수가 됨!
+          만약 문자값을 보내고 싶으면 따옴표로 다시쌈!
+          예) v-bind:end-let="'WT'"
+
+          ((v-bind:key))는 무엇인가?
+          for문으로 반복하여 요소를 생성할때
+          내부적으로 요소를 구분하는 유일키를 설정할때
+          사용한다! ->> 주의: key값을 props하지 말것!
+          -> 용도가 다르므로 에러발생함!
+         -->
+    </div>
+    <!-- 상품 상세정보 박스 -->
+    <div class="pbg">
+      <win-comp></win-comp>
+    </div>
+  </body>
+</html>

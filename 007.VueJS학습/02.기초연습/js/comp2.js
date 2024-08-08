@@ -39,7 +39,9 @@ Vue.component("list-comp", {
       <div>
         <img 
           v-bind:src="gsrc" 
-          v-on:click="goMsg('나야나!')"
+          v-on:click="goPapa('나야나!')"
+          v-on:mouseover=
+          "goMama({이름:'김고은',나이:'34살'})"
           alt="의류아이템"
         >
         <aside>
@@ -48,6 +50,9 @@ Vue.component("list-comp", {
         </aside>
       </div>
     `, // template ////
+    // 자식컴포넌트에서 부모컴포넌트의 메서드를
+    // 바로 호출할 수 없다! 따라서 자신의 메서드를
+    // 만들고 그 곳에서 호출방식에 따라 부모 메서드를 호출함!
 
   // [ 상위 컴포넌트 전달변수 설정속성 : props ]
   props: ["list-num","my-seq","end-let"],
@@ -107,6 +112,34 @@ Vue.component("list-comp", {
     addCommas(x) {
       return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     },
+
+    // (5) 부모컴포넌트 메서드 호출을 위한 함수
+    goPapa(txt){
+      console.log("내꺼니까 호출가능!",txt,this);
+
+      // 부모 메서드 직접 호출불가!
+      // goMsg(txt);
+
+      this.$emit('hull',txt);
+
+      // [ 부모 메서드 호출방법 ] //
+      // this.$emit(생성이벤트명,전달값)
+      // -> 생성 이벤트명이란? 내가 만든 이벤트명으로
+      // 서브 컴포넌트 태그에 이벤트를 등록하여
+      // 호출하는 방식이다!
+      // 아래와 같이 click이벤트가 아니고...
+      // <list-app v-on:click="함수명"></list-app>
+      // 아래와 같이 내가 만든 이벤트명이다!!!
+      // <list-app v-on:hull="함수명"></list-app>
+      // -> 이벤트명을 내가 만든 이유는...
+      // 이 이벤트명으로 특정한 일을 해주기위함이다!
+      // -> 여기서 특정한 일은 부모함수의 호출!!!
+    },
+    // (6) 부모 메서드 호출 함수 하나더!
+    goMama(pm){
+      console.log('갓김치 호출함수!');
+      this.$emit('oh-my-gotkimchi',pm);
+    },
   },
 }); ///// component ////////////
 
@@ -127,7 +160,7 @@ new Vue({
     // 호출하는 메서드
     overMsg(pm){
       // pm 전달받을 객체값 {이름:"어쩌구",나이:"저쩌구"}
-      alert('오 마이 갓김치!'+pm.이름+' 나이는 '+pm.나이);
+      console.log('오 마이 갓김치!'+pm.이름+' 나이는 '+pm.나이);
     },
 
   },
