@@ -828,6 +828,10 @@ const ListMode = ({
               backgroundColor: "#f8f8ffcc",
               display: "none",
             }}
+            onMouseLeave={(e)=>{
+              // 아웃시 숨기기
+              $(e.currentTarget).hide();
+            }}
           >
             {memory.indexOf("*") !== -1 &&
               memory.split("*").map((v) => (
