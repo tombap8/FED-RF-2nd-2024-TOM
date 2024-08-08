@@ -37,7 +37,11 @@ Vue.component("list-comp", {
   // 변수를 사용할 수 있는 속성재구성해줌!
   template: `
       <div>
-        <img v-bind:src="gsrc" alt="의류아이템">
+        <img 
+          v-bind:src="gsrc" 
+          v-on:click="goMsg('나야나!')"
+          alt="의류아이템"
+        >
         <aside>
           <h2 v-text="gname"></h2>
           <h3 v-text="gprice"></h3>
@@ -107,7 +111,27 @@ Vue.component("list-comp", {
 }); ///// component ////////////
 
 // 뷰인스턴스 생성하기 : 리스트 컴포넌트
-makeVue(".grid");
+// makeVue(".grid");
+
+// lise-comp라는 자식 컴포넌트의 부모컴포넌트!
+new Vue({
+  // 1. 대상
+  el: ".grid",
+  // 2. 메서드
+  methods: {
+    // 자식 이벤트 전달후 실행메서드!
+    goMsg(txt){
+      alert("자식이 부모에게 이벤트 전달 성공!!!"+txt);
+    },
+    // 자식 컴포넌트의 오버 이벤트가 전달되어
+    // 호출하는 메서드
+    overMsg(pm){
+      // pm 전달받을 객체값 {이름:"어쩌구",나이:"저쩌구"}
+      alert('오 마이 갓김치!'+pm.이름+' 나이는 '+pm.나이);
+    },
+
+  },
+});
 
 
 // 3. 유튜브 동영상 컴포넌트 만들기
