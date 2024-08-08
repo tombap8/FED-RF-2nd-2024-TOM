@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>05.Vue Router</title>
+    <link rel="stylesheet" href="./css/vue_router.css" />
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- 뷰JS vuex CDN -->
+    <script src="https://unpkg.com/vuex@3.0.0"></script>
+
+    <!-- 뷰JS 라우터 CDN -->
+    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+    <script src="./js/vue_router.js" type="module"></script>
+  </head>
+  <body>
+    <div id="app">
+      <!-- 1.상단영역 -->
+      <header class="top">
+        <div class="gnb">
+          <ul>
+            <!-- linkData 속성에 셋팅된 객체값으로 메뉴를 만들어준다 
+            첫번째 for문은 객체니까 (값,속성명) 순서임
+            -->
+            <li v-for="(val,key) in this.linkData">
+              <!-- 상위메뉴 -->
+              <router-link v-bind:to="val.link"> {{key}} </router-link>
+              <!-- 서브메뉴 : menu배열개수가 0아니면 출력 -->
+              <ol class="smenu" v-if="val.menu.length!=0">
+                <!-- v는 객체값, k는 객체속성 -->
+                <li v-for="(v,k) in val.menu">
+                  <router-link v-bind:to="v"> {{k}} </router-link>
+                </li>
+              </ol>
+            </li>
+
+            <!-- <li>
+              <router-link to="/trip">세계여행사</router-link>
+            </li>
+            <li>
+              <router-link to="/foods">
+                세계먹거리</router-link>
+                <ol class="smenu">
+                    <li>
+                        <router-link
+                        v-bind:to='{ 
+                            name: "umsik", 
+                            params: { item: "피자", cls: "pizza" } }'>
+                            피자
+                        </router-link>
+                    </li>
+                </ol>
+            </li> -->
+          </ul>
+        </div>
+      </header>
+      <!-- 2.메인영역 -->
+      <main class="cont">
+        <!-- 라우터 컨텐츠영역 -->
+        <router-view></router-view>
+      </main>
+      <!-- 3.하단영역 -->
+      <footer class="info">
+        주소 : 서울 강남구 테헤란로5길 24, 장연빌딩/ 3~7층
+      </footer>
+    </div>
+  </body>
+</html>
