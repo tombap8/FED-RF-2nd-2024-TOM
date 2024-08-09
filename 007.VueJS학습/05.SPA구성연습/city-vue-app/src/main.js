@@ -3,6 +3,7 @@ import Vue from 'vue'
 // 구성 Root VUE 파일
 import App from './App'
 // 뷰JS 라우터 불러오기
+// (기본적으로 라우터 폴더 아래 index.js를 읽어옴)
 import router from './router'
 // 뷰엑스 스토어 JS 불러오기
 import store from './store'
@@ -20,6 +21,6 @@ new Vue({
   // 뷰 인스턴스 생성직후 호출코드구역
   created(){
     // 데이터 초기화 메서드 호출!
-    // store.commit('initSet');
+    store.commit('initSet');
   },
 })
