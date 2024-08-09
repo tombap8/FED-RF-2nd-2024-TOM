@@ -82,6 +82,7 @@
     (1) 프로젝트 생성명령어
         vue init webpack 프로젝트명
         예) vue init webpack my-vue-app
+        vue init webpack city-vue-app
 
         (webpack은 무엇인가?)
         -> Vue CLI의 코드제작 템플릿(하나의 파일구성틀)이다!
