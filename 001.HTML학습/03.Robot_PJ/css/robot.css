@@ -31,7 +31,7 @@ html{
   /* 부드러운 스크롤 애니이동 */
 }
 /* 전체 배경이미지 */
-body {
+body {cursor: url(../images/favicon.png), auto;
   padding-top: 100vh;
   background: url(../images/bg.jpg) no-repeat fixed top/cover;
 }
