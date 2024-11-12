@@ -1,61 +1,287 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
-    <title>심슨가족소개 애니</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>심슨네 가족 애니메이션</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Black+And+White+Picture&display=swap');
+
+        html,
         body {
-            background-color: #000;
+            margin: 0;
+            padding: 0;
+            width: 100vw;
+            /* 뷰포트단위 가로크기 100% */
+            height: 100vh;
+            /* 뷰포트단위 세로크기 100% */
         }
 
-        /*전체박스*/
-        .house {
+        body {
             position: relative;
-            /*부모자격*/
-            width: 800px;
-            height: 441px;
-            background: url(images/house.png) no-repeat;
-            margin: 0 auto;
-            /*마영오-블록박스 가로중앙정렬*/
+            /* 부모자격 */
+            overflow: hidden;
+        }
 
-            /*원근설정*/
-            perspective: 480px;
+        /* body의 가상요소로 배경 배치하기 */
+        body::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            /* 부모? body - 부모박스에 밀착! */
+
+            /* 배경이미지 */
+            background: url(./images/oldTVON.png) no-repeat top/cover;
+        }
+
+        /* TV 이미지 셋팅 */
+        #tv {
+            position: absolute;
+            top: 43%;
+            left: 50%;
+            /* 부모는? body */
+            transform: translate(-50%, -50%);
+            /* 정중앙이동 */
+            width: 90%;
+            max-width: 1000px;
+            /* 가로크기를 부모요소의 90%로 설정했지만
+            max-width:1000px 설정으로 1000px크기를 넘지 못함  */
+        }
+
+
+        /* 타이틀 */
+        .tit {
+            position: absolute;
+            top: 4vh;
+            left: 50%;
+            transform: translateX(-50%);
+            /* 가로중앙이동 */
+            margin: 0;
+            padding: 0;
+
+            font-family: 'Black And White Picture', sans-serif;
+            font-size: 4vmax;
+            font-weight: normal;
+            /* 두께일반 */
+            color: #fff;
+            text-shadow: 2px 0 #000, -2px 0 #000,
+                0 2px #000, 0 -2px #000;
+            /* 글자테두리 */
+            z-index: 1;
+            /* .house보다 위 */
+
+            white-space: nowrap;
+            /* 줄바꿈방지 - 박스크기가 컨텐츠보다 조금이라도 작아
+            지면 자동줄바꿈이 되는데 nowrap으로 설정시 줄바꿈안됨! */
+        }
+
+        /* 전체박스 */
+        .house {
+            position: absolute;
+            /* 부모자격 */
+            top: 43%;
+            left: 50%;
+            /* 부모는? body */
+            transform: translate(-60%, -50%);
+            /* 정중앙이동 */
+
+            width: 70%;
+            /* 유동적인 가로크기!!! */
+            max-width: 800px;
+            /* 최대가로크기 제한을 주고 70% 가로값 지정 */
+
+            /* height: 441px; */
+            /* 비율유지설정 적용을 위해 height값은 지정하지 않는다 */
+            margin: 0 auto;
+            /* 마영오 - 블록가로중앙 */
+            background: url(./images/house.png) no-repeat;
+            background-size: 100%;
+            /* 가로크기에 맞춤(세로는자동) */
+            /* z-index: 1; */
 
             overflow: hidden;
-            /*넘치는 자식요소 숨기기*/
+            /* 넘치는 자식요소 숨기기 */
+
+            /* 3D 원근애니설정하기 - 자식요소에 적용! */
+            perspective: 480px;
         }
 
-        /*문짝*/
+        /* 비율유지 가상요소 */
+        .rbx::before {
+            content: '';
+            display: block;
+            padding-top: 55%;
+        }
+
+        /* 
+            [ 비율유지박스를 위해 필요한 것들 ]
+            1. 가로크기가 유동적인 높이값 없는 블록박스
+            2. 1번박스의 가상요소 before로 padding-top값 %지정(비율)
+            3. 1번박스의 속박스 앱솔루트 밀착박스 설정(1번박스가 부모)
+
+            [ 비율유지박스를 위한 클래스 ]
+            1. .rbx 비율유지박스 (width %)
+            2. .rbx::before 비율설정 (padding-top %)
+            3. .rbxIn 비율유지속박스 (absolute)
+        */
+
+
+        /* 1. 심슨 */
+        .simpson {
+            position: absolute;
+            top: 65%;
+            left: 43.7%;
+            width: 5%;
+
+            /* 애니메이션: 이시이지반방마 */
+            animation: simpson 6s cubic-bezier(.59, .17, .45, .86) 6s forwards;
+        }
+
+        /* 심슨 키프레임 */
+        @keyframes simpson {
+            0% {
+                top: 65%;
+                left: 43.7%;
+                width: 5%;
+                transform: rotate(0deg);
+                z-index: 1;
+            }
+
+            5% {
+                top: 68%;
+                left: 46.7%;
+                width: 5%;
+                transform: rotate(-5deg);
+                z-index: 1;
+            }
+
+            10% {
+                top: 70%;
+                left: 47.7%;
+                width: 5.3%;
+                transform: rotate(5deg);
+                z-index: 1;
+            }
+
+            15% {
+                top: 75%;
+                left: 48.7%;
+                width: 5.5%;
+                transform: rotate(-5deg);
+                z-index: 1;
+            }
+
+            20% {
+                top: 78%;
+                left: 45.7%;
+                width: 6%;
+                transform: rotate(5deg);
+                z-index: 1;
+            }
+
+            30% {
+                top: 80%;
+                left: 45.7%;
+                width: 10%;
+                transform: rotate(-5deg);
+                z-index: 1;
+            }
+
+            40% {
+                top: 73%;
+                left: 45.7%;
+                width: 15%;
+                transform: rotate(5deg);
+                z-index: 1;
+            }
+
+            50% {
+                top: 68%;
+                left: 45.7%;
+                width: 20%;
+                transform: rotate(-5deg);
+                z-index: 1;
+            }
+
+            60% {
+                top: 50%;
+                left: 40.7%;
+                width: 30%;
+                transform: rotate(5deg);
+                z-index: 1;
+            }
+
+            70% {
+                top: 40%;
+                left: 31.7%;
+                width: 40%;
+                transform: rotate(-5deg);
+                z-index: 1;
+            }
+
+            80% {
+                top: 40%;
+                left: 31.7%;
+                width: 40%;
+                transform: rotate(5deg);
+                z-index: 1;
+            }
+
+            90% {
+                top: 30%;
+                left: 31.7%;
+                width: 45%;
+                transform: rotate(-5deg);
+                z-index: 1;
+            }
+
+            100% {
+                top: 30%;
+                left: 31.7%;
+                width: 46%;
+                transform: rotate(0deg);
+                z-index: 1;
+            }
+        }
+
+        /* 키프레임 */
+
+        /* 2. 문짝 */
         .door {
             position: absolute;
-            top: 284px;
-            left: 356px;
-            /*부모? .house*/
-            width: 32px;
+            top: 65%;
+            left: 44.5%;
+            width: 4%;
 
-            /*문짝Y축회전-원근으로 보이려면 
-            부모에게 perspective*/
+            /* 문짝 Y축회전 - 원근으로 보이려면 
+            부모에게 perspective 를 설정해야함! */
             transform: rotateY(0deg);
             transform-origin: right;
-            /*문짝축 오른쪽변경*/
+            /* 문짝축 오른쪽변경 */
 
-            /*애니메이션:이시이지반방마*/
-            animation: doorAni 2s ease-in-out 4s;
-
+            /* 애니메이션: 이시이지반방마 */
+            animation: doorAni 4s ease-in-out 4s;
         }
 
-        /*문열기 키프레임*/
+        /* 문열기 키프레임 */
         @keyframes doorAni {
             0% {
                 transform: rotateY(0deg);
             }
 
             30% {
-                transform: rotateY(110deg);
+                /* 열고있는 상태 */
+                transform: rotateY(120deg);
             }
 
             70% {
-                transform: rotateY(110deg);
+                /* 열고있는 상태 */
+                transform: rotateY(120deg);
             }
 
             100% {
@@ -63,462 +289,292 @@
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-        /*심슨*/
-        .simpson {
-            position: absolute;
-            top: 305px;
-            left: 356px;
-            /*문짝과 같은 위치*/
-            width: 32px;
-            /*문짝과 같은 크기*/
-
-            /*애니메이션:이시이지반방마*/
-            animation: simpson 7s cubic-bezier(0.59, 0.33, 0.89, 0.53) 5s forwards;
-            /*forwards는 애니메이션 마지막상태 유지!*/
-        }
-
-        /*심슨 애니 키프레임*/
-        @keyframes simpson {
-            0% {
-                top: 305px;
-                left: 356px;
-                width: 32px;
-                transform: rotate(0deg);
-                z-index: 1;
-            }
-
-            5% {
-                /*1.문옆이동*/
-                top: 310px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 37px;
-                /*크게*/
-                transform: rotate(-10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            20% {
-                /*2.앞으로 이동*/
-                top: 315px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 40px;
-                /*크게*/
-                transform: rotate(10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            30% {
-                /*3.앞으로 이동*/
-                top: 318px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 45px;
-                /*크게*/
-                transform: rotate(-10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            40% {
-                /*4.앞으로 이동*/
-                top: 322px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 50px;
-                /*크게*/
-                transform: rotate(10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            50% {
-                /*5.앞으로 이동*/
-                top: 325px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 55px;
-                /*크게*/
-                transform: rotate(-10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            60% {
-                /*6.앞으로 이동*/
-                top: 335px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 65px;
-                /*크게*/
-                transform: rotate(10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            70% {
-                /*7.앞으로 이동*/
-                top: 345px;
-                /*아래로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 80px;
-                /*크게*/
-                transform: rotate(-10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            75% {
-                /*8.앞으로 이동*/
-                top: 314px;
-                /*위로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 110px;
-                /*크게*/
-                transform: rotate(10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            80% {
-                /*9.앞으로 이동*/
-                top: 290px;
-                /*위로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 150px;
-                /*크게*/
-                transform: rotate(-10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            85% {
-                /*10.앞으로 이동*/
-                top: 220px;
-                /*위로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 200px;
-                /*크게*/
-                transform: rotate(10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            90% {
-                /*11.앞으로 이동*/
-                top: 200px;
-                /*위로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 250px;
-                /*크게*/
-                transform: rotate(-10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            95% {
-                /*12.앞으로 이동*/
-                top: 180px;
-                /*위로*/
-                left: 346px;
-                /*왼쪽이동*/
-                width: 300px;
-                /*크게*/
-                transform: rotate(10deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-            100% {
-                /*13.앞으로 이동*/
-                top: 169px;
-                /*위로*/
-                left: 309px;
-                /*왼쪽이동*/
-                width: 340px;
-                /*크게*/
-                transform: rotate(0deg);
-                /*기울임*/
-                z-index: 1;
-            }
-
-
-        }
-
-        /*키프레임*/
-
-
-        /*말풍선*/
+        /* 말풍선 */
         .words {
             position: absolute;
-            top: 34px;
-            left: 196px;
-            width: 300px;
-            height: 200px;
-            border: 10px solid #4E8BF8;
+            top: 1%;
+            left: 17%;
+            /* 부모는? .house */
+            /* width: 30%; */
+            /* height: 50%; */
+            /* 크기는 글자크기가 변하므로 자동으로함
+            앱솔루트는 내용만큼 박스가 커짐! */
+            white-space: nowrap;
+            padding: 4%;
+            border: 1vmin solid #4E8BF8;
             border-radius: 50%;
             background-color: #fff;
-
-            box-sizing: border-box;
-            /*보더,패딩포함 크기유지*/
-
-            font: bold 20px/23px Verdana;
+            font: 2vmin/4vmin Verdana;
+            /* 
+                글자 크기 vmin단위는 가로/세로중 작은 사이즈를
+                기준한 비율을 셋팅함. 글자크기를 유동적으로
+                브라우저가 변경하지만 최소 9px보다 작아질 수 없다!
+            */
             text-align: center;
-            padding-top: 20px;
 
-            /*말풍선 투명하게*/
+            /* 글자나타나기는 투명도(opacity)로 애니메이션한다! */
             opacity: 0;
 
-            /*애니메이션:이시이지반방마*/
+            transform: scale(.9);
+            /* 90%크기로 축소 */
+
+            /* 애니메이션: 이시이지반방마 */
             animation: talk 1s ease-in-out 12s forwards;
+            /* 마지막상태유지 forwards 필요! opacity:1값 유지 */
         }
 
-        /*말풍선 키프레임*/
+        /* 가상요소로 말풍선 삼각형 만들기 */
+        .words::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            /* 부모는? .words */
+            transform: rotate(-54deg) translate(55%, 30%);
+            width: 0;
+            height: 0;
+
+            /* 역삼각형보더 */
+            border-top: 4vmin solid #4E8BF8;
+            /* border-bottom으로 주면 삼각형임 */
+            border-left: 4vmin solid transparent;
+            border-right: 4vmin solid transparent;
+        }
+
+        .words::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            /* 부모는? .words */
+            transform: rotate(-54deg) translate(55%, -11%);
+            width: 0;
+            height: 0;
+
+            /* 역삼각형보더 */
+            border-top: 4vmin solid #fff;
+            /* border-bottom으로 주면 삼각형임 */
+            border-left: 4vmin solid transparent;
+            border-right: 4vmin solid transparent;
+        }
+
+        /* 말풍선 키프레임 */
         @keyframes talk {
             to {
                 opacity: 1;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-        /*가상요소로 삼각형 만들기*/
-        .words::before {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: 4px;
-            right: 7px;
-            /*부모는? .words*/
-            transform: rotate(-35deg);
-
-            /*width,height가 0인 
-            보더셋팅으로 삼각형만들기*/
-            /*보더탑:역삼각형*/
-            border-top: 20px solid #4E8BF8;
-            /*보더버텀:삼각형*/
-            /*border-bottom: 20px solid red;*/
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-        }
-
-        /*흰삼각형*/
-        .words::after {
-            content: "";
-            display: block;
-            position: absolute;
-            bottom: 15px;
-            right: 15px;
-            /*부모는? .words*/
-            transform: rotate(-35deg);
-
-            /*width,height가 0인 
-            보더셋팅으로 삼각형만들기*/
-            /*보더탑:역삼각형*/
-            border-top: 20px solid #fff;
-            /*보더버텀:삼각형*/
-            /*border-bottom: 20px solid red;*/
-            border-left: 20px solid transparent;
-            border-right: 20px solid transparent;
-        }
-
-        /*마지*/
+        /* 마지심슨 */
         .marge {
             position: absolute;
-            bottom: -150px;
-            right: -202px;
-            /*-100px;*/
+            bottom: -45%;
+            right: -34%;
+            width: 50%;
             transform: rotate(0deg);
-            /*rotate(-15deg);*/
+            transform-origin: bottom;
+            /* 회전축 하단변경 */
 
-            /*애니메이션:이시이지반방마*/
+            /* 애니메이션: 이시이지반방마 */
             animation: marge .6s ease-in-out 13s forwards;
         }
 
-        /*마지 등장 키프레임*/
+        /* 마지키프레임 */
         @keyframes marge {
             to {
-                right: -100px;
-                transform: rotate(-15deg);
+                right: -24%;
+                transform: rotate(-12deg);
             }
+
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-
-        /*리사*/
+        /* 리사심슨 */
         .lisa {
             position: absolute;
-            top: 20px;
-            left: -278px;
-            /*-50px;*/
-            width: 200px;
+            top: 0;
+            left: -30%;
+            width: 23%;
             transform: rotate(90deg);
 
-            /*애니메이션:이시이지반방마*/
-            animation: lisa .6s ease-out 13.5s forwards;
+            /* 애니메이션: 이시이지반방마 */
+            animation: lisa .6s ease-in-out 13.6s forwards;
         }
 
-        /*리사 키프레임*/
+        /* 리사 키프레임 */
         @keyframes lisa {
             to {
-                left: -50px;
+                left: -5%;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-
-
-        /*매기*/
+        /* 메기심슨 */
         .maggie {
             position: absolute;
-            width: 200px;
-            bottom: -273px;
-            /*-70px;*/
-            left: 200px;
+            bottom: -64%;
+            left: 12%;
+            width: 26%;
 
-            /*애니메이션: 이시이지반방마*/
-            animation: maggie .6s ease-out 14s forwards,
-                updown .4s ease-in-out 14.6s infinite alternate,
+            /* 애니메이션: 이시이지반방마 */
+            animation: maggie .6s ease-in-out 14s forwards,
+                updown .5s ease-in-out 14.6s infinite alternate,
                 comego 10s ease-in-out 20s infinite alternate;
+
         }
 
-        /*매기 등장 키프레임*/
+        /* 메기 키프레임 */
         @keyframes maggie {
             to {
-                bottom: -70px;
+                bottom: -16%;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-        /*매기 업다운 키프레임*/
+        /* 메기 업다운 키프레임 */
         @keyframes updown {
             from {
-                bottom: -70px;
+                bottom: -16%;
+                /* 등장한 마지막 상태 */
             }
 
             to {
-                bottom: -80px;
+                bottom: -21%;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-        /*매기 왔다갔다 키프레임*/
+        /* 메기 왔다갔다 키프레임 */
         @keyframes comego {
             0% {
-                left: 200px;
+                left: 12%;
             }
 
-            40% {
-                /*왼쪽이동*/
-                left: 50px;
+            70% {
+                left: 75%;
             }
 
             100% {
-                /*오른쪽이동*/
-                left: 600px;
+                left: 60%;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-
-
-        /*바트*/
+        /* 바트심슨 */
         .bart {
             position: absolute;
-            top: -305px;
-            /*-110px;*/
-            right: 80px;
-            width: 220px;
+            top: -72%;
+            right: 14%;
+            width: 29%;
             transform: rotate(180deg);
 
-            /*애니메이션:이시이지반방마*/
-            animation: bart .5s ease-out 16s forwards,
+            /* 애니메이션: 이시이지반방마 */
+            animation: bart .8s ease-in-out 17s forwards,
                 fall .4s ease-in 20s forwards,
                 stand 1s ease-out 25s forwards;
         }
 
-        /*바트 등장 키프레임*/
+        /* 바트 키프레임 */
         @keyframes bart {
             to {
-                top: -110px;
+                top: -29%;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-        /*바트 추락 키프레임*/
+        /* 바트 추락 키프레임 */
         @keyframes fall {
             from {
-                /*처음상태가 변경되어서 from을 써준다!*/
-                top: -110px;
+                top: -29%;
                 transform: rotate(180deg);
             }
 
             to {
-                top: 500px;
-                transform: rotate(10deg);
+                top: 106%;
+                transform: rotate(360deg);
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
 
-        /*바트 일어섬 키프레임*/
+        /* 바트 일어섬 키프레임 */
         @keyframes stand {
             from {
-                top: 500px;
-                transform: rotate(10deg);
-                width: 270px;
-                right: 41px;
+                top: 106%;
+                right: 9%;
+                transform: rotate(460deg);
                 z-index: 1;
+                width: 36%;
             }
 
             to {
-                top: 259px;
-                transform: rotate(0deg);
-                width: 270px;
-                right: 41px;
+                top: 56%;
+                right: 9%;
+                transform: rotate(360deg);
                 z-index: 1;
+                width: 36%;
             }
         }
 
-        /*키프레임*/
+        /* 키프레임 */
+
+        /************ 미디어쿼리 **************/
+        /* 1. 태블릿 / 가로방향 모바일 1024px이하 */
+        @media only screen and (max-width:1024px) {
+
+            /* 타이틀 */
+            .tit {
+                top: 80vh;
+                font-size: 7vmax;
+            }
+
+        }
+
+        /* 1024px 이하 */
+
+        /* 2. 모바일 500px이하 */
+        @media only screen and (max-width:500px) {
+
+            /* 타이틀 */
+            .tit {
+                top: 9vh;
+            }
+
+            /* 말풍선 */
+            .words {
+                top: -9%;
+                left: 8%;
+                transform: scale(.6);
+            }
+
+        }
+
+        /* 500px 이하 */
     </style>
-
-
 </head>
 
 <body>
-    <!--전체화면박스-->
-    <div class="house">
+    <h1 class="tit">Simpson's Family</h1>
 
-        <!--심슨-->
-        <img class="simpson" src="images/simpson.png" alt="심슨">
+    <!-- 전체화면박스 -->
+    <div class="house rbx">
+        <!-- 1.심슨 -->
+        <img src="./images/simpson.png" alt="심슨" class="simpson">
 
-        <!--문짝-->
-        <img class="door" src="images/door.png" alt="문짝">
+        <!-- 2.문짝 -->
+        <img src="./images/door.png" alt="문짝" class="door">
 
-        <!--말풍선-->
+        <!-- 3.말풍선 -->
         <div class="words">
             Hi! Everyone <br>
             My Name is Simpson! <br>
@@ -527,23 +583,23 @@
             I LOVE MY FAMILY!!!
         </div>
 
-        <!--마지-->
-        <img class="marge" src="images/Marge_Simpson.png" alt="마지">
+        <!-- 4.마지 -->
+        <img src="./images/Marge_Simpson.png" alt="마지심슨" class="marge">
 
-        <!--리사-->
-        <img class="lisa" src="images/Lisa_Simpson.png" alt="리사">
+        <!-- 5.리사 -->
+        <img src="./images/Lisa_Simpson.png" alt="리사심슨" class="lisa">
 
-        <!--매기-->
-        <img class="maggie" src="images/Maggie_Simpson.png" alt="매기">
+        <!-- 6.메기 -->
+        <img src="./images/Maggie_Simpson.png" alt="메기심슨" class="maggie">
 
-        <!--바트-->
-        <img class="bart" src="images/Bart_Simpson.png" alt="바트">
+        <!-- 7.바트 -->
+        <img src="./images/Bart_Simpson.png" alt="바트심슨" class="bart">
 
+    </div><!-- .house -->
 
-    </div>
+    <!-- TV이미지 -->
+    <img src="./images/oldTVnew.png" alt="TV" id="tv">
 
+</body>
 
-
-
-
-</body></html>
+</html>
