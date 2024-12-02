@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <title>containst 선택자</title>
-    <!-- jQuery library -->
-    <script src="../jquery-3.6.3.min.js"></script>
-    <script>
-      $(() => {
-        ///////////////// jQB //////////////////////
-        /* 
+    <head>
+        <meta charset="utf-8" />
+        <title>containst 선택자</title>
+        <!-- jQuery library -->
+        <script src="../jquery-3.6.3.min.js"></script>
+        <script>
+            $(() => {
+                ///////////////// jQB //////////////////////
+                /* 
                     :contains(문자)
                     -> 선택한 요소 내부 특정문자를 포함하고 있는지를
                     찾아서 선택함!
@@ -24,58 +24,62 @@
                     4. text(문자) - 선택요소 내부에 글자넣음
 
                 */
-        // 미션: "ap" 라는 문자가 있는 li요소를 선택하여
-        // 페이지 로딩 후
-        // 1. 2초 후에 사라지게함.(1초동안사라짐)
-        // 2. 사라진 후 "apple"이라는 단어는 "사과"로,
-        //    "grape"이라는 단어는 "포도"라고 글자를 변경 후
-        // 3. 1초간 애니메이션으로 나타나게 하시오.
-        $("li:contains('ap')")
-          .delay(2000) // 2초후
-          // 1초간 사라짐(애니) -> 그후 실행함수(콜백함수)
-          .hide(1000, function () {
-            // 'apple' -> '사과'변경
-            $("li:contains('apple')").text("사과").show(1000);
-            // 'grape' -> '포도'변경
-            $("li:contains('grape')").text("포도").show(1000);
-          }); ///////// hide //////////
+                // 미션: "ap" 라는 문자가 있는 li요소를 선택하여
+                // 페이지 로딩 후
+                // 1. 2초 후에 사라지게함.(1초동안사라짐)
+                // 2. 사라진 후 "apple"이라는 단어는 "사과"로,
+                //    "grape"이라는 단어는 "포도"라고 글자를 변경 후
+                // 3. 1초간 애니메이션으로 나타나게 하시오.
+                $("li:contains('ap')")
+                    .delay(2000) // 2초후
+                    // 1초간 사라짐(애니) -> 그후 실행함수(콜백함수)
+                    .hide(1000, function () {
+                        // 'apple' -> '사과'변경
+                        $("li:contains('apple')")
+                        .text("사과").show(1000);
+                        // 'grape' -> '포도'변경
+                        $("li:contains('grape')")
+                        .text("포도").show(1000);
+                    }); ///////// hide //////////
 
-        // 추가미션: "o" 라는 문자가 있는 li요소를 선택하여
-        // 페이지 로딩 후
-        // 1. 4초 후에 사라지게함.(1초동안사라짐)
-        // 2. 사라진 후 "lion"이라는 단어는 "사자"로,
-        //    "fox"이라는 단어는 "여우"라고 글자를 변경 후
-        // 3. 1초간 애니메이션으로 나타나게 하시오.
-        $("li:contains('o')")
-          .delay(4000) // 4초후
-          // 1초간 사라짐(애니) -> 그후 실행함수(콜백함수)
-          .hide(1000, function () {
-            // 'lion' -> '사자'변경
-            $("li:contains('lion')").text("사자").show(1000);
-            // 'fox' -> '여우'변경
-            $("li:contains('fox')").text("여우").show(1000);
-          }); ///////// hide //////////
-      }); //////////////////// jQB //////////////////////
-    </script>
-  </head>
-  <body>
-    <div id="container">
-      <div>Lorem Ipsum</div>
+                // 추가미션: "o" 라는 문자가 있는 li요소를 선택하여
+                // 페이지 로딩 후
+                // 1. 4초 후에 사라지게함.(1초동안사라짐)
+                // 2. 사라진 후 "lion"이라는 단어는 "사자"로,
+                //    "fox"이라는 단어는 "여우"라고 글자를 변경 후
+                // 3. 1초간 애니메이션으로 나타나게 하시오.
+                $("li:contains('o')")
+                    .delay(4000) // 4초후
+                    // 1초간 사라짐(애니) -> 그후 실행함수(콜백함수)
+                    .hide(1000, function () {
+                        // 'lion' -> '사자'변경
+                        $("li:contains('lion')")
+                        .text("사자").show(1000);
+                        // 'fox' -> '여우'변경
+                        $("li:contains('fox')")
+                        .text("여우").show(1000);
+                    }); ///////// hide //////////
+            }); //////////////////// jQB //////////////////////
+        </script>
+    </head>
+    <body>
+        <div id="container">
+            <div>Lorem Ipsum</div>
 
-      <ul class="nav1">
-        <li>apple</li>
-        <li>banana</li>
-        <li>grape</li>
-      </ul>
+            <ul class="nav1">
+                <li>apple</li>
+                <li>banana</li>
+                <li>grape</li>
+            </ul>
 
-      <ul class="nav2">
-        <li>lion</li>
-        <li>tiger</li>
-        <li>fox</li>
-      </ul>
-    </div>
+            <ul class="nav2">
+                <li>lion</li>
+                <li>tiger</li>
+                <li>fox</li>
+            </ul>
+        </div>
 
-    <!---------- jQuery code Start ---------->
-    <script></script>
-  </body>
+        <!---------- jQuery code Start ---------->
+        <script></script>
+    </body>
 </html>
