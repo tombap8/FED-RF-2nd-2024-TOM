@@ -136,7 +136,7 @@ body{
 }
 /* 마우스 오버시 빨간색글자 */
 /* 상위메뉴는 dl에 오버시로 설정 */
-#top-area                   .gnb dl:hover dt a,                 
+#top-area .gnb dl:hover dt a,                 
 /* 하위메뉴는 a에 바로 오버시로 설정 */
 .gnb dd a:hover
 {
