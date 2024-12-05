@@ -129,7 +129,7 @@ body {
   width: 10vw;
   transition: top .6s ease-out;
   /* 애니메이션 */
-  animation: woman-ani 2s ease-in-out infinite;
+  /* animation: woman-ani 2s ease-in-out infinite; */
 }
 /* 떨녀 애니 */
 @keyframes woman-ani {
