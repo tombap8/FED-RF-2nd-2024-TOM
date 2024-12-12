@@ -7,13 +7,14 @@
 <script src="../jquery-3.6.3.min.js"></script>
 <script src="../jquery-ui.min.js"></script>
 <script>
-$(document).ready(function(e) {
+$(()=> {
 
   // [3. prev() -  선택요소 이전형제요소 선택]
   // [4. prevAll() -  선택요소 이전형제요소 전부선택]
 	
 	// 미션: 마지막 p태그를 클릭하면 0.5초 간격으로 이전 형제요소의 배경색을 차례로 넣으시오.
   $("#container")
+  .css({scale: '5', transformOrigin: 'left top'})
   .children("p") // 직계 p요소
   .last() // 마지막 p요소
   .click(function(){
@@ -40,7 +41,7 @@ $(document).ready(function(e) {
   // 가로,세로 크기 100px로 원으로 변경
   // 애니메이션 하시오!
   // prevAll() 사용!
-  $(".sub").find("p").last()
+  $("#sub").find("p").last()
   .click(function(){
     $(this) // 마지막 p요소
     .prevAll() // 이전 형제p 모두
