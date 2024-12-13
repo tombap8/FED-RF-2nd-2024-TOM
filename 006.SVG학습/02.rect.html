@@ -36,7 +36,51 @@
         }
 
         /* rect요소 */
-        .rsvg rect {}
+        .rsvg rect {
+            fill: none;
+            /* 투명 */
+            /* 채우기속성(기본색은 검정) 
+            transparent - 투명, none - 없음*/
+            stroke: lime;
+            /* 선색(안쓰면 안나옴) */
+            stroke-width: 10;
+            /* 사각형 기준선을 중심으로 그려짐
+            따라서 바깥쪽으로 5px나가있음->위치,크기 조정필요!
+            x,y축으로 각각 5px밀고 width,height를 각각 10px줄임! */
+            stroke-linecap: square;
+            /* stroke-linecap 선끝옵션 
+                1) butt - 끝에 중심선이 보임(기본값)
+                2) square - 끝에 사각형으로 덮음
+                3) round - 끝에 둥근모양으로 덮음
+            */
+
+
+            /* 
+                [ svg 라인 애니메이션을 위한 중요속성 2가지! ] 
+
+                1. stroke-dasharray : 
+                선과 공백으로 만드는 점선셋팅 
+                - 단위없이 숫자만 쓰면 px단위
+                - 숫자를 하나만 쓰면 선,공백이 동일하게 셋팅됨
+                - 숫자를 2개 이상 쓰면 선,공백 순으로 크기를 셋팅함
+                [ 만일 %단위를 쓰면? ]
+                -> 50%를 주고 몇조각 나는지 세어본다!
+
+                2. stroke-dashoffset :
+                선, 공백 순서에서 시작위치 셋팅 -> 공백부터 시작가능!
+            
+            */
+            stroke-dasharray: 400%;
+            /* 50%를 값으로 주고 몇조각? 8조각남!
+            50% * 8 = 400% -> 결과적으로 선만 보임!
+            공백이 숨어있음 -> 시작위치를 밀어서 공백부터 보이게함
+            -> stroke-dashoffset으로 밀어준다! 
+            -> stroke-dasharray값과 같은 값을 주면 공백부터시작!*/
+            stroke-dashoffset: 400%;
+
+            /* 트랜지션: 속시이지 */
+            transition: all .4s ease-in-out;
+        }
 
         /* 버튼에 마우스 오버시 */
         .ib1:hover rect {
@@ -66,9 +110,28 @@
             height: 100%;
         }
         /* polygon요소 */
-        .psvg polygon{}
+        .psvg polygon{
+            fill: none;/* 채우기없앰 */
+            stroke: hotpink;/* 선색 */
+            stroke-width: 15;/* 선두께 */
+
+            stroke-linecap: round;
+            /* 선끝처리 둥글게 */
+            stroke-linejoin: round;
+            /* 선꺾이는 부분처리 둥글게 */
+            
+            /* 애니메이션을 위한 셋팅 */
+            stroke-dasharray: 310%;
+            /* 50% * 6조각 = 300%+알파 */
+            stroke-dashoffset: 310%;
+            /* 데쉬어레이 값과 같으면 공백부터시작! */
+
+            transition: all 1s;
+        }
         /* 마우스 오버시 */
-        .psvg:hover polygon{}
+        .psvg:hover polygon{
+            stroke-dashoffset: 0;
+        }
 
 
         /* 크기가 유동적인 비율유지 박스 */
