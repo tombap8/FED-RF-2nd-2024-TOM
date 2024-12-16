@@ -7,11 +7,15 @@
 <script src="jquery-1.7.2.min.js"></script>
 	<script>
 	$(function(){// jQB //////////////////////////
+		
+		$('body,button').css({fontSize:'40px'});
+
 		// 미션: 추가버튼을 클릭하면 이미지가 랜덤하게 #container에 추가되게하시오.
 		// 추가버튼 - #append
 
 		// 변경대상 - #container
 		const tg = $("#container");
+		tg.css({marginTop:"20px",padding:'20px'});
 
 		$("#append").click(()=>{
 
