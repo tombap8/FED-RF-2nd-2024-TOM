@@ -631,41 +631,61 @@ $(".tit").hover(
 ); /////// hover 메서드 //////////
 
 
-
-$('body').append(`
+/////////////////////////////////////////
+///////// 추가 애니 구현하기 ///////////
+// 1. 눈내리는 박스 넣기 + 산타넣기
+$("body").append(`
   <div class="snowing"></div>
-  <img class="santa" src="./images/santa.webp">
-  `);
-$('.snowing').css({
-  position: 'fixed',
-  zIndex: '99999',
-  pointerEvents: 'none',
-  top: '0',
-  left: '0',
-  width: '100%',
-  height: '100%',
-  background: 'url("images/snowing.gif")',
-})
-$('.santa').css({
-  position: 'fixed',
-  zIndex: '-1',
-  pointerEvents: 'none',
-  top: '20%',
-  left: '-20%',
-  width: '20%',
-})
+  <img class="santa" 
+      src="./images/santa.png" 
+      alt="산타썰매">
+`);
 
+// 2. 눈내리는 박스 셋팅
+$(".snowing").css({
+position: "fixed",
+// 맨위에 올때 아래쪽 이벤트살리기
+pointerEvents: "none",
+zIndex: 99999,
+top: 0,
+left: 0,
+width: "100%",
+height: "100%",
+background: "url(./images/snowing.gif)",
+});
+
+// 싼타변수
+const $santa = $(".santa");
+
+// 3. 싼타썰매 셋팅
+$santa.css({
+position: "fixed",
+zIndex: -1,
+top: "20%",
+left: "-20%",
+width: "20%",
+});
+// 4. 싼타애니 함수 만들기
 const santaAni = () => {
-  $('.santa').animate({
-    top: '-10%',
-    left: '110%',  
-  },10000,'linear',function(){
-    $(this).css({
-      top: '20%',
-      left: '-20%',
-    })
-  });
+$santa.animate(
+  {
+    top: "-10%",
+    left: "110%",
+  },
+  10000,
+  "linear",
+  () => { // 콜백함수 ///
+    // 값의 초기화(반복할것이므로)
+    $santa.css({
+      top: "20%",
+      left: "-20%",
+    }); /// css ///
+  }
+); /// animate ///
+}; ///// santaAni 함수 /////
 
-};
+// 5. 싼타애니 최초호출
 santaAni();
+
+// 6. 인터발 함수로 계속 호출하기!
 setInterval(santaAni,11000);
