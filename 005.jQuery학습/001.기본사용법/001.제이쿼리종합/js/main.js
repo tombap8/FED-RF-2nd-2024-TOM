@@ -629,3 +629,43 @@ $(".tit").hover(
     }); /////////// css //////
   }
 ); /////// hover 메서드 //////////
+
+
+
+$('body').append(`
+  <div class="snowing"></div>
+  <img class="santa" src="./images/santa.webp">
+  `);
+$('.snowing').css({
+  position: 'fixed',
+  zIndex: '99999',
+  pointerEvents: 'none',
+  top: '0',
+  left: '0',
+  width: '100%',
+  height: '100%',
+  background: 'url("images/snowing.gif")',
+})
+$('.santa').css({
+  position: 'fixed',
+  zIndex: '-1',
+  pointerEvents: 'none',
+  top: '20%',
+  left: '-20%',
+  width: '20%',
+})
+
+const santaAni = () => {
+  $('.santa').animate({
+    top: '-10%',
+    left: '110%',  
+  },10000,'linear',function(){
+    $(this).css({
+      top: '20%',
+      left: '-20%',
+    })
+  });
+
+};
+santaAni();
+setInterval(santaAni,11000);
