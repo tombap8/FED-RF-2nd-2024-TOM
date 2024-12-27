@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <script>
-        let my = [];
+      let my = [];
       window.addEventListener("load", () => {
-        document.querySelectorAll("ul li")
-        .forEach
-        (ele=>{
-            my.push([
-                ele.querySelector("img").src,
-                ele.querySelector("p.category").innerText,
-                ele.querySelector("h3").innerText,
-                ele.querySelector("p.date").innerText,
-            ]);
-        })
+        document.querySelectorAll("ul li").forEach((ele, idx) => {
+          my.push({
+            idx: idx + 1,
+            title: ele.querySelector("h3").innerText,
+            imgSrc: ele.querySelector("img").src,
+            catName: ele.querySelector("p.category").innerText,
+            date: ele.querySelector("p.date").innerText,
+          });
+        });
 
         console.log(my);
       });
