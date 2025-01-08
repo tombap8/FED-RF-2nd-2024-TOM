@@ -256,11 +256,6 @@
 
 }
 
-// 일반 박스기본 //////
-.box-basic {
-  text-align: center;
-  padding: 20px 0;
-}
 
 // 위의 기본 디자인 클래스를
 // 특정클래스에 그대로 가져오기 싶을때
@@ -283,6 +278,11 @@
   background-image: linear-gradient(to bottom, lightgreen, transparent);
 }
 
+// 일반 박스기본 //////
+.box-basic {
+  text-align: center;
+  padding: 20px 0;
+}
 /* 하단 타이틀 */
 .bottom-title {
   // 기본박스 디자인 적용하기
