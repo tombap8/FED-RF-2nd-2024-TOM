@@ -1,7 +1,7 @@
 // JS9-3. 로컬 스토리지 JS
 
 // 나의 함수 불러오기
-import mFn from "./my_function.js";
+import myFn from "./my_function.js";
 
 /*************************************************************** 
     [ JS 로컬스토리지 : localStorage ]
@@ -58,11 +58,11 @@ import mFn from "./my_function.js";
 
 // [ 1. 로컬 스토리지 연습 ] ////////////////////
 // 1. 버튼 기능 이벤트 대상 : .local-box button
-const btnLocal = mFn.qsa(".local-box button");
+const btnLocal = myFn.qsa(".local-box button");
 console.log("대상:", btnLocal);
 
 // 2. 버튼에 이벤트 설정하기
-btnLocal.forEach((ele) => mFn.addEvt(ele, "click", localsFn));
+btnLocal.forEach((ele) => myFn.addEvt(ele, "click", localsFn));
 
 // 3. 로컬쓰 처리 함수 만들기 ///////
 function localsFn() {
@@ -83,11 +83,11 @@ function localsFn() {
   } /// if ////
   else if (btxt == "보여줘") {
     // 배우이름 출력
-    mFn.qs(".local .nm").innerText = localStorage.getItem("actor-name");
+    myFn.qs(".local .nm").innerText = localStorage.getItem("actor-name");
     // 역할이름 출력
-    mFn.qs(".local .role").innerText = localStorage.getItem("actor-role");
+    myFn.qs(".local .role").innerText = localStorage.getItem("actor-role");
     // 캐릭터소개 출력
-    mFn.qs(".local .cat").innerText = localStorage.getItem("actor-cat");
+    myFn.qs(".local .cat").innerText = localStorage.getItem("actor-cat");
   } /// else if ////
   else if (btxt == "전체삭제") {
     // 로컬스토리지 전체 삭제
@@ -154,7 +154,7 @@ function bindData() {
 
   // 출력대상 : .board
   // 3. 화면에 출력하기 ////////
-  mFn.qs(".board").innerHTML = `
+  myFn.qs(".board").innerHTML = `
         <table>
             <tr>
                 <th>번호</th>
@@ -181,7 +181,7 @@ function bindData() {
     `;
 
   // 4. 지우기 버튼 셋팅하기
-  mFn.qsa(".del-link a").forEach((ele) => {
+  myFn.qsa(".del-link a").forEach((ele) => {
     ele.onclick = (e) => {
       // 1.기본이동막기
       e.preventDefault();
@@ -221,7 +221,7 @@ if (localStorage.getItem("minfo")) bindData();
 else makeObj();
 
 ///// 게시판 입력 버튼 클릭시 구현하기 //////
-mFn.qs("#sbtn").onclick = () => {
+myFn.qs("#sbtn").onclick = () => {
   // 어디에 무엇을 입력해야하나?
   // 로컬쓰에 제목,내용을 입력한다!
 
@@ -232,7 +232,7 @@ mFn.qs("#sbtn").onclick = () => {
 
   // 2. 입력값이 비었으면 돌려보내기!
   // trim() - 앞뒤공백 제거 메서드
-  if (mFn.qs("#tit").value.trim() == "" || mFn.qs("#cont").value.trim() == "") {
+  if (myFn.qs("#tit").value.trim() == "" || myFn.qs("#cont").value.trim() == "") {
     alert("제목과 내용입력은 필수입니다!");
     return;
   } ////// if //////
@@ -252,8 +252,8 @@ mFn.qs("#sbtn").onclick = () => {
         null,
         localData.map((v) => v.idx)
       ) + 1,
-    tit: mFn.qs("#tit").value,
-    cont: mFn.qs("#cont").value,
+    tit: myFn.qs("#tit").value,
+    cont: myFn.qs("#cont").value,
   });
 
   // 4. 배열 데이터를 문자화하여 로컬쓰에 입력
@@ -263,8 +263,8 @@ mFn.qs("#sbtn").onclick = () => {
   bindData();
 
   // 6. 기존 입력데이터 지워주기
-  mFn.qs("#tit").value = "";
-  mFn.qs("#cont").value = "";
+  myFn.qs("#tit").value = "";
+  myFn.qs("#cont").value = "";
 
   // 7. 수정선택박스 업데이트하기
   updateItemList();
@@ -276,13 +276,13 @@ mFn.qs("#sbtn").onclick = () => {
 ///////// 수정기능 구현하기 //////////////
 
 // ♣ 수정선택박스 - #sel
-const selBox = mFn.qs("#sel");
+const selBox = myFn.qs("#sel");
 
 // ♣ 수정항목 선택박스 업데이트함수 호출
 updateItemList();
 
 // ♣ 수정선택박스 선택변경시 이벤트 설정하기
-mFn.addEvt(selBox, "change", (e) => {
+myFn.addEvt(selBox, "change", (e) => {
   // 1. 옵션값 읽어오기
   let optVal = e.target.value;
   console.log("선택값:", optVal);
@@ -291,8 +291,8 @@ mFn.addEvt(selBox, "change", (e) => {
   if (optVal == "opt") {
     alert("수정할 항목을 선택하세요!");
     // 입력창 초기화
-    mFn.qs("#tit2").value = "";
-    mFn.qs("#cont2").value = "";
+    myFn.qs("#tit2").value = "";
+    myFn.qs("#cont2").value = "";
     return; // 여기서나감!
   } /// if ///
 
@@ -314,12 +314,12 @@ mFn.addEvt(selBox, "change", (e) => {
   console.log("선택data:", selRec);
 
   // 5. 선택 데이터로 수정창에 기존데이터 넣기
-  mFn.qs("#tit2").value = selRec.tit;
-  mFn.qs("#cont2").value = selRec.cont;
+  myFn.qs("#tit2").value = selRec.tit;
+  myFn.qs("#cont2").value = selRec.cont;
 }); ///////////// change ////////////
 
 // ♣ 수정버튼 클릭시 이벤트 설정하기
-mFn.qs("#mobtn").onclick = () => {    
+myFn.qs("#mobtn").onclick = () => {    
 
   // 1. 선택박스 선택값 읽어오기
   let optVal = selBox.value;
@@ -329,15 +329,15 @@ mFn.qs("#mobtn").onclick = () => {
   if (optVal == "opt") {
     alert("수정할 항목을 선택하세요!");
     // 입력창 초기화
-    mFn.qs("#tit2").value = "";
-    mFn.qs("#cont2").value = "";
+    myFn.qs("#tit2").value = "";
+    myFn.qs("#cont2").value = "";
     return; // 여기서나감!
   } /// if ///
 
   // 3. 입력값이 비었으면 돌려보내기!
   // trim() - 앞뒤공백 제거 메서드
-  if (mFn.qs("#tit2").value.trim() == "" || 
-  mFn.qs("#cont2").value.trim() == "") {
+  if (myFn.qs("#tit2").value.trim() == "" || 
+  myFn.qs("#cont2").value.trim() == "") {
     alert("제목과 내용입력은 필수입니다!");
     return;
   } ////// if //////
@@ -354,8 +354,8 @@ mFn.qs("#mobtn").onclick = () => {
     console.log(v.idx);
     if (v.idx == optVal) {
       // 해당항목값 업데이트 하기
-      v.tit = mFn.qs("#tit2").value;
-      v.cont = mFn.qs("#cont2").value;
+      v.tit = myFn.qs("#tit2").value;
+      v.cont = myFn.qs("#cont2").value;
       // 변수에 find()할당시 저장하거나
       // 여기서 순회를 끝낸다는 의미임!
       return true;
@@ -374,8 +374,8 @@ mFn.qs("#mobtn").onclick = () => {
   selBox.value = "opt";
 
   // 9. 입력창 초기화
-  mFn.qs("#tit2").value = "";
-  mFn.qs("#cont2").value = "";
+  myFn.qs("#tit2").value = "";
+  myFn.qs("#cont2").value = "";
 }; //////////// click //////////////
 
 //////////////////////////////////
@@ -404,11 +404,11 @@ function updateItemList() {
 ///////////////////////////////////////////////
 // [ 2. 세션 스토리지 연습 ] ////////////////////
 // 1. 버튼 기능 이벤트 대상 : .session-box button
-const btnSession = mFn.qsa(".session-box button");
+const btnSession = myFn.qsa(".session-box button");
 console.log("대상:", btnSession);
 
 // 2. 버튼에 이벤트 설정하기
-btnSession.forEach((ele) => mFn.addEvt(ele, "click", sessionsFn));
+btnSession.forEach((ele) => myFn.addEvt(ele, "click", sessionsFn));
 
 // 3. 세션쓰 처리 함수 만들기 ///////
 function sessionsFn() {
@@ -429,13 +429,13 @@ function sessionsFn() {
   } /// if ////
   else if (btxt == "보여줘") {
     // 배우이름 출력
-    mFn.qs(".session .nm").innerText = 
+    myFn.qs(".session .nm").innerText = 
     sessionStorage.getItem("actor-name");
     // 역할이름 출력
-    mFn.qs(".session .role").innerText = 
+    myFn.qs(".session .role").innerText = 
     sessionStorage.getItem("actor-role");
     // 캐릭터소개 출력
-    mFn.qs(".session .cat").innerText = 
+    myFn.qs(".session .cat").innerText = 
     sessionStorage.getItem("actor-cat");
   } /// else if ////
   else if (btxt == "전체삭제") {
