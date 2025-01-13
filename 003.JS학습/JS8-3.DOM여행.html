@@ -82,10 +82,10 @@
                     // 바로 다음것을 on변경하면 forEach문에서
                     // 다음요소를 돌때 다시 on이 걸리게되고
                     // if문에 들어오게 된다! 그래서 계속걸림!
-                    // 해결책: on을 조금있다가 넣어준다(setTimeout)
+                    // 해결책: on을 태스크큐 넣어준다(setTimeout)
                     setTimeout(
                       () => ele.nextElementSibling.classList.add("on"),
-                      10
+                      0
                     );
                   }
                 }); //// forEach //////
