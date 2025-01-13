@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="컬렉션부터 스타일, 쇼핑, 뷰티, 라이프스타일, 셀러브리티까지 지금 가장 핫한 트렌드 소개" />
+        <title>| 2023 보그 코리아 (Vogue Korea)</title>
+        <!-- 파비콘 넣기 -->
+        <link rel="shortcut icon" href="./images/icon.jpg" type="image/x-icon" />
+        <!-- 아이콘CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fontisto@v3.0.4/css/fontisto/fontisto.min.css" />
+        <!-- 외부CSS넣기 -->
+        <link rel="stylesheet" href="./css/category.css" />
+        <!-- 미디어쿼리CSS넣기 -->
+        <link rel="stylesheet" href="./css/media.css" />
+
+        <!-- 제이쿼리 라이브러리+UI -->
+        <script src="./js/jquery-3.6.1.min.js"></script>
+        <script src="./js/jquery-ui.min.js"></script>
+
+        <!-- 부드러운 스크롤 JS -->
+        <script src="./js/smoothScroll20.js"></script>
+        <!-- 공통 JS -->
+        <script src="./js/common.js"></script>
+
+        <!-- 링크시스템 JS -->
+        <script src="./js/linksys.js"></script>
+
+        <!-- 뷰JS 프레임워크 스텐드얼론 버전 가져오기 -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+        <!-- 엑시오스 라이브러리 스텐드얼론 버전 가져오기(제이슨불러오기) -->
+        <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+
+        <!-- 외부JS넣기 -->
+        <script src="./js/category.js"></script>
+    </head>
+    <body>
+        <!-- 1.상단영역 -->
+        <!-- #top.on인 경우 슬림상단 디자인 적용 -->
+        <div id="top">
+            <header class="ibx top">
+                <!-- 1-1.상단메뉴 -->
+                <div class="tmenu">
+                    <!-- 1-1-1.sns박스 -->
+                    <div class="sns">
+                        <a href="#" class="fi fi-instagram">
+                            <span class="ir">인스타그램</span>
+                        </a>
+                        <a href="#" class="fi fi-facebook">
+                            <span class="ir">페이스북</span>
+                        </a>
+                        <a href="#" class="fi fi-twitter">
+                            <span class="ir">트위터</span>
+                        </a>
+                        <a href="#" class="fi fi-youtube-play">
+                            <span class="ir">유튜브</span>
+                        </a>
+                        <a href="#" class="fi cas">
+                            <span class="ir">카카오스토리</span>
+                        </a>
+                    </div>
+                    <!-- 1-1-2.사이드메뉴 -->
+                    <div class="sideMenu">
+                        <ul class="smbx">
+                            <li>
+                                <a href="#">SIDE MENU</a>
+                                <!-- 서브메뉴 -->
+                                <ol class="smsub">
+                                    <li>
+                                        <a href="#">회사 소개</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">광고 및 제휴</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">개인정보 처리방침</a>
+                                    </li>
+                                </ol>
+                            </li>
+                            <li>
+                                <a href="#">SUBSCRIBE</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- 1-2.로고박스 -->
+                <h1 class="logo">
+                    <a href="#">
+                        <img src="./images/mlogo.png" alt="메인로고" />
+                    </a>
+                </h1>
+                <!-- 1-3.GNB박스 -->
+                <nav class="gnb" id="gnb">
+                    <ul>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">FASHION</a>
+                            <!-- 
+                                [ v-on 이벤트 디렉티브 ]
+
+                                1. 기본형 
+                                    v-on:이벤트명=값
+
+                                2. 축약형
+                                    @이벤트명=값
+
+                                3. 추가옵션(장식자)
+
+                                    (1) @이벤트명.prevent=값
+                                    -> event.preventDefault() 설정
+                                    -> 기본기능막기
+
+                                    (2) @이벤트명.stop=값
+                                    -> event.stopPropergation() 설정
+                                    -> 이벤트버블링막기
+
+                                    (3) @이벤트명.once=값
+                                    -> 이벤트가 한번만 적용되게함
+
+                             -->
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">BEAUTY</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">LIVING</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">PEOPLE</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">VIDEO</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">RUNWAY</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">TIME &amp; GEM</a>
+                        </li>
+                        <li>
+                            <a href="#" @click.prevent="chgMenu">SHOPPING</a>
+                        </li>
+                        <li>
+                            <!-- 돋보기 검색버튼 -->
+                            <a href="#" class="fi fi-search">
+                                <span class="ir">search</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </header>
+        </div>
+        <!-- 2.메인영역 -->
+        <div id="cont" class="bgc">
+            <main class="ibx cont" v-for="(v,i) in items.data" v-if="v.경로===catName" v-bind:class="catName">
+                <!-- 
+                    v-bind:class="catName"
+                    클래스명을 뷰JS 데이터변수 catName에 할당된
+                    값이 클래스명으로 들어감!
+                    -> 미리셋팅된 배경이미지가 모두 나온다!
+                 -->
+                <!-- 2-1. 카테고리 페이지 상단영역 -->
+                <header class="ctop">
+                    <!-- 2-1-1.서브타이틀 -->
+                    <h2 class="stit">
+                        {{v.제목}}
+                    </h2>
+                    <!-- 2-1-2.서브메뉴(LNB:Local Navigation Bar) -->
+                    <nav class="lnb" v-if="v.메뉴!=='없음'">
+                        <ul>
+                            <li v-for="(m,i) in v.메뉴">
+                                <a href="#">
+                                    {{m}}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
+                <!-- 2-2. 카테고리 페이지 컨텐츠영역 -->
+                <div class="icont">
+                    <section class="pt2">
+                        <div class="cbx bgi bg1-1">
+                            <!-- 
+                                v-html은 html코드 디렉티브
+                                v-text은 문자데이터 디렉티브
+                            
+                            -->
+                            <h2 v-html="v.타이틀[0]"></h2>
+                        </div>
+                        <div class="cbx bgi bg1-2">
+                            <h2 v-html="v.타이틀[1]"></h2>
+                        </div>
+                        <div class="cbx bgi bg1-3">
+                            <h2 v-html="v.타이틀[2]"></h2>
+                        </div>
+                    </section>
+                    <section class="pt2">
+                        <div class="cbx bgi bg2-1">
+                            <h2 v-html="v.타이틀[3]"></h2>
+                        </div>
+                        <div class="cbx bgi bg2-2">
+                            <h2 v-html="v.타이틀[4]"></h2>
+                        </div>
+                        <div class="cbx bgi bg2-3">
+                            <h2 v-html="v.타이틀[5]"></h2>
+                        </div>
+                    </section>
+                </div>
+            </main>
+        </div>
+        <!-- 3.하단영역 -->
+        <div id="info" class="bgc">
+            <footer class="ibx info">
+                <!-- 3-1.하단로고 -->
+                <div class="blogo">
+                    <img src="./images/footer_logo.png" alt="하단로고" />
+                </div>
+                <!-- 3-2.회사주소 -->
+                <address class="addr">WWW.VOGUE.COM Ⓒ CONDÉNAST ASIA PACIFIC. INC. ALL RIGHTS RESERVED. VOGUE.COM KOREA IS OPERATED BY DOOSAN MAGAZINE.</address>
+                <!-- 3-3.하단링크 -->
+                <ul class="blink">
+                    <li>
+                        <a href="#">정기구독</a>
+                    </li>
+                    <li>
+                        <a href="#">회사소개</a>
+                    </li>
+                    <li>
+                        <a href="#">광고 및 제휴</a>
+                    </li>
+                    <li>
+                        <a href="#">개인정보 처리방침</a>
+                    </li>
+                </ul>
+            </footer>
+        </div>
+
+        <!-- 위로가기버튼 -->
+        <a href="#" class="tbtn fi fi-angle-up">
+            <span class="ir">위로가기버튼</span>
+        </a>
+    </body>
+</html>

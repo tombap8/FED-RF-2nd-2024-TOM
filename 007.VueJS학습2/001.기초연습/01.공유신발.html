@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>01.공유신발 - 뷰사용해보기!!</title>
+
+        <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+        <!-- 제이쿼리 라이브러리 CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+        <!-- 제이쿼리 UI CDN -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+        <script>
+            $(() => {
+                /////////// jQB //////////////////////
+
+                // 0. 상품정보생성을 위한 생성자함수
+                function GetList(idx, name, img, price) {
+                    // idx-일련번호,name-상품명,
+                    // img-이미지이름,price-상품가격
+                    this.idx = idx;
+                    this.name = name;
+                    this.img = img;
+                    this.price = price;
+                } /////////// GetList 생성자함수 /////////
+
+                
+                // 1. 뷰JS 인스턴스 생성하기
+                const vm = new Vue({
+                    // 1. 대상선정
+                    el: "#vapp",
+                    // 대상은 꼭 아이디요소일 필요는 없다!
+                    // 클래스나 일반요소로 쓰면 만나는 첫번째 대상만 적용함!
+                    // 2. 데이터 설정
+                    data: {
+                        // 1.제목데이터
+                        bigtit: "Style NANDA",
+                        logo:`<img src="https://stylenanda.com/design1/kr/logo_3ce.png" alt="style nanda"  style="width:80px">`,
+                        // 2.내용데이터
+                        contxt: `
+                            나는 날고 싶어~!
+                            <h2>오늘도 당신은 날고 싶다~!</h2>
+                            <img src="https://stylenanda.com/design1/kr/sub_banner_e.jpg" alt="스타일난다">
+                        `,
+                        // 3. 상품정보
+                        // 데이터를 생성자함수를 통해 생성하자!
+                        sh_data: [], // 배열리터럴로 선언과 할당!
+                        // sh_data:[
+                        //     {
+                        //         idx:1,
+                        //         name:"vans와우",
+                        //         img:"vans_1.jpg"
+                        //     },
+                        //     {
+                        //         idx:2,
+                        //         name:"vans올레이",
+                        //         img:"vans_2.jpg"
+                        //     },
+                        //     {
+                        //         idx:3,
+                        //         name:"vans코코넛",
+                        //         img:"vans_3.jpg"
+                        //     },
+                        //     {
+                        //         idx:4,
+                        //         name:"vans마크로",
+                        //         img:"vans_4.jpg"
+                        //     },
+                        // ]
+                    },
+                    // 3. 메서드 설정
+                    methods: {
+                        // 이미지태그를 만들어서 리턴한다!
+                        makeImg(val) {
+                            return `
+                                <img src="./images/${val}" alt="신발">
+                            `;
+                        },
+                        // myFn:function(){}, -> 일반형
+                        // myFn:()=>{}, -> 화살표함수형
+                        // myFn(){}, -> 메서드형(일반형을 축약!)
+
+
+                        //정규식함수(숫자 세자리마다 콤마해주는 기능)
+                        numberWithCommas(x) {
+                            return x.toString()
+                            .replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+                        }
+
+                    },
+                    // 4. 제이쿼리는 어디에 쓰나?
+                    // 뷰JS 인스턴스 생성 라이프사이클에서
+                    // 가상돔과 실제돔이 연결생성된 시점에서
+                    // 실제돔을 컨트롤하는 제이쿼리를 사용한다!
+                    // -> mounted:function(){코드구역}
+                    mounted: function () {
+                        // mounted 시 자동실행구역
+                        // 1.제목이 숨겼다 나옴!
+                        $(".tit").hide().delay(1000).slideDown(300);
+
+                        // 2. 상품목록 숨겼다 보이기
+                        $(".glist").hide().delay(2000).fadeIn(400);
+                    }, //////////// mounted ///////////
+
+                    /// 뷰인스턴스 초기화 완료단계인 created
+                    // 실행함수구역에 데이터초기셋팅을 실시하자!
+                    // created:function(){코드}
+                    created: function () {
+
+                        
+                        // 정해진 랜덤 상품명 배열
+                        const goods = ["프레이컷","아일렛기모","베어부클","포멀믹스톤"];
+
+                        // 상품정보객체 생성자함수 호출하기
+                        for (let i = 1; i < 19; i++) {
+
+                            // 정해진 상품명을 랜덤하게 넣기
+                            // 배열의 이름 4가지 랜덤수로 선택(0~3)
+                            let rdm1 = Math.floor(Math.random()*4);
+                            
+                            // 다양한 가격을 위해 4~20사이 난수곱하기
+                            let rdm2 = Math.ceil(Math.random()*17)+3;
+
+                            // sh_data에 접근하여 배열에 객체넣기
+                            this.sh_data.push(new GetList(i, goods[rdm1]+ i, `fashion1/nanda_${i}.jpg`, 1800*rdm2));
+                        } /////////// for ///////////
+
+                        // 객체확인!
+                        console.log(this.sh_data);
+                    }, ///////////// created //////////////
+                }); //////////////// Vue ////////////////
+
+                // 외부에서 el옵션 대상선정을 따로 할 수 있다!
+                // 단, 인스턴스 내부에 el이 없는 경우!
+                // vm.$mount("#vapp");
+
+            }); ////////////// jQB //////////////////////
+        </script>
+        <style>
+            /* 뷰대상박스 */
+            #vapp {
+                max-width: 1920px;
+                width: 98%;
+                padding: 20px;
+                border: 1px dashed darkblue;
+                border-radius: 20px;
+                margin: 0 auto;
+                text-align: center;
+            }
+            /* 제목 */
+            .tit {
+                color: orangered;
+                font-size: 40px;
+            }
+            /* 내용박스 */
+            #vapp p {
+                border: 4px double gray;
+                background-image: linear-gradient(-45deg,#27dbfa,#bc22f5,#67004a);
+                color: lightgreen;
+                padding: 50px;
+            }
+            /* 내용박스 이미지 */
+            #vapp p img {
+                max-width: 800px;
+                width: 90%;
+                border-radius: 20px;
+            }
+
+            /* 상품리스트박스 */
+            .gwrap {
+                display: flex;
+                /* 하위 ol박스를 옆으로 흐르게함 */
+                justify-content: center;
+                flex-wrap: wrap;
+
+                gap: 10px 20px; /* 상하 좌우 사이간격 */
+            }
+            /* 개별리스트박스 */
+            .glist {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                width: 20%;
+            }
+            .glist li{
+                position: relative;
+            }
+            /* 상품이미지 */
+            .glist img {
+                width: 100%;
+            }
+            @media screen and (max-width:1024px) {
+                .glist{
+                    width: 30%;
+                }
+            }
+            @media screen and (max-width:800px) {
+                .glist{
+                    width: 48%;
+                }
+            }
+            @media screen and (max-width:600px) {
+                .glist{
+                    width: 98%;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 뷰JS 대상요소 -->
+        <div id="vapp">
+            <!-- 1.제목 -->
+            <h1 class="tit" v-text="bigtit"></h1>
+            <div v-html="logo"></div>
+            <!-- 
+                [ v-text 디렉티브 ]
+                -> 해당요소의 데이터를 텍스트로 넣는 디렉티브속성
+                -> 머스테쉬 출력은 v-text출력과 같다!
+
+                [ v-html 디렉티브 ]
+                -> 해당요소의 데이터를 태그로 넣는 디렉티브속성
+             -->
+            <!-- <h1 class="tit">{{bigtit}}</h1> -->
+
+            <!-- 2.내용 -->
+            <p v-html="contxt"></p>
+
+            <!-- 3.상품리스트 -->
+            <div class="gwrap">
+                <ol class="glist" v-for="(item,idx) in sh_data">
+                    <!-- sh_data는 배열 -->
+                    <!-- {{item+"/"+idx}} -->
+
+                    <!-- 상품이미지출력 -->
+                    <!-- item에 담긴것은 상품별 객체임! -->
+                    <li v-for="(a,b) in item" v-if="b==='img'" v-html="makeImg(a)"></li>
+
+                    <!-- 상품명출력 -->
+                    <li v-for="(a,b) in item" v-if="b==='name'">Item:{{a}}</li>
+
+                    <!-- 상품가격출력 -->
+                    <li v-for="(a,b) in item" v-if="b==='price'">Price: \{{numberWithCommas(a)}}</li>
+                </ol>
+            </div>
+        </div>
+    </body>
+</html>
