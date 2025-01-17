@@ -9,15 +9,15 @@
 		- 기아 EV9홍보
 		https://worldwide.kia.com/kr/ev9
 		- 팹시 제로콜라 홍보 사이트
-		https://khouseofpepsi.com/
+		https://company.lottechilsung.co.kr/kor/brand/pepsicola/contentsid/615/index.do
 	2) 영화 런칭 기념 프로모션 사이트
 		- LIONSGATE 영화홍보 사이트
 		https://www.lionsgate.com/movies/knives-out
 	3) 행사소개 사이트
-		- 서울시 행사홍보 사이트
-		https://www.seoulmusicfestival.co.kr/kor/
+		- 디자인코리아2024 사이트
+		https://designkorea.kidp.or.kr/
 		- 컬러런 홍보 사이트
-		https://www.thecolorrunkr.com/
+		https://thecolorrun.com/?srsltid=AfmBOorwhpiH8Mvoq-9mKBtz4dkYjDRMKLRsuG2oh0Niu9k3r3T9RRNS
 
 (2) 순서대로 소개하는 정보도 좋은 대상
 	1) 재활용 방법 절차를 소개하는 사이트
@@ -52,6 +52,12 @@
 	예) {"제목":"하나","분류":"둘","내용":"셋","기타":""}
 	-> 어느페이지엔 있고 어디엔 없는 경우 "기타"항목으로 이를 구분하고
 	전체 데이터 항목구성을 동일하게 유지해야 선택문이 일정한 패턴을 가지게됨!
+
+***********************************************
+
+->>> 한마디로 말하면!!!
+데이터를 구성하여 화면에 바인딩하기 좋은 
+주제와 데이터를 갖춘 사이트를 선정하자!
 
 
 
