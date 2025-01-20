@@ -5,17 +5,17 @@ import store from "./store.js";
 // default로 내보내기 후 기본이름은 store임!
 
 // 라우터 템플릿 만들기
-let Trip = {
+const Trip = {
     template: 
     `<div class="trip router">World Trip</div>`
 }
-let Foods = {
+const Foods = {
     template: 
     `<div class="foods router">World Foods</div>`
 }
 // 라우터 연결 옵션 셋팅하기
-// let routes = [{},{}]
-let routes = [
+// const routes = [{},{}]
+const routes = [
     // 첫번째 루트
     {
         // router-link 의 to 속성값과 동일

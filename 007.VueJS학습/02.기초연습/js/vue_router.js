@@ -29,7 +29,7 @@ const linkData = {
 const linkData2 = {
   세계여행사: {
     link: { path: "/trip" },
-    menu: [],
+    menu: '',
   },
   세계먹거리: {
     link: { path: "/foods" },

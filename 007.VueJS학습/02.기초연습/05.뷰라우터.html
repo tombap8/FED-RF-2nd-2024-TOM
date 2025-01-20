@@ -33,12 +33,18 @@
             -->
             <li v-for="(val,key) in this.linkData">
               <!-- 상위메뉴 -->
-              <router-link v-bind:to="val.link"> {{key}} </router-link>
+              <!-- <router-link v-bind:to="val.link"> {{key}} </router-link> -->
+              <router-link v-bind:to='{ path: "/foods" }'> {{key}} </router-link>
               <!-- 서브메뉴 : menu배열개수가 0아니면 출력 -->
-              <ol class="smenu" v-if="val.menu.length!=0">
+               <!-- {{typeof(val.menu)}} -->
+              <ol class="smenu" v-if="typeof(val.menu)=='object'">
                 <!-- v는 객체값, k는 객체속성 -->
                 <li v-for="(v,k) in val.menu">
                   <router-link v-bind:to="v"> {{k}} </router-link>
+                  <!-- <router-link v-bind:to='{
+                    name: "umsik",
+                    params: { item: "피자", cls: "pizza" },
+                  }'> {{k}} </router-link> -->
                 </li>
               </ol>
             </li>
