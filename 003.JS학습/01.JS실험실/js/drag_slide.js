@@ -1,7 +1,7 @@
 // 드래그 기능 + 슬라이드 기능 합친 JS - drag_slide.js
 
 // DOM 모듈함수
-import mFn from "./my_function.js";
+import myFn from "./my_function.js";
 
 /// 배너 셋팅을 위한 함수(노출용) /////
 export default function setSlide(clsName) {
@@ -10,13 +10,13 @@ export default function setSlide(clsName) {
 
   // [1] 슬라이드 셋팅하기 ////////////
   // 슬라이드 대상요소 : .banbx
-  const banBox = mFn.qsa("." + clsName);
+  const banBox = myFn.qsa("." + clsName);
   // console.log("슬라이드 대상:", banBox);
 
   // 슬라이드 만큼 모두 호출하기!
   banBox.forEach((ele) => {
     // 하위슬라이드 선택요소(드래그 대상요소인 슬라이드)
-    // let subSlide = mFn.qsEl(ele, ".slide");
+    // let subSlide = myFn.qsEl(ele, ".slide");
     // -> slideFn함수에서 하위 .slide를 수집하고 있음!
     // 따로 보낼필요 없음!!!
 
@@ -48,11 +48,11 @@ function slideFn(selEl) {
   // 1-1. 슬라이드 부모요소 : 전달된 선택요소 -> selEl
   const sldWrap = selEl; // DOM요소를 직접 받음!!!
   // 1-2.변경 대상: 선택요소 하위 .slide
-  const slide = mFn.qsEl(sldWrap, ".slide");
+  const slide = myFn.qsEl(sldWrap, ".slide");
   // 1-3.이벤트 대상: 선택요소 하위 .abtn
-  const abtn = mFn.qsaEl(sldWrap, ".abtn");
+  const abtn = myFn.qsaEl(sldWrap, ".abtn");
   // 1-4.블릿박스 대상: 선택요소 하위 .indic li
-  let indic = mFn.qsEl(sldWrap, ".indic");
+  let indic = myFn.qsEl(sldWrap, ".indic");
 
   // 대상확인
   // console.log("대상", abtn, slide, indic);
@@ -60,7 +60,7 @@ function slideFn(selEl) {
   // 1.4. 슬라이드 개수와 동일한 블릿동적생성
   // 대상: .indic -> indic변수
   // 슬라이드개수
-  let sldCnt = mFn.qsaEl(slide, "li").length;
+  let sldCnt = myFn.qsaEl(slide, "li").length;
   // for문으로 블릿li생성(0번만 클래스 on넣기)
   for (let i = 0; i < sldCnt; i++) {
     indic.innerHTML += `
@@ -72,7 +72,7 @@ function slideFn(selEl) {
   } /////// for문 ////////////
 
   // 블릿li 재선택할당하기 /////
-  indic = mFn.qsaEl(sldWrap, ".indic li");
+  indic = myFn.qsaEl(sldWrap, ".indic li");
 
   // 1.5. li리스트에 순번속성 만들어 넣기
   // 만드는이유: 블릿변경 등에 현재 슬라이드 순번 필요!
@@ -84,7 +84,7 @@ function slideFn(selEl) {
   // setAttribute(속성명,속성값) -> 속성셋팅 JS내장메서드
 
   // 2. 이벤트 설정하기 : 버튼요소들 -> forEach()
-  abtn.forEach((ele) => mFn.addEvt(ele, "click", goSlide));
+  abtn.forEach((ele) => myFn.addEvt(ele, "click", goSlide));
 
   // 3. 함수만들기 //////////////////
   /********************************** 
@@ -137,7 +137,7 @@ function slideFn(selEl) {
     기능: 중앙슬라이드 클래스 on처리
   **********************************/
   function addOnSlide(slideSeq) {
-    mFn.qsaEl(slide, "li").forEach((ele, idx) => {
+    myFn.qsaEl(slide, "li").forEach((ele, idx) => {
       if (idx === slideSeq) ele.classList.add("on");
       else ele.classList.remove("on");
     }); ///// forEach ///////
@@ -316,7 +316,7 @@ function slideFn(selEl) {
   // 1. 대상선정 : 보내준 대상 HTML컬렉션
   const dtg = slide;
   // -> slide는 선택박스 하위 슬라이드
-  // const dtg = mFn.qs('.dtg2');
+  // const dtg = myFn.qs('.dtg2');
 
   // 드래그할 대상의 CSS 기본값을 셋팅한다!
   // 필수 셋팅요소는 position:relative / top:0 / left:0
@@ -489,7 +489,7 @@ function slideFn(selEl) {
   // 4. 드래그 이벤트 설정하기 //////////
 
   // (1) 마우스 다운 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mousedown", (e) => {
+  myFn.addEvt(dtg, "mousedown", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
     // clearAuto();
     // 자동호출을 지우기만 해서 자동시작안함!
@@ -514,7 +514,7 @@ function slideFn(selEl) {
  
 
   // (2) 마우스 업 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mouseup", () => {
+  myFn.addEvt(dtg, "mouseup", () => {
     // 0. 자동넘김 멈춤함수 호출하기
     clearAuto();
     // abtn.forEach(ele=>ele.removeEventListener(
@@ -536,11 +536,11 @@ function slideFn(selEl) {
   }); ///////// mouseup //////////
 
   // (3) 마우스 무브 이벤트 함수연결하기
-  mFn.addEvt(dtg, "mousemove", dMove);
+  myFn.addEvt(dtg, "mousemove", dMove);
   //////////// mousemove /////////////
 
   // (4) 마우스가 대상을 벗어나면 드래그상태값 false처리하기
-  mFn.addEvt(dtg, "mouseleave", () => {
+  myFn.addEvt(dtg, "mouseleave", () => {
     // 드래그 상태값 false로 변경!
     dFalse();
     // 과도한 드래그로 갑자가 아웃되면 lastX,lastY값이
@@ -556,7 +556,7 @@ function slideFn(selEl) {
   //////////// 모바일 이벤트 처리 구역 //////////
 
   // (1) 터치스타트 이벤트 함수연결하기
-  mFn.addEvt(dtg, "touchstart", (e) => {
+  myFn.addEvt(dtg, "touchstart", (e) => {
     // 0. 자동넘김 멈춤함수 호출하기
     // clearAuto();
     // 자동호출을 지우기만 해서 자동시작안함!
@@ -577,7 +577,7 @@ function slideFn(selEl) {
   }); ///////// touchstart //////////
 
   // (2) 터치엔드 이벤트 함수연결하기
-  mFn.addEvt(dtg, "touchend", () => {
+  myFn.addEvt(dtg, "touchend", () => {
     // 0. 자동넘김 멈춤함수 호출하기
     clearAuto();
 
@@ -593,12 +593,12 @@ function slideFn(selEl) {
   }); ///////// touchend //////////
 
   // (3) 터치무브 이벤트 함수연결하기
-  mFn.addEvt(dtg, "touchmove", dMove);
+  myFn.addEvt(dtg, "touchmove", dMove);
   //////////// touchmove /////////////
 
   // (4) 버튼,블릿에 오버시 자동처리호출셋팅 ///
-  mFn.qsaEl(selEl,'.controls').forEach((ele) =>
-    mFn.addEvt(ele,"mouseenter", 
+  myFn.qsaEl(selEl,'.controls').forEach((ele) =>
+    myFn.addEvt(ele,"mouseenter", 
     () => {
       moveDragSlide();
       clearAuto();
@@ -606,7 +606,7 @@ function slideFn(selEl) {
   );/////// forEach /////////
 
   // (5) 브라우저 크기 리사이즈시 동적 변경값 업데이트함수
-  mFn.addEvt(window, "resize", () => {
+  myFn.addEvt(window, "resize", () => {
     // 1. 기준위치값 left 업데이트
     originalValue = selEl.offsetWidth * -2.2;
     // 2. 기준위치값으로 실제 슬라이드 CSS left값 변경하기
