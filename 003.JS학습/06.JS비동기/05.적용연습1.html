@@ -1,60 +1,138 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Promise 적용연습1</title>
-        <script>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promise 적용연습1</title>
+    <script>
+      function 화면뿌려(이거) {
+        document.getElementById("show").innerHTML += 이거 + "<br>";
+      }
 
-            /*************************************************************** 
-                [ 제이슨 파일 내부형식에 관하여... ]
+      ////// 로드구역 ///////////////////
+      window.addEventListener("load", () => {
+        // 제이슨 데이터를 로딩하여 읽은후
+        // 데이터를 활용하도록 Promise를 적용한다!
 
-                1. 제이슨 파일은 내부형식이 객체형식이지만
-                자바스크립트에서 속성명을 변수형으로 쓰는 것처럼
-                사용할 수 없다! 반드시 쌍따옴표로 싸서 문자형으로
-                표현해야만 한다!
+        /*************************************************************** 
+             [ 제이슨 파일 내부형식에 관하여... ]
 
-                2. 제이슨 파일 내부에 JS주석문은 쓸 수 없다!
-                (vscode의 settings.json에서 주석문은 vscode에서
-                별도의 처리를 하므로 사용가능했던것임...)
+            1. 제이슨 파일은 내부형식이 객체형식이지만
+            자바스크립트에서 속성명을 변수형으로 쓰는 것처럼
+            사용할 수 없다! 반드시 쌍따옴표로 싸서 문자형으로
+            표현해야만 한다!
 
-                3. 제이슨은 최상위 형식으로 객체/배열로써 하나만 존재할 수 있다!
-                    예) {속성명:값,...} / [{속성명:값,...},{속성명:값,...}]
+            2. 제이슨 파일 내부에 JS주석문은 쓸 수 없다!
+            (vscode의 settings.json에서 주석문은 vscode에서
+            별도의 처리를 하므로 사용가능했던것임...)
 
-                4. 제이슨 맨 마지막 항목 뒤에 콤마를 남길 수 없다!(에러!)
-                -> 자바스크립트에서는 마지막콤마 허용함!
-            ***************************************************************/
+            3. 제이슨은 최상위 형식으로 객체/배열로써 하나만 존재할 수 있다!
+                예) {속성명:값,...} / [{속성명:값,...},{속성명:값,...}]
 
-            
-        </script>
-        <style>
-            @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
-            body {
-                background-image: linear-gradient(to bottom, #494949, gray);
-                background-repeat: no-repeat;
-                background-attachment: fixed;
-                text-align: center;
+            4. 제이슨 맨 마지막 항목 뒤에 콤마를 남길 수 없다!(에러!)
+            -> 자바스크립트에서는 마지막콤마 허용함!
+        ***************************************************************/
+
+        // 1. 변수 = new Promise((성공함수)=>{코드})
+        // 프라미스 코드에 XMLHttpRequest() 객체로 제이슨 로딩함!
+        const myProm = new Promise((prFn) => {
+          // prFn - 성공함수
+          // (1) XMLHttpRequset() 객체 인스턴스 생성하기
+          let ajax = new XMLHttpRequest();
+
+          // (2) 비동기 파일요청하기(제이슨파일)
+          ajax.open("GET", "./defaultSettings.json");
+          // -> 제이슨파일은 응답형식(responseType)을 "json"설정필수!
+          ajax.responseType = "json";
+
+          // ajax.responseType = "text";
+          // 만약 responseType 설정을 하지 않으면 "text"가 기본값이다!
+          // 이런경우엔 제이슨 파일형식이 잘못되었어도 읽어올 수 있다!
+
+          // (3) 결과리턴 onload 이벤트 함수구역만들기
+          ajax.onload = function () {
+            console.log(ajax.status);
+            if (ajax.status == 200) {
+              // 프라미스 성공함수로 제이슨 데이터전달하기!
+              prFn(ajax.response);
+              // responseType을 "json"으로 설정했으므로
+              // 결과값은 제이슨으로 전달된다!
+            } /////// if ////////
+            else {
+              console.log(ajax.statusText);
+              // -> 결과값이 null 이면 제이슨 파일 내부형식이
+              // 잘못된 경우다! 이런경우 제이슨파일로 취급받지 못해
+              // 아무것도 로딩못한 결과가 나온다!
             }
-            #show {
-                font-family: "Gamja Flower", cursive;
-                font-size: 4vw;
-                background-image: linear-gradient(to bottom, lightgreen, pink, orangered, aquamarine);
-                background-clip: text;
-                -webkit-background-clip: text;
-                -webkit-text-fill-color: transparent;
-                background-repeat: no-repeat;
-                font-weight: bold;
-            }
-            #doc{
-                width: 50%;
-                height: 50vh;
-                margin: 0 auto;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="show"></div>
-        <div id="doc"></div>
-    </body>
+          }; ////////// onload 함수구역 ////////////
+
+          // (4) 비동기 요청보내기 : send()
+          ajax.send();
+        }); /////////// myProm 인스턴스 ////////
+
+        // 2. 프라미스변수.then((성공전달변수)=>{코드})
+        // 성공한 제이슨 로딩파일을 전달받아 활용한다!
+        myProm.then((success) => {
+          // success 성공시 전달변수
+          console.log("전달파일찍기:", success);
+
+          // html코드만들기
+          let hcode = `
+                       <h1>우리집멍뭉이 정보:</h1>
+                       <ol>
+                           <li>이름 : ${success[0]["멍뭉이이름"]}</li>
+                           <li>사는곳 : ${success[0]["멍뭉이사는곳"]}</li>
+                           <li>태생지 : ${success[0]["멍뭉이출신지"]}</li>
+                           <li>락식 : ${success[0]["멍뭉이간식"]}</li>
+                       </ol>
+                       <h1>우리집야웅이 정보:</h1>
+                       <ol>
+                           <li>이름 : ${success[1]["야웅이름"]}</li>
+                           <li>사는곳 : ${success[1]["야웅사는곳"]}</li>
+                           <li>태생지 : ${success[1]["야웅출신지"]}</li>
+                           <li>락식 : ${success[1]["야웅간식"]}</li>
+                       </ol>
+                   `;
+
+          // 화면출력하기!!!!
+          화면뿌려(hcode);
+        }); ////////// 프라미스 then /////////////
+      }); /////////////// load ////////////////
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Gamja+Flower&display=swap");
+      body {
+        background-image: linear-gradient(to bottom, #494949, gray);
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        text-align: center;
+      }
+      #show {
+        font-family: "Gamja Flower", cursive;
+        font-size: 4vw;
+        background-image: linear-gradient(
+          to bottom,
+          lightgreen,
+          pink,
+          orangered,
+          aquamarine
+        );
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-repeat: no-repeat;
+        font-weight: bold;
+      }
+      #doc {
+        width: 50%;
+        height: 50vh;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="show"></div>
+    <div id="doc"></div>
+  </body>
 </html>
