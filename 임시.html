@@ -9,31 +9,29 @@
 
 ////////////// 2. 뷰 html ////////////////////////////
 
-    <!-- 1-4. 추가가메뉴박스 -->
-    <nav class="add-menu">
-        <ol>
-        <li v-for="(v,k) in this.addMenu" :class="k=='로그아웃'?'hide':''">
-            <a href="#" @click.prevent="goPage(k)">
-            <i :class="v" :title="k"></i>
-            </a>
-        </li>
-        </ol>
-    </nav>
+<!-- 1-4. 추가가메뉴박스 -->
+<nav class="add-menu">
+    <ol>
+    <li v-for="(v,k) in this.addMenu" :class="k=='로그아웃'?'hide':''">
+        <a href="#" @click.prevent="goPage(k)">
+        <i :class="v" :title="k"></i>
+        </a>
+    </li>
+    </ol>
+</nav>
 
-
+<script>
 ////////////// 3. 뷰 data ////////////////////////////
 
-
-        // (3) 추가가 메뉴 데이터
-        addMenu: {
-            로그인: "fa-solid fa-right-to-bracket",
-            로그아웃: "fa-solid fa-right-from-bracket",
-            회원가입: "fa-solid fa-user",
-            장바구니: "fa-solid fa-cart-shopping",
-        },
+// (3) 추가가 메뉴 데이터
+addMenu: {
+    로그인: "fa-solid fa-right-to-bracket",
+    로그아웃: "fa-solid fa-right-from-bracket",
+    회원가입: "fa-solid fa-user",
+    장바구니: "fa-solid fa-cart-shopping",
+},
 
 ////////////// 4. 뷰 methods ////////////////////////////
-
 
 methods:{
     goPage(k){
@@ -50,7 +48,6 @@ methods:{
 ////////////// 5. 뷰 css ////////////////////////////
 
 // 1-4. 추가가메뉴 ///////////
-<style>
 .add-menu {
     position: absolute;
     // 부모는? .top-area
@@ -78,4 +75,5 @@ methods:{
         }
     }
 }
-</style>
+    
+</script>
