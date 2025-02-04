@@ -9,9 +9,9 @@ const TopComp = Vue.component("top-comp", {
         <!-- 1-1. 로고박스 -->
         <div class="logo">
           <h1>
-            <a href="index.html">
+            <router-link to="/">              
               <img src="./images/svg/logo.svg" alt="메인로고" />
-            </a>
+            </router-link>
           </h1>
         </div>
         <!-- 1-2. 메뉴박스 -->
@@ -44,12 +44,9 @@ const TopComp = Vue.component("top-comp", {
                 k=='로그아웃' ? 'hide' : ''
               "
             >
-              <a 
-                href="#"
-                @click.prevent="goPage(k)"
-              >
-                <i :class="v" :title="k"></i>
-              </a>
+              <router-link :to="v[1]">
+                <i :class="v[0]" :title="k"></i>
+              </router-link>
             </li>
           </ol>
         </nav>
@@ -65,10 +62,10 @@ const TopComp = Vue.component("top-comp", {
       sumMenu: ["KOREA", "구독하기", "≡"],
       // (3) 추가가 메뉴 데이터 : 키는 메뉴, 값은 폰트어썸 클래스
       addMenu: {
-        로그인: "fa-solid fa-right-to-bracket",
-        로그아웃: "fa-solid fa-right-from-bracket",
-        회원가입: "fa-solid fa-user",
-        장바구니: "fa-solid fa-cart-shopping",
+        로그인: ["fa-solid fa-right-to-bracket",{path:'/login'}],
+        로그아웃: ["fa-solid fa-right-from-bracket",{path:'/logout'}],
+        회원가입: ["fa-solid fa-user",{path:'/join'}],
+        장바구니: ["fa-solid fa-cart-shopping",{path:'/cart'}],
       },
     };
   }, /// data ///

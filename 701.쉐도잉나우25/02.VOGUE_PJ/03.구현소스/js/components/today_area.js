@@ -29,7 +29,7 @@ Vue.component("today-area-comp",{
     template: `
      <div id="today-area">
         <section class="inbox today-area">
-          <h2 class="sub-tit">Fashion</h2>
+          <h2 class="sub-tit">Today’s Stories</h2>
           <div class="post-list-today">
             <ul>
                 <li v-for="v in todayInfo">
