@@ -1,0 +1,412 @@
+@charset "UTF-8";
+/* 보그 PJ 공통핵심 CSS - _core.scss */
+/* 웹폰트, 공용클래스 */
+/*********** 1. 웹폰트 ***********/
+/* Roboto체 + Noto Sans Kr체 - CDN */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
+/* 
+font-family: 'Roboto', "Noto Sans KR";
+*/
+body {
+  font-family: "Roboto", "Noto Sans KR";
+}
+
+/* 공사중 표시 */
+/************* 2. 공통 class *************/
+/* 2-1. 중앙 속박스 */
+.inbox {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.sub-tit {
+  font-size: 4.2rem;
+  padding-bottom: 15px;
+}
+
+.common-box {
+  padding: 4rem;
+}
+
+.big-box-type figure {
+  aspect-ratio: 1/2;
+}
+.big-box-type figure figcaption {
+  translate: 0 -100%;
+  padding: 5rem;
+  color: #fff;
+  background: linear-gradient(to top, #000, transparent);
+}
+.big-box-type figure figcaption h3.s-tit {
+  font-size: 3.6rem;
+  font-weight: normal;
+}
+.big-box-type figure figcaption p.date {
+  display: none;
+}
+
+/* 보그 PJ 리셋 CSS - _reset.scss */
+/* 요소의 초기화 */
+/* 루트 글자크기 */
+html {
+  font-size: 10px;
+}
+
+/* 1. 마진,패딩 없애기 */
+html, body, h1, h2, h3, h4, h5, h6, ul, ol, dt, dd, p, figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+/* 가로스크롤 생김 방지!(특히 모바일) */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 2. a요소 리셋 */
+a {
+  color: #000;
+  /* 글자색 */
+  text-decoration: none;
+  /* 밑줄없앰 */
+}
+
+/* 3. ul,ol 리셋 */
+ul, ol {
+  list-style: none;
+  /* 블릿/숫자 제거 */
+}
+
+/* 4. h요소 글자크기 리셋 */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  /* html의 기본글자크기(16px)와 일치 초기화 */
+}
+
+/* 5. 이미지 리셋 */
+img {
+  border: none;
+  /* 이미지 링크시 서버에서 볼때 파란색 자동보더 없애기 */
+  vertical-align: bottom;
+  /* 박스 이미지 하단간극 없애기(약4px)
+  값으로 top, middle등 도 효과있음! */
+}
+
+#top-area {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2235294118);
+}
+
+.top-area {
+  /* 부모자격 */
+  position: relative;
+  padding: 4rem;
+}
+
+.logo h1 {
+  text-align: center;
+}
+.logo h1 img {
+  height: 70px;
+}
+
+.gnb {
+  margin-top: 4rem;
+}
+.gnb ul {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+}
+.gnb ul li {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 1000px) {
+  .logo h1 {
+    text-align: left;
+  }
+  .gnb ul {
+    justify-content: flex-start;
+  }
+}
+.sum-menu {
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+  font-size: 1.6rem;
+}
+.sum-menu ol {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.sum-menu ol li:nth-child(1) a {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.sum-menu ol li:nth-child(2) a {
+  font-weight: bold;
+  padding: 8px 15px;
+  background-color: #000;
+  color: #fff;
+}
+.sum-menu ol li:nth-child(3) a {
+  font-size: 3em;
+  font-weight: 100;
+  transform: scaleX(0.7);
+  display: inline-block;
+}
+
+.add-menu {
+  position: absolute;
+  right: 5rem;
+  top: 2rem;
+  font-size: 1.6rem;
+}
+.add-menu ol {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.add-menu ol li a {
+  letter-spacing: 2px;
+}
+.add-menu ol li.hide {
+  display: none;
+}
+
+#footer-area {
+  background-color: #000;
+}
+
+.footer-area {
+  /* 최소높이 */
+  min-height: 298px;
+  padding: 80px 0 78px;
+  box-sizing: border-box;
+}
+.footer-area .blogo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.footer-area .blogo img {
+  height: 56px;
+}
+.footer-area .addr {
+  color: #747474;
+  text-align: center;
+  font-size: 11px;
+  /* address 요소 기본 이탤릭해제 */
+  font-style: normal;
+  margin: 20px 0 10px;
+}
+.footer-area .blink {
+  /* 플렉스박스 */
+  display: flex;
+  /* 진행방향정렬 : 중앙 */
+  justify-content: center;
+  /* 플렉스 랩핑박스 */
+  flex-wrap: wrap;
+  /* 사이간격 gap: 위아래 양쪽 */
+  gap: 0 12px;
+}
+.footer-area .blink a {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+.footer-area .blink li:last-child a {
+  font-weight: bold;
+}
+
+/* 위로가기 버튼 */
+.tbtn {
+  position: fixed;
+  bottom: -35px; /* 아랫쪽에 나가있음 */
+  right: 75px;
+  width: 48px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  background-color: #333;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+  z-index: 9999;
+  font-size: 12px;
+  opacity: 0; /* 처음에 투명 */
+  /* 트랜지션 - bottom엔 적용되면 안되므로 별도지정함 */
+  transition: background-color 0.3s, opacity 0.3s;
+}
+.tbtn.on {
+  opacity: 1;
+  bottom: 0;
+}
+.tbtn:hover {
+  background-color: red;
+}
+
+/* 컨텐츠 영역 속박스 */
+.main-area {
+  min-height: 600px;
+  padding: 15px;
+}
+
+/* 2-1-1. 서브타이틀 */
+.stit {
+  font-family: pist;
+  font-weight: normal;
+  font-size: 50px;
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+/* 2-2. 서브 컨텐츠 박스 */
+.scont {
+  position: relative;
+  /* 부모자격 - .btnbx */
+  max-width: 700px;
+  min-height: 275px;
+  margin: 0 auto;
+  border: 2px solid #737373;
+  border-radius: 10px;
+  /* 크기유지 */
+  box-sizing: border-box;
+  padding: 60px 15px;
+  background-color: #fff;
+  /* 비밀번호박스 */
+}
+.scont div:nth-child(2) {
+  margin-top: 20px;
+}
+
+.minput {
+  /* 입력창 공통라벨 */
+  /* 입력양식공통 */
+}
+.minput label {
+  display: inline-block;
+  width: 150px;
+  font-size: 20px;
+  font-weight: bold;
+  color: #555;
+  text-align: center;
+  line-height: 36px;
+  /* outline: 2px solid red; */
+}
+.minput input {
+  width: 320px;
+  height: 36px;
+  border: 1px solid #777;
+  border-radius: 5px;
+  font-size: 18px;
+  padding-left: 5px;
+  /* 크기유지 */
+  box-sizing: border-box;
+  color: #666;
+}
+
+/* 포커스 아웃라인 제거
+  모든 브라우저에 기본 포커스 아웃라인 셋팅됨! */
+input:focus {
+  outline: none;
+}
+
+/* 버튼영역 */
+.btnbx {
+  position: absolute;
+  top: 60px;
+  right: 60px;
+  /* 부모는? .scont */
+}
+
+/* 서브밋 버튼 */
+#sbtn {
+  width: 113px;
+  height: 92px;
+  border: 1px solid #888;
+  border-radius: 5px;
+  /* 그라데이션
+      배경이미지에서 셋팅
+      linear-gradient(방향,색1,색2,...) */
+  background-image: linear-gradient(to bottom, #ddd, #555);
+  color: #fff;
+  text-shadow: 1px 1px #555;
+  font-size: 15px;
+}
+
+/* 기타체크링크 박스 */
+.addbx {
+  margin-top: 50px;
+  text-align: center;
+  font-size: 16px;
+  /* 체크박스 영역 */
+  /* 체크박스 라벨과 세로정렬 */
+  /* 기타링크 */
+}
+.addbx span {
+  margin: 0 15px;
+  color: #555;
+}
+.addbx input {
+  vertical-align: -2px;
+}
+.addbx a {
+  margin: 0 15px;
+  color: #222;
+  text-decoration: none;
+}
+
+/* 추가링크 영역바 */
+.bar {
+  font-weight: normal;
+  /* b요소 기본 두껍게 해제 */
+}
+
+/* 모바일용 바(.bar1), 줄바꿈(.brk)숨기기 */
+.bar1,
+.brk {
+  display: none;
+}
+
+/* 미디어쿼리 690px 이하 시작 */
+@media screen and (max-width: 690px) {
+  .minput {
+    /* 입력창 공통라벨 */
+    /* 입력양식공통 */
+  }
+  .minput label {
+    display: block;
+    width: auto;
+  }
+  .minput input {
+    width: 100%;
+  }
+  /* 버튼영역 */
+  .btnbx {
+    position: static;
+  }
+  /* 서브밋 버튼 */
+  #sbtn {
+    width: 100%;
+    height: 50px;
+    margin-top: 50px;
+  }
+  /* 추가링크박스 */
+  .addbx {
+    line-height: 2.5;
+  }
+  /* 추가링크 바숨기기 */
+  .bar2 {
+    display: none;
+  }
+  /* 추가링크 바,줄바꿈 보이기 */
+  .bar1,
+  .brk {
+    display: inline;
+  }
+}
+/* 미디어쿼리 690px 이하 끝 *//*# sourceMappingURL=login.css.map */

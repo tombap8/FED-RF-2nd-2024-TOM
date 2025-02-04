@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="컬렉션부터 스타일, 쇼핑, 뷰티, 라이프스타일, 셀러브리티까지 지금 가장 핫한 트렌드 소개"
+    />
+    <link
+      rel="shortcut icon"
+      href="https://img.vogue.co.kr/vogue/common/vogue-favicon.ico?v=0.2"
+      type="image/x-icon"
+    />
+    <title>보그 코리아 (Vogue Korea)</title>    
+
+    <!-- 메인 CSS -->
+    <link rel="stylesheet" href="./css/main.css" />
+
+    <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
+
+    <!-- 뷰JS vuex CDN -->
+    <script src="https://unpkg.com/vuex@3.0.0"></script>
+
+    <!-- 엑시오스 라이브러리 스탠드얼론 버전 가져오기(제이슨불러오기) -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
+
+    <!-- 제이쿼리 라이브러리 CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+
+    <!-- 제이쿼리 UI CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
+
+    <!-- 메인뷰 JS -->
+    <script type="module" src="./js/main_vue.js"></script>
+
+    <!-- 메인 JS -->
+    <script type="module" src="./js/main.js"></script>
+  </head>
+  <body>
+    <div id="vogue-app">
+      <!-- 1. 상단영역 -->
+      <top-comp></top-comp>
+
+      <!-- 2. 배너영역 -->
+      <banner-comp></banner-comp>
+
+      <!-- 3. Today’s Stories 영역 -->
+      <div id="today-area">
+        <section class="inbox today-area">
+          <h2 class="sub-tit">Today’s Stories</h2>
+          <div class="post-list-today"></div>
+        </section>
+      </div>
+      <!-- 7. fashion 영역 -->
+      <div id="fashion-area">
+        <section class="inbox fashion-area">
+          <h2 class="sub-tit">FASHION</h2>
+          <div class="post-list"></div>
+        </section>
+      </div>
+
+      <!-- 하단영역 -->
+      <bottom-comp></bottom-comp>
+
+      <!-- 위로가기버튼 -->
+      <a href="#" class="tbtn fi fi-angle-up">
+        <span class="ir">위로가기버튼</span>
+      </a>
+    </div>
+    <!-- #vogue-app -->
+  </body>
+</html>

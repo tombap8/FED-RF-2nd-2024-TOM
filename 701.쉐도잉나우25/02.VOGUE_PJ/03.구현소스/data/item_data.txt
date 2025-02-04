@@ -1,0 +1,12 @@
+// 아이템 데이터 구성 ////
+1. idx - 유일키
+2. catName - 카테고리 이름
+3. title - 제목
+4. imgSrc - 이미지경로
+5. dateWriter - 날짜/글쓴이
+6. article - 상세내용 (상세페이지 사용)
+7. mainCat - 메인 노출 구분
+
+((메인 노출 구분))
+1. today - Today’s Stories
+2. fashion - FASHION

@@ -1,0 +1,408 @@
+@charset "UTF-8";
+/* 보그 PJ 공통핵심 CSS - _core.scss */
+/* 웹폰트, 공용클래스 */
+/*********** 1. 웹폰트 ***********/
+/* Roboto체 + Noto Sans Kr체 - CDN */
+@import 'https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap';
+/* 
+font-family: 'Roboto', "Noto Sans KR";
+*/
+body {
+  font-family: "Roboto", "Noto Sans KR";
+}
+
+/* 공사중 표시 */
+/************* 2. 공통 class *************/
+/* 2-1. 중앙 속박스 */
+.inbox {
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.sub-tit {
+  font-size: 4.2rem;
+  padding-bottom: 15px;
+}
+
+.common-box, .fashion-area, .today-area {
+  padding: 4rem;
+}
+
+.big-box-type figure, .post-list ul li:nth-child(3) figure, .post-list-today ul li:nth-child(1) figure {
+  aspect-ratio: 1/2;
+}
+.big-box-type figure figcaption, .post-list ul li:nth-child(3) figure figcaption, .post-list-today ul li:nth-child(1) figure figcaption {
+  translate: 0 -100%;
+  padding: 5rem;
+  color: #fff;
+  background: linear-gradient(to top, #000, transparent);
+}
+.big-box-type figure figcaption h3.s-tit, .post-list ul li:nth-child(3) figure figcaption h3.s-tit, .post-list-today ul li:nth-child(1) figure figcaption h3.s-tit {
+  font-size: 3.6rem;
+  font-weight: normal;
+}
+.big-box-type figure figcaption p.date, .post-list ul li:nth-child(3) figure figcaption p.date, .post-list-today ul li:nth-child(1) figure figcaption p.date {
+  display: none;
+}
+
+/* 보그 PJ 리셋 CSS - _reset.scss */
+/* 요소의 초기화 */
+/* 루트 글자크기 */
+html {
+  font-size: 10px;
+}
+
+/* 1. 마진,패딩 없애기 */
+html, body, h1, h2, h3, h4, h5, h6, ul, ol, dt, dd, p, figure, figcaption {
+  margin: 0;
+  padding: 0;
+}
+
+/* 가로스크롤 생김 방지!(특히 모바일) */
+html, body {
+  overflow-x: hidden;
+}
+
+/* 2. a요소 리셋 */
+a {
+  color: #000;
+  /* 글자색 */
+  text-decoration: none;
+  /* 밑줄없앰 */
+}
+
+/* 3. ul,ol 리셋 */
+ul, ol {
+  list-style: none;
+  /* 블릿/숫자 제거 */
+}
+
+/* 4. h요소 글자크기 리셋 */
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+  /* html의 기본글자크기(16px)와 일치 초기화 */
+}
+
+/* 5. 이미지 리셋 */
+img {
+  border: none;
+  /* 이미지 링크시 서버에서 볼때 파란색 자동보더 없애기 */
+  vertical-align: bottom;
+  /* 박스 이미지 하단간극 없애기(약4px)
+  값으로 top, middle등 도 효과있음! */
+}
+
+#top-area {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2235294118);
+}
+
+.top-area {
+  /* 부모자격 */
+  position: relative;
+  padding: 4rem;
+}
+
+.logo h1 {
+  text-align: center;
+}
+.logo h1 img {
+  height: 70px;
+}
+
+.gnb {
+  margin-top: 4rem;
+}
+.gnb ul {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+}
+.gnb ul li {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+}
+
+@media (max-width: 1000px) {
+  .logo h1 {
+    text-align: left;
+  }
+  .gnb ul {
+    justify-content: flex-start;
+  }
+}
+.sum-menu {
+  position: absolute;
+  right: 4rem;
+  top: 4rem;
+  font-size: 1.6rem;
+}
+.sum-menu ol {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+.sum-menu ol li:nth-child(1) a {
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+.sum-menu ol li:nth-child(2) a {
+  font-weight: bold;
+  padding: 8px 15px;
+  background-color: #000;
+  color: #fff;
+}
+.sum-menu ol li:nth-child(3) a {
+  font-size: 3em;
+  font-weight: 100;
+  transform: scaleX(0.7);
+  display: inline-block;
+}
+
+.add-menu {
+  position: absolute;
+  right: 5rem;
+  top: 2rem;
+  font-size: 1.6rem;
+}
+.add-menu ol {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+.add-menu ol li a {
+  letter-spacing: 2px;
+}
+.add-menu ol li.hide {
+  display: none;
+}
+
+#footer-area {
+  background-color: #000;
+}
+
+.footer-area {
+  /* 최소높이 */
+  min-height: 298px;
+  padding: 80px 0 78px;
+  box-sizing: border-box;
+}
+.footer-area .blogo {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.footer-area .blogo img {
+  height: 56px;
+}
+.footer-area .addr {
+  color: #747474;
+  text-align: center;
+  font-size: 11px;
+  /* address 요소 기본 이탤릭해제 */
+  font-style: normal;
+  margin: 20px 0 10px;
+}
+.footer-area .blink {
+  /* 플렉스박스 */
+  display: flex;
+  /* 진행방향정렬 : 중앙 */
+  justify-content: center;
+  /* 플렉스 랩핑박스 */
+  flex-wrap: wrap;
+  /* 사이간격 gap: 위아래 양쪽 */
+  gap: 0 12px;
+}
+.footer-area .blink a {
+  color: #fff;
+  font-size: 13px;
+  font-weight: bold;
+}
+.footer-area .blink li:last-child a {
+  font-weight: bold;
+}
+
+/* 위로가기 버튼 */
+.tbtn {
+  position: fixed;
+  bottom: -35px; /* 아랫쪽에 나가있음 */
+  right: 75px;
+  width: 48px;
+  height: 35px;
+  text-align: center;
+  line-height: 35px;
+  background-color: #333;
+  border-radius: 4px 4px 0 0;
+  color: #fff;
+  z-index: 9999;
+  font-size: 12px;
+  opacity: 0; /* 처음에 투명 */
+  /* 트랜지션 - bottom엔 적용되면 안되므로 별도지정함 */
+  transition: background-color 0.3s, opacity 0.3s;
+}
+.tbtn.on {
+  opacity: 1;
+  bottom: 0;
+}
+.tbtn:hover {
+  background-color: red;
+}
+
+#ban-area {
+  overflow: hidden;
+}
+
+.ban-box {
+  position: relative;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  /*이동버튼*/
+  /*블릿버튼*/
+}
+.ban-box ul {
+  position: relative;
+  /* 3번째 슬라이드부터 보이기(앞에2개) */
+  left: -200%;
+  display: flex;
+}
+.ban-box ul li {
+  position: relative;
+  width: 100%;
+  /* 강제축소 설정 끄기 */
+  flex-shrink: 0;
+  aspect-ratio: 1499/701;
+}
+.ban-box ul li img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-user-drag: none;
+}
+.ban-box ul li .post-content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  padding: 4rem;
+  color: #fff;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.4901960784);
+}
+.ban-box ul li .post-content p {
+  font-size: 1.6rem;
+}
+.ban-box ul li .post-content h3 {
+  font-size: 4.2rem;
+}
+.ban-box .abtn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /*Y축 중앙이동*/
+  /*왼쪽버튼*/
+  /*오른쪽버튼*/
+}
+.ban-box .abtn.ab1 {
+  left: 50px;
+}
+.ban-box .abtn.ab2 {
+  right: 50px;
+}
+.ban-box .indic {
+  display: flex;
+  /* 플렉스박스 */
+  position: absolute;
+  bottom: 50px;
+  left: 80px;
+}
+.ban-box .indic li {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  /*회색블릿이미지가 보이게하는 class*/
+}
+.ban-box .indic li img {
+  position: absolute;
+  /*이미지 겹치게*/
+}
+.ban-box .indic li img:last-child {
+  /*회색이미지만 투명하게*/
+  opacity: 0;
+}
+.ban-box .indic li.on img:last-child {
+  /*회색이미지만 투명하게*/
+  opacity: 1;
+  /*우선적용!*/
+}
+
+@media (max-width: 1000px) {
+  .ban-box ul li {
+    aspect-ratio: 979/931;
+  }
+}
+.post-list-today ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.post-list-today ul li:nth-child(1) {
+  grid-area: 1/1/3/2;
+}
+.post-list-today ul img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.post-list-today ul figure {
+  aspect-ratio: 1.3;
+}
+.post-list-today ul figcaption {
+  padding: 20px 0;
+}
+.post-list-today ul figcaption p.category {
+  font-size: 1.7rem;
+}
+.post-list-today ul figcaption h3.s-tit {
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+.post-list-today ul figcaption p.date {
+  font-size: 1.7rem;
+  color: #999;
+}
+
+.post-list ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.post-list ul li:nth-child(3) {
+  grid-area: 1/3/3/4;
+}
+.post-list ul img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.post-list ul figure {
+  aspect-ratio: 1.3;
+}
+.post-list ul figcaption {
+  padding: 20px 0;
+}
+.post-list ul figcaption p.category {
+  font-size: 1.7rem;
+}
+.post-list ul figcaption h3.s-tit {
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+.post-list ul figcaption p.date {
+  font-size: 1.7rem;
+  color: #999;
+}/*# sourceMappingURL=main.css.map */

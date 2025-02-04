@@ -1,0 +1,158 @@
+// 보그 PJ 메인 페이지 SCSS - main.scss
+
+// 파일 합치기 ////
+@import "./variables/variables";
+@import "./common/core";
+@import "./common/reset";
+@import "./common/common";
+
+// 1. 상단영역 -> _common.scss
+
+// 2. 배너영역 /////////////
+// 최상위부모
+#ban-area{
+  overflow: hidden;
+}
+// 배너박스
+.ban-box {
+  // 부모자격
+  position: relative;
+  // 선택막기
+  user-select: none;
+
+  ul {
+    position: relative;
+    /* 3번째 슬라이드부터 보이기(앞에2개) */
+    left: -200%;
+    display: flex;
+    li {
+      position: relative;
+      width: 100%;
+      /* 강제축소 설정 끄기 */
+      flex-shrink: 0;
+      // 비율박스
+      aspect-ratio: 1499/701;
+
+      // 배너이미지
+      img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        // 이미지 드래그 막기 (중요함!)
+        -webkit-user-drag: none;
+      }
+
+      // 글자박스
+      .post-content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        padding: $spacing-40;
+        color: #fff;
+        text-shadow: 0 0 5px #0000007d;
+
+        // 분류/날짜
+        p {
+          font-size: $font-size-common;
+        }
+        // 큰 타이틀
+        h3 {
+          font-size: $font-size-x-large;
+        }
+      }
+    }
+  }
+  /*이동버튼*/
+  .abtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    /*Y축 중앙이동*/
+
+    /*왼쪽버튼*/
+    &.ab1 {
+      left: 50px;
+    }
+  
+    /*오른쪽버튼*/
+    &.ab2 {
+      right: 50px;
+    }
+  }
+
+
+  /*블릿버튼*/
+  .indic {
+    display: flex;
+    /* 플렉스박스 */
+    position: absolute;
+    bottom: 50px;
+    left: 80px;
+
+    li {
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+
+      img {
+        position: absolute;
+        /*이미지 겹치게*/
+
+        &:last-child {
+          /*회색이미지만 투명하게*/
+          opacity: 0;
+        }
+      
+      }
+
+      /*회색블릿이미지가 보이게하는 class*/
+      &.on img:last-child {
+        /*회색이미지만 투명하게*/
+        opacity: 1;
+        /*우선적용!*/
+      }
+    }
+  }
+
+
+
+}
+
+@include tablet-medium {
+  // 배너박스
+  .ban-box {
+    ul {
+      li {
+        aspect-ratio: 979/931;
+      }
+    }
+  }
+}
+
+// 3. Today’s Stories 영역 /////////////
+
+// 투데이영역 속박스
+.today-area {
+  @extend .common-box;
+}
+
+// 리스트 박스
+.post-list-today {
+  // 왼쪽 큰 박스
+  @include list-type("left-type");
+}
+
+// 7. Fashion 영역 /////////////
+
+// 패션영역 속박스
+.fashion-area {
+  @extend .common-box;
+}
+
+// 리스트 박스
+.post-list {
+  // 오른쪽 큰 박스
+  @include list-type("right-type");
+}
