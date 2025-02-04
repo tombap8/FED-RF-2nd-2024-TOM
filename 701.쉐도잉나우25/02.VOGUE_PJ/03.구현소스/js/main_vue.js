@@ -5,6 +5,7 @@ import { TopComp } from "./components/common.js";
 import { BannerComp } from "./components/banner.js";
 import { JoinComp } from "./components/join.js";
 import { TodayAreaComp } from "./components/today_area.js";
+import { FashionAreaComp } from "./components/fashion-area.js";
 
 console.log(TopComp, BannerComp, JoinComp, TodayAreaComp);
 
