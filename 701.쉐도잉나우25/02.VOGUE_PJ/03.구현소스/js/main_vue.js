@@ -4,8 +4,9 @@
 import { TopComp } from "./components/common.js";
 import { BannerComp } from "./components/banner.js";
 import { JoinComp } from "./components/join.js";
+import { TodayAreaComp } from "./components/today_area.js";
 
-console.log(TopComp, BannerComp, JoinComp);
+console.log(TopComp, BannerComp, JoinComp, TodayAreaComp);
 
 /******************************* 
     메인 뷰 인스턴스 생성하기 
