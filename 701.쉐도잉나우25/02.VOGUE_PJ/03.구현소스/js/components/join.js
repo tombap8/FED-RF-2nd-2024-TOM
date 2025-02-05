@@ -150,7 +150,8 @@ export const JoinComp = Vue.component("join-comp", {
   mounted() {
     // 유효성검사 함수호출!
     valid_member();
-    // css셋팅
+    
+    // CSS 변경하기 ///
     $('#css-set').attr('href','./css/member.css');
   }, /// mounted ///////
 });

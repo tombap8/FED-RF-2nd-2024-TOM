@@ -1,7 +1,7 @@
 // 보그 PJ 메인배너 컴포넌트 - banner.js
 
 import banData from '../../data/banner_data.json' with{type:'json'};
-console.log(banData);
+// console.log(banData);
 
 // 드래그 슬라이드 기능 함수 불러오기
 import setSlide from "../function/drag_slide.js";

@@ -57,7 +57,7 @@ const todayData = itemData.filter(v=>{
 
 console.log('today데이터:',todayData);
 
-// 3-3. 패션 영역 셋팅 ///
+// 3-3. 투데이 영역 셋팅 ///
 document.querySelector(".post-list-today").innerHTML = `
     <ul>
         ${todayData

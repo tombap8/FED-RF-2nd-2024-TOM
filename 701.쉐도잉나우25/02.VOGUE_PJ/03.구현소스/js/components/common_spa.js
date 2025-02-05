@@ -1,4 +1,4 @@
-// 보그 PJ 공통 컴포넌트 - common.js
+// 보그 PJ 공통 컴포넌트 : SPA용 - common_spa.js
 
 // 1. 상단컴포넌트
 const TopComp = Vue.component("top-comp", {
@@ -9,9 +9,10 @@ const TopComp = Vue.component("top-comp", {
         <!-- 1-1. 로고박스 -->
         <div class="logo">
           <h1>
-            <a href="index.html">
+            <!-- 라우터 첫 페이지 이동셋팅 -->
+            <router-link to="/">
               <img src="./images/svg/logo.svg" alt="메인로고" />
-            </a>
+            </router-link>
           </h1>
         </div>
         <!-- 1-2. 메뉴박스 -->
@@ -44,12 +45,9 @@ const TopComp = Vue.component("top-comp", {
                 k=='로그아웃' ? 'hide' : ''
               "
             >
-              <a 
-                href="#"
-                @click.prevent="goPage(k)"
-              >
-                <i :class="v" :title="k"></i>
-              </a>
+              <router-link :to="v[1]">
+                <i :class="v[0]" :title="k"></i>
+              </router-link>
             </li>
           </ol>
         </nav>
@@ -63,12 +61,13 @@ const TopComp = Vue.component("top-comp", {
       gnbMenu: ["FASHION", "BEAUTY", "LIFESTYLE", "CULTURE", "VIDEO"],
       // (2) 요약 메뉴 데이터
       sumMenu: ["KOREA", "구독하기", "≡"],
-      // (3) 추가가 메뉴 데이터 : 키는 메뉴, 값은 폰트어썸 클래스
+      // (3) 추가가 메뉴 데이터 : 
+      // 키는 메뉴, 값은 배열로 폰트어썸 클래스(0), 라우터경로(1)
       addMenu: {
-        로그인: "fa-solid fa-right-to-bracket",
-        로그아웃: "fa-solid fa-right-from-bracket",
-        회원가입: "fa-solid fa-user",
-        장바구니: "fa-solid fa-cart-shopping",
+        로그인: ["fa-solid fa-right-to-bracket","/login"],
+        로그아웃: ["fa-solid fa-right-from-bracket","/logout"],
+        회원가입: ["fa-solid fa-user","/join"],
+        장바구니: ["fa-solid fa-cart-shopping","/cart"],
       },
     };
   }, /// data ///

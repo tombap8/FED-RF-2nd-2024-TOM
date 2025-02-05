@@ -204,7 +204,7 @@ function SlideFn(selEl) {
     // 함수호출시 전달값이 없는 경우엔 기본값으로 처리하고
     // 함수호출시 전달값이 있으면 그 전달될 값으로 처리한다!
     // 이것을 함수 전달변수 기본입력값 처리라고 한다!
-    console.log("왼쪽버튼이동left값:", leftVal);
+    // console.log("왼쪽버튼이동left값:", leftVal);
     // leftVal - li앞에 이동시 left값 설정변수
     // 1. 슬라이드 li 새로 읽기
     let eachOne = slide.querySelectorAll("li");
@@ -331,9 +331,9 @@ function SlideFn(selEl) {
   let valFirst = leftVal * 1.1;
   // 오른쪽으로 이동할 기준값(기준위치값*0.9)
   let valSecond = leftVal * 0.9;
-  console.log("기준값:", leftVal);
-  console.log("기준값의 110%:", valFirst);
-  console.log("기준값의 90%:", valSecond);
+  // console.log("기준값:", leftVal);
+  // console.log("기준값의 110%:", valFirst);
+  // console.log("기준값의 90%:", valSecond);
   // left위치값 최초셋업! -> px단위 꼭 쓸것!!!
   dtg.style.left = leftVal + "px";
 
@@ -446,11 +446,11 @@ function SlideFn(selEl) {
 
     // 대상의 left값 찍기(px단위를 parseInt()로 없애기!)
     let currentLeft = parseInt(dtg.style.left);
-    console.log("슬라이드left:", currentLeft, "X축순수이동값:", resultX);
+    // console.log("슬라이드left:", currentLeft, "X축순수이동값:", resultX);
 
     // 대상 슬라이드 이동기준 분기하기
     if (currentLeft < valFirst) {
-      console.log("왼쪽으로 이동!!!");
+      // console.log("왼쪽으로 이동!!!");
       // 오른쪽버튼 클릭시 왼쪽이동과 동일!
       // rightSlide() 함수 호출함!
       rightSlide();
@@ -458,7 +458,7 @@ function SlideFn(selEl) {
       slideSeq = 3;
     } /// if ///
     else if (currentLeft > valSecond) {
-      console.log("오른쪽으로 이동!!!");
+      // console.log("오른쪽으로 이동!!!");
       // 왼쪽버튼 클릭시 오른쪽이동과 동일!
       // leftSlide() 함수 호출함!
       // 슬라이드 이동함수 호출시 드래그시 이동된값이
@@ -468,7 +468,7 @@ function SlideFn(selEl) {
     } /// else if ///
     else {
       // valFirst와 valSecond의 사이범위
-      console.log("제자리!!!");
+      // console.log("제자리!!!");
       slide.style.left = "-200%";
       slide.style.transition = ".3s ease-in-out";
     } /// else ////

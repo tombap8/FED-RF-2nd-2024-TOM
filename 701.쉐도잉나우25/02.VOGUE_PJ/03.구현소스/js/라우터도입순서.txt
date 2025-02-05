@@ -1,0 +1,65 @@
+[ 뷰JS SPA 구현을 위한 라우터 도입순서 ]
+
+*********************************
+1. 메인 페이지에 라우터 CDN 넣기
+
+((코드))
+<!-- 뷰JS 라우터 CDN -->
+<script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+
+*********************************
+2. 라우터 출력 파트 코드 넣기
+
+((코드))
+<!-- 라우터 컨텐츠영역 -->
+<router-view></router-view>
+
+*********************************
+3. 라우터 인스턴스 생성 파일 만들기
+-> router.js
+-> 여기에서 컴포넌트 불러오고 경로와 매칭함!
+
+((코드))
+export default new VueRouter({
+    routes: [
+      {
+        // (1) 경로설정 : path
+        // -> router-link의 to 속성값과 같은값으로 셋팅!
+        path: "/", // 슬래쉬(/)만 쓰면 첫페이지임!
+        // (2) 연결할 컴포넌트 설정 : component
+        // -> 외부의 변수로 셋팅할 수 있고 직접 쓸 수 있음
+        component: MainComp,
+      },
+  ],
+  }); ///////// VueRouter ////////////////
+
+*********************************
+4. 뷰 인스턴스 생성 JS에서 라우터불러오고 연결하기
+-> 뷰 인스턴스 안에 router 를 넣어준다!
+
+((코드))
+import router from 경로;
+
+new Vue({
+    el:..,
+    // 라우터 등록 필수!!!
+    router,
+    data:{},
+    ...
+})
+
+*********************************
+5. 라우터 연결 링크 코드 만들기
+-> GNB 메뉴 등 a요소 생성코드 컴포넌트에 가서
+데이터 바인딩하여 to속성에 셋팅한다!
+
+((코드))
+1) 반복코드 생성시 예시
+<li v-for="(val,key) in linkData">
+<router-link v-bind:to='val.link'>
+
+2) 직접 라우터 주소 넣기
+ <router-link to="/foods">
+
+3) 객체형식으로 바인딩 값 넣기
+<router-link v-bind:to='{ path: "/corp" }'>

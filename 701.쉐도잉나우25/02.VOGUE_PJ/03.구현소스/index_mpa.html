@@ -14,17 +14,14 @@
     />
     <title>보그 코리아 (Vogue Korea)</title>
 
-    <!-- 메인 CSS : 컴포넌트별 href값 변경셋팅 필요! -->
-    <link id="css-set" rel="stylesheet" href="./css/main.css" />
+    <!-- 메인 CSS -->
+    <link rel="stylesheet" href="./css/main.css" />
 
     <!-- 뷰JS 스탠드얼론 버전 가져오기! -->
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.16/dist/vue.js"></script>
 
     <!-- 뷰JS vuex CDN -->
     <script src="https://unpkg.com/vuex@3.0.0"></script>
-
-    <!-- 뷰JS 라우터 CDN -->
-    <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
 
     <!-- 엑시오스 라이브러리 스탠드얼론 버전 가져오기(제이슨불러오기) -->
     <script src="https://cdn.jsdelivr.net/npm/axios@0.17.1/dist/axios.min.js"></script>
@@ -35,8 +32,8 @@
     <!-- 제이쿼리 UI CDN -->
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.2/jquery-ui.min.js"></script>
 
-    <!-- 메인뷰 JS : SPA용 호출 -->
-    <script type="module" src="./js/main_vue_spa.js"></script>
+    <!-- 메인뷰 JS : MPA용 호출 -->
+    <script type="module" src="./js/main_vue.js"></script>
 
     <!-- 메인 JS -->
     <!-- <script type="module" src="./js/main.js"></script> -->
@@ -48,11 +45,18 @@
 
       <!--********** 2. 메인영역 **********-->
 
-      <!-- 라우터 컨텐츠영역 -->
-      <router-view></router-view>
+      <!-- 배너영역 -->
+      <banner-comp></banner-comp>
+
+      <!-- Today’s Stories 영역 -->
+      <today-area-comp></today-area-comp>
+
+      <!-- fashion 영역 -->
+      <fashion-area-comp></fashion-area-comp>
 
       <!--********** 3. 하단영역 **********-->
       <bottom-comp></bottom-comp>
+
     </div>
     <!-- #vogue-app -->
   </body>
