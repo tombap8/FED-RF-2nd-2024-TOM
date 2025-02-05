@@ -20,6 +20,6 @@ new Vue({
 
     // 4-2. mounted() : DOM관련코드 작성
     mounted(){
-        this.$router.push('/');
+        // this.$router.push('/');
     },
 });
