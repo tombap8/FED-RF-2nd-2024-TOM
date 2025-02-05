@@ -5,7 +5,8 @@ import router from "./router.js";
 /******************************* 
     메인 뷰 인스턴스 생성하기 
 ********************************/
-new Vue({
+
+const vm = new Vue({
     // 1. 대상설정
     el: '#vogue-app',
     // 1-1. 라우터 설정
@@ -13,7 +14,11 @@ new Vue({
     // 2. 데이터설정
     data:{},
     // 3. 메서드설정
-    methods:{},
+    methods:{
+        myTest(){
+            console.log('ㅋㅋㅋ');
+        }
+    },
     // 4. 라이프사이클 메서드
     // 4-1. created() : 데이터생성관련코드 작성
     created(){},
@@ -22,4 +27,8 @@ new Vue({
     mounted(){
         // this.$router.push('/');
     },
-});
+}).$mount( '#vogue-app' );
+
+
+
+window.app = vm;

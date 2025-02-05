@@ -1,7 +1,7 @@
 // 보그 JS : 로그인 유효성검사 및 기능JS - valid_login.js
+export default function validLogin(vv) {
 
-export default function validLogin() {
-  console.log("로그인검사~!");
+  console.log("로그인검사~!",vv);
   /**************************************** 
         로그인 페이지 유효성 검사
     ****************************************/
@@ -67,6 +67,7 @@ export default function validLogin() {
         // -> '로그인에 성공하였습니다!'
         else {
           alert("로그인에 성공하였습니다!");
+          vv();
         } /// else : 로그인 성공시 ///
       } ///// else : 아이디가 있는 경우 ////
     } /////// else : 아이디,비번 모두입력시 ////////

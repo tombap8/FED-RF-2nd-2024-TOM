@@ -12,7 +12,7 @@ Vue.component("login-comp",{
            <!-- 2-1. 로그인 페이지 상단영역 --> 
           <header class="ctop">
              <!-- 2-1-1. 서브타이틀 --> 
-            <h2 class="stit">Login</h2>
+            <h2 class="stit">Login{{taddy}}</h2>
           </header>
            <!-- 2-2. 갤러리 페이지 컨텐츠 박스 --> 
           <section class="scont">
@@ -78,16 +78,23 @@ Vue.component("login-comp",{
     `,
     // 2. 리턴함수 데이터
     data(){
-        return{};
+        return{
+          taddy:"",
+        };
     },
     // 3. 메서드
-    methods: {},
+    methods: {
+      myTT(){
+        console.log(3333);
+        this.taddy = "!!";
+      }
+    },
     // 4. 데이터셋업파트
     created(){},
     // 5. DOM 셋업파트
     mounted(){
         // 로그인 기능함수 호출!!!
-        validLogin();
+        validLogin(this.myTT);
         // css셋팅
         $('#css-set').attr('href','./css/login.css');
     },
