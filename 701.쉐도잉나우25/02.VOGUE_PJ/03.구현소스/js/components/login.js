@@ -87,6 +87,9 @@ Vue.component("login-comp",{
       myTest(pm,txt){
         console.log('가상돔 메서드 실행!',pm);
         this.msg = txt;
+        setTimeout(()=>{
+          this.$router.push('/');
+        },1000);
       },
     },
     // 4. 데이터셋업파트
