@@ -189,6 +189,19 @@ img {
   display: block;
 }
 
+#login-msg {
+  position: absolute;
+  width: 400px;
+  top: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+  font-weight: bold;
+  text-align: center;
+  white-space: nowrap;
+  z-index: -1;
+}
+
 #footer-area {
   background-color: #000;
 }
