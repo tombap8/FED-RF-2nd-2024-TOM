@@ -15,6 +15,11 @@ export default new Vuex.Store({
   mutations: {
     setLogin(st,pm){
         st.logSet = pm;
+        st.logCls = 'logon';
+    },
+    setLogout(st,pm){
+        st.logSet = {};
+        st.logCls = '';
     },
   },
   // 3. 비동기처리 메서드 구역

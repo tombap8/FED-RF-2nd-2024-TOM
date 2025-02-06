@@ -1,4 +1,5 @@
 // 보그 PJ 공통 컴포넌트 : SPA용 - common_spa.js
+import store from "../vuex_store.js";
 
 // 1. 상단컴포넌트
 const TopComp = Vue.component("top-comp", {
@@ -41,9 +42,12 @@ const TopComp = Vue.component("top-comp", {
                 /* v - 객체값, k - 키명 */
               "
             >
-              <router-link :to="v[1]">
+              <router-link :to="v[1]" v-if="k!='로그아웃'">
                 <i :class="v[0]" :title="k"></i>
               </router-link>
+              <a href="#" @click.prevent="testFn" v-else-if="k=='로그아웃'">
+                <i :class="v[0]" :title="k"></i>
+              </a>
             </li>
           </ol>
         </nav>
@@ -70,6 +74,11 @@ const TopComp = Vue.component("top-comp", {
 
   // 1-3. 컴포넌트 메서드구역 /////
   methods:{
+    testFn(){
+      console.log("testFn() 실행");
+      if(confirm("로그아웃 하시겠습니까?"))
+      store.commit('setLogout');
+    },
     // goPage : 링크이동 메서드 /////
     goPage(gubun){ // gubun - 구분키(키명)
       console.log(gubun);
