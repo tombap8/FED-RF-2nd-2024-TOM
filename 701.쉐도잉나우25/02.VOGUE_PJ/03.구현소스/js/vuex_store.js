@@ -16,6 +16,7 @@ export default new Vuex.Store({
     setLogin(st,pm){
         st.logSet = pm;
         st.logCls = 'logon';
+        // 김소월님, 환영합니다~!🙍‍♀️🙍‍♂️🙎‍♀️🙎‍♂️🦸‍♀️🦸‍♂️🦹‍♀️🦹‍♂️
     },
     setLogout(st,pm){
         st.logSet = {};

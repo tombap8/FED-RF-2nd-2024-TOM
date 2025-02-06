@@ -42,12 +42,12 @@ const TopComp = Vue.component("top-comp", {
                 /* v - 객체값, k - 키명 */
               "
             >
-              <router-link :to="v[1]" v-if="k!='로그아웃'">
+            <a href="#" @click.prevent="testFn" v-if="k=='로그아웃'">
+              <i :class="v[0]" :title="k"></i>
+            </a>
+              <router-link :to="v[1]" v-else>
                 <i :class="v[0]" :title="k"></i>
               </router-link>
-              <a href="#" @click.prevent="testFn" v-else-if="k=='로그아웃'">
-                <i :class="v[0]" :title="k"></i>
-              </a>
             </li>
           </ol>
         </nav>
