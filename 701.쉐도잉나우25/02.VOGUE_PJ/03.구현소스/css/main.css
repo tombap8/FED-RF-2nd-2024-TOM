@@ -175,8 +175,17 @@ img {
 .add-menu ol li a {
   letter-spacing: 2px;
 }
-.add-menu ol li.hide {
+.add-menu ol li:nth-child(1) {
+  display: block;
+}
+.add-menu ol li:nth-child(2) {
   display: none;
+}
+.add-menu ol.logon li:nth-child(1) {
+  display: none;
+}
+.add-menu ol.logon li:nth-child(2) {
+  display: block;
 }
 
 #footer-area {

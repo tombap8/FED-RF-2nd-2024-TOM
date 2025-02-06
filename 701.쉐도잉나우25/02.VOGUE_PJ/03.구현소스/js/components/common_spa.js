@@ -13,6 +13,7 @@ const TopComp = Vue.component("top-comp", {
             <router-link to="/">
               <img src="./images/svg/logo.svg" alt="메인로고" />
             </router-link>
+            {{$store.state.logSet.name}}
           </h1>
         </div>
         <!-- 1-2. 메뉴박스 -->
@@ -33,16 +34,11 @@ const TopComp = Vue.component("top-comp", {
         </nav>
         <!-- 1-4. 추가메뉴박스 -->
         <nav class="add-menu">
-          <ol>
+          <ol :class="$store.state.logCls">
             <li 
               v-for="
                 (v,k) in this.addMenu
                 /* v - 객체값, k - 키명 */
-              "
-
-              :class="
-              // 키명이 '로그아웃'이면 'hide'클래스넣기
-                k=='로그아웃' ? 'hide' : ''
               "
             >
               <router-link :to="v[1]">

@@ -1,7 +1,7 @@
 // 보그 JS 공통 모듈 CSS - common.scss
 
 // 1. 상단영역 ////////////////
-#top-area{
+#top-area {
   // 상단전체 박스아랫쪽 그림자
   box-shadow: 0 2px 5px #00000039;
 }
@@ -113,18 +113,29 @@
         letter-spacing: 2px;
       }
       // 숨기기 클래스
-      &.hide {
+      &:nth-child(1) {
+        display: block;
+      }
+      &:nth-child(2) {
         display: none;
+      }
+    }
+
+    &.logon {
+      li:nth-child(1) {
+        display: none;
+      }
+      li:nth-child(2) {
+        display: block;
       }
     }
   }
 }
 
-
 // 2. 하단영역 ////////////////////
 // 하단겉박스
-#footer-area{
-    background-color: #000;
+#footer-area {
+  background-color: #000;
 }
 // 하단속박스
 .footer-area {
@@ -139,7 +150,7 @@
     text-align: center;
     margin-bottom: 10px;
   }
-  .blogo img{
+  .blogo img {
     height: 56px;
   }
   // 3-2. 회사주소

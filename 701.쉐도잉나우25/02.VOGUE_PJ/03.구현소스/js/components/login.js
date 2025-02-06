@@ -2,6 +2,7 @@
 
 // 로그인 기능 함수 불러오기 -> mounted에서 호출! ////
 import validLogin from "../function/valid_login.js";
+import store from "../vuex_store.js";
 
 export const LoginComp =  
 Vue.component("login-comp",{
@@ -87,6 +88,7 @@ Vue.component("login-comp",{
       myTest(pm,txt){
         console.log('가상돔 메서드 실행!',pm);
         this.msg = txt;
+        store.commit('setLogin',pm)
         setTimeout(()=>{
           this.$router.push('/');
         },1000);

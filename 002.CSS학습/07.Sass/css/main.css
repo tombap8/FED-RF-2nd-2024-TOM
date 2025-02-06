@@ -232,11 +232,6 @@ img {
   text-decoration-thickness: 5px;
 }
 
-.box-basic, .bottom-title, .button-box, .top-area h2 {
-  text-align: center;
-  padding: 20px 0;
-}
-
 .button-report {
   background-color: orange;
   color: #fff;
@@ -244,6 +239,11 @@ img {
 
 .button-box {
   background-image: linear-gradient(to bottom, lightgreen, transparent);
+}
+
+.box-basic, .bottom-title, .top-area h2, .button-box {
+  text-align: center;
+  padding: 20px 0;
 }
 
 /* 하단 타이틀 */

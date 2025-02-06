@@ -1,5 +1,5 @@
 @charset "UTF-8";
-/* 보그 PJ 리셋 CSS - reset.css */
+/* 보그 PJ 리셋 CSS - _reset.scss */
 /* 요소의 초기화 */
 /* 1. 마진,패딩 없애기 */
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Roboto:wght@300&display=swap");
@@ -42,7 +42,7 @@ img {
   값으로 top, middle등 도 효과있음! */
 }
 
-/* 보그 PJ 공통핵심 CSS - core.css */
+/* 보그 PJ 공통핵심 CSS - _core.scss */
 /* 웹폰트, 공용클래스 */
 /*********** 1. 웹폰트 ***********/
 /* Roboto체 + Roboto Condensed체 - CDN */

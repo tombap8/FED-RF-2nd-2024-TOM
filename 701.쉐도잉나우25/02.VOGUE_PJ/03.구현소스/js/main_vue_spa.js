@@ -2,6 +2,7 @@
 
 // 라우터 인스턴스 생성 및 라우터경로 셋팅 파일 불러오기
 import router from "./router.js";
+import store from "./vuex_store.js";
 
 /******************************* 
     메인 뷰 인스턴스 생성하기 
@@ -11,6 +12,8 @@ new Vue({
     el: '#vogue-app',
     // 1.5. 라우터등록!
     router,
+    // 1.6. 스토어등록!
+    store,
     // 2. 데이터설정
     data:{},
     // 3. 메서드설정

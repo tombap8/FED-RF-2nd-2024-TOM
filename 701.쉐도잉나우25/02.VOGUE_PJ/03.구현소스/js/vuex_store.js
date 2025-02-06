@@ -6,10 +6,17 @@
 // export const store = new Vuex.Store({
 export default new Vuex.Store({
   // 1. 데이터 셋팅구역
-  state: {},
+  state: {
+    logSet: {},
+    logCls: '',
+  },
   // 2. 데이터 변경 메서드 구역
   // -> 컴포넌트에서 호출시 commit() 사용!
-  mutations: {},
+  mutations: {
+    setLogin(st,pm){
+        st.logSet = pm;
+    },
+  },
   // 3. 비동기처리 메서드 구역
   // -> 컴포넌트에서 호출시 dispatch() 사용!
   actions: {},
