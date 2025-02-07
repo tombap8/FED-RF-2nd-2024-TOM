@@ -1,0 +1,33 @@
+/********* 서브 페이지 아이템 상단영역 *********/
+
+// 파일 합치기 ////
+@import "./variables/variables";
+@import "./common/core";
+@import "./common/reset";
+@import "./common/common";
+
+/* 1. 서브타이틀 */
+.item-tit {
+  font-weight: normal;
+  font-size: 50px;
+  text-align: center;
+  padding: 40px 0 20px;
+}
+
+/* 2.서브메뉴(LNB:Local Navigation Bar) */
+.lnb {
+  padding: 5px 0 50px;
+  ul {
+    /* 플렉스박스 */
+    display: flex;
+    /* 플렉스중앙정렬 */
+    justify-content: center;
+    /* 사이간격 */
+    gap: 0 20px;
+
+    a {
+      font-size: 18px;
+      color: #333;
+    }
+  }
+}

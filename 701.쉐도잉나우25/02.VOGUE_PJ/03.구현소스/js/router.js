@@ -9,6 +9,7 @@ import { LoginComp } from "./components/login.js";
 import { TodayAreaComp } from "./components/today_area.js";
 import { FashionAreaComp } from "./components/fashion_area.js";
 import { MainComp } from "./components/main.js";
+import { ItemComp } from "./components/item.js";
 // console.log(TopComp, BannerComp, JoinComp, LoginComp);
 
 // [ 뷰라우터 인스턴스 내보내기 ] /////
@@ -38,6 +39,12 @@ export default new VueRouter({
     {
       path: "/login",
       component: LoginComp,
+    },
+    // [ 아이템 페이지 셋팅 ]
+    {
+      name: "sub-page",
+      path: "/item",
+      component: ItemComp,
     },
   ],
 }); ///////// VueRouter ////////////////

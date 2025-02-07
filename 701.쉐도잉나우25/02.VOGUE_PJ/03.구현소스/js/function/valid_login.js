@@ -67,7 +67,7 @@ export default function validLogin(cbFn) {
         // (2-2) 로그인 성공 : 첫페이지로 이동(로그인표시)
         // -> '로그인에 성공하였습니다!'
         else {
-          alert("로그인에 성공하였습니다!");
+          // alert("로그인에 성공하였습니다!");
           cbFn(result,"성공한겨!");
         } /// else : 로그인 성공시 ///
       } ///// else : 아이디가 있는 경우 ////
