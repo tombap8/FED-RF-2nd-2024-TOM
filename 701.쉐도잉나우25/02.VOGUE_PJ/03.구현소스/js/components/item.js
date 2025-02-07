@@ -9,7 +9,7 @@ Vue.component("item-comp",{
     template: `
     <header class="item-top-area">
         <h2 class="item-tit" @click="mm">
-        Fashion
+        {{this.catName}}
         </h2>
         <nav class="lnb">        
             <ul>
@@ -24,14 +24,18 @@ Vue.component("item-comp",{
     data(){
         // 구조분해 할당으로 컴포넌트 지역변수로 만들기
         return{ 
-            menuSet:gnbMenu["FASHION"],
+            menuSet:gnbMenu[this.setCategory()],
+            catName:this.setCategory(),
         };
     },
     // 3. 메서드
     methods: {
         mm(){
             console.log(this.menuSet);
-        }
+        },
+        setCategory(){
+            return this.$route.params.id
+        },
     },
     // 4. 데이터셋업파트
     created(){
