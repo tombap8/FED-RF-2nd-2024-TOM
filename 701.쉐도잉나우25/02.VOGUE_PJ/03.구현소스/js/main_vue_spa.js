@@ -40,6 +40,10 @@ new Vue({
         // 최초 로그인 상태 셋팅메서드 호출
         this.initSet();
     },
+    updated(){
+        console.log('Updated');
+        store.commit('setVal',this.$route.query.id);
+    },
 
     // 4-2. mounted() : DOM관련코드 작성
     mounted(){

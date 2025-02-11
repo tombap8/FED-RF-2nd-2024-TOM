@@ -9,7 +9,7 @@ Vue.component("item-comp",{
     template: `
     <header class="item-top-area">
         <h2 class="item-tit" @click="mm">
-        {{this.catName}}
+        {{$store.state.itemTit}}
         </h2>
         <nav class="lnb">        
             <ul>
@@ -34,12 +34,12 @@ Vue.component("item-comp",{
             console.log(this.menuSet);
         },
         setCategory(){
-            return this.$route.params.id
+            return this.$route.query.id
         },
     },
     // 4. 데이터셋업파트
     created(){
-        console.log(this.$route.params.id);
+        console.log(this.$route.query.id);
     },
     // 5. DOM 셋업파트
     mounted(){

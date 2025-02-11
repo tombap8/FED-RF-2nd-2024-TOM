@@ -10,7 +10,7 @@ import store from "../vuex_store.js";
 const TopComp = Vue.component("top-comp", {
   // 1-1. 템플릿코드설정 /////
   template: `  
-    <div id="top-area">
+    <div id="top-area">o
       <header class="top-area inbox">
         <!-- 1-1. 로고박스 -->
         <div class="logo">
@@ -26,7 +26,7 @@ const TopComp = Vue.component("top-comp", {
           <ul>
             <li v-for="v in Object.keys(this.gnbMenu)">
               <router-link 
-              :to="{name:'sub-page',params: {id:v}}">
+              :to="{name:'sub-page',query: {id:v}}">
                 {{v}}
               </router-link>
             </li>
