@@ -1,0 +1,84 @@
+[ 08.SPA 개발환경에서 SASS 사용하기 ]
+
+1. 설치
+npm install --save-dev sass sass-loader@10 --f
+줄여서... npm i -D sass sass-loader@10 --f
+
+(주의)
+vue 2.6 버전에서는 sass-loader 10버전 대를 지원하기 때문에 
+그보다 버전이 높다면 10으로 버전을 내리고 재 설치 해주면 된다.
+특정버전은 @버전숫자 이렇게 추가하면 된다!
+기존 팩키지가 있어도 원격 파일을 가져와서 강제 설치옵션을 추가! --f
+
+2. 사용법
+설치를 완료했다면, 컴포넌트 내에서 scss를 사용할 수 있다. 
+vue-loader에서 기본으로 설정되어 있는 webpack설정 때문에 
+패키지 설치 후 컴포넌트 내에서 lang속성을 지정해주면 자동으로 
+Loader를 사용하여 바로 사용가능
+
+<style>
+ @import "@/asstes/scss/파일명";
+</style>
+
+-> 주의 : style태그에 속성으로 lang="scss" 를 쓰지 말것! 에러발생!
+이런 속성 셋팅없이도 사스를 설치하면 바로 사스 문법을 쓸 수 있음!!!
+
+3. 전역 스타일 및 변수 설정
+변수를 담아둔 scss파일을 매번 컴포넌트에서 불러와서 사용하는것은 
+매우 비효율적이다. 따라서 자주 사용하는 변수나 , reset 스타일, 
+mixin같은 경우 전역 스타일로 설정하여 사용이 가능하다.
+
+설정 방법은 프로젝트 최상단에 vue.config.js파일을 생성해서 
+webpack설정을 추가 할 수 있다. 전체적인 구조는 같지만 8버전 에서는 
+prependData로 선언 아래 에서는 additionalData를 선언하면 
+전역으로 scss가 적용됨
+______________________________
+
+((vue3 cli))
+- webpack 설정을 추가
+*********************
+module.exports = {
+  css : {
+    loaderOptions : {
+      sass : {
+        additionalData: `
+          @import "@/assets/scss/abstracts/abstracts.scss";
+        `
+      }
+    }
+  }
+}
+________________________________
+
+((예시))
+- core.scss
+$TEXT_DEAFULT : #333;
+
+
+- 다른 컴포넌트
+***************
+<style>
+  p {
+    color : $TEXT_DEAFULT
+  }
+</style>
+_______________________________________
+
+((vue cli 2버전))
+2버전의 경우 webpack.config.js에서 설정을 변경 해줘야한다.
+
+{
+  test: \/.scss&/,
+  use: [
+    "vue-styles-loader",
+    "css-loader",
+    {
+      loader: "scss-loader",
+      options: {
+        data: `
+          @import "@/assets/scss/common/core.scss";
+        `
+      }
+    }
+  ]
+}

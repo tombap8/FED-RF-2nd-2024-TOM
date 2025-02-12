@@ -24,7 +24,7 @@ function MyFirstReact() {
   return (
     <React.Fragment>
       <h1>나는 리액트가 좋아질 것 같다!!! ㅎㅎㅎ</h1>      
-      <img src="https://cdn.icon-icons.com/icons2/2415/PNG/512/react_original_wordmark_logo_icon_146375.png" alt="리액트 로고" />
+      <img src="https://blog.kakaocdn.net/dn/BFjKm/btqARynJAZ8/gKgl3Wzf5dm588Q6WKwlr0/img.png" alt="리액트 로고" />
       <h2>
         [ 리액트란 무엇인가? ]
         <br />
