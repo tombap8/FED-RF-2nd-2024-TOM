@@ -8,10 +8,10 @@ Vue.component("item-comp",{
     // 1. 템플릿
     template: `
     <header class="item-top-area">
-        <h2 class="item-tit" @click="mm">
-        {{$store.state.itemTit}}
+        <h2 class="item-tit">
+            {{$route.query.id}}
         </h2>
-        <nav class="lnb">        
+        <nav class="lnb">
             <ul>
                 <li v-for="v in this.menuSet">
                     <a href="#">{{v}}</a>
@@ -22,26 +22,29 @@ Vue.component("item-comp",{
     `,
     // 2. 리턴함수 데이터
     data(){
-        // 구조분해 할당으로 컴포넌트 지역변수로 만들기
         return{ 
-            menuSet:gnbMenu[this.setCategory()],
-            catName:this.setCategory(),
+            menuSet: gnbMenu[this.$route.query.id],
         };
     },
     // 3. 메서드
-    methods: {
-        mm(){
-            console.log(this.menuSet);
-        },
-        setCategory(){
-            return this.$route.query.id
-        },
-    },
+    methods: {},
     // 4. 데이터셋업파트
     created(){
+        // 처음 인스턴스 생성시 실행구역
+        // 라우터 전달 파라미터 받기
+        // this.$route.query.셋팅속성명
         console.log(this.$route.query.id);
+        // -> 만약 값을 숨겨서 전달하려면 params사용!
+        // this.$route.params.셋팅속성명
     },
-    // 5. DOM 셋업파트
+    // 5. 업데이트시 실행구역
+    updated(){
+        console.log('아이템, 업데이트!');
+        // 서브메뉴 변수 업데이트하기
+        this.menuSet = 
+        gnbMenu[this.$route.query.id]
+    },
+    // 6. DOM 셋업파트
     mounted(){
         // CSS 변경하기 ///
         $("#css-set").attr("href", "./css/item.css");

@@ -40,7 +40,7 @@ export default new VueRouter({
       path: "/login",
       component: LoginComp,
     },
-    // [ 아이템 페이지 셋팅 ]
+    // [ 아이템 페이지 셋팅 ] - 파라미터전달셋팅 -> name넣기!
     {
       name: "sub-page",
       path: "/item",

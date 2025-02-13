@@ -40,12 +40,12 @@ new Vue({
         // 최초 로그인 상태 셋팅메서드 호출
         this.initSet();
     },
+    // 4-2. 업데이트시 실행구역
     updated(){
-        console.log('Updated');
-        store.commit('setVal',this.$route.query.id);
+        console.log('메인, 업데이트!');
     },
 
-    // 4-2. mounted() : DOM관련코드 작성
+    // 4-3. mounted() : DOM관련코드 작성
     mounted(){
         // 만약 첫페이지가 다른 경로면
         // DOM로딩후 구역에서 라우터를 강제로 호출함!
