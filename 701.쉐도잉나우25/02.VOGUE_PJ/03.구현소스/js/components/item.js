@@ -23,9 +23,7 @@ Vue.component("item-comp",{
     </header>
     
     <!-- Today’s Stories 스타일 리스트 -->
-    <today-area-comp v-if="this.$store.state.dataName=='beauty'" list-tit="" data-name="beauty"></today-area-comp>
-    <today-area-comp v-else list-tit="" data-name="today"></today-area-comp>
-
+    <today-area-comp list-tit="" data-name="this.$store"></today-area-comp>
     </main>
     `,
     // 2. 리턴함수 데이터

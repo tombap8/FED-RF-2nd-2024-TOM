@@ -2,6 +2,7 @@
 
 // 1. 아이템 데이터 불러오기
 import itemData from '../../data/item_data.json' with{type:'json'};
+import store from '../vuex_store.js';
 
 // console.log(itemData);
 
@@ -15,7 +16,10 @@ export const TodayAreaComp = Vue.component("today-area-comp", {
           <h2 class="sub-tit">{{this.listTit}}</h2>
           <div class="post-list-today">
             <ul>
-                <li v-for="v in todayInfo">
+                <li v-for="v in this.mm(
+                this.$store.state.dataName=='fashion'?
+                'fashion-page':this.$store.state.dataName
+                )">
                     <figure>
                         <img 
                         :src="v.imgSrc" 
@@ -41,7 +45,17 @@ export const TodayAreaComp = Vue.component("today-area-comp", {
   },
   props:['list-tit','data-name'],
   // 3. 메서드
-  methods: {},
+  methods: {
+    mm(tt){
+      return itemData
+      .filter((v) => {
+        if (v.mainCat == tt) return true;
+      })
+      // 2-2. 투데이 영역 데이터 정렬하기 : idx 오름차순
+      // sort((a,b)=>a.idx==b.idx?0:a.idx<b.idx?-1:1)
+      .sort((a, b) => (a.idx == b.idx ? 0 : a.idx < b.idx ? -1 : 1));
+    }
+  },
   // 4. 데이터셋업파트
   created() {
     // 2-1. 투데이 영역용 데이터수집하기
@@ -49,7 +63,7 @@ export const TodayAreaComp = Vue.component("today-area-comp", {
     // -> 결과: 필터링된 배열값
     const todayData = itemData
       .filter((v) => {
-        if (v.mainCat == this.dataName) return true;
+        if (v.mainCat == store.state.dataName) return true;
       })
       // 2-2. 투데이 영역 데이터 정렬하기 : idx 오름차순
       // sort((a,b)=>a.idx==b.idx?0:a.idx<b.idx?-1:1)
