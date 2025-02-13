@@ -18,6 +18,7 @@ export default new Vuex.Store({
     },
     // 로그인 클래스 (로그인/로그아웃 버튼 전환클래스)
     loginCls: '',
+    dataName: '',
   },
   // 2. 데이터 변경 메서드 구역
   // -> 컴포넌트에서 호출시 commit() 사용!
@@ -57,6 +58,10 @@ export default new Vuex.Store({
 
       // (4) 로그인 세션스 지우기 'login-user'
       sessionStorage.removeItem('login-user');
+    },
+    // (5) dataName변경
+    setDataName(st, nm) {
+      st.dataName = nm;
     },
   },
   // 3. 비동기처리 메서드 구역

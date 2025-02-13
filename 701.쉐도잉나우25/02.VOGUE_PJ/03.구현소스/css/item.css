@@ -25,25 +25,57 @@ body {
   padding-bottom: 15px;
 }
 
-.common-box {
+.common-box, .today-area {
   padding: 4rem;
 }
 
-.big-box-type figure {
+.big-box-type figure, .post-list-today ul li:nth-child(1) figure {
   aspect-ratio: 1/2;
 }
-.big-box-type figure figcaption {
+.big-box-type figure figcaption, .post-list-today ul li:nth-child(1) figure figcaption {
   translate: 0 -100%;
   padding: 5rem;
   color: #fff;
   background: linear-gradient(to top, #000, transparent);
 }
-.big-box-type figure figcaption h3.s-tit {
+.big-box-type figure figcaption h3.s-tit, .post-list-today ul li:nth-child(1) figure figcaption h3.s-tit {
   font-size: 3.6rem;
   font-weight: normal;
 }
-.big-box-type figure figcaption p.date {
+.big-box-type figure figcaption p.date, .post-list-today ul li:nth-child(1) figure figcaption p.date {
   display: none;
+}
+
+.post-list-today ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.post-list-today ul li:nth-child(1) {
+  grid-area: 1/1/3/2;
+}
+.post-list-today ul img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.post-list-today ul figure {
+  aspect-ratio: 1.3;
+}
+.post-list-today ul figcaption {
+  padding: 20px 0;
+}
+.post-list-today ul figcaption p.category {
+  font-size: 1.7rem;
+}
+.post-list-today ul figcaption h3.s-tit {
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+.post-list-today ul figcaption p.date {
+  font-size: 1.7rem;
+  color: #999;
 }
 
 /* 보그 PJ 리셋 CSS - _reset.scss */

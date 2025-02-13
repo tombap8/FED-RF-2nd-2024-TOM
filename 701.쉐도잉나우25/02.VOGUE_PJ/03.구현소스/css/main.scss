@@ -132,17 +132,7 @@
 }
 
 // 3. Today’s Stories 영역 /////////////
-
-// 투데이영역 속박스
-.today-area {
-  @extend .common-box;
-}
-
-// 리스트 박스
-.post-list-today {
-  // 왼쪽 큰 박스
-  @include list-type("left-type");
-}
+// core로 옮김!
 
 // 7. Fashion 영역 /////////////
 

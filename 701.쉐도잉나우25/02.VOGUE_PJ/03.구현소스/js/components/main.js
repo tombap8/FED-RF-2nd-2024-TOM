@@ -7,7 +7,7 @@ export const MainComp = Vue.component("main-comp", {
               <banner-comp></banner-comp>
   
               <!-- Today’s Stories 영역 -->
-              <today-area-comp></today-area-comp>
+              <today-area-comp list-tit="Today’s Stories" data-name="today"></today-area-comp>
   
               <!-- fashion 영역 -->
               <fashion-area-comp></fashion-area-comp>
