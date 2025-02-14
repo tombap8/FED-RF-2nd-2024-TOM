@@ -334,6 +334,32 @@ img {
     margin-top: -182px;
   }
 }
+.top-area.sub .logo h1 {
+  position: absolute;
+  top: 0;
+  translate: 0 50%;
+}
+.top-area.sub .logo h1 img {
+  height: 50px;
+}
+.top-area.sub .gnb {
+  margin-top: 0;
+}
+.top-area.sub .gnb ul {
+  justify-content: center;
+}
+.top-area.sub .sum-menu {
+  top: 0;
+  translate: 0 17%;
+}
+.top-area.sub .add-menu {
+  right: 1rem;
+  top: 1rem;
+}
+.top-area.sub .add-menu ol {
+  flex-direction: column;
+}
+
 /* 컨텐츠 영역 속박스 */
 .main-area {
   min-height: 600px;

@@ -276,3 +276,38 @@
     margin-top: -182px;
   }
 }
+
+// 서브 페이지 상단영역 디자인 변경클래스
+// .top-area.sub 서브클래스 하위적용
+.top-area.sub {
+  .logo h1 {
+    position: absolute;
+    top: 0;
+    translate: 0 50%;
+    // 로고이미지
+    img {
+      height: 50px;
+    }
+  }
+
+  // GNB메뉴
+  .gnb {
+    margin-top: 0;
+    ul {
+      justify-content: center;
+    }
+  }
+  // 요약메뉴
+  .sum-menu {
+    top: 0;
+    translate: 0 17%;
+  }
+  // 추가메뉴
+  .add-menu {
+    right: 1rem;
+    top: 1rem;
+    ol {
+      flex-direction: column;
+    }
+  }
+}
