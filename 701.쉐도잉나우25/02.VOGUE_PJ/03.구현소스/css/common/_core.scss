@@ -121,18 +121,6 @@ body{
   }
 }
 
-// Today’s Stories 스타일 공통박스 /////////////
-// 투데이영역 속박스
-.today-area {
-  @extend .common-box;
-}
-
-// 리스트 박스
-.post-list-today {
-  // 왼쪽 큰 박스
-  @include list-type("left-type");
-}
-
 
 // 3-2. 미디어쿼리 믹스인 ///////////////
 // 큰것부터 작은것 순으로!!!

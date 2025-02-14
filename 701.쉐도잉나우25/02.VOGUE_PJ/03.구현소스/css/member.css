@@ -45,38 +45,6 @@ body {
   display: none;
 }
 
-.post-list-today ul {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.post-list-today ul li:nth-child(1) {
-  grid-area: 1/1/3/2;
-}
-.post-list-today ul img {
-  width: 100%;
-  height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
-}
-.post-list-today ul figure {
-  aspect-ratio: 1.3;
-}
-.post-list-today ul figcaption {
-  padding: 20px 0;
-}
-.post-list-today ul figcaption p.category {
-  font-size: 1.7rem;
-}
-.post-list-today ul figcaption h3.s-tit {
-  font-size: 2.2rem;
-  margin: 10px 0;
-}
-.post-list-today ul figcaption p.date {
-  font-size: 1.7rem;
-  color: #999;
-}
-
 /* 보그 PJ 리셋 CSS - _reset.scss */
 /* 요소의 초기화 */
 /* 루트 글자크기 */
@@ -301,6 +269,71 @@ img {
   background-color: red;
 }
 
+.post-list-today ul {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.post-list-today ul li:nth-child(1) {
+  grid-area: 1/1/3/2;
+}
+.post-list-today ul img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+.post-list-today ul figure {
+  aspect-ratio: 1.3;
+}
+.post-list-today ul figcaption {
+  padding: 20px 0;
+}
+.post-list-today ul figcaption p.category {
+  font-size: 1.7rem;
+}
+.post-list-today ul figcaption h3.s-tit {
+  font-size: 2.2rem;
+  margin: 10px 0;
+}
+.post-list-today ul figcaption p.date {
+  font-size: 1.7rem;
+  color: #999;
+}
+
+@media (max-width: 1200px) {
+  .big-box-type figure figcaption h3.s-tit,
+  .post-list-today ul li:nth-child(1) figure figcaption h3.s-tit {
+    font-size: 2.5rem;
+  }
+}
+@media (max-width: 1000px) {
+  .big-box-type figure figcaption h3.s-tit,
+  .post-list-today ul li:nth-child(1) figure figcaption h3.s-tit {
+    font-size: 2rem;
+  }
+  .post-list-today ul,
+  #fashion-area .post-list ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  #fashion-area .post-list ul li:nth-child(3) {
+    grid-area: 1/2/3/3;
+  }
+}
+@media (max-width: 500px) {
+  .post-list-today ul,
+  #fashion-area .post-list ul {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  #fashion-area .post-list ul li:nth-child(3) {
+    grid-area: 1/1/2/2;
+  }
+  #fashion-area .post-list ul li:nth-child(1),
+  .post-list-today ul li:nth-child(2) {
+    margin-top: -182px;
+  }
+}
 /* 컨텐츠 영역 속박스 */
 .main-area {
   min-height: 700px;
