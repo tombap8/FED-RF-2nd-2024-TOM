@@ -1,12 +1,17 @@
 @charset "utf-8";
 
-/* 가로방향 자동스크롤 CSS - autoScroll_Hr.css */
+/* onePage 스타일시트 - onepage.css */
 
 /* 큐트폰트 CDN */
 @import url(https://fonts.googleapis.com/css2?family=Cute+Font&display=swap);
 
-/* 제이쿼리 스크롤 이동애니시 
-scroll-behavior:smooth 를 적용하지 않는다! */
+html {
+    /* 부드러운 스크롤 적용!(스크롤애니메이션)
+-> 스크롤이동시간, 이징가속도는 조절할 수 없다!
+제이쿼리 코딩으로 이것을 조절할 예정임! */
+    scroll-behavior: smooth;
+    
+}
 
 html,
 body {
@@ -39,12 +44,6 @@ h3 {
 
 /* 공통 class */
 
-/* 전체 페이지 최상위부모박스 */
-.pgwrap{
-    display: flex;
-    /* 자식요소 옆으로 흐름 */
-}
-
 /* 페이지 공통 class */
 .page {
     position: relative;
@@ -52,12 +51,6 @@ h3 {
     overflow: hidden;
     /* 자식요소 숨기기 */
 
-    /* 플렉스 자식요소 이므로 가로크기 설정함!
-    기본은 내용만큼만 커짐 */
-    width: 100vw;
-    /* 기본 flex-shrink:1 이므로 부모크기에 
-    강제맞춤하므로 0으로 변경해야함! */
-    flex-shrink: 0;
     /* 한페이지 보이는 화면 채우기 */
     height: 100vh;
 }
