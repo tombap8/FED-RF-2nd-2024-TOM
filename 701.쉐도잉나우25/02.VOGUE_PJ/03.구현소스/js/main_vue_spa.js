@@ -35,7 +35,8 @@ new Vue({
     },
     // 경로에 따라 상단메뉴 디자인 변경위한 클래스적용/미적용
     checkPage() {
-      if (this.$route.path == "/") $(".top-area").removeClass("sub");
+      if (this.$route.path == "/") 
+        $(".top-area").removeClass("sub");
       else $(".top-area").addClass("sub");
     },
   },
