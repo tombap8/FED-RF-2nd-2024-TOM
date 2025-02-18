@@ -8,7 +8,7 @@ export const mtInfo = [
     최초등반가: "에드먼드 힐러리, 텐징 노르가이",
     산맥: "Himalayas, 마할랑구르히말",
     이미지:
-      "https://t3.gstatic.com/licensed-image?q=tbn:ANd9GcSuKzfKeU9EZLor3pWk4HAuAPkUb4aK3Mjg5kG-_gZmXLTh7FrvKy7THROeXs0GBZcS",
+      "https://i.namu.wiki/i/vNgPqyIf-Nfe8osQOJcglK9Lxslmj-hPdwvZ63PjxfI4Q8aD6mIzHtGB2-IS0S_ri7KhyMXUqZNc2ojiN1mg-A.webp",
   },
   {
     이름: "백두산",
@@ -19,7 +19,7 @@ export const mtInfo = [
     최초등반가: "단군왕검",
     산맥: "백두대간",
     이미지:
-      "https://t0.gstatic.com/licensed-image?q=tbn:ANd9GcQcpjQAEJuIu-YoSYHRCLYh7O9FP2Lu6uYxWSfD6tt_Vc1icrhMZJAPAO3r7ikArcxC",
+      "https://kncu70.cafe24.com/wp-content/uploads/2024/04/%EB%B0%B1%EB%91%90%EC%82%B0-1024x650.jpg",
   },
   {
     이름: "후지산",
