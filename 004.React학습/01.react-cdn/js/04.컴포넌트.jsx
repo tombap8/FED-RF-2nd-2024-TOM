@@ -123,12 +123,20 @@ function FavoriteThings(조아) {
 // 컴포넌트를 호출하면 개별적으로 속성을 구분할 수 있다!
 // 출력: 세번째 .root
 ReactDOM.render(
-<FavoriteThings color="와인색" food="와인이" hobby="와인마시기" />, 
+<FavoriteThings 
+color="와인색" 
+food="와인이" 
+hobby="와인마시기" 
+/>, 
 target[2]);
 
 // 출력: 네번째 .root
 ReactDOM.render(
-<FavoriteThings color="푸르딩딩한색" food="김치전이" hobby="야구보기" />, 
+<FavoriteThings 
+color="푸르딩딩한색" 
+food="김치전이" 
+hobby="야구보기" 
+/>, 
 target[3]);
 
 

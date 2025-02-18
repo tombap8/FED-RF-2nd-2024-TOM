@@ -1,10 +1,10 @@
 // 07.리액트 : 조건 렌더링  + 리스트 렌더링
 
 // 나의 함수 불러오기
-import mFn from "./my_function.js";
+import myFn from "./my_function.js";
 
 // 출력대상: .root
-const root = mFn.qsa(".root");
+const root = myFn.qsa(".root");
 console.log(root);
 
 /**************************************** 
@@ -149,14 +149,14 @@ function WishList({ wList }) {
               wList.map((v) => (
                 <MakeList foodName={v} />
               ))
-              // 배열변수.map() 메서드사용!
-              // map메서드는 원래 새로운배열을
-              // 현재 자리에 출력하는 용도임
-              // 그러나 리액트는 이것을 변경하여
-              // 표현식안에서 출력시
-              // 태그JSX 형식으로 변환해 줌!
-              // JS 처럼 map().join('')처리
-              // 불필요!!!
+              /* 배열변수.map() 메서드사용!
+              map메서드는 원래 새로운배열을
+              현재 자리에 출력하는 용도임
+              그러나 리액트는 이것을 변경하여
+              표현식안에서 출력시
+              태그JSX 형식으로 변환해 줌!
+              JS 처럼 map().join('')처리
+              불필요!!! */
             }
           </ul>
         </div>
