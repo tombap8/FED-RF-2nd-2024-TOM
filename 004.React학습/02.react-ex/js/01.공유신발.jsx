@@ -46,7 +46,7 @@ function MainComponent() {
   // useEffect 테스트 함수 ////
   const testFn = () => {
     // 의존성 테스트를 위한 상태변수 업데이트
-    setTest(test?false:true);
+    setTest(!test);
     // true/false값 상호전환변경
     console.log("테스트중~! test상태변수값:",test);
   }; //////////// testFn //////////////
