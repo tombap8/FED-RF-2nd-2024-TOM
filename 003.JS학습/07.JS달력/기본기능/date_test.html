@@ -18,33 +18,42 @@
       // 요일변경배열
       const week = ["일", "월", "화", "수", "목", "금", "토"];
 
+      /********************************************** 
+      [ 달력구성에 필요한 정보들 ]
+
+      1. 전달 끝날짜
+      2. 전달 끝날짜 요일
+      3. 현재달 첫날짜(요일정보때문에 구함!)
+      4. 현재달 끝날짜
+      _______________________________________
+
+      [ 2. 전달  끝날짜, 첫날짜 알아오기 ]
+
+      new Date(년도,월,옵션)
+      전달값(아무것도 안쓰면 현재달이 나옴)
+      (1) 년도
+      (2) 월
+      (3) 옵션 : 0 - 현재달끝날짜 / 1 - 다음달첫날짜
+
+      -> 옵션 숫자는 위의 기준으로부터 몇칠 전 또는 후다
+      예컨데 -5를 쓰면 전달 끝날짜로 부터 5일전 
+      10을 쓰면 이번달 첫날로 부터 10일 후다
+      만약40 같은 수를 쓰면 달이 바꿔서 나올 것이다.
+      -> 참고로 옵션을 안쓰면 기본값은 1이다(현재달 첫날짜)
+    **********************************************/
       // 달력객체 생성(인스턴스 생성!)
+      // 현재 날짜객체
+      const today = new Date();
 
-      // 최종변경 날짜객체
-      const myDate = new Date();
-      // 변경할 날짜객체
-      const tempDate = new Date();
-
-      // 달력구성에 필요한 정보들 /////
-      // 1. 전달 끝날짜
-      // 2. 전달 끝날짜 요일
-      // 3. 현재달 첫날짜(요일정보때문에 구함!)
-      // 4. 현재달 끝날짜
-
-      // -> 전달  끝날짜, 첫날짜 알아오기
-      // new Date(년도,월,옵션)
-      // 전달값
-      // (1) 년도
-      // (2) 월
-      // (3) 옵션 : 0 - 현재달끝날짜 / 1 - 다음달첫날짜
-
-      let test = new Date(2025, 2, 0);
-      // let test = new Date(2025,2,1);
+      let test = new Date(2025, 7, 0);
+      let test2 = new Date(2025, 7, 1);
 
       // 1.올해 2월 끝날짜
-      cg("2025년 2월끝날짜:" + fm(test));
+      cg("2025년 7월끝날짜:" + fm(test));
+      cg("2025년 8월첫날짜:" + fm(test2));
 
-      test = new Date(tempDate.getFullYear(), tempDate.getMonth(), 0);
+      // tempData에는 현재날짜정보 담기
+      test = new Date(today.getFullYear(), today.getMonth(), 0);
 
       // 2.전달 끝날짜 : 월정보를 숫자로 가져오면 전달이 됨!
       cg("전달끝날짜:" + fm(test));
@@ -54,16 +63,16 @@
       // 0부터 시작 (일요일부터 시작)
       cg("전달끝날짜요일:" + week[test.getDay()]);
 
-      test = new Date(tempDate.getFullYear(), tempDate.getMonth(), 1);
-      // tempDate.getMonth() 전달임!
+      test = new Date(today.getFullYear(), today.getMonth(), 1);
+      // today.getMonth() 전달임!
 
       // 4. 현재달 첫날짜
       // new Date(년도,월,0-현재달끝날짜/1-다음달첫날짜)
       // 현재달 첫날짜는 전달로 처리하면 나옴!
       cg("현재달 첫날짜:" + fm(test));
 
-      test = new Date(tempDate.getFullYear(), tempDate.getMonth() + 1, 0);
-      //tempDate.getMonth()+1 현재달
+      test = new Date(today.getFullYear(), today.getMonth() + 1, 0);
+      //today.getMonth()+1 현재달
 
       // 5. 현재달 끝날짜
       cg("현재달 끝날짜:" + fm(test));
