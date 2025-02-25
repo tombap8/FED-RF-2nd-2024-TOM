@@ -1,19 +1,19 @@
 // 달력구현 JS - calendar.js ////////////
 
 // DOM 메서드 //////
-const dFn = {
+const myFn = {
     qs : x => document.querySelector(x),
     qsa : x => document.querySelectorAll(x),
     qsEl: (el, x) => el.querySelector(x),
     qsaEl: (el, x) => el.querySelectorAll(x),
     addEvt : (ele,evt,fn) => 
             ele.addEventListener(evt,fn),
-    cg : x => console.log(x),
+    cs : x => console.log(x),
     addZero : x => x < 10 ? '0' + x : x,
-    fm : x => `${x.getFullYear()}-${
-        dFn.addZero(x.getMonth()+1)}-${
-        dFn.addZero(x.getDate())}(${week[x.getDay()]})`
-}; ///////// dFn 객체 //////////
+    dfm : x => `${x.getFullYear()}-${
+        myFn.addZero(x.getMonth()+1)}-${
+        myFn.addZero(x.getDate())}(${week[x.getDay()]})`
+}; ///////// myFn 객체 //////////
     
 // 요일변경배열 ////
 const week = ["일","월","화","수","목","금","토"];
@@ -22,7 +22,7 @@ const week = ["일","월","화","수","목","금","토"];
 makeDallyeok();
 
 function makeDallyeok(){
-    dFn.cg('달력만들어!');
+    myFn.cs('달력만들어!');
 
     // 1. 변수셋팅 ////////////////////
     // (1) 변경할 현재날짜 객체
@@ -30,19 +30,19 @@ function makeDallyeok(){
     // (2) 오늘날짜 객체
     const today = new Date();
     // (3) 년도요소 : .yearTit
-    const yearTit = dFn.qs('.yearTit');
+    const yearTit = myFn.qs('.yearTit');
     // (4) 월요소 : .monthTit
-    const monthTit = dFn.qs('.monthTit');
+    const monthTit = myFn.qs('.monthTit');
     // (5) 날짜요소 : .dates
-    const dates = dFn.qs('.dates');
+    const dates = myFn.qs('.dates');
     // (6) 날짜넣을 배열변수
     const dateSet = [];
     // (7) html 코드 저장변수
     let hcode = '';
 
-    // dFn.cg(yearTit);
-    // dFn.cg(monthTit);
-    // dFn.cg(dates);
+    // myFn.cs(yearTit);
+    // myFn.cs(monthTit);
+    // myFn.cs(dates);
 
     // 2. 함수 만들기 ///////////////////
     // (1) 달력 초기화구성 함수 ///////
@@ -70,19 +70,19 @@ function makeDallyeok(){
         const prevLast = 
         new Date(cYr,cMt,0);
 
-        dFn.cg('전달끝날짜:'+dFn.fm(prevLast));
+        myFn.cs('전달끝날짜:'+myFn.dfm(prevLast));
 
         // 2. 현재달 첫째날짜(옵션:1->전달로 셋팅)
         // -> 달력 전달셋팅을 위한 요일 구하기 위해!
         const thisFirst = 
         new Date(cYr,cMt,1);
             
-        dFn.cg('현재달 첫째날짜:'+dFn.fm(thisFirst));
+        myFn.cs('현재달 첫째날짜:'+myFn.dfm(thisFirst));
 
-        // 3. 현재달 마지막날짜(옵션:0)
+        // 3. 현재달 마지막날짜(다음달 옵션:0)
         const thisLast = new Date(cYr,cMt+1,0);
         
-        dFn.cg('현재달 마지막날짜:'+dFn.fm(thisLast));
+        myFn.cs('현재달 마지막날짜:'+myFn.dfm(thisLast));
 
         // 4. 년도표시하기
         yearTit.innerHTML = cYr;
@@ -95,7 +95,7 @@ function makeDallyeok(){
         // 조건: 현재달 첫날짜 요일이 0이 아니면 내용있음!
         // -> 왜0인가? 0은 일요일 이므로 0이면 앞에 내용없음!
         let fDay = thisFirst.getDay();
-        dFn.cg('이번달첫날요일:'+fDay);
+        myFn.cs('이번달첫날요일:'+fDay);
         if(fDay != 0){
             // 만약 요일번호가 0이 아니면 for문 돌림
             for(let i = 0; i < fDay;i++){
@@ -163,21 +163,21 @@ function makeDallyeok(){
         // dates.innerHTML = dateSet.map((v,i)=>
         // i<42?`<div class="date">${v}</div>`:'').join('');
         
-        // dFn.cg('날짜배열:'+dateSet.map((v,i)=>
+        // myFn.cs('날짜배열:'+dateSet.map((v,i)=>
         // i<42?`<div class="date">${v}</div>`:'').join(''));
 
-        // dFn.cg(dateSet);
-        // dFn.cg(hcode);
+        // myFn.cs(dateSet);
+        // myFn.cs(hcode);
 
 
         // 9. 날짜정보를 사용하도록 셋팅하기 ////
         // (1) 대상선정 : .date -> 위에서 새로 담겼으므로 새로읽음!
-        let newDate = dFn.qsa('.date');
+        let newDate = myFn.qsa('.date');
         // console.log(newDate);
 
         // (2) 각 날짜 .date요소에 링크설정하기
         newDate.forEach(ele=>{
-            dFn.addEvt(ele,'click',()=>{
+            myFn.addEvt(ele,'click',()=>{
                 // 1. 년도읽기
                 let nowY = yearTit.innerText;
                 // 2. 월읽기
@@ -186,7 +186,7 @@ function makeDallyeok(){
                 let nowD = ele.innerText;                
                 
                 // 4. 전달/다음달 구분하기
-                let isSpan = dFn.qsEl(ele,'span');
+                let isSpan = myFn.qsEl(ele,'span');
                 console.log('span있니?',isSpan);
                 // span이 있으면 true 처리됨!
                 if(isSpan){
@@ -214,8 +214,8 @@ function makeDallyeok(){
                 
                 // 날짜구성하기 : yyyy-mm-dd
                 let setDate = 
-                `${nowY}-${dFn.addZero(nowM)
-                }-${dFn.addZero(nowD)}`;
+                `${nowY}-${myFn.addZero(nowM)
+                }-${myFn.addZero(nowD)}`;
                  
                 // 요일셋팅하기 : 해당날짜의 요일 getDay()
                 let setDay = new Date(setDate).getDay();
@@ -245,9 +245,9 @@ function makeDallyeok(){
 
     // 3. 이벤트 설정하기 ////////////////////
     // 이전버튼에 함수연결하기 : 달을 빼기위해 -1전달
-    dFn.addEvt(dFn.qs('.btnL'),'click',()=>chgCalendar(-1));
+    myFn.addEvt(myFn.qs('.btnL'),'click',()=>chgCalendar(-1));
     // 다음버튼에 함수연결하기 : 달을 더하기위해 1전달
-    dFn.addEvt(dFn.qs('.btnR'),'click',()=>chgCalendar(1));
+    myFn.addEvt(myFn.qs('.btnR'),'click',()=>chgCalendar(1));
 
 
 
