@@ -14,10 +14,11 @@ import "../../css/cat_detail.scss";
 
 function CatDetail() {
   // 라우터 호출시 전달한 값을 받는다!
-  const loc = useLocation();
-  const cname = loc.state.cname;
-  const cdesc = loc.state.cdesc;
-  const facts = loc.state.facts;
+  const {state} = useLocation();
+  const {cname, cdesc, facts} = state;
+  // const cname = state.cname;
+  // const cdesc = state.cdesc;
+  // const facts = state.facts;
   // console.log(cname, cdesc, facts);
 
   // 화면랜더링 실행구역 ////
