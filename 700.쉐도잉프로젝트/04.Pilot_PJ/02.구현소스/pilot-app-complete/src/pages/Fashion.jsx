@@ -229,11 +229,11 @@ export function Fashion(props) {
           <h2 className="c2tit sc-ani">2024 {gnbData[props.cat][1]}</h2>
         </Parallax>
       </section>
-      {/* 4. 단일상품영역 */}
+      {/* 5. 단일상품영역 */}
       <section id="c3" className="cont c3">
         <FashionIntro cat="sub" subcat={[props.cat,0]} />
       </section>
-      {/* 5. 스타일상품영역 */}
+      {/* 6. 스타일상품영역 */}
       <section id="c4" className="cont c4">
         <FashionIntro cat="sub" subcat={[props.cat,1]} />
       </section>
