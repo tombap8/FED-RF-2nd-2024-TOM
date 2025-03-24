@@ -1,6 +1,6 @@
 // DC PJ 게시판 읽기 모드 모듈 - Read.jsx
 
-import React, { useContext } from "react";
+import React, { useCallback, useContext, useRef } from "react";
 import { dCon } from "../dCon";
 
 function Read({ setMode, selRecord }) {
@@ -89,6 +89,11 @@ function Read({ setMode, selRecord }) {
     localStorage.setItem("board-data", JSON.stringify(bdData));
   } ///// if ///////
 
+  const textRef = useRef();
+  const handleResizeHeight = useCallback(() => {
+    textRef.current.style.height = textRef.current.scrollHeight + "px";
+  }, []);
+
   // 리턴 코드구역 ///////////////////
   return (
     <main className="cont">
@@ -132,11 +137,52 @@ function Read({ setMode, selRecord }) {
               ></textarea>
             </td>
           </tr>
-          <tr>
-            <td>Attachment</td>
-            <td></td>
-          </tr>
+          {myCon.loginSts && (
+            <tr>
+              <td>Comments</td>
+              <td>
+                <textarea className="comment-box" cols="60" rows="5"></textarea>
+                <button
+                  style={{
+                    marginLeft: "10px",
+                    height: "80px",
+                    verticalAlign: "35px",
+                  }}
+                >
+                  Send
+                </button>
+              </td>
+            </tr>
+          )}
         </tbody>
+      </table>
+      <br />
+      <table className="dtblview">
+        <tr>
+          <td style={{ fontSize: "16px", fontWeight: "normal" }}>
+            {selData.unm} <br />
+            <button>delete</button>
+            <button>Modify</button>
+          </td>
+          <td>
+            <textarea
+              className="comment-box"
+              style={{
+                width: "100%",
+                // height: "auto",
+                border: "none",
+                outline: "none",
+                textAlign: "top",
+                boxSizing: "border-box",
+                overflow: "hidden",
+                resize: "none",
+              }}
+              // readOnly={true}
+              onChange={handleResizeHeight}
+              defaultValue="Tried out a new pasta recipe and it was delicious! I used fresh ingredients and followed the instructions carefully. The result was a creamy and flavorful dish that everyone loved. Can't wait to try more recipes and experiment with different flavors."
+            ></textarea>
+          </td>
+        </tr>
       </table>
       <br />
       <table className="dtbl btngrp">
