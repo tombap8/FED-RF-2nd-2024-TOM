@@ -1,0 +1,12 @@
+// DC.com 전체 공통 CSS - index.scss //////
+
+// 공통모듈 CSS 불러오기 ///
+@import '../css/common/variables';
+@import '../css/common/reset';
+@import '../css/common/core';
+
+// 메인 영역 기본 높이값 설정하기 ///
+main.cont{
+    min-height: 
+    calc(100vh - $top-area-height - $footer-area-height);
+}

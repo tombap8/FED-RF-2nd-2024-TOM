@@ -1,0 +1,93 @@
+[ 현재 사용자 정보 가져오기 : 위도, 경도값 ]
+
+`navigator.geolocation`은 웹 브라우저에서 사용자의 위치
+ 정보를 가져오기 위해 사용되는 객체입니다. 이를 사용하여
+  사용자에게 위치 정보를 요청하고, 사용자가 이를 허용하면 
+  위치 정보를 얻을 수 있습니다. `navigator.geolocation` 
+  객체는 다음과 같은 주요 메서드를 제공합니다:
+
+1. `getCurrentPosition()`
+2. `watchPosition()`
+3. `clearWatch()`
+
+### 1. `getCurrentPosition()`
+`getCurrentPosition` 메서드는 
+사용자의 현재 위치를 한 번 요청합니다.
+
+#### 사용 예제:
+```javascript
+
+navigator.geolocation
+.getCurrentPosition(
+    successCallback, errorCallback, options);
+
+function successCallback(position) {
+    console.log('Latitude:', position.coords.latitude);
+    console.log('Longitude:', position.coords.longitude);
+}
+
+function errorCallback(error) {
+    console.error(
+        'Error occurred. Error code: ' + error.code);
+    // error.code can be:
+    //   0: unknown error
+    //   1: permission denied
+    //   2: position unavailable 
+    //      (error response from location provider)
+    //   3: timed out
+}
+
+const options = {
+    enableHighAccuracy: true, // high accuracy mode
+    timeout: 5000, // timeout in milliseconds
+    maximumAge: 0 // no caching of position data
+};
+```
+
+### 2. `watchPosition()`
+`watchPosition` 메서드는 
+사용자의 위치가 변경될 때마다 위치 정보를 요청합니다. 
+반환된 ID를 사용하여 나중에 위치 감시를 중지할 수 있습니다.
+
+#### 사용 예제:
+```javascript
+
+const watchId = navigator.geolocation
+.watchPosition(
+    successCallback, errorCallback, options);
+
+function successCallback(position) {
+    console.log('Latitude:', position.coords.latitude);
+    console.log('Longitude:', position.coords.longitude);
+}
+
+function errorCallback(error) {
+    console.error(
+        'Error occurred. Error code: ' + error.code);
+}
+
+const options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0
+};
+
+// To stop watching the position:
+navigator.geolocation.clearWatch(watchId);
+```
+
+### 3. `clearWatch()`
+`clearWatch` 메서드는 `watchPosition` 메서드에 의해 
+설정된 위치 감시를 중지합니다.
+
+#### 사용 예제:
+```javascript
+
+navigator.geolocation.clearWatch(watchId);
+```
+
+위의 예제들은 `navigator.geolocation` 객체를 사용하여
+사용자의 위치 정보를 가져오는 방법을 보여줍니다. 
+위치 정보를 요청할 때는 항상 사용자의 동의를 얻어야 하며,
+이를 위해 브라우저는 사용자에게 위치 정보 사용 허가를
+요청합니다.

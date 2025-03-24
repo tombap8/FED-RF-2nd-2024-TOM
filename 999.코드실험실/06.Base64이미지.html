@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image to Base64 Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #base64-output {
+            width: 100%;
+            height: 200px;
+        }
+        #preview {
+            max-width: 100%;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>이미지 파일을 Base64로 변환</h1>
+    <input type="file" id="file-input" accept="image/*">
+    <textarea id="base64-output" readonly></textarea>
+    <img id="preview" alt="Selected Image Preview">
+    
+    <script>
+        document.getElementById('file-input').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onloadend = function() {
+                    const base64String = reader.result;
+                    document.getElementById('base64-output').value = base64String;
+                    document.getElementById('preview').src = base64String;
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    </script>
+</body>
+</html>
