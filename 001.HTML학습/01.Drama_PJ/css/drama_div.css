@@ -1,0 +1,178 @@
+/* 한국최신드라마 리스트 CSS - drama.css */
+
+/* 웹폰트 */
+@import url('https://fonts.googleapis.com/css2?family=Hahmlet&display=swap');
+/* 
+    font-family: 'Hahmlet', serif;
+*/
+
+/* 초기화 */
+html,body{
+    margin: 0;
+    padding: 0;
+}
+
+/* 공통 스타일 */
+body {
+    font-family: 'Hahmlet', serif;
+    color: #222;
+}
+
+/* 드라마 리스트 섹션 */
+.section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 2.5%;
+}
+
+h1 {
+    font-size: 35px;
+    font-weight: bold;
+    letter-spacing: 5px;
+    text-align: center;
+    padding: 50px 0 20px;
+}
+
+.table {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    border-collapse: collapse;
+}
+
+.header, .row {
+    display: contents;
+}
+
+.cell, .header-cell {
+    padding: 8px 10px;
+    border-bottom: 1px solid #ccc;
+}
+
+.header-cell {
+    border-top: 2px solid #555;
+    border-bottom: 2px solid #555;
+    background-color: #ccc;
+    text-align: left;
+}
+
+.row:nth-child(even) .cell {
+    background-color: #dfdfdf;
+}
+
+.footer {
+    grid-column: span 7;
+    text-align: center;
+    padding: 45px 0;
+}
+
+a {
+    color: #222;
+    text-decoration: none;
+}
+
+a:hover {
+    color: hotpink;
+    text-decoration: underline;
+    text-decoration-style: wavy;
+}
+
+/* 구분 섹션 스타일 */
+.gubun-section {
+    max-width: 1000px;
+    margin: 0 auto 200px;
+    overflow: hidden;
+}
+
+.gubun-table {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    font-size: 20px;
+    border: 1px solid #999;
+    float: right;
+    border-spacing: 10px;
+}
+
+.gubun-cell {
+    padding: 10px;
+    border-bottom: 1px dotted #999;
+}
+
+.gubun-cell:nth-child(odd) {
+    border-right: 1px dotted #999;
+}
+
+/* 미디어쿼리 추가 */
+@media screen and (max-width: 1200px) {
+    .section {
+        max-width: 800px;
+    }
+    
+    .table {
+        grid-template-columns: repeat(6, 1fr);
+    }
+    
+    .gubun-table {
+        grid-template-columns: 1fr 2fr;
+        font-size: 18px;
+    }
+}
+
+@media screen and (max-width: 992px) {
+    .section {
+        max-width: 600px;
+    }
+    
+    h1 {
+        font-size: 30px;
+        padding: 40px 0 15px;
+    }
+    
+    .table {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    
+    .gubun-table {
+        grid-template-columns: 1fr 1.5fr;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .section {
+        max-width: 100%;
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 25px;
+        padding: 30px 0 10px;
+    }
+    
+    .table {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .gubun-table {
+        grid-template-columns: 1fr;
+        font-size: 14px;
+    }
+    
+    .gubun-cell:nth-child(odd) {
+        border-right: none;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    h1 {
+        font-size: 20px;
+        padding: 20px 0 10px;
+    }
+    
+    .cell, .header-cell {
+        padding: 5px;
+    }
+    
+    .footer {
+        padding: 30px 0;
+    }
+}
