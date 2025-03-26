@@ -1,0 +1,15 @@
+설치 및 실행 방법
+프로젝트 디렉토리를 생성하고 이동합니다.
+sh
+$ mkdir typescript-react-webpack-starter
+$ cd typescript-react-webpack-starter
+위 파일들을 프로젝트 디렉토리에 생성합니다.
+
+필요한 패키지를 설치합니다.
+
+sh
+$ npm install
+개발 서버를 시작합니다.
+sh
+$ npm start
+웹 브라우저가 자동으로 열리고 Hello, TypeScript and React! 메시지가 표시됩니다.
