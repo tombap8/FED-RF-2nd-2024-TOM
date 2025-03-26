@@ -1,0 +1,36 @@
+주석 설명
+컨텍스트 상태에 대한 타입 정의
+
+AppState 타입 정의는 컨텍스트 상태에 포함될 데이터 구조를 정의합니다. 
+여기에는 count와 increment 함수가 포함됩니다.
+기본값으로 컨텍스트 생성
+
+AppContext는 기본값으로 undefined를 사용하여 생성된 컨텍스트입니다. 
+이 컨텍스트는 AppState 타입의 값을 가질 수 있습니다.
+프로바이더 props에 대한 타입 정의
+
+AppProviderProps 타입 정의는 컨텍스트 프로바이더의 props 구조를 정의합니다. 
+여기에는 children이 포함됩니다.
+프로바이더 컴포넌트 생성
+
+AppProvider 컴포넌트는 AppContext.Provider를 사용하여 
+자식 컴포넌트에게 상태를 제공합니다. 
+count 상태와 increment 함수를 정의하고, 
+이를 프로바이더의 값으로 전달합니다.
+AppContext를 사용하는 커스텀 훅
+
+useAppContext 커스텀 훅은 AppContext를 사용하여 
+컨텍스트 값을 반환합니다. 
+만약 컨텍스트 값이 undefined이면 에러를 던집니다.
+카운트를 표시하는 컴포넌트
+
+DisplayCount 컴포넌트는 useAppContext 훅을 사용하여 
+count 값을 가져와서 화면에 표시합니다.
+카운트를 증가시키는 컴포넌트
+
+IncrementButton 컴포넌트는 useAppContext 훅을 사용하여 increment 함수를 가져와서 
+버튼 클릭 시 increment 함수를 호출합니다.
+메인 App 컴포넌트
+
+App 컴포넌트는 AppProvider로 감싸져 있으며, 
+DisplayCount와 IncrementButton 컴포넌트를 포함합니다.

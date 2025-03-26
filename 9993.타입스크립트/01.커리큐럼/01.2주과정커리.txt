@@ -1,0 +1,269 @@
+# 리액트와 타입스크립트 초심자 교육 강의 안
+
+## 주차별 계획
+
+### 1주차
+
+#### Day 1: TypeScript 기초
+
+1. **오리엔테이션 및 학습 목표 설정 (1시간)**
+   - 강의 목표 소개
+   - 커리큘럼 개요 설명
+   - 학습 방법 및 일정 안내
+   - Q&A 세션
+
+2. **TypeScript 기본 개념 소개 (1시간)**
+   - 기본 타입 (number, string, boolean, array, tuple, enum)
+   - 인터페이스와 유니온 타입
+   - 실습: 간단한 타입 정의 연습
+
+3. **TypeScript 환경 설정 및 설치 (1시간)**
+   - Node.js와 TypeScript 설치
+   - tsconfig.json 설정
+   - TypeScript 컴파일러 사용법
+   - 실습: 간단한 TypeScript 프로젝트 생성
+
+4. **간단한 TypeScript 프로젝트 시작하기 (1시간)**
+   - 기본 프로젝트 구조 소개
+   - 코드 작성 및 컴파일
+   - 디버깅 방법
+   - 실습: 간단한 프로그램 작성 및 실행
+
+#### Day 2: TypeScript 기초 심화
+
+1. **함수와 클래스에 TypeScript 적용하기 (1시간)**
+   - 함수 타입 정의
+   - 클래스와 인터페이스
+   - 접근 제어자 (public, private, protected)
+   - 실습: 간단한 클래스와 함수 작성
+
+2. **타입 추론과 타입 단언 (1시간)**
+   - 타입 추론의 원리
+   - 타입 단언 (Assertion)
+   - 실습: 타입 추론과 단언 예제 작성
+
+3. **제네릭의 기본 개념 (1시간)**
+   - 제네릭 타입 소개
+   - 제네릭 함수와 클래스
+   - 실습: 제네릭을 활용한 코드 작성
+
+4. **실습 프로젝트에 TypeScript 적용 연습 (1시간)**
+   - 실습 프로젝트 설정
+   - TypeScript로 코드 작성 및 적용
+   - Q&A 및 피드백
+
+#### Day 3: React와 TypeScript 연동
+
+1. **React 프로젝트에 TypeScript 설정하기 (1시간)**
+   - Create React App으로 프로젝트 생성
+   - TypeScript 설정 추가
+   - 실습: TypeScript로 React 프로젝트 생성
+
+2. **React 컴포넌트에 TypeScript 적용하기 (1시간)**
+   - 함수형 컴포넌트와 클래스형 컴포넌트에 타입 적용
+   - Props와 State 타입 정의
+   - 실습: 간단한 컴포넌트 작성
+
+3. **React의 기본 Hook (useState, useEffect)와 TypeScript 사용법 (1시간)**
+   - useState와 useEffect Hook 소개
+   - TypeScript로 Hook 사용하기
+   - 실습: Hook을 활용한 상태 관리 예제 작성
+
+4. **실습 프로젝트에 React와 TypeScript 연동하기 (1시간)**
+   - 실습 프로젝트에 React와 TypeScript 통합
+   - 컴포넌트 작성 및 적용
+   - Q&A 및 피드백
+
+#### Day 4: React와 TypeScript 심화
+
+1. **컴포넌트 간의 데이터 전달 (Props와 Context API) (1시간)**
+   - Props로 데이터 전달
+   - Context API 소개 및 사용법
+   - 실습: Context API를 활용한 데이터 전달
+
+2. **타입 안전한 이벤트 처리 (1시간)**
+   - 이벤트 타입 정의
+   - 이벤트 핸들러 작성
+   - 실습: 이벤트 처리 예제 작성
+
+3. **리액트 라우터와 TypeScript 사용법 (1시간)**
+   - React Router 기본 개념
+   - React Router와 TypeScript 사용법
+   - 실습: 라우팅 예제 작성
+
+4. **실습 프로젝트에 React 심화 내용 적용하기 (1시간)**
+   - 실습 프로젝트에 심화 내용 적용
+   - 컴포넌트 작성 및 라우팅
+   - Q&A 및 피드백
+
+#### Day 5: 상태 관리와 TypeScript
+
+1. **상태 관리의 기본 개념 (useReducer) (1시간)**
+   - useReducer Hook 소개
+   - 상태 관리 패턴
+   - 실습: useReducer를 활용한 상태 관리 예제 작성
+
+2. **Redux 소개 및 기본 사용법 (1시간)**
+   - Redux 개념 및 구조
+   - Redux 설정 및 기본 사용법
+   - 실습: 간단한 Redux 예제 작성
+
+3. **Redux와 TypeScript 사용법 (1시간)**
+   - Redux에 TypeScript 적용하기
+   - 타입 정의 및 액션, 리듀서 작성
+   - 실습: Redux와 TypeScript 통합 예제 작성
+
+4. **실습 프로젝트에 상태 관리 적용하기 (1시간)**
+   - 실습 프로젝트에 Redux 적용
+   - 상태 관리 구현
+   - Q&A 및 피드백
+
+### 2주차
+
+#### Day 6: 폼 처리와 TypeScript
+
+1. **폼 상태 관리의 기본 개념 (1시간)**
+   - 폼 상태 관리 개요
+   - 상태와 유효성 검사
+   - 실습: 간단한 폼 작성 및 상태 관리
+
+2. **React Hook Form과 TypeScript 사용법 (1시간)**
+   - React Hook Form 소개
+   - React Hook Form과 TypeScript 통합
+   - 실습: React Hook Form을 활용한 폼 작성
+
+3. **Formik과 TypeScript 사용법 (1시간)**
+   - Formik 소개
+   - Formik과 TypeScript 통합
+   - 실습: Formik을 활용한 폼 작성
+
+4. **실습 프로젝트에 폼 처리 적용하기 (1시간)**
+   - 실습 프로젝트에 폼 처리 적용
+   - 폼 작성 및 유효성 검사 구현
+   - Q&A 및 피드백
+
+#### Day 7: API 통신과 TypeScript
+
+1. **Axios와 Fetch를 사용한 API 통신 (1시간)**
+   - Axios와 Fetch 소개
+   - GET, POST 요청 및 응답 처리
+   - 실습: 간단한 API 통신 예제 작성
+
+2. **TypeScript로 API 응답 타입 정의하기 (1시간)**
+   - API 응답 타입 정의
+   - 인터페이스와 타입 일치 검사
+   - 실습: API 타입 정의 및 사용
+
+3. **React Query와 TypeScript 사용법 (1시간)**
+   - React Query 소개
+   - React Query와 TypeScript 통합
+   - 실습: React Query를 활용한 데이터 페칭
+
+4. **실습 프로젝트에 API 통신 적용하기 (1시간)**
+   - 실습 프로젝트에 API 통신 적용
+   - 데이터 페칭 및 상태 관리 구현
+   - Q&A 및 피드백
+
+#### Day 8: 스타일링과 TypeScript
+
+1. **CSS-in-JS (styled-components, Emotion)와 TypeScript 사용법 (1시간)**
+   - CSS-in-JS 개념 소개
+   - styled-components와 Emotion 사용법
+   - 실습: CSS-in-JS를 활용한 스타일링
+
+2. **모듈화된 CSS와 TypeScript 사용법 (1시간)**
+   - CSS 모듈 개념 소개
+   - CSS 모듈과 TypeScript 통합
+   - 실습: CSS 모듈을 활용한 스타일링
+
+3. **Tailwind CSS와 TypeScript 사용법 (1시간)**
+   - Tailwind CSS 소개
+   - Tailwind CSS와 TypeScript 통합
+   - 실습: Tailwind CSS를 활용한 스타일링
+
+4. **실습 프로젝트에 스타일링 적용하기 (1시간)**
+   - 실습 프로젝트에 스타일링 적용
+   - 스타일링 구현 및 최적화
+   - Q&A 및 피드백
+
+#### Day 9: 테스트와 TypeScript
+
+1. **React Testing Library 소개 및 기본 사용법 (1시간)**
+   - React Testing Library 개념 소개
+   - 기본 사용법 및 설정
+   - 실습: 간단한 테스트 코드 작성
+
+2. **Jest와 TypeScript로 테스트 코드 작성하기 (1시간)**
+   - Jest 소개
+   - Jest와 TypeScript 통합
+   - 실습: Jest를 활용한 테스트 코드 작성
+
+3. **React 컴포넌트 테스트 (1시간)**
+   - 컴포넌트 테스트 개념 소개
+   - React Testing Library와 Jest를 활용한 컴포넌트 테스트
+   - 실습: 컴포넌트 테스트 예제 작성
+
+4. **실습 프로젝트에 테스트 적용하기 (1시간)**
+   - 실습 프로젝트에 테스트 적용
+   - 테스트 코드 작성 및 실행
+   - Q&A 및 피드백
+
+#### Day 10: 프로젝트 마무리 및 발표 준비
+
+1. **실습 프로젝트 마무리 작업 (1시간)**
+   - 프로젝트 최종 점검
+   - 코드 정리 및 최적화
+   - 피드백 반영
+
+2. **코드 리뷰 및 피드백 시간 (1시간)**
+   - 코드 리뷰 세션
+   - 피드백 제공 및 개선점 논의
+   - Q&A 세션
+
+3. **발표 준비 및 연습 (1시간)**
+   - 발표 자료 준비
+   - 발표 연습 및 피드백
+   - Q&A 세션
+
+4. **Q&A 세션 및 다음 단계 안내 (1시간)**
+   - Q&A 세션
+   - 다음 단계 안내 및 추가 학습 자료 제공
+   - 종합 정리
+
+#### Day 11: 프로젝트 발표
+
+1. **각 팀별 프로젝트 발표 (2시간)**
+   - 팀별 프로젝트 발표
+   - 발표 평가 및 피드백
+   - Q&A 세션
+
+2. **발표 피드백 및 개선점 논의 (1시간)**
+   - 발표 피드백 제공
+   - 개선점 논의 및 Q&A
+   - 종합 정리
+
+3. **전체 교육 과정 리뷰 및 마무리 (1시간)**
+   - 교육 과정 리뷰
+   - 수료증 제공 및 마무리 인사
+   - Q&A 세션
+
+#### Day 12: 추가 학습 및 심화 주제
+
+1. **PWA (Progressive Web Apps)와 TypeScript 사용법 (2시간)**
+   - PWA 개념 소개
+   - PWA와 TypeScript 통합
+   - 실습: PWA 프로젝트 작성
+
+2. **GraphQL과 TypeScript 사용법 (2시간)**
+   - GraphQL 개념 소개
+   - GraphQL과 TypeScript 통합
+   - 실습: GraphQL API 작성 및 사용
+
+## 실습 프로젝트 주제
+- 주차별 학습 내용을 적용하여 간단한 웹 애플리케이션을 개발합니다.
+- 예시 프로젝트: 할 일 관리 앱, 간단한 블로그 플랫폼, 영화 리뷰 웹사이트 등
+
+## 평가 기준
+- 프로젝트 완성도
+- 코드 품질 및 유지보수성
+- 발표 및 커뮤니케이션 능력
