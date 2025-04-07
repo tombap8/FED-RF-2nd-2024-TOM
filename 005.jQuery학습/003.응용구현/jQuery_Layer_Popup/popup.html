@@ -135,7 +135,7 @@
             // showPop변수에 익명함수를 할당하는 순간 변수가 함수가 된다!!!!
             // 호출시에는 함수와 같이 showPop() 호출한다.
             // 익명함수의 중요한 사실은 호출은 함수 아래쪽에서 해야한다!!!
-            var showPop = function() {
+            const showPop = function() {
                 // 만약에 쿠키가 유효하다면 팝업창을 띄우기 않는다!
                 if ($.cookie("mypop") === "OK") {
                     alert("팝업창 하루동안 못띄움!!!");
