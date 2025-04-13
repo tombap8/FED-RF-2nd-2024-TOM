@@ -1,0 +1,25 @@
+{
+  "name": "typescript-basic-practice",
+  "version": "1.0.0",
+  "description": "TypeScript 기본 사용 연습",
+  "main": "dist/bundle.js",
+  "scripts": {
+    "build": "webpack",
+    "start": "webpack serve --open",
+    "dev": "webpack serve"
+  },
+  "keywords": [
+    "typescript",
+    "practice"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^20.11.19",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+} 

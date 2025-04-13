@@ -3,129 +3,150 @@
     <head>
         <meta charset="utf-8" />
         <title>한국 최신 드라마 리스트</title>
-        <link rel="stylesheet" href="./css/drama_div.css">
+        <link rel="stylesheet" href="./css/dramaDiv.css" />
     </head>
     <body>
         <!-- 한국 최신 드라마 리스트 -->
-        <section class="section">
-            <h1>한국 최신 드라마 리스트</h1>
-            <div class="table">
-                <div class="header">
-                    <div class="header-cell">번호</div>
-                    <div class="header-cell">드라마명</div>
-                    <div class="header-cell">주연</div>
-                    <div class="header-cell">제작사</div>
-                    <div class="header-cell">구분</div>
-                    <div class="header-cell">방영시간</div>
-                    <div class="header-cell">방영횟수</div>
-                </div>
-                <div class="row">
-                    <div class="cell">1</div>
-                    <div class="cell"><a href="#">경찰수업</a></div>
-                    <div class="cell">진영,차태현</div>
-                    <div class="cell">KBS2</div>
-                    <div class="cell">월화</div>
-                    <div class="cell">오후 09:30</div>
-                    <div class="cell">16부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">2</div>
-                    <div class="cell"><a href="#">홍천기</a></div>
-                    <div class="cell">안효섭,김유정</div>
-                    <div class="cell">SBS</div>
-                    <div class="cell">월화</div>
-                    <div class="cell">오후10:00</div>
-                    <div class="cell">12부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">3</div>
-                    <div class="cell"><a href="#">더 로드 : 1의 비극</a></div>
-                    <div class="cell">지진희,윤세아</div>
-                    <div class="cell">tvN</div>
-                    <div class="cell">수목</div>
-                    <div class="cell">오후10:50</div>
-                    <div class="cell">20부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">4</div>
-                    <div class="cell"><a href="#">죽어야 산다</a></div>
-                    <div class="cell">지창욱,오윤아</div>
-                    <div class="cell">JTBC</div>
-                    <div class="cell">수목</div>
-                    <div class="cell">오후10:00</div>
-                    <div class="cell">18부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">5</div>
-                    <div class="cell"><a href="#">아름다운 세상</a></div>
-                    <div class="cell">김동길,오세정</div>
-                    <div class="cell">MBC</div>
-                    <div class="cell">수목</div>
-                    <div class="cell">오후09:50</div>
-                    <div class="cell">16부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">6</div>
-                    <div class="cell"><a href="#">혹여나 오시나요</a></div>
-                    <div class="cell">마윤석,이필모</div>
-                    <div class="cell">KBS2</div>
-                    <div class="cell">수목</div>
-                    <div class="cell">오후10:50</div>
-                    <div class="cell">20부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">7</div>
-                    <div class="cell"><a href="#">당신오면 죽어</a></div>
-                    <div class="cell">성소희,이기로</div>
-                    <div class="cell">tvN</div>
-                    <div class="cell">토일</div>
-                    <div class="cell">오후09:50</div>
-                    <div class="cell">15부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">8</div>
-                    <div class="cell"><a href="#">칼부림의 세계</a></div>
-                    <div class="cell">장윤배,오세동</div>
-                    <div class="cell">SBS</div>
-                    <div class="cell">금토</div>
-                    <div class="cell">오후10:00</div>
-                    <div class="cell">20부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">9</div>
-                    <div class="cell"><a href="#">호떡집 사장</a></div>
-                    <div class="cell">송기영,판도라</div>
-                    <div class="cell">tvN</div>
-                    <div class="cell">수목</div>
-                    <div class="cell">오후10:50</div>
-                    <div class="cell">20부작</div>
-                </div>
-                <div class="row">
-                    <div class="cell">10</div>
-                    <div class="cell"><a href="#">마이크로 칩</a></div>
-                    <div class="cell">이라미,박노라</div>
-                    <div class="cell">MBC</div>
-                    <div class="cell">수목</div>
-                    <div class="cell">오후10:50</div>
-                    <div class="cell">10부작</div>
-                </div>
-                <div class="footer">
-                    ◀ <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> |
-                    <a href="#">5</a> | <a href="#">6</a> | <a href="#">7</a> | <a href="#">8</a> |
-                    <a href="#">9</a> | <a href="#">10</a> ▶
+        <div class="drama-container">
+            <!-- 1. 테이블 제목 -->
+            <div class="caption">한국 최신 드라마 리스트</div>
+            
+            <!-- 2. 테이블 상단부분 -->
+            <div class="thead">
+                <div class="tr">
+                    <div class="th">번호</div>
+                    <div class="th">드라마명</div>
+                    <div class="th">주연</div>
+                    <div class="th">제작사</div>
+                    <div class="th">구분</div>
+                    <div class="th">방영시간</div>
+                    <div class="th">방영횟수</div>
                 </div>
             </div>
-        </section>
+            
+            <!-- 3. 테이블 메인부분 -->
+            <div class="tbody">
+                <div class="tr">
+                    <div class="td">1</div>
+                    <div class="td"><a href="#">경찰수업</a></div>
+                    <div class="td">진영,차태현</div>
+                    <div class="td">KBS2</div>
+                    <div class="td">월화</div>
+                    <div class="td">오후 09:30</div>
+                    <div class="td">16부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">2</div>
+                    <div class="td"><a href="#">홍천기</a></div>
+                    <div class="td">안효섭,김유정</div>
+                    <div class="td">SBS</div>
+                    <div class="td">월화</div>
+                    <div class="td">오후10:00</div>
+                    <div class="td">12부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">3</div>
+                    <div class="td"><a href="#">더 로드 : 1의 비극</a></div>
+                    <div class="td">지진희,윤세아</div>
+                    <div class="td">tvN</div>
+                    <div class="td">수목</div>
+                    <div class="td">오후10:50</div>
+                    <div class="td">20부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">4</div>
+                    <div class="td"><a href="#">죽어야 산다</a></div>
+                    <div class="td">지창욱,오윤아</div>
+                    <div class="td">JTBC</div>
+                    <div class="td">수목</div>
+                    <div class="td">오후10:00</div>
+                    <div class="td">18부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">5</div>
+                    <div class="td"><a href="#">아름다운 세상</a></div>
+                    <div class="td">김동길,오세정</div>
+                    <div class="td">MBC</div>
+                    <div class="td">수목</div>
+                    <div class="td">오후09:50</div>
+                    <div class="td">16부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">6</div>
+                    <div class="td"><a href="#">혹여나 오시나요</a></div>
+                    <div class="td">마윤석,이필모</div>
+                    <div class="td">KBS2</div>
+                    <div class="td">수목</div>
+                    <div class="td">오후10:50</div>
+                    <div class="td">20부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">7</div>
+                    <div class="td"><a href="#">당신오면 죽어</a></div>
+                    <div class="td">성소희,이기로</div>
+                    <div class="td">tvN</div>
+                    <div class="td">토일</div>
+                    <div class="td">오후09:50</div>
+                    <div class="td">15부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">8</div>
+                    <div class="td"><a href="#">칼부림의 세계</a></div>
+                    <div class="td">장윤배,오세동</div>
+                    <div class="td">SBS</div>
+                    <div class="td">금토</div>
+                    <div class="td">오후10:00</div>
+                    <div class="td">20부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">9</div>
+                    <div class="td"><a href="#">호떡집 사장</a></div>
+                    <div class="td">송기영,판도라</div>
+                    <div class="td">tvN</div>
+                    <div class="td">수목</div>
+                    <div class="td">오후10:50</div>
+                    <div class="td">20부작</div>
+                </div>
+                <div class="tr">
+                    <div class="td">10</div>
+                    <div class="td"><a href="#">마이크로 칩</a></div>
+                    <div class="td">이라미,박노라</div>
+                    <div class="td">MBC</div>
+                    <div class="td">수목</div>
+                    <div class="td">오후10:50</div>
+                    <div class="td">10부작</div>
+                </div>
+            </div>
+            
+            <!-- 4. 테이블 하단부분 -->
+            <div class="tfoot">
+                <div class="tr">
+                    <div class="td full-width" colspan="7">
+                        ◀ <a href="#">1</a> | <a href="#">2</a> | <a href="#">3</a> | <a href="#">4</a> |
+                        <a href="#">5</a> | <a href="#">6</a> | <a href="#">7</a> | <a href="#">8</a> |
+                        <a href="#">9</a> | <a href="#">10</a> ▶
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        <!-- 구분 섹션 -->
-        <section class="gubun-section">
-            <div class="gubun-table">
-                <div class="gubun-cell" style="grid-row: span 4;">구분</div>
-                <div class="gubun-cell">월화:월화드라마</div>
-                <div class="gubun-cell">수목:수목드라마</div>
-                <div class="gubun-cell">금토:금토드라마</div>
-                <div class="gubun-cell">토일:토일드라마</div>
+        <!-- 구분테이블 박스 -->
+        <div class="gubun-container">
+            <div class="gubun-box">
+                <div class="gubun-tr">
+                    <div class="gubun-td rowspan" rowspan="4">구분</div>
+                    <div class="gubun-td">월화:월화드라마</div>
+                </div>
+                <div class="gubun-tr">
+                    <div class="gubun-td">수목:수목드라마</div>
+                </div>
+                <div class="gubun-tr">
+                    <div class="gubun-td">금토:금토드라마</div>
+                </div>
+                <div class="gubun-tr">
+                    <div class="gubun-td">토일:토일드라마</div>
+                </div>
             </div>
-        </section>
+        </div>
     </body>
 </html>

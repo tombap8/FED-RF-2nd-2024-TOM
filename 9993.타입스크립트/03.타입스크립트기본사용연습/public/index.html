@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- 기본 메타 태그 설정 -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TypeScript 기본 사용 연습</title>
+</head>
+<body>
+    <!-- 페이지 제목 -->
+    <h1>TypeScript 기본 사용 연습</h1>
+    
+    <!-- 
+        타입스크립트 실행 결과가 표시될 영역
+        - id="output"으로 지정된 div 요소에 결과가 동적으로 추가됨
+        - index.ts 파일에서 이 요소를 선택하여 결과를 출력함
+    -->
+    <div id="output"></div>
+    
+    <!-- 
+        웹팩으로 번들링된 타입스크립트 파일 로드
+        - /bundle.js: 웹팩이 생성한 번들 파일
+        - publicPath: '/'로 설정되어 있어 루트 경로에서 파일을 찾음
+    -->
+    <script src="/bundle.js"></script>
+</body>
+</html> 

@@ -1,0 +1,121 @@
+/* 전체 컨테이너 스타일 */
+.drama-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+    display: table;
+}
+
+/* 캡션 스타일 */
+.caption {
+    display: table-caption;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+/* 테이블 헤더 스타일 */
+.thead {
+    display: table-header-group;
+}
+
+.tr {
+    display: table-row;
+}
+
+.th {
+    display: table-cell;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+}
+
+/* 테이블 바디 스타일 */
+.tbody {
+    display: table-row-group;
+}
+
+.td {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+/* 테이블 푸터 스타일 */
+.tfoot {
+    display: table-footer-group;
+}
+
+.full-width {
+    display: table-cell;
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+/* 링크 스타일 */
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 구분 테이블 스타일 */
+.gubun-container {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 20px auto;
+}
+
+.gubun-box {
+    display: table;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-collapse: collapse;
+}
+
+.gubun-tr {
+    display: table-row;
+}
+
+.gubun-td {
+    display: table-cell;
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+}
+
+.rowspan {
+    display: table-cell;
+    vertical-align: middle;
+    background-color: #f0f0f0;
+    height: 100%;
+}
+
+/* 반응형 디자인 */
+@media (max-width: 768px) {
+    .drama-container,
+    .gubun-container {
+        width: 100%;
+        overflow-x: auto;
+    }
+    
+    .th,
+    .td,
+    .gubun-td {
+        min-width: 100px;
+    }
+} 
