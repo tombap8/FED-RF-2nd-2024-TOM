@@ -93,7 +93,8 @@ export function GList() {
           >
             [{i + 1}]
             <img
-              src={process.env.PUBLIC_URL+"/images/goods/" + v.cat + "/" + v.ginfo[0] + ".png"}
+              src={process.env.PUBLIC_URL+"/images/goods/" + 
+                v.cat + "/" + v.ginfo[0] + ".png"}
               alt="dress"
             />
             <aside>

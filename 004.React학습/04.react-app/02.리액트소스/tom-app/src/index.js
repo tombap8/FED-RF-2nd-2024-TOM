@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import UserList from './components/UserList';
 // 사스(Sass)팩키지를 설치했다면 바로 사스사용가능
 // 확장자를 여기서는 쓰고 사스파일 import에선 생략가능
 import "./css/main.scss";
+import UsersForm from './components/UsersForm';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root'));
 root.render(
-  <>
-   <h1><b>선재업고</b><span>튀어</span></h1>
-  </>
+  <div>
+      <h1>🚀 Supabase + React</h1>
+      <UserList />
+      <UsersForm />
+    </div>
 );
