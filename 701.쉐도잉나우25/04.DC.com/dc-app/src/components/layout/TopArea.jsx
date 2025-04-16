@@ -16,7 +16,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 // 제이쿼리 불러오기 ////
 import $ from "jquery";
-import { memo } from "react";
+import { memo, useEffect } from "react";
 
 // [상단영역 메모이제이션을 위한 주의사항] ///
 // 1. 컨텍스트API를 사용하지 말것!
@@ -89,7 +89,19 @@ export const TopArea = memo(({ loginMsg, loginSts, logoutFn, goPage }) => {
     // 네비게이트 메서드(라우터주소, {state:{보낼객체}})
   }; /////////// goSearch 함수 /////////////
 
+  // 랜더링 후 실행구역 ///////
+  useEffect(() => {
+    // GNB a요소 클릭시 전체메뉴 닫기 ///
+    // 대상: .gnb a[href!='#']
+    $('.gnb a').on("click", () => {
+      // 상단영역 클래스 on제거하여 메뉴닫기!
+      $(".top-area").removeClass("on");
+    }); //// click ////
+  }); // 리랜더링시 매번 실행 ///////
+
+  // ★★★★★★★★★★★★★★★★★ ///
   /// 리턴 코드구역 ////////
+  // ★★★★★★★★★★★★★★★★★ ///
   return (
     <>
       {/* 1.상단영역 */}
@@ -185,22 +197,37 @@ export const TopArea = memo(({ loginMsg, loginSts, logoutFn, goPage }) => {
             {
               // 로그인 상태이면 로그아웃버튼 보이기!
               loginSts && (
+                <>
                 <li>
-                  <a href="#"
-                    onClick={e=>{
+                  <a
+                    href="#"
+                    onClick={(e) => {
                       // 기본이동막기
                       e.preventDefault();
                       // 로그아웃 처리함수 호출
                       logoutFn();
                     }}
-                  >LOGOUT</a>
+                  >
+                    LOGOUT
+                  </a>
                 </li>
+                {/* 마이페이지 링크 */}
+                <li>
+                  <Link to="/mypage">MY PAGE</Link>
+                </li>
+                </>
               )
             }
           </ul>
         </nav>
         {/* 모바일용 햄버거 버튼 */}
-        <button className="hambtn"></button>
+        <button
+          className="hambtn"
+          onClick={() => {
+            // 클릭시 상단영역에 클래스 on토글링
+            $(".top-area").toggleClass("on");
+          }}
+        ></button>
       </header>
     </>
   );

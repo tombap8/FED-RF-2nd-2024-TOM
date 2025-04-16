@@ -1,13 +1,23 @@
 {
+  // 타입스크립트 컴파일러 설정
   "compilerOptions": {
-    "target": "ES6",
+    // ES6(ES2015)로 컴파일
+    "target": "ES2016",
+    // ESNext 모듈 시스템 사용
     "module": "ESNext",
+    // node.js 모듈resolution 사용
     "moduleResolution": "node",
+    // 엄격한 모드 사용
     "strict": true,
+    // commonJS 모듈을 ES 모듈로 자동 변환
     "esModuleInterop": true,
+    // 파일 이름을 일관되게 처리
     "forceConsistentCasingInFileNames": true,
+    // 라이브러리 타입체크 무시
     "skipLibCheck": true,
+    // 컴파일된 결과물은 dist 폴더에
     "outDir": "./dist"
   },
+  // tsconfig.json 파일에 정의된 설정을 적용할 파일
   "include": ["src"]
 }

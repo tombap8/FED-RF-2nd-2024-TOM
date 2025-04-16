@@ -1,6 +1,12 @@
 import React, { useLayoutEffect } from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route, useLocation, HashRouter } from "react-router-dom";
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useLocation,
+  HashRouter,
+} from "react-router-dom";
 
 /// 전체 PJ 공통 CSS 최상위 JS에서 불러오기 ///
 import "./css/index.scss";
@@ -21,6 +27,8 @@ import CatDetail from "./components/pages/CatDetail";
 import SearchPage from "./components/pages/SearchPage";
 import Member from "./components/pages/Member";
 import Login from "./components/pages/Login";
+import Series from "./components/pages/Series";
+import MyPage from "./components/pages/MyPage";
 // import SwiperApp from './components/plugin/SwiperApp';
 
 /********************************************* 
@@ -62,12 +70,11 @@ import Login from "./components/pages/Login";
 export default function MainComponent() {
   // 리턴 코드구역 ////////////
   return (
-
     // [ HashRouter 사용하기 ] /////////
     // 해쉬라우터는 url가상경로에 '#/경로명'형식으로 만들어줘서
     // 새로고침시 현재위치에 그대로 404에러 없이 머물 수 있다!
     // '#/' 의 의미는 일반적으로 아이디요소위치로 이동하거나
-    // 빈 #은 맨위로 이동하는 url코드로 사용되기 때문에 
+    // 빈 #은 맨위로 이동하는 url코드로 사용되기 때문에
     // 현재 페이지에 새로고침시 머무는것이 가능하다!
     // basename속성은 해쉬라우터에서는 안쓴다!
     // 왜냐하면 이미 내부적으로 homepage 속성값을 전달해준다!
@@ -90,7 +97,12 @@ export default function MainComponent() {
           <Route index element={<Main catName="main" />} />
           <Route path="character" element={<Character />} />
           <Route path="comics" element={<Comics catName="COMICS" />} />
-          <Route path="movies" element={<Movies catName="MOVIES" />} />
+          {/* 하위컴포넌트가 있는 경우 path="경로명/*"로 표시 */}
+          <Route path="movies/*" element={<Movies catName="MOVIES" />}>
+            <Route path="series" element={<Series catName="SERIES" />} />
+          </Route>
+          {/* 직접하위경로를 쓸때는 그냥 경로를 모두 path에 써준다!
+          <Route path="movies/series" element={<Series catName="SERIES" />} /> */}
           <Route path="games" element={<Games catName="GAMES" />} />
           <Route path="news" element={<News />} />
           <Route path="video" element={<Video catName="VIDEO" />} />
@@ -99,6 +111,7 @@ export default function MainComponent() {
           <Route path="search" element={<SearchPage />} />
           <Route path="member" element={<Member />} />
           <Route path="login" element={<Login />} />
+          <Route path="mypage" element={<MyPage />} />
           {/* <Route index element={<SwiperApp />}  /> */}
         </Route>
       </Routes>
