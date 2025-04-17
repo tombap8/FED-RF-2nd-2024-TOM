@@ -1,7 +1,7 @@
 import React from 'react';
 import Banner from '../modules/Banner';
 
-function News(props) {
+function News() {
     return (
         <>
           {/* 1. 배너 컴포넌트 */}

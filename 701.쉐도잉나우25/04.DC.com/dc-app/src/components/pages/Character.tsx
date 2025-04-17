@@ -4,7 +4,7 @@ import React from "react";
 import Banner from "../modules/Banner";
 import CatList from "../modules/CatList";
 
-function Character(props) {
+function Character() {
   return (
     <>
       {/* 1. 배너 컴포넌트 */}

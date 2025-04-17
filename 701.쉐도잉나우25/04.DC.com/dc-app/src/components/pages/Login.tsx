@@ -1,4 +1,4 @@
-// DC.com - 로그인 페이지 컴포넌트 - Login.jsx
+// DC.com - 로그인 페이지 컴포넌트 - Login.tsx
 
 import React, { useContext, useEffect, useState } from "react";
 
@@ -48,7 +48,7 @@ function Login() {
 
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ////////////
-  const changeUserId = (e) => {
+  const changeUserId = (e: any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -69,7 +69,7 @@ function Login() {
   }; ////////// changeUserId 함수 ////////////
 
   // 2. 비밀번호 유효성 검사 ///////////
-  const changePwd = (e) => {
+  const changePwd = (e: any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -102,7 +102,7 @@ function Login() {
   }; /////////// totalValid 함수 ///////////
 
   // [ 서브밋 기능함수 ] ////////////////
-  const onSubmit = (e) => {
+  const onSubmit = (e:any) => {
     // 1. 기본서브밋 막기
     e.preventDefault();
 
@@ -118,14 +118,20 @@ function Login() {
       initData();
 
       // 2. 로컬스 변수할당
-      let memData = localStorage.getItem("mem-data");
+      let memData: string = 
+      localStorage.getItem("mem-data") ?? "[]";
+      // ??는 Nullish Coalescing Operator(널 병합 연산자)
+      // 이 연산자는 null 또는 undefined 값을 처리할 때 
+      // 기본값을 제공하는 데 사용
 
       // 3. 로컬스 객체변환
-      memData = JSON.parse(memData);
+      // memData = JSON.parse(memData); 
+      // -> 여기서 안하고 아래에서 ts와 함께 처리함!
       console.log(memData);
 
       // 4. 아이디 존재 여부 검사하기
-      let result = memData.find((v) => {
+      // let result = memData.find((v:) => {
+      let result = (JSON.parse(memData) as Array<any>).find((v: any) => {
         if (v.uid === userId) return true;
       }); /////// find ///////
       console.log("결과:", result);
@@ -162,8 +168,12 @@ function Login() {
           // 3. 로그인 환영메시지 셋팅함수 호출
           myCon.makeMsg(result.unm);
 
-          // 4. 로그인 성공 메시지 버튼에 출력하기
-          document.querySelector(".sbtn").innerText = 
+          // 4. 로그인 성공 메시지 버튼에 출력하기          
+          // document.querySelector(".sbtn").innerText = 
+          // 변수에 할당하면서 요소도 형을 정해줘야함!
+          // -> as HTMLElement : 타입지정하기
+          const sBtn = document.querySelector(".sbtn") as HTMLElement;
+          sBtn.innerText = 
           "넌 로그인 된거야~!";
 
           // 5. 라우팅 페이지 이동
@@ -198,7 +208,9 @@ function Login() {
   // 화면랜더링 구역 /////////
   useEffect(() => {
     // 아이디입력창 포커스
-    document.querySelector("#user-id").focus();
+    const userId = document.querySelector("#user-id") as HTMLInputElement;
+    // -> as HTMLInputElement : 타입지정하기
+    userId.focus();
   }, []);
 
   // 코드 리턴구역 //////////////////////
@@ -213,7 +225,7 @@ function Login() {
               <input
                 id="user-id"
                 type="text"
-                maxLength="20"
+                maxLength={20}
                 placeholder="Please enter your ID"
                 value={userId}
                 onChange={changeUserId}
@@ -238,7 +250,7 @@ function Login() {
               <label>Password : </label>
               <input
                 type="password"
-                maxLength="20"
+                maxLength={20}
                 placeholder="Please enter your Password"
                 value={pwd}
                 onChange={changePwd}

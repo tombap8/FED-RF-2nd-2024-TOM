@@ -17,9 +17,9 @@
     "jquery": "^3.7.1",
     "jquery-ui-dist": "^1.13.3",
     "jquery-ui-touch-punch": "^0.2.3",
-    "react": "^19.0.0",
+    "react": "^18.3.1",
     "react-daum-postcode": "^3.2.0",
-    "react-dom": "^19.0.0",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^7.2.0",
     "react-scripts": "5.0.1",
     "sass": "^1.85.0",
@@ -49,5 +49,12 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/jquery": "^3.5.32",
+    "@types/node": "^22.14.1",
+    "@types/react": "^18.3.20",
+    "@types/react-dom": "^18.3.6",
+    "typescript": "^4.9.5"
   }
 }

@@ -6,7 +6,7 @@ import SecIntro from "../modules/SecIntro";
 import VidIntro from "../modules/VidIntro";
 import VidSwipe from "../modules/VidSwipe";
 
-export default function Main({catName}){
+export default function Main({catName}:{catName:string}) {
     // catName - 페이지 카테고리명 데이터
   
     // 리턴 코드구역 ////////////

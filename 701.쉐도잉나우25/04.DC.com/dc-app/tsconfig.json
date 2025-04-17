@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "target": "es6",
+    "strict": true,
+    "allowJs": true,         // JS 파일도 허용
+    "checkJs": false,        // JS에 타입검사 강제 안함
+    "noEmit": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "moduleResolution": "node", // 모듈 해석을 Node.js 방식으로 설정
+    "resolveJsonModule": true // json import 지원
+  },
+  "include": ["src/**/*"],
+}

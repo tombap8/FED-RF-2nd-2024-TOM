@@ -50,7 +50,7 @@ function Member() {
   // 5. 이메일변수
   const [emailError, setEmailError] = useState(false);
   // 6. 주소변수
-  const [addrError, setAddrError] = useState("");
+  const [addrError, setAddrError] = useState(false);
 
   // console.log(">>>>", userIdError);
 
@@ -82,7 +82,7 @@ function Member() {
 
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ////////////
-  const changeUserId = (e) => {
+  const changeUserId = (e: any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -107,7 +107,7 @@ function Member() {
       console.log(memData);
 
       // 2. 로컬스 객체변환 (왜? 문자형이니까!)
-      memData = JSON.parse(memData);
+      memData = memData ? JSON.parse(memData) : null;
       console.log(memData);
       // -> 배열데이터로 변환!
       // 주의: JSON 파싱할때 원본형식이 제이슨 파일형식으로
@@ -116,7 +116,7 @@ function Member() {
       // 3. 배열이니까 현재 입력데이터의 아이디가
       // 기존 배열값으로 있는지 검사함!
       // 있으면 true, 없으면 false
-      let isT = memData.some((v) => v.uid === val);
+      let isT = Array.isArray(memData) && memData.some((v) => v.uid === val);
       console.log("중복id있어?", isT);
 
       // 4. true 일 경우 중복데이터 메시지 표시
@@ -162,7 +162,7 @@ function Member() {
   }; ////////// changeUserId 함수 ////////////
 
   // 2. 비밀번호 유효성 검사 ///////////
-  const changePwd = (e) => {
+  const changePwd = (e:any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -181,7 +181,7 @@ function Member() {
   }; ///////// changePwd 함수 //////////
 
   // 3. 비밀번호확인 유효성 검사 ///////////
-  const changeChkPwd = (e) => {
+  const changeChkPwd = (e:any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -194,7 +194,7 @@ function Member() {
   }; ///////// changeChkPwd 함수 //////////
 
   // 4. 사용자이름 유효성 검사 ///////////
-  const changeUserName = (e) => {
+  const changeUserName = (e:any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -207,7 +207,7 @@ function Member() {
   }; ///////// changeUserName 함수 //////////
 
   // 5. 이메일 유효성 검사 ///////////
-  const changeEmail = (e) => {
+  const changeEmail = (e:any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -245,7 +245,7 @@ function Member() {
     setAddr(address1 + "*" + address2);
     console.log(addr);
     // (2) 우편번호 저장
-    setZipcode(zc);
+    setZipcode(zc ? String(zc) : "");
     console.log(zipcode);
   }; ///////// changeUserName 함수 //////////
 
@@ -285,7 +285,7 @@ function Member() {
   }; /////////// totalValid 함수 ///////////
 
   // [ 서브밋 기능함수 ] ////////////////
-  const onSubmit = (e) => {
+  const onSubmit = (e:any) => {
     // 1. 기본서브밋 막기
     e.preventDefault();
 
@@ -300,12 +300,13 @@ function Member() {
       initData();
 
       // 2. 로컬스 변수할당
-      let memData = localStorage.getItem("mem-data");
+      let memData : Array<any> = JSON.parse(localStorage.getItem("mem-data")?? "[]");
+      console.log(memData);
 
-      // 3. 로컬스 객체변환
-      memData = JSON.parse(memData);
+      // 3. 로컬스 객체변환 -> 위에서 했음!
+      // memData = memData ? JSON.parse(memData) : [];
       // 최대수를 위한 배열값 뽑기 (idx항목)
-      let temp = memData.map((v) => v.idx);
+      let temp = Array.isArray(memData) ? memData.map((v) => v.idx) : [];
       // 다음 번호는 항상 최대수+1이다!
       console.log("다음번호:", Math.max(...temp) + 1);
 
@@ -330,7 +331,8 @@ function Member() {
 
       // 7. 회원가입 환영메시지 + 로그인 페이지 이동
       // 버튼 텍스트에 환영메시지
-      document.querySelector(".sbtn").innerText = "Thank you for joining us!";
+      const sBtn = document.querySelector(".sbtn") as HTMLButtonElement;
+      sBtn.innerText = "Thank you for joining us!";
       // 1초후 페이지 이동 : 라우터 Navigate로 이동함
       setTimeout(() => {
         goPage("/login");
@@ -358,7 +360,7 @@ function Member() {
               <label>ID : </label>
               <input
                 type="text"
-                maxLength="20"
+                maxLength={20}
                 placeholder="Please enter your ID"
                 value={userId}
                 onChange={changeUserId}
@@ -403,7 +405,7 @@ function Member() {
               <label>Password : </label>
               <input
                 type="password"
-                maxLength="20"
+                maxLength={20}
                 placeholder="Please enter your Password"
                 value={pwd}
                 onChange={changePwd}
@@ -430,7 +432,7 @@ function Member() {
               <label>Confirm Password : </label>
               <input
                 type="password"
-                maxLength="20"
+                maxLength={20}
                 placeholder="Please enter your Confirm Password"
                 value={chkPwd}
                 onChange={changeChkPwd}
@@ -457,7 +459,7 @@ function Member() {
               <label>User Name : </label>
               <input
                 type="text"
-                maxLength="20"
+                maxLength={20}
                 placeholder="Please enter your Name"
                 value={userName}
                 onChange={changeUserName}
@@ -488,7 +490,7 @@ function Member() {
                   - 변경체크함수를 프롭스다운시킴!
                 */
               }
-              <AddressInput changeAddr={changeAddr} />
+              <AddressInput changeAddr={changeAddr} zcode={undefined} addr={undefined} />
               {
                 // 에러일 경우 메시지 출력
                 // 조건문 && 출력요소
@@ -510,7 +512,7 @@ function Member() {
               <label>Email : </label>
               <input
                 type="text"
-                maxLength="50"
+                maxLength={50}
                 placeholder="Please enter your Email"
                 value={email}
                 onChange={changeEmail}
