@@ -131,7 +131,8 @@ function Login() {
 
       // 4. 아이디 존재 여부 검사하기
       // let result = memData.find((v:) => {
-      let result = (JSON.parse(memData) as Array<any>).find((v: any) => {
+      let result = (JSON.parse(memData) as Array<any>)
+      .find((v: any) => {
         if (v.uid === userId) return true;
       }); /////// find ///////
       console.log("결과:", result);
