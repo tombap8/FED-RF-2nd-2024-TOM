@@ -5,7 +5,15 @@ import React from "react";
 // 제이쿼리 불러오기 ////
 import $ from "jquery";
 
-function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
+interface ModifyProps {
+  setMode: (mode: string) => void;
+  selRecord: React.MutableRefObject<any>;
+  totalCount: React.MutableRefObject<number>;
+  setPageNum: (num: number) => void;
+  pgPgNum: React.MutableRefObject<number>;
+}
+
+function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }: ModifyProps) {
   // setMode - 모든 변경 상태변수 setter
   // selRecord - 선택데이터 참조변수
   // totalCount - 전체 개수 참조변수 (글삭제시 카운트 1감소!)
@@ -19,9 +27,9 @@ function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
   // 글쓰기 저장 서브밋 함수 //////
   const submitFn = () => {
     // 제목입력항목
-    let title = $(".subject").val().trim();
+    let title = ($(".subject").val() as string)?.trim() || "";
     // 내용입력항목
-    let content = $(".content").val().trim();
+    let content = ($(".content").val() as string)?.trim() || "";
     // trim()으로 앞뒤공백 제거후 검사!
 
     // (1) 공통 유효성검사
@@ -35,10 +43,7 @@ function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
     else {
       // 1) 로컬스 읽어와서 객체화하기 ////////////
       // 1-1) 로컬스토리지 게시판 데이터 불러오기
-      let localData = localStorage.getItem("board-data");
-
-      // 1-2) JSON.parse()로 배열객체로 변환
-      localData = JSON.parse(localData);
+      let localData: any[] = JSON.parse(localStorage.getItem("board-data") || "[]");
 
       // 2) 수정할 현재 데이터 idx값(키값)
       let currIdx = selData.idx;
@@ -79,10 +84,7 @@ function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
 
       // 1) 로컬스 읽어와서 객체화하기 ////////////
       // 1-1) 로컬스토리지 게시판 데이터 불러오기
-      let localData = localStorage.getItem("board-data");
-
-      // 1-2) JSON.parse()로 배열객체로 변환
-      localData = JSON.parse(localData);
+      let localData: any[] = JSON.parse(localStorage.getItem("board-data") || "[]");
 
       // 2) 수정할 현재 데이터 idx값(키값)
       let currIdx = selData.idx;
@@ -132,7 +134,7 @@ function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
               <input
                 type="text"
                 className="name"
-                size="20"
+                size={20}
                 readOnly={true}
                 defaultValue={selData.unm}
               />
@@ -144,7 +146,7 @@ function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
               <input
                 type="text"
                 className="subject"
-                size="60"
+                size={60}
                 defaultValue={selData.tit}
               />
             </td>
@@ -154,8 +156,8 @@ function Modify({ setMode, selRecord, totalCount, setPageNum, pgPgNum }) {
             <td>
               <textarea
                 className="content"
-                cols="60"
-                rows="10"
+                cols={60}
+                rows={10}
                 defaultValue={selData.cont}
               ></textarea>
             </td>

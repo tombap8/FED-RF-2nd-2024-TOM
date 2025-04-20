@@ -43,7 +43,7 @@ function CatDetail() {
           <div className="cdesc">
             {
                 // cdesc 데이터의 '^'로 잘라서 p요소 할당
-                cdesc.split('^').map((v,i)=>
+                cdesc.split('^').map((v: string, i: number)=>
                 <p key={i}>{v}</p>)                
             }
           </div>
@@ -56,7 +56,7 @@ function CatDetail() {
               <tbody>
                 {
                     // facts 데이터를 '^'로 잘라서 map돌림
-                    facts.split('^').map((v,i)=>
+                    facts.split('^').map((v: string, i: number)=>
                     <tr key={i}>                        
                         {/* ':'으로 잘라서 타이틀:내용 */}
                         <td>{v.split(':')[0]} : </td>

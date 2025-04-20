@@ -6,13 +6,21 @@ import { dCon } from "../dCon";
 // 제이쿼리 불러오기 ////
 import $ from "jquery";
 
+interface WriteProps {
+  setMode: (mode: string) => void;
+  totalCount: React.MutableRefObject<number>;
+  setPageNum: (num: number) => void;
+  pgPgNum: React.MutableRefObject<number>;
+  initVariables: () => void;
+}
+
 function Write({
   setMode,
   totalCount,
   setPageNum,
   pgPgNum,
   initVariables, // 변수초기화함수
-}) {
+}: WriteProps) {
   // setMode - 모든 변경 상태변수 setter
   // totalCount - 전체 개수 참조변수 (글쓰기시 카운트 1증가!)
   // setPageNum - 리스트 페이지번호 setter (글쓴 후 첫페이지 이동)
@@ -25,9 +33,9 @@ function Write({
   // 글쓰기 저장 서브밋 함수 //////
   const submitFn = () => {
     // 제목입력항목
-    let title = $(".subject").val().trim();
+    let title = ($(".subject").val() as string)?.trim() || "";
     // 내용입력항목
-    let content = $(".content").val().trim();
+    let content = ($(".content").val() as string)?.trim() || "";
     // trim()으로 앞뒤공백 제거후 검사!
 
     // (1) 공통 유효성검사
@@ -41,26 +49,24 @@ function Write({
     else {
       // 1) 글번호 만들기 ////////////
       // 1-1) 로컬스토리지 게시판 데이터 불러오기
-      let localData = localStorage.getItem("board-data");
+      let localData: any[] = JSON.parse(localStorage.getItem("board-data") || "[]");
 
-      // 1-2) JSON.parse()로 배열객체로 변환
-      localData = JSON.parse(localData);
-
-      // 1-3) 배열 데이터 idx값 읽어오기
+      // 1-2) 배열 데이터 idx값 읽어오기
       let totalIdx = localData.map((v) => v.idx);
       // // console.log("idx만 배열:", totalIdx);
 
-      // 1-4) idx값 중 최대값 구하기 :
+      // 1-3) idx값 중 최대값 구하기 :
       // 스프레드 연산자로 ...totalIdx -> 배열값만 max에 넣기
       let maxIdx = Math.max(...totalIdx);
       // // console.log("idx중 최대값:", maxIdx);
 
       // 2) 오늘날짜 만들기 ///////////
       let today = new Date();
+      let dateStr = today.toJSON().substr(0, 10);
       // // console.log(today);
       // toJSON()은 제이슨 날짜형식변환(yyyy-MM-dd)
       // -> 앞의 10자리만 사용 : substr(시작순번,개수)
-      today = today.toJSON().substr(0, 10);
+      // today = today.toJSON().substr(0, 10);
       // // console.log(today);
 
       // [ idx 고유번호 만드는 방법 ] ///
@@ -74,7 +80,7 @@ function Write({
         tit: title,
         cont: content,
         att: "",
-        date: today,
+        date: dateStr,
         uid: myCon.loginSts.uid,
         unm: myCon.loginSts.unm,
         cnt: 0,
@@ -111,7 +117,7 @@ function Write({
               <input
                 type="text"
                 className="name"
-                size="20"
+                size={20}
                 readOnly={true}
                 // 로그인한 사람이름
                 defaultValue={myCon.loginSts.unm}
@@ -121,13 +127,13 @@ function Write({
           <tr>
             <td>Title</td>
             <td>
-              <input type="text" className="subject" size="60" />
+              <input type="text" className="subject" size={60} />
             </td>
           </tr>
           <tr>
             <td>Content</td>
             <td>
-              <textarea className="content" cols="60" rows="10"></textarea>
+              <textarea className="content" cols={60} rows={10}></textarea>
             </td>
           </tr>
           <tr>

@@ -2,8 +2,9 @@ import React from "react";
 import Banner from "../modules/Banner";
 import VidIntro from "../modules/VidIntro";
 import VidSwipe from "../modules/VidSwipe";
+import { ComProps } from "../../types/common";
 
-function Series({catName}) {
+function Series({catName}:ComProps) {
   // catName - 페이지 카테고리명 데이터
 
   // 리턴 코드구역 ////////////

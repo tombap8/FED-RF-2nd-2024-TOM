@@ -6,26 +6,45 @@ import { dCon } from "../dCon";
 // 제이쿼리 불러오기 ///
 import $ from "jquery";
 
-function List({
-  selData, // 선택된 배열데이터 전달
-  setMode, // 모든 변경 상태변수 setter
-  selRecord, // 선택데이터 참조변수
-  pageNum, // 리스트 페이지번호 getter
-  setPageNum, // 리스트 페이지번호 setter
-  unitSize, // 페이지당 레코드수
-  totalCount, // 전체 개수 참조변수
-  pgPgSize, // 페이징의 페이징 개수
-  pgPgNum, // 페이징의 페이징 번호
+interface ListProps {
+  selData: any; // 선택된 배열데이터 전달
+  setMode: (mode: string) => void; // 모든 변경 상태변수 setter
+  selRecord: React.MutableRefObject<any>; // 선택데이터 참조변수
+  pageNum: number; // 리스트 페이지번호 getter
+  setPageNum: (num: number) => void; // 리스트 페이지번호 setter
+  unitSize: number; // 페이지당 레코드수
+  totalCount: React.MutableRefObject<number>; // 전체 개수 참조변수
+  pgPgSize: number; // 페이징의 페이징 개수
+  pgPgNum: React.MutableRefObject<number>; // 페이징의 페이징 번호
+  searchFn: () => void; // 검색함수
+  keyword: { cta: string; kw: string }; // 검색어 상태변수 getter
+  setKeyword: (keyword: { cta: string; kw: string }) => void; // 검색어 상태변수 setter
+  order: number; // 정렬 상태변수
+  setOrder: (order: number) => void; // 정렬 상태변수 setter
+  sortCta: string; // 정렬기준 상태변수 getter
+  setSortCta: (sortCta: string) => void; // 정렬기준 상태변수 setter
+  initVariables: () => void; // 변수초기화함수
+}
 
-  searchFn, // 검색함수
-  keyword, // 검색어 상태변수 getter
-  setKeyword, // 검색어 상태변수 setter
-  order, // 정렬 상태변수
-  setOrder, // 정렬 상태변수 setter
-  sortCta, // 정렬기준 상태변수 getter
-  setSortCta, // 정렬기준 상태변수 setter
-  initVariables, // 변수초기화함수
-}) {
+function List({
+  selData,
+  setMode,
+  selRecord,
+  pageNum,
+  setPageNum,
+  unitSize,
+  totalCount,
+  pgPgSize,
+  pgPgNum,
+  searchFn,
+  keyword,
+  setKeyword,
+  order,
+  setOrder,
+  sortCta,
+  setSortCta,
+  initVariables,
+}: ListProps) {
   // 전역 컨텍스트 API 사용하기!!
   const myCon = useContext(dCon);
   // console.log('List에서 loginSts:',myCon.loginSts);
@@ -272,28 +291,28 @@ function List({
   *******************************************/
 
   // [ 리듀서함수에서 쓸 리턴값 만들기 함수 ] ///
-  const retVal = (gval, txt) => {
-    // gval은 기존값, txt는 새로운값
-    return (
-      // 1. 별구분자가 있는가?
-      gval.indexOf("*") !== -1
-        ? // 2. true면 split으로 잘라서 배열값 검사하기
-          gval.split("*").includes(txt)
-          ? // 2-1. 배열값에 있으면 true이므로 gval추가안함
-            gval
-          : // 2-2. false면 gval에 현재값 별 넣고 추가
-            gval + (gval != "" ? "*" : "") + txt
-        : // 3. 전체 false이면 빈값이 아니면 문자열검사하기
-        gval === txt
-        ? // 3-1. 값이 서로 같으면 추가하지 말기
+  const retVal = (gval: string, txt: any): string => {
+  // gval은 기존값, txt는 새로운값
+  return (
+    // 1. 별구분자가 있는가?
+    gval.indexOf("*") !== -1
+      ? // 2. true면 split으로 잘라서 배열값 검사하기
+        gval.split("*").includes(txt)
+        ? // 2-1. 배열값에 있으면 true이므로 gval추가안함
           gval
-        : // 3-2. 그밖의 경우엔 추가하기
-          gval + (gval != "" ? "*" : "") + txt
-    );
-  }; ////// retVal함수 ///////////////
+        : // 2-2. false면 gval에 현재값 별 넣고 추가
+          gval + (gval !== "" ? "*" : "") + txt
+      : // 3. 전체 false이면 빈값이 아니면 문자열검사하기
+      gval === txt
+      ? // 3-1. 값이 서로 같으면 추가하지 말기
+        gval
+      : // 3-2. 그밖의 경우엔 추가하기
+        gval + (gval !== "" ? "*" : "") + txt
+  );
+}; ////// retVal함수 ///////////////
 
   // [1] 검색어 저장기능을 처리하기 위한 리듀서함수 ///
-  const reducerFn = (memory, action) => {
+  const reducerFn = (memory: string, action: { type: [string, HTMLElement] }) => {
     // (1)첫번째 전달변수
     // memory - memory변수의 값(리듀서변수값)
     // (2)두번째 전달변수
@@ -305,12 +324,12 @@ function List({
     console.log("리듀서함수 전달값:", memory, key, ele);
 
     // 2. 최신 검색어를 기준으로 5개만 생기도록 맨 앞배열값 삭제하기
-    let newArr = memory.split("*");
+    let newArr: string[] = memory.split("*");
     if (newArr.length > 4) newArr.shift();
 
     // 3. 맨앞 배열값 제거후 join으로 문자열 만들기
-    newArr = newArr.join("*");
-    console.log(newArr);
+    const result: string = newArr.join("*");
+    console.log(result);
 
     // 3. key값에 따라서 분기하여 처리하기
     switch (key) {
@@ -319,18 +338,19 @@ function List({
         // (1) 검색어 읽어오기
         let txt = $(ele).prev().val();
         // (2) 검색어를 리듀서 변수에 리턴하는 값을 만드는 함수 호출
-        return retVal(newArr, txt);
+        return retVal(result, txt);
       // memory는 기존 리듀서변수값, txt는 새로운값
     } /// case: search ///
+    return '';
   }; ////////// reducerFn 함수 //////////
 
   // [2] 검색어 저장기능 지원 후크 리듀서 : useReducer
-  const [memory, dispatch] = useReducer(
+  const [memory, dispatch] = useReducer<
+    (prev: string, action: { type: [string, HTMLElement] }) => string
+  >(
     reducerFn,
     // 로컬스에 검색어 메모리값이 있으면 할당하기!
-    localStorage.getItem("memory-data")
-      ? localStorage.getItem("memory-data")
-      : ""
+    localStorage.getItem("memory-data")?? ""
   );
   // 1. memory : 검색어 저장변수
   // -> 값은 *로 구분자를 사용한 문자열
@@ -386,11 +406,11 @@ function List({
           id="sel"
           className="sel"
           value={order}
-          onChange={(e) => {
+          onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
             // 정렬값 반대로 변경하기
             setOrder(order * -1);
             // 변경시 변경한 선택값 반영하기
-            e.target.value = order;
+            e.target.value = order.toString();
             // 첫 페이지로 이동
             setPageNum(1);
             // 페이징의 페이징구역 초기화
@@ -403,22 +423,22 @@ function List({
         <input
           id="stxt"
           type="text"
-          maxLength="50"
+          maxLength={50}
           defaultValue={keyword.kw}
-          onKeyUp={(e) => {
+          onKeyUp={(e: any) => {
             // 엔터를 친 경우 ///
             if (e.key === "Enter") e.target.nextElementSibling.click();
             // 다음 형제요소인 버튼 클릭이벤트 발생!
 
             // 페이지, 페이징 모두 초기화
             setPageNum(1);
-            pgPgNum.currnt = 1;
+            pgPgNum.current = 1;
           }}
         />
         {/* 검색버튼 */}
         <button
           className="sbtn"
-          onClick={(e) => {
+          onClick={(e:any) => {
             // e - 이벤트 전달변수
             // 검색함수 호출
             searchFn();
@@ -479,7 +499,7 @@ function List({
               memory && memory !== "" && memory.includes("*") ? (
                 // 리듀서 변수 memory에 담긴 별구분자 문자열을 잘라서
                 // 순회하여 li를 생성해 준다!
-                memory.split("*").map((v, i) => (
+                memory.split("*").map((v: any, i: number) => (
                   <li key={i}>
                     <b
                       onClick={() => {
@@ -542,7 +562,7 @@ function List({
           {
             // 데이터가 0이 아닐경우 map순회 출력하기
             totalCount.current > 0 ? (
-              selData.map((v, i) => (
+              selData.map((v: any, i: number) => (
                 <tr key={i}>
                   <td>
                     {
@@ -574,7 +594,7 @@ function List({
             ) : (
               // 데이터가 0일 경우 출력 ////////////
               <tr>
-                <td colSpan="5">No search results</td>
+                <td colSpan={5}>No search results</td>
               </tr>
             )
           }
@@ -582,7 +602,7 @@ function List({
         {/* 페이징 하단파트 */}
         <tfoot>
           <tr>
-            <td colSpan="5" className="paging">
+            <td colSpan={5} className="paging">
               {
                 // 결과 데이터가 0이 아닐경우 페이징 출력
                 totalCount.current > 0 && pagingCode()
