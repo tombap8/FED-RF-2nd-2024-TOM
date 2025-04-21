@@ -1,7 +1,18 @@
 import React, { useEffect, useState } from "react";
 import DaumPostcode from "react-daum-postcode";
 
-const AddressInput = ({changeAddr,zcode,addr}) => {
+interface AddressInputProps {
+    changeAddr: () => void;
+    zcode?: string;
+    addr?: string;
+}
+
+interface AddressData {
+  address: string;
+  zonecode: string;
+}
+
+const AddressInput: React.FC<AddressInputProps> = ({ changeAddr, zcode, addr }) => {
     // changeAddr - 회원가입 양식체크 전달함수
     // zcode - 수정모드일 경우 기존 우편번호 전달
     // addr - 수정모드일 경우 기존 주소 전달
@@ -37,36 +48,36 @@ const AddressInput = ({changeAddr,zcode,addr}) => {
 
     // [4] 팝업 윈도우 스타일 객체
     const popupWindowStyle = {
-        position: "fixed",
-        top: "50%",
-        left: "50%",
-        translate: "-50% -50%",
-        backgroundColor: "white",
-        padding: "20px",
-        border: "4px double #000",
-        zIndex: "1",
+      position: 'fixed' as const,
+      top: '50%' as const,
+      left: '50%' as const,
+      transform: 'translate(-50%, -50%)' as const,
+      backgroundColor: 'white',
+      padding: '20px',
+      border: '4px double #000',
+      zIndex: 1,
     };
 
     // [5] 닫기버튼 스타일
     const closeButtonStyle = {
-        position: "absolute",
-        top: "0",
-        right: "0",
-        fontSize: "40px",
-        backgroundColor: "transparent",
-        border: "none",
+      position: 'absolute' as const,
+      top: "0",
+      right: "0",
+      fontSize: "40px",
+      backgroundColor: "transparent",
+      border: "none",
     };
 
     // 기능처리 함수 //////////////////
     // [1] 주소선택완료시 처리함수
-    const completeHandler = (data) => {
-        const { address, zonecode } = data;
-        setZonecode(zonecode);
-        setAddress(address);
+    const completeHandler = (data: AddressData) => {
+      const { address, zonecode } = data;
+      setZonecode(zonecode);
+      setAddress(address);
     };
 
     // [2] 주소창 닫기처리함수
-    const closeHandler = (state) => {
+    const closeHandler = (state: string) => {
         // 강제닫기
         if (state === "FORCE_CLOSE") {
             setIsOpen(false);

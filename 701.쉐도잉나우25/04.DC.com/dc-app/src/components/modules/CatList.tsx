@@ -6,7 +6,7 @@ import React from 'react';
 import '../../css/modules/cat_list.scss';
 import { SwiperCat } from '../plugin/SwiperCat';
 
-function CatList(props) {
+function CatList() {
     return (
         <section className='cat-swbox'>
             {/* 1. 모듈 타이틀 */}

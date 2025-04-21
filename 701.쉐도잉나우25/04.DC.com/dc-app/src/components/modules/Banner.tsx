@@ -9,15 +9,16 @@ import "../../css/modules/banner.scss";
 
 // 배너 슬라이드 기능 함수 불러오기 ///
 import SlideFn from "../../js/func/go_slide";
+import { ComProps } from "../../types/common";
 
-function Banner({ catName }) {
+function Banner({ catName }:ComProps) {
   // catName - 배너 데이터 카테고리 이름
 
   // 슬라이드 기능 생성자함수 인스턴스 생성하기
   const slideFn = new SlideFn();
 
   // 선택데이터 ////
-  const selData = banData[catName];
+  const selData = (banData as any)[catName];
 
   return (
     <>
@@ -26,7 +27,7 @@ function Banner({ catName }) {
         <ul className="slider">
           {
             // 배열데이터 개수 만큼 슬라이드 생성하기
-            selData.map((v, i) => (
+            selData.map((v:any, i:number) => (
               <li key={i}>
                 <img src={process.env.PUBLIC_URL + v.src} alt={v.tit1} />
                 <section className="bantit">
@@ -58,7 +59,7 @@ function Banner({ catName }) {
                 {
                   // 슬라이드 개수만큼 li블릿 만들기
                   // 단, 첫번째 li에만 클래스'on'넣기
-                  selData.map((v, i) => (
+                  selData.map((v:any, i:number) => (
                     <li key={i} className={i === 0 ? "on" : ""}></li>
                   ))
                 }
