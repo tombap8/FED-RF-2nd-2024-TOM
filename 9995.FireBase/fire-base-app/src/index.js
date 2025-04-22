@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+// 사스(Sass)팩키지를 설치했다면 바로 사스사용가능
+// 확장자를 여기서는 쓰고 사스파일 import에선 생략가능
+import "./css/main.scss";
+import UsersForm from './components/UsersForm';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(
+  document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
+  <div>
+      <h1>🚀 Supabase + React</h1>
+      <UsersForm />
+    </div>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

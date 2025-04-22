@@ -1,0 +1,5 @@
+[ 01. 파이어베이스 연습을 위한 설치순서 ]
+1. 리액트 웹팩 설치하기
+    - npx create-react-app my-firebase-app
+2. 파이어베이스 설치하기
+- npm install firebase
