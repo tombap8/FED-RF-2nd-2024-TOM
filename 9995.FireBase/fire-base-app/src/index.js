@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(
   document.getElementById('root'));
 root.render(
   <div>
-      <h1>🚀 Supabase + React</h1>
+      <h1 style={{whiteSpace:"nowrap"}}>🚀 Firebase + React</h1>
       <UsersForm />
     </div>
 );
