@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/FED-RF-2nd-2024-TOM/9995.FireBase/fire-base-app/build/static/css/main.665a84e2.css",
+    "main.js": "/FED-RF-2nd-2024-TOM/9995.FireBase/fire-base-app/build/static/js/main.81caf008.js",
+    "index.html": "/FED-RF-2nd-2024-TOM/9995.FireBase/fire-base-app/build/index.html",
+    "main.665a84e2.css.map": "/FED-RF-2nd-2024-TOM/9995.FireBase/fire-base-app/build/static/css/main.665a84e2.css.map",
+    "main.81caf008.js.map": "/FED-RF-2nd-2024-TOM/9995.FireBase/fire-base-app/build/static/js/main.81caf008.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.665a84e2.css",
+    "static/js/main.81caf008.js"
+  ]
+}
