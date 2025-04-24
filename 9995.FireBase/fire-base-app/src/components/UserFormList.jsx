@@ -10,14 +10,16 @@ import {
 import { db } from "../js/firebaseConfig";
 import "../css/user_form.scss";
 
+// 사용자 정보를 추가/수정/삭제하는 컴포넌트
 const UserFormList = () => {
-  const [userName, setUserName] = useState("");
-  const [userAge, setUserAge] = useState("");
-  const [userAddr, setUserAddr] = useState("");
-  const [userList, setUserList] = useState([]);
+  const [userName, setUserName] = useState(""); // 사용자 이름
+  const [userAge, setUserAge] = useState(""); // 사용자 나이
+  const [userAddr, setUserAddr] = useState(""); // 사용자 주소
+  const [userList, setUserList] = useState([]); // 사용자 목록
   const [editMode, setEditMode] = useState(false); // 수정 모드 여부
   const [editId, setEditId] = useState(null); // 수정 중인 사용자 ID
 
+  // Firestore에서 사용자 목록을 가져옴
   const getUserList = async () => {
     const allCollection = await getDocs(collection(db, "users"));
     const userListArray = allCollection.docs.map((doc) => ({
@@ -27,6 +29,7 @@ const UserFormList = () => {
     setUserList(userListArray);
   };
 
+  // 새로운 사용자를 추가하거나, 수정 중인 사용자를 수정
   const addUser = async () => {
     if (userName && userAge) {
       if (editMode && editId) {
@@ -56,12 +59,14 @@ const UserFormList = () => {
     }
   };
 
+  // 사용자를 삭제
   const deleteUser = async (id) => {
     const userDoc = doc(db, "users", id);
     await deleteDoc(userDoc);
     getUserList();
   };
 
+  // 사용자를 수정 모드로 설정
   const startEditUser = (user) => {
     setUserName(user.name);
     setUserAge(user.age);
@@ -70,6 +75,7 @@ const UserFormList = () => {
     setEditId(user.id);
   };
 
+  // 컴포넌트가 mount 되면 사용자 목록을 가져옴
   useEffect(() => {
     getUserList();
   }, []);
@@ -127,3 +133,4 @@ const UserFormList = () => {
 };
 
 export default UserFormList;
+
