@@ -1,0 +1,56 @@
+// 사용자 폼 페이지 디자인
+
+.user-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: rgba(255, 255, 255, 0.8);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.user-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 30px;
+}
+
+.user-form label {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 25px;
+}
+
+.user-form input[type="text"],
+.user-form input[type="number"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 25px;
+    box-sizing: border-box;
+}
+
+.user-form > button {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.user-form ul {
+    list-style-type: none;
+    padding: 0;
+}
+.user-form li {
+    margin-bottom: 10px;
+    font-size: 20px;
+}   
