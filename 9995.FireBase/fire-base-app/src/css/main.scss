@@ -1,81 +1,84 @@
-// 메인 페이지 css
+// 메인페이지 CSS
 
-// 공통 리셋 불러오기
-@import "./common/reset";
-
-// 사이즈 변수 불러오기
-@import "./variables/size-set";
-// 색상 변수 불러오기
-@import "./variables/color-set";
+// 공통 리셋 불러오기 //
+@import './common/reset';
+// 색상 변수 불러오기 
+@import './variables/color-set';
 // 배경 변수 불러오기
-@import "./variables/bg-set";
+@import './variables/bg-set';
+// 사이즈 변수 불러오기
+@import './variables/size-set';
 
-// 배경이미지 설정 믹스인
+// - 기본사스 문법에서 앞에 부분파일 언더바와 확장자 .scss는 생략함
+
+// 배경이미지 믹스인 ////
 @mixin bgSet($imgSrc) {
-  background-image: url($imgSrc);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-} /////// bgSet 믹스인 ///////
+    background-image: url($imgSrc);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 
-// body 배경넣기
-body {
+} //////// bgSet 믹스인 ///////
+
+body{
     height: 100vh;
 
-  // 배경믹스인 호출
-  @include bgSet($bigbg);
+    // 배경믹스인 호출
+    @include bgSet($bigbg);
+
 }
 
 // 작은박스 셋팅
 h1 {
-  width: $box-wz;
-  height: $box-hz;
-  border: 3px dotted $bd-color1;
-
-  font-size: 40px;
-  line-height: $box-hz;
-  text-align: center;
-
-  // 배경믹스인 호출
-  @include bgSet($sunjae);
-
-  // 하위 b요소 : 앞글자
-  b{
-    color: #fff;
-    -webkit-text-stroke: 1px #000;
-  }
-  // 하위 span : 뒷글자
-  span{
-    text-decoration: overline;
-    text-decoration-style: wavy;
-    font-size: 20px;
-    color: red;
-    // 트랜스폼 적용하려면 인라인안됨!
-    display: inline-block;
-    transition: .3s .4s;
-  }
-
-  // 원본 트랜지션
-  transition: .4s;
-
-  // 마우스 오버시
-  &:hover{
-    translate: 200px 50px;
-    scale: 1.5;
-
-    // h1 오버시 하위 span요소
+    width: $box-wz;
+    height: $box-hz;
+    border: 3px dotted $bd-color1;
+  
+    font-size: 40px;
+    line-height: $box-hz;
+    text-align: center;
+  
+    // 배경믹스인 호출
+    @include bgSet($sunjae);
+  
+    // 하위 b요소 : 앞글자
+    b{
+      color: #fff;
+      -webkit-text-stroke: 1px #000;
+    }
+    // 하위 span : 뒷글자
     span{
-        color: blue;
-        scale: 2;
-        translate: 500px 0;
+      text-decoration: overline;
+      text-decoration-style: wavy;
+      font-size: 20px;
+      color: red;
+      // 트랜스폼 적용하려면 인라인안됨!
+      display: inline-block;
+      transition: .3s .4s;
+    }
+  
+    // 원본 트랜지션
+    transition: .4s;
+  
+    // 마우스 오버시
+    &:hover{
+      translate: 200px 50px;
+      scale: 1.5;
+  
+      // h1 오버시 하위 span요소
+      span{
+          color: blue;
+          scale: 2;
+          translate: 500px 0;
+      }
+    }
+  
+    // 한번에 하위 모든 요소 투명도조정
+    *{
+      opacity: 0;
+    }
+    &:hover *{
+      opacity: 1;
     }
   }
-
-  // 한번에 하위 모든 요소 투명도조정
-  *{
-    opacity: 0;
-  }
-  &:hover *{
-    opacity: 1;
-  }
-}
+  

@@ -18,7 +18,8 @@
     font-size: 30px;
 }
 
-.user-form label {
+// 상위레벨 라벨
+.user-form > label {
     display: block;
     margin-bottom: 10px;
     font-size: 25px;
@@ -35,6 +36,7 @@
     box-sizing: border-box;
 }
 
+// 바로 직계하위 버튼만 적용
 .user-form > button {
     width: 100%;
     padding: 10px;
