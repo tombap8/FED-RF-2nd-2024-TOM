@@ -1,19 +1,19 @@
 // DC.com - 로그인 페이지 컴포넌트 - Login.tsx
 
 import React, { useContext, useEffect, useState } from "react";
-
+import { db } from "../../js/db/firebaseConfig";
+import { collection, query, where, getDocs } from "firebase/firestore";
 
 // 모듈 CSS 불러오기 : member.scss와 동일
 import "../../css/pages/member.scss";
 
-// 로컬스토리지 생성 JS ////
-import { initData } from "../../js/func/mem_fn";
+// 전역 컨텍스트 API 사용하기!!
 import { dCon } from "../modules/dCon";
 
 function Login() {
   // 컨텍스트 API 사용하기 /////
   const myCon = useContext(dCon);
-  console.log('로그인페이지 dCon:',myCon);
+  console.log('로그인페이지 dCon:', myCon);
 
   // [ 상태관리변수 ] /////////////
   // [1] 입력요소 상태변수
@@ -102,7 +102,7 @@ function Login() {
   }; /////////// totalValid 함수 ///////////
 
   // [ 서브밋 기능함수 ] ////////////////
-  const onSubmit = (e:any) => {
+  const onSubmit = async (e: any) => {
     // 1. 기본서브밋 막기
     e.preventDefault();
 
@@ -112,105 +112,63 @@ function Login() {
     if (totalValid()) {
       console.log("모두통과! 데이터조회!");
 
-      // [회원정보를 로컬스토리지에 저장하기]
+      try {
+        // Firebase에서 사용자 정보 조회
+        const memRef = collection(db, "mem-data");
+        const q = query(memRef, where("uid", "==", userId));
+        const querySnapshot = await getDocs(q);
 
-      // 1. 로컬스 체크함수호출(없으면 생성!)
-      initData();
+        if (querySnapshot.empty) {
+          // 아이디가 존재하지 않는 경우
+          setIdMsg(msgId[1]);
+          setUserIdError(true);
+        } else {
+          // 아이디가 존재하는 경우
+          const userData = querySnapshot.docs[0].data();
+          
+          // 비밀번호 검사
+          if (pwd === userData.pwd) {
+            // 로그인 성공 처리
+            setUserIdError(false);
 
-      // 2. 로컬스 변수할당
-      let memData: string = 
-      localStorage.getItem("mem-data") ?? "[]";
-      // ??는 Nullish Coalescing Operator(널 병합 연산자)
-      // 이 연산자는 null 또는 undefined 값을 처리할 때 
-      // 기본값을 제공하는 데 사용
+            // ****** [ 로그인 후 셋팅작업 ] ****** //
+            // 1. 로그인한 회원정보를 세션스에 셋팅!
+            sessionStorage.setItem("minfo", JSON.stringify(userData));
 
-      // 3. 로컬스 객체변환
-      // memData = JSON.parse(memData); 
-      // -> 여기서 안하고 아래에서 ts와 함께 처리함!
-      console.log(memData);
+            // 2. 컨텍스트 API의 로그인상태 업데이트
+            myCon.setLoginSts(userData);
 
-      // 4. 아이디 존재 여부 검사하기
-      // let result = memData.find((v:) => {
-      let result = (JSON.parse(memData) as Array<any>)
-      .find((v: any) => {
-        if (v.uid === userId) return true;
-      }); /////// find ///////
-      console.log("결과:", result);
+            // 3. 로그인 환영메시지 셋팅함수 호출
+            myCon.makeMsg(userData.unm);
 
-      // 4-1. 결과값이 없으면 메시지 보이기
-      if (!result) {
-        // (1) 에러메시지 선택하기
-        setIdMsg(msgId[1]);
+            // 4. 로그인 성공 메시지 버튼에 출력하기
+            const sBtn = document.querySelector(".sbtn") as HTMLElement;
+            sBtn.innerText = "넌 로그인 된거야~!";
 
-        // (2) 에러메시지 보이기
-        setUserIdError(true);
-      } ////////// if ////////
-      // 4-2. 결과값이 있으면 비밀번호검사
-      else {
-        // (1) 아이디 에러메시지 숨기기
-        setUserIdError(false);
-        // (2) 비밀번호 검사 : 입력비번 == 결과비번
-        if (pwd === result.pwd) {
-          // 같을 경우 로그인 성공처리
-          // alert("Login Success!");
-
-          // ****** [ 로그인 후 셋팅작업 ] ****** //
-          // 1. 로그인한 회원정보를 세션스에 셋팅!
-          // -> 서버 세션을 대신하여 사용함!
-          // -> 결과가 result에 배열로 담김
-          // -> 넣을때는 JSON.stringify()
-          sessionStorage.setItem("minfo", 
-            JSON.stringify(result));
-
-          // 2. 컨텍스트 API의 로그인상태 업데이트
-          myCon.setLoginSts(result);
-          // -> 객체로된 사용자 정보를 담아준다!
-
-          // 3. 로그인 환영메시지 셋팅함수 호출
-          myCon.makeMsg(result.unm);
-
-          // 4. 로그인 성공 메시지 버튼에 출력하기          
-          // document.querySelector(".sbtn").innerText = 
-          // 변수에 할당하면서 요소도 형을 정해줘야함!
-          // -> as HTMLElement : 타입지정하기
-          const sBtn = document.querySelector(".sbtn") as HTMLElement;
-          sBtn.innerText = 
-          "넌 로그인 된거야~!";
-
-          // 5. 라우팅 페이지 이동
-          // 1초후 메인 페이지로 이동
-          setTimeout(() => {
-            myCon.goPage("/");
-          }, 1000);
-        } //// if /////
-        // 로그인 실패시 메시지 출력!
-        else {
-          // (1) 비밀번호 에러메시지 선택하기
-          setPwdMsg(msgPwd[1]);
-          // (2) 비밀번호 에러메시지 보이기
-          setPwdError(true);
-        } ////// else //////
-
-        // -> 원래 비밀번호는 암호화 되어 있으므로
-        // 백엔드 비밀번호 검사 모듈로 대부분 검사한다!
-      } ////// else //////
-
-      // 배열.find() -> 있을 경우 레코드 저장
-      // find는 filter와 달리 배열로 저장하지 않고
-      // 값만 저장함. 그래서 결과값이 없으면
-      // undefined 를 리턴함!
-    } ///////// if /////////
-    // 3. 불통과시 /////
-    else {
+            // 5. 라우팅 페이지 이동
+            // 1초후 메인 페이지로 이동
+            setTimeout(() => {
+              myCon.goPage("/");
+            }, 1000);
+          } else {
+            // 비밀번호가 일치하지 않는 경우
+            setPwdMsg(msgPwd[1]);
+            setPwdError(true);
+          }
+        }
+      } catch (error) {
+        console.error("Error during login:", error);
+        alert("An error occurred during login. Please try again.");
+      }
+    } else {
       alert("Change your input!");
-    } //// else ///////////
+    }
   }; /////////// onSubmit 함수 //////////
 
   // 화면랜더링 구역 /////////
   useEffect(() => {
     // 아이디입력창 포커스
     const userId = document.querySelector("#user-id") as HTMLInputElement;
-    // -> as HTMLInputElement : 타입지정하기
     userId.focus();
   }, []);
 
@@ -252,7 +210,7 @@ function Login() {
               <input
                 type="password"
                 maxLength={20}
-                placeholder="Please enter your Password"
+                placeholder="Please enter your password"
                 value={pwd}
                 onChange={changePwd}
               />
@@ -272,10 +230,10 @@ function Login() {
                 </div>
               }
             </li>
-            <li style={{ overflow: "hidden" }}>
-              <button className="sbtn" onClick={onSubmit}>
-                Submit
-                </button>
+            <li>
+              <button type="submit" className="sbtn" onClick={onSubmit}>
+                LOG IN
+              </button>
             </li>
           </ul>
         </form>

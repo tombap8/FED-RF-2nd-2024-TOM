@@ -1,23 +1,35 @@
+// DC.com - 게시판 페이지 컴포넌트 - Board.tsx
+
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { db } from "../../js/db/firebaseConfig";
 import { collection, getDocs, addDoc, query, where, updateDoc, deleteDoc } from "firebase/firestore";
-import { BoardPost, ReadProps, ModifyProps, WriteProps } from "../../types/board";
 
-// 제이쿼리 불러오기 ///
-import $ from "jquery";
-
-// 게시판용 CSS 불러오기 ////
+// 모듈 CSS 불러오기 ///
 import "../../css/pages/board.scss";
 
-// 로컬스토리지 확용 JS ////
-import { initBoardData } from "../../js/func/board_fn";
+// 제이쿼리 불러오기 ////
+import $ from "jquery";
+
+// 게시판 모듈 불러오기 ///
 import List from "../modules/board/List";
-import Read from "../modules/board/Read";
 import Write from "../modules/board/Write";
+import Read from "../modules/board/Read";
 import Modify from "../modules/board/Modify";
 
 // 전역 컨텍스트 API 사용하기!!
 import { dCon } from "../modules/dCon";
+
+// Types
+interface BoardPost {
+  id: string;
+  title: string;
+  content: string;
+  writer: string;
+  cnt: number;
+  date: string;
+  mdate?: string;
+  idx: number;
+}
 
 function Board() {
   // 전역 컨텍스트 API 사용하기!!
@@ -27,15 +39,15 @@ function Board() {
   // 1. 페이지번호 상태변수
   const [pageNum, setPageNum] = useState(1);
   // 2. 검색어 상태변수
-  const [keyword, setKeyword] = useState<{ cta: string; kw: string }>({ cta: "", kw: "" });
+  const [keyword, setKeyword] = useState("");
   // 3. 정렬상태 상태변수
   const [sort, setSort] = useState(1);
   // 4. 정렬기준 상태변수
   const [sortCta, setSortCta] = useState("date");
   // 5. 전체 데이터 개수 참조변수
   const totalCount = useRef(0);
-  // 6. 선택된 게시글 상태변수
-  const [selectedRecord, setSelectedRecord] = useState<BoardPost | null>(null);
+  // 6. 선택된 게시글 참조변수
+  const selRecord = useRef<BoardPost | null>(null);
   // 7. 페이지당 게시글 수
   const pgPgNum = useRef(5);
 
@@ -139,25 +151,24 @@ function Board() {
             sortCta={sortCta}
             setSortCta={setSortCta}
             totalCount={totalCount}
-            selRecord={selectedRecord}
-            setSelRecord={setSelectedRecord}
+            selRecord={selRecord}
             pgPgNum={pgPgNum}
             setMode={setMode}
           />
         )
       }
       {mode === "W" && <Write addBoardPost={addBoardPost} setMode={setMode} />}
-      {mode === "R" && selectedRecord && (
+      {mode === "R" && (
         <Read
-          selRecord={selectedRecord}
+          selRecord={selRecord.current}
           setMode={setMode}
           updateBoardPost={updateBoardPost}
           deleteBoardPost={deleteBoardPost}
         />
       )}
-      {mode === "M" && selectedRecord && (
+      {mode === "M" && (
         <Modify
-          selRecord={selectedRecord}
+          selRecord={selRecord.current}
           setMode={setMode}
           updateBoardPost={updateBoardPost}
         />
@@ -166,4 +177,4 @@ function Board() {
   );
 }
 
-export default Board;
+export default Board; 

@@ -1,50 +1,32 @@
 // DC PJ 게시판 리스트 모드 모듈 - List.jsx
 
-import React, { Fragment, useContext, useEffect, useReducer } from "react";
+import React, { Fragment, useContext, useEffect, useReducer, useState, useRef } from "react";
 import { dCon } from "../dCon";
+import { Link } from "react-router-dom";
+import { ListProps, BoardPost } from "../../../types/board";
 
 // 제이쿼리 불러오기 ///
 import $ from "jquery";
 
-interface ListProps {
-  selData: any; // 선택된 배열데이터 전달
-  setMode: (mode: string) => void; // 모든 변경 상태변수 setter
-  selRecord: React.MutableRefObject<any>; // 선택데이터 참조변수
-  pageNum: number; // 리스트 페이지번호 getter
-  setPageNum: (num: number) => void; // 리스트 페이지번호 setter
-  unitSize: number; // 페이지당 레코드수
-  totalCount: React.MutableRefObject<number>; // 전체 개수 참조변수
-  pgPgSize: number; // 페이징의 페이징 개수
-  pgPgNum: React.MutableRefObject<number>; // 페이징의 페이징 번호
-  searchFn: () => void; // 검색함수
-  keyword: { cta: string; kw: string }; // 검색어 상태변수 getter
-  setKeyword: (keyword: { cta: string; kw: string }) => void; // 검색어 상태변수 setter
-  order: number; // 정렬 상태변수
-  setOrder: (order: number) => void; // 정렬 상태변수 setter
-  sortCta: string; // 정렬기준 상태변수 getter
-  setSortCta: (sortCta: string) => void; // 정렬기준 상태변수 setter
-  initVariables: () => void; // 변수초기화함수
-}
+// 리스트 컴포넌트 Props 타입
+type Props = ListProps;
 
-function List({
-  selData,
-  setMode,
-  selRecord,
+export default function List({
+  boardData,
   pageNum,
   setPageNum,
-  unitSize,
-  totalCount,
-  pgPgSize,
-  pgPgNum,
-  searchFn,
   keyword,
   setKeyword,
-  order,
-  setOrder,
+  sort,
+  setSort,
   sortCta,
   setSortCta,
-  initVariables,
-}: ListProps) {
+  totalCount,
+  selRecord,
+  setSelRecord,
+  pgPgNum,
+  setMode,
+}: Props) {
   // 전역 컨텍스트 API 사용하기!!
   const myCon = useContext(dCon);
   // console.log('List에서 loginSts:',myCon.loginSts);
@@ -55,23 +37,23 @@ function List({
 
   // 1. 페이징 개수 : 전체 레코드수 / 페이지당 개수
   // -> 나머지가 있으면 페이지를 하나더해준다!
-  let pagingCount = Math.floor(totalCount.current / unitSize);
+  let pagingCount = Math.floor(totalCount.current / pgPgNum.current);
   // console.log("전체 레코드수 / 페이지당 개수:", pagingCount);
-  // console.log("나머지연산:", totalCount.current % unitSize);
+  // console.log("나머지연산:", totalCount.current % pgPgNum.current);
 
   // 2. 나머지가 있으면 페이징 개수 1증가!
   // 앞수 % 뒷수 = 0 이면 나누어 떨어짐!
-  if (totalCount.current % unitSize > 0) {
+  if (totalCount.current % pgPgNum.current > 0) {
     pagingCount++;
   } /// if ///
 
   // 3. 페이징의 페이징 한계값 계산하기
   // 계산법: 전체 페이징 수 / 페이징의 페이징 개수
-  // pagingCount / pgPgSize
-  let pgPgLimit = Math.floor(pagingCount / pgPgSize);
+  // pagingCount / pgPgNum.current
+  let pgPgLimit = Math.floor(pagingCount / pgPgNum.current);
 
   // 만약 나머지가 있으면 페이징 한계수에 1을 더함
-  if (pagingCount % pgPgSize > 0) {
+  if (pagingCount % pgPgNum.current > 0) {
     pgPgLimit++;
   } /// if ///
 
@@ -88,12 +70,12 @@ function List({
 
     // [ (2) 페이징의 페이징for문의 시작값, 한계값 셋팅하기 ]
     // [1] 시작값 : 페페사이즈 * (페페넘-1)
-    let initNum = pgPgSize * (pgPgNum.current - 1);
+    let initNum = pgPgNum.current * (pgPgNum.current - 1);
     // [2] 한계값 : 페페사이즈 * 페페넘
-    let limitNum = pgPgSize * pgPgNum.current;
+    let limitNum = pgPgNum.current * pgPgNum.current;
     // 주의:pgPgNum은 참조변수니까 pgPgNum.current로 사용해야함!
 
-    // ((시작값 : 한계값 계산샘플)) : pgPgSize 가 3일 경우
+    // ((시작값 : 한계값 계산샘플)) : pgPgNum.current 가 3일 경우
     // for (let i = 0; i < 3; i++){} -> 1,2,3
     // for (let i = 3; i < 6; i++){} -> 4,5,6
     // for (let i = 6; i < 9; i++){} -> 7,8,9
@@ -129,7 +111,7 @@ function List({
               pgPgNum.current--;
               // (2) 이전 페이징의 페이징 첫 페이지번호로
               // 상태변수인 페이지번호 변경하기(리랜더링!)
-              setPageNum(initNum - (pgPgSize - 1));
+              setPageNum(initNum - (pgPgNum.current - 1));
               // 이전 페이징 첫번호는 (시작값-(페페사이즈-1)) 이다!
             }}
           >
@@ -209,7 +191,7 @@ function List({
               pgPgNum.current = pgPgLimit;
               // (2) 다음 페이징의 페이징 첫 페이지번호로
               // 상태변수인 페이지번호 변경하기(리랜더링!)
-              setPageNum((pgPgLimit - 1) * pgPgSize + 1);
+              setPageNum((pgPgLimit - 1) * pgPgNum.current + 1);
               // 마지막 페이징 첫번호는
               // 페이징의 마지막 페이징 전페이지(pgPgLimit-1)
               // 여기에 페이징 크기 곱하고
@@ -225,160 +207,105 @@ function List({
     return hcode;
   }; //////////// pagingCode 함수 /////////
 
-  // 페이징만 단순하게 할경우 아래와 같이 해도됨!
-  // 페이징 개수만큼 map을 돌리기
-  // Array.from({length:숫자})
-  // -> 개수만큼 빈배열 생성!
-  // Array.from({ length: pagingCount }).map((v, i) => (코드))
+  // 검색어 메모리 상태
+  const [memory, setMemory] = useState<string>("");
+  // 단위 크기
+  const unitSize = 5;
+  // 선택된 데이터
+  const [selData, setSelData] = useState<BoardPost[]>([]);
 
-  /******************************************* 
-    [ 리액트 리듀서를 이용한 검색 레코드 생성하기 ]
+  // 검색 함수
+  const searchFn = () => {
+    const searchValue = (document.getElementById("stxt") as HTMLInputElement)?.value || "";
+    setKeyword({ ...keyword, kw: searchValue });
+    setPageNum(1);
+    pgPgNum.current = 1;
+  };
 
-    -> 리듀서는 언제 사용하나?
-    변수값을 유지해야하고 그 값이 연속적으로 변경되는 경우
-    리듀서를 이용하면 단일한 함수를 대리호출 메서드를 이용해
-    쉽고 간편하게 하나의 모듈로 통합하여 관리할 수 있다!
-    즉, 리액트용 변수값 관리 객체모듈이다!
-
-    -> 리듀서의 변수값은 리듀서의 함수 리턴값으로 변경한다!!!
-    그 함수는 리듀서의 셋팅메서드로 호출된다! 
-
-    1. 리듀서 셋팅 기본형
-
-      const [리듀서변수, 호출메서드] = 
-      useReducer(리듀서함수, 리듀서변수초기값);
-
-    2. 리듀서 사용법
-
-      (1) 리듀서에서 사용하는 변수를 기본으로
-        외부에 변수값 변경 기능의 함수를 만들고
-        그 함수를 호출메서드를 통하여 호출되도록 한다!
-
-      (2) 리듀서함수의 이해
-        리듀서의 호출메서드를 통해 변경함수를 대신 호출하고
-        전달값도 자유롭게 셋팅할 수 있다!
-
-      (3) 보통 리듀서함수의 switch case를 통해 
-        경우의 따라 값을 변경하도록 구현한다!
-
-      (4) 리듀서 메서드 호출시 전달값은 
-        객체인 {type:값}으로 보낸다!
-        예) <div onClick={
-            () => {dispatch({type:'search'})}}>
-
-    3. 리듀서 함수 기본 구성방법 : 
-    -> ((중요!!!)) 반드시 리턴을 해야 리듀서변수가 값을 유지함!
-    -> 만약 리턴을 안하면 기존값이 날아가고 undefined로 초기화됨!
-
-    예시) 케이스에 따른 리턴코드 만드는 방법
-    -> return 처리값 -> 이것이 리듀서 변수를 변경하는 중요코드임!
-
-    function 리듀서함수(리듀서변수, 호출때보낸객체) {
-      switch (호출때보낸객체.type) {
-        case 값1:
-          처리코드;
-          return 처리값;
-        case 값2:
-          처리코드;
-          return 처리값;
-        default:
-          처리코드;
-          return 처리값;
-      }
+  // 검색어 메모리 저장 함수
+  const saveMemory = (value: string) => {
+    if (!memory.includes(value)) {
+      setMemory(prev => prev ? `${prev}*${value}` : value);
     }
+  };
 
+  // 데이터 필터링 및 정렬
+  React.useEffect(() => {
+    let filteredData = [...boardData];
+    
+    // 검색어 필터링
+    if (keyword.kw) {
+      filteredData = filteredData.filter(item => 
+        item[keyword.cta as keyof BoardPost]?.toString().includes(keyword.kw)
+      );
+    }
+    
+    // 정렬
+    filteredData.sort((a, b) => {
+      const aVal = a[sortCta as keyof BoardPost];
+      const bVal = b[sortCta as keyof BoardPost];
+      if (aVal === undefined || bVal === undefined) return 0;
+      return sort === 1 ? 
+        (aVal > bVal ? 1 : -1) : 
+        (aVal < bVal ? 1 : -1);
+    });
+    
+    setSelData(filteredData);
+  }, [boardData, keyword, sort, sortCta]);
 
-  *******************************************/
+  // 리스트 정렬 함수
+  const sortList = (data: BoardPost[]) => {
+    let temp = [...data];
+    if (sortCta === "date") {
+      temp.sort((a, b) => {
+        if (sort === 1) return Number(b.idx) - Number(a.idx);
+        else return Number(a.idx) - Number(b.idx);
+      });
+    } else if (sortCta === "cnt") {
+      temp.sort((a, b) => {
+        if (sort === 1) return Number(b.cnt) - Number(a.cnt);
+        else return Number(a.cnt) - Number(b.cnt);
+      });
+    }
+    return temp;
+  };
 
-  // [ 리듀서함수에서 쓸 리턴값 만들기 함수 ] ///
-  const retVal = (gval: string, txt: any): string => {
-  // gval은 기존값, txt는 새로운값
-  return (
-    // 1. 별구분자가 있는가?
-    gval.indexOf("*") !== -1
-      ? // 2. true면 split으로 잘라서 배열값 검사하기
-        gval.split("*").includes(txt)
-        ? // 2-1. 배열값에 있으면 true이므로 gval추가안함
-          gval
-        : // 2-2. false면 gval에 현재값 별 넣고 추가
-          gval + (gval !== "" ? "*" : "") + txt
-      : // 3. 전체 false이면 빈값이 아니면 문자열검사하기
-      gval === txt
-      ? // 3-1. 값이 서로 같으면 추가하지 말기
-        gval
-      : // 3-2. 그밖의 경우엔 추가하기
-        gval + (gval !== "" ? "*" : "") + txt
-  );
-}; ////// retVal함수 ///////////////
+  // 검색 함수
+  const searchList = (data: BoardPost[]) => {
+    let temp = [...data];
+    if (keyword.kw !== "") {
+      temp = temp.filter(
+        (v) =>
+          (keyword.cta === "tit" && v.tit.toLowerCase().includes(keyword.kw.toLowerCase())) ||
+          (keyword.cta === "unm" && v.unm.toLowerCase().includes(keyword.kw.toLowerCase())) ||
+          (keyword.cta === "cont" && v.cont.toLowerCase().includes(keyword.kw.toLowerCase()))
+      );
+    }
+    return temp;
+  };
 
-  // [1] 검색어 저장기능을 처리하기 위한 리듀서함수 ///
-  const reducerFn = (memory: string, action: { type: [string, HTMLElement] }) => {
-    // (1)첫번째 전달변수
-    // memory - memory변수의 값(리듀서변수값)
-    // (2)두번째 전달변수
-    // action - dispatch메서드의 전달값
-    // 즉, {type:값}으로 보내준 값이 전달된다!
+  // 페이지네이션 함수
+  const paginate = (data: BoardPost[]) => {
+    const start = (pageNum - 1) * pgPgNum.current;
+    const end = start + pgPgNum.current;
+    return data.slice(start, end);
+  };
 
-    // 1. 구조분해 할당으로 객체의 배열값 받기
-    const [key, ele] = action.type;
-    console.log("리듀서함수 전달값:", memory, key, ele);
+  // 게시글 선택 함수
+  const selectPost = (post: BoardPost) => {
+    setSelRecord(post);
+    setMode("R");
+  };
 
-    // 2. 최신 검색어를 기준으로 5개만 생기도록 맨 앞배열값 삭제하기
-    let newArr: string[] = memory.split("*");
-    if (newArr.length > 4) newArr.shift();
+  // 정렬된 데이터
+  const sortedData = sortList(boardData);
+  // 검색된 데이터
+  const searchedData = searchList(sortedData);
+  // 페이지네이션된 데이터
+  const paginatedData = paginate(searchedData);
 
-    // 3. 맨앞 배열값 제거후 join으로 문자열 만들기
-    const result: string = newArr.join("*");
-    console.log(result);
-
-    // 3. key값에 따라서 분기하여 처리하기
-    switch (key) {
-      // 3.1 검색어 클릭시 처리하기
-      case "search":
-        // (1) 검색어 읽어오기
-        let txt = $(ele).prev().val();
-        // (2) 검색어를 리듀서 변수에 리턴하는 값을 만드는 함수 호출
-        return retVal(result, txt);
-      // memory는 기존 리듀서변수값, txt는 새로운값
-    } /// case: search ///
-    return '';
-  }; ////////// reducerFn 함수 //////////
-
-  // [2] 검색어 저장기능 지원 후크 리듀서 : useReducer
-  const [memory, dispatch] = useReducer<
-    (prev: string, action: { type: [string, HTMLElement] }) => string
-  >(
-    reducerFn,
-    // 로컬스에 검색어 메모리값이 있으면 할당하기!
-    localStorage.getItem("memory-data")?? ""
-  );
-  // 1. memory : 검색어 저장변수
-  // -> 값은 *로 구분자를 사용한 문자열
-
-  // 2. dispatch : 리듀서 변경함수 호출메서드
-  // (1) 검색할 경우 호출하여 리듀서변수값 변경 (구분값:'search')
-  // (2) 재검색할 경우 호출하여 리듀서변수값 유지 (구분값:'again')
-  // 리듀서호출시 전달값은 객체{type:값} 즉, type속성의 값으로 보냄
-  // 여기서는 배열로 값을 구성하여 [구분문자열, 이벤트발생요소] 보냄
-
-  // 3. useReducer(리듀서변경함수,변수초기값)
-
-  // 구분자가 없는 경우 split은 문자열을
-  // 배열 0번째에 할당하고 에러안남!
-  // console.log(memory.split('*'));
-
-  // 컴포넌트 처음 로딩후 실행구역 /////////////
-  useEffect(() => {
-    // 리듀서 검색어저장값을 로컬스에 할당함!
-    localStorage.setItem("memory-data", memory);
-    console.log("리듀서 검색어저장값을 로컬스에 할당함!", memory);
-
-    // memory 변수 의존성을 심어서 만약 memory가 변경되면
-    // 변경된 값을 반영한 소멸자 구역 코드를 다시 구성함!
-    // [] 빈 대괄호를 하여 처음한번실행 코드를 만들면
-    // memory의 초기값만 반영한 소멸자 구역 코드를 구성하기 때문에
-    // 로컬스토리지에 값이 빈 문자열값이 나온다!
-  }, [memory]); //////
+  // 총 페이지 수
+  const totalPages = Math.ceil(searchedData.length / pgPgNum.current);
 
   // ★★★★★★★★★★★★★★★★★ //
   // 리턴 코드구역 ////////////////////
@@ -396,6 +323,7 @@ function List({
           설정해놓으면 다시 리스트가 리랜더링 되어도
           기존값을 그대로 유지한다! */
           defaultValue={keyword.cta}
+          onChange={(e) => setKeyword({ ...keyword, cta: e.target.value })}
         >
           <option value="tit">Title</option>
           <option value="cont">Contents</option>
@@ -405,12 +333,12 @@ function List({
           name="sel"
           id="sel"
           className="sel"
-          value={order}
+          value={sort}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
             // 정렬값 반대로 변경하기
-            setOrder(order * -1);
+            setSort(sort * -1);
             // 변경시 변경한 선택값 반영하기
-            e.target.value = order.toString();
+            e.target.value = sort.toString();
             // 첫 페이지로 이동
             setPageNum(1);
             // 페이징의 페이징구역 초기화
@@ -441,9 +369,7 @@ function List({
           onClick={(e:any) => {
             // e - 이벤트 전달변수
             // 검색함수 호출
-            searchFn();
             // 리듀서 메서드 호출
-            dispatch({ type: ["search", e.target] });
             // 리듀서호출시 전달값은 type속성의 값으로 보냄
             // 배열로 값을 구성하여 [구분문자열, 이벤트발생요소]
           }}
@@ -459,7 +385,9 @@ function List({
             // 2.검색선택 초기화
             $("#cta").val("tit");
             // 3.초기화 함수호출
-            initVariables();
+            // 리듀서 메서드 호출
+            // 리듀서호출시 전달값은 type속성의 값으로 보냄
+            // 배열로 값을 구성하여 [구분문자열, 이벤트발생요소]
           }}
         >
           Reset
@@ -496,6 +424,8 @@ function List({
             {
               // 값이 null도 아니고 빈값도 아니고
               // 별(*) 구분자가 있는 경우 출력
+              // 리듀서 변수 memory에 담긴 별구분자 문자열을 잘라서
+              // 순회하여 li를 생성해 준다!
               memory && memory !== "" && memory.includes("*") ? (
                 // 리듀서 변수 memory에 담긴 별구분자 문자열을 잘라서
                 // 순회하여 li를 생성해 준다!
@@ -580,7 +510,7 @@ function List({
                         // 글보기모드('R')로 변경하기
                         setMode("R");
                         // 해당 데이터 참조변수에 저장하기
-                        selRecord.current = v;
+                        setSelRecord(v);
                       }}
                     >
                       {v.tit}
@@ -636,5 +566,3 @@ function List({
     </main>
   );
 }
-
-export default List;

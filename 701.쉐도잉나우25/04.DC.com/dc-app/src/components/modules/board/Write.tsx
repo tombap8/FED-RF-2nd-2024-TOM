@@ -1,167 +1,100 @@
-// DC PJ 게시판 쓰기 모드 모듈 - Write.jsx
+// DC PJ 게시판 쓰기 컴포넌트 - Write.tsx
 
-import React, { useContext } from "react";
-import { dCon } from "../dCon";
+import React, { useState } from "react";
 
-// 제이쿼리 불러오기 ////
-import $ from "jquery";
-
-interface WriteProps {
-  setMode: (mode: string) => void;
-  totalCount: React.MutableRefObject<number>;
-  setPageNum: (num: number) => void;
-  pgPgNum: React.MutableRefObject<number>;
-  initVariables: () => void;
+// 게시판 데이터 타입
+interface BoardPost {
+  id?: string;
+  idx: number;
+  tit: string;
+  cont: string;
+  uid: string;
+  unm: string;
+  date: string;
+  mdate?: string;
+  cnt: number;
 }
 
-function Write({
-  setMode,
-  totalCount,
-  setPageNum,
-  pgPgNum,
-  initVariables, // 변수초기화함수
-}: WriteProps) {
-  // setMode - 모든 변경 상태변수 setter
-  // totalCount - 전체 개수 참조변수 (글쓰기시 카운트 1증가!)
-  // setPageNum - 리스트 페이지번호 setter (글쓴 후 첫페이지 이동)
-  // pgPgNum - 페이징의 페이징 번호 (글쓴 후 페이징구역도 1)
+// Write 컴포넌트 Props 타입
+interface WriteProps {
+  addBoardPost: (postData: Omit<BoardPost, 'id' | 'cnt'>) => Promise<void>;
+  setMode: React.Dispatch<React.SetStateAction<string>>;
+}
 
-  // 전역 컨텍스트 API 사용하기!!
-  const myCon = useContext(dCon);
-  // // console.log("Write에서 loginSts:", myCon.loginSts);
+export default function Write({ addBoardPost, setMode }: WriteProps) {
+  // 폼 데이터 상태
+  const [formData, setFormData] = useState({
+    tit: "",
+    cont: "",
+    uid: "admin", // 임시 사용자 ID
+    unm: "관리자", // 임시 사용자 이름
+  });
 
-  // 글쓰기 저장 서브밋 함수 //////
-  const submitFn = () => {
-    // 제목입력항목
-    let title = ($(".subject").val() as string)?.trim() || "";
-    // 내용입력항목
-    let content = ($(".content").val() as string)?.trim() || "";
-    // trim()으로 앞뒤공백 제거후 검사!
+  // 입력값 변경 핸들러
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+  };
 
-    // (1) 공통 유효성검사
-    // - 제목, 내용 모두 비었으면 리턴!
-    if (title === "" || content === "") {
-      alert("Insert title and content!");
+  // 폼 제출 핸들러
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    // 필수 입력값 검사
+    if (!formData.tit.trim() || !formData.cont.trim()) {
+      alert("제목과 내용을 모두 입력해주세요!");
       return;
-    } /// if /////
+    }
 
-    // (2) 서브밋 처리하기 //////
-    else {
-      // 1) 글번호 만들기 ////////////
-      // 1-1) 로컬스토리지 게시판 데이터 불러오기
-      let localData: any[] = JSON.parse(localStorage.getItem("board-data") || "[]");
-
-      // 1-2) 배열 데이터 idx값 읽어오기
-      let totalIdx = localData.map((v) => v.idx);
-      // // console.log("idx만 배열:", totalIdx);
-
-      // 1-3) idx값 중 최대값 구하기 :
-      // 스프레드 연산자로 ...totalIdx -> 배열값만 max에 넣기
-      let maxIdx = Math.max(...totalIdx);
-      // // console.log("idx중 최대값:", maxIdx);
-
-      // 2) 오늘날짜 만들기 ///////////
-      let today = new Date();
-      let dateStr = today.toJSON().substr(0, 10);
-      // // console.log(today);
-      // toJSON()은 제이슨 날짜형식변환(yyyy-MM-dd)
-      // -> 앞의 10자리만 사용 : substr(시작순번,개수)
-      // today = today.toJSON().substr(0, 10);
-      // // console.log(today);
-
-      // [ idx 고유번호 만드는 방법 ] ///
-      // idx는 최대값 idx에 1을 더함
-      // 만약 문자형숫자일 경우를 대비하여
-      // Number() 숫자형변환함!
-
-      // 3) 입력할 객체 데이터 만들기
-      let data = {
-        idx: Number(maxIdx) + 1,
-        tit: title,
-        cont: content,
-        att: "",
-        date: dateStr,
-        uid: myCon.loginSts.uid,
-        unm: myCon.loginSts.unm,
-        cnt: 0,
-      };
-      // console.log("입력데이터:", data);
-
-      // 4) 입력 객체를 기존 로컬스 변환 객체에 추가하기
-      localData.push(data);
-
-      // 5) 입력객체를 문자형변환하여 로컬스에 넣기
-      localStorage.setItem("board-data", JSON.stringify(localData));
-
-      // 6) 전체 개수 참조변수 1증가하기
-      totalCount.current++;
-
-      // 7) 초기화 함수호출
-      initVariables();
-
-      // 8) 리스트 이동을 위해 모드 변경하기
+    try {
+      await addBoardPost({
+        ...formData,
+        idx: Date.now(), // 임시 인덱스 생성
+        date: new Date().toJSON().substring(0, 10)
+      });
       setMode("L");
-    } /// else /////
-  }; ////////// submitFn 함수 //////////////
+    } catch (error) {
+      console.error("Error adding post:", error);
+      alert("게시글 작성 중 오류가 발생했습니다.");
+    }
+  };
 
-  // 리턴 코드구역 ///////////////////
   return (
-    <main className="cont">
-      <h1 className="tit">OPINION</h1>
-      <table className="dtblview readone">
-        <caption>OPINION : Write</caption>
-        <tbody>
-          <tr>
-            <td>Name</td>
-            <td>
-              <input
-                type="text"
-                className="name"
-                size={20}
-                readOnly={true}
-                // 로그인한 사람이름
-                defaultValue={myCon.loginSts.unm}
-              />
-            </td>
-          </tr>
-          <tr>
-            <td>Title</td>
-            <td>
-              <input type="text" className="subject" size={60} />
-            </td>
-          </tr>
-          <tr>
-            <td>Content</td>
-            <td>
-              <textarea className="content" cols={60} rows={10}></textarea>
-            </td>
-          </tr>
-          <tr>
-            <td>Attachment</td>
-            <td></td>
-          </tr>
-        </tbody>
-      </table>
-      <br />
-      <table className="dtbl btngrp">
-        <tbody>
-          <tr>
-            <td>
-              <button onClick={submitFn}>Submit</button>
-              <button
-                onClick={() => {
-                  // 리스트 모드('L')로 변경하기
-                  setMode("L");
-                }}
-              >
-                List
-              </button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </main>
+    <div className="board-write">
+      <h2>게시글 작성</h2>
+      <form onSubmit={handleSubmit}>
+        <div className="form-group">
+          <label htmlFor="tit">제목</label>
+          <input
+            type="text"
+            id="tit"
+            name="tit"
+            value={formData.tit}
+            onChange={handleChange}
+            placeholder="제목을 입력하세요"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="cont">내용</label>
+          <textarea
+            id="cont"
+            name="cont"
+            value={formData.cont}
+            onChange={handleChange}
+            placeholder="내용을 입력하세요"
+            rows={10}
+          />
+        </div>
+        <div className="button-group">
+          <button type="submit">작성완료</button>
+          <button type="button" onClick={() => setMode("L")}>
+            취소
+          </button>
+        </div>
+      </form>
+    </div>
   );
 }
-
-export default Write;

@@ -2,13 +2,16 @@
 
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { dCon } from "../dCon";
+import { BoardPost } from "../../../types/board";
 
 // 제이쿼리 불러오기 ////
 import $ from "jquery";
 
 interface ReadProps {
   setMode: (mode: string) => void;
-  selRecord: React.MutableRefObject<any>;
+  selRecord: BoardPost;
+  updateBoardPost: (postId: number, updateData: Partial<BoardPost>) => Promise<void>;
+  deleteBoardPost: (postId: number) => Promise<void>;
 }
 
 interface CommentData {
@@ -22,12 +25,12 @@ interface CommentData {
   unm: string;
 }
 
-function Read({ setMode, selRecord }: ReadProps) {
+function Read({ setMode, selRecord, updateBoardPost, deleteBoardPost }: ReadProps) {
   // setMode - 모든 변경 상태변수 setter
   // selRecord - 선택데이터 참조변수
 
   // 선택된 참조변수 데이터 넣기
-  const selData = selRecord.current;
+  const selData = selRecord;
 
   // 전역 컨텍스트 API 사용하기!!
   const myCon = useContext(dCon);

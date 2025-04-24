@@ -1,0 +1,14 @@
+1. cursor ai에 Member.tsx파일에 질의함함
+프롬프트:
+Member.tsx파일에서 
+localstorage를 사용한 부분을 모두 firebase를 이용한 DB로 전환해.
+이미 db라는 이름으로 firebase를 연결했고 'mem-data'라는 데이블도 만들어놨어.
+
+
+
+오류 메시지 붙여 놓고 수정후...
+
+프롬프트:
+프로젝트 전체에서
+localstorage를 사용한 부분을 모두 firebase를 이용한 DB로 전환해.
+이미 db라는 이름으로 firebase를 연결했고 'mem-data'라는 데이블도 만들어놨어.

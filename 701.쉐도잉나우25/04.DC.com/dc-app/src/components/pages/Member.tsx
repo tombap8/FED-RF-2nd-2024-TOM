@@ -2,6 +2,9 @@
 
 import React, { useState } from "react";
 
+import { db } from "../../js/db/firebaseConfig";
+import { collection, getDocs, addDoc, query, where } from "firebase/firestore";
+
 // 모듈 CSS 불러오기 ///
 import "../../css/pages/member.scss";
 import { Link, useNavigate } from "react-router-dom";
@@ -82,7 +85,7 @@ function Member() {
 
   // [ 유효성 검사 함수 ] ///////
   // 1. 아이디 유효성 검사 ////////////
-  const changeUserId = (e: any) => {
+  const changeUserId = async (e: any) => {
     // 입력된 값읽기
     let val = e.target.value;
 
@@ -90,33 +93,18 @@ function Member() {
     const valid = /^[A-Za-z0-9+]{5,}$/;
     // 유효성 검사방법: 정규식.test(값)
 
-    // 2. 입력값 확인 : e.target
-    // console.log(val);
-
     // 3. 에러상태 분기하기
     // 3-1. 에러 아닐때 (유효성검사만 통과한 경우)
     if (valid.test(val)) {
       console.log("통과했지만...!");
-      // 아이디 검사를 위해 기본 데이터 생성호출!
-      initData();
-      // 로컬스토리지에 "mem-data"가 없으면 초기셋팅함!
 
-      // 이제 중복 아이디 검사를 실행한다!!!
-      // 1. 로컬스 변수할당
-      let memData = localStorage.getItem("mem-data");
-      console.log(memData);
-
-      // 2. 로컬스 객체변환 (왜? 문자형이니까!)
-      memData = memData ? JSON.parse(memData) : null;
-      console.log(memData);
-      // -> 배열데이터로 변환!
-      // 주의: JSON 파싱할때 원본형식이 제이슨 파일형식으로
-      // 엄격하게 작성되어야 에러가 없음(마지막콤마 불허용 등)
-
-      // 3. 배열이니까 현재 입력데이터의 아이디가
-      // 기존 배열값으로 있는지 검사함!
-      // 있으면 true, 없으면 false
-      let isT = Array.isArray(memData) && memData.some((v) => v.uid === val);
+      // Firebase에서 중복 아이디 검사
+      const memRef = collection(db, "mem-data");
+      const q = query(memRef, where("uid", "==", val));
+      const querySnapshot = await getDocs(q);
+      
+      // 중복 아이디가 있는지 확인
+      const isT = !querySnapshot.empty;
       console.log("중복id있어?", isT);
 
       // 4. true 일 경우 중복데이터 메시지 표시
@@ -131,21 +119,6 @@ function Member() {
         // 에러상태값 업데이트 : 에러가 아님!(false)
         setUserIdError(false);
       } ///// else //////
-
-      // [ 새로운 배열메서드 : some() ]
-      // -> 조건에 맞는 값이 하나만 나오면 true처리함
-      // 비교참고) every() 는 하나만 false이면 false리턴
-      // let isT = memData.some(v=>{
-      //     console.log("돌아!",v.uid);
-      //     return v.uid===val;
-      // });
-      // let isT = memData.every(v=>{
-      //     console.log("돌아!",v.uid);
-      //     return v.uid===val;
-      // });
-
-      // 아이디 에러상태 업데이트(false)
-      //   setUserIdError(false);
     } /// if /////////////////////////
     // 3-2. 에러일때 : 유효성 검사 에러
     else {
@@ -285,7 +258,7 @@ function Member() {
   }; /////////// totalValid 함수 ///////////
 
   // [ 서브밋 기능함수 ] ////////////////
-  const onSubmit = (e:any) => {
+  const onSubmit = async (e: any) => {
     // 1. 기본서브밋 막기
     e.preventDefault();
 
@@ -294,57 +267,42 @@ function Member() {
     if (totalValid()) {
       console.log("모두통과! 저장!");
 
-      // [회원정보를 로컬스토리지에 저장하기]
+      try {
+        // Firebase에 회원정보 저장
+        const memRef = collection(db, "mem-data");
+        
+        // 새로운 데이터 구성하기
+        const newData = {
+          uid: userId,
+          pwd: pwd,
+          unm: userName,
+          eml: email,
+          zcode: zipcode,
+          addr: addr,
+          // Firebase Timestamp 추가
+          createdAt: new Date()
+        };
 
-      // 1. 로컬스 체크함수호출(없으면 생성!)
-      initData();
+        // Firebase에 데이터 추가
+        await addDoc(memRef, newData);
 
-      // 2. 로컬스 변수할당
-      let memData : Array<any> = JSON.parse(localStorage.getItem("mem-data")?? "[]");
-      console.log(memData);
-
-      // 3. 로컬스 객체변환 -> 위에서 했음!
-      // memData = memData ? JSON.parse(memData) : [];
-      // 최대수를 위한 배열값 뽑기 (idx항목)
-      let temp = Array.isArray(memData) ? memData.map((v) => v.idx) : [];
-      // 다음 번호는 항상 최대수+1이다!
-      console.log("다음번호:", Math.max(...temp) + 1);
-
-      // 4. 새로운 데이터 구성하기
-      let newData = {
-        idx: Math.max(...temp) + 1,
-        uid: userId,
-        pwd: pwd,
-        unm: userName,
-        eml: email,
-        // 추가항목1 : 우편번호
-        zcode: zipcode,
-        // 추가항목2 : 주소
-        addr: addr,
-      };
-
-      // 5. 데이터 추가하기 : 배열에 데이터 추가 push()
-      memData.push(newData);
-
-      // 6. 로컬스에 반영하기 : 문자화해서 넣어야함!
-      localStorage.setItem("mem-data", JSON.stringify(memData));
-
-      // 7. 회원가입 환영메시지 + 로그인 페이지 이동
-      // 버튼 텍스트에 환영메시지
-      const sBtn = document.querySelector(".sbtn") as HTMLButtonElement;
-      sBtn.innerText = "Thank you for joining us!";
-      // 1초후 페이지 이동 : 라우터 Navigate로 이동함
-      setTimeout(() => {
-        goPage("/login");
-        // 주의: 경로앞에 슬래쉬(/) 안쓰면
-        // 현재 Memeber 경로 하위 경로를 불러옴
-      }, 1000);
+        // 7. 회원가입 환영메시지 + 로그인 페이지 이동
+        // 버튼 텍스트에 환영메시지
+        const sBtn = document.querySelector(".sbtn") as HTMLButtonElement;
+        sBtn.innerText = "Thank you for joining us!";
+        // 1초후 페이지 이동 : 라우터 Navigate로 이동함
+        setTimeout(() => {
+          goPage("/login");
+        }, 1000);
+      } catch (error) {
+        console.error("Error adding document: ", error);
+        alert("Registration failed. Please try again.");
+      }
     } ///////// if /////////
     // 3. 불통과시 /////
     else {
       console.log($(".msg").eq(0).text());
       alert("Change your input!");
-      // showModal();
     } //// else ///////////
   }; /////////// onSubmit 함수 //////////
 
